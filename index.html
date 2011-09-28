@@ -54,28 +54,11 @@ content="Jolie
 <link rel="stylesheet" href="css/reset.css" />
 <link rel="stylesheet" href="css/text.css" />
 <link rel="stylesheet" href="css/style.css" />
+<link href='http://fonts.googleapis.com/css?family=Quattrocento+Sans' rel='stylesheet' type='text/css'>
 <script type="text/javascript" src="lib/jquery/jquery-1.4.2.min.js"></script>
 <script type="text/javascript" src="lib/jquery_history/jquery.history.js"></script>
 <script type="text/javascript" src="lib/menu.js"></script>
-<script language="javascript">
-	// Code for moving the menu according to the scroll bar position
-	$(document).ready(function() {
-		var menu = $("#menu");
-		var origMenuY = menu.position().top;
-		$(window).scroll(function () {
-			var docY = $(document).scrollTop();
-			var y = 0;
-			if ( docY < origMenuY ) { // Keep the menu under the header
-				y = origMenuY;
-			} else {
-				y = docY;
-			}
-// 			y = y + $(name).position().top;
-			menu.offset( { top: y } );
-//  			$(name).animate({top:offset},{duration:500,queue:false});
-		});
-	});
-</script>
+
 
 <title>Jolie Programming Language</title>
 </head>
@@ -86,55 +69,77 @@ content="Jolie
     &nbsp;
   </div>
   <div class="grid_24" id="wrapper">
-      <div class="grid_22" id="head">
+      <div class="grid_24" id="head">
 	  <div class="grid_22">
 	    &nbsp;
 	  </div>
-	  <div class="grid_4 prefix_1">
-	    <img src="images/jolie_logo.png" height="120"/>
-	  </div>
-	  <div class="grid_11" style="vertical-align:text-bottom">
-	    <div class="grid_11">
+	  <div id="left-column" class="grid_6">
+	    <div class="grid_6">
+	      <img src="images/jolie_logo.png" id="logo"/>
+	    </div>
+	    <div class="grid_6">
 	    &nbsp;
 	    </div>
-	    <div class="grid_11">
+	    <div class="grid_6">
 	    &nbsp;
 	    </div>
-	    <div class="grid_11">
-	    &nbsp;
+	    <div id="news" class="grid_5">
+	      <h1>News Title</h1>
+	      <h2>29/09/2011</h2>
+	      kdssfjksjkgljgksfdjgksjfd kvjksldgjfdkgjskfj kfsjdkbfjsdkf jb
+	      kdjgfksdjgkd kdsjvikdsjvkfjkdjk psdoibvjpodsjbvdf 
 	    </div>
-	    <h2>...distributed computing made easy</h2>
-	  </div>
-	  <div class="grid_22">
-	    &nbsp;
-	  </div>
-      </div>
-
-      <div id="menu" class="grid_22 prefix_1 suffix_1" style="position:relative">
-	      <ul id="nav">
-	      <li><a id="navlink_home" href="#home">Home</a></li>
-	      <li><a id="navlink_research" href="#research">Research</a></li>
-	      <li><a id="navlink_contact" href="#contact">Contact</a></li>
-	      </ul>
-      </div>
-      
-
-      <div class="grid_24" id="body">
-	<div id="content" class="grid_16">
-	  <h2 class="SectionTitle" id="title">Loading...</h2>
+	    <hr>
+	    <div id="news" class="grid_5">
+	      <h1>News Title</h1>
+	      <h2>29/09/2011</h2>
+	      kdssfjksjkgljgksfdjgksjfd kvjksldgjfdkgjskfj kfsjdkbfjsdkf jb
+	      kdjgfksdjgkd kdsjvikdsjvkfjkdjk psdoibvjpodsjbvdf 
+	    </div>
+	    <hr>
+	    <div id="news" class="grid_5">
+	      <h1>News Title</h1>
+	      <h2>29/09/2011</h2>
+	      kdssfjksjkgljgksfdjgksjfd kvjksldgjfdkgjskfj kfsjdkbfjsdkf jb
+	      kdjgfksdjgkd kdsjvikdsjvkfjkdjk psdoibvjpodsjbvdf 
+	    </div>
 	</div>
-	<div id="static_menu" class="grid_7">
-	  <ul>
-	    <li>Latest News</li>
-	    <li>Latest News</li>
-	    <li>Latest News</li>
-	    <li>Latest News</li>
-	    <li>Latest News</li>
-	    <li>Latest News</li>
-	    <li>Latest News</li>
-	    <li>Latest News</li>
-	    <li>Latest News</li>
-	  </ul>
+	  <div class="grid_11 prefix_6" id="head-right">
+	    <div class="grid_11">
+	    &nbsp;
+	    </div>
+	    <div class="grid_11">
+	    &nbsp;
+	    </div>
+	    <div class="grid_11">
+	    &nbsp;
+	    </div>
+	    <div class="grid_11">
+	    &nbsp;
+	    </div>
+	    <div class="grid_11">
+	    &nbsp;
+	    </div>
+	    <div class="grid_11">
+	    &nbsp;
+	    </div>
+	    <div class="grid_11">
+	    &nbsp;
+	    </div>
+	    <div id="slogan">...distributed computing made easy</div>
+	  </div>
+	  <div id="menu" class="grid_11">
+	      
+	      <a id="navlink_home" href="#home">Home</a></li>
+	      <a id="navlink_research" href="#research">Research</a></li>
+	      <a id="navlink_contact" href="#contact">Contact</a></li>
+	      
+	  </div>
+	  <div class="grid_17" id="head-right-decoration">
+	    &nbsp;
+	  </div>
+	  <div id="content" class="grid_16">
+	  <h2 class="SectionTitle" id="title">Loading...</h2>
 	</div>
       </div>
   </div>
