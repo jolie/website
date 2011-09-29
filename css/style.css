@@ -3,6 +3,19 @@ body {
 	background-repeat: repeat-x;
 }
 
+#abstract-jolie {
+  margin-top:20px;
+  margin-bottom:20px;
+  font-size:16px;
+  background-color:#f6ecd5;
+  padding:20px;
+  margin-left:20px;
+  border:1px;
+  border-color:#226b68;
+  border-style:solid;
+  border-radius:10px;
+}
+
 #header {
 	font-size: 14pt;
 	font-weight: bold;
@@ -60,9 +73,9 @@ body {
 	font-size:12px;
 	padding-top:20px;
 	background-color:#EEEEEE;
-	border: solid 1px #CCCCCC;
+	border: solid 1px #226b68;
 	border-bottom-left-radius:10px;
-	border-bottom-right-radius:10px;
+	border-top-left-radius:10px;
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#2b8582', endColorstr='#2eb0ab');
 	height: 800;
 	margin-bottom:20px;
@@ -76,11 +89,11 @@ body {
   padding-left:15px;
   padding-bottom:10px;
   margin-bottom:20px;
-  font-size:12px;
+  font-size:16px;
 }
 
 #news h1 {
-	font-size:14px;
+	font-size:18px;
 	font-weight:bold;
 	color:#AA0000;
 	padding:0px;
@@ -88,14 +101,36 @@ body {
 }
 
 #news h2 {
-	font-size:12px;
+	font-size:14px;
+	font-weight:bold;
+	color:#000000;
+}
+
+
+#for {
+  padding-left:15px;
+  padding-bottom:10px;
+  margin-bottom:20px;
+  font-size:14px;
+}
+
+#for h1 {
+	font-size:18px;
+	font-weight:bold;
+	color:#AA0000;
+	padding:0px;
+	margin:0px;
+}
+
+#for h2 {
+	font-size:14px;
 	font-weight:bold;
 	color:#000000;
 }
 
 #menu a {
   padding-right: 20px;
-  font-size:14px;
+  font-size:16px;
   color: black;
   text-decoration:none;
 }
