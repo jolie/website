@@ -1,0 +1,22 @@
+outputPort ServiceA {
+Location : "socket://www.somelocationA.com/"
+Protocol : soap
+Interfaces : InterfaceA
+}
+outputPort ServiceB {
+Location : "socket://www.somelocationB.com/"
+Protocol : sodep
+Interfaces : InterfaceB
+}
+
+outputPort ServiceC {
+Location : "socket://www.somelocationC.com/"
+Protocol : http
+Interfaces : InterfaceC
+}
+
+inputPort MasterInput {
+Location : "socket://masterservice.com:8000/"
+Protocol : sodep
+Redirects : A => ServiceA , B => ServiceB , C => ServiceC
+}

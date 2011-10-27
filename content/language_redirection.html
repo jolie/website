@@ -1,0 +1,45 @@
+<div class="grid_15 prefix_1" id="language-content">
+<h1>Redirection</h1>
+Redirection allows for the creation of a master service acting as a single
+communication endpoint to multiple services, called resources. The master
+service receives all the messages meant for the system that it handles. This
+is obtained by binding an input port of the master service to multiple output
+ports, each one identifying a service by means of a resource name. Invokers
+send messages to the master service specifying also the intended resource
+name. The main advantages of such an approach are:<br>
+<br>
+<ul>
+<li>the possibility to provide a unique access point to the system clients. In
+this way the services of the system could be relocated and/or replaced
+transparently w.r.t. the clients;</li>
+<li>the possibility to provide transparent communication protocol transformations 
+between the invoker and the master and the master and the
+rest of the system.</li>
+</ul>
+<br>
+<div id="figure">
+  <img src="./images/redirecting.jpg">
+  <div id="caption"><b>Figure Redirection.1:</b> Service <i>M</i> redirects messages to services <i>A</i>, 
+<i>B</i> and <i>C</i> depending
+on the target destination of the message (<i>M/A</i>, <i>M/B</i> or <i>M/C</i>).
+</div>
+</div>
+In order to understand the second advantage better, consider <b>Fig. Redirection.1</b> and
+suppose that <i>A</i> speaks a certain protocol <i>pa</i> . Now suppose that a client needs
+to interact with <i>A</i>, but it does know only a diﬀerent protocol: <i>pm</i> . The client
+could then call <i>M</i> with destination <i>M/A</i> using protocol <i>pm</i> (known by <i>M</i> ),
+and leave to <i>M</i> the task of transforming the call message into an instance of
+pa before sending it to <i>A</i>.<br>
+
+<h2>Syntax</h2>
+The syntax for setting up a master service follows:
+<div id="syntax" src="syntax_redirection"/>
+where <i>outputPortId</i> ranges over output port identiﬁers and the form <i>id</i> =>
+<i>outputPortId</i> associates a resource name to an output port.
+Calling a master service for one of its resources is done by introducing the
+resource name in the location used by the invoker, followed by the resource
+name separator !/:
+<div id="syntax" src="syntax_redirection_2"/>
+
+<h2>Examples</h2>
+<div id="example" src="example_redirection_1"/>
