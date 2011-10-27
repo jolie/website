@@ -3,6 +3,17 @@ body {
 	background-repeat: repeat-x;
 }
 
+a {
+  padding-right: 20px;
+  font-size:14px;
+  color: black;
+  text-decoration:none;
+}
+
+a:hover{
+  color:#2b8582;
+}
+
 #abstract-jolie {
   margin-top:20px;
   margin-bottom:20px;
@@ -129,14 +140,7 @@ body {
 }
 
 #menu a {
-  padding-right: 20px;
   font-size:16px;
-  color: black;
-  text-decoration:none;
-}
-
-#menu a:hover{
-  color:#2b8582;
 }
 
 .HeaderTitle {
@@ -299,4 +303,84 @@ ul {
 	
 	/* Firefox */
 /* 	background: -moz-linear-gradient(top,  #A9E8FD,  #88BBCC); */
+}
+
+div#philosophy-content h1 {
+  margin:0px;
+  margin-top:20px;
+  margin-bottom:20px;
+  padding:0px;
+  font-size:24px;
+  font-weight: bold;
+  color:#AA0000;
+}
+
+div#language-content {
+  font-size:16px;
+  padding-bottom:20px;
+}
+
+div#language-content h1 {
+  margin:0px;
+  margin-top:20px;
+  margin-bottom:20px;
+  padding:0px;
+  font-size:24px;
+  font-weight: bold;
+  color:#AA0000;
+}
+
+div#language-content h2 {
+  margin:0px;
+  margin-top:20px;
+  margin-bottom:5px;
+  padding:0px;
+  font-size:20px;
+  font-weight: bold;
+  color:#000000;
+}
+
+div#philosophy-content {
+  font-size:16px;
+  padding-bottom:20px;
+}
+
+div#signature {
+  font-style: italic;
+  text-align: right;
+}
+
+div#figure {
+  padding-left:70px;	
+  width: 400px;
+  margin-bottom:10px;
+}
+
+div#figure img {
+  width:400px;
+}
+
+div#caption {
+  padding-top:5px;
+  font-size:13px;
+}
+
+div#example {
+  padding:20px;
+  font-family: Courier New;
+  font-size:14px;
+  border: solid 1px #AAAAAA;
+  border-radius: 10px;
+  background-color: #EEEEEE;
+  margin: 10px;
+}
+
+div#syntax {
+  padding:20px;
+  margin:10px;
+  font-size:14px;
+  font-family: Courier New;
+  border: solid 1px #CC9999;
+  border-radius: 10px;
+  background-color: #EEDDDD;
 }
