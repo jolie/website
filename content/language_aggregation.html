@@ -1,6 +1,68 @@
 <div class="grid_15 prefix_1" id="language-content">
+<a name="language_top"/>
 <h1>Aggregation</h1>
-Here we present the language in different steps, just for introducing the new user into Jolie
-in an easy and comfortable way. Feel free to navigate into all the sections just to have a general glance of the language,
-but we suggest to follow our roadmap if you intend to get into details about Jolie programming style.
+<ul>
+<li><a href="#language_syntax">Syntax</a></li>
+<li><a href="#language_example1">Example 1 - Calculator</a></li>
+<li><a href="#language_surface_anchor">Surface</a></li>
+</ul>
+<br><br>
+Aggregation is a composition of services where their interfaces are joined
+together and published as unique. Therefore, aggregation deals with the
+grouping of more services under the same interface. The mechanism is similar
+to redirecting, but there are not resource names visible from the point of
+view of the client; the client, instead, sees a unique service, the master one,
+which exhibits an interface by providing the functionalities of the resource
+services. Diﬀerently from redirecting, which maintains the diﬀerent interfaces
+of each composed service separated, in this case the client looses the details
+of each single service used behind aggregation. The main advantage of such
+a composition approach deals with the possibility to completely hide the
+system components to the client.
+<div id="figure">
+  <img src="./images/aggregation.jpg">
+  <div id="caption"><b>Figure Aggregation.1</b>: In aggregation the master service publishes the union of all the
+service interfaces it aggregates. Interfaces are here represented with dotted
+rectangles. The message on operation op1 to service <i>M</i> is actually redirected
+to service <i>A</i>.
+
+</div>
+</div>
+<a name="language_syntax"/>
+<h2>Syntax</h2>
+&gt; <a href="#language_top">Go on top</a><br><br>
+The syntax for aggregation is:
+<div id="syntax" src="syntax_aggregation"/>
+
+<a name="language_example1"/>
+<h2>Example 1 - Calculator</h2>
+&gt; <a href="#language_top">Go on top</a>
+<div id="download">&gt; <a href="./content/code/code_aggregation_1.zip">Download code</a></div>
+In this example we present the same example used for the redirection
+but we exploit aggregation instead of redirection. 
+We create two services which provide different functionalities:
+one calculates the sum of two input numbers whereas the other calculates the subtraction,
+then we aggregate them into the same inputPort of the aggregator.
+In the following we report only the code of the aggregator,
+the code of the sum service can be consulted at the 
+<a id="navlink_redirection" href="#language_redirection">redirection section</a>.
+
+<div id="example" src="example_aggregation_1"/>
+The client is not aware of SumService and SubService but it only sees
+one enbdpoint, the Aggregator, which exhibits both the calcSum and the calcSub.
+<div id="example" src="example_aggregation_2"/>
+
+
+<a name="language_surface_anchor"/>
+<h2>Surface</h2>
+&gt; <a href="#language_top">Go on top</a><br><br>
+In the example above it is clear that the aggregator joins the interfaces of the SumService
+and the Subservice into its inputPort by offering both of them to the clients. But where the aggregator interface 
+is defined? If we consider the client we could notice that the outputPort Aggregator declares 
+an interface which contains both the calcSum and the calcSub operation. Thus the client
+must be aware of the interface of the aggregator even if it is not concretely defined anywhere.
+It is possible to provide to the client the resultant interface of the aggregator by automatically
+generating it from the aggregator by exploiting the tool <a href="#language_surface">jolie2surface</a>.
+If we apply that tool to the aggregator represented above we will obtain the following surface:
+<div id="example" src="example_aggregation_3"/>
+Such a surface declaration can be easily included by any client which wants to interact with the aggreator.
 </div>

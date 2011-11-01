@@ -1,0 +1,40 @@
+include "console.iol"
+
+interface SubServiceInterface {
+RequestResponse:
+------calcSub
+}
+
+interface SumServiceInterface {
+RequestResponse:
+------calcSum
+}
+
+
+outputPort SubService {
+Location: "socket://localhost:8001/"
+Protocol: sodep
+Interfaces: SubServiceInterface
+}
+
+outputPort SumService {
+Location: "socket://localhost:8002/"
+Protocol: sodep
+Interfaces: SumServiceInterface
+}
+
+inputPort MyService {
+Location: "socket://localhost:8000/"
+Protocol: sodep
+OneWay:
+------shutdown
+Redirects:
+------------Sub => SubService,
+------------Sum => SumService
+}
+
+main
+{
+--shutdown();
+--exit
+}

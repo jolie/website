@@ -1,0 +1,10 @@
+DeploymentInstruction ::=--inputPort id { 
+------------------------------PortInstruction∗
+------------------------------InputPortInstruction∗ 
+----------------------------}
+
+InputPortInstruction ::= Aggregates: OutputPortList
+
+OutputPortList ::= outputPortId | outputPortId , OutputPortList
+
+

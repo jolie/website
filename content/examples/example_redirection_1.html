@@ -1,22 +1,17 @@
-outputPort ServiceA {
-Location : "socket://www.somelocationA.com/"
-Protocol : soap
-Interfaces : InterfaceA
-}
-outputPort ServiceB {
-Location : "socket://www.somelocationB.com/"
-Protocol : sodep
-Interfaces : InterfaceB
+include "console.iol"
+
+execution { concurrent }
+
+inputPort Factorial {
+Location: "socket://localhost:8002/"
+Protocol: sodep
+RequestResponse:
+------calcSum 
 }
 
-outputPort ServiceC {
-Location : "socket://www.somelocationC.com/"
-Protocol : http
-Interfaces : InterfaceC
-}
-
-inputPort MasterInput {
-Location : "socket://masterservice.com:8000/"
-Protocol : sodep
-Redirects : A => ServiceA , B => ServiceB , C => ServiceC
+main
+{
+----calcSum( request )( result ) {
+------result = int( request.x ) + int( request.y )
+----}
 }

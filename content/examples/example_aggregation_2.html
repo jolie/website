@@ -1,0 +1,30 @@
+include "console.iol"
+
+interface AggregatorInterface {
+RequestResponse:
+--------calcSum, 
+--------calcSub
+}
+
+outputPort Aggregator {
+Location: "socket://localhost:8000"
+Protocol: sodep
+Interfaces: AggregatorInterface
+}
+
+main
+{
+--registerForInput@Console()();
+--println@Console( "Insert a number" )();
+--in( request.x );
+--println@Console( "Insert another number" )();
+--in( request.y );
+--println@Console("Type add for performing sum, subtraction otherwise:")();
+--in( answer );
+--if ( answer=="add" ) {
+----calcSum@Aggregator( request )( response )
+--} else {
+----calcSub@Aggregator( request )( response )
+--};
+--println@Console( response )()
+}
