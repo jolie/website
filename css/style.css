@@ -1,6 +1,7 @@
 body {
-	background-image: url('../images/bkg.jpg');
-	background-repeat: repeat-x;
+	/*background-image: url('../images/bkg.jpg');
+	background-repeat: repeat-x;*/
+	background-color: #DDDDDD;
 }
 
 a {
@@ -94,6 +95,10 @@ a:hover{
 
 #logo {
   padding-left:8px;
+}
+
+#download {
+  margin-bottom:20px;
 }
 
 #news {
@@ -318,6 +323,12 @@ div#philosophy-content h1 {
 div#language-content {
   font-size:16px;
   padding-bottom:20px;
+}
+
+div#language-content a {
+  text-decoration: underline;
+  font-size:16px;
+  padding:0px;
 }
 
 div#language-content h1 {
