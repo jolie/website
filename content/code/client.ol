@@ -1,33 +1,59 @@
+include "locations.iol"
 include "console.iol"
 
-interface ServiceInterface {
-  RequestResponse:
-    operator
+type PrintRequest_Auth:void {
+	.job:int
+	.content:string
+	.key:string
 }
 
-constants {
-  endpoint_base = "socket://localhost:8000/!/"
+type DelRequest_Auth:int {
+	.key:string
 }
 
-outputPort OperatorService {
-  Protocol: sodep
-  Interfaces: ServiceInterface
+type FaxRequest_Auth:void {
+	.destination:string
+	.content:string
+	.key:string
+}
+
+interface ExtendedFaxInterface {
+OneWay:
+	fax(FaxRequest_Auth)
+}
+
+interface ExtendedPrinterInterface {
+OneWay:
+	print(PrintRequest_Auth),
+	del(DelRequest_Auth)
+RequestResponse:
+	get_key(string)(string)
+}
+
+
+outputPort Aggregator {
+Location: locationAggregator
+Interfaces: ExtendedPrinterInterface, ExtendedFaxInterface
+Protocol: sodep
 }
 
 main
 {
-  registerForInput@Console()();
-  println@Console( "Insert a number" )();
-  in( request.x );
-  println@Console( "Insert another number" )();
-  in( request.y );
-  println@Console("Type add for performing sum, subtraction otherwise:")();
-  in( answer );
-  if ( answer=="add" ) {
-      OperatorService.location = endpoint_base + "Sum"
-  } else {
-      OperatorService.location = endpoint_base + "Sub"
-  };
-  operator@OperatorService( request )( response );
-  println@Console( response )()
+	request.content = "Hello, Printer!";
+
+	get_key@Aggregator( "username1" )( key );
+	request.key = key;
+	request.job = 1;
+	print@Aggregator( request );
+	println@Console("job printed!")();
+	
+
+	request.key = "Invalid";
+	request.job = 3;
+	print@Aggregator( request );
+
+	faxRequest.key = key;
+	faxRequest.destination = "123456789";
+	faxRequest.content = "Hello, Fax!";
+	fax@Aggregator( faxRequest )
 }

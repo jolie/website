@@ -1,0 +1,50 @@
+<div class="grid_15 prefix_1" id="language-content">
+<a name="language_top"/>
+<h1>Hello world!</h1>
+<ul>
+<li><a href="#language_launching">Running a Jolie service</a></li>
+<li><a href="#language_launching">Running a Jolie service with parameters</a></li>
+</ul>
+<br><br>
+Jolie is a service oriented programming language that you can use to build powerful distributed
+systems. In Jolie everything is a service and complex tasks can be achieved by composing 
+services each other. An example of a very simple service is the following:
+<div id="example" src="example_hello_world_1"/>
+The program above can be interpreted as:
+<ul>
+    <li>include the source file console.iol;</li>
+    <li>send the message "Hello, world!" to the println operation of the Console service </li>
+</ul>
+
+
+We can already see some characteristics of a JOLIE program:
+
+<ul>
+    <li>we can include other source files by means of the include directive;</lI>
+    <li>the entry point of a JOLIE program is the main scope;</li>
+    <li>we can send a message to a service with a one-line statement.</li>
+</ul>
+
+The last point differs from classical programming languages and is peculiar to the JOLIE language: 
+the <i>println@Console("Hello, world!")()</i> line is a solicit-response statement which is 
+a communication primitive. 
+
+<a name="language_launching"/>
+<h2>Running a Jolie service</h2>
+&gt; <a href="#language_top">Go on top</a><br><br>
+Now let us run the jolie service introduced above. It is very easy and simple. First of all, save the
+source code above into a file and name it <i>myFirstJolieService.ol</i>. Then launch the following
+command line:
+<div id="example" src="example_hello_world_2"/>
+As a result you will see displayed the string <i>Hello world</i> in your console.
+
+<a name="language_launching"/>
+<h2>Running a Jolie service with parameters</h2>
+&gt; <a href="#language_top">Go on top</a><br><br>
+Now, let us modify your first service in order to receive parameters from the command line.
+All the parameters are stored in a vector called <i>args</i> where the first parameter
+can be retrieved at index 0, the second parameter at index 1 and so on.
+<div id="example" src="example_hello_world_3"/>
+Save the file with the name <i>mySecondJolieService</i> and try to run it in the following way:
+<div id="example" src="example_hello_world_4"/>
+</div>

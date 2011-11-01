@@ -1,5 +1,109 @@
 <div class="grid_15 prefix_1" id="language-content">
+<a name="language_top"/>
 <h1>Courier sessions</h1>
+<ul>
+<li><a href="#language_extended_interface">Extended Interface</a></li>
+<li><a href="#language_example1">Example 1 - Extended Interface</a></li>
+<li><a href="#language_aggregating_extended_interfaces">Aggregating extended interfaces</a></li>
+<li><a href="#language_example2">Example 2 - Aggregating extended interfaces</a></li>
+<li><a href="#language_courier_sessions">Courier sessions</a></li>
+<li><a href="#language_example3">Example 3 - Courier sessions</a></li>
+</ul>
+<br>
 Courier sessions are a powerful mechanism provided by Jolie for composing services in
-a way they do not depend on the service system context they are inserted. 
+a way they do not depend on the service system context they are inserted. It is often the case that
+services must be added into a system where some constraints must be verified before accessing
+their functionalities (e.g. the user credentials must be verified before allowing him to access the
+operations of a service). Courier session technology allows for the separation between quality aspects
+of the system, such as authentication, and the functionalities of the single services involved.
+Courier session mechanism relies on that of <a href="#language_aggregation">aggregation</a> and
+it provides the possibility for an aggregator to activate a special session, called <i>courier session</i>,
+which is able to performs some checks on the incoming message before forwarding it to the aggregated service.
+These checks can deal with authentication or logging or anything else. Courier session cal also exploit 
+outputPorts for performing requests.
+<div id="figure">
+  <img src="./images/courier_sessions.jpg">
+  <div id="caption"><b>Figure Courier.1</b>: Courier sessions are a mechanism associated with the
+ aggregation one which allows for the checking of teh incoming message before forwarding it
+to the aggregated service. Courier session <i>CS</i> is executed before sending the message to service
+<i>A</i>. If necessary <i>CS</i> can also invokes external services such as <i>D</i> in order to 
+achieving message checking.
+  </div>
+</div>
+In Fig. Courier.1 it is represented the case of a service <i>M</i> which aggregates three services <i>A</i>,
+<i>B</i> and <i>C</i>. The aggregator is set for activating a courier session when a message is sent to op1
+which is an operation of <i>A</i>. In that case the courier session <i>CS</i> is enabled for performing some
+checking actvities. These activities could also involved external services such as <i>D</i>. If the message
+checks is positive <i>CS</i> will forward the incoming message to service <i>A</i>, a fault will be risen to 
+the client otherwise.
+
+<a name="language_extended_interface"/>
+<h2>Extended Interface</h2>
+&gt; <a href="#language_top">Go on top</a><br><br>
+Before going deep into courier session details it is necessary to introduce interface extension which is 
+a fundamental feature necessary for a right implementation of courier sessions. Interface extension allows for
+the enrichment of an aggregated service at the level of the aggregator. Briefly speaking, when a service is aggregated
+the aggregator takes its interface and publics it on its inputPort. By using interface extension the aggregator can add 
+fields to the message types of the aggregated service interface. These new fields are usually exploited within the courier
+session for performing some kind of message checking. The courier session will automatically remove them
+when forwarding the message to the aggregates service. The interface extender syntax follows:
+<div id="syntax" src="syntax_courier_1"/>
+The interface extender declaration resembles that of simple interface with the exception of the keyword <i>extender</i>
+and the usage of symbol * for denoting operations. When applied to an interface, the extender will add the types and faults
+defined into its definition to all the operation of the source interface. If the extender defines the operation *,
+the adding will be applied to all the operations of the source interface.
+
+<a name="language_example1"/>
+<h2>Example 1 - Calculator</h2>
+&gt; <a href="#language_top">Go on top</a><br><br>
+In the following we present the an interface extender which extends all the operations with the
+type <i>AuthenticationData</i>. Such a type contains a field called <i>key</i> and a fault called
+<i>AccessDenied</i>
+<div id="example" src="example_courier_1"/>
+
+<a name="language_aggregating_extended_interfaces"/>
+<h2>Aggregating extended interfaces</h2>
+&gt; <a href="#language_top">Go on top</a><br><br>
+In order to extend an aggregated service it is necessary to exploit the following syntax:
+<div id="syntax" src="syntax_courier_2"/>
+
+<a name="language_example2"/>
+<h2>Example 2 - Aggregating extended interfaces</h2>
+&gt; <a href="#language_top">Go on top</a><br><br>
+Here we show how to aggregate an extended interface by exploiting a simple scenario
+as that depicted in Figure Courier.2.
+<div id="figure">
+  <img src="./images/courier_sessions2.jpg">
+  <div id="caption"><b>Figure Courier.2</b>: An aggregator aggregates two services
+<i>Printer</i> and <i>Fax</i> whose interfaces are extended by using the <i>AuthenticationInterfaceExtender</i>
+  </div>
+</div>
+In this case two services, <i>Printer</i> and <i>Fax</i> are available in a LAN but
+we would like they could be accessed also from Internet. In order to achieve this target it is necessary to
+authenticate the user before opening the access to the functionalities of the printer and the fax.
+Such a result can be obtained by aggregating both the services into an aggregator where their
+interfaces are extended with the <i>AuthenticationInterfaceExtender</i> presented in the section above.
+Such an extender allows for the adding of the authentication information, represented by the field <i>key</i>,
+to both the operations the service <i>Printer</i> and <i>Fax</i>. The client must authenticate himself
+to the aggregator by requesting the <i>key</i> before accessing the printer or the fax.
+<div id="example" src="example_courier_2"/>
+
+<a name="language_courier_sessions"/>
+<h2>Courier sessions</h2>
+&gt; <a href="#language_top">Go on top</a><br><br>
+The behaviour of a courier session must be expressed in a special jolie scope called <i>courier</i>.
+Such a scope allows for the definition of the code to be executed when a message is received on a specific
+operation of an inputPort. For each message a courier session is executed, the message is forwarded to the
+correspondent outputPort by means of the primitive <i>forward</i>.
+<div id="syntax" src="syntax_courier_3"/>
+
+<a name="language_example3"/>
+<h2>Example 3 - Courier sessions</h2>
+&gt; <a href="#language_top">Go on top</a><br><br>
+<div id="figure">
+  <img src="./images/courier_sessions3.jpg">
+  <div id="caption"><b>Figure Courier.3</b>: The courier session receives all the messages
+and before forwarding them to the Printer or the 
+  </div>
+</div>
 </div>
