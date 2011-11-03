@@ -1,0 +1,101 @@
+<div class="grid_15 prefix_1" id="language-content">
+<a name="language_top"/>
+<h1>Install</h1>
+<ul>
+<li><a href="#language_linux">Linux</a>
+
+  <ul>
+    <li><a href="#language_linux_opensuse">openSuse - one click installation</a></li>
+    <li><a href="#language_linux_sources">From sources</a></li>
+  </ul>
+</li>
+<li><a href="#language_windows">Windows</a>
+  <ul>
+    <li><a href="#language_windows_sources">From sources</a></li>
+  </ul>
+</li>
+<li><a href="#language_external_tools">Support for external tools</a>
+  <ul>
+    <li><a href="#language_external_tools_kate">Kate</a></li>
+  </ul>
+</li>
+</ul>
+
+<br><br>
+<a name="language_linux"/>
+<h2>Linux</h2>
+&gt; <a href="#language_top">Go on top</a><br><br>
+
+<a name="language_linux_opensuse"/>
+<h3>openSuse - one click installation</h3>
+<ul>
+  <li><a href="http://download.opensuse.org/repositories/home:/fmontesi/openSUSE_11.3/jolie.ymp">openSuse 11.3</a></li>
+</ul>
+
+<a name="language_linux_sources"/>
+<h3>From sources</h3>
+Requirements:
+<ul>
+    <li>Java SDK >=1.6</li>
+    <li>Apache ant</li>
+    <li>Subversion client </li>
+</ul>
+Open a shell and execute:
+<div id="example" src="example_install_1"/>
+The ant script will automatically build and install Jolie for you. The default is to install in /opt/jolie, but the 
+installation parameters can be controlled by editing buildconfig/config.properties. 
+A Jolie launcher script will be put in /usr/local/bin (this parameter is configurable, too), 
+thus executing a Jolie script will be just a matter of:
+<div id="example" src="example_install_2"/>
+
+<a name="language_windows"/>
+<h2>Windows</h2>
+&gt; <a href="#language_top">Go on top</a><br><br>
+
+<a name="language_windows_sources"/>
+<h3>From sources</h3>
+Requirements:
+<ul>
+    <li>Install the latest JDK (Java SE Development Kit) from this <a target="lnk1" href="http://java.sun.com/javase/downloads/index.jsp">link</a></li>
+    <li>Install a Subversion client (e.g. <a target="lnk2" href="http://tortoisesvn.tigris.org/">Tortoise</a>))</li>
+    <li>Install Ant for building sources from this <a target="lnk3" href="http://ant.apache.org/">link</a></li>
+</ul>
+<br>
+
+Installing:
+<ul>
+    <li>Download JOLIE's sources with your svn client from <a target="lnk4" href="https://jolie.svn.sourceforge.net/svnroot/jolie/trunk">https://jolie.svn.sourceforge.net/svnroot/jolie/trunk</a></li>
+    <li>Go into the trunk directory</li>
+    <li>Open the buildconfig/config.properties file and change the parameters <i>install.launcher_dir</i> and <i>install.dir</i> 
+    by replacing the existing directories with your desired ones. Use \\ instead of the single backslashes when writing paths. Example:
+    <div id="example" src="example_install_3"/>
+    </li> 
+    <li>Edit your PATH environment variable so that it includes the <i>install.launcher_dir</i> directory 
+    (<a target="lnk5" href="http://support.microsoft.com/kb/310519">instructions for managing environment variables under Windows XP</a>) </li>
+    <li>Execute the <i>ant dist-install</i> command </li>
+</ul>
+If the install path contains spaces you will experience a problem in launching the jolie executable.
+This is due to a problem on the command <i>set joliepath</i>
+present in jolie.bat that can be found in the intall directoy that you have previously specified.
+To solve this you must substitute the \ characters before and after the path containing 
+the space with // and include the same part of the path between "".
+For instance, if you did choose to use the same directory of this tutorial you can correct the 
+<i>set</i> command with the following code.
+<div id="example" src="example_install_4"/>
+You can now execute Jolie scripts by issuing the jolie command to a console, e.g.:
+<div id="example" src="example_install_5"/>
+
+<a name="language_external_tools"/>
+<h2>Support for external tools</h2>
+&gt; <a href="#language_top">Go on top</a><br><br>
+
+<a name="language_external_tools_kate"/>
+<h3>Kate</h3>
+Homepage: <a tarhet="lnk6" href="http://kate-editor.org/">http://kate-editor.org/</a>
+<br>
+<br>
+A syntax highlighting description file for KatePart (which is used by most KDE applications and the Kate editor itself) is available.
+Download the <a target="lnk7" href="http://jolie.svn.sourceforge.net/viewvc/jolie/trunk/support/katepart/syntax/jolie.xml">latest version</a>
+ and put it in your $KDE_HOME/share/apps/katepart/syntax directory.
+You can discover your $KDE_HOME directory by issuing the kde4-config --localprefix command.
+</div>

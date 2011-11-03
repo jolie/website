@@ -1,0 +1,49 @@
+<div class="grid_15 prefix_1" id="language-content">
+<a name="language_top"/>
+<h1>Interfaces</h1>
+<ul>
+  <li><a href="#language_operations">Operations</a></li>
+  <li><a href="#language_interfaces_interfaces_basic">Interfaces - basic declaration</a></li>
+  <li><a href="#language_interfaces_interfaces_types">Interfaces - message types declaration</a></li>
+</ul>
+
+<br><br>
+Jolie allows for the development of distributed applications, thus communication
+among services is a key aspect to be considered when building a system with Jolie.
+An interface is the Jolie artifact which permits to declare all the functionalities,
+called <i>operations</i> exhibited by a service. Every message exchange is fulfilled
+by means of an operation.
+
+<a name="language_operations"/>
+<h2>Operations</h2>
+&gt; <a href="#language_top">Go on top</a><br><br>
+An operation is a functionality exposed by a service which can be invoked by other applications. 
+Whenever you want to invoke another service, you must do so by invoking one of its operations, 
+and vice versa (whenever another application wants to invoke yours, it must do so by invoking an operation of your program).
+There are two kinds of operations:
+<br><br>
+<ul>
+<li><i>One-Way</i>: it simply receives a message;</li>
+<li><i>Request-Response</i>: it receives a message and then sends back a response.</li>
+</ul>
+<br>
+
+<a name="language_interfaces_interfaces_basic"/>
+<h2>Interfaces - basic declaration</h2>
+&gt; <a href="#language_top">Go on top</a><br><br>
+The interface allows for the declaration of a set of operations. They can 
+be OneWay operations, RequestResponse operations or both. The basic declaration
+of an interface just lists all the name of the operations divided by type:
+<div id="syntax" src="syntax_interface"/>
+
+<a name="language_interfaces_interfaces_types"/>
+<h2>Interfaces - message types declaration</h2>
+&gt; <a href="#language_top">Go on top</a><br><br>
+Interface declaration can be enriched with message types declaration.
+OneWay messages require only one message type whereas RequestResponse operations
+require both the request and the response type. Left type declaration si the 
+request type whereas the right one refers to the response one.
+<div id="syntax" src="syntax_interface_types"/>
+
+
+</div>
