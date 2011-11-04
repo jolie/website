@@ -2,15 +2,61 @@
 <a name="language_top"/>
 <h1>Communication primitives</h1>
 <ul>
+  <li><a href="#language_communication_primitives_oneway">one-way</a></li>
+  <li><a href="#language_communication_primitives_requestresponse">request-response</a></li>
+  <li><a href="#language_communication_primitives_notification">notification</a></li>
+  <li><a href="#language_communication_primitives_solicitresponse">solicit-response</a></li>
+  <li><a href="#language_communication_primitives_example">Example</a></li>
 </ul>
 <br><br>
-Invocations for One-Way operations are received by using the <i>one-way</i> operation statement, 
-while one can invoke a OneWay operation with the <i>notification</i> statement.
-Similarly, Request-Response operation invocations are received by using the <i>request-response</i> statement, 
-while one can such operations with the <i>solicit-response</i> statement.
+When interfaces and ports are defined, it is possible to achieve communication 
+between two or more services. There are four types of communication primitives:
 
+<a name="language_communication_primitives_oneway"/>
+<h2>one-way</h2>
+&gt; <a href="#language_top">Go on top</a><br><br>
+<div id="syntax" src="syntax_communication_primitives_1"/>
+It waits for receiving a message and it stores it into the specified variable.
 
+<a name="language_communication_primitives_requestresponse"/>
+<h2>request-response</h2>
+&gt; <a href="#language_top">Go on top</a><br><br>
+<div id="syntax" src="syntax_communication_primitives_2"/>
+The semantics of the request-response is:
+<ul>
+  <li>it waits for receiving a message;</li>
+  <li>when the message is received, it stores its content into the request_var;</li>
+  <li>it executes the body_activities</li>
+  <li>it sends the response message whose content is that of response_var
+</ul>
 
+<a name="language_communication_primitives_notification"/>
+<h2>notification</h2>
+&gt; <a href="#language_top">Go on top</a><br><br>
+<div id="syntax" src="syntax_communication_primitives_3"/>
+It sends a message whose content is stored in <i>send_var</i>
+at the outputPort <i>op_name</i>. It is worth noting that the outputPort
+must be defined before sending a message to it.
 
+<a name="language_communication_primitives_solicitresponse"/>
+<h2>solicit-response</h2>
+&gt; <a href="#language_top">Go on top</a><br><br>
+<div id="syntax" src="syntax_communication_primitives_4"/>
+The solicit-response sends a message whose contents is defined in
+<i>send_var</i> to the outputPort <i>op_name</i>. Then it waits for the response
+from the invoked service. When the response is received it stores the message
+in <i>recv_var</i>.
 
+<a name="language_communication_primitives_example"/>
+<h2>Example</h2>
+&gt; <a href="#language_top">Go on top</a><br>
+<div id="download">&gt; <a href="./content/code/code_communication_primitives.zip">Download code</a></div>
+As an example we consider here two services where the former sends a message to 
+the latter by exploiting the operation <i>printMessage</i>. When the message exchanged
+is performed the sender prints the reply message and the receiver prints the received message.
+Then receiver code follows:
+<div id="example" src="example_communication_primitives_1"/>
+The sender is:
+<div id="example" src="example_communication_primitives_2"/>
+run the two services in different consoles and see what happens.
 </div>
