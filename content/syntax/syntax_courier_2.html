@@ -1,0 +1,14 @@
+DeploymentInstruction ::=--inputPort id { 
+------------------------------PortInstruction∗
+------------------------------InputPortInstruction∗ 
+----------------------------}
+
+InputPortInstruction ::= Aggregates: OutputPortL
+
+OutputPortDefinition ::= outputPortId 
+----------------------| outputPortId with extender_id
+
+OutputPortList ::= OutputPortDefinition 
+----------------| OutputPortDefinition , OutputPortList
+
+

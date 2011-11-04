@@ -1,0 +1,14 @@
+CourierDeclaration ::= courier inputPortId {
+------------------------BehaviourDeclaration
+----------------------}
+
+BehaviourDeclaration ::= NonDeterministicCourierList
+
+NonDeterministicCourierList ::= 
+----------------------|[ InputCourierDefinition( request_var ) ] {
+------------------------------CodeDeclaration
+------------------------}
+
+InputCourierDefinition ::= interface interfaceId | operationId
+
+

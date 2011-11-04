@@ -331,6 +331,10 @@ div#language-content a {
   padding:0px;
 }
 
+div#language-content hr {
+  margin-top:10px;
+}
+
 div#language-content h1 {
   margin:0px;
   margin-top:20px;

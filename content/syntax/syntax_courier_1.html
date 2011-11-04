@@ -1,0 +1,24 @@
+InterfaceDeclaration ::=--interface extender id { 
+------------------------------RequestResponseDeclaration?
+------------------------------OneWayDeclaration?
+----------------------------}
+
+OperationIdentifier ::= id | *
+
+FaultList:: id( fault_type_id ) | id( fault_type_id ) FaultList
+
+RequestResponseDeclaration ::= RequestResponse: 
+------------------------------------RequestResponseList
+
+RequestResponseList ::= RequestResponseDefinition
+----------------------| RequestResponseDefinition,
+---------------------- RequestResponseList
+
+RequestResponseDefinition ::= 
+--------Operationidentifier( type_id )( type_id ) 
+------| Operationidentifier( type_id )( type_id ) throws FaultList
+
+OneWayDeclaration ::= OneWay: OneWayList
+
+OneWayList ::= Operationidentifier( type_id )( type_id ) 
+------------| Operationidentifier( type_id )( type_id ), OneWayList
