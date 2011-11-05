@@ -1,6 +1,87 @@
 <div class="grid_15 prefix_1" id="language-content">
 <a name="language_top"/>
 <h1>Data structures</h1>
+<ul>
+  <li><a href="#language_data_structures_creating">Creating data structures</a></li>
+  <li><a href="#language_data_structures_navigating">Navigating data structures</a></li>
+  <li><a href="#language_data_structures_dynamic">Dynamic look up</a></li>
+  <li><a href="#language_foreach">foreach</a></li>
+  <li><a href="#language_with">with</a></li>
+  <li><a href="#language_data_structures_deepcopy">deep copy</a></li>
+  <li><a href="#language_undef">undef</a></li>
+  <li><a href="#language_data_structures_aliases">Aliases</a></li>
+</ul>
+
+<br><br>
 Jolie data structures are tree-like, similar (but not isomorphic) to those obtainable in XML. 
 It is easy to understand them by making comparisons to equivalent XML representations.
+
+<hr>
+<a name="language_data_structures_creating"/>
+<h2>Creating data structures</h2>
+&gt; <a href="#language_top">Go on top</a><br><br>
+Here we create a root node named <i>animals</i> which contains two child nodes: <i>pet</i> and 
+<i>wild</i>. Each one of them is a vector with two elements, equipped with another sub-element (name).
+<div id="example" src="example_data_structures_1"/>
+An equivalent XML representation of animals is:
+<div id="example" src="example_data_structures_2"/>
+
+<hr>
+<a name="language_data_structures_navigating"/>
+<h2>Navigating data structures</h2>
+&gt; <a href="#language_top">Go on top</a><br><br>
+Data structures are navigated by using the . (dot) operator, just like we did when creating the animals structure.
+Using the dot operator one can create paths to a nested variable. 
+These paths are called variable paths. The following examples are all valid variable paths:
+<div id="example" src="example_data_structures_3"/>
+The dot operator always requires on its left a single value, never a vector. 
+If a vector index is not specified it is defaulted to 0. 
+Thus, e.g., (5) would be automatically translated to myVar[0].b[0].c[0].d[0].
+
+<hr>
+<a name="language_data_structures_dynamic"/>
+<h2>Dynamic look up</h2>
+&gt; <a href="#language_top">Go on top</a><br><br>
+Nested variables can be identified by means of a string expression, 
+which is evaluated at run time. You can use dynamic look-up by placing said string 
+expression between round parenthesis, as in the following:
+<div id="example" src="example_data_structures_4"/>
+In this case the string expression "pet" is evaluated as an element name thus obtaining 
+the path animals.pet[0].name. The output will be:
+<div id="example" src="example_data_structures_5"/>
+Another valid example is:
+<div id="example" src="example_data_structures_6"/>
+Since the result of the expression evaluation is still "pet", the output is the same:
+<div id="example" src="example_data_structures_5"/>
+
+<hr>
+<a name="language_data_structures_deepcopy"/>
+<h2>deep copy</h2>
+&gt; <a href="#language_top">Go on top</a><br><br>
+The deep copy operator &lt;&lt; copies an entire tree structure into another.
+Example:
+<div id="example" src="example_data_structures_7"/>
+Here the new structure <i>zoo</i> is created and the animals tree is copied inside its  
+child node <i>sectorA</i>. An XML representation of <i>zoo</i> after executing the example would be:
+<div id="example" src="example_data_structures_8"/>
+
+<hr>
+<a name="language_data_structures_aliases"/>
+<h2>Aliases</h2>
+&gt; <a href="#language_top">Go on top</a><br><br>
+A structure element can be an alias, i.e. it can point to another variable path.
+Aliases are create with the -&gt; operator. In the following we present an example
+where an aliases is created:
+<div id="example" src="example_data_structures_9"/>
+The execution of this code will print out in the console the following result:
+<div id="example" src="example_data_structures_10"/>
+It is very important to understand that an alias is evaluated every time it is used, 
+not just at creation time. This allows the programmer to exploit aliases in making readable 
+code even when using complicated data structures, like in the following example:
+<div id="example" src="example_data_structures_11"/>
+where we use the alias in currentElement[0] to refer to the vector element of a.b.c.d at position i. 
+At each iteration, the currentElement alias used in the println@Console statement is evaluated 
+and uses the current value of the i variable. Thus, the example outputs:
+<div id="example" src="example_data_structures_12"/>
+See the section of primitive <a href="#language_undef">undef()</a> for learning how to undef an alias.
 </div>

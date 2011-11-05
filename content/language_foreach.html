@@ -1,0 +1,19 @@
+<div class="grid_15 prefix_1" id="language-content">
+<a name="language_top"/>
+<h1>foreach</h1>
+
+foreach statement allows for an easy and dynamic navigation of JOLIE data structures.
+The syntax is:
+<div id="syntax" src="syntax_foreach_1"/>
+foreach looks for every child node name inside <i>root</i> and puts it inside <i>nameVar</i>, 
+executing the internal code block at each iteration.
+foreach is usually combined with dynamic look-up like in the following example:<br><br>
+<div id="download">&gt; <a href="./content/code/code_foreach_1.zip">Download code</a></div>
+<div id="example" src="example_foreach_1"/>
+
+The previous code snippet returns the following output:
+<div id="example" src="example_foreach_2"/>
+In this example <i>category</i> ranges over all the child nodes of <i>animals</i> (<i>pet</i> and <i>wild</i>). 
+The nested for statement nested ranges over all the vector elements of the current animals.<i>category</i> node, 
+printing out its name child node content.
+</div>

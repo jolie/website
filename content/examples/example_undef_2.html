@@ -1,0 +1,11 @@
+a.b.c = 0;
+a.b.d = 1;
+a.k.m = 2;
+a.k.n = 3;
+undef( a.b )
+
+/*
+Now we have:
+	a.k[0].m == 2
+	a.k[0].n == 3
+*/
