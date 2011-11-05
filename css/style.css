@@ -376,6 +376,7 @@ div#signature {
 }
 
 div#figure {
+  padding-top:10px;
   padding-left:70px;	
   width: 400px;
   margin-bottom:10px;

@@ -1,5 +1,27 @@
 <div class="grid_15 prefix_1" id="language-content">
 <a name="language_top"/>
 <h1>linkIn() and linkOut()</h1>
+<ul>
+  <li><a href="#language_university_workflow">Scenario - University work-flow</a></li>
+</ul>
+<br><br>
+Primitives linkIn and linkOut allows for the inner synchronization among activities in parallel.
+In particular, linkIn waits for a signal from a concurrent linkOut primitive. It is worth noting 
+that linkIn is blocked until a signal is received from a linkOut whereas linkOut is a not blocking primitive. 
+The syntax is:
+<div id="syntax" src="syntax_linkin_and_linkout_1"/>
+<div id="syntax" src="syntax_linkin_and_linkout_2"/>
+where <i>signal_name</i> is the signal on which a linkIn and a linkOut will synchornize.
+In Fig. LinkInAndLinkOut.1 we graphically represents a scenario where two parallel
+activities are synchronized on signal <i>sig</i>.
+<div id="figure">
+  <img src="./images/linkin_and_linkout_1.jpg">
+  <div id="caption"><b>Figure LinkInAndLinkOut.1</b>: Two parallel activities are synchronized
+on signal <i>sig</i> by means of primitives linkIn() and linkOut().
+  </div>
+</div>
+An exhaustive example about the usage of linkIn() and linkOut() primitives can be found at section
+<a href="#language_university_workflow">Scenario - University work-flow</a>.
+
 
 </div>

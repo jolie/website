@@ -1,0 +1,32 @@
+<div class="grid_15 prefix_1" id="language-content">
+<a name="language_top"/>
+<h1>Scenario - University work-flow</h1>
+Mechanisms exploited in this example:
+<ul>
+  <li><a href="#language_linkin_and_linkout">linkIn() and linkOut()</a> primitives</li>
+  <li><a href="#language_correlation_sets">correlation sets</a></li>
+  <li><a href="#language_fault_handling">fault handling</a></li>
+</ul>
+<br><br>
+In this example, we want to create a hypothetical university service for managing student 
+project proposals to be realized in a foreigner University. 
+In order to submit a project request to the system a student must follow the following specifications:
+<ul>
+    <li>He has to retrieve the list of his exams</li>
+    <li>He has to present his project abstract and title with the list of the exams to an inner tutor in order to be approved</li>
+    <li>He has to contact the foreigner University in order to ask for positions availability</li>
+    <li>If the project is approved by the tutor and by the foreigner University the student can start it. </li>
+</ul>
+Such a scenario involves a set of services:
+<ul>
+    <li>Authentication: this service allows for student authentication</li>
+    <li>Secretary: this service allows for retrieving administrative data such as the list of exams</li>
+    <li>Tutor: this service manages student requests to the tutor. The tutor receives the project 
+    title and abstract and the list of the exams, then it sends back its approval or its rejection</li>
+    <li>University: this service is the foreigner service which manages requests from external students.</li>
+    <li>Thesis: it is the main service which manages all the student activities for achieving a correct project submission.</li>
+</ul>
+Here we discuss only the Thesis service. A sketched implementation of the other services is available in the c.
+In the Thesis service we will use four outputPort (Authentication, Secretary, Tutor and University) without any input port.
+
+</div>
