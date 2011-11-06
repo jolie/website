@@ -5,8 +5,28 @@ type AuthenticateRequest: void {
 
 type AuthenticateResponse: void 
 
+type GetTutorLocationRequest: void {
+  .username: string
+}
+
+type GetTutorLocationResponse: void {
+  .location: string
+}
+
+type GetTutorDirectorLocationRequest: void {
+  .username: string
+}
+
+type GetTutorDirectorLocationResponse: void {
+  .location: string
+}
+
 interface AuthenticatorInterface {
 RequestResponse:
 	authenticate( AuthenticateRequest )( AuthenticateResponse )
-	  throws AuthenticationFails
+	  throws AuthenticationFails,
+      
+	getTutorLocation( GetTutorLocationRequest )( GetTutorLocationResponse ),
+
+	getTutorDirectorLocation( GetTutorDirectorLocationRequest )( GetTutorDirectorLocationResponse )
 }

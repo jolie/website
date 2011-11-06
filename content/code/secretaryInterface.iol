@@ -1,8 +1,4 @@
-type Exam: void {
-  .name: string
-  .date: string
-  .mark: int
-}
+include "exam_type.iol"
 
 type ListOfExamsRequest: void {
   .username: string
