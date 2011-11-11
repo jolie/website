@@ -15,6 +15,7 @@ type StartWFRequest: void {
   .university: string
   .starting_date: string
   .ending_date: string
+  .location: string
 }
 
 type ProjectEvaluationFromUniversityRequest: void {

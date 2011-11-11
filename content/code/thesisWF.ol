@@ -56,9 +56,15 @@ Interfaces: ThesisWFTutorInterface,
 	    ThesisWFUniversityInterface
 }
 
+init {
+  println@Console("THESIS WF")()
+}
+
+
 main {
   startWF( request );
-  university_name = request.university_name;
+  println@Console("Received request from student:" + request.username )();
+  university_name = request.university;
   starting_date = request.starting_date;
   ending_date = request.ending_date;
   thesis_title = request.thesis_title;
@@ -69,12 +75,21 @@ main {
   {
     {
       //Tutor activity
-      project_evaluation_req.token_thesis_wf = token_thesis_wf;
-      projectEvaluation@ProjectEvaluationWF( request );
+      with( project_evaluation_req ) {
+	.token_thesis_wf = token_thesis_wf;
+	.username = username;
+	.title = thesis_title;
+	.abstract = thesis_abstract
+      };
+      projectEvaluation@ProjectEvaluationWF( project_evaluation_req );
+      println@Console("Sent project evaluation to ProjectEvaluationWF")();
       evaluationFromTutor( thesis_evaluation );
+      println@Console("Received evaluation from tutor")();
       linkIn( lnk_tutor );
       sendListOfExams@ProjectEvaluationWF( exam_list );
-      evaluationFromTutorDirector( exam_evaluation )
+      println@Console("Sent list of exams to tutor director")();
+      evaluationFromTutorDirector( exam_evaluation );
+      println@Console("Received evaluation from tutor director")()
     }
 
     |
@@ -82,6 +97,7 @@ main {
     {
       list_exams_req.username = username;
       listOfExams@Secretary( list_exams_req )( exam_list );
+      println@Console("Received list of exams")();
       linkOut( lnk_university );
       linkOut( lnk_tutor )
     }
@@ -92,6 +108,7 @@ main {
       //University activity
       unv_loc_req.university_name = university_name;
       getUniversityLocation@UniversityRegistry( unv_loc_req )( unv_loc_res );
+      println@Console("Received location from university registry")();
       University.location = unv_loc_res.location;
       check_grant_req.starting_date = starting_date;
       check_grant_req.ending_date = ending_date;

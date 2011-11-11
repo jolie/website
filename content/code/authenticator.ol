@@ -1,5 +1,6 @@
 include "authenticatorInterface.iol"
 include "config.iol"
+include "console.iol"
 
 inputPort Authenticator {
 Location: Authenticator_location
@@ -9,6 +10,10 @@ Interfaces: AuthenticatorInterface
 
 execution{ concurrent }
 
+init {
+  println@Console("AUTHENTICATOR")()
+}
+
 main {
   [ authenticate( request )( response ) {
     if( request.username != "homer_simpsons" || request.password != "springfield"  )  {
@@ -17,9 +22,10 @@ main {
   }] { nullProcess }
 
   [ getTutorLocation( request )( response ) {
-    if( request.username != "homer_simpsons" )  {
+    if( request.username == "homer_simpsons" )  {
       response.location = Tutor_location + "/!/mrbarnes"
-    }
+    };
+    println@Console("Sent tutor location (" + response.location + ") for user " + request.username )()
   }] { nullProcess }
 
   [ getTutorDirectorLocation( request )( response ) {

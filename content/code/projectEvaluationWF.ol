@@ -1,5 +1,6 @@
 include "projectEvaluationWFInterface.iol"
 include "tutorInterface.iol"
+include "tutorDirectorInterface.iol"
 include "authenticatorInterface.iol"
 include "thesisWFInterface.iol"
 include "console.iol"
@@ -31,7 +32,7 @@ Interfaces: AuthenticatorInterface
 
 outputPort Tutor {
 Protocol: sodep
-Interfaces: TutorInterface
+Interfaces: TutorInterface, TutorDirectorInterface
 }
 
 inputPort ProjectEvaluationWF {
@@ -40,16 +41,26 @@ Protocol: sodep
 Interfaces: ProjectEvaluationWFTutorInterface, ProjectEvaluationWFInterface
 }
 
+init {
+  println@Console("PROJECT EVALUATION WF")()
+}
+
 main {
   projectEvaluation( request );
   csets.token = new;
-  get_tutor_location_req. username = request.username;
+  get_tutor_location_req.username = request.username;
   
   // retrieving tutor location
-  getTutorLocation@Authenticator( get_tutor_location_req )( Tutor.location );
+  getTutorLocation@Authenticator( get_tutor_location_req )( tutor_location );
+  Tutor.location = tutor_location.location;
+  println@Console("Retrieved Tutor location " + Tutor.location )();
 
-  tutor_req << request;
-  tutor_req.token = csets.token;
+  with( tutor_req ) {
+    .token = csets.token;
+    .username = request.username;
+    .abstract = request.abstract;
+    .title = request.title
+  };
   putProjectEvaluation@Tutor( tutor_req );
 
   // waiting for evaluation from tutor

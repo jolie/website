@@ -1,5 +1,6 @@
 include "secretaryInterface.iol"
 include "config.iol"
+include "console.iol"
 
 execution{ concurrent }
 
@@ -7,6 +8,10 @@ inputPort Secretary {
 Location: Secretary_location
 Protocol: sodep
 Interfaces: SecretaryInterface
+}
+
+init {
+  println@Console("SECRETARY")()
 }
 
 main {
