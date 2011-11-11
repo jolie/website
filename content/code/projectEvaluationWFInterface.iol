@@ -22,6 +22,11 @@ type EvaluatedListRequest: void {
   .result: int
 }
 
+type EvaluatedExamsRequest: void {
+  .token: string
+  .result: int
+}
+
 interface ProjectEvaluationWFInterface {
 OneWay:
 	projectEvaluation( ProjectEvaluationRequest ),
@@ -31,5 +36,6 @@ OneWay:
 interface ProjectEvaluationWFTutorInterface {
 OneWay:
 	evaluatedList( EvaluatedListRequest ),
-	evaluatedProject( EvaluatedProjectRequest )
+	evaluatedProject( EvaluatedProjectRequest ),
+	evaluatedExams( EvaluatedExamsRequest )
 }

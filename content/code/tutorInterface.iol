@@ -7,14 +7,7 @@ type PutProjectEvaluationRequest: void {
   .token: string
 }
 
-type PutListOfExamsRequest: void {
-  .username: string
-  .exams*: Exam
-  .token: string
-}
-
 interface TutorInterface {
 OneWay:
-  putProjectEvaluation( PutProjectEvaluationRequest ),
-  putListOfExams( PutListOfExamsRequest )
+  putProjectEvaluation( PutProjectEvaluationRequest )
 }
