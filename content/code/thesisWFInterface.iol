@@ -1,12 +1,4 @@
-type EvaluationFromTutorRequest: void {
-  .result:int
-  .token: string
-}
 
-type EvaluationFromTutorDirectorRequest: void {
-  .result:int
-  .token: string
-}
 
 type StartWFRequest: void {
   .username: string
@@ -23,12 +15,6 @@ type ProjectEvaluationFromUniversityRequest: void {
   .token: string
 }
 
-
-interface ThesisWFTutorInterface {
-OneWay:
-  evaluationFromTutor( EvaluationFromTutorRequest ),
-  evaluationFromTutorDirector( EvaluationFromTutorDirectorRequest )
-}
 
 interface ThesisWFStudentInterface {
 OneWay:

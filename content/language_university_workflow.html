@@ -3,30 +3,126 @@
 <h1>Scenario - University work-flow</h1>
 Mechanisms exploited in this example:
 <ul>
-  <li><a href="#language_linkin_and_linkout">linkIn() and linkOut()</a> primitives</li>
-  <li><a href="#language_correlation_sets">correlation sets</a></li>
-  <li><a href="#language_fault_handling">fault handling</a></li>
+  <li><a href="#language_linkin_and_linkout">linkIn() and linkOut()</a> primitives
+    <ul>
+      <li>See <a href="#language_university_workflow_thesiswf">ThesisWF</a></li>
+    </ul>
+  </li>
+  <li><a href="#language_correlation_sets">correlation sets</a>
+    <ul>
+      <li>See <a href="#language_university_workflow_thesiswf">ThesisWF</a></li>
+      <li>See <a href="#language_university_workflow_projectevaluationwf">ProjectEvaluationWF</a></i></li>
+    </ul>
+  </li>
+  <li><a href="#language_callback_pattern">Callback pattern</a>
+    <ul>	
+      <li>See <a href="#language_university_workflow_thesiswf">ThesisWF</a></li>
+      <li>See <a href="#language_university_workflow_projectevaluationwf">ProjectEvaluationWF</a></i></li>
+    </ul>
+  </li>
+  <li><a href="#language_redirection">Redirection</a></li>
+  <li><a href="#language_aggregation">Aggregation</a></li>
+  <li><a href="#language_embedding">Embedding</a></li>
 </ul>
-<br><br>
+<br>
+<b>Subsections:</b>
+<ul>
+  <li><a href="#language_university_workflow_thesiswf">ThesisWF</a></i></li>
+  <li><a href="#language_university_workflow_projectevaluationwf">ProjectEvaluationWF</a></i></li>
+</ul>
+<br>
 In this example, we want to create a hypothetical university service for managing student 
 project proposals to be realized in a foreigner University. 
 In order to submit a project request to the system a student must follow the following specifications:
 <ul>
     <li>He has to retrieve the list of his exams</li>
-    <li>He has to present his project abstract and title with the list of the exams to an inner tutor in order to be approved</li>
-    <li>He has to contact the foreigner University in order to ask for positions availability</li>
-    <li>If the project is approved by the tutor and by the foreigner University the student can start it. </li>
-</ul>
-Such a scenario involves a set of services:
-<ul>
-    <li>Authentication: this service allows for student authentication</li>
-    <li>Secretary: this service allows for retrieving administrative data such as the list of exams</li>
-    <li>Tutor: this service manages student requests to the tutor. The tutor receives the project 
-    title and abstract and the list of the exams, then it sends back its approval or its rejection</li>
-    <li>University: this service is the foreigner service which manages requests from external students.</li>
-    <li>Thesis: it is the main service which manages all the student activities for achieving a correct project submission.</li>
-</ul>
-Here we discuss only the Thesis service. A sketched implementation of the other services is available in the c.
-In the Thesis service we will use four outputPort (Authentication, Secretary, Tutor and University) without any input port.
+    <li>He has to present his project abstract and title to an inner tutor in order to be approved</li>
+    <li>He has to present the list of exams to the tutor director in order to be approved</li>
+    <li>He has to contact the foreigner University and submit the project abstract</li>
+    <li>He has to ask for a grant to the foreigner University</li>
+    <li>If the project is approved by the tutors and by the foreigner University the student can start it</li>
+</ul><br>
+<div id="download">&gt; <a href="./content/code/code_university_workflow_1.zip">Download code</a></div>
+A possible archtecture which implements this scenario is represented in Fig.UniversityWorkflow.1.
 
+<div id="figure">
+  <img src="./images/university_architecture.jpeg">
+  <div id="caption"><b>Figure UniversityWorkflow.1</b>: Architectuire of the University Workflow scenario.
+
+</div>
+</div>
+The involved services are:
+<ul>
+    <li><i>Authenticator</i>: this service allows for student authentication</li>
+    <li><i>Secretary</i>: this service allows for retrieving administrative data such as the list of exams</li>
+    <li><i>Tutor</i>: it is the unique endpoint for all the available tutor services. For the sake of this
+example only MrBarnes and MrWho are available tutors.
+    <li><i>MrBarnes</i>: it is the service of tutor mr. Barnes who is a tutor and it is in charge to evaluate
+the project submitted by his student.</li>
+    <li><i>MrWho</i>: it is the service of the tutor director mr. Who, who is in charge to evaluate the exam list of the students</li>
+    <li><i>ProjectEvaluationWF</i>: it is the workflow service in charge to manage the evaluation message excahnge protocol between the student and the tutors</li> 
+    <li><i>University Registry</i>: it is the university registry which stores the location of all the university service. For the sake of this example
+only one University is available (University of Bologna).
+    <li><i>University</i>: this service is the foreigner universisty service which manages requests from external students.</li>
+    <li>ThesisWF: it is the main service which manages all the student activities for achieving a correct project submission.</li>
+    <li>Client: it is the client service used by the student for interacting with the system.</li>
+</ul><br>
+Here we discuss only some parts of the architecture. The reader who is interested in the details may consult the code of the example. 
+
+<a name="language_university_workflow_thesiswf"/>
+<h2>ThesisWF</h2>
+&gt; <a href="#language_top">Go on top</a>
+<br><br>
+It is the service workflow in charge to manage all the activities needed to the student for correctly submitting his
+project proposal. In Fig. UniversityWorkflow.2 we present the implemented workflow. There are three flows in parallel:
+<ul>
+  <li>The flow which manages the message exchange with the ProjectEvaluationWF</li>
+  <li>The flow which interacts with the secretary</li>
+  <li>The flow which manages the message exchanges with the foreign University service</li>
+</ul>
+<div id="figure">
+  <img src="./images/university_thesiswf.jpeg">
+  <div id="caption"><b>Figure UniversityWorkflow.2</b>: Workflow of the service ThesisWF.
+</div>
+</div>
+It is worth noting that two couples of <b>linkIn</b> and <b>linkOut</b> primitives are exploited for synchronizing
+the three flows after the reception of the exam list from the secretary. <b>Call-back communication pattern</b>
+is exploited in the following message exchanges:
+<ul>
+  <li>ThesisWF and ProjectEvaluationWF
+    <ul>
+      <li><b>out:</b>projectEvaluation@ProjectEvaluationWF, <b>in:</b>evaluationFromTutor</li>
+      <li><b>out:</b>sendListOfExams@ProjectEvaluationWF,<b>in:</b>evaluationFromTutorDirector</li>
+    </ul>
+  </li>
+  <li>ThesisWF and University
+    <ul>
+      <li><b>out:</b> projectSubmission@University, <b>in:</b>projectEvaluationFromUniversity</li>
+    </ul>
+  </li>
+</ul>
+As a direct consequence of the usage of the call-back communication pattern, the following <b>correlation
+set</b> is defined.
+<div id="example" src="example_university_workflow_1"/>
+
+<a name="language_university_workflow_projectevaluationwf"/>
+<h2>ProjectEvaluationWF</h2>
+&gt; <a href="#language_top">Go on top</a>
+<br><br>
+The Project evaluation Workflow is used for evaluating any kind of project and it follows 
+specific steps. First of all a project proposal is evaluated by the Tutor of the student 
+whose correspondant service location is retrieved by exploiting the Authenticator service. 
+Then, the workflow waits for the reception of a list of exams which will be always evaluated
+by the tutor director. Finally, the result is sent to the client (in this case the ThesisWF service).
+In Fig. UniversityWorkflow.3 we report the work-flow implemented by the ProjectEvaluationWF service.
+<div id="figure">
+  <img src="./images/university_thesiswf2.jpeg">
+  <div id="caption"><b>Figure UniversityWorkflow.3</b>: Workflow of the service ProjectEvaluationWF.
+</div>
+</div>
+In this service we exploit both the <b>call-back communication pattern</b> and the correlation set mechanism.
+It is worth noting that, in this case the service exploits two <b>correlation sets</b>. The former one identifies
+the session depending on the token sent by the client (the ThesisWF service), whereas the latter 
+identifies the session by means of the inner token <i>token_thesis_wf</i>.
+<div id="example" src="example_university_workflow_2"/>
 </div>

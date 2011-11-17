@@ -20,11 +20,13 @@
 <a name="language_variables_basic_types"/>
 <h2>Basic data types</h2>
 &gt; <a href="#language_top">Go on top</a><br><br>
-JOLIE supports four basic data types:
+JOLIE supports six basic data types:
 <ul>
     <li><i>int</i>: integers;</li>
+    <li><i>long</i>: longintegers;</li>
     <li><i>double</i>: double-precision floats;</li>
     <li><i>string</i>: strings;</li>
+    <li><i>bool</i>: booleans;</li>
     <li>byte arrays. </li>
 </ul>
 Byte arrays can not be created directly by the programmer, but they are supported 
@@ -59,15 +61,19 @@ Formatting is preserved, so you can format strings by inserting tabs and new lin
 &gt; <a href="#language_top">Go on top</a><br><br>
 Variables can be casted to other types by using some native functions: 
 <ul>
-  <li><a href="#language_int">int()</a></li> 
+  <li><a href="#language_int">int()</a></li>
+  <li><a href="#language_long">long()</a></li>  
   <li><a href="#language_double">double()</a></li>
   <li><a href="#language_string">string()</a></li>
+  <li><a href="#language_bool">bool()</a></li>
 </ul>
 Example:
 <div id="example" src="example_variables_6"/>
 A variable type can be checked at run time by using the is_ native function family: 
 <ul>
+  <li><a href="#language_is_bool">is_bool()</a></li>
   <li><a href="#language_is_int">is_int()</a></li>
+  <li><a href="#language_is_long">is_long()</a></li>
   <li><a href="#language_is_double">is_double()</a></li>
   <li><a href="#language_is_string">is_string()</a></li>
 </ul>

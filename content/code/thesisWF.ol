@@ -8,6 +8,11 @@ include "projectEvaluationWFInterface.iol"
 include "universityRegistryInterface.iol"
 include "clientInterface.iol"
 
+cset {
+  token_thesis_wf: EvaluationFromTutorRequest.token
+		   EvaluationFromTutorDirectorRequest.token
+		   ProjectEvaluationFromUniversityRequest.token
+}
 
 interface TutorInterface {
 RequestResponse:
@@ -51,7 +56,7 @@ Interfaces: ClientInterface
 inputPort ThesisWF {
 Location: ThesisWF_location
 Protocol: sodep
-Interfaces: ThesisWFTutorInterface, 
+Interfaces: ProjectEvaluationWFClientInterface, 
 	    ThesisWFStudentInterface, 
 	    ThesisWFUniversityInterface
 }
@@ -75,11 +80,13 @@ main {
   {
     {
       //Tutor activity
+      getLocalLocation@Runtime()( my_location );
       with( project_evaluation_req ) {
 	.token_thesis_wf = token_thesis_wf;
 	.username = username;
 	.title = thesis_title;
-	.abstract = thesis_abstract
+	.abstract = thesis_abstract;
+	.location = my_location
       };
       projectEvaluation@ProjectEvaluationWF( project_evaluation_req );
       println@Console("Sent project evaluation to ProjectEvaluationWF")();
@@ -124,7 +131,7 @@ main {
       projectSubmission@University( prj_submission_req );
       projectEvaluationFromUniversity( unv_result );
 
-      if ( check_grant_res.result == "y" ) {
+      if ( check_grant_res.result == true ) {
 	grant_req.starting_date = starting_date;
 	grant_req.ending_date = ending_date;
 	grant_req.exams -> exam_list;

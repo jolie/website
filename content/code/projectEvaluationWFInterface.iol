@@ -5,6 +5,7 @@ type ProjectEvaluationRequest: void {
   .title: string
   .abstract: string
   .token_thesis_wf: string
+  .location: any
 }
 
 type SendListOfExamsRequest: void {
@@ -27,6 +28,16 @@ type EvaluatedExamsRequest: void {
   .result: int
 }
 
+type EvaluationFromTutorRequest: void {
+  .result:int
+  .token: string
+}
+
+type EvaluationFromTutorDirectorRequest: void {
+  .result:int
+  .token: string
+}
+
 interface ProjectEvaluationWFInterface {
 OneWay:
 	projectEvaluation( ProjectEvaluationRequest ),
@@ -38,4 +49,11 @@ OneWay:
 	evaluatedList( EvaluatedListRequest ),
 	evaluatedProject( EvaluatedProjectRequest ),
 	evaluatedExams( EvaluatedExamsRequest )
+}
+
+
+interface ProjectEvaluationWFClientInterface {
+OneWay:
+  evaluationFromTutor( EvaluationFromTutorRequest ),
+  evaluationFromTutorDirector( EvaluationFromTutorDirectorRequest )
 }

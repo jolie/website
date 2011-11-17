@@ -2,7 +2,6 @@ include "projectEvaluationWFInterface.iol"
 include "tutorInterface.iol"
 include "tutorDirectorInterface.iol"
 include "authenticatorInterface.iol"
-include "thesisWFInterface.iol"
 include "console.iol"
 include "config.iol"
 
@@ -18,10 +17,9 @@ cset {
   token_thesis_wf: ProjectEvaluationRequest.token_thesis_wf
 }
 
-outputPort ThesisWF {
-Location: ThesisWF_location
+outputPort ClientPEWF {
 Protocol: sodep
-Interfaces: ThesisWFTutorInterface
+Interfaces: ProjectEvaluationWFClientInterface
 }
 
 outputPort Authenticator {
@@ -47,6 +45,7 @@ init {
 
 main {
   projectEvaluation( request );
+  ClientPEWF.location = request.location;
   csets.token = new;
   get_tutor_location_req.username = request.username;
   
@@ -68,7 +67,7 @@ main {
 
   thesis_request.result = eval_request.result;
   thesis_request.token = csets.token_thesis_wf;
-  evaluationFromTutor@ThesisWF( thesis_evaluation );
+  evaluationFromTutor@ClientPEWF( thesis_evaluation );
 
   sendListOfExams( exam_list );
    
@@ -81,5 +80,5 @@ main {
 
   exam_request.result = eval_request.result;
   exam_request.token = cset.token_thesis_wf;
-  evaluationFromTutorDirector@ThesisWF( exam_evaluation )
+  evaluationFromTutorDirector@ClientPEWF( exam_evaluation )
 }

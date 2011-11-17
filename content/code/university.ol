@@ -26,9 +26,9 @@ main {
     print@Console("Is grant available? (y/n) " )();
     in( answer );
     if ( answer == "y" ) {
-      response.result = "y"
+      response.result = true
     } else {
-      response.result = "n"
+      response.result = false
     }
   } ] { nullProcess }
 
