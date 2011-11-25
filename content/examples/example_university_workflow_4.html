@@ -1,0 +1,10 @@
+outputPort TutorDirector {
+Interfaces: TutorDirectorInterface
+}
+
+inputPort Tutor {
+Location: MrWho_location
+Protocol: sodep
+Interfaces: TutorInterface
+Aggregates: TutorDirector
+}

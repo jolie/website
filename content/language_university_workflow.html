@@ -20,15 +20,28 @@ Mechanisms exploited in this example:
       <li>See <a href="#language_university_workflow_projectevaluationwf">ProjectEvaluationWF</a></i></li>
     </ul>
   </li>
-  <li><a href="#language_redirection">Redirection</a></li>
-  <li><a href="#language_aggregation">Aggregation</a></li>
-  <li><a href="#language_embedding">Embedding</a></li>
+  <li><a href="#language_redirection">Redirection</a>
+    <ul>
+      <li>See <a href="#language_university_workflow_tutorservices">Tutor services</a></i></li>
+    </ul>
+  </li>
+  <li><a href="#language_aggregation">Aggregation</a>
+    <ul>
+      <li>See <a href="#language_university_workflow_tutorservices">Tutor services</a></i></li>
+    </ul>
+  </li>
+  <li><a href="#language_embedding">Embedding</a>
+    <ul>
+      <li>See <a href="#language_university_workflow_tutorservices">Tutor services</a></i></li>
+    </ul>
+  </li>
 </ul>
 <br>
 <b>Subsections:</b>
 <ul>
   <li><a href="#language_university_workflow_thesiswf">ThesisWF</a></i></li>
   <li><a href="#language_university_workflow_projectevaluationwf">ProjectEvaluationWF</a></i></li>
+  <li><a href="#language_university_workflow_tutorservices">Tutor services</a></i></li>
 </ul>
 <br>
 In this example, we want to create a hypothetical university service for managing student 
@@ -125,4 +138,28 @@ It is worth noting that, in this case the service exploits two <b>correlation se
 the session depending on the token sent by the client (the ThesisWF service), whereas the latter 
 identifies the session by means of the inner token <i>token_thesis_wf</i>.
 <div id="example" src="example_university_workflow_2"/>
+
+<a name="language_university_workflow_tutorservices"/>
+<h2>Tutor services</h2>
+&gt; <a href="#language_top">Go on top</a>
+<br><br>
+Here we discuss the architecture of the Tutor services because they exploit <b>redirection</b>,
+<b>aggregation</b> and <b>embedding</b>. The architecture is reported in Fig. UniversityWorkflow.4.
+<div id="figure">
+  <img src="./images/university_thesiswf3.jpeg">
+  <div id="caption"><b>Figure UniversityWorkflow.4</b>: Architecture of the Tutor services.
+</div>
+</div>
+<b>Redirection</b> is exploited at the level of the <i>TutorRedirector</i> which represents the common 
+endpoint for each tutor service. Redirection is defined as it follows:
+<div id="example" src="example_university_workflow_3"/>
+<b>Aggregation</b> is exploited at the level of MrWho service which implements the functionalities
+of the tutor director. The tutor director must offer the same functionalities of a simple tutor
+plus the functionalities of the director. The service MrWho implements the same functionalities
+of the service MrBarnes, which is a simple tutor service, and it aggregates the functionalities
+of a tutor director which are implemented in the service TutorDirector. The aggregation code follows:
+<div id="example" src="example_university_workflow_4"/>
+Moreover, service MrWho <b>embeds</b> the service TutorDirector in order to avoid the execution
+of another service container.
+<div id="example" src="example_university_workflow_5"/>
 </div>

@@ -1,0 +1,19 @@
+outputPort MrBarnes {
+Location: MrBarnes_location
+Protocol: sodep
+Interfaces: TutorInterface
+}
+
+outputPort MrWho {
+Location: MrWho_location
+Protocol: sodep
+Interfaces: TutorInterface, TutorDirectorInterface
+}
+
+inputPort Redirector {
+Location: Tutor_location
+Protocol: sodep
+Interfaces: RedirectorInterface
+Redirects:--mrbarnes => MrBarnes,
+--------------mrwho => MrWho
+}

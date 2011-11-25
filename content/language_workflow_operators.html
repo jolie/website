@@ -60,7 +60,18 @@ see primitives <a href="#language_linkin_and_linkout">linkIn() and linkOut()</a>
 <a name="language_workflow_operators_non_deterministic_input_choice"/>
 <h2>Non-deterministic input choice</h2>
 &gt; <a href="#language_top">Go on top</a><br><br>
-
+The non-deterministic input choice construct allows for programming an input guarded choice over a set 
+of input operations. The first input operation which receives a message is executed whereas the other ones are discarded. 
+A branch code block is joined to each input operation. Only the branch code associated with the operation that receives the message 
+is executed and the others are discarded. Each input operation which is programmed in a non-deterministic choice must be expressed within square brackets.
+The syntax is:
+<div id="syntax" src="syntax_workflow_operators_3"/>
+In order to explain how the non-deterministic choice works, let us modify the code of the Forecast service 
+presented in the section above by adding a new operation as it follows:
+<div id="example" src="example_workflow_operators_7"/>
+<div id="download">&gt; <a href="./content/code/code_ndchoice_1.zip">Download code</a></div>
+In this example two input operations has been programmed within a non-deterministic choice:
+<i>getTemperature</i> and <i>getwind</i>. Both of them have two branches with process nullProcess.
 <hr>
 <a name="language_workflow_operators_grouping"/>
 <h3>Grouping activities</h3>
