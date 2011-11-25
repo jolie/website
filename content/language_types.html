@@ -8,10 +8,18 @@
     <li><a href="#language_types_sub_types">Sub types</a></li>
   </ul>
 </li>
-<li><a href="#language_types_cardinality">Cardinality</a>
+<li><a href="#language_types_cardinality">Cardinality</a></li>
+<li><a href="#language_types_faults">Type declaration in faults</a></li>
+<li><a href="#language_types_type_mismatch">Type mismatching</a>
+  <ul>
+     <li><a href="#language_types_type_mismatch_one_way">Type mismatching in OneWay operations</a>      
+     <li><a href="#language_types_type_mismatch_request_response">Type mismatching in RequestResponse operations</a> 
+     <li><a href="#language_types_type_mismatch_fault">Type mismatching in fault messages</a> 
+  </ul>
+</li>
 
 </ul>
-
+<br>
 In Jolie, types allow for a precise definition of service interfaces. 
 They are used for defining input and output message format, but they are not used for defining behaviour variable types.
 
@@ -98,4 +106,83 @@ In the following example we report a type where subelements have different cardi
   <li>Sub-element <i>comment</i> has been defined with minimum one occurences and maximum one.</li>
   <li>Sub-element <i>z</i> has been defined with minimum zero occurences and maximum one.</li>
 <br>
+
+<a name="language_types_faults"/>
+<h2>Type declaration in faults</h2>
+&gt; <a href="#language_top">Go on top</a>
+<br><br>
+Types can also be defined for fault messages. The definition is very simple and it is similar
+to that of normal request and response messages. In the following we report a simple example:
+<div id="example" src="example_types_6"/>
+
+<a name="language_types_type_mismatch"/>
+<h2>Type mismatching</h2>
+&gt; <a href="#language_top">Go on top</a>
+<br><br>
+When a message does not match the related type a <i>TypeMismatch</i> fault is raised by the interpreter.
+The TypeMismatch fault can be handled by exploiting fault handlers as usual. 
+The fault description can be retrieved by accessing the TypeMismatch fault node as described in the 
+<a id="navlink_redirection" href="#language_fault_handling">Fault Handling</a> session:
+<div id="example" src="example_types_7"/>
+
+<a name="language_types_type_mismatch_one_way"/>
+<h3>Type mismatching in OneWay operations</h3>
+In case a OneWay operation is used, a TypeMismatch check is performed:
+<ul>
+    <li>on the sender side, when the message is sent out to the other service</li>
+    <li>on the receiver side, when a message is received from another service </li>
+</ul>
+In the former case the sender will check if the output message matches with the type declared in the corresponding outputPort. 
+If the message does not match a TypeMismatch fault is raised and the message is not sent.
+In the latter case, the interpreter will check if the incoming message checks with the corresponding inputPort type. 
+If not, the message is not received and a TypeMismatch warning will be printed out on the console.
+<br><br>
+<b>IMPORTANT:</b>
+It is worth noting that in case of OneWay, the receiver will not raise a TypeMismatch fault as a response.
+A message which does not match the type declared for an inputPort will be automatically discarded and it will 
+not affect the behaviour service sessions.
+If a message is correctly sent by the sender but it will not match the type declaration on the receiver side, 
+the sender will not be notified with a fault message.
+
+<a name="language_types_type_mismatch_request_response"/>
+<h3>Type mismatching in RequestResponse operations</h3>
+
+If a RequestResponse is used, different behaviours are considered in case of a TypeMismatch.
+<ul>
+<li><i>sender side-request message:</i>
+If a message type does not match with the declared type on the sender side when the request message is sent:
+    <ul>
+      <li>the message is not sent</li>
+      <li>a TypeMismatch fault is raised. </li>
+    </ul>
+</li>
+
+<li><i>receiver side-request message:</i>
+If a message type does not match with the declared type on the receiver side when the request message is received:
+    <ul>
+      <li>the message is discarded</li>
+      <li>a warning is printed out on the console</li>
+      <li>a TypeMismatch fault is sent back to the sender which is waiting for a response.</li>
+    </ul>
+</li>
+
+<li><i>receiver side-response message:</i>
+If a message type does not match with the declared type on the receiver side when the response message is sent:
+  <ul>
+    <li>a TypeMismatch fault is raised on the receiver side</li>
+    <li>a TypeMismatch fault is sent to the sender </li>
+  </ul>
+</li>
+
+<li><i>sender side-response message:</i>
+If a message type does not match with the declared type on the sender side when the response message is received:
+  <ul>
+    <li>a TypeMismatch fault is raised on the sender side </li>
+  </ul>
+</li>
+</ul>
+
+<a name="language_types_type_mismatch_fault"/>
+<h3>Type mismatching in RequestResponse operations</h3>
+
 </div>
