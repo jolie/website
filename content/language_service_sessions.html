@@ -1,0 +1,49 @@
+<div class="grid_15 prefix_1" id="language-content">
+<a name="language_top"/>
+<h1>Service Sessions</h1>
+<ul>
+  <li><a href="#starting_a_session">Execution modality</a></li>
+  <li><a href="#starting_a_session">Starting a session</a></li>
+  
+</ul>
+
+<br><br>
+Each Jolie service is composed by a <i>service engine</i> which is able to execute <i>service sessions</i>.
+When executed, a session animates the <i>service behavior</i> which is defined within the scope <i>main</i>
+of a Jolie service. In Fig. ServiceSessions.1 we represent the main architecture of a Jolie engine.
+<div id="figure">
+  <img src="./images/service_sessions_1.jpeg">
+  <div id="caption"><b>Figure ServiceSessions.1</b>: Jolie service engine architecture.</div>
+</div>
+
+<a name="starting_a_session"/>
+<h2>Execution modality</h2>
+&gt; <a href="#language_top">Go on top</a><br><br>
+Sessions can be executed by using three different modalities:
+<br><br>
+<ul>
+    <li><i>single</i> (default): only single session is executed.</li>
+    <li><i>concurrent</i>: all the initiated sessions are executed concurrently</li>
+    <li><i>sequential</i>: sessions are executed sequentially, a new session can start only when the old one is finished. </li>
+</ul>
+<br>
+The execution modality is set by using the primitive <i>execution</i> as shown in the following example:
+<div id="example" src="example_service_sessions_1"/>
+
+<a name="starting_a_session"/>
+<h2>Starting a session</h2>
+&gt; <a href="#language_top">Go on top</a><br><br>
+A session can be always started in two ways:<br>
+<br>
+<ul>
+  <li>by means of an external message on an input operation</li>
+  <li>by the user which manually launches a Jolie script whose execution modality is set to <i>single</i></li>
+</ul>
+<br>
+In the former case the input operation which starts the session is called <i>session initiator</i>
+and it must be the first input operation programmed into the behaviour. It is worth noting that 
+the first activity programmed in a behavior can be a <a href="#language_workflow_operators">non-deterministic input choice</a>.
+In that case all the input operations of the non-deterministic choice are session initiators.
+In the following we present an example where a non deterministic choice is used as first actvitiy:
+<div id="example" src="example_service_sessions_2"/>
+</div>
