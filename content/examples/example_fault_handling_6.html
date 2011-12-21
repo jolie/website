@@ -1,0 +1,8 @@
+type GuessRequest: void {
+--.number: int
+}
+
+interface GuessInterface {
+RequestResponse:
+----guess( GuessRequest )( void ) throws WrongNumberFault
+}

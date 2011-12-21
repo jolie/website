@@ -2,4 +2,95 @@
 <a name="language_top"/>
 <h1>Fault Handling</h1>
 
+<ul>
+  <li><a href="#language_fault_handling_scope_and_throw">scope(){} and throw()</a></li>
+  <li><a href="#language_fault_handling_install">install()</a></li>
+  <li><a href="#language_fault_handling_request_response">RequestResponse</a></li>
+  <li><a href="#language_fault_handling_rethrowing">Rethrowing</a></li>
+  <li><a href="#language_fault_handling_transmitting_data">Transmitting data into faults</a></li>
+</ul>
+
+
+<a name="language_fault_handling_scope_and_throw"/>
+<h2>scope(){} and throw()</h2>
+&gt; <a href="#language_top">Go on top</a><br><br>
+
+Faults can be raised by means of the statement <i>throw</i> and they are catched within <i>scopes</i>. 
+A scope defines the boundaries where a fault can be catched and handled.
+<b>NOTE:</b> in a service behaviour the main is a scope named main.
+<div id="example" src="example_fault_handling_1"/>
+Fault <i>myFault</i> can be catched within scope <i>myScope</i> by programming a fault handler for that scope.
+<ul>
+  <li>Scope names must be unique within  a behvaiour</li>
+</ul>
+
+<a name="language_fault_handling_install"/>
+<h2>install()</h2>
+&gt; <a href="#language_top">Go on top</a><br><br>
+
+Fault handlers are dynamically installed by means of the primitive install which joins a fault to a process.
+The handler is executed when the scope catches the fault. 
+In the example above we can add a handler for fault <i>myFault</i> as it follows:
+<div id="example" src="example_fault_handling_2"/>
+
+<a name="language_fault_handling_rethrowing"/>
+<h2>Rethrowing</h2>
+&gt; <a href="#language_top">Go on top</a><br><br>
+
+A fault which is not catched within a scope is automatically rethrown to the parent scope.
+In the following example the parent handler is executed becaus no handlers for fault <i>myFault</i>
+have been defined within scope <i>child</i>.
+<div id="example" src="example_fault_handling_3"/>
+
+Rethrown can be also exploited by simply programming a <i>throw</i> activity within 
+a child scope as it follows:
+<div id="example" src="example_fault_handling_4"/>
+In this case both the child handler and the parent one are executed. The following strings will be
+prompted out into the console:
+<div id="example" src="example_fault_handling_5"/>
+It is worth noting that a fault which reaches the main scope cab catched by installing the handler within the
+init scope. 
+
+<a name="language_fault_handling_request_response"/>
+<h2>RequestResponse</h2>
+&gt; <a href="#language_top">Go on top</a><br><br>
+
+When a fault is raised within a RequestResponse, a fault message is automatically sent to the invoker.
+In order to correctly achieve such a result it is important to define the raised faults of a RequestResponse
+into the related interface. As we have shown in Section <a href="language_interfaces">Interfaces</a>, it is possible
+to declare a fault by exploiting the keyword <i>throws</i>. In the following example
+we define an interface which contains a RequestResponse able to raise the fault <i>WrongNumberFault</i>:
+<br><br>
+<div id="download">&gt; <a href="./content/code/code_fault_handling_1.zip">Download code</a></div>
+
+<div id="example" src="example_fault_handling_6"/>
+The code of the related behaviour simply implements the operation guess which returns a fault if the sent
+number is not equal to 2.
+<div id="example" src="example_fault_handling_7"/>
+On the other hand the invoker which is wainting for a response will automatically raise the fault 
+<i>WrongNumberFault</i> when it is received as it follows:
+<div id="example" src="example_fault_handling_8"/>
+
+<a name="language_fault_handling_transmitting_data"/>
+<h2>Transmitting data into faults</h2>
+&gt; <a href="#language_top">Go on top</a><br><br>
+
+Faults can bring data which can be used within a fault handler. 
+In order to join data to a fault we have to use the primitive throw by specifying the variable which contains the data to transmit. 
+The syntax is:
+<div id="syntax" src="syntax_fault_handling_1"/>
+
+It is worth noting that, if we introduce data into faults, the data types must be specified
+into the correspondent interface. In the following we enhance the interface of the previous example:
+<div id="example" src="example_fault_handling_9"/>
+In the following we modify the behavior of the guess service in order to send a message together with 
+the <i>WrongNumberFault</i>.
+<div id="example" src="example_fault_handling_10"/>
+Now let us analyze the client side where we want to extract the fault data.
+Since in Jolie variables are shared, in order to correctly referencing fault data within a fault handler, 
+it is necessary to specify the innermost scope where the fault is contained as in the following example:
+<div id="example" src="example_fault_handling_11"/>
+In this case the message received with fault <i>WrongNumberFault</i> can be accessed by referencing the path
+<i>guess.WrongNumberFault.message</i> where <i>guess</i> is the name of the scope where the handler for fault
+<i>WrongNumberFault</i> is defined.
 </div>

@@ -1,0 +1,13 @@
+include "console.iol"
+
+main {
+--scope( parent ) {
+----install( myFault => println@Console("Parent handler")());
+----scope( child ) {
+------install( myFault => println@Console("Child handler")()
+--------------------------throw( myFault )
+------);
+------throw( myFault )
+----}
+--}
+}

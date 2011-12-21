@@ -1,0 +1,25 @@
+execution{ concurrent }
+
+outputPort Register {
+Protocol: sodep
+Location: "socket://localhost:8000"
+Interfaces: RegistryInterface
+}
+
+inputPort CarService {
+Location: "socket://localhost:8001"
+Protocol: sodep
+Interfaces: CarInterface
+}
+
+init {
+--request_registry.my_name = "Car service";
+--registerMySelf@Register( request_registry )();
+--println@Console("Registered Car service")()
+}
+
+main {
+--getData( request )( response ) {
+----response = "velocity 88 km/h"
+--}
+}

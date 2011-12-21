@@ -1,0 +1,3 @@
+for ( init-code-block, condition, post-cycle-code-block ) {
+	...
+}

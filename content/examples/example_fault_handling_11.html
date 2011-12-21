@@ -1,0 +1,11 @@
+main {
+--scope( guess ) {
+----install( WrongNumberFault => 
+------println@Console("Wrong number!" 
+----------+ guess.WrongNumberFault.message )()
+----);
+
+----request.number = 1;
+----guess@Guess( request )( response )
+--}
+}

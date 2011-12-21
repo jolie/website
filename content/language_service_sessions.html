@@ -2,8 +2,11 @@
 <a name="language_top"/>
 <h1>Service Sessions</h1>
 <ul>
-  <li><a href="#starting_a_session">Execution modality</a></li>
-  <li><a href="#starting_a_session">Starting a session</a></li>
+  <li><a href="#language_service_sessions_execution">Execution modality</a></li>
+  <li><a href="#language_service_sessions_starting_a_session">Starting a session</a></li>
+  <li><a href="#language_service_sessions_init">init{}</a></li>
+  <li><a href="#language_service_sessions_variable_scopes">Variable scopes - global</a></li>
+  <li><a href="#language_service_sessions_synchronized">synchronized()</a></li>
   
 </ul>
 
@@ -16,7 +19,7 @@ of a Jolie service. In Fig. ServiceSessions.1 we represent the main architecture
   <div id="caption"><b>Figure ServiceSessions.1</b>: Jolie service engine architecture.</div>
 </div>
 
-<a name="starting_a_session"/>
+<a name="language_service_sessions_execution"/>
 <h2>Execution modality</h2>
 &gt; <a href="#language_top">Go on top</a><br><br>
 Sessions can be executed by using three different modalities:
@@ -30,7 +33,7 @@ Sessions can be executed by using three different modalities:
 The execution modality is set by using the primitive <i>execution</i> as shown in the following example:
 <div id="example" src="example_service_sessions_1"/>
 
-<a name="starting_a_session"/>
+<a name="language_service_sessions_starting_a_session"/>
 <h2>Starting a session</h2>
 &gt; <a href="#language_top">Go on top</a><br><br>
 A session can be always started in two ways:<br>
@@ -46,4 +49,49 @@ the first activity programmed in a behavior can be a <a href="#language_workflow
 In that case all the input operations of the non-deterministic choice are session initiators.
 In the following we present an example where a non deterministic choice is used as first actvitiy:
 <div id="example" src="example_service_sessions_2"/>
+
+<a name="language_service_sessions_init"/>
+<h2>init{}</h2>
+&gt; <a href="#language_top">Go on top</a><br><br>
+The init scope allows for the specification of some activities which has to be performed before 
+the service behaviour is enabled. All the activities specified within the init scope will 
+be executed once when the service is run and never repeated. 
+In the following example we show a service that register itself into a registry before
+starting its behaviour.
+<br><br>
+<div id="download">&gt; <a href="./content/code/code_service_sessions_1.zip">Download code</a></div>
+<br>
+<div id="example" src="example_service_sessions_3"/>
+
+<a name="language_service_sessions_variable_scopes"/>
+<h2>Variable scopes - global</h2>
+&gt; <a href="#language_top">Go on top</a><br><br>
+
+In Jolie each session has its own variables which are independent from other session variables.
+Neverthless, there is also the possibility to share variables among all the running sessions.
+To this end there is a variable which is shared among all the sessions, it is the <i>global</i> variable. 
+The values and the subtrees contained within global are visible to all the sessions and all the sessions 
+can freely access them. In the following we modify the example above by introducing the variable
+<i>global.session_count</i> which stores the current number of executed sessions. It is worth noting
+that the counter is initialized to 0 into the init scope and it is incremented each time a session is executed.
+<div id="example" src="example_service_sessions_4"/>
+
+<a name="language_service_sessions_synchronized"/>
+<h2>synchronized()</h2>
+&gt; <a href="#language_top">Go on top</a><br><br>
+
+In the previous section we used the variable global for sharing data among sessions, 
+but we do not discuss how to manage concurrent writing accesses to that variable. 
+It could be the case that more than one session try to modify its content at the same time, 
+thus providing an inconsintency for that variable. 
+In the previous section indeed, a critical section is present when we increment the counter and
+then we print out its content. More than one session could increment the counter at the same
+time and the resulting print on screen could be wrong.
+
+Jolie provides the primitive <i>synchronized</i> for programming mutual exclusion among concurrent sessions. 
+In the follwing, we modify the prevoius example in order to explot the primtiive <i>synchronized()</i>.
+<div id="example" src="example_service_sessions_5"/>
+Here the synchronized primitive defines a scope named <i>mutual_code</i> which is executed in mutual exclusion
+by each session. In this way, each couter increment will be executed together with the println solicit response
+in order to avoid erroneous console printing.
 </div>
