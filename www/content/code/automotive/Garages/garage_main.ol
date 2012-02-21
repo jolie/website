@@ -1,33 +1,45 @@
 init
 {
-	registerForInput@Console()()
+	console_req.session_listener_enabled = true;
+	registerForInput@Console( console_req )();
+	install( BookFault => nullProcess )
 }
 
 main
 {
-	install( BookFault => nullProcess );
 	
-	[ book( request )( response ){ 
+	
+	[ garageBook( request )( response ){ 
+		csets.coreJavaserviceConsoleToken = new;
+		console_listener.token = csets.coreJavaserviceConsoleToken;
+		subscribeSessionListener@Console( console_listener )();
+
+		csets.reservationId = new;
+
 		println@Console("! - Received booking request:")();
-		println@Console("\t\tService type: " + request.serviceType)();
+		println@Console("\t\tService type: " + request.serviceType )();
 		println@Console("\t\tCar model: " + request.car_model)();
 		print@Console("Do you accept[yes/no]? ")();
 		in( accept );
+		unsubscribeSessionListener@Console( console_listener )();
+
 		if ( accept == "yes" ) {
-			bank_request.amount = services.( request.serviceType ).price;
-			bank_request.account << account;
-			bank_request.location = myLocation;
-			synchronized( lock ) {
-				global.counter = global.counter + 1;
-				reservationId = global.counter
+			with( bank_request ) {
+			  .amount = services.( request.serviceType ).price;
+			  .account << account;
+			  .location = myLocation;
+			  .location.correlation_data.reservationId = csets.reservationId
 			};
-			bank_request.location.cset.reservationId = reservationId;
 			openTransaction@Bank( bank_request )( bank_response );
-			response.reservationId = reservationId;
-			response.amount = services.( request.serviceType ).price;
-			transactionId = bank_response.transactionId;
-			response.transactionId = transactionId;
-			response.bankLocation = Bank.location;
+			csets.transactionId = bank_response.transactionId;
+
+			// preparing response
+			with( response ) {
+			  .reservationId = reservationId;
+			  .amount = services.( request.serviceType ).price;
+			  .transactionId = csets.transactionId;
+			  .bankLocation = Bank.location
+			};
 			println@Console("! - Booked request for reservationId:" + 
 					global.counter + " bank transaction id:" + bank_response.transactionId )()
 		} else {
@@ -41,7 +53,7 @@ main
 		println@Console("! - Reversed booking for reservationId: " + request )()
 	}
 	
-	[getPrice( request )( response ){
+	[ getGaragePrice( request )( response ){
 		response.price= services.( request.serviceType ).price
 	}]{ nullProcess }
 }
