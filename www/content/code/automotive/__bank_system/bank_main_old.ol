@@ -45,20 +45,7 @@ main
 					authAccount@BankAccount( request.account )( )
 				};
 				println@Console( "!  - verified account for CCnumber:" + request.account.CCnumber )();
-				// create a transaction in the DB
-				query = "INSERT INTO transactions (CCnumber) VALUES (\""
-					+ request.account.CCnumber +"\")" ;
-				synchronized( lock ) {
-					perform_update;
-					query = "SELECT * FROM transactions ORDER BY id ASC";
-					perform_query;
-					transactionId = query_resp.row[#query_resp.row-1].id
-				};
-				
-				transaction.CCnumber = request.account.CCnumber;
-				transaction.cset = request.cset;
-				transaction.location = request.location;
-				transaction.amount = request.amount;
+
 				response.transactionId = transactionId;
 				println@Console("! - opened transaction for cc number:"+ request.account.CCnumber + " transactionId:"+transactionId)()
 			}
