@@ -1,44 +1,65 @@
 init
 {
-	registerForInput@Console()()
+	console_req.enableSessionListener = true;
+	registerForInput@Console( console_req )();
+	install( TruckBookFault => nullProcess )
 }
 
 main
 {
-	install( BookFault => nullProcess );
 	
-	[ book( request )( response ){ 
+	
+	[ truckBook( request )( response ){ 
+		csets.coreJavaserviceConsoleToken = new;
+		console_listener.token = csets.coreJavaserviceConsoleToken;
+		subscribeSessionListener@Console( console_listener )();
+
+		csets.reservationId = new;
+
 		println@Console("! - Received booking request:")();
-		println@Console("\t\tService type: " + request.serviceType)();
-		println@Console("\t\tCar model: " + requet.car_model)();
+		println@Console("\t\tService type: " + request.serviceType )();
+		println@Console("\t\tCar model: " + request.car_model)();
 		print@Console("Do you accept[yes/no]? ")();
 		in( accept );
+		unsubscribeSessionListener@Console( console_listener )();
+
 		if ( accept == "yes" ) {
-			bank_request.amount = services.( request.serviceType ).price;
-			bank_request.account << account;
-			bank_request.location = myLocation;
-			openTransaction@Bank( bank_request )( bank_response );
-			synchronized( lock ) {
-				global.counter = global.counter + 1;
-				response.reservationId = global.counter;
-				println@Console("! - Booked request for reservationId:" + 
-					global.counter + " bank transaction id:" + bank_response.transactionId )()
+			with( bank_request ) {
+			  .amount = services.( request.serviceType ).price;
+			  .account << account;
+			  .location = myLocation;
+			  .correlation_data.reservationId = csets.reservationId
 			};
-			response.amount = services.( request.serviceType ).price;
-			response.transactionId = bank_response.transactionId;
-			response.bankLocation = Bank.location
+			openTransaction@Bank( bank_request )( bank_response );
+			csets.transactionId = bank_response.transactionId;
+
+			// preparing response
+			with( response ) {
+			  .reservationId = csets.reservationId;
+			  .amount = services.( request.serviceType ).price;
+			  .transactionId = csets.transactionId;
+			  .bankLocation = Bank.location
+			};
+			println@Console("! - Booked request for reservationId:" + 
+					csets.reservationId + " bank transaction id:" + bank_response.transactionId )()
 		} else {
-			throw ( BookFault )
+			throw ( TruckBookFault )
 		}
 		
 		
-	} ]{ bankCommit( request ) }
-	
-	[ revbook( request )]{
-		println@Console("! - Reversed booking for reservationId: " + request )()
+	} ]{ bankCommit( request );
+	      if ( request.result == false ) {
+		println@Console("! - transaction aborted. Reservation " + csets.reservationId + " cancelled!")()
+	      } else {
+		println@Console("! - transaction succeeded. Reservation " + csets.reservationId + " confirmed!")()
+	      }
 	}
 	
-	[getPrice( request )( response ){
+	[ truckRevbook( request )]{
+		println@Console("! - Reversed booking for reservationId: " + request.reservationId )()
+	}
+	
+	[ getTruckPrice( request )( response ){
 		response.price= services.( request.serviceType ).price
 	}]{ nullProcess }
 }
