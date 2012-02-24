@@ -1,8 +1,8 @@
 init
 {
-	console_req.session_listener_enabled = true;
+	console_req.enableSessionListener = true;
 	registerForInput@Console( console_req )();
-	install( BookFault => nullProcess )
+	install( GarageBookFault => nullProcess )
 }
 
 main
@@ -28,29 +28,36 @@ main
 			  .amount = services.( request.serviceType ).price;
 			  .account << account;
 			  .location = myLocation;
-			  .location.correlation_data.reservationId = csets.reservationId
+			  .correlation_data.reservationId = csets.reservationId
 			};
 			openTransaction@Bank( bank_request )( bank_response );
 			csets.transactionId = bank_response.transactionId;
 
 			// preparing response
 			with( response ) {
-			  .reservationId = reservationId;
+			  .reservationId = csets.reservationId;
 			  .amount = services.( request.serviceType ).price;
 			  .transactionId = csets.transactionId;
 			  .bankLocation = Bank.location
 			};
 			println@Console("! - Booked request for reservationId:" + 
-					global.counter + " bank transaction id:" + bank_response.transactionId )()
+					csets.reservationId + " bank transaction id:" + bank_response.transactionId )()
 		} else {
-			throw ( BookFault )
+			throw ( GarageBookFault )
 		}
 		
 		
-	} ]{ bankCommit( request ) }
+	} ]{ 	
+	      bankCommit( request );
+	      if ( request.result == false ) {
+		println@Console("! - transaction aborted. Reservation " + csets.reservationId + " cancelled!")()
+	      } else {
+		println@Console("! - transaction succeeded. Reservation " + csets.reservationId + " confirmed!")()
+	      }
+	}
 	
-	[ revbook( request )]{
-		println@Console("! - Reversed booking for reservationId: " + request )()
+	[ garageRevbook( request )]{
+		println@Console("! - Reversed booking for reservationId: " + request.reservationId )()
 	}
 	
 	[ getGaragePrice( request )( response ){
