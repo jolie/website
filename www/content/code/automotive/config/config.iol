@@ -17,5 +17,6 @@ constants {
 	Location_Rental1 = "socket://localhost:3009",
 	Location_Rental2 = "socket://localhost:3010",
 	Location_Rental3 = "socket://localhost:3011",
-	Location_GarageAggregator =  "socket://localhost:3012"
+	Location_GarageAggregator =  "socket://localhost:3012",
+	Location_RentalRedirector =  "socket://localhost:3013"
 }
