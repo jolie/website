@@ -21,6 +21,17 @@ type CloseTransactionRequest: void {
   .transactionId: string
 }
 
+type CancelTransactionRequest: void {
+  .transactionId: string
+}
+
+type PayTransactionRequest: void {
+  .account: Account
+  .amount: int
+  .transactionId: string
+  .bank_location: string
+}
+
 interface BankInterface {
 RequestResponse:
 	/**
@@ -38,42 +49,16 @@ RequestResponse:
 
 	/**
 	 * Pay an opened transaction
-	 * @request:void {
-	 *        .account << accountType	user account 
-	 *	.amount:int			amount to pay
-	 *	.transactionId:int		unique transaction identifier
-	 *	.bankLocation:string		location of the service bank to which 
-	 * }
-	* @response:void
-	* @throw CreditLimit WrongAmount InternalFault  fault raised if the payer credit is not sufficient for paying
 	 */
-	payTransaction throws CreditLimit WrongAmount InternalFault,
+	payTransaction( PayTransactionRequest )( void )
+	  throws CreditLimit 
+		 WrongAmount,
 	
 	checkAvailability( CheckAvailabilityRequest )( void ) 
-	  throws VerificationFailed
-}
+	  throws VerificationFailed,
 
-interface BankTransactionInterface {
-RequestResponse:
-
-	
-	
-	
 	/**
 	* cancel an opened transaction
-	* @request:void{
-	*	.transactionId:int			unique transaction identifier	
-	* }
-	* @response:void
 	*/
-	cancelTransaction,
-	
-	/**
-	* abort a performed transaction
-	* @request:void{
-	*	.transactionId:int			unique transaction identifier	
-	* }
-	* @response:void
-	*/
-	abortTransaction
+	cancelTransaction( CancelTransactionRequest )( void )
 }

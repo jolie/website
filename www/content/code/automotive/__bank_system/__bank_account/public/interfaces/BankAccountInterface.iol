@@ -17,6 +17,11 @@ type SubAmountRequest: void {
   .amount: int
 }
 
+type SetAccountRequest: void {
+  .CCnumber: string
+  .amount: int
+}
+
 
 interface BankAccountInterface {
 RequestResponse:
@@ -50,6 +55,11 @@ RequestResponse:
 	 */
 	subAmount( SubAmountRequest )( void ) 
 	  throws AuthFailed
-	
+}
+
+interface BankAccountAdminInterface {
+RequestResponse:
+  setAccount( SetAccountRequest )( void ),
+  getAccountAmount( string )( int )
 }
 

@@ -1,22 +1,19 @@
 include "bank_deploy.ol"
-include "./__banck_account/public/interfaces/BankAccountInterface.iol"
+include "string_utils.iol"
+
+execution{ concurrent } 
 
 outputPort BankAccount {
-	Location: "local"
-	Interfaces: BankAccountInterface
-}
-
-
-embedded {
-Jolie:
-	"./__bank_Account/main_bank_account_VISA.ol" in BankAccount
+  Location: Location_BankAccountVISA
+  Protocol: sodep
+  Interfaces: BankAccountInterface
 }
 
 
 inputPort BankService {
-	Location:	Location_BankVISA
-	Protocol:	sodep
-	Interfaces: BankInterface, TransactionInterface
+  Location: Location_BankVISA
+  Protocol: sodep
+  Interfaces: BankInterface
 }
 init
 {

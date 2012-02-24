@@ -1,6 +1,6 @@
 ----------------------------------------------------------------
-2012-02-21 16:41:25.812 GMT:
- Booting Derby version The Apache Software Foundation - Apache Derby - 10.5.3.0 - (802917): instance a816c00e-0135-a0c9-f517-000002f39de0
-on database directory /home/claudio/Sviluppo/jolie-trunk/web/trunk/www/content/code/automotive/__bank_system/__bank_account/database/data/bank_accountAE  
+2012-02-24 10:01:22.951 GMT:
+ Booting Derby version The Apache Software Foundation - Apache Derby - 10.5.3.0 - (802917): instance a816c00e-0135-aece-c04b-000002d0a588
+on database directory /home/claudio/Sviluppo/jolie-trunk/web/trunk/www/content/code/automotive/__bank_system/__bank_account/database/data/bank_accountVISA  
 
 Database Class Loader started - derby.database.classpath=''

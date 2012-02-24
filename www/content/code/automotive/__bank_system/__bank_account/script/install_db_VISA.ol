@@ -3,8 +3,6 @@ include "runtime.iol"
 include "console.iol"
 include "file.iol"
 
-cset{ transactionId: CloseTransactionRequest.transactionId }
-
 define initDatabase
 {
 	i = 0;
@@ -15,7 +13,10 @@ define initDatabase
 		CCnumber varchar(128),
 		amount integer
 	)";
-	q.statement[i++] = "INSERT INTO accounts (name, surname, CCnumber, amount ) VALUES ('Rene','Descartes','12345678',1000)";
+	q.statement[i++] = "INSERT INTO accounts (name, surname, CCnumber, amount ) VALUES ('Rene','Descartes','12345678',10000)";
+	q.statement[i++] = "INSERT INTO accounts (name, surname, CCnumber, amount ) VALUES ('Mickey','Mouse','76543210',10000)";
+	q.statement[i++] = "INSERT INTO accounts (name, surname, CCnumber, amount ) VALUES ('Batman','Batman','24680246',10000)";
+	q.statement[i++] = "INSERT INTO accounts (name, surname, CCnumber, amount ) VALUES ('Elvis','Presley','23456789',10000)";
 	executeTransaction@Database( q )()
 }
 

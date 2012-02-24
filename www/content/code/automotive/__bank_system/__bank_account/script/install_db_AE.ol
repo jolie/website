@@ -13,9 +13,12 @@ define initDatabase
 		CCnumber varchar(128),
 		amount integer
 	)";
-	q.statement[i++] = "INSERT INTO accounts (name, surname, CCnumber, amount ) VALUES ('Homer','Simpson','12345678',1000)";
-	q.statement[i++] = "INSERT INTO accounts (name, surname, CCnumber, amount ) VALUES ('Charles','Baudelaire','23456789',1000)";
-	q.statement[i++] = "INSERT INTO accounts (name, surname, CCnumber, amount ) VALUES ('Bertrand','Russell','34567890',1000)";
+	q.statement[i++] = "INSERT INTO accounts (name, surname, CCnumber, amount ) VALUES ('Homer','Simpson','12345678',10000)";
+	q.statement[i++] = "INSERT INTO accounts (name, surname, CCnumber, amount ) VALUES ('Charles','Baudelaire','23456789',10000)";
+	q.statement[i++] = "INSERT INTO accounts (name, surname, CCnumber, amount ) VALUES ('Bertrand','Russell','34567890',10000)";
+	q.statement[i++] = "INSERT INTO accounts (name, surname, CCnumber, amount ) VALUES ('Clark','Kent','09876543',10000)";
+	q.statement[i++] = "INSERT INTO accounts (name, surname, CCnumber, amount ) VALUES ('Michael','Jackson','45678901',10000)";
+	q.statement[i++] = "INSERT INTO accounts (name, surname, CCnumber, amount ) VALUES ('Bono','Vox','56789012',10000)";
 	executeTransaction@Database( q )()
 }
 

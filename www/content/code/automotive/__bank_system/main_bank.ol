@@ -3,11 +3,8 @@
 init{
   install( AuthFailed => nullProcess );	
   install( CreditLimit => nullProcess );
-  install ( WrongAmount => 
-	  abort_transaction;
-	  println@Console("! - Fault: WrongAmount. Aborted transaction id:" + transactionId )()
-  );
-  install( VerificationFailed => println@Console("! - Fault: VerificationFailed")())
+  install( WrongAmount => nullProcess );
+  install( VerificationFailed => nullProcess )
 }
 
 
@@ -18,7 +15,7 @@ main
 		scope( check ){
 			install( AuthFailed => throw( VerificationFailed ));
 		
-			checkABankAccountvailability@BankAccount( request )()
+			checkBankAccountAvailability@BankAccount( request )()
 		}
 	}] { nullProcess }
 	
@@ -64,7 +61,7 @@ main
 			bkCommitReq.result = true;				// success
 			bkCommitReq.transactionId = csets.transactionId;
 			bankCommit@Customer( bkCommitReq );
-			println@Console("! - closed transactionId:" + transactionId + ", sent bankCommit to "+transaction.location )()
+			println@Console("! - closed transactionId:" + csets.transactionId + ", sent bankCommit to "+ Customer.location )()
 		}] { nullProcess }
 		
 		[ cancelTransaction( request )(){ 
@@ -72,82 +69,56 @@ main
 			bkCommitReq.result = false;
 			bkCommitReq.transactionId = csets.transactionId;
 			bankCommit@Customer( bkCommitReq );
-			println@Console("! - cancelled transactionId:" + transactionId + ", sent bankCommit to "+transaction.location )()
+			println@Console("! - cancelled transactionId:" + csets.transactionId + ", sent bankCommit to "+ Customer.location )()
 		}] { nullProcess }
 	
 	      }
 	
 	[ payTransaction( request )( ) {
-		BankOut.location = request.bankLocation;
-		
-		// creating a transaction row
-		query = "INSERT INTO transactions (CCnumber) VALUES (\""
-			+ request.account.CCnumber +"\")" ;
-		synchronized( lock ) {
-			perform_update;
-			query = "SELECT * FROM transactions ORDER BY id ASC";
-			perform_query;
-			transactionId = query_resp.row[#query_resp.row - 1].id
-		};
-		trReq.transactionId = request.transactionId;
-		trReq.amount = request.amount;
-		trReq.counterPartBank = myLocation;
-		trReq.counterPartCCN = request.account.CCnumber;
-		trReq.counterPartTransaction = transactionId;
-		
-		ckAvReq << request.account;
-		ckAvReq.amount = request.amount;
+		BankOut.location = request.bank_location;
 		scope( check ) {
 			install( AuthFailed =>
 				println@Console("Authentication failed in payTransaction for transactionId:" + transactionId )();
-				abort_transaction;
 				throw( AuthFailed )
 			);
 			install( VerificationFailed =>
 				println@Console("! - fault:Credit Limit in checkAvailability within payTransaction for cc number:" + request.account.CCnumber )();
-				cancelTransaction@BankOut( trReq )();
-				abort_transaction;
+				with( cancel_req ) {
+				  .transactionId = request.transactionId
+				};
+				cancelTransaction@BankOut( cancel_req )();
 				println@Console("! - sending cancel transaction for transactionId:" + request.transactionId + ", to location:"+ BankOut.location)();
 				throw( CreditLimit )
 			);
-			checkAvailability@BankAccount( ckAvReq )()
+			ckAvReq.account << request.account;
+			ckAvReq.amount = request.amount;
+			checkBankAccountAvailability@BankAccount( ckAvReq )()
 		};
 		
 		scope( perform_transaction ) {
-			
-			install( DBfault =>abort_transaction;
-					{ comp( closingTransaction ) | comp( subtracting )  };
-					throw( InternalFault )
-			);
+			with( tr_req ) {
+			  .transactionId = request.transactionId;
+			  .amount = request.amount
+			};
 
 			// closing transaction
 			scope( closingTransaction ) {
-				closeTransaction@BankOut( trReq )();
-				install( this => abortTransaction@BankOut( trReq )() )
+				with( close_req ) {
+				  .transactionId = request.transactionId;
+				  .amount = request.amount
+				};
+				closeTransaction@BankOut( close_req )()
 			};
 			
 			// subtracting amount
 			scope( subtracting ){
-				subReq.CCnumber = request.account.CCnumber;
+				subReq.account << request.account;
 				subReq.amount = request.amount;
-				subAmount@BankAccount( subReq )();
-				install( this => addAmount@BankAccount( subReq )() )
-			};
-			
-			query = "UPDATE  transactions SET operation=-" + request.amount 
-					+ ", counterPartBank=\"" + request.bankLocation + "\""
-					+ ", counterPartTransaction=" + request.transactionId
-					+ " WHERE id=" + transactionId;
-			perform_update
+				subAmount@BankAccount( subReq )()
+			}
 		};
-			
-		println@Console("!  - performed transaction " + transactionId )()
+		println@Console("!  - performed transaction " + request.transactionId )()
 
-	}] { nullProcess }
-	
-	[abortTransaction( request )() {
-		abort_transaction
-	}] { nullProcess }
-		
+	}] { nullProcess }		
 	
 }
