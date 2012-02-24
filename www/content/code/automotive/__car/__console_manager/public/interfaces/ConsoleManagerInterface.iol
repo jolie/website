@@ -2,9 +2,12 @@ type SelectRequest: void {
   .msg: string
   .row*: void {
     .name: string
-    .price: string
+    .price: int
+    .coord: string
+    .location: string
   }
 }
+
 
 type SelectionFromDialogRequest: string {
   .token: string
@@ -19,5 +22,5 @@ RequestResponse:
 	*/
 	select( SelectRequest )( int )
 OneWay:
-	selectionFromDialog( SelectionFromDialogRequest )
+	selectionFromDialog( SelectionFromDialogRequest ),
 }

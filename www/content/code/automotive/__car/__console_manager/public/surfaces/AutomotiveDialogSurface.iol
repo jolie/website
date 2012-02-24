@@ -3,7 +3,9 @@ type SelectionRequest: void {
   .token: string
   .row*: void {
     .name: string
-    .price: string
+    .price: int
+    .location: string
+    .coord: string
   }
 }
 

@@ -1,7 +1,9 @@
 include "./__console_manager/public/interfaces/ConsoleManagerInterface.iol"
-include "../__assistance/public/interfaces/AssistanceInterface.iol"
+include "./public/web_service_interfaces/AssistanceService.iol"
+include "../__bank_system/public/interfaces/BankInterface.iol"
 include "./public/interfaces/CarInterface.iol"
 include "./public/interfaces/CarPrivateInterface.iol"
+include "./public/interfaces/OrchestratorInterface.iol"
 include "../config/config.iol"
 include "file.iol"
 include "runtime.iol"
@@ -10,27 +12,13 @@ include "string_utils.iol"
 
 execution{ concurrent }
 
-
-interface BankInterface {
-RequestResponse:
-	openTransaction throws AuthFailed InternalFault,
-	payTransaction throws CreditLimit WrongAmount InternalFault,
-}
-
-
-interface OrchestratorInterface {
-OneWay:
-	start
-}
-
-interface ConsoleManagerInterface {
-RequestResponse:
-	select
+type SetMessageRequest: void {
+  .msg: string
 }
 
 interface AutomotiveMainInterface {
 OneWay:
-	setMessage
+	setMessage( SetMessageRequest )
 }
 
 //-------OUTPUT PORTS-----------------------------------------------
@@ -42,12 +30,6 @@ Interfaces: OrchestratorInterface
 outputPort AutomotiveMain {
 Location:"local"
 Interfaces: AutomotiveMainInterface
-}
-
-outputPort Assistance {
-Protocol: sodep
-Location: Location_Assistance
-Interfaces: AssistanceInterface
 }
 
 outputPort Bank {
@@ -82,17 +64,15 @@ init
 {
 	global.coord = "44.14205871186485, 12.243232727050781";
 	global.car_model = "Fast Car TGF76J";
-	with( global.driver_and_car_data ) {
+	with( global.car_data ) {
 	  .name = "Homer";
 	  .surname = "Simpson";
 	  .car_model = global.car_model;
-	  .plate = "XYZXYZ"
+	  .plate = "XYZXYZ";
+	  .CCnumber="12345678";
+	  .bank_location = Location_BankAE
 	};
-	with ( global.account ) {
-		.CCnumber="12345678";
-		.name="Homer";
-		.surname="Simpson"
-	};
+
 	Bank.location = Location_BankAE;
 	getFileSeparator@File()( global.fileSeparator );
 	getServiceDirectory@File()( global.serviceDirectory );
@@ -100,9 +80,8 @@ init
 	install( BankFault => nullProcess )
 }
 
-main
-{
-	
+main {
+
 	
 	[ selectService( request )( response ){
 		select@ConsoleManager( request )( selection );
@@ -114,36 +93,48 @@ main
 		response.coord = global.coord
 	}] { nullProcess }
 	
-	[ getDriverAndCarData( )( response ){
-	      response -> global.driver_and_car_data
+	[ getCarData( )( response ){
+	      response -> global.car_data
 	}] { nullProcess }
 	
 	[ setMessage( request )]{
-		setMessage@AutomotiveMain( request )
+		message.msg = request;
+		setMessage@AutomotiveMain( message )
 	}
 	
 	[ pay( request )( ){
 		scope( pay_bank ) {
 			install( CreditLimit => //WrongAmount InternalFault =>
-				setMessage@AutomotiveMain("! - Fault in payment");
+				msg_car.msg = "! - Fault in payment";
+				setMessage@AutomotiveMain( msg_car );
 				throw( BankFault )
 			);
-			bank_request -> request;
-			bank_request.account -> global.account;			
+    
+			// performing a payment request
+			with( bank_request ) {  
+			  .transactionId = request.transactionId;
+			  .bank_location = request.bankLocation;
+			  .amount = request.amount;
+			  with( .account ) {
+			    .name = global.car_data.name;
+			    .surname = global.car_data.surname;
+			    .CCnumber = global.car_data.CCnumber
+			  }
+			};
 			payTransaction@Bank( bank_request )()
 		}
 	}]{ nullProcess }
 	
 	[ abortTransaction( request )( response ){
-		setMessage@AutomotiveMain("! - aborted transaction")
+		// bank aborting flow not implemented in this demo
+		msg_car.msg = "! - aborted transaction";
+		setMessage@AutomotiveMain( msg_car )
 	}] { nullProcess }
 	
-	[ getBankAccount()( response ){
-		response -> global.account
-	}] { nullProcess }
 	
 	[ carFault( request )]{
-		setMessage@AutomotiveMain( ". - Car fault raised:" + request.fault );
+		msg_car.msg = ". - Car fault raised:" + request.fault;
+		setMessage@AutomotiveMain( msg_car );
 		fReq.directory = global.serviceDirectory;
 		fReq.regex = "orchestrator.ol";
 		list@File( fReq )( r );
@@ -161,11 +152,11 @@ main
 		req_orc.coord -> global.coord;
 		req_orc.car_model = global.car_model;
 		
-		getOrchestrator@Assistance( req_orc )( resp_orc );
+		getOrchestrator@AssistanceServicePort( req_orc )( resp_orc );
 		
 		// create the new orchesrator.ol
 		wf.filename = "orchestrator.ol";
-		wf.content -> resp_orc;
+		wf.content -> resp_orc.code;
 		scope(t){
 			install( IOException => println@Console(t.fault.stackTrace)());
 			writeFile@File( wf )()
