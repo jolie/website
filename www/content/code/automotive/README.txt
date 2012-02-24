@@ -43,6 +43,7 @@ cd ./__rental
 jolie main_rental1.ol
 jolie main_rental2.ol
 jolie main_rental3.ol
+jolie redirector.ol
 
 #TRUCK SERVICES
 cd ./__truck
