@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://sample.it.wsdl" xmlns:tns="http://sample.it.wsdl" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd1="http://sample.it.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types>
+    <xs:schema targetNamespace="http://sample.it.xsd" xmlns:sch="http://sample.it.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema"><xs:element name="getOrchestrator"><xs:complexType><xs:sequence><xs:element maxOccurs="1" minOccurs="1" name="coord" type="xs:string"/><xs:element maxOccurs="1" minOccurs="1" name="car_model" type="xs:string"/><xs:element maxOccurs="1" minOccurs="1" name="fault" type="xs:string"/></xs:sequence></xs:complexType></xs:element><xs:element name="getOrchestratorResponse"><xs:complexType><xs:sequence><xs:element maxOccurs="1" minOccurs="1" name="code" type="xs:string"/></xs:sequence></xs:complexType></xs:element></xs:schema>
+  </wsdl:types>
+  <wsdl:message name="GetOrchestratorRequest">
+    <wsdl:part name="body" element="xsd1:getOrchestrator"/>
+  </wsdl:message>
+  <wsdl:message name="GetOrchestratorResponse">
+    <wsdl:part name="body" element="xsd1:getOrchestratorResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="Assistance">
+    <wsdl:operation name="getOrchestrator">
+      <wsdl:input message="tns:GetOrchestratorRequest"/>
+      <wsdl:output message="tns:GetOrchestratorResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AssistanceSOAPBinding" type="tns:Assistance">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/wsdl/soap/http/"/>
+    <wsdl:operation name="getOrchestrator">
+      <soap:operation soapAction="getOrchestrator" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AssistanceService">
+    <wsdl:port name="AssistanceServicePort" binding="tns:AssistanceSOAPBinding">
+      <soap:address location="http://localhost:2001"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
