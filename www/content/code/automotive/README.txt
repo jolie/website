@@ -6,6 +6,11 @@ In order to test it, it is necessary to launch all the services.
 Follow the next steps in order to turn on the automotive SOA.
 Please start a new shell for each of the follwing jolie commands.
 
+#JAVASERVICES
+install the needed javaservices:
+cp ./__car/lib/AutomotiveMain.jar $INSTALLATION-JOLIE-PATH/lib
+cp ./__car/__console_manager/lib/AutomotiveDialog.jar $INSTALLATION-JOLIE-PATH/lib
+
 #REGISTER
 cd ./__register
 jolie main_register.ol
@@ -13,6 +18,9 @@ jolie main_register.ol
 #ASSISTANCE SERVICE
 cd ./__assistance
 jolie leonardo.ol
+
+- connect the browser to the assistance web site
+open your browser and set the url: localhost:8001/AutomotiveAssistance.html
 
 #BANK SYSTEM
 cd ./__bank_system
