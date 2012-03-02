@@ -4,6 +4,7 @@ include "../__bank_system/public/interfaces/BankInterface.iol"
 include "./public/interfaces/CarInterface.iol"
 include "./public/interfaces/CarPrivateInterface.iol"
 include "./public/interfaces/OrchestratorInterface.iol"
+include "./__locator/public/interfaces/LocatorInterface.iol"
 include "../config/config.iol"
 include "file.iol"
 include "runtime.iol"
@@ -22,6 +23,11 @@ OneWay:
 }
 
 //-------OUTPUT PORTS-----------------------------------------------
+outputPort Locator {
+Location: "local"
+Interfaces: LocatorInterface
+}
+
 outputPort Orchestrator {
 Location: "local"
 Interfaces: OrchestratorInterface
@@ -43,7 +49,8 @@ Interfaces: ConsoleManagerInterface
 
 embedded {
 	Jolie:
-		"./__console_manager/main_console_manager.ol" in ConsoleManager
+		"./__console_manager/main_console_manager.ol" in ConsoleManager,
+		"./__locator/main_locator.ol" in Locator
 	Java:
 		"com.italianasoftware.automotive.AutomotiveMainJS" in AutomotiveMain
 }
@@ -58,6 +65,7 @@ inputPort CarInner {
 Protocol: sodep { .debug = 1 }
 Location: "local"
 Interfaces: CarPrivateInterface, CarInterface
+Aggregates: Locator
 }
 
 init
@@ -87,11 +95,7 @@ main {
 		select@ConsoleManager( request )( selection );
 		response -> request.row[ selection ]
 	}] { nullProcess }
-	
-	
-	[ getGPSCoordinates()( response ){
-		response.coord = global.coord
-	}] { nullProcess }
+
 	
 	[ getCarData( )( response ){
 	      response -> global.car_data

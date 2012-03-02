@@ -1,6 +1,4 @@
-type GetGPSCoordinatesResponse: void {
-  .coord: string
-}
+
 
 type PayRequest: void {
   .transactionId: string
@@ -43,10 +41,7 @@ type GetCarDataResponse: void {
 
 interface CarPrivateInterface {
 RequestResponse:
-	/**!
-	  returns the current GPS coordinates of the car
-	*/
-	getGPSCoordinates( void )( GetGPSCoordinatesResponse ),
+	
 
 	/**!
 	  performs a payment on a bank

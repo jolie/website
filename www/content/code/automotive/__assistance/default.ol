@@ -4,7 +4,7 @@ include "string_utils.iol"
 
 include "../config/config.iol"
 include "./public/interfaces/OrchestratorInterface.iol"
-include "./public/interfaces/CarPrivateInterface.iol"
+include "./public/surfaces/CarSurface.iol"
 include "../__garages/public/surfaces/AggregatorSurface.iol"
 include "../__rental/public/interfaces/RentalInterface.iol"
 include "../__trucks/public/interfaces/TruckInterface.iol"
@@ -26,7 +26,7 @@ Interfaces: RentalInterface
 
 outputPort Car {
 Protocol: sodep
-Interfaces: CarPrivateInterface
+Interfaces: CarInnerSurface
 }
 
 outputPort Register {
