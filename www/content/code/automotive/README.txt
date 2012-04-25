@@ -8,8 +8,8 @@ Please start a new shell for each of the follwing jolie commands.
 
 #JAVASERVICES
 install the needed javaservices:
-cp ./__car/lib/AutomotiveMain.jar $INSTALLATION-JOLIE-PATH/lib
-cp ./__car/__console_manager/lib/AutomotiveDialog.jar $INSTALLATION-JOLIE-PATH/lib
+cp ./__car/lib/AutomotiveMain.jar $INSTALLATION-JOLIE-PATH/javaServices
+cp ./__car/__console_manager/lib/AutomotiveDialog.jar $INSTALLATION-JOLIE-PATH/javaServices
 
 #REGISTER
 cd ./__register
@@ -51,6 +51,10 @@ jolie main_truck1.ol
 jolie main_truck2.ol
 jolie main_truck3.ol
 
+#CAR SERVICE
+cd ./__car
+jolie main_car.ol
+
 NOTE:
 a) bank account databases are implemented with derby embedded, if you need to restore them:
   1) cd ./__bank_system/__bank_account/database
@@ -64,3 +68,8 @@ b) if you want to modify the credit amount of the car driver, follow these steps
   3) jolie setAccount.ol
   4) jolie getAccountAmount.ol // to verify the credit into the db
 
+c) In order to emulate the acceptance phase of garage, truck and rental services,
+a confirmation by the user is requested. Thus, remeber to open the console
+of the selected service for answering [yes/no] to the incoming
+request from the car. Otherwise, the car will wait for an answer without terminating the
+process. This is a demo and no time alarms have been developed.
