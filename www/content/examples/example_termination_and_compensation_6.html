@@ -1,0 +1,28 @@
+include "console.iol"
+include "time.iol"
+
+main
+{
+----scope( myScope ) {
+--------sleep@Time( 1000 )();
+--------println@Console("step 1")();
+--------install( this => cH;println@Console("recovery step 1")());
+--------sleep@Time( 1000 )();
+--------println@Console("step 2")();
+--------install( this => cH;println@Console("recovery step 2")());
+--------sleep@Time( 1000 )();
+--------println@Console("step 3")();
+--------install( this => cH;println@Console("recovery step 3")());
+--------sleep@Time( 1000 )();
+--------println@Console("step 4")();
+--------install( this => cH;println@Console("recovery step 4")());
+--------sleep@Time( 1000 )();
+--------println@Console("step 5")();
+--------install( this => cH;println@Console("recovery step 5")())
+----}
+----|
+----{
+--------sleep@Time( 5000 )();
+--------throw( myFault )
+----}
+}

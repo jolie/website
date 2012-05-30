@@ -1,0 +1,21 @@
+include "console.iol"
+include "time.iol"
+
+main
+{
+----scope( myScope ) {
+------install( this => println@Console( i )());
+------i=0; 
+------sleep@Time( 1000 )();
+------i=1;
+------sleep@Time( 1000 )();
+------i=2;
+------sleep@Time( 1000 )();
+------i=3
+----}
+----|
+----{
+------sleep@Time( 3000 )();
+------throw(myFault)
+----}
+}

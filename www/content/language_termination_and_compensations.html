@@ -1,6 +1,173 @@
 <div class="grid_15 prefix_1" id="language-content">
 <a name="language_top"/>
 <h1>Termination and compensations</h1>
+<ul>
+  <li><a href="#language_termination_and_compensation_recovery_handler">Recovery handlers</a></li>
+  <li><a href="#language_termination_and_compensation_termination">Termination</a></li>
+  <li><a href="#language_terminating_child_scopes">Terminating child scopes</a></li>
+  <li><a href="#language_dynamic_installation">Dynamic installation of recovery handlers</a></li>
+  <li><a href="#language_current_hanldler_placeholder">The current handler placeholder: cH</a></li>
+  <li><a href="#language_termination_and_compensation_compensation">Compensation</a></li>
+  <li><a href="#language_termination_and_compensation_freeze">The freeze operator</a></li>
+  <li><a href="#language_automotive_scenario">Automotive scenario</a></li>
+</ul>
+<br><br>
+Termination and compensation are mechanisms which deal with the recovery of activities. 
+Termination deals with the recovery of an activity that is still running. 
+Compensation deals with the recovery of an activity that has successfully completed its execution.
+This kind of mechanisms are useful when we deal with 
+<a href="#language_workflow_operators">parallel</a> activities within the same session
+because the common <a href="#language_fault_handling">fault handling</a> primitives 
+are less expressive for managing faults in concurrent scenarios.
+As an example in Fig. 1 we report a scenario where a scope <i>A</i> contains an activity which executes the 
+code <i>P</i>, and two scopes <i>B</i> and <i>C</i>. We suppose that <i>C</i> successfully finishes
+its execution; as a result its compensation handler is promoted at the level of the 
+parent compensation handler <i>A</i> (1). Then, we suppose that <i>P</i> raises a fault <i>f</i>
+while scope <i>B</i> is still executing (2). Scope <i>B</i> is stopped and its termination
+handler is executed (3). When the termination handler of <i>B</i> is finished, the fault handler 
+of <i>A</i> can be executed (4). It is worth noting that fault hanldlers can execute compensations
+by invoking the compensation handlers loaded within the corresponding scope (in this case, the fault handler
+of <i>A</i> can invoke the compensation handler of <i>C</i>).
 
+<div id="figure">
+  <img src="./images/termination_and_compensation_1.jpg">
+  <div id="caption"><b>Figure Termination and Compensation.1:</b> Code <i>P</i> is executed in parallel with scopes 
+  <i>B</i> and <i>C</i> within scope <i>A</i>. <i>C</i> is supposed to be successfully ended, whereas 
+  <i>B</i> is terminated during its execution by the fault <i>f</i> raised by <i>P</i>. The 
+  fault handler of <i>A</i> can execute the compensation handler loaded by <i>C</i>.</div>
+</div>
 
+<hr>
+<a name="language_termination_and_compensation_recovery_handler"/>
+<h2>Recovery handlers</h2>
+&gt; <a href="#language_top">Go on top</a><br><br>
+Each scope can be equipped with a handler that contains the code to be executed for its recovery. 
+As in the case of fault handlers, recovery handlers can be dynamically installed by means of statement 
+<a href="#language_fault_handling">install</a>, e.g.:
+<div id="example" src="example_termination_and_compensation_1"/>
+The keyword <b>this</b> specifies that we are installing a recovery handler for 
+the enclosing scope (in the example above it is the scope <i>myScope</i>) 
+where the install primitive is executed. 
+That handler will be then available for terminating or compensating that scope, 
+as we see in the next sections.
+
+<hr>
+<a name="language_termination_and_compensation_termination"/>
+<h2>Termination</h2>
+&gt; <a href="#language_top">Go on top</a><br><br>
+Termination is triggered when a sibling activity raises a fault. 
+Let us consider the following example:
+<div id="example" src="example_termination_and_compensation_2"/>
+In this example <i>myScope</i> and <i>throw( myFault )</i> are executed in parallel. 
+In <i>myScope</i> a recovery handler is initially installed and then a <i>println@Console</i> statement 
+is executed whereas in the parallel activity a fault is immediately raised. 
+If <i>myFault</i> reaches <i>myScope</i> before it is successfully executed a termination 
+is triggered and the string "This is the recovery activity in the myScope" is printed on the console.
+You can try to change the sleeping time before each activity in order to delay the fault rising.
+<br><br>
+<div id="download">&gt; <a href="./content/code/code_termination_and_compensation_1.zip">Download code</a></div>
+
+<hr>
+<a name="language_terminating_child_scopes"/>
+<h2>Terminating child scopes</h2>
+&gt; <a href="#language_top">Go on top</a><br><br>
+When termination is triggered on a scope, the latter recursively terminates its own child scopes. 
+When all the child scopes have been terminated the recovery handler is executed.
+Let us consider the following example:
+<div id="example" src="example_termination_and_compensation_3"/>
+<br>
+<div id="download">&gt; <a href="./content/code/code_termination_and_compensation_2.zip">Download code</a></div>
+If the fault is raised when the scope <i>son</i> is still executing, a termination is triggered for scope <i>grandFather</i>
+which triggers the termination of scope <i>father</i>. Scope <i>father</i> then triggers the termination of the scope <i>son</i>. 
+Scope <i>son</i> executes its own recovery handler. When <i>son</i> finishes executing its recovery handler, 
+scope <i>father</i> is terminated by executing its own recovery handler and so on until the termination of scope <i>grandFather</i>.
+The resulting output is:
+<div id="example" src="example_termination_and_compensation_4"/>
+
+<hr>
+<a name="language_dynamic_installation"/>
+<h2>Dynamic installation of recovery handlers</h2>
+&gt; <a href="#language_top">Go on top</a><br><br>
+Recovery handlers can be dynamically updated as for fault handlers. 
+Example:
+<div id="example" src="example_termination_and_compensation_5"/>
+
+Depending on the moment fault <i>myFault</i> is raised the lastly installed recovery handler 
+for scope <i>myScope</i> is executed. Let us consider, for example, that <i>myScope</i> is executing 
+<i>println@Console("step 4")</i> when the fault is raised. In this case the handler which is executed 
+for terminating the scope is <i>println@Console("recovery step 3")()</i>.
+<br><br><b>IMPORTANT</b><br>
+The install statement is always executed with priority with respect to fault processing. 
+This means that if a scope that should be terminated is executing an install statement, 
+JOLIE waits for the installation before executing the fault handler.
+<br><br>
+For example, let us consider the case in which <i>myScope</i> is executing 
+<i>install( this => println@Console("recovery step 3")</i> when fault 
+<i>myFault</i> is raised. In this case, before triggering the termination for <i>myScope</i>, 
+the install primitive is executed. This feature guarantees that termination is always performed 
+by using the last available error handler, and that the programmer can make safe deterministic 
+assumptions on the termination mechanism behaviour of his/her programs even when dealing with concurrent activities.
+<br><br>
+<div id="download">&gt; <a href="./content/code/code_termination_and_compensation_3.zip">Download code</a></div>
+
+<hr>
+<a name="language_current_hanldler_placeholder"/>
+<h2>The current handler placeholder: cH</h2>
+&gt; <a href="#language_top">Go on top</a><br><br>
+In the previous section we have seen how to update the current recovery handler of a scope by replacing it with a new one. 
+There are cases where it is particularly useful for addi code to the current recovery handler without replacing the entire previously installed code.
+Keyword <b>cH</b> is a placeholder for the current handler and can be used inside the install statement. 
+In the following example we add pieces to the current handler by means of <i>cH</i>:
+<div id="example" src="example_termination_and_compensation_6"/>
+<br><br>
+<div id="download">&gt; <a href="./content/code/code_termination_and_compensation_4.zip">Download code</a></div>
+<i>cH</i> can be composed within another handler by means of the sequence and parallel operators. 
+The resulting handler will be the composition of the previous one (represented by <i>cH</i>) and the new one.
+In the example above, if the fault is raised after the installation of step3, the handler prints the following strings:
+<div id="example" src="example_termination_and_compensation_7"/>
+
+<hr>
+<a name="language_termination_and_compensation_compensation"/>
+<h2>Compensation</h2>
+&gt; <a href="#language_top">Go on top</a><br><br>
+Compensation allows for the recovery of a scope which has successfully executed. 
+When a scope finishes with success its own activities, its current recovery handler is promoted to the parent scope in order to be available for compensation.
+Compensation is invoked by means of the <b>comp</b> statement.
+<br><br><b>IMPORTANT</b><br>
+The <i>comp</i> statement can be used only within a handler.
+<br><br>
+In the following example we show how to perform compensation:
+<div id="example" src="example_termination_and_compensation_8"/>
+
+At the beginning of scope <i>example_scope</i> we install a recovery handler and then we print "Executing code of example_scope"; 
+then, finally, we update the current scope handler. When scope <i>example_scope</i> ends with success its current recovery handler 
+is promoted to the parent scope (<i>main</i>) in order to be available for compensation. At the end of the program we raise fault <i>myFault</i>, 
+triggering the execution of its fault handler defined at the beginning. In the fault handler for <i>myFault</i> the compensation of scope 
+<i>example_scope</i> is executed by means of <i>comp( example_scope )</i>. The result follows:
+<div id="example" src="example_termination_and_compensation_9"/>
+<br><br>
+<div id="download">&gt; <a href="./content/code/code_termination_and_compensation_5.zip">Download code</a></div>
+
+<hr>
+<a name="language_termination_and_compensation_freeze"/>
+<h2>The freeze operator</h2>
+&gt; <a href="#language_top">Go on top</a><br><br>
+Handlers often need to use and manipulate variable data and ometimes a handler needs to refer to the status 
+of a variable at the moment of its installation. Such a requirement cannot be achieved by normally referring to 
+the variables used within the behaviour because they could change during the execution of the code.
+In the following example we show a simple fault handler which uses variable <i>i</i> inside.
+Depending on the instant when the fault is raised the result of the <i>println</i> is different.
+<div id="example" src="example_termination_and_compensation_10"/>
+<br>
+<div id="download">&gt; <a href="./content/code/code_termination_and_compensation_6.zip">Download code</a></div>
+In order to exploit the value of a variable in the istant of th ehandler installation, Jolie provides an operator for "freezing" 
+a variable state within an installed handler. The freeze operator is <b>^</b> and can be applied to a variable by prefixing, 
+as the following syntax shows:
+<div id="syntax" src="syntax_termination_and_compensation_freeze"/>
+The freeze operator <b>^</b> replaces the variable it prefixes with a constant evaluated at handler installation time.
+Let us consider the following example:
+<div id="example" src="example_termination_and_compensation_11"/>
+<div id="download">&gt; <a href="./content/code/code_termination_and_compensation_7.zip">Download code</a></div>
+An install primitive is contained within a loop and, at each iteration, it updates the scope recovery handler. 
+Every time the scope recovery handler is updated the current value of variable <i>i</i> is freezed within the handler. 
 </div>
