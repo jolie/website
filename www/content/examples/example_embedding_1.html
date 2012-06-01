@@ -1,0 +1,19 @@
+include "console.iol"
+
+interface MyEmbeddedInterface {
+RequestResponse:
+----start
+}
+
+inputPort MyInputPort {
+Location: "local"
+Interfaces: MyEmbeddedInterface
+}
+
+main
+{
+----start( request )( response ) {
+--------println@Console("Received:" + request )();
+--------response = "Hi!"
+----}
+}

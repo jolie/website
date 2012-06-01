@@ -89,15 +89,15 @@ a:hover{
 	border-radius:10px;
 	moz-box-shadow: 10px 10px 15px #444;
 	-webkit-box-shadow: 10px 10px 15px #444;
-	box-shadow: 10px 10px 15px #444;
-	
+	box-shadow: 10px 10px 15px #444;	
 }
 
 #left-column {
 	font-size:12px;
 	padding-top:20px;
 	background-color:#EEEEEE;
-	border: solid 1px #226b68;
+	/*border: solid 1px #226b68;*/
+	border: solid 1px #AAAAAA;
 	border-bottom-left-radius:10px;
 	border-top-left-radius:10px;
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#2b8582', endColorstr='#2eb0ab');

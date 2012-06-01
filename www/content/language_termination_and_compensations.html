@@ -7,7 +7,7 @@
   <li><a href="#language_terminating_child_scopes">Terminating child scopes</a></li>
   <li><a href="#language_dynamic_installation">Dynamic installation of recovery handlers</a></li>
   <li><a href="#language_current_hanldler_placeholder">The current handler placeholder: cH</a></li>
-  <li><a href="#language_termination_and_compensation_compensation">Compensation</a></li>
+  <li><a href="#language_termination_and_compensation_compensation">Compensation: comp()</a></li>
   <li><a href="#language_termination_and_compensation_freeze">The freeze operator</a></li>
   <li><a href="#language_automotive_scenario">Automotive scenario</a></li>
 </ul>
@@ -128,7 +128,7 @@ In the example above, if the fault is raised after the installation of step3, th
 
 <hr>
 <a name="language_termination_and_compensation_compensation"/>
-<h2>Compensation</h2>
+<h2>Compensation: comp()</h2>
 &gt; <a href="#language_top">Go on top</a><br><br>
 Compensation allows for the recovery of a scope which has successfully executed. 
 When a scope finishes with success its own activities, its current recovery handler is promoted to the parent scope in order to be available for compensation.

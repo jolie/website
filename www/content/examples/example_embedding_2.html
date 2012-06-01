@@ -1,0 +1,22 @@
+include "console.iol"
+
+interface MyEmbeddedInterface {
+RequestResponse:
+----start
+}
+
+outputPort MyEmbeddedService {
+Interfaces: MyEmbeddedInterface
+}
+
+
+embedded {
+Jolie:
+----"embedded.ol" in MyEmbeddedService
+}
+
+main
+{
+----start@MyEmbeddedService( "Message from embedder" )( response );
+----println@Console( response )()
+}
