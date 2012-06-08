@@ -51,8 +51,17 @@ possible to embed three different resource types:
   <li>Java (see <a href="#language_javaservices">Javaservices</a>)</li>
   <li>Javascript (see <a href="#language_javaservices">Javaservices</a>)</li>
 </ul>
-The syntax of embedded primtive follows:
-<div id="syntax" src="syntax_embedding_1"/><br>
-************
+The syntax of embedded primitive and an example of its usage follow:
+<div id="syntax" src="syntax_embedding_1"/>
+An example follows:
+<div id="example" src="example_embedding_3"/><br>
+A <i>Resource</i> is a path which specifies where the interpreter can find 
+the service to embed. When embedding a Jolie service, the service path must be the 
+filename of the source file of the Jolie program to execute. 
+The path can be absolute or relative.<br><br>
 
+Embedded services can be joined to an outputPort in order to communicate 
+with them by means of a fast, in-memory communication mechanism. In the example 
+above we joined the embedded service to outputPorts <i>MyEmbeddedService</i>,
+<i>MyEmbeddedService2</i> and <i>MyEmbeddedJavaClass</i>.
 </div>

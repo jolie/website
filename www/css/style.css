@@ -1,7 +1,7 @@
 body {
 	/*background-image: url('../images/bkg.jpg');
 	background-repeat: repeat-x;*/
-	background-color: #DDDDDD;
+	background-color: #FFFFFF;
 }
 
 table {
@@ -47,8 +47,54 @@ a:hover{
 }
 
 #head {
-	
+	background: -moz-linear-gradient(bottom, #2eb0ab, #2b8582  );
+	background: -webkit-gradient(linear, left top, left bottom, from(#2eb0ab), to(#2b8582));
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#2b8582');
+	height:270px;
 }
+
+#footer {
+	background: -moz-linear-gradient(bottom, #2eb0ab, #2b8582  );
+	background: -webkit-gradient(linear, left top, left bottom, from(#2eb0ab), to(#2b8582));
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#2b8582');
+
+}
+
+#logo {
+    padding-top:20px;
+}
+
+#middle {
+    height:auto;
+}
+
+#slogan {
+    padding-top:100px;
+    color: white;
+    font-size: 20px;
+    font-weight:bold;
+}
+
+#slogan_comment {
+    color: black;
+    font-size: 16px;
+}
+
+#menu {
+  margin-top:40px;
+}
+
+#menu a {
+  font-size:14px;
+}
+
+.link_menu {
+  padding:10px;
+  border-top-right-radius:10px;
+  border-top-LEFT-radius:10px;
+  background:white;
+}
+
 
 #head-right {
 	background: -moz-linear-gradient(bottom,  #2b8582,  #2eb0ab);
@@ -75,31 +121,24 @@ a:hover{
 }
 
 
-#slogan {
-	font-size:16px;
-	color:white;
-	font-weight: bold;
-	/* padding-left:0px; */
-}
-
 #wrapper {
 	font-family: 'Quattrocento Sans', sans-serif;
-	border: solid 2px #2b8582;
-	background: #FFFFFF;
-	border-radius:10px;
-	moz-box-shadow: 10px 10px 15px #444;
-	-webkit-box-shadow: 10px 10px 15px #444;
-	box-shadow: 10px 10px 15px #444;	
+	background: white;
+	padding-top:10px;
+}
+
+#middle {
+	height:auto;
 }
 
 #left-column {
+	margin-top:20px;
+	margin-left:-5px;
 	font-size:12px;
 	padding-top:20px;
 	background-color:#EEEEEE;
 	/*border: solid 1px #226b68;*/
 	border: solid 1px #AAAAAA;
-	border-bottom-left-radius:10px;
-	border-top-left-radius:10px;
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#2b8582', endColorstr='#2eb0ab');
 	height: 800;
 	margin-bottom:20px;
@@ -156,9 +195,7 @@ a:hover{
 	color:#000000;
 }
 
-#menu a {
-  font-size:16px;
-}
+
 
 .HeaderTitle {
 	font-size: 14pt;
