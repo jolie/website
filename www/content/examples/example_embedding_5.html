@@ -1,0 +1,37 @@
+include "console.iol"
+
+type StartRequest: string {
+----.location: any
+}
+
+type FinishRequest: string
+
+interface MyEmbeddedInterface {
+OneWay:
+----start( StartRequest )
+}
+
+interface EmbedderInterface {
+OneWay:
+----finish( FinishRequest )
+}
+
+outputPort Embedder {
+Location: "local"
+Protocol: sodep
+Interfaces: EmbedderInterface
+}
+
+inputPort MyInputPort {
+Location: "local"
+Interfaces: MyEmbeddedInterface
+}
+
+main
+{
+----start( request );
+----Embedder.location = request.location;
+----println@Console("Received:" + request )();
+----response = "Hi!";
+----finish@Embedder( response )
+}

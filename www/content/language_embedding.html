@@ -4,6 +4,7 @@
 <ul>
 <li><a href="#language_embedding_jolie_service">Embedding a Jolie service</a></li>
 <li><a href="#language_embedding_embedded">embedded{}</a></li>
+<li><a href="#language_embedding_dual">A dual interaction between an embedded service and its embedder</a></li>
 </ul>
 <br><br>
 Embedding is a powerful mechanism that allows you to run multiple services in the same Java Virtual Machine (JVM). 
@@ -64,4 +65,23 @@ Embedded services can be joined to an outputPort in order to communicate
 with them by means of a fast, in-memory communication mechanism. In the example 
 above we joined the embedded service to outputPorts <i>MyEmbeddedService</i>,
 <i>MyEmbeddedService2</i> and <i>MyEmbeddedJavaClass</i>.
+
+<a name="language_embedding_dual"/>
+<h2>A dual interaction between an embedded service and its embedder</h2>
+&gt; <a href="#language_top">Go on top</a><br><br>
+
+In this example we discuss the scenario introduced in Figure 1 and figure 2 where the embedded service receives an invocation on a OneWay 
+operation <i>start</i> and, at the end, it sends back an answer by invoking the OneWay operation <i>finish</i> of the embedder.
+The code of the embedder service follows:
+<div id="example" src="example_embedding_4"/><br>
+The code of the embedded service follows:
+<div id="example" src="example_embedding_5"/><br>
+<div id="download">&gt; <a href="./content/code/code_embedding_2.zip">Download code</a></div>
+It is worth noting that the embedded service is not aware of the location of the input port of the embedder,
+thus it needs to receive it into the request message of the operation <i>start</i> and 
+<a href="#language_dynamic_binding">dynamically binding</a> it to the Embedder's outputport.
+Moreover, the embedder needs to send its own local location which it gets from the <a href="#language_runtime">runtime</a> service
+by means of the operation <i>getLocalLocation</i>.
+
+**************
 </div>
