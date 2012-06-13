@@ -28,7 +28,8 @@ Interfaces: HTTPInterface
 
 init
 {
-	documentRootDirectory = args[0]
+//	documentRootDirectory = args[0]
+	documentRootDirectory = WWWDirectory
 }
 
 main
