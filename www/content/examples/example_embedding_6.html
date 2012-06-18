@@ -1,0 +1,48 @@
+//embedded.ol
+include "console.iol"
+
+type StartRequest: string {
+--.location: any
+}
+
+interface ParentInterface {
+OneWay:
+--finish( string )
+}
+
+interface MyEmbeddedInterface {
+OneWay:
+--start( StartRequest )
+}
+
+interface ExternalInterface {
+RequestResponse:
+--start2( string )( void )
+}
+
+outputPort Parent {
+--Interfaces: ParentInterface
+}
+
+inputPort Me {
+--Location: "local"
+--Interfaces: MyEmbeddedInterface
+}
+
+inputPort External {
+--Protocol: sodep
+--Location: "socket://localhost:2000"
+--Interfaces: ExternalInterface 
+}
+
+main
+{
+----start( request );
+----Parent.location = request.location;
+----println@Console("Here is the message received from the parent:" + request)();
+----println@Console("Waiting for external invocation...")();
+----start2(request_ext)(){
+------println@Console("Message received from the external invocation:" + request_ext)()
+----};
+----finish@Parent( request_ext )
+}

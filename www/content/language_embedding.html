@@ -5,6 +5,7 @@
 <li><a href="#language_embedding_jolie_service">Embedding a Jolie service</a></li>
 <li><a href="#language_embedding_embedded">embedded{}</a></li>
 <li><a href="#language_embedding_dual">A dual interaction between an embedded service and its embedder</a></li>
+<li><a href="#language_embedding_external_input_ports">Embedding services with external inputPorts</a></li>
 </ul>
 <br><br>
 Embedding is a powerful mechanism that allows you to run multiple services in the same Java Virtual Machine (JVM). 
@@ -83,5 +84,22 @@ thus it needs to receive it into the request message of the operation <i>start</
 Moreover, the embedder needs to send its own local location which it gets from the <a href="#language_runtime">runtime</a> service
 by means of the operation <i>getLocalLocation</i>.
 
-**************
+<a name="language_embedding_external_input_ports"/>
+<h2>Embedding services with external inputPorts</h2>
+&gt; <a href="#language_top">Go on top</a><br><br>
+So far we have embedded services that cannot be reached by external service invocations. 
+In Jolie it is also possible to embed services with their own input ports, which will be reachable by external 
+applications as usual as depicted in teh following figure.
+<div id="figure">
+  <img src="./images/embedding_external.jpeg">
+  <div id="caption"><b>Figure Embedding.3</b>: In this example the embedded service exhibits an external port
+for receiving messages from other clients that are not the parent one.
+</div>
+</div>
+In the following we report the code of an embedded service that declares two input ports: 
+a local port and an external port (deployed at "socket://localhost:2000"). The former can be used only by the embedder whereas 
+the latter can be invoked by any service.
+<div id="example" src="example_embedding_6"/><br>
+
+<div id="download">&gt; <a href="./content/code/code_embedding_3.zip">Download code</a></div>
 </div>
