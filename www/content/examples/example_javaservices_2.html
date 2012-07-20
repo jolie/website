@@ -1,0 +1,20 @@
+include "console.iol"
+
+interface JavaServiceInterface {
+OneWay:
+----write
+}
+
+outputPort MyFirstJavaServicePort {
+--Interfaces: JavaServiceInterface
+}
+
+embedded {
+--Java:
+----"jolie.example.FirstJavaService" in MyFirstJavaServicePort
+}
+
+main
+{	
+----write@MyFirstJavaServicePort( "Hello, World!" )
+}

@@ -1,0 +1,32 @@
+include "console.iol"
+
+interface JavaServiceInterface {
+OneWay:
+----write
+}
+
+interface EmbedderInterface {
+OneWay:
+----writeBack
+}
+
+outputPort MySecondJavaServicePort {
+Interfaces: JavaServiceInterface
+}
+
+embedded {
+----Java:
+------"jolie.example.SecondJavaService" in MySecondJavaServicePort
+}
+
+inputPort Embedder {
+Location: "local"
+Interfaces: EmbedderInterface
+}
+
+main
+{	
+----write@MySecondJavaServicePort( "Hello, World!" );
+----writeBack( response );
+----println@Console( response )()
+}
