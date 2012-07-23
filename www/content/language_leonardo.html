@@ -1,6 +1,56 @@
 <div class="grid_15 prefix_1" id="language-content">
 <a name="language_top"/>
 <h1>Leonardo</h1>
+<ul>
+<li><a href="#language_leonardo_download">Get Leonardo</a></li>
+<li><a href="#language_leonardo_static">Launching Leonardo and serving static content</a></li>
+<li><a href="#language_leonardo_config">Configuration</a></li>
+<li><a href="#language_leonardo_forms">Dynamic HTML content</a></li>
+<li><a href="#language_leonardo_jquery">Leonardo and JQuery</a></li>
+<li><a href="#language_leonardo_gwt">Leonardo and the Google Web Toolkit (GWT)</a></li>
+</ul>
+<br/><br/>
+
+Leonardo is a Web Server developed in pure Jolie.
+It is very flexible, and can scale from serving simple static HTML content to supporting powerful dynamic web applications.
+Leonardo is production ready: it is the base of the default web server solutions at <a href="http://www.italianasoftware.com/">italianaSoftware</a>.
+
+<a name="language_leonardo_download"/>
+<h2>Get Leonardo</h2>
+&gt; <a href="#language_top">Go on top</a><br/><br/>
+You can get the latest released version of Leonardo from its Sourceforge page: <a href="http://sourceforge.net/projects/leonardo/">http://sourceforge.net/projects/leonardo/</a>
+Simply download the zip file and unpack it. This will create a new directory called <code>leonardo</code>, containing a default installation of Leonardo.
+
+<hr/>
+
+<a name="language_leonardo_static"/>
+<h2>Launching Leonardo and serving static content</h2>
+&gt; <a href="#language_top">Go on top</a><br/><br/>
+You can launch Leonardo by executing the file <code>leonardo.ol</code> from the <code>leonardo</code> directory created by unpacking its distribution:
+<div id="example" src="example_launch_leonardo"/>
+By default Leonardo will look for static content to serve in the <code>www</code> subdirectory, searching for the latter
+in the current path from which you execute Leonardo.
+To try it out, create a <code>www</code> subdirectory in the directory where Leonardo is installed (<code>leonardo</code>, if you have not changed it).
+Inside, create a file called <code>index.html</code> with the following content:
+<div id="example" src="example_leonardo_index"/>
+Point your browser to <a href="http://localhost:8000/index.html">http://localhost:8000/index.html</a> and you should be able to see the web page you have just created.
+You can also put other files and subdirectories inside the <code>www</code> directory: Leonardo will make them available to web browsers as expected.
+<hr/>
+
+<a name="language_leonardo_config"/>
+<h2>Configuration</h2>
+&gt; <a href="#language_top">Go on top</a><br/><br/>
+Leonardo comes with a <code>config.iol</code> file, where you will find some constants for basic configuration.
+The content of <code>config.iol</code> looks like the following, which should be self-explanatory:
+<div id="example" src="example_leonardo_config"/>
+
+<hr/>
+
+<a name="language_leonardo_forms"/>
+<h2>Dynamic HTML content</h2>
+&gt; <a href="#language_top">Go on top</a><br/><br/>
+Leonardo supports the programming of dynamic web applications through the Jolie HTTP protocol.
+The configuration 
 
 
 </div>

@@ -49,10 +49,11 @@ $(document).ready( function() {
 			      syntax_content = replaceAll( syntax_content, "else","<b>else</b>");
 			      syntax_content = replaceAll( syntax_content, "while","<b>while</b>");
 			      syntax_content = replaceAll( syntax_content, "=>","<b>=></b>");
-			      syntax_content = replaceAll( syntax_content, "\n","<br>");
+			      syntax_content = replaceAll( syntax_content, "\n","<br/>");
 			      syntax_content = replaceAll( syntax_content, "foreach","<b>foreach</b>");
 			      syntax_content = replaceAll( syntax_content, "with","<b>with</b>");
-			      syntax_content = replaceAll( syntax_content, "--","&nbsp;&nbsp;");
+				  syntax_content = replaceAll( syntax_content, "true","<b>true</b>");
+				  syntax_content = replaceAll( syntax_content, "false","<b>false</b>");
 			      /*var syntax_content = replaceAll( data,"DeploymentInstruction", "<b>DeploymentInstruction</b>");
 			      syntax_content = replaceAll( syntax_content, "InputPortInstruction","<b>InputPortInstruction</b>");
 			      syntax_content = replaceAll( syntax_content, "--","&nbsp;&nbsp;");
@@ -90,9 +91,9 @@ $(document).ready( function() {
 			    syntax_content = replaceAll( syntax_content, "--","&nbsp;&nbsp;");
 			    syntax_content = replaceAll( syntax_content, "type","<b>type</b>");
 			    syntax_content = replaceAll( syntax_content, "outputPort","<b>outputPort</b>");
-			    syntax_content = replaceAll( syntax_content, "Location","<b>&nbsp;&nbsp;Location</b>");
-			    syntax_content = replaceAll( syntax_content, "Protocol","<b>&nbsp;&nbsp;Protocol</b>");
-			    syntax_content = replaceAll( syntax_content, "Interfaces","<b>&nbsp;&nbsp;Interfaces</b>");
+			    syntax_content = replaceAll( syntax_content, "Location:","<b>&nbsp;&nbsp;Location</b>:");
+			    syntax_content = replaceAll( syntax_content, "Protocol:","<b>&nbsp;&nbsp;Protocol</b>:");
+			    syntax_content = replaceAll( syntax_content, "Interfaces:","<b>&nbsp;&nbsp;Interfaces</b>:");
 			    syntax_content = replaceAll( syntax_content, "interface","<b>interface</b>");
 			    syntax_content = replaceAll( syntax_content, "nullProcess","<b>nullProcess</b>");
 			    syntax_content = replaceAll( syntax_content, "constants","<b>constants</b>");
@@ -117,8 +118,17 @@ $(document).ready( function() {
 			    syntax_content = replaceAll( syntax_content, "else","<b>else</b>");
 			    syntax_content = replaceAll( syntax_content, "cset","<b>cset</b>");
 			    syntax_content = replaceAll( syntax_content, "=>","<b>=></b>");
-			    syntax_content = replaceAll( syntax_content, "\n","<br>");
-			    syntax_content = replaceAll( syntax_content, "--","&nbsp;&nbsp;");
+			    syntax_content = replaceAll( syntax_content, "\n","<br/>");
+				syntax_content = replaceAll( syntax_content, "true","<b>true</b>");
+				syntax_content = replaceAll( syntax_content, "false","<b>false</b>");
+				
+				/*
+				 * Highlight comments with gray. This needs to be refined,
+				 * since it does not allow for " to appear inside comments.
+				 * " is disallowed because we may be inside a string containing
+				 * the characters //, and we do not want to color those with gray.
+				 */
+				syntax_content = syntax_content.replace( /(\/\/[^"]*?)(?=<br\/>)/g, "<span style=\"color:gray\">$1</span>" );
 			    example_element.html( syntax_content );
 			  });
 			});
