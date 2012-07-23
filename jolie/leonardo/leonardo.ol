@@ -41,6 +41,11 @@ main
 			s = request.operation;
 			s.regex = "\\?";
 			split@StringUtils( s )( s );
+			
+			// Default page: index.html 
+			if ( s.result[0] == "" ) {
+				s.result[0] = "index.html"
+			};
 			file.filename = documentRootDirectory + s.result[0];
 
 			getMimeType@File( file.filename )( mime );
