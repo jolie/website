@@ -1,5 +1,55 @@
-function replaceAll(txt, replace, with_this) {
-  return txt.replace(new RegExp(replace, 'g'),with_this);
+function replaceAll( txt, replace, with_this ) {
+	return txt.replace( new RegExp( replace, 'g' ), with_this );
+}
+
+function parseExample( data )
+{
+	var syntax_content = replaceAll( data, "<", "&lt;");
+	syntax_content = replaceAll( syntax_content, ">", "&gt;");
+	syntax_content = replaceAll( syntax_content, "inputPort", "<b>inputPort</b>");
+	syntax_content = replaceAll( syntax_content, "--","&nbsp;&nbsp;");
+	syntax_content = replaceAll( syntax_content, "type","<b>type</b>");
+	syntax_content = replaceAll( syntax_content, "outputPort","<b>outputPort</b>");
+	syntax_content = replaceAll( syntax_content, "Location:","<b>&nbsp;&nbsp;Location</b>:");
+	syntax_content = replaceAll( syntax_content, "Protocol:","<b>&nbsp;&nbsp;Protocol</b>:");
+	syntax_content = replaceAll( syntax_content, "Interfaces:","<b>&nbsp;&nbsp;Interfaces</b>:");
+	syntax_content = replaceAll( syntax_content, "interface","<b>interface</b>");
+	syntax_content = replaceAll( syntax_content, "nullProcess","<b>nullProcess</b>");
+	syntax_content = replaceAll( syntax_content, "constants","<b>constants</b>");
+	syntax_content = replaceAll( syntax_content, "Redirects","<b>&nbsp;&nbsp;Redirects</b>");
+	syntax_content = replaceAll( syntax_content, "Aggregates","<b>&nbsp;&nbsp;Aggregates</b>");
+	syntax_content = replaceAll( syntax_content, "RequestResponse","<b>&nbsp;&nbsp;RequestResponse</b>");
+	syntax_content = replaceAll( syntax_content, "OneWay","<b>&nbsp;&nbsp;OneWay</b>");
+	syntax_content = replaceAll( syntax_content, "execution","<b>execution</b>");
+	syntax_content = replaceAll( syntax_content, "foreach","<b>foreach</b>");
+	syntax_content = replaceAll( syntax_content, "include","<b>include</b>");
+	syntax_content = replaceAll( syntax_content, "main","<b>main</b>");
+	syntax_content = replaceAll( syntax_content, "with","<b>with</b>");
+	syntax_content = replaceAll( syntax_content, "while","<b>while</b>");
+	syntax_content = replaceAll( syntax_content, "embedded","<b>embedded</b>");
+	syntax_content = replaceAll( syntax_content, "install","<b>install</b>");
+	syntax_content = replaceAll( syntax_content, "init","<b>init</b>");
+	syntax_content = replaceAll( syntax_content, "throw","<b>throw</b>");
+	syntax_content = replaceAll( syntax_content, "scope","<b>scope</b>");
+	syntax_content = replaceAll( syntax_content, "throws","<b>throws</b>");
+	syntax_content = replaceAll( syntax_content, "if ","<b>if </b>");
+	syntax_content = replaceAll( syntax_content, "for ","<b>for </b>");
+	syntax_content = replaceAll( syntax_content, "else","<b>else</b>");
+	syntax_content = replaceAll( syntax_content, "cset","<b>cset</b>");
+	syntax_content = replaceAll( syntax_content, "=>","<b>=></b>");
+	syntax_content = replaceAll( syntax_content, "\n","<br/>");
+	syntax_content = replaceAll( syntax_content, "true","<b>true</b>");
+	syntax_content = replaceAll( syntax_content, "false","<b>false</b>");
+	
+	/*
+	 * Highlight comments with gray. This needs to be refined,
+	 * since it does not allow for " to appear inside comments.
+	 * " is disallowed because we may be inside a string containing
+	 * the characters //, and we do not want to color those with gray.
+	 */
+	syntax_content = syntax_content.replace( /(\/\/[^"]*?)(?=<br\/>)/g, "<span style=\"color:gray\">$1</span>" );
+	
+	return syntax_content;
 }
 
 $(document).ready( function() {
@@ -83,54 +133,15 @@ $(document).ready( function() {
 			  });
 			});
 			$("div#example").each( function() {
-			  var example_element = $(this);
-			  $.get( "content/examples/" + $(this).attr("src") + ".html", function(data) {
-			    var syntax_content = replaceAll( data, "<", "&lt;");
-			    syntax_content = replaceAll( syntax_content, ">", "&gt;");
-			    syntax_content = replaceAll( syntax_content, "inputPort", "<b>inputPort</b>");
-			    syntax_content = replaceAll( syntax_content, "--","&nbsp;&nbsp;");
-			    syntax_content = replaceAll( syntax_content, "type","<b>type</b>");
-			    syntax_content = replaceAll( syntax_content, "outputPort","<b>outputPort</b>");
-			    syntax_content = replaceAll( syntax_content, "Location:","<b>&nbsp;&nbsp;Location</b>:");
-			    syntax_content = replaceAll( syntax_content, "Protocol:","<b>&nbsp;&nbsp;Protocol</b>:");
-			    syntax_content = replaceAll( syntax_content, "Interfaces:","<b>&nbsp;&nbsp;Interfaces</b>:");
-			    syntax_content = replaceAll( syntax_content, "interface","<b>interface</b>");
-			    syntax_content = replaceAll( syntax_content, "nullProcess","<b>nullProcess</b>");
-			    syntax_content = replaceAll( syntax_content, "constants","<b>constants</b>");
-			    syntax_content = replaceAll( syntax_content, "Redirects","<b>&nbsp;&nbsp;Redirects</b>");
-			    syntax_content = replaceAll( syntax_content, "Aggregates","<b>&nbsp;&nbsp;Aggregates</b>");
-			    syntax_content = replaceAll( syntax_content, "RequestResponse","<b>&nbsp;&nbsp;RequestResponse</b>");
-			    syntax_content = replaceAll( syntax_content, "OneWay","<b>&nbsp;&nbsp;OneWay</b>");
-			    syntax_content = replaceAll( syntax_content, "execution","<b>execution</b>");
-			    syntax_content = replaceAll( syntax_content, "foreach","<b>foreach</b>");
-			    syntax_content = replaceAll( syntax_content, "include","<b>include</b>");
-			    syntax_content = replaceAll( syntax_content, "main","<b>main</b>");
-			    syntax_content = replaceAll( syntax_content, "with","<b>with</b>");
-			    syntax_content = replaceAll( syntax_content, "while","<b>while</b>");
-			    syntax_content = replaceAll( syntax_content, "embedded","<b>embedded</b>");
-			    syntax_content = replaceAll( syntax_content, "install","<b>install</b>");
-			    syntax_content = replaceAll( syntax_content, "init","<b>init</b>");
-			    syntax_content = replaceAll( syntax_content, "throw","<b>throw</b>");
-			    syntax_content = replaceAll( syntax_content, "scope","<b>scope</b>");
-			    syntax_content = replaceAll( syntax_content, "throws","<b>throws</b>");
-			    syntax_content = replaceAll( syntax_content, "if ","<b>if </b>");
-			    syntax_content = replaceAll( syntax_content, "for ","<b>for </b>");
-			    syntax_content = replaceAll( syntax_content, "else","<b>else</b>");
-			    syntax_content = replaceAll( syntax_content, "cset","<b>cset</b>");
-			    syntax_content = replaceAll( syntax_content, "=>","<b>=></b>");
-			    syntax_content = replaceAll( syntax_content, "\n","<br/>");
-				syntax_content = replaceAll( syntax_content, "true","<b>true</b>");
-				syntax_content = replaceAll( syntax_content, "false","<b>false</b>");
-				
-				/*
-				 * Highlight comments with gray. This needs to be refined,
-				 * since it does not allow for " to appear inside comments.
-				 * " is disallowed because we may be inside a string containing
-				 * the characters //, and we do not want to color those with gray.
-				 */
-				syntax_content = syntax_content.replace( /(\/\/[^"]*?)(?=<br\/>)/g, "<span style=\"color:gray\">$1</span>" );
-			    example_element.html( syntax_content );
-			  });
+				var example_element = $(this);
+				var src = example_element.attr("src");
+				if ( src ) {
+					$.get( "content/examples/" + src + ".html", function(data) {
+						example_element.html( parseExample( data ) );
+					});
+				} else {
+					example_element.html( parseExample( example_element.html() ) );
+				}
 			});
 		});
 		var languagePageName = pageName.split( "_" )[0];

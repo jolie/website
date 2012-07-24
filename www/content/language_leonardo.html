@@ -1,13 +1,14 @@
 <div class="grid_15 prefix_1" id="language-content">
+
 <a name="language_top"/>
 <h1>Leonardo</h1>
 <ul>
 <li><a href="#language_leonardo_download">Get Leonardo</a></li>
 <li><a href="#language_leonardo_static">Launching Leonardo and serving static content</a></li>
 <li><a href="#language_leonardo_config">Configuration</a></li>
-<li><a href="#language_leonardo_forms">Dynamic HTML content</a></li>
-<li><a href="#language_leonardo_jquery">Leonardo and JQuery</a></li>
-<li><a href="#language_leonardo_gwt">Leonardo and the Google Web Toolkit (GWT)</a></li>
+<li><a href="#language_leonardo_forms">Dynamic content (HTML, JQuery, Google Web Toolkit)</a></li>
+<!-- <li><a href="#language_leonardo_jquery">Leonardo and JQuery</a></li> -->
+<!-- <li><a href="#language_leonardo_gwt">Leonardo and the Google Web Toolkit (GWT)</a></li> -->
 </ul>
 <br/><br/>
 
@@ -18,7 +19,7 @@ Leonardo is production ready: it is the base of the default web server solutions
 <a name="language_leonardo_download"/>
 <h2>Get Leonardo</h2>
 &gt; <a href="#language_top">Go on top</a><br/><br/>
-You can get the latest released version of Leonardo from its Sourceforge page: <a href="http://sourceforge.net/projects/leonardo/">http://sourceforge.net/projects/leonardo/</a>
+You can get the latest released version of Leonardo from its Sourceforge page: <a href="http://sourceforge.net/projects/leonardo/">http://sourceforge.net/projects/leonardo/</a>.
 Simply download the zip file and unpack it. This will create a new directory called <code>leonardo</code>, containing a default installation of Leonardo.
 
 <hr/>
@@ -43,45 +44,115 @@ You can also put other files and subdirectories inside the <code>www</code> dire
 Leonardo comes with a <code>config.iol</code> file, where you will find some constants for basic configuration.
 The content of <code>config.iol</code> looks like the following, which should be self-explanatory:
 <div id="example" src="example_leonardo_config"/>
+Note that you can override the <code>RootContentDirectory</code> setting by using the first
+command-line parameter, e.g.:
+<div id="example">jolie leonardo.ol path/to/my/content/directory</div>
 
 <hr/>
 
 <a name="language_leonardo_forms"/>
-<h2>Dynamic HTML content</h2>
+<h2>Dynamic content (HTML, JQuery, Google Web Toolkit)</h2>
 &gt; <a href="#language_top">Go on top</a><br/><br/>
 Leonardo supports the programming of dynamic web applications through the Jolie HTTP protocol.
 There are many ways that you can use to serve dynamic content. Hereby, we show how to do it through
 HTML querystrings and HTML forms. In the next sections, you can also find how to interact
 with web development libraries such as JQuery and the Google Web Toolkit (GWT).
-
-<h3>Setup Leonardo</h3>
+<br/>
 In the following examples we are going to see how to interface a web application with
 some Jolie code through Leonardo.
 Specifically, we are going to expose an operation called <code>length</code>, which will accept
-a list of strings, compute their complexive 
+a list of strings, compute their total length, and finally return the latter.
+We shall do this editing the code inside Leonardo directly. Note that, in real-world projects,
+you would probably want to separate the code of Leonardo from that of your specific application: you can easily
+obtain this by creating your own separate service and aggregate it from Leonardo's HTTP
+input port.
+<br/>
 
-We are going to do the following:
-<ul>
-<li>create a service, <code>joiner.ol</code> that exposes an operation called <code>join</code></li>
-<li>embed <code>joiner.ol</code> inside Leonardo, so that it will be run whenever 
-</ul>
+<h3>Creating some Jolie code to be called from the web interface</h3>
+We start by creating the Jolie code that will serve the requests from the web interface,
+and then show how this code can be invoked by web applications developed with different technologies: HTTP querystrings, HTML forms,
+JQuery, and the Google Web Toolkit (GWT).
+<br/>
+Open <code>leonardo.ol</code> and add the following interface:
+<div id="example" src="example_leonardo_length_interface"/>
+Now, find the definition of the main HTTP input port, <code>HTTPInput</code>, and add <code>ExampleInterface</code> to the published
+interfaces:
+<div id="example" src="example_leonardo_length_inputport"/>
+Finally, we have to implement the operation <code>length</code>.
+Simply add the following code to the input choice inside the <code>main</code> procedure in Leonardo:
+<div id="example" src="example_leonardo_length_body"/>
+The code above simply iterates over all the received items and sums up their lengths.
+You can download the modified version of <code>leonardo.ol</code> here:
+<div id="download">&gt; <a href="./content/code/leonardo/leonardo_length.ol">Download code</a></div>
+which you can run by executing
+<div id="example">jolie leonardo_length.ol</div>
 
 <h3>HTML Querystrings</h3>
-
-
+Now that the service-side part is in place, we can start experimenting with calling our code.
+First, we can use querystrings. For instance, try browsing the following address:
+<div id="link"><a href="http://localhost:8000/length?item=Hello&item=World">http://localhost:8000/length?item=Hello&amp;item=World</a></div>
+and you should see an XML response like the following:
+<div id="example">&lt;lengthResponse&gt;10&lt;/lengthResponse&gt;</div>
+Note that responding with XML structures is just the default behaviour.
+You can reply with fully-fledged HTML code by putting it inside
+the code for operation <code>length</code> and setting the parameter
+<code>.format</code> inside input port <code>HTTPInput</code> as <code>"html"</code>.
 
 <h3>HTML Forms</h3>
+Another way of invoking operations is through HTML forms.
+For instance, try creating a file named <code>form.html</code>
+inside the <code>www</code> subdirectory (create the latter if it does not
+exist) with the following code:
+<div id="example" src="example_leonardo_length_form"/>
+Now, navigate to:
+<div id="link"><a href="http://localhost:8000/form.html">http://localhost:8000/form.html</a></div>
+and you will be presented with a form containing a text input field and a file input field.
+Write some text inside the former and choose a file to upload with the latter.
+Then, press the submit button. The Jolie service will reply with the sum of the lengths of the text and the content of the file.
+Observe that we did not need to change anything in the Jolie code: it just works!
 
+<h3>JQuery</h3>
+Of course, in general we would like to make more interesting and dynamic interfaces than the ones
+presented so far.
+In this regard, Jolie fully supports asynchronous calls through AJAX (XmlHttpRequest).
+This makes many web application development libraries transparently supported.
+<!-- Here, we see how to use JQuery. -->
+<br/>
+We will not show the boilerplate code for building the HTML interface here.
+You can download a full version of the example, containing both the Leonardo code and the JQuery interface here:
+<div id="download">&gt; <a href="./content/code/leonardo/leonardo_jquery.zip">Download code</a></div>
+You can access the example by executing <code>jolie leonardo.ol</code> as usual and navigating to:
+<div id="link"><a href="http://localhost:8000/">http://localhost:8000/</a></div>
 
-<a name="language_leonardo_jquery"/>
-<h2>Leonardo and JQuery</h2>
-&gt; <a href="#language_top">Go on top</a><br/><br/>
+Inside the unpacked source code directory,
+you will find an <code>index.html</code> file with a form containing three text fields, called
+<code>text1</code>, <code>text2</code>, and <code>text3</code>.
+When the submit button of the form is pressed, we intercept the event with the following Javascript code, which uses
+the <code>jolie-jquery.js</code> library that you can find inside the <code>lib</code> subdirectory:
+<div id="example">$(document).ready( function() {
+--	$("#lengthButton").click( function() {
+----		Jolie.call(
+------			'length',
+------			{ item: [
+-------- $("#text1").val(),
+-------- $("#text2").val(),
+-------- $("#text3").val()
+------ ] },
+------			function( response ) {
+--------				$("#result").html( response.$ );
+------			}
+----		);
+--	})
+});
+</div>
 
-
-
-<a name="language_leonardo_gwt"/>
-<h2>Leonardo and the Google Web Toolkit (GWT)</h2>
-&gt; <a href="#language_top">Go on top</a><br/><br/>
+<h3>Google Web Toolkit (GWT)</h3>
+Jolie supports the Google Web Toolkit by means of the <code>jolie-gwt.jar</code> library, which
+you can find inside the <code>lib</code> subdirectory of your Jolie installation.
+Inside the library, there is a standard GWT module called <code>JolieGWT</code>, which you need to import in your own GWT module.
+The module comes with support classes for invoking operations published by the Leonardo service that is serving the GWT application.
+In our case, we can easily call the <code>length</code> operation with the following code:
+<div id="example" src="example_leonardo_length_gwt"/>
 
 
 </div>

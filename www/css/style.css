@@ -372,6 +372,7 @@ div#philosophy-content h1 {
 div#language-content {
   font-size:16px;
   padding-bottom:20px;
+  text-align:justify;
 }
 
 div#language-content a {
@@ -441,6 +442,16 @@ div#caption {
 }
 
 div#example {
+  padding:20px;
+  font-family: Courier New;
+  font-size:14px;
+  border: solid 1px #AAAAAA;
+  border-radius: 10px;
+  background-color: #EEEEEE;
+  margin: 10px;
+}
+
+div#link {
   padding:20px;
   font-family: Courier New;
   font-size:14px;
