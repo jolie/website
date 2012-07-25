@@ -23,6 +23,22 @@ $(document).ready( function() {
 
 var NAV_TOKEN = "__page_";
 
+function applyTransformations()
+{
+	initLinks();
+	initDownloads();
+}
+
+function initDownloads()
+{
+	$("div#download a").each( function() {
+		var a = $(this);
+		a.html(
+			"<img src=\"images/download.png\" height=\"50\" style=\"margin-right:10px\"/>Download"
+		);
+	});
+}
+
 function initLinks()
 {
 	var navClickFunction = function() {
@@ -199,7 +215,7 @@ $(document).ready( function() {
 					el.html( content );
 				}
 			});
-			initLinks();
+			applyTransformations();
 			window.scrollTo( 0, 0 );
 		});
 	},

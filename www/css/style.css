@@ -148,8 +148,15 @@ a:hover{
   padding-left:8px;
 }
 
-#download {
-  margin-bottom:20px;
+div#download {
+  padding: 5px;
+/*   font-family: Courier New; */
+  font-size:10pt;
+  border: solid 1px #AAAAAA;
+  border-radius: 10px;
+  background-color: rgba(43,140,140,0.5);
+  margin: 10px;
+  width: auto;
 }
 
 #news {
