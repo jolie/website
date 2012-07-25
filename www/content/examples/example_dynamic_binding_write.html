@@ -1,0 +1,21 @@
+include "console.iol"
+
+interface PrinterInterface {
+OneWay: print(string)
+}
+
+outputPort Printer {
+Interfaces: PrinterInterface
+}
+
+main
+{
+-- Printer.location = "socket://www.myprinter.com:80/";
+-- Printer.protocol = "http";
+
+-- // Will print: socket://www.myprinter.com:80/
+-- println@Console( Printer.location )();
+
+-- // Will print: http
+-- println@Console( Printer.protocol )() 
+}
