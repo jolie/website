@@ -4,7 +4,8 @@ $(document).ready( function() {
 	$("#go_on_top").css( "left", left );
 	
 	$("#go_on_top").click( function() {
-		$(window).scrollTo( 0, 0 );
+		scrollToPosition( 0 );
+// 		$(window).scrollTo( 0, 0 );
 	});
 	$(window).scroll( function() {
 		var topSpan = $("#go_on_top");
@@ -20,6 +21,15 @@ $(document).ready( function() {
 	});
 });
 
+function scrollToId( id )
+{
+	scrollToPosition( $("#"+id).offset().top );
+}
+
+function scrollToPosition( top )
+{
+	$("html,body").animate( { scrollTop: top }, "slow" );
+}
 
 var NAV_TOKEN = "__page_";
 
@@ -54,7 +64,8 @@ function initLinks()
 	var innerLinksClick = function() {
 		var jump = $(this).attr( "href" );
 		var new_position = $( "a[name=" + jump.slice( 1 ) + "]" ).offset();
-		window.scrollTo( new_position.left, new_position.top );
+		scrollToPosition( new_position.top );
+// 		window.scrollTo( new_position.left, new_position.top );
 		return false;
 	};
 	$("body").off( "click.href", "a[href^=#]" );
