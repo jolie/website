@@ -5,10 +5,10 @@
   <li><a href="#language_data_structures_creating">Creating data structures</a></li>
   <li><a href="#language_data_structures_navigating">Navigating data structures</a></li>
   <li><a href="#language_data_structures_dynamic">Dynamic look up</a></li>
-  <li><a href="#language_foreach">foreach</a></li>
-  <li><a href="#language_with">with</a></li>
+  <li><a id="navlink_language_foreach">foreach</a></li>
+  <li><a id="navlink_language_with">with</a></li>
   <li><a href="#language_data_structures_deepcopy">deep copy</a></li>
-  <li><a href="#language_undef">undef</a></li>
+  <li><a id="navlink_language_undef">undef</a></li>
   <li><a href="#language_data_structures_aliases">Aliases</a></li>
 </ul>
 
@@ -19,7 +19,6 @@ It is easy to understand them by making comparisons to equivalent XML representa
 <hr>
 <a name="language_data_structures_creating"/>
 <h2>Creating data structures</h2>
-&gt; <a href="#language_top">Go on top</a><br><br>
 Here we create a root node named <i>animals</i> which contains two child nodes: <i>pet</i> and 
 <i>wild</i>. Each one of them is a vector with two elements, equipped with another sub-element (name).
 <div id="example" src="example_data_structures_1"/>
@@ -29,7 +28,6 @@ An equivalent XML representation of animals is:
 <hr>
 <a name="language_data_structures_navigating"/>
 <h2>Navigating data structures</h2>
-&gt; <a href="#language_top">Go on top</a><br><br>
 Data structures are navigated by using the . (dot) operator, just like we did when creating the animals structure.
 Using the dot operator one can create paths to a nested variable. 
 These paths are called variable paths. The following examples are all valid variable paths:
@@ -41,7 +39,6 @@ Thus, e.g., (5) would be automatically translated to myVar[0].b[0].c[0].d[0].
 <hr>
 <a name="language_data_structures_dynamic"/>
 <h2>Dynamic look up</h2>
-&gt; <a href="#language_top">Go on top</a><br><br>
 Nested variables can be identified by means of a string expression, 
 which is evaluated at run time. You can use dynamic look-up by placing said string 
 expression between round parenthesis, as in the following:
@@ -57,7 +54,6 @@ Since the result of the expression evaluation is still "pet", the output is the 
 <hr>
 <a name="language_data_structures_deepcopy"/>
 <h2>deep copy</h2>
-&gt; <a href="#language_top">Go on top</a><br><br>
 The deep copy operator &lt;&lt; copies an entire tree structure into another.
 Example:
 <div id="example" src="example_data_structures_7"/>
@@ -68,7 +64,6 @@ child node <i>sectorA</i>. An XML representation of <i>zoo</i> after executing t
 <hr>
 <a name="language_data_structures_aliases"/>
 <h2>Aliases</h2>
-&gt; <a href="#language_top">Go on top</a><br><br>
 A structure element can be an alias, i.e. it can point to another variable path.
 Aliases are create with the -&gt; operator. In the following we present an example
 where an aliases is created:

@@ -17,7 +17,6 @@ and then embedding it into a Jolie service.
 
 <a name="language_javaservices_first_javaservice"/>
 <h2>The first Javaservice</h2>
-&gt; <a href="#language_top">Go on top</a><br><br>
 Here we describe the procedure for creating a JavaService by exploiting <a href="http://www.netbeans.org" target="netbeans">Netbeans IDE</a>, 
 but you can use the Java developing framework you prefer. 
 
@@ -72,7 +71,6 @@ as shown below:
 
 <a name="language_javaservices_value"/>
 <h2>Manipulating jolie values in Java</h2>
-&gt; <a href="#language_top">Go on top</a><br><br>
 So far, we have sent a very simple message to the JavaService that is a string. But, it could be useful to send
 an entire Jolie value tree. Before showing the way for accomplishing this issue, we have to introduce the
 Java class <i>Value</i>. Such a class allows for the manipulation of Jolie value trees in Java.
@@ -116,7 +114,6 @@ Analogously, it is possible to use the method <i>setValue( ... )</i> for setting
 
 <a name="language_javaservices_calling_embedder"/>
 <h2>Calling an operation of the embedder from the Javaservice</h2>
-&gt; <a href="#language_top">Go on top</a><br><br>
 A JavaService can be also programmed for calling an operation of the embedder by using the method <i>sendMessage</i> of the class 
 <i>JavaService</i>. Such a feature is particularly useful when we want to create a JavaService which has an active role instead 
 of always waiting to be invoked by the mebedder. As an example, we extend the previous JavaService by introducing an invocation of 
@@ -143,8 +140,18 @@ by means of the operation <i>write</i> then waits for a message on the operation
 
 <a name="language_javaservices_annotation"/>
 <h2>Annotations</h2>
-&gt; <a href="#language_top">Go on top</a><br><br>
 Each public method programmed within a JavaService must be considered 
-as an input operation that can be invoked from the embedder. Depending on the return object the method represents a OneWay operation or a RequestResponse one. If the return type is void, the operation is considered a OneWay operation, a RequestResponse operation otherwise.
-You can override this behaviour by using the @RequestResponse annotation, which forces Jolie to consider the annotated method as a RequestResponse operation.
+as an input operation that can be invoked from the embedder. Depending on the return object the method represents a OneWay 
+operation or a RequestResponse one. If the return type is void, the operation is considered a OneWay operation, 
+a RequestResponse operation otherwise.
+You can override this behaviour by using the @RequestResponse annotation, which forces Jolie to consider the 
+annotated method as a RequestResponse operation.
+
+
+<a name="language_javaservices_requestresponse"/>
+<h2>Using RequestResponse operations in JavaServices </h2>
+So far, we have exploited only OneWay operations for making interactions between the JavaService and the embedder. 
+Now, we present how to exploit also RequestResponse operations. In the example below there are both a RequestResponse 
+invocation from the JavaService to the embedder and a RequestResponse invocation from the embedder to the JavaService. 
+The Java code follows:
 </div>
