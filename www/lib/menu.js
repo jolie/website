@@ -148,7 +148,7 @@ $(document).ready( function() {
 			$.get( "content/left_language_bar.html", function(data) {
 				$("#left-bar").html( data );
 			});
-		}		
+		}
 		// $("#nav li a").removeClass( "current" );
 		// $("#navlink_" + pageName).addClass( "current" );
 		$.get( "content/" + pageName + ".html", function(data) {
