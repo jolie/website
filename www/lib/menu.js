@@ -152,6 +152,7 @@ $(document).ready( function() {
 		// $("#nav li a").removeClass( "current" );
 		// $("#navlink_" + pageName).addClass( "current" );
 		$.get( "content/" + pageName + ".html", function(data) {
+			scrollToPosition( 0 );
 			$("#content").html( data );
 			$("div#syntax").each( function() {
 			    var syntax_element = $(this);
