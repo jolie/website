@@ -1,3 +1,26 @@
+$(document).ready( function() {
+	var left = $("#content").offset().left + $("#content").width();
+	$("#go_on_top").css( "bottom", 0 );
+	$("#go_on_top").css( "left", left );
+	
+	$("#go_on_top").click( function() {
+		$(window).scrollTo( 0, 0 );
+	});
+	$(window).scroll( function() {
+		var topSpan = $("#go_on_top");
+		if ( $(window).scrollTop() > 0 ) {
+			if ( !topSpan.is( ":visible" ) ) {
+				$("#go_on_top").fadeIn( 300 );
+			}
+		} else {
+			if ( topSpan.is( ":visible" ) ) {
+				$("#go_on_top").fadeOut( 300 );
+			}
+		}
+	});
+});
+
+
 var NAV_TOKEN = "__page_";
 
 function initLinks()

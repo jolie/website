@@ -413,3 +413,11 @@ div#syntax {
   background-color: #EEDDDD;
 }
 
+span#go_on_top {
+	padding: 0.5em;
+	font-size: 10pt;
+	font-weight: bold;
+	background-color: #EEEEEE;
+	border: solid 1px #AAAAAA;
+	vertical-align: middle;
+}
