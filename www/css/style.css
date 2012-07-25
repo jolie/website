@@ -151,13 +151,14 @@ a:hover{
 div#download {
   padding: 5px;
 /*   font-family: Courier New; */
-  font-size:10pt;
+  font-size:18pt;
   border: solid 1px #AAAAAA;
   border-radius: 10px;
   background-color: rgba(43,140,140,0.5);
   margin: 10px;
   width: auto;
 }
+
 
 #news {
   padding-left:15px;
@@ -353,6 +354,11 @@ div#language-content h3 {
   font-weight: bold;
   color:#000000;
 }
+
+div#download a {
+    text-decoration: none;
+}
+
 
 div#philosophy-content {
   font-size:16px;
