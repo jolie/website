@@ -1,0 +1,177 @@
+<div class="grid_15 prefix_1" id="language-content">
+<a name="language_top"/>
+<h1>wsdl2jolie</h1>
+<ul>
+  <li><a href="#language_usage">Usage</a> </li>
+  <li><a href="#language_generated_document">Generated document</a> </li>
+  <li><a href="#language_not_supported_features">Not supported features</a> </li>
+</ul>
+<br>
+This tool allows for the creation of a Jolie interface starting from a <a href="http://www.w3.org/TR/wsdl">WSDL</a> document.
+wsdl2jolie is released within the distribution of Jolie.
+<hr>
+<a name="language_usage"/>
+<h2>Usage</h2>
+The usage is very simple, the syntax follows:
+<div id="syntax" src="syntax_wsdl2jolie"/>
+where <code>wsdl_ref</code> could be a URL or a file path (in case of local usage).
+As output, the tool will return all the the jolie service declarations needed for the web service invocation
+converted into the Jolie language. As an example let us create the jolie service interface of the
+the USA Weather Forecast Web Service provided by 
+<a href="http://www.webservicex.net">www.webservicex.net</a> whose WSDL document 
+can be accessed <a href="http://www.webservicex.net/WeatherForecast.asmx?wsdl">here</a>.
+<div id="example">wsdl2jolie http://www.webservicex.net/WeatherForecast.asmx?wsdl</div>
+As a result we obtain:
+<div id="example">
+Retrieving document at 'http://www.webservicex.net/WeatherForecast.asmx?wsdl'.
+type NOTATIONType:any
+
+type WeatherDataType:void {
+        .MinTemperatureC?:string
+        .WeatherImage?:string
+        .MaxTemperatureC?:string
+        .MinTemperatureF?:string
+        .MaxTemperatureF?:string
+        .Day?:string
+}
+
+type WeatherForecastsType:void {
+        .AllocationFactor:double
+        .Status?:string
+        .Details?:ArrayOfWeatherDataType
+        .FipsCode?:string
+        .Latitude:double
+        .Longitude:double
+        .PlaceName?:string
+        .StateCode?:string
+}
+
+type ArrayOfWeatherDataType:any {
+        .WeatherData*:WeatherDataType
+}
+
+type WeatherForecasts:void {
+        .AllocationFactor:double
+        .Status?:string
+        .Details?:ArrayOfWeatherDataType
+        .FipsCode?:string
+        .Latitude:double
+        .Longitude:double
+        .PlaceName?:string
+        .StateCode?:string
+}
+
+type GetWeatherByZipCodeResponse:void {
+        .GetWeatherByZipCodeResult:WeatherForecastsType
+}
+
+type GetWeatherByZipCode:void {
+        .ZipCode?:string
+}
+
+type GetWeatherByPlaceName:void {
+        .PlaceName?:string
+}
+
+type GetWeatherByPlaceNameResponse:void {
+        .GetWeatherByPlaceNameResult:WeatherForecastsType
+}
+
+interface WeatherForecastHttpPost {
+RequestResponse:
+        GetWeatherByZipCode(string)(WeatherForecasts),
+        GetWeatherByPlaceName(string)(WeatherForecasts)
+}
+
+interface WeatherForecastHttpGet {
+RequestResponse:
+        GetWeatherByZipCode(string)(WeatherForecasts),
+        GetWeatherByPlaceName(string)(WeatherForecasts)
+}
+
+interface WeatherForecastSoap {
+RequestResponse:
+        GetWeatherByZipCode(GetWeatherByZipCode)(GetWeatherByZipCodeResponse),
+        GetWeatherByPlaceName(GetWeatherByPlaceName)(GetWeatherByPlaceNameResponse)
+}
+
+outputPort WeatherForecastHttpPost {
+Location: "socket://www.webservicex.net:80/WeatherForecast.asmx"
+Protocol: http
+Interfaces: WeatherForecastHttpPost
+}
+
+outputPort WeatherForecastHttpGet {
+Location: "socket://www.webservicex.net:80/WeatherForecast.asmx"
+Protocol: http
+Interfaces: WeatherForecastHttpGet
+}
+
+outputPort WeatherForecastSoap {
+Location: "socket://www.webservicex.net:80/WeatherForecast.asmx"
+Protocol: soap {
+        .wsdl = "http://www.webservicex.net/WeatherForecast.asmx?wsdl";
+        .wsdl.port = "WeatherForecastSoap"
+}
+Interfaces: WeatherForecastSoap
+}
+
+outputPort WeatherForecastSoap12 {
+Location: "socket://localhost:80/"
+Protocol: soap
+Interfaces: WeatherForecastSoap
+}
+</div>
+In order to save the generated file into a <code>.iol</code> file you can simply redirect
+the standard output of the command into a new file as in the following example:
+<div id="example">wsdl2jolie http://www.webservicex.net/WeatherForecast.asmx?wsdl > myWebServiceJolieDocument.iol</div>
+It is worth noting that the first row of the output file must be deleted because it is just an output
+of the tool and it is not parsed by the Jolie interpreter. In the example above the row to be deleted is:
+<div id="example">
+Retrieving document at 'http://www.webservicex.net/WeatherForecast.asmx?wsdl'.
+</div>
+
+<a name="language_generated_document"/>
+<h2>Generated document</h2>
+The generated document will contain:
+<ul>
+  <li>the types contained into (or referred by) the WSDL</li>
+  <li>the Jolie interface which contains all the operation declarations</li>
+  <li>the Jolie outputPort ports needed for the Web Service invocation</li>
+</ul>
+<br>
+<b>Mapping</b>
+<br>
+In the following table we report the mapping between WSDL elements and Jolie elements:
+<table>
+  <tr>
+    <td><b>WSDL</b></td><td><b>Jolie<b></td>
+  <tr>
+  <tr>
+    <td><code>&lt;types&gt;</code></td><td><code>type</code></td>
+  </tr>
+  <tr>
+    <td><code>&lt;messages&gt;</code></td><td><code>type</code></td>
+  </tr>
+  <tr>
+    <td><code>&lt;portType&gt;</code></td><td><code>interface</code></td>
+  </tr>
+  <tr>
+    <td><code>&lt;binding&gt;</code></td><td><code>outputPort:Protocol</code></td>
+  </tr>
+  <tr>
+    <td><code>&lt;service:port&gt;</code></td><td><code>outputPort</code></td>
+  </tr>
+</table>
+
+<a name="language_not_supported_features"/>
+<h2>Not supported features</h2>
+So far not all the WSDL and SOAP features are supported
+and you can find problems when you try to use them. 
+In the following you find a list of them.
+<ul>
+  <li>SOAP 1.2 is not supported</li>
+  <li>XML Schema Extended types are not supported</li>
+  <li>HTTP GET and POST calls are not supported via Web Services</li>
+</ul>
+</div>
