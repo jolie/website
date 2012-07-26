@@ -74,4 +74,91 @@ The result for the city of Rimini (Italy) follows:
 <hr>
 <a name="language_exposing_web_services"/>
 <h2>Exposing Web Services</h2>
+In some cases we need to integrate our Jolie services with other software applications
+and we would like to expose them as Web Services. As an example let us consider the following
+Jolie service which returns the address of a person identified by his name and his surname:
+<div id="example">
+include "console.iol"
+include "string_utils.iol"
+
+execution{ concurrent }
+
+type Name: void {
+--.name: string
+--.surname: string
+}
+
+type FaultType: void {
+--.person: Name
+}
+
+type GetAddressRequest: void {
+--.person: Name
+}
+
+type Address: void {
+--.country: string
+--.city: string
+--.zip_code: string
+--.street: string
+--.number: string
+}
+
+type GetAddressResponse: void {
+--.address: Address
+}
+
+interface MyServiceInterface {
+RequestResponse:
+--getAddress( GetAddressRequest )( GetAddressResponse )
+----throws NameDoesNotExist( FaultType )
+}
+
+inputPort MyServiceSOAPPort {
+Location: "socket://localhost:8001"
+Protocol: soap {
+Interfaces: MyServiceInterface
+}
+
+main {
+--getAddress( request )( response ) {
+----valueToPrettyString@StringUtils( request )( s );
+----println@Console( "Received:" + s )();
+----if ( request.person.name == "Homer" && request.person.surname == "Simpsons" ) {
+------with( response.address ) {
+--------.country = "USA";
+--------.city = "Springfield";
+--------.zip_code = "11111";
+--------.street = "cartoon street";
+--------.number = "0123"
+------}
+-----} else {
+------with( fault.person ) {
+--------.name = request.person.name;
+--------.surname = request.person.surname
+------};
+------throw( NameDoesNotExist, fault )
+----}
+--}
+}
+</div>
+We would like to expose the port MyServiceSOAPPort as a Web Service. In order to do this
+we exploit the tool <a id="navlink_language_jolie2wsdl">jolie2wsdl</a> for generating the
+corresponding WSDL document to be attached to the file. The command follows:
+<div id="example">jolie2wsdl -i /opt/jolie/include/ service.ol MyServiceSOAPPort MyWsdlDocument.wsdl</div>
+where <code>service.ol</code> is the name of the service file, <code>MyServiceSOAPPort</code>
+is the name of the port to be exposed as a Web Service and <code>MyWsdlDocument.wsdl</code>
+is teh name of the file wher ethe wsdl document will be saved. Once generated the wsdl file, it is important
+to attach it within the declaration of the inputPort as it follows:
+<div id="example">
+inputPort MyServiceSOAPPort {
+Location: "socket://localhost:8001"
+Protocol: soap {
+------------.wsdl = "./MyWsdlDocument.wsdl";
+------------.wsdl.port = "MyServiceSOAPPortServicePort"
+----------}
+Interfaces: MyServiceInterface
+</div>
+Now the Jolie Web Service is ready to be executed and invoked.
+<div id="download">&gt; <a href="./content/code/code_web_services_2.zip">Download code</a></div>
 </div>

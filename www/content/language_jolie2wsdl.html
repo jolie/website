@@ -1,0 +1,56 @@
+<div class="grid_15 prefix_1" id="language-content">
+<a name="language_top"/>
+<h1>jolie2wsdl</h1>
+<ul>
+  <li><a href="#language_usage">Usage</a> </li>
+  <li><a href="#language_guidelines">Jolie interface guideline</a> </li>
+</ul>
+<br>
+This tool allows for the creation of a  <a href="http://www.w3.org/TR/wsdl">WSDL</a> document starting from a Jolie interface. 
+
+<hr>
+<a name="language_usage"/>
+<h2>Usage</h2>
+The usage syntax follows:
+<div id="syntax" src="syntax_jolie2wsdl"/>
+where:
+<ul>
+  <li><code>-i include_file_path</code>: must be set if the jolie service include .iol files of the Jolie distrinution 
+(e.g. <code>console.iol</code>). Usually, on Linux, the installation path for the included files is 
+<code>/opt/jolie(include</code></li>
+  <li><code>filename.ol</code>: it is the jolie service file whose inputPort must be transformed in a soap one</li>
+  <li><code>soapInputPortName</code>: it is the name of the soap port to be exposed as a Web Service</li>
+  <li><code>output_file</code>: the file where storing the generated WSDL document (default is <code>MyWsdl.wsdl</code>)</li>
+</ul>
+It is worth noting that the protocol defined into the inputPort to be converted must be set to <code>soap</code>.
+
+<hr>
+<a name="language_guidelines"/>
+<h2>Jolie interface guidelines</h2>
+In order to correctly transform a Jolie interface into a WSDL document
+the following guidelines must be followed when programming the interface:
+<ul>
+  <li>Native types in operation declaration are not permitted. For example, the following declaration is not avoided:
+  <div id="example">
+interface MyInterface {
+RequestResponse:
+----myOp( string )( int )
+}
+  </div></li>
+  <li>All the complex types must have void value in the root. The following declarations are not permitted:
+  <div id="example">
+type Type1: int {
+----.msg: string
+}
+
+type Type2: string {
+----.msg: string
+}
+
+interface MyInterface {
+RequestResponse:
+----myOp( Type1 )( Type2 )
+}
+  </div></li>
+</ul>
+</div>
