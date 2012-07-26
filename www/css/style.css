@@ -408,6 +408,7 @@ div#code {
 
 div#link {
   padding:20px;
+  text-align: center;
   font-family: Courier New;
   font-size:14px;
   border: solid 1px #AAAAAA;

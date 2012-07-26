@@ -5,7 +5,6 @@ $(document).ready( function() {
 	
 	$("#go_on_top").click( function() {
 		scrollToPosition( 0 );
-// 		$(window).scrollTo( 0, 0 );
 	});
 	$(window).scroll( function() {
 		var topSpan = $("#go_on_top");
@@ -64,8 +63,9 @@ function initLinks()
 	var innerLinksClick = function() {
 		var jump = $(this).attr( "href" );
 		var new_position = $( "a[name=" + jump.slice( 1 ) + "]" ).offset();
-		scrollToPosition( new_position.top );
-// 		window.scrollTo( new_position.left, new_position.top );
+		if ( new_position ) {
+			scrollToPosition( new_position.top );
+		}
 		return false;
 	};
 	$("body").off( "click.href", "a[href^=#]" );
@@ -152,7 +152,6 @@ $(document).ready( function() {
 		// $("#nav li a").removeClass( "current" );
 		// $("#navlink_" + pageName).addClass( "current" );
 		$.get( "content/" + pageName + ".html", function(data) {
-			scrollToPosition( 0 );
 			$("#content").html( data );
 			$("div#syntax").each( function() {
 			    var syntax_element = $(this);
@@ -228,7 +227,7 @@ $(document).ready( function() {
 				}
 			});
 			applyTransformations();
-			window.scrollTo( 0, 0 );
+			scrollToPosition( 0 );
 		});
 	},
 	{ unescape: ",/" } );
