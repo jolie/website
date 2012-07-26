@@ -10,14 +10,66 @@
 <a name="language_invoking_web_services"/>
 <h2>Invoking Web Services</h2>
 In this section we show how is possible to invoke a Web Service by exploiting Jolie. 
-In order to do that, we exploit the USA Weather Forecast Web Service provided by 
+In order to do that, we exploit the Global Weather Web Service provided by 
 <a href="http://www.webservicex.net">www.webservicex.net</a> whose <a href="http://www.w3.org/TR/wsdl">WSDL</a> document 
-can be accessed <a href="http://www.webservicex.net/WeatherForecast.asmx?wsdl">here</a>.
-
+can be accessed <a href="http://www.webservicex.net/globalweather.asmx?WSDL">here</a>.
+<br><br>
 <b>Getting the service interface from the WSDL</b>
+<br>
 First of all we need to create a Jolie service interface which allows us to call the Web Service.
-In order to do that we exploit the wsdl2jolie tool available within the Jolie distribution.
-TO DO
+In order to do that we exploit the <a id="navlink_language_wsdl2jolie">wsdl2jolie</a> tool available within the Jolie distribution.
+In the follwing we report the command for extracting the Jolie interface of the Web Service from its WSDL
+and we store it into the file <code>myWebServiceJolieDocument.iol</code>:
+<div id="example">wsdl2jolie http://www.webservicex.net/globalweather.asmx?WSDL > myWebServiceJolieDocument.iol</div>
+As we explained in section <a id="navlink_language_wsdl2jolie">wsdl2jolie</a> the first line of the
+extracted file must be deleted because it is just a comment line.
+<br>
+<br>
+<b>Calling the Web Service</b>
+<br>
+Now we are ready to create a Jolie service able to invoke the Web Service in a very easy way.
+In the following service we include the file <code>myWebServiceJolieDocument.iol</code> and
+we simply call the Web Service using the operation <code>GetWeather</code>.
+<div id="example">
+include "myWebServiceJolieDocument.iol"
+include "string_utils.iol"
+include "xml_utils.iol"
+include "console.iol"
+
+main
+{
+	with( request ) {
+	  .CityName = "Rimini";
+	  .CountryName = "Italy"
+	};
+	GetWeather@GlobalWeatherSoap( request )( response );
+	r = response.GetWeatherResult;
+	r.options.includeAttributes = true;
+	xmlToValue@XmlUtils( r )( v );
+	valueToPrettyString@StringUtils( v )( s );
+	println@Console( s )()
+	
+}
+</div>
+Unfortunately, such a web service does not return a complete structured message but
+it just returns a message formed by one single tag <code>&lt;GetWeatherResult&gt;</code> which contains
+a string. In this case the string is an XML document with all the weather information
+we have requested. Here we exploit the library <code>xml_utils.iol</code> which supplies the operation
+<code>xmlToValue</code> for transforming a XML document into a Jolie value, in order
+to extract the information contained into the response string.
+The result for the city of Rimini (Italy) follows:
+<div id="example">
+.Status[0] = Success : java.lang.String
+.Time[0] = Jul 26, 2012 - 08:15 AM EDT / 2012.07.26 1215 UTC : java.lang.String
+.RelativeHumidity[0] =  74% : java.lang.String
+.Temperature[0] =  82 F (28 C) : java.lang.String
+.Location[0] = Rimini, Italy (LIPR) 44-02N 012-37E 13M : java.lang.String
+.DewPoint[0] =  73 F (23 C) : java.lang.String
+.Visibility[0] =  4 mile(s):0 : java.lang.String
+.Pressure[0] =  29.97 in. Hg (1015 hPa) : java.lang.String
+.Wind[0] =  from the ENE (070 degrees) at 7 MPH (6 KT):0 : java.lang.String
+</div>
+<div id="download">&gt; <a href="./content/code/code_web_services_1.zip">Download code</a></div>
 
 <hr>
 <a name="language_exposing_web_services"/>
