@@ -6,7 +6,8 @@
 <li><a href="#language_javaservices_value">Manipulating jolie values in Java</a></li>
 <li><a href="#language_javaservices_calling_embedder">Calling an operation of the embedder from the Javaservice</a></li>
 <li><a href="#language_javaservices_annotation">Annotations</a></li>
-<li><a href="#language_javaservices_requestresponse">Using RequestResponse operations in JavaServices (TODO)</a></li>
+<li><a href="#language_javaservices_requestresponse">Using RequestResponse operations in JavaServices</a></li>
+<li><a href="#language_javaservices_dynamic_embedding">JavaService dynamic embedding</a></li>
 </ul>
 <br><br>
 In order to exploit all the programming power of Java, Jolie provides the possibility to integrate Java code into a 
@@ -106,7 +107,7 @@ by simply using one of the following methods depending on the type of the conten
 
 In the following example we suppose to print out the content of the second element of the subnode 
 <i>sub_node1</i> supposing it is a string.
-<div id="example" src="example_javaservices_9"/><br>
+<div id="example" style="font-size:12px;" src="example_javaservices_9"/><br>
 
 <b>Setting the value of an element.</b><br>
 Analogously, it is possible to use the method <i>setValue( ... )</i> for setting the value content.
@@ -154,4 +155,147 @@ So far, we have exploited only OneWay operations for making interactions between
 Now, we present how to exploit also RequestResponse operations. In the example below there are both a RequestResponse 
 invocation from the JavaService to the embedder and a RequestResponse invocation from the embedder to the JavaService. 
 The Java code follows:
+<div id="example" style="font-size:10px;">
+package jolie.example;
+
+import jolie.net.CommChannel;
+import jolie.net.CommMessage;
+import jolie.runtime.JavaService;
+import jolie.runtime.Value;
+import jolie.runtime.embedding.RequestResponse;
+
+public class ThirdJavaService extends JavaService {
+
+--public void start( Value msg ) {
+----System.out.println( msg.getFirstChild("message").strValue() );
+----Value v = Value.create();
+----v.getFirstChild("message").setValue("Hello world from the Javaservice");
+----try {
+------CommMessage request = CommMessage.createRequest("initialize","/",v);
+------CommMessage response = sendMessage( request ).recvResponseFor( request );
+------System.out.println( response.value().strValue() );	
+----}
+----catch ( Exception e ) {
+------e.printStackTrace();
+----}
+--}
+
+--@RequestResponse
+--public Value write( Value msg ){
+----System.out.println( msg.getFirstChild("message").strValue());
+----Value v = Value.create();
+----v.getFirstChild("message").setValue("Hello world from the write operation of the JavaService!");
+----return v;
+--}
+}
+</div>
+In this example, the JavaService exhibits a OneWay operation <code>start</code> where it prints out 
+the received message and then invokes the embedder by means of the RequestResponse operation <code>initialize</code>. 
+The RequestResponse invocation is performed by means of the method <code>sendMessage</code> where the string 
+<code>"Hello world from the Javaservice"</code> is the message content. Since, we are calling a RequestResponse
+we must wait for receiving the response message by means of the methods <code>recvResponseFor</code> which returns
+the response message stored into the variable <code>response</code>.
+Moreover, the JavaService exhibits 
+the RequestResponse operation <code>write</code> where it prints out the received message and returns the string 
+<code>"Hello world from the write operation of the JavaService!"</code>. It is worth noting that the exhibited RequestResponse 
+operation returns a Value object which contains the response message.
+The code of the embedder follows:
+<div id="code" src="javaservices/requestresponse/embedder.ol"/>
+It is worth noting that the JavaService interface declares both the OneWay operation <code>start</code>
+and the RequestResponse <code>write</code>. Moreover, the embedder exhibits a RequestResponse operation called <code>initialize</code>. 
+In the behaviour, the embedder calls the operation <code>start</code> of the JavaService and then waits for a message on the operation 
+<code>initialize</code>. At the end, the embedder invokes the operation <code>write</code> of the JavaService. 
+Here we provide the code to be downloaded. In the zip file we also provide the prebuilt jar file of the 
+javaservice, thus it is possible to execute the embedder by specifying the jar to be used in the command line
+as it follows:
+<div id="example">jolie embedder.ol -l Example3.jar</div>
+<div id="download">&gt; <a href="./content/code/code_javaservices_3.zip">Download code</a></div>
+<br><br>
+<b>Managing fault responses</b><br>
+In Jolie a RequestResponse message can return a fault message which must be managed into the Javaservice.
+Now, let us suppose to modify the <code>embedder.ol</code> by throwing the fault <code>MyFault</code> as response into the body of
+the <code>initialize</code> operation as it follows:
+<div id="code">
+initialize( request )( response_initialize ){
+    scope( myScope ) {
+      install( MyFault => println@Console("Fault raised!")() );
+	  response_initialize = "This is the initialization";
+	  throw( MyFault )
+    }
+};
+</div>
+Clearly, we have also to enhance the interface in order to declare that operation <code>initialize</code>
+can raise a fault as shown below:
+<div id="code">
+interface EmbedderInterface {
+RequestResponse:
+	initialize throws MyFault
+}
+</div>
+After enabling fault raising into <code>embedder.ol</code>, we simply modify the JavaService by checking
+if the response is a fault or not by exploiting method <code>isFault</code> of the class <code>CommMessage</code>
+as we do in the following Java code:
+<div id="example" style="font-size:12px;">
+CommMessage response = sendMessage( request ).recvResponseFor( request );
+if ( response.isFault() ) {
+--System.out.println( response.fault().faultName() );
+} else {
+--System.out.println( response.value().strValue() );
+}
+</div>
+
+<a name="language_javaservices_dynamic_embedding"/>
+<h2>JavaService dynamic embedding</h2>
+So far, we have discussed the possibility to statically embed a JavaService. 
+In this case the JavaService is shared among all the sessions created by the embedder. 
+It could be particulary suitable to embed a different JavaService for each embedder session. 
+Such a task can be fulfilled by exploiting dynamic embedding functionality supplied by the 
+<code>runtime</code>. In the following example we present the Java code of a JavaService
+which simply returns the value of a counter which is increased each time it is invoked
+on its method <code>start</code>.
+<div id="example">
+public class FourthJavaService extends JavaService {	
+--private int counter;
+--public Value start( Value request ) {
+----counter++;
+----Value v = Value.create();
+----v.setValue( counter );
+----return v;
+--}
+}
+</div>
+Now we dynamically embed this JavaService in the following service where for each
+session opened on operation <code>run</code> the JavaService is dynamically embedded and called
+on the operation <code>start</code>
+<div id="code" src="javaservices/dynamicbinding/embedder_dynamic.ol"/>
+If we create a simple client which calls this service for ten times we will have
+the following result on the console:
+<div id="example">Received counter 1
+Received counter 1
+Received counter 1
+Received counter 1
+Received counter 1
+Received counter 1
+Received counter 1
+Received counter 1
+Received counter 1
+Received counter 1
+</div>
+Such a result means that for each session enabled on the embedder, a new JavaService object is instantiated
+and executed. Indeed, we can try to execute the same client on a embedder service which statically
+embed the JavaService, the result will be:
+<div id="example">Received counter 1
+Received counter 2
+Received counter 3
+Received counter 4
+Received counter 5
+Received counter 6
+Received counter 7
+Received counter 8
+Received counter 9
+Received counter 10
+</div>
+In this case the JavaService is shared among all the sessions and each new invocation will increase 
+its inner counter. In the following you can download the code and try yourself.
+<div id="download">&gt; <a href="./content/code/code_javaservices_4.zip">Download code</a></div>
 </div>
