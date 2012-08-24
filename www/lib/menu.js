@@ -66,6 +66,7 @@ function initLinks()
 		if ( new_position ) {
 			scrollToPosition( new_position.top );
 		}
+		indow.alert( new_position.top + ":" + new_position.left );
 		return false;
 	};
 	$("body").off( "click.href", "a[href^=#]" );
@@ -93,7 +94,7 @@ function parseExample( data )
 	syntax_content = replaceAll( syntax_content, "constants","<b>constants</b>");
 	syntax_content = replaceAll( syntax_content, "Redirects","<b>&nbsp;&nbsp;Redirects</b>");
 	syntax_content = replaceAll( syntax_content, "Aggregates","<b>&nbsp;&nbsp;Aggregates</b>");
-	syntax_content = replaceAll( syntax_content, "RequestResponse","<b>&nbsp;&nbsp;RequestResponse</b>");
+	syntax_content = replaceAll( syntax_content, "RequestResponse","<b>RequestResponse</b>");
 	syntax_content = replaceAll( syntax_content, "OneWay","<b>&nbsp;&nbsp;OneWay</b>");
 	syntax_content = replaceAll( syntax_content, "execution","<b>execution</b>");
 	syntax_content = replaceAll( syntax_content, "foreach","<b>foreach</b>");
@@ -103,7 +104,7 @@ function parseExample( data )
 	syntax_content = replaceAll( syntax_content, "while","<b>while</b>");
 	syntax_content = replaceAll( syntax_content, "embedded","<b>embedded</b>");
 	syntax_content = replaceAll( syntax_content, "install","<b>install</b>");
-	syntax_content = replaceAll( syntax_content, "init","<b>init</b>");
+	syntax_content = replaceAll( syntax_content, "init ","<b>init</b>&nbsp;");
 	syntax_content = replaceAll( syntax_content, "throw","<b>throw</b>");
 	syntax_content = replaceAll( syntax_content, "scope","<b>scope</b>");
 	syntax_content = replaceAll( syntax_content, "throws","<b>throws</b>");
@@ -114,6 +115,8 @@ function parseExample( data )
 	syntax_content = replaceAll( syntax_content, "=>","<b>=></b>");
 	syntax_content = replaceAll( syntax_content, "\n","<br/>");
 	syntax_content = replaceAll( syntax_content, "true","<b>true</b>");
+	syntax_content = replaceAll( syntax_content, "spawn","<b>spawn</b>");
+	syntax_content = replaceAll( syntax_content, "over","<b>over</b>");
 	syntax_content = replaceAll( syntax_content, "false","<b>false</b>");
 	
 	/*
@@ -195,6 +198,9 @@ $(document).ready( function() {
 					syntax_content = replaceAll( syntax_content, "foreach","<b>foreach</b>");
 					syntax_content = replaceAll( syntax_content, "with","<b>with</b>");
 					syntax_content = replaceAll( syntax_content, "true","<b>true</b>");
+					syntax_content = replaceAll( syntax_content, "spawn","<b>spawn</b>");
+					syntax_content = replaceAll( syntax_content, "over","<b>over</b>");
+					syntax_content = replaceAll( syntax_content, "in","<b>in</b>");
 					syntax_content = replaceAll( syntax_content, "false","<b>false</b>");
 					syntax_element.html( syntax_content );
 				});
