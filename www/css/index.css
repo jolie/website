@@ -1,0 +1,426 @@
+html{
+	height: 100%;
+}
+
+/*body {
+	font: 'Lucida Grande', 'Lucida Sans Unicode', Helvetica, Arial, Verdana, sans-serif;
+	line-height: 1.2em;
+	height: 100%;
+}
+
+code {
+	font-family: "Consolas", "Bitstream Vera Sans Mono", "Courier New", Courier, monospace !important;
+	font-weight: normal !important;
+	font-style: normal !important;
+	font-size: 1em !important;
+	min-height: inherit !important;
+	min-height: auto !important;
+}*/
+
+body{
+  color:#444;
+  background:#fefefe;
+  height: 100%;
+}
+
+pre , code, kbd, samp { 
+  color: #000; 
+  font-family: monospace; 
+  font-size: 0.90em; 
+  border-radius:3px;
+  background-color: #F8F8F8;
+  border: 1px solid #CCC; 
+}
+
+#header{
+	background: #DDD;
+	height: 86px;
+	overflow:hidden;
+}
+
+
+
+#tagline {
+	padding-top: 22px;
+	color: #6D6D6D;
+}
+
+#tagline p {
+	line-height: 11px;
+	margin-top: -15px;
+	margin-bottom: 21px;
+}
+
+#logo-up{
+	background: url(../imgs/jolie_logo.png);
+	background-repeat: no-repeat;
+	vertical-align: text-bottom;
+	text-align: right;
+	height: 86px;
+	background-size: 94px;
+	background-position: 22px 10px;
+}
+
+#logo-down{
+	background: url(../imgs/jolie_logo.png);
+	background-repeat: no-repeat;
+	vertical-align: text-bottom;
+	text-align: right;
+	height: 22px;
+	background-size: 94px;
+	background-position: 22px -77px;
+}
+
+#top_menu {
+	margin-top: -5px;
+}
+
+.menu_item{
+	vertical-align: middle;
+	display: inline-block;
+	text-align: center;
+	border-top: 1px;
+	border-left: 1px;
+	border-right: 1px;
+	border-color: grey;
+	border-style: solid;
+	border-radius: 5px 5px 0px 0px;
+	-moz-border-radius: 5px 5px 0px 0px;
+	-webkit-border-radius: 5px 5px 0px 0px;
+	margin-left: -3px;
+	background-color: lightGrey;
+	cursor: pointer;
+	text-decoration: none;
+	color: black;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	padding: 4px 6px 4px 6px;
+}
+
+.menu_item:hover{
+	background-color: grey;
+}
+
+.menu_item#active{
+	background-color: white;
+} 
+
+#rss_feed{
+	padding-top: 8px;
+	display: none;
+}
+
+h1,h2,h3{
+	color: #aa0000;
+	font: 'Lucida Grande', 'Lucida Sans Unicode', Helvetica, Arial, Verdana, sans-serif !important;
+}
+
+h1 {
+	font-size: 2em;
+}
+
+h2 {
+	font-size: 1.8em;
+	font-weight: bold;
+	padding-left: 5px;
+}
+
+h3 {
+	font-size: 1.4em;
+	font-weight: bold;
+	padding-left: 10px;
+}
+
+#menu_content p{
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+#menu_content{
+	height: 80%;
+	/*overflow-y: auto;*/
+}
+
+#footer{
+	height: 20px;
+	font-size:1em;
+	background-color: #DDD;
+}
+
+.scrollable_container{
+	height: 100%;
+}
+
+.scrollable_container .content { padding: 10px; }
+.scrollable_container .pane   { background: #888; }
+.scrollable_container .slider { background: #111; }
+
+/* DOCUMENTATION CSS */
+
+.dropdown {
+	margin: 3px -22px 0 0;
+	position: relative;
+	text-align: left;
+	cursor: pointer;
+	font-weight: bold;
+	border:1px solid grey;
+	padding-left: 0px;
+	margin-left: -10px;
+	margin-top: 0px;
+}
+
+.submenu {
+	background: #fff;
+	position: absolute;
+	left: -11px;
+	top: 15px;
+	z-index: 100;
+	display: none;
+	margin-left: 10px;
+	padding: 0px 0px 5px 0px;
+	border: 1px solid grey;
+	border-top-width: 0px;
+}
+
+.dropdown li {
+	color: #555555;
+	display: block;
+	font-family: arial;
+	font-weight: bold;
+	padding-top: 6px;
+	cursor: pointer;
+	text-decoration:none;
+	padding-left: 10px;
+	margin-left: 0px;
+
+}
+
+.dropdown li:hover {
+	background:#155FB0;
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
+.dropdowntitle {
+	color: #A00;
+	margin-left: 10px;
+}
+
+.root {
+	list-style:none;
+	margin:0px;
+	padding:0px;
+	font-size: 11px;
+	padding: 5px 0 0 0px;
+}
+
+.to_top{
+	text-align: center;
+	font-weight: bold;
+	cursor: pointer;
+	padding-right: 19px;
+	border: 1px solid grey;
+}
+
+.syntax + div .syntaxhighlighter .line {
+	background-color: #EFF3FF !important;
+}
+
+.code + div .syntaxhighlighter .line {
+	background-color: #F8F8F8 !important;
+}
+
+#doc_side_menu, #menu_container{
+	margin-right: 2px;
+	background: #DDD;
+	overflow: hidden;
+}
+
+#menu_container{
+	margin-left: 5px;
+}
+
+#menu_container *{
+	font-size: 14px;
+}
+
+#doc_side_menu{
+	margin-left: -10px;
+}
+
+ul.jqtree-tree {
+	margin-left: 15px;
+}
+
+ul.jqtree-tree li {
+	clear: both;
+	margin-left: 0px;
+	margin-bottom: 5px;
+	line-height: 15px;
+	margin-left: -3px;
+
+}
+
+ul.jqtree-tree li div{
+	margin-bottom: 5px;
+	margin-top: 5px;
+	padding-left: 4px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+}
+
+#doc_content, #community_content, #about_jolie_content{
+	padding-top: 2px;
+	margin-left:0px;
+	margin-right:3px;
+	height: 98%;
+}
+
+#doc_content a {
+	color: blue;
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+#doc_content table{
+	margin-left:auto;
+	margin-right: auto;
+}
+
+#doc_content td {
+	border: 1px solid black;
+	padding: 2px;
+}
+
+#doc_side_menu span {
+	font-size: 1em;
+	overflow-x:hidden;
+	display: block;
+	width: 98%;
+}
+
+.doc_image img{
+	max-width: 80%;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	max-height: 400px;
+}
+
+.doc_image > p{
+	width: 70%;
+	margin-left: auto;
+	margin-right: auto;
+	font-size: 12px !important;
+	line-height: 1.2em !important;
+	margin-top: 10px;
+	border-bottom: 1px solid;
+	border-top: 1px solid;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+div.figure {
+  padding-top:10px;
+  padding-left:70px;	
+  width: 400px;
+  margin-bottom:10px;
+}
+
+div.figure img {
+  width:400px;
+}
+
+div.caption {
+  padding-top:5px;
+  font-size:1em;
+}
+
+.syntaxhighlighter .line {
+	font-size: 1em !important;
+    white-space: pre-wrap !important;
+}
+
+
+
+/* PUBLICATIONS CSS */
+#publications li{
+	margin-bottom: 10px;
+}
+
+/* COMMUNITY CSS */
+
+#community_side_menu, #about_jolie_side_menu{
+	height: 100%;
+	background-color: #DDD;
+}
+
+#community_side_menu li, #about_jolie_side_menu li {
+	cursor: pointer;
+	user-select: none;
+	line-height: 2em;
+	list-style: none;
+	margin-bottom: 10px;
+	line-height: 15px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+#community_side_menu #active, #about_jolie_side_menu #active{
+	background-color: white;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    padding-left: 5px;
+}
+
+#community_content img{
+	margin-top:10px;
+	margin-bottom: 10px;
+}
+
+#doc_content p {
+	text-align: justify;
+}
+
+#menu_content p, #menu_content ul {
+  font-family:Georgia, Palatino, 'Palatino Linotype', Times,
+              'Times New Roman', serif;
+  font-size:16px;
+  line-height:1.5em;
+}
+
+.download {
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+	text-align: center;
+	background: #E6EFC2;
+	color: #264409;
+	width: 50%;
+	margin-left: auto;
+	margin-right: auto;
+	background-image: url(../imgs/download.png);
+	padding: 20px 60px;
+	background-size: 50px;
+	background-repeat: no-repeat;
+	background-position: 10px;
+	margin-bottom: 20px;
+	border: 1px solid #C6D880;
+}
+
+.attention p, #menu_content .attention p{
+	background: #FFF6BF;
+	color: #514721;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+	text-align: center;
+	width: 90%;
+	margin-left: auto;
+	margin-right: auto;
+	border: 1px solid #FFD324;
+}

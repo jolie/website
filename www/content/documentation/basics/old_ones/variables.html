@@ -1,0 +1,110 @@
+<a name="language_top"/>
+<h1>Variables and vectors</h1>
+<ul>
+  <li><a href="#language_variables_basic_types">Basic data types</a></li>
+  <li><a href="#language_variables_variables_and_expressions">Variables and expressions</a></li>
+  <li><a href="#language_variables_inputting_and_concatenating_strings">Inputting and concatenating strings</a></li>
+  <li><a href="#language_variables_casting_and_checking">Casting and checking</a></li>
+  <li><a href="#language_variables_undefining_variables">Undefining variables</a></li>
+  <li><a href="#language_variables_vectors">Vectors</a>
+    <ul>
+      <li><a href="#language_variables_vector_sizes">Vector sizes</a></li>
+      <li><a href="#language_undef">undef</a></li>
+    </ul>
+  </li>
+</ul>
+<br><br>
+  
+  <hr>
+    <a name="language_variables_basic_types"/>
+    <h2>Basic data types</h2>
+    &gt; <a href="#language_top">Go on top</a><br><br>
+      JOLIE supports six basic data types:
+      <ul>
+        <li><i>int</i>: integers;</li>
+        <li><i>long</i>: longintegers;</li>
+        <li><i>double</i>: double-precision floats;</li>
+        <li><i>string</i>: strings;</li>
+        <li><i>bool</i>: booleans;</li>
+        <li>byte arrays. </li>
+      </ul>
+      Byte arrays can not be created directly by the programmer, but they are supported 
+      in case a service returns you one and you need to pass it to another service.
+      
+      <hr>
+        <a name="language_variables_variables_and_expressions"/>
+        <h2>Variables and expressions</h2>
+        &gt; <a href="#language_top">Go on top</a><br><br>
+          Variables do not need to be declared in advanced and their type is determined and can change at run time, as in the following:
+          <div id="example" src="example_variables_1"/>
+          JOLIE supports some basic arithmetic operators: add, subtract, multiply, divide and modulo. 
+          Their behaviour is the same as in other classical programming languages. 
+          You can also use preincrement, postincrement, predecrement and postdecrement operators. 
+          Example:
+          <div id="example" src="example_variables_2"/>
+          
+          <hr>
+            <a name="language_variables_inputting_and_concatenating_strings"/>
+            <h2>Inputting and concatenating strings</h2>
+            &gt; <a href="#language_top">Go on top</a><br><br>
+              Strings can be inputted enclosing them between double quotes. Character escaping works as in the C and Java languages, using the \ character:
+              <div id="example" src="example_variables_3"/>
+              Strings can be concatenated by using the plus operator:
+              <div id="example" src="example_variables_4"/>
+              Formatting is preserved, so you can format strings by inserting tabs and new lines:
+              <div id="example" src="example_variables_5"/>
+              
+              <hr>
+                <a name="language_variables_casting_and_checking"/>
+                <h2>Casting and checking</h2>
+                &gt; <a href="#language_top">Go on top</a><br><br>
+                  Variables can be casted to other types by using some native functions: 
+                  <ul>
+                    <li><a href="#language_int">int()</a></li>
+                    <li><a href="#language_long">long()</a></li>  
+                    <li><a href="#language_double">double()</a></li>
+                    <li><a href="#language_string">string()</a></li>
+                    <li><a href="#language_bool">bool()</a></li>
+                  </ul>
+                  Example:
+                  <div id="example" src="example_variables_6"/>
+                  A variable type can be checked at run time by using the is_ native function family: 
+                  <ul>
+                    <li><a href="#language_is_bool">is_bool()</a></li>
+                    <li><a href="#language_is_int">is_int()</a></li>
+                    <li><a href="#language_is_long">is_long()</a></li>
+                    <li><a href="#language_is_double">is_double()</a></li>
+                    <li><a href="#language_is_string">is_string()</a></li>
+                  </ul>
+                  Example:
+                  <div id="example" src="example_variables_7"/>
+                  
+                  <hr>
+                    <a name="language_variables_undefining_variables"/>
+                    <h2>Undefining variables</h2>
+                    &gt; <a href="#language_top">Go on top</a><br><br>
+                      A variable is undefined until a value is assigned to them. 
+                      You can check if a variable is defined by using the <a href="#language_is_defined">is_defined</a> statement, e.g.:
+                      <div id="example" src="example_variables_8"/>
+                      Sometimes it is useful to undefine a variable, i.e. to remove its value and make 
+                      it undefined again. You can do so with the <a href="#language_undef">undef</a> statement, as in the following:
+                      <div id="example" src="example_variables_9"/>
+                      
+                      <hr>
+                        <a name="language_variables_vectors"/>
+                        <h2>Vectors</h2>
+                        &gt; <a href="#language_top">Go on top</a><br><br>
+                          Vectors (or arrays) are accessed by using the [] operator as in many other languages. 
+                          Example:
+                          <div id="example" src="example_variables_10"/>
+                          <b>Every JOLIE variable is a vector</b>. JOLIE handles vector creation, packing and resizing automatically. 
+                          You do not need to declare vectors. This is very handy when dealing with complex data, and JOLIE hides this mechanism when 
+                          the programmer does not need a vector. Indeed, whenever you do not specify a vector index for your variable, 
+                          it defaults to 0 (zero). Example:
+                          <div id="example" src="example_variables_11"/>
+                          
+                          <a name="language_variables_vector_sizes"/>
+                          <h3>Vector sizes</h3>
+                          You can obtain the size of a vector with the vector size operator <b>#</b>, 
+                          as in the following:
+                          <div id="example" src="example_variables_12"/>

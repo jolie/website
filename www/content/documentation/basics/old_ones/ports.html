@@ -1,0 +1,68 @@
+
+
+<h1>Ports</h1>
+<p>As seen in section <a href="language_interfaces">Interfaces</a>, services can communicate with each other in order to obtain a composition. Programs get more complex by composing messages; thus, a fundamental notion 
+  for programming with Jolie is to understand how to define services and how make them communicate with each other.</p>
+<p>In Jolie every communication is fulfilled by means of ports and the language defines two kind of ports:</p>
+
+<ul>
+  <li><code>inputPort</code>s: used for receiving messages from other services;</li>
+  <li><code>outputPort</code>s: used for sending messages to other services.
+</li></ul>
+
+<hr>
+
+<h2><code>inputPort</code>s</h2>
+
+<p><code>InputPort</code>s allow to specify an endpoint for receiving messages from other applications or services.</p>
+<p>The syntax of input port declaration follows:</p>
+
+<p>An input port is defined by four parameters:</p>
+<ul>
+  <li>a name, unambiguously identifying it among other <code>inputPort</code>s;</li>
+<li>a <a href="#language_ports_location">location</a>, defining the communication medium to use;</li>
+<li>a protocol, specifying the protocol to be used to communicate (in section <a href="#language_protocols">protocols</a> it's available a list of protocols supported by Jolie);</li>
+<li>a list of interfaces (optional) to deploy with the input port; </li>
+</ul>
+<p>Out below an <code>inputPort</code> example able to receive a message on the operation defined in the example interface of section <a href="#language_interfaces">Interfaces</a>, where <a href="#language_protocols"><code>sodep</code></a> is the Jolie custom protocol.</p>
+
+
+<hr>
+
+<h2><code>outputPort</code>s</h2>
+<p>In the same way <code>inputPort</code>s allow the specification of an input point, <code>outputPort</code>s define endpoints able to send messages to a correspondent <code>inputPort</code>.</p>
+<div class="syntax" src="syntax_ports_3.ol"></div><div id="syntax" src="syntax_ports_3"></div>
+
+<p>Like <code>inputPort</code>s, <code>outputPort</code>s are defined by the same four parameters (name, location, protocol and an optional list of interfaces), but in this case they're used to specify the parameters for sending the message.</p>
+<p>Out below the definition of an <code>outputPort</code> able to communicate with the <code>inputPort</code> defined in the example above:</p>
+<div class="code" src="example_ports_5.ol"></div>
+
+<hr>
+
+<h2>Declaring operations without using interfaces</h2>
+
+<p>When a smart programming is required, it's possible to define the operations available at a given port (an <code>inputPort</code> or an <code>outputPort</code>) without using interfaces, but specifying them into the port declaration.</p>
+<p>The following example show how to do it:</p>
+<div class="code" src="example_ports_6.ol"></div>
+
+<hr>
+
+<h2>Location</h2>
+<p>A location defines a communication endpoint that Jolie can use in order to open a connection.</p><p>Locations are used both in <code>inputPort</code>s and <code>outputPort</code>s.
+A location is a <a target="lnk1" href="http://en.wikipedia.org/wiki/Uniform_Resource_Identifier">URI</a>, 
+restricted to the communication media supported by the interpreter. 
+Thus, the syntax of locations can be expressed as:</p>
+<div id="syntax" src="syntax_ports_2"></div>
+<p>where <code>medium</code> is the name of the communication medium to use and <code>medium-specific-part</code> is specific to each different communication medium.</p>
+<p>The <code>!/resource-path part</code> is optional, and it's used for <a href="#language_redirection">redirection</a> purposes.</p>
+<p>Examples of valid locations are:</p>
+<div class="code" src="example_ports_1.ol"></div>
+<div class="code" src="example_ports_2.ol"></div>
+<div class="code" src="example_ports_3.ol"></div>
+
+<h3>List of available media</h3>
+<ul>
+<li>socket: it defines the usage of a common socket</li>
+<li>local: it defines the usage of an in-memory communication medium</li>
+<li>localsocket: ??</li>
+</ul>

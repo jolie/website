@@ -1,2 +1,0 @@
-serviceClass: joliex.gwt.client.JolieService
-path: A98DF88B98CF244AD2351EC9C8CD9377.gwt.rpc

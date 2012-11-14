@@ -1,0 +1,50 @@
+<div class="scrollable_container nano">
+
+<h1 id="install">Install</h1>
+<h2 id="linux">Linux</h2>
+<h3 id="opensuse---one-click-installation">openSuse - one click installation</h3>
+<p><a href="http://download.opensuse.org/repositories/home:/fmontesi/openSUSE_11.3/jolie.ymp">openSuse 11.3</a></p>
+<h3 id="from-sources">From sources</h3>
+<p>Requirements:</p>
+<ul>
+<li>Java SDK &gt;=1.6</li>
+<li>Apache ant</li>
+<li>Subversion client</li>
+</ul>
+<p>Open a shell and execute:</p>
+<div class="code" src="example_install_1.txt"></div>
+
+<p>The ant script will automatically build and install Jolie for you. The default is to install in /opt/jolie, but the installation parameters can be controlled by editing buildconfig/config.properties.</p>
+<p>A Jolie launcher script will be put in <code>/usr/local/bin</code> (this parameter is configurable, too), thus executing a Jolie script will be just a matter of:</p>
+<div class="code" src="example_install_2.txt"></div>
+
+<hr />
+<h2 id="windows">Windows</h2>
+<h3 id="from-sources-1">From sources</h3>
+<h4 id="requirements">Requirements:</h4>
+<p>Install the latest JDK (Java SE Development Kit) from this <a href="http://java.sun.com/javase/downloads/index.jsp">link</a> Install a Subversion client (e.g. <a href="http://tortoisesvn.tigris.org/">Tortoise</a>)</p>
+<p>Install Ant for building sources from this <a href="http://ant.apache.org/">link</a>.</p>
+<h4 id="installing">Installing:</h4>
+<p>Download JOLIE's sources with your svn client from <a href="https://jolie.svn.sourceforge.net/svnroot/jolie/trunk"><code class="url">https://jolie.svn.sourceforge.net/svnroot/jolie/trunk</code></a></p>
+<p>Go into the trunk directory.</p>
+<p>Open the buildconfig/config.properties file and change the parameters <code>install.launcher_dir</code> and <code>install.dir</code> by replacing the existing directories with your desired ones. Use <code>\\</code> instead of the single backslashes when writing paths. Example:</p>
+<div class="code" src="example_install_3.txt"></div>
+
+<p>Edit your PATH environment variable so that it includes the <code>install.launcher_dir</code> directory <a href="http://support.microsoft.com/kb/310519">instructions for managing environment variables under Windows XP</a> Execute the <code>ant dist install</code> command.</p>
+<p>If the install path contains spaces you will experience a problem in launching the jolie executable. This is due to a problem on the command <code>set joliepath</code> present in jolie.bat that can be found in the intall directoy that you have previously specified.</p>
+<p>To solve this you must substitute the <code>\</code> characters before and after the path containing the space with <code>//</code> and include the same part of the path between <code>&quot;&quot;</code>.</p>
+<p>For instance, if you did choose to use the same directory of this tutorial you can correct the <code>set</code> command with the following code.</p>
+<div class="code" src="example_install_4.txt"></div>
+
+<p>You can now execute Jolie scripts by issuing the jolie command to a console, e.g.:</p>
+<div class="code" src="example_install_5.txt"></div>
+
+<hr />
+<h2 id="support-for-external-tools">Support for external tools</h2>
+<h3 id="kate">Kate</h3>
+<p>Homepage: <a href="http://kate-editor.org/"><code class="url">http://kate-editor.org/</code></a></p>
+<p>A syntax highlighting description file for KatePart (which is used by most KDE applications and the Kate editor itself) is available.</p>
+<p>Download the <a href="http://jolie.svn.sourceforge.net/viewvc/jolie/trunk/support/katepart/syntax/jolie.xml">latest version</a> and put it in your <code>$KDE_HOME/share/apps/katepart/syntax directory</code>.</p>
+<p>You can discover your <code>$KDE_HOME</code> directory by issuing the kde4 config localprefix command.</p>
+</div>
+

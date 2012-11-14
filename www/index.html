@@ -1,110 +1,63 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
 <head>
-<meta name="keywords"
-content="Jolie
-	Java
-	Orchestration
-	Language
-	Programming
-	Program
-	Interpreter
-	Engine
-	Orchestrator
-	Orchestrators
-	BPEL
-	Web
-	Site
-	Home
-	Page
-	Homepage
-	SOC
-	SOCK
-	Service Oriented Computing
-	Service-Oriented Computing
-	Service Oriented Architectures
-	Service-Oriented Architectures
-	Communication-Centred Programming
-	Process Calculi
-	Process Calculus
-	Process-Calculi
-	Process-Calculus
-	Pi-Calculus
-	Pi-Calculi
-	Pi Calculus
-	Pi Calculi
-	Picalculus
-	Picalculi
-	Transitions
-	Reductions
-	Labelled
-	Transition
-	System
-	lts
-	WS-BPEL
-	UDDI
-	SOAP
-	Distributed Systems
-	Computer Science
-	Formal Models
-	Informatics" />
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-
-<link rel="stylesheet" href="css/960_24_col.css" />
-<link rel="stylesheet" href="css/reset.css" />
-<link rel="stylesheet" href="css/text.css" />
-<link rel="stylesheet" href="css/style.css" />
-<link href='http://fonts.googleapis.com/css?family=Quattrocento+Sans' rel='stylesheet' type='text/css'>
-<script type="text/javascript" src="lib/jquery/jquery-1.7.2.min.js"></script>
-<script type="text/javascript" src="lib/jquery_history/jquery.history.js"></script>
-<script type="text/javascript" src="lib/menu.js"></script>
-
-
-<title>Jolie Programming Language</title>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<!--BEGIN LIBRARIES-->
+	<!-- CSS HERE -->
+	<link rel="stylesheet" type="text/css" href="css/reset.css"/>
+	<link rel="stylesheet" type="text/css" href="css/text.css"/>
+	<link rel="stylesheet" type="text/css" href="css/960_24_col.css"/>
+	<link rel="stylesheet" type="text/css" href="css/nanoscroller.css">
+	<link rel="stylesheet" type="text/css" href="css/jqtree.css">
+	<link rel="stylesheet" type="text/css" href="css/shCore.css"/>
+	<link rel="stylesheet" type="text/css" href="css/shThemeEclipse.css"/>
+	<!-- JS HERE -->
+	<script type="text/javascript" src="libs/jquery-1.8.2.min.js"></script>
+	<script type="text/javascript" src="libs/jquery.history.js"></script>
+	<script type="text/javascript" src="libs/jquery.nanoscroller.min.js"></script>
+	<script type="text/javascript" src="libs/tree.jquery.js" ></script>
+	<script type="text/javascript" src="libs/shCore.js"></script>
+	<script type="text/javascript" src="libs/shBrushJolie.js"></script>
+	<script type="text/javascript" src="libs/shBrushJava.js"></script>
+	<script type="text/javascript" src="libs/shBrushXml.js"></script>
+	<script type="text/javascript" src="libs/shBrushJScript.js"></script>
+	<style type="text/css"></style>
+<!--END LIBRARIES-->
+<!--BEGIN CUSTOM FILES-->
+<link rel="stylesheet" type="text/css" href="css/index.css"/>
+<script type="text/javascript" src="libs/index.js"></script>
+<!--END CUSTOM FILES-->
+<title>JOLIE: Java Orchestration Language Interpreter Engine</title>
 </head>
-
+<html>
 <body>
-<div id="head">
-  <div class="container_24">
-    <div class="grid_24">
-      <div id="logo" class="grid_9">
-	<img src="images/logo-site.png" id="logo"/>
-      </div>
-      <div class="grid_12">
-	<div id="slogan" class="grid_12">
-	  The next generation language
+	<div id="header">
+		<div class="container_24">
+			<div id="logo-up" class="grid_4"></div>
+			<div id="header_container" class="container_18">
+				<div id="tagline" class="grid_12"><p><b>The next generation language</b></p><p>Jolie is an open source Java based interpreter language for programming service oriented applications in a easier, faster and time effective way.</p></div>
+				<div id="top_menu" class="grid_13 push_3">
+					<div>
+						<a onClick="top_menu(this);" ref="news" class="menu_item" src="news/news.html" id="active">Home</a>
+						<a onClick="top_menu(this);" ref="downloads" class="menu_item" src="downloads/downloads.html">Downloads</a>
+						<a onClick="top_menu(this);" ref="documentation" class="menu_item" src="documentation/documentation.html">Documentation</a>
+						<a onClick="top_menu(this);" ref="community" class="menu_item" src="community/community.html">Community</a>
+						<a onClick="top_menu(this);" ref="publications" class="menu_item" src="publications/publications.html">Publications</a>
+						<a onClick="top_menu(this);" ref="about_jolie" class="menu_item" src="about_Jolie/about_jolie.html">About Jolie</a>
+					</div>
+				</div>
+				<div id="rss_feed" class="grid_1 push_3"><img style="width:32px" src="imgs/Feed-icon.svg"/></div>
+			</div>
+		</div>
 	</div>
-	<div id="slogan_comment" class="grid_12">
-	  Jolie is an open source Java based interpreter language for
-	  programming service oriented applications in a low cost, less skill
-	  and few time way.
+	<div id="subheader" class="container_24">
+		<div class="grid_4" id="logo-down"></div>
+		<div class="grid_20" id="TOC_menu"></div>
 	</div>
-      </div>
-    </div>
-    <div id="menu" class="grid_11">
-	      
-	<a id="navlink_home" class="link_menu">Home</a>
-	<a id="navlink_philosophy" class="link_menu">Philosophy</a>
-	<a id="navlink_language" class="link_menu">The language</a>
-	<a id="navlink_contact" class="link_menu">Contact</a>
-
-    </div>
-  </div>
-</div>
-<div id="middle" class="container_24">
-    <div id="wrapper" class="grid_24">
-	<div id="left-column" class="grid_6">
-	  <div id="left-bar"></div>
-	</div>
-	<div id="content" class="grid_17">
-	  <h2 class="SectionTitle" id="title">Loading...</h2>
+<div id="menu_content" class="container_24"></div>
+<div id="footer">
+	<div class="container_24">
+	<div class="grid_15 push_3">This website is made in Jolie and is powered by <a href="http://sourceforge.net/projects/leonardo">Leonardo</a></div>
 	</div>
 </div>
-</div>
-
-<span id="go_on_top" style="display:none; position:fixed; padding: 0.3em">
-	<a style="cursor:pointer; padding:0px">&uarr; Top</a>
-</span>
-
 </body>
 </html>

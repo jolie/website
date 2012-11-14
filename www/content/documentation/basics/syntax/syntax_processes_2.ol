@@ -1,0 +1,3 @@
+synchronized( id ){
+	//code
+} 

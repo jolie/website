@@ -1,0 +1,76 @@
+<a name="language_top"/>
+<h1>Dynamic Binding</h1>
+<ul>
+<li><a href="#language_dynamic_binding_handling">Handling bindings</a></li>
+<li><a href="#language_dynamic_binding_registry">Example: service registry</a></li>
+</ul>
+<br/><br/>
+
+<a name="language_dynamic_binding_handling"/>
+<h2>Handling bindings</h2>
+
+Dynamic binding refers to the act of changing the location and protocol settings (called binding information)
+of an output port at runtime.
+Jolie supports dynamic binding by exposing output ports as variables inside the service behaviour.
+Each output port will correspond to a variable with the same name and will have two subnodes, <code>location</code>
+and <code>protocol</code>, respectively identifying the location and protocol fields of the output port definition.
+As an example, the following program prints on screen the location and protocol of output port
+<code>Printer</code>:
+<div id="example" src="example_dynamic_binding_read"/>
+The example above reads with the reading of binding information from an output port.
+The same variable, though, can also be used to write new binding information, obtaining dynamic binding.
+For instance, the following code would produce exactly the same output as the previous one. The only difference
+is that the location and protocol settings for <code>Printer</code> are given at runtime through assignments:
+<div id="example" src="example_dynamic_binding_write"/>
+Observe that, above, we left the definition of <code>Printer</code> without a location and protocol in the <code>outputPort</code> block.
+This is not necessary: an output port may have some binding definition since the beginning, which can be changed multiple times during
+execution.
+
+<hr/>
+
+<a name="language_dynamic_binding_registry"/>
+<h2>Example: service registry</h2>
+
+Hereby, we present an example of a service registry implementation.
+In this example a client, <code>client.ol</code>, needs to access a printer
+but it does not know the binding information to reach it.
+In order to discover where the printer of interest is located, the client
+will ask an external service, <code>registry.ol</code>, in order to retrieve the necessary
+binding information. Finally, the client will use the freshly discovered printer service.
+You can download the whole executable example from here:
+<div id="download">&gt; <a href="./content/code/dynamic_binding/dynamic_binding_registry.zip">Download code</a></div>
+Below, we describe each program.
+
+<h3>Client</h3>
+Let us start with the code for the client:
+<div id="code" src="dynamic_binding/client.ol"/>
+The client has an output port without binding information for reaching a <code>Printer</code>, and an output port
+with binding information for reaching a service <code>Registry</code>.
+The user launching the client may give the <code>laser</code> command line parameter, which tells the client
+to look for a laser printer. The interfaces for the printer and the registry are stored in two external files, <code>printer.iol</code> and
+<code>registry.iol</code>, that you can consult from the downloaded zip file above.
+After the conditional on the command line parameter, the client asks the registry to provide the binding information
+for the desired printer, receiving the response directly on the <code>Printer</code> variable: this means that
+as soon as the response is received, the <code>Printer</code> output port will be bound to a printer service.
+Finally, the client uses the printer service by calling it with the <code>print</code> operation.
+
+<h3>Registry</h3>
+The code for the registry is:
+<div id="code" src="dynamic_binding/registry.ol"/>
+The registry is very simple, as it just implements a <code>getBinding</code> operation.
+<code>getBinding</code> receives a request containing a service identifier. In this case,
+we support only <code>LaserPrinter</code> and the default option of an inkjet printer.
+Depending on the choice, a different location is returned.
+
+<h3>Printers</h3>
+The code for the printers is almost identical. Here we show the laser printer, which is just a dummy service printing on screen for the sake of this example:
+<div id="code" src="dynamic_binding/printer1.ol"/>
+Above, the printer simply receives messages through operation <code>print</code> and prints them on screen, prefixing them with a static string to recognise
+the laser printer. The code for the inkjet printer is the same except for prefixing print messages differently, to recognise the inkjet printer.
+
+<h3>Try it out!</h3>
+Try the example by running all services and by finally executing:
+<div id="example">jolie client.ol laser</div>
+and
+<div id="example">jolie client.ol</div>
+and you will see that the respective printers are invoked separately by dynamic discovery.

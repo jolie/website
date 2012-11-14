@@ -1,0 +1,10 @@
+animals : {
+	"pet" : [
+		{ "name" : "cat" },
+		{ "name" : "dog" }
+	],
+	"wild" : [
+		{ "name":"tiger" },
+		{ "name":"lion" }
+	]
+}

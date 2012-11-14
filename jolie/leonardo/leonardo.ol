@@ -13,17 +13,19 @@ RequestResponse:
 }
 
 inputPort HTTPInput {
-Protocol: http {
-	.keepAlive = 0; // Do not keep connections open
-	.debug = DebugHttp; 
-	.debug.showContent = DebugHttpContent;
-	.format -> format;
-	.contentType -> mime;
+	Protocol: http {
+		.keepAlive = 0; // Do not keep connections open
+		.debug = DebugHttp; 
+		.debug.showContent = DebugHttpContent;
+		.format -> format;
+		.contentType -> mime;
+		.statusCode -> statusCode;
+		.redirect -> location;
 
-	.default = "default"
-}
-Location: Location_Leonardo
-Interfaces: HTTPInterface
+		.default = "default"
+	}
+	Location: Location_Leonardo
+	Interfaces: HTTPInterface
 }
 
 init
@@ -34,31 +36,43 @@ init
 
 main
 {
+
 	[ default( request )( response ) {
-		scope( s ) {
-			install( FileNotFound => println@Console( "File not found: " + file.filename )() );
+		scope( r ) {
+			install(this => println@Console("Internal Server Error: "+IOException.stackTrace)();
+										statusCode=500;
+										respose="Internal Server Error"
 
-			s = request.operation;
-			s.regex = "\\?";
-			split@StringUtils( s )( s );
-			
-			// Default page: index.html 
-			if ( s.result[0] == "" ) {
-				s.result[0] = "index.html"
-			};
-			file.filename = documentRootDirectory + s.result[0];
+					);
 
-			getMimeType@File( file.filename )( mime );
-			mime.regex = "/";
-			split@StringUtils( mime )( s );
-			if ( s.result[0] == "text" ) {
-				file.format = "text";
-				format = "html"
-			} else {
-				file.format = format = "binary"
-			};
+			scope( s ) {
+				install( FileNotFound => println@Console( "File not found: " + file.filename )();
+											location="ciccia.html"
+					);
 
-			readFile@File( file )( response )
+				s = request.operation;
+				s.regex = "\\?";
+				split@StringUtils( s )( s );
+				
+				// Default page: index.html 
+				if ( s.result[0] == "" ) {
+					s.result[0] = "index.html"
+				};
+
+				file.filename = documentRootDirectory + s.result[0];
+
+				getMimeType@File( file.filename )( mime );
+				mime.regex = "/";
+				split@StringUtils( mime )( s );
+				if ( s.result[0] == "text" ) {
+					file.format = "text";
+					format = "html"
+				} else {
+					file.format = format = "binary"
+				};
+
+				readFile@File( file )( response )
+			}
 		}
 	} ] { nullProcess }
 }

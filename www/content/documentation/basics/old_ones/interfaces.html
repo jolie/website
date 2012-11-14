@@ -1,0 +1,41 @@
+<h1>Interfaces</h1>
+
+<p>Jolie allows the development of distributed applications and communication among services is a key aspect to be considered when building a system with Jolie.</p>
+<p>An interface is the artifact used in Jolie for declaring all the functionalities, namely <code>operations</code>, exhibited by a service.</p>
+  <p>Every message exchange is fulfilled by means of an operation.</p>
+  
+<h2>Operations</h2>
+<p>An operation is a functionality exposed by a service which can be invoked by other applications. Each time a service invokes another service, it's done by means of its operations.</p>
+<p>Jolie provides two kinds of operations:</p>
+<ul>
+<li><code>One-Way</code>: it receives a message for an operation and stores its content;</li>
+<li><code>Request-Response</code>: it receives a message for an operation, executes its behavior and then sends back the result.</li>
+</ul>
+<hr>
+
+<h2>Interfaces - basic declaration</h2>
+
+<p>Interfaces are used for declaring sets of both One-Way and Request-Response operations.</p>
+<p>The basic declaration of an interface lists all the names of the operations divided by type:</p>
+<div class="syntax" src="syntax_interface.ol"/>
+
+<h3>Example - basic declaration</h3>
+In the following we present an example of interface declaration:
+<div class="code" src="example_interface_1.ol"/>
+
+<hr>
+
+<h2>Interfaces - message types declaration</h2>
+<p>Interface declaration can be enriched with message <a href="#language_types">type</a> declaration.</p>
+<p>One-Way messages require only one message type, whereas Request-Response operations require both request and response type.</p>
+<div class="syntax" src="syntax_interface_types.ol"/>
+
+<p>Some examples about interface declarations and message types can be found in section <a href="#language_types">Types</a>.
+                  
+<hr>
+
+<h2>Interfaces - RequestResponse fault declaration</h2>
+<p>Request-Response operations can raise faults as a reply message. Faults must be declared within the interface. Faults can be both typed on un-typed.</p>
+
+<div class="syntax" src="syntax_interface_faults.ol"/>
+<p>Some examples about interface declarations with faults can be found at section <a href="#language_fault_handling">Fault handling</a>.
