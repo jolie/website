@@ -4,6 +4,7 @@ include "string_utils.iol"
 include "protocols/http.iol"
 
 include "config.iol"
+include "admin.iol"
 
 execution { concurrent }
 
@@ -28,9 +29,14 @@ inputPort HTTPInput {
 	Interfaces: HTTPInterface
 }
 
+inputPort AdminInput {
+Location: "socket://localhost:9000/"
+Protocol: sodep
+Interfaces: AdminInterface
+}
+
 init
 {
-//	documentRootDirectory = args[0]
 	documentRootDirectory = WWWDirectory
 }
 
@@ -38,42 +44,34 @@ main
 {
 
 	[ default( request )( response ) {
-		scope( r ) {
-			install(this => println@Console("Internal Server Error: "+IOException.stackTrace)();
-										statusCode=500;
-										respose="Internal Server Error"
+		scope( s ) {
+			install( FileNotFound => println@Console( "File not found: " + file.filename )(); statusCode = 404 );
 
-					);
+			s = request.operation;
+			s.regex = "\\?";
+			split@StringUtils( s )( s );
+			
+			// Default page: index.html 
+			if ( s.result[0] == "" ) {
+				s.result[0] = "index.html"
+			};
 
-			scope( s ) {
-				install( FileNotFound => println@Console( "File not found: " + file.filename )();
-											location="ciccia.html"
-					);
+			file.filename = documentRootDirectory + s.result[0];
 
-				s = request.operation;
-				s.regex = "\\?";
-				split@StringUtils( s )( s );
-				
-				// Default page: index.html 
-				if ( s.result[0] == "" ) {
-					s.result[0] = "index.html"
-				};
+			getMimeType@File( file.filename )( mime );
+			mime.regex = "/";
+			split@StringUtils( mime )( s );
+			if ( s.result[0] == "text" ) {
+				file.format = "text";
+				format = "html"
+			} else {
+				file.format = format = "binary"
+			};
 
-				file.filename = documentRootDirectory + s.result[0];
-
-				getMimeType@File( file.filename )( mime );
-				mime.regex = "/";
-				split@StringUtils( mime )( s );
-				if ( s.result[0] == "text" ) {
-					file.format = "text";
-					format = "html"
-				} else {
-					file.format = format = "binary"
-				};
-
-				readFile@File( file )( response )
-			}
+			readFile@File( file )( response )
 		}
 	} ] { nullProcess }
+
+	[ shutdown()() { nullProcess } ] { exit }
 }
 
