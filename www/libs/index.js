@@ -7,6 +7,9 @@ var ext_to_lang_hash = {
         "xml": {
             "lang": "xml"
         },
+        "html": {
+            "lang": "xml"
+        },
         "json": {
             "lang": "jscript"
         },

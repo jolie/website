@@ -112,10 +112,18 @@
     },
     {
         "label": "Web Services",
-        "children": [
+        "children": [        
             {
-                "url": "web_services/introduction",
-                "label": "Web Services"
+                "url": "web_services/web_services",
+                "label": "web_services"
+            },
+            {
+                "url": "web_services/wsdl2jolie",
+                "label": "wdsl2jolie"
+            },
+            {
+                "url": "web_services/jolie2wsdl",
+                "label": "jolie2wsdl"
             }
         ]
     },
@@ -129,14 +137,6 @@
             {
                 "url": "web_applications/web_get_post",
                 "label": "HTTP GET/POST Requests"
-            },
-            {
-                "url":"web_applications/cookies",
-                "label": "Cookies"
-            },
-            {
-                "url": "web_applications/gwt",
-                "label": "GWT integration"
             }
         ]
     },
