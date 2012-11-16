@@ -10,7 +10,7 @@ To receive and handle a GET requests. Let us consider a Jolie program that suppo
 
 <div class="code" src="web_get_post_1.ol"></div>
 
-Jolie transparently supports the reception of GET requests ad the automatic parsing of HTTP query strings. Hence, we can simply execute `jolie sum.ol` and point the browser to: `http://localhost:8000/sum?x=6&y=2` to obtain the result of the sum computed by the code in our example.
+Jolie transparently supports the reception of GET requests ad the automatic parsing of HTTP querystrings. Hence, we can simply execute `jolie sum.ol` and point the browser to: `http://localhost:8000/sum?x=6&y=2` to obtain the result of the sum computed by the code in our example.
 
 ---
 

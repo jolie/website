@@ -36,7 +36,7 @@ As aforementioned, `RootContentDirectory` points to the `www` folder, which is t
 
 Leonardo supports dynamic web application through the Jolie HTTP protocol. There are many ways this can be achieved, hereby we overview some of these:
 
-- HTML query string and HTML forms;
+- HTML querystring and HTML forms;
 - via web development libraries like JQuery and Google Web Toolkit (GWT).
 
 In the following examples we show how to interface a web application with some Jolie code through Leonardo. Specifically, we expose an operation - `length` - which accepts a list of strings, computes their total length and, finally, returns the computed value. 
@@ -65,7 +65,7 @@ The code above iterates over all the received items and sums their lengths.
 
 ---
 
-## HTML query strings
+## HTML querystrings
 
 Once the server-side part is in place, we can start experimenting by invoking it from the browser, by pointing it to the address:
 
@@ -76,6 +76,10 @@ which will reply with an XML response like the following:
 `<lengthResponse>10</lengthResponse>`
 
 Leonardo replies with XML responses by default, but the response can be formatted in fully-fledged HTML code by adding it in the code of operation `length` and setting the parameter `.format` inside input port `HTTPInput` as `html`.
+
+Querystrings and other common message formats used in web applications, such as HTML form encodings, present the problem of not carrying type information. Instead, they simply carry string representations of values that were potentially typed on the invoker's side. However, type information is necessary for supporting services. To cope with such cases, Jolie introduces the notion of *automatic type casting*.
+
+Automatic type casting reads incoming messages that do not carry type information and tries to cast their content values to the types expected by the service interface for the message operation.
 
 ---
 

@@ -22,7 +22,6 @@ inputPort HTTPInput {
 		.contentType -> mime;
 		.statusCode -> statusCode;
 		.redirect -> location;
-
 		.default = "default"
 	}
 	Location: Location_Leonardo

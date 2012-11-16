@@ -25,16 +25,16 @@ main
 
   [ form()( f ) {
     f = "
-      <html>
-        <body>
-          <form action=\"sum\" method=\"POST\">
-            <code>x</code>: <input type=\"text\" value=\"3\" name=\"x\" />
-            <br/>
-            <code>y</code>: <input type=\"text\" value=\"2\" name=\"y\" />
-            <br/>
-            <input type=\"submit\"/>
-          </form>
-        </body>
-      </html>"
+      &lt;html&gt;
+        &lt;body&gt;
+          &lt;form action='sum' method='POST'&gt;
+            &lt;code&gt;x&lt;/code&gt;: &lt;input type='text' value='3' name='x' /&gt;
+            &lt;br/&gt;
+            &lt;code&gt;y&lt;/code&gt;: &lt;input type='text' value='2' name='y' /&gt;
+            &lt;br/&gt;
+            &lt;input type='submit'/&gt;
+          &lt;/form&gt;
+        &lt;/body&gt;
+      &lt;/html&gt;"
   }]{ nullProcess }
 }

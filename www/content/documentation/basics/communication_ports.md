@@ -40,6 +40,8 @@ Protocols are referred by name. Examples of valid (supported) protocol names are
 - `sodep` (a binary protocol specifically developed for Jolie);
 - `xmlrpc`.
 
+For a thorough description of the protocols supported by Jolie and their parameters see [Protocols](protocols/introduction) section.
+
 ### The syntax of input and output ports
 
 The syntax for input and output ports is, respectively:

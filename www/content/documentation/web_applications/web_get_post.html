@@ -5,7 +5,7 @@
 <p>To receive and handle a GET requests. Let us consider a Jolie program that supports the sum of two numbers, <code>x</code> and <code>y</code>, by means of an operation called <code>sum</code>.</p>
 <div class="code" src="web_get_post_1.ol"></div>
 
-<p>Jolie transparently supports the reception of GET requests ad the automatic parsing of HTTP query strings. Hence, we can simply execute <code>jolie sum.ol</code> and point the browser to: <code>http://localhost:8000/sum?x=6&amp;y=2</code> to obtain the result of the sum computed by the code in our example.</p>
+<p>Jolie transparently supports the reception of GET requests ad the automatic parsing of HTTP querystrings. Hence, we can simply execute <code>jolie sum.ol</code> and point the browser to: <code>http://localhost:8000/sum?x=6&amp;y=2</code> to obtain the result of the sum computed by the code in our example.</p>
 <hr />
 <h2 id="sending-get-requests">Sending GET requests</h2>
 <p>The <code>sum</code> service can be invoked from another Jolie program using a HTTP GET request. We can do this with the following client code:</p>
