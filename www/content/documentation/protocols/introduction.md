@@ -1,6 +1,6 @@
 ## Jolie Protocols
 
-In Jolie protocol definition is set in the deployment part of a program. A protocol defines how data to be sent or received should be, respectively, encoded or decoded, following an isomorphism.
+A protocol defines how data to be sent or received shall be, respectively, encoded or decoded, following an isomorphism.
 
 Jolie natively supports a large set of protocols:
 

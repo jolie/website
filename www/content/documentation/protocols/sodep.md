@@ -4,7 +4,13 @@ SODEP (Simple Operation Data Exchange Protocol) is a binary protocol created and
 
 ---
 
-### SODEP data
+## SODEP Parameters
+
+<div class="code" src="sodep.iol"></div>
+
+---
+
+## SODEP data
 
 SODEP maps three Jolie internal data structures: `CommMessage?`, `FaultException?`, and `Value`.
 
@@ -46,14 +52,12 @@ We represent the protocol encoding by using a BNF-like notation. Raw data types 
 - raw numbers annotated with `byte` are to be considered single bytes;
 - the special keyword epsilon means *nothing*.
 
-## SODEP Parameters
+SODEPMessage	::= long(message id) String(resource path) String(operation name) Fault Value
 
-+---------------+---------------+-------------------------------+-------------------+
-| Par. name		| Par.	type 	| Supported values				| Default value  	|
-+---------------+---------------+-------------------------------+-------------------+
-| charset 		| string		| US-ASCII, ISO-8859-1, UTF-8,	| UTF-8				|
-| 		 		| 				| UTF-16BE, UTF-16LE, UTF-16	| 					|
-+---------------+---------------+-------------------------------+-------------------+
-| compression	| string		| gzip							| gzip				|
-+---------------+---------------+-------------------------------+-------------------+
+String	 ::= int(string length) string(UTF-8 encoded)
 
+Fault	 ::= true String(fault name) Value(fault additional data) | false
+
+Value	 ::= ValueContent int(how many ValueChildren) ValueChildren*
+ValueContent	::= 0(byte) | 1(byte) String | 2(byte) int | 3(byte) double
+ValueChildren	::= String(child name) int(how many Value) Value* | epsilon

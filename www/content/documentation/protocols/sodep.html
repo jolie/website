@@ -1,7 +1,11 @@
 <h2 id="sodep-protocol">SODEP Protocol</h2>
 <p>SODEP (Simple Operation Data Exchange Protocol) is a binary protocol created and developed for Jolie, in order to provide a simple, safe and efficient protocol for service communications.</p>
 <hr />
-<h3 id="sodep-data">SODEP data</h3>
+<h2 id="sodep-parameters">SODEP Parameters</h2>
+<div class="code" src="sodep.iol"></div>
+
+<hr />
+<h2 id="sodep-data">SODEP data</h2>
 <p>SODEP maps three Jolie internal data structures: <code>CommMessage?</code>, <code>FaultException?</code>, and <code>Value</code>.</p>
 <p>Basically, a SODEP message is the encoding of a <code>CommMessage?</code> object.</p>
 <p>For the sake of clarity, we show (in Java pseudo-code) how these structures are composed and the meaning of their content before giving the formal specifications of the protocol.</p>
@@ -37,30 +41,7 @@
 <li>raw numbers annotated with <code>byte</code> are to be considered single bytes;</li>
 <li>the special keyword epsilon means <em>nothing</em>.</li>
 </ul>
-<h2 id="sodep-parameters">SODEP Parameters</h2>
-<table>
-<col width="19%" />
-<col width="19%" />
-<col width="38%" />
-<col width="23%" />
-<tbody>
-<tr class="odd">
-<td align="left">Par. name</td>
-<td align="left">Par. type</td>
-<td align="left">Supported values</td>
-<td align="left">Default value</td>
-</tr>
-<tr class="even">
-<td align="left">charset</td>
-<td align="left">string</td>
-<td align="left">US-ASCII, ISO-8859-1, UTF-8, UTF-16BE, UTF-16LE, UTF-16</td>
-<td align="left">UTF-8</td>
-</tr>
-<tr class="odd">
-<td align="left">compression</td>
-<td align="left">string</td>
-<td align="left">gzip</td>
-<td align="left">gzip</td>
-</tr>
-</tbody>
-</table>
+<p>SODEPMessage ::= long(message id) String(resource path) String(operation name) Fault Value</p>
+<p>String ::= int(string length) string(UTF-8 encoded)</p>
+<p>Fault ::= true String(fault name) Value(fault additional data) | false</p>
+<p>Value ::= ValueContent int(how many ValueChildren) ValueChildren* ValueContent ::= 0(byte) | 1(byte) String | 2(byte) int | 3(byte) double ValueChildren ::= String(child name) int(how many Value) Value* | epsilon</p>
