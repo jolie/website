@@ -1,115 +1,110 @@
 type SoapConfiguration:void {
 
 	// Defines the XML Schema files containing
-	// the SOAP message XML vocabulary
+	// the XML types to be used in SOAP messages
 	//
 	// Default: none
-	// Supported values: any valid .schema value
-	.schema?: void {
-		// Defines the URL of a XML Schema file
+	.schema?:void {
+		// Defines the URL of an XML Schema file
 		//
 		// Default: none
 		// Supported values: any valid XML Schema URL
-		.schema_url[1, *]: string
+		.schema_url[1, *]:string
 	}	
 
-	// Defines if Jolie's values and 
-	// SOAP's XMLNodes shall be converted from
-	// a specific type to another
+	// If true, converts XML node attributes to subnodes
+	// in the relative Jolie tree under the "@Attributes"
+	// node.
+	//
+	// Example:
+	//   x.("@Attributes") = "hello"
+	// would be converted to:
+	//   <x myAttr="hello"/>
+	// and vice versa.
 	//
 	// Default: false
-	// Supported values: true or false
-	.convertAttributes?: bool
+	.convertAttributes?:bool
 
-	// Defines the url of the SOAP's
-	// WSDL definition 
+	// The URL of the WSDL definition associated to this SOAP protocol
 	//
 	// Default: none
 	// Supported values: any valid URL referring a WSDL
-	.wsdl?: string {
-		// Defines the port in WSDL
+	.wsdl?:string {
+		// The port to refer to in the WSDL file for communicating
+		// through this protocol.
 		//
 		// Default: none
-		// Supported values: any valid port definition
-		.port?: string
+		// Supported values: any port name in the WSDL file
+		.port?:string
 	}
 
-	// Defines if the SOAP message includes
-	// routing data as WS-Addressing
+	// Use WS-Addressing
 	//
 	// Default: false
-	// Supported values: true or false
-	.wsAddressing?: bool
+	.wsAddressing?:bool
 
-	// Defines the binding style
-	// of a WSDL
+	// Defines the SOAP style to use for message encoding
 	//
-	// Default: RPC
-	// Supported values: RPC or document
-	.style?: string {
-		// Checked only if style = "document", it
-		// defines if the message is wrapped or not
+	// Default: "rpc"
+	// Supported values: "rpc", "document"
+	.style?:string {
+		// Checked only if style is "document", it
+		// defines whether the message is to be wrapped or not
+		// in a node with the name of the operation.
 		// 
-		// Default: 1
-		// Supported values: 0 or 1
-		.wrapped?: int
+		// Default: false
+		.wrapped?:bool
 	}
 
-	// Defines additional attributes of the message.
-	// .operation is evaluated only if .wrapped in .style
-	// is set to default value or 1
+	// Defines additional attributes in the outgoing SOAP messages.
 	//
 	// Default: none
-	// Supported values: any add_attribute type 
-	.add_attribute?: void {
+	.add_attribute?:void {
 		// Defines an operation of the message
-		.operation*: void {
-			.operation_name: string
-			.attribute: void {
+		// This parameter is considered only if .wrapped in .style
+		// is true.
+		.operation*:void {
+			.operation_name:string
+			.attribute:void {
 				// Defines the prefix
 				// of the name of the attribute
-				.prefix?: string
-				.name: string
-				.value: string
+				.prefix?:string
+				.name:string
+				.value:string
 			}
 		}
 		// Defines additional attributes of the
 		// envelope
-		.envelope?: void {
-			.attribute*: void {
-				.name: string
-				.value: string
+		.envelope?:void {
+			.attribute*:void {
+				.name:string
+				.value:string
 			}
 		}
 	}
 
-	// Defines if connection shall be
-	// kept alive or not
-	//
-	// Default: 1
-	// Supported values: 1 or 0
-	.keepAlive?: int
+	/*
+	 * Defines whether the underlying connection should be kept open.
+	 *
+	 * Default: true
+	 */
+	.keepAlive?:bool
 
 
-	// Defines if debug messages shall be 
+	// Defines whether debug messages shall be 
 	// activated
 	//
-	// Default: 0
-	// Supported values: 0 or 1
-	.debug?: int
+	// Default: false
+	.debug?:bool
 
-	// Defines if the message request path
-	// must be interpreted or not
-	// ("/" if not and message.RequestPath otherwise)
+	// Defines whether the message request path
+	// must be interpreted as a redirection resource or not.
 	//
 	// Default: false
-	// Supported values: true or false
-	.interpretResource?: bool
+	.interpretResource?:bool
 
-	// The namespace containing the
-	// SOAP actions
+	// The namespace name for outgoing messages.
 	//
 	// Default: void
-	// Supported values: any
 	.namespace?:string
 }
