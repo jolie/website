@@ -52,7 +52,7 @@ function history() {
     } else if (url_params.top_menu == "documentation" && url_params.sideMenuAction) {
         if (!visited_menu) {
             menu($("a[ref='documentation']"));
-            openTopic($('#doc_sideMenuAction'), url_params.sideMenuAction);
+            openTopic($('#doc_side_menu'), url_params.sideMenuAction);
         }
         loadDocContent(url_params.sideMenuAction);
     } else if (url_params.top_menu == "community") {
@@ -200,6 +200,7 @@ function loadGenericContent(content_path, dom_location) {
 // NEWS FUNCTIONS
 
 function loadNews( content_path ){
+    zenMenu(false);
     setLoading( "#menu_content ");
     $.ajax({
         dataType: "json",
@@ -229,8 +230,8 @@ function docLoadSideMenu() {
         url: documentation_folder + "menu.json",
         dataType: 'json',
         success: function(data) {
-            $('#doc_sideMenuAction').html("");
-            $('#doc_sideMenuAction').tree({
+            $('#doc_side_menu').html("");
+            $('#doc_side_menu').tree({
                 data: addNodeId(data),
                 autoOpen: false,
                 selectable: true
@@ -254,12 +255,12 @@ function addNodeId(json) {
 }
 
 function loadMenuEvents() {
-    $('#doc_sideMenuAction').bind('tree.click', function(event) {
+    $('#doc_side_menu').bind('tree.click', function(event) {
         var node = event.node;
         if (typeof node.url != "undefined") {
             History.pushState("", "", "?top_menu=documentation&sideMenuAction=" + node.url);
         } else {
-            $("#doc_sideMenuAction").tree('toggle', node);
+            $("#doc_side_menu").tree('toggle', node);
             $(".jqtree-selected").removeClass("jqtree-selected");
         }
     });
