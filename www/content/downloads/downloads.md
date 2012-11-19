@@ -1,4 +1,4 @@
-<span class="scrollable_container nano">
+<div class="scrollable_container nano">
 
 # Install
 
@@ -69,7 +69,7 @@ You can now execute Jolie scripts by issuing the jolie command to a console, e.g
 ## Support for external tools
 
 ### Kate
-Homepage: <http://kate-editor.org/>
+Homepage: [http://kate-editor.org/](http://kate-editor.org/)
 
 A syntax highlighting description file for KatePart (which is used by most KDE applications and the Kate editor itself) is available.
 
@@ -77,4 +77,4 @@ Download the [latest version](http://jolie.svn.sourceforge.net/viewvc/jolie/trun
 
 You can discover your `$KDE_HOME` directory by issuing the kde4 config localprefix command.
 
-</span>
+</div>

@@ -92,12 +92,18 @@ function URL2jParam(url) {
 }
 
 function adjustDocPrintHeight(){
-    var content_height=0;
-    $.each($(".content > *"),function() {
-        var eh = $(this).outerHeight(true);
-        content_height += parseInt(eh);
+    var content_height = 0;
+    var elements = "";
+    $.each($("#doc_content .content > *"),function() {
+        var that = this;
+        if ( $( "> .syntaxhighlighter", this ).size() > 0 ){
+            that = $( "> .syntaxhighlighter", this );
+        }
+        var eh = parseInt ( $( that ).outerHeight( true ) );
+        content_height += eh;
     });
-    $("style").html("@media print{#menu_content{display: block; height:"+content_height+"px !important;}}");
+    $("style").html( "@media print{#menu_content{display: block; height:" + 
+                    content_height + "px !important;}}" );
 }
 
 function adjustHeights() {
@@ -110,13 +116,15 @@ function adjustHeights() {
     $("#menu_content").height(menu_content_h);
 }
 
-function error_page(errorType, textStatus, errorThrown) {
-    $("#menu_content").html("<div style=\"margin-top:50px\" " + "class=\"grid_14 push_8\"><h1>404</h1>" + "<h3>Text Status</h3><p>" + textStatus + "</p>" + "<h3>Error Thrown</h3><p>" + errorThrown + "</p>" + "<img style=\"width:100px;\"" + "src=\"../imgs/jolie_logo.png\"></div>");
+function error_page(inElement , errorType, textStatus, errorThrown) {
+    $( inElement ).html("<div style=\"margin-top:50px\" " + "class=\"grid_14 push_8\"><h1>404</h1>" + "<h3>Text Status</h3><p>" + textStatus + "</p>" + "<h3>Error Thrown</h3><p>" + errorThrown + "</p></div>");
+    scrollify( inElement );
+
 }
 
 function menu(elem) {
     if (!$(elem).attr("src")) {
-        error_page();
+        error_page( $( "#menu_content" ), "Bad request");
     } else {
         $("#top_menu *").each(function(i, e) {
             $(e).removeAttr("id");
@@ -159,15 +167,15 @@ function zen_menu(zen) {
 }
 
 function loadMenuContent(content_path) {
+    setLoading( "#menu_content ");
     $.ajax({
         url: content_folder + content_path,
         success: function(data) {
-            $("#menu_content").html(data);
-            scrollify(".scrollable_container");
+            $( "#menu_content" ).append( "<div class=\"temp\">" + data + "<div>" );
             loadCode(content_folder + content_path.split("/")[0] + "/");
         },
         error: function(errorType, textStatus, errorThrown) {
-            error_page(errorType, textStatus, errorThrown);
+            error_page( $( "#menu_content" ), errorType, textStatus, errorThrown);
         }
     });
 }
@@ -180,7 +188,7 @@ function load_generic_content(content_path, dom_location) {
             scrollify(".scrollable_container");
         },
         error: function(errorType, textStatus, errorThrown) {
-            error_page(errorType, textStatus, errorThrown);
+            error_page( $( "#menu_content" ), errorType, textStatus, errorThrown);
         }
     });
 }
@@ -201,7 +209,7 @@ function doc_load_side_menu() {
             load_menu_events();
         },
         error: function(errorType, textStatus, errorThrown) {
-            error_page(errorType, textStatus, errorThrown);
+            error_page( $( "#menu_content" ), errorType, textStatus, errorThrown);
         }
     });
 }
@@ -257,71 +265,73 @@ function load_doc_content(content_path) {
     $.ajax({
         url: documentation_folder + content_path + ".html",
         error: function(errorType, textStatus, errorThrown) {
-            error_page();
+            error_page( $( "#doc_content" ), errorType, textStatus, errorThrown);
         },
         success: function(data) {
             $("#doc_content").append("<div class=\"temp\">" + data + "<div>");
-            loadCode( documentation_folder + content_path.split("/")[0] + "/");
-            // ->   these last functions must be called when
-            //      all source codes are loaded
-            //parseAnchors();
-            //TOCCreator(true);
-            //SyntaxHighlighter.highlight();
-            //scrollify("#doc_content");
-            //adjustDocPrintHeight();
+            loadCode( documentation_folder + content_path.split("/")[0] + "/", true );
         }
     });
 }
 
-function load_callback(){
+function load_callback( isDoc ){
     code_to_load--;
     if ( code_to_load <= 0){
-        $("#doc_content").html( $( ".temp" ).html() );
-        parseAnchors();
-        TOCCreator( true );
+        if ( isDoc ){
+            $("#doc_content").html( $( ".temp" ).html() );
+            parseAnchors();
+            TOCCreator( true );
+            scrollify( "#doc_content" );
+        } else {
+            $( "#menu_content ").html( $( ".temp" ).html() );
+            scrollify( ".scrollable_container" );
+        }
         SyntaxHighlighter.highlight();
-        scrollify( "#doc_content" );
         adjustDocPrintHeight();
     }
 }
 
-function loadCode( folder ) {
+function loadCode( folder, isDoc ) {
     code_to_load = $("div.syntax, div.code").size();
-    if (typeof folder == "undefined") {
-        folder = documentation_folder;
-    }
-    $("div.syntax, div.code" ).each(function() {
-        var el = $(this);
-        var src_file = el.attr("src");
-        // IF SOURCE HAS TO BE LOADED
-        if (src_file) {
-            // IF IT'S IN SYNTAX
-            var content = "";
-            if (el.hasClass("syntax")) {
-                $.get(folder + "syntax/" + src_file, function(data) {
-                    content = data;
-                    el.after("<pre class=\"brush: " + 
-                        getLanguageFromExtension(src_file) +
-                         "\">" + content + "</pre>");
-                    load_callback();
-                }, "text");
-            }
-            // IF IT'S IN CODE	
-            else {
-                $.get(folder + "code/" + src_file, function(data) {
-                    content = data;
-                    el.after("<pre class=\"brush: " + 
-                        getLanguageFromExtension(src_file) +
-                         "\">" + content + "</pre>");
-                    load_callback();
-                },"text");
-            }
-            // OR HAS JUST TO BE HIGHLIGHTED
-        } else {
-            var lang = el.attr("lang");
-            el.after("<pre class=\"brush: " + lang + "\">" + el.html() + "</pre>");
+    if ( code_to_load ){
+        if (typeof folder == "undefined") {
+            folder = documentation_folder;
         }
-    });
+        $("div.syntax, div.code" ).each(function() {
+            var el = $(this);
+            var src_file = el.attr("src");
+            // IF SOURCE HAS TO BE LOADED
+            if (src_file) {
+                // IF IT'S IN SYNTAX
+                var content = "";
+                if (el.hasClass("syntax")) {
+                    $.get(folder + "syntax/" + src_file, function(data) {
+                        content = data;
+                        el.after("<pre class=\"brush: " + 
+                            getLanguageFromExtension(src_file) +
+                             "\">" + content + "</pre>");
+                        load_callback( isDoc );
+                    }, "text");
+                }
+                // IF IT'S IN CODE	
+                else {
+                    $.get(folder + "code/" + src_file, function(data) {
+                        content = data;
+                        el.after("<pre class=\"brush: " + 
+                            getLanguageFromExtension(src_file) +
+                             "\">" + content + "</pre>");
+                        load_callback( isDoc );
+                    },"text");
+                }
+                // OR HAS JUST TO BE HIGHLIGHTED (EMBEDDED)
+            } else {
+                var lang = el.attr("lang");
+                el.after("<pre class=\"brush: " + lang + "\">" + el.html() + "</pre>");
+            }
+        });
+    } else {
+        load_callback( isDoc );
+    }
 }
 
 function getLanguageFromExtension(fileName) {

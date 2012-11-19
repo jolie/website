@@ -10,8 +10,8 @@ body{
 
 pre , code, kbd, samp { 
   color: #000; 
-  font-family: "InconsolataMedium", monospace;
-  font-size: 0.90em; 
+  font-family: "SourceCodeProRegular", monospace;
+  font-size: 1em; 
   border-radius:3px;
   background-color: #F8F8F8;
   border: 1px solid #CCC; 
@@ -111,7 +111,7 @@ pre , code, kbd, samp {
 
 h1,h2,h3{
 	color: #aa0000;
-	font: 'Lucida Grande', 'Lucida Sans Unicode', Helvetica, Arial, Verdana, sans-serif !important;
+	font-family: Helvetica, Arial, Verdana, sans-serif !important;
 }
 
 h1 {
@@ -153,6 +153,27 @@ h3 {
 .scrollable_container .content { padding: 10px; }
 .scrollable_container .pane   { background: #888; }
 .scrollable_container .slider { background: #111; }
+
+/* NEWS CSS */
+
+.news_separator {
+	border-bottom: 1px solid lightGrey;
+	font-family: Helvetica, Arial, Verdana, sans-serif !important;
+}
+
+.news_separator .time {
+	font-weight: bold;
+	background-image: url(../imgs/time.png);
+	background-repeat: no-repeat;
+	padding-left: 20px;
+}
+
+.news_separator .user {
+	font-weight: bold;
+	background-image: url(../imgs/user.png);
+	background-repeat: no-repeat;
+	padding-left: 20px;
+}
 
 /* DOCUMENTATION CSS */
 
