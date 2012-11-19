@@ -248,35 +248,49 @@ function parseAnchors() {
     });
 }
 
+function setLoading( element ){
+    $( element ).html( "<div class=\"ajax_load\"></div>");
+}
+
 function load_doc_content(content_path) {
+    setLoading("#doc_content");
     $.ajax({
         url: documentation_folder + content_path + ".html",
         error: function(errorType, textStatus, errorThrown) {
             error_page();
         },
         success: function(data) {
-            $.ajaxSetup({
-                async: false
-            });
-            $("#doc_content").html(data);
-            parseAnchors();
-            loadCode(documentation_folder+content_path.split("/")[0]+"/");
-            $.ajaxSetup({
-                async: true
-            });
-            TOCCreator(true);
-            SyntaxHighlighter.highlight();
-            scrollify("#doc_content");
-            adjustDocPrintHeight();
+            $("#doc_content").append("<div class=\"temp\">" + data + "<div>");
+            loadCode( documentation_folder + content_path.split("/")[0] + "/");
+            // ->   these last functions must be called when
+            //      all source codes are loaded
+            //parseAnchors();
+            //TOCCreator(true);
+            //SyntaxHighlighter.highlight();
+            //scrollify("#doc_content");
+            //adjustDocPrintHeight();
         }
     });
 }
 
-function loadCode(folder) {
+function load_callback(){
+    code_to_load--;
+    if ( code_to_load <= 0){
+        $("#doc_content").html( $( ".temp" ).html() );
+        parseAnchors();
+        TOCCreator( true );
+        SyntaxHighlighter.highlight();
+        scrollify( "#doc_content" );
+        adjustDocPrintHeight();
+    }
+}
+
+function loadCode( folder ) {
+    code_to_load = $("div.syntax, div.code").size();
     if (typeof folder == "undefined") {
         folder = documentation_folder;
     }
-    $("div.syntax, div.code").each(function() {
+    $("div.syntax, div.code" ).each(function() {
         var el = $(this);
         var src_file = el.attr("src");
         // IF SOURCE HAS TO BE LOADED
@@ -286,15 +300,22 @@ function loadCode(folder) {
             if (el.hasClass("syntax")) {
                 $.get(folder + "syntax/" + src_file, function(data) {
                     content = data;
+                    el.after("<pre class=\"brush: " + 
+                        getLanguageFromExtension(src_file) +
+                         "\">" + content + "</pre>");
+                    load_callback();
                 }, "text");
             }
             // IF IT'S IN CODE	
             else {
                 $.get(folder + "code/" + src_file, function(data) {
                     content = data;
+                    el.after("<pre class=\"brush: " + 
+                        getLanguageFromExtension(src_file) +
+                         "\">" + content + "</pre>");
+                    load_callback();
                 },"text");
             }
-            el.after("<pre class=\"brush: " + getLanguageFromExtension(src_file) + "\">" + content + "</pre>");
             // OR HAS JUST TO BE HIGHLIGHTED
         } else {
             var lang = el.attr("lang");

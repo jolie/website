@@ -2,21 +2,6 @@ html{
 	height: 100%;
 }
 
-/*body {
-	font: 'Lucida Grande', 'Lucida Sans Unicode', Helvetica, Arial, Verdana, sans-serif;
-	line-height: 1.2em;
-	height: 100%;
-}
-
-code {
-	font-family: "Consolas", "Bitstream Vera Sans Mono", "Courier New", Courier, monospace !important;
-	font-weight: normal !important;
-	font-style: normal !important;
-	font-size: 1em !important;
-	min-height: inherit !important;
-	min-height: auto !important;
-}*/
-
 body{
   color:#444;
   background:#fefefe;
@@ -25,7 +10,7 @@ body{
 
 pre , code, kbd, samp { 
   color: #000; 
-  font-family: monospace; 
+  font-family: "InconsolataMedium", monospace;
   font-size: 0.90em; 
   border-radius:3px;
   background-color: #F8F8F8;
@@ -38,7 +23,17 @@ pre , code, kbd, samp {
 	overflow:hidden;
 }
 
+.ajax_load {
+	background: url(../imgs/ajax-loader.gif);
+	background-repeat: no-repeat;
+	height: 100%;
+	background-position-x: 50%;
+	background-position-y: 50%;
+}
 
+.temp {
+	display: none;
+}
 
 #tagline {
 	padding-top: 22px;
@@ -387,8 +382,7 @@ div.caption {
 }
 
 #menu_content p, #menu_content ul {
-  font-family:Georgia, Palatino, 'Palatino Linotype', Times,
-              'Times New Roman', serif;
+  font-family: "LoraRegular", Georgia, Palatino, 'Palatino Linotype', Times, 'Times New Roman', serif;
   font-size:16px;
   line-height:1.5em;
 }
