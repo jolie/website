@@ -49,25 +49,25 @@ function history() {
     var url_params = URL2jParam(url);
     if (!url_params.top_menu) {
         menu($("a[ref='news']"));
-    } else if (url_params.top_menu == "documentation" && url_params.side_menu) {
+    } else if (url_params.top_menu == "documentation" && url_params.sideMenuAction) {
         if (!visited_menu) {
             menu($("a[ref='documentation']"));
-            openTopic($('#doc_side_menu'), url_params.side_menu);
+            openTopic($('#doc_sideMenuAction'), url_params.sideMenuAction);
         }
-        load_doc_content(url_params.side_menu);
+        loadDocContent(url_params.sideMenuAction);
     } else if (url_params.top_menu == "community") {
         menu($("a[ref='community']"));
-        if (!url_params.side_menu) {
-            side_menu('community', 'people')
+        if (!url_params.sideMenuAction) {
+            sideMenuAction('community', 'people')
         } else {
-            load_community_content("li[ref='" + url_params.side_menu + "']", url_params.side_menu);
+            loadCommunityContent("li[ref='" + url_params.sideMenuAction + "']", url_params.sideMenuAction);
         }
     } else if (url_params.top_menu == "about_jolie") {
         menu($("a[ref='about_jolie']"));
-        if (!url_params.side_menu) {
-            side_menu('about_jolie', 'contacts')
+        if (!url_params.sideMenuAction) {
+            sideMenuAction('about_jolie', 'contacts')
         } else {
-            load_about_jolie_content("li[ref='" + url_params.side_menu + "']", url_params.side_menu);
+            loadAboutJolieContent("li[ref='" + url_params.sideMenuAction + "']", url_params.sideMenuAction);
         }
     } else {
         menu($("a[ref='" + url_params.top_menu + "']"));
@@ -116,7 +116,7 @@ function adjustHeights() {
     $("#menu_content").height(menu_content_h);
 }
 
-function error_page(inElement , errorType, textStatus, errorThrown) {
+function showErrorPage(inElement , errorType, textStatus, errorThrown) {
     $( inElement ).html("<div style=\"margin-top:50px\" " + "class=\"grid_14 push_8\"><h1>404</h1>" + "<h3>Text Status</h3><p>" + textStatus + "</p>" + "<h3>Error Thrown</h3><p>" + errorThrown + "</p></div>");
     scrollify( inElement );
 
@@ -124,7 +124,7 @@ function error_page(inElement , errorType, textStatus, errorThrown) {
 
 function menu(elem) {
     if (!$(elem).attr("src")) {
-        error_page( $( "#menu_content" ), "Bad request");
+        showErrorPage( $( "#menu_content" ), "Bad request");
     } else {
         $("#top_menu *").each(function(i, e) {
             $(e).removeAttr("id");
@@ -134,18 +134,22 @@ function menu(elem) {
             async: false
         });
         visited_menu = true;
-        loadMenuContent($(elem).attr("src"));
-        if ($(elem).attr("ref") == "documentation") {
-            doc_load_side_menu();
-            zen_menu(true);
-        } else if ($(elem).attr("ref") == "about_jolie" || $(elem).attr("ref") == "community") {
-            zen_menu(true);
+        if ( $( elem ).attr( "ref" ) == "news" ){
+            loadNews( $( elem ).attr( "src" ) );
         } else {
-            zen_menu(false);
+            loadMenuContent($(elem).attr("src"));
+            if ($(elem).attr("ref") == "documentation") {
+                docLoadSideMenu();
+                zenMenu(true);
+            } else if ($(elem).attr("ref") == "about_jolie" || $(elem).attr("ref") == "community") {
+                zenMenu(true);
+            } else {
+                zenMenu(false);
+            }
+            $.ajaxSetup({
+                async: true
+            });
         }
-        $.ajaxSetup({
-            async: true
-        });
     }
 }
 
@@ -158,7 +162,7 @@ function scrollify(element) {
     });
 }
 
-function zen_menu(zen) {
+function zenMenu(zen) {
     var color = ""
     if (zen) {
         color = "#DDD"
@@ -170,17 +174,17 @@ function loadMenuContent(content_path) {
     setLoading( "#menu_content ");
     $.ajax({
         url: content_folder + content_path,
-        success: function(data) {
+        success: function( data ) {
             $( "#menu_content" ).append( "<div class=\"temp\">" + data + "<div>" );
-            loadCode(content_folder + content_path.split("/")[0] + "/");
+            loadCode( content_folder + content_path.split("/")[0] + "/" );
         },
         error: function(errorType, textStatus, errorThrown) {
-            error_page( $( "#menu_content" ), errorType, textStatus, errorThrown);
+            showErrorPage( $( "#menu_content" ), errorType, textStatus, errorThrown);
         }
     });
 }
 
-function load_generic_content(content_path, dom_location) {
+function loadGenericContent(content_path, dom_location) {
     $.ajax({
         url: content_folder + content_path,
         success: function(data) {
@@ -188,33 +192,58 @@ function load_generic_content(content_path, dom_location) {
             scrollify(".scrollable_container");
         },
         error: function(errorType, textStatus, errorThrown) {
-            error_page( $( "#menu_content" ), errorType, textStatus, errorThrown);
+            showErrorPage( $( "#menu_content" ), errorType, textStatus, errorThrown);
+        }
+    });
+}
+
+// NEWS FUNCTIONS
+
+function loadNews( content_path ){
+    setLoading( "#menu_content ");
+    $.ajax({
+        dataType: "json",
+        url: content_folder + content_path,
+        success: function( data ) {
+            var newsData = "<div class=\"scrollable_container\">";
+            $.each( data.news, function(i, item) {
+                newsData += marked ( item.article.content);
+                newsData += "<div class=\"news_separator\">Published on <span class=\"time\">" +
+                        item.article.date + "</span>, by <span class=\"user\">" +
+                        item.article.author + "</span></div>";
+            });
+            newsData += "</div>";
+            $("#menu_content").html( newsData );
+            scrollify(".scrollable_container");
+        },
+        error: function(errorType, textStatus, errorThrown) {
+            showErrorPage( $( "#menu_content" ), errorType, textStatus, errorThrown);
         }
     });
 }
 
 // DOCUMENTATION FUNCTIONS
 
-function doc_load_side_menu() {
+function docLoadSideMenu() {
     $.ajax({
         url: documentation_folder + "menu.json",
         dataType: 'json',
         success: function(data) {
-            $('#doc_side_menu').html("");
-            $('#doc_side_menu').tree({
-                data: add_id(data),
+            $('#doc_sideMenuAction').html("");
+            $('#doc_sideMenuAction').tree({
+                data: addNodeId(data),
                 autoOpen: false,
                 selectable: true
             });
-            load_menu_events();
+            loadMenuEvents();
         },
         error: function(errorType, textStatus, errorThrown) {
-            error_page( $( "#menu_content" ), errorType, textStatus, errorThrown);
+            showErrorPage( $( "#menu_content" ), errorType, textStatus, errorThrown);
         }
     });
 }
 
-function add_id(json) {
+function addNodeId(json) {
     var id = 1;
     $.each(json, function(ti, topic) {
         $.each(topic.children, function(ni, node) {
@@ -224,13 +253,13 @@ function add_id(json) {
     return json;
 }
 
-function load_menu_events() {
-    $('#doc_side_menu').bind('tree.click', function(event) {
+function loadMenuEvents() {
+    $('#doc_sideMenuAction').bind('tree.click', function(event) {
         var node = event.node;
         if (typeof node.url != "undefined") {
-            History.pushState("", "", "?top_menu=documentation&side_menu=" + node.url);
+            History.pushState("", "", "?top_menu=documentation&sideMenuAction=" + node.url);
         } else {
-            $("#doc_side_menu").tree('toggle', node);
+            $("#doc_sideMenuAction").tree('toggle', node);
             $(".jqtree-selected").removeClass("jqtree-selected");
         }
     });
@@ -238,7 +267,7 @@ function load_menu_events() {
 
 function pushDocLink(page_name) {
     visited_menu = false;
-    History.pushState("", "", "?top_menu=documentation&side_menu=" + page_name);
+    History.pushState("", "", "?top_menu=documentation&sideMenuAction=" + page_name);
 }
 
 function parseAnchors() {
@@ -260,12 +289,12 @@ function setLoading( element ){
     $( element ).html( "<div class=\"ajax_load\"></div>");
 }
 
-function load_doc_content(content_path) {
+function loadDocContent(content_path) {
     setLoading("#doc_content");
     $.ajax({
         url: documentation_folder + content_path + ".html",
         error: function(errorType, textStatus, errorThrown) {
-            error_page( $( "#doc_content" ), errorType, textStatus, errorThrown);
+            showErrorPage( $( "#doc_content" ), errorType, textStatus, errorThrown);
         },
         success: function(data) {
             $("#doc_content").append("<div class=\"temp\">" + data + "<div>");
@@ -274,7 +303,7 @@ function load_doc_content(content_path) {
     });
 }
 
-function load_callback( isDoc ){
+function loadCallback( isDoc ){
     code_to_load--;
     if ( code_to_load <= 0){
         if ( isDoc ){
@@ -310,7 +339,7 @@ function loadCode( folder, isDoc ) {
                         el.after("<pre class=\"brush: " + 
                             getLanguageFromExtension(src_file) +
                              "\">" + content + "</pre>");
-                        load_callback( isDoc );
+                        loadCallback( isDoc );
                     }, "text");
                 }
                 // IF IT'S IN CODE	
@@ -320,7 +349,7 @@ function loadCode( folder, isDoc ) {
                         el.after("<pre class=\"brush: " + 
                             getLanguageFromExtension(src_file) +
                              "\">" + content + "</pre>");
-                        load_callback( isDoc );
+                        loadCallback( isDoc );
                     },"text");
                 }
                 // OR HAS JUST TO BE HIGHLIGHTED (EMBEDDED)
@@ -330,7 +359,7 @@ function loadCode( folder, isDoc ) {
             }
         });
     } else {
-        load_callback( isDoc );
+        loadCallback( isDoc );
     }
 }
 
@@ -380,7 +409,7 @@ function TOCCreator(create) {
     } else {
         $("#TOC_menu").html("");
     }
-    TOC_events();
+    TOCEvents();
 }
 
 function TOC_scroll(ei) {
@@ -392,7 +421,7 @@ function TOC_scroll(ei) {
     });
 }
 
-function TOC_events() {
+function TOCEvents() {
     $(".dropdowntitle, .submenu").click(function() {
         if ($(".dropdown").css("border-bottom-width") == "1px") {
             $(".dropdown").css("border-bottom-width", "0px");
@@ -407,22 +436,22 @@ function TOC_events() {
     });
 }
 
-function side_menu(page, content) {
-    History.pushState("", "", "?top_menu=" + page + "&side_menu=" + content);
+function sideMenuAction(page, content) {
+    History.pushState("", "", "?top_menu=" + page + "&sideMenuAction=" + content);
 }
 
 // COMMUNITY FUNCTIONS
 
-function load_community_content(element, page_title) {
-    $("#community_side_menu li").removeAttr("id");
+function loadCommunityContent(element, page_title) {
+    $("#community_sideMenuAction li").removeAttr("id");
     $(element).attr("id", "active");
-    load_generic_content("community/" + page_title + ".html", "#community_content");
+    loadGenericContent("community/" + page_title + ".html", "#community_content");
 }
 
 // ABOUT JOLIE FUNCTIONS
 
-function load_about_jolie_content(element, page_title) {
-    $("#about_jolie_side_menu li").removeAttr("id");
+function loadAboutJolieContent(element, page_title) {
+    $("#about_jolie_sideMenuAction li").removeAttr("id");
     $(element).attr("id", "active");
-    load_generic_content("about_jolie/" + page_title + ".html", "#about_jolie_content");
+    loadGenericContent("about_jolie/" + page_title + ".html", "#about_jolie_content");
 }

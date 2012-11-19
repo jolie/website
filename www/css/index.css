@@ -159,6 +159,7 @@ h3 {
 .news_separator {
 	border-bottom: 1px solid lightGrey;
 	font-family: Helvetica, Arial, Verdana, sans-serif !important;
+	margin-bottom: 20px;
 }
 
 .news_separator .time {

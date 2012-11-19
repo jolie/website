@@ -1,0 +1,18 @@
+{
+    "news": [
+        {
+            "article": {
+                "content":"## The new Jolie website \n \n We invite you to explore it, learning the great features of the Jolie language. \n \n Enjoy!",
+                "date":"November 19th, 2012",
+                "author":"Saverio"
+            }
+        },
+        {
+            "article": {
+                "content":"## Optimizing the website \n \n In order to offer the best experience to our users, we constantly update our website with news, documentations and updates about Jolie. \n \n Stay tuned!",
+                "date":"November 19th, 2012",
+                "author":"Saverio"
+            }
+        }
+    ]
+}
