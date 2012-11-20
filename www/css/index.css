@@ -162,18 +162,19 @@ h3 {
 	margin-bottom: 20px;
 }
 
-.news_separator .time {
+.news_separator .time, .news_separator .user {
+	display: inline-block;
 	font-weight: bold;
-	background-image: url(../imgs/time.png);
 	background-repeat: no-repeat;
 	padding-left: 20px;
 }
 
 .news_separator .user {
-	font-weight: bold;
 	background-image: url(../imgs/user.png);
-	background-repeat: no-repeat;
-	padding-left: 20px;
+}
+
+.news_separator .time {
+	background-image: url(../imgs/time.png);
 }
 
 /* DOCUMENTATION CSS */

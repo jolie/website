@@ -1,4 +1,4 @@
-type SoapConfiguration:void {
+type XmlRpcConfiguration:void {
 
 	/*
 	* Defines the aliases for operation names.

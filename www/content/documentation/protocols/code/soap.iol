@@ -38,6 +38,7 @@ type SoapConfiguration:void {
 	* Supported values: any valid URL referring a WSDL
 	*/
 	.wsdl?:string {
+		/*
 		* The port to refer to in the WSDL file for communicating
 		* through this protocol.
 		*
