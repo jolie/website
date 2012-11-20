@@ -1,33 +1,39 @@
 <div class="scrollable_container nano">
 
 <h1 id="install">Install</h1>
-<h2 id="linux">Linux</h2>
+<div style="margin-bottom:20px;margin-left:auto;text-align:center;margin-right:auto;width:80%;-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;border:1px solid lightgrey"><div style="padding: 10px 0px 10px 0px;vertical-align:middle;width:49%;display:inline-block;border-right:1px solid lightgrey;font-size:20px;">
+<a href="#linux">On Linux and Mac</a>
+</div><div style="padding: 10px 0px 10px 0px;vertical-align:middle;width:49%;display:inline-block;font-size:20px;">
+<a href="#windows">On Windows</a>
+</div></div>
+
+<h2 id="on-linux"><a id="linux"></a>On Linux</h2>
 <h3 id="opensuse---one-click-installation">openSuse - one click installation</h3>
 <p><a href="http://download.opensuse.org/repositories/home:/fmontesi/openSUSE_11.3/jolie.ymp">openSuse 11.3</a></p>
 <h3 id="from-sources">From sources</h3>
 <p>Requirements:</p>
 <ul>
-<li>Java SDK &gt;=1.6</li>
-<li>Apache ant</li>
-<li>Subversion client</li>
+<li>Java SDK &gt;=1.6;</li>
+<li>Apache ant;</li>
+<li>Subversion client.</li>
 </ul>
 <p>Open a shell and execute:</p>
 <div class="code" src="example_install_1.txt"></div>
 
-<p>The ant script will automatically build and install Jolie for you. The default is to install in /opt/jolie, but the installation parameters can be controlled by editing buildconfig/config.properties.</p>
+<p>The ant script will automatically build and install Jolie for you. The default is to install in <code>/opt/jolie</code>, but the installation parameters can be controlled by editing <code>buildconfig/config.properties</code>.</p>
 <p>A Jolie launcher script will be put in <code>/usr/local/bin</code> (this parameter is configurable, too), thus executing a Jolie script will be just a matter of:</p>
 <div class="code" src="example_install_2.txt"></div>
 
 <hr />
-<h2 id="windows">Windows</h2>
+<h2 id="on-windows"><a id="windows"></a>On Windows</h2>
 <h3 id="from-sources-1">From sources</h3>
 <h4 id="requirements">Requirements:</h4>
 <p>Install the latest JDK (Java SE Development Kit) from this <a href="http://java.sun.com/javase/downloads/index.jsp">link</a> Install a Subversion client (e.g. <a href="http://tortoisesvn.tigris.org/">Tortoise</a>)</p>
 <p>Install Ant for building sources from this <a href="http://ant.apache.org/">link</a>.</p>
 <h4 id="installing">Installing:</h4>
-<p>Download JOLIE's sources with your svn client from <a href="https://jolie.svn.sourceforge.net/svnroot/jolie/trunk"><code class="url">https://jolie.svn.sourceforge.net/svnroot/jolie/trunk</code></a></p>
+<p>Download JOLIE's sources with your svn client from <code>https://jolie.svn.sourceforge.net/svnroot/jolie/trunk</code></p>
 <p>Go into the trunk directory.</p>
-<p>Open the buildconfig/config.properties file and change the parameters <code>install.launcher_dir</code> and <code>install.dir</code> by replacing the existing directories with your desired ones. Use <code>\\</code> instead of the single backslashes when writing paths. Example:</p>
+<p>Open the <code>buildconfig/config.properties</code> file and change the parameters <code>install.launcher_dir</code> and <code>install.dir</code> by replacing the existing directories with your desired ones. Use <code>\\</code> instead of the single backslashes when writing paths. Example:</p>
 <div class="code" src="example_install_3.txt"></div>
 
 <p>Edit your PATH environment variable so that it includes the <code>install.launcher_dir</code> directory <a href="http://support.microsoft.com/kb/310519">instructions for managing environment variables under Windows XP</a> Execute the <code>ant dist install</code> command.</p>

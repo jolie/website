@@ -11,7 +11,7 @@ body{
 pre , code, kbd, samp { 
   color: #000; 
   font-family: "SourceCodeProRegular", monospace;
-  font-size: 1em; 
+  font-size: 0.9em; 
   border-radius:3px;
   background-color: #F8F8F8;
   border: 1px solid #CCC; 

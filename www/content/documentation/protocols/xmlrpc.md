@@ -1,6 +1,6 @@
 ## XML-RPC Protocol
 
-XML-RPC is a remote procedure call protocol encoded in XML.
+XML-RPC is a remote procedure call protocol encoded in XML (Extensible Markup Language).
 
 Protocol name in port definition: `xmlrpc`.
 

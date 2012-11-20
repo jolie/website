@@ -1,6 +1,6 @@
 ## HTTP Protocol
 
-HTTP is an application protocol for distributed, collaborative, hypermedia information systems.
+HTTP (Hypertext Transfer Protocol) is an application protocol for distributed, collaborative, hypermedia information systems.
 
 Protocol name in Jolie port definition: `http`.
 

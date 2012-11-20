@@ -2,7 +2,9 @@
 
 # Install
 
-## Linux
+<div style="margin-bottom:20px;margin-left:auto;text-align:center;margin-right:auto;width:80%;-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;border:1px solid lightgrey"><div style="padding: 10px 0px 10px 0px;vertical-align:middle;width:49%;display:inline-block;border-right:1px solid lightgrey;font-size:20px;"><a href="#linux">On Linux and Mac</a></div><div style="padding: 10px 0px 10px 0px;vertical-align:middle;width:49%;display:inline-block;font-size:20px;"><a href="#windows">On Windows</a></div></div>
+
+## <a id="linux"></a>On Linux and Mac
 
 ### openSuse - one click installation
 
@@ -11,16 +13,16 @@
 ### From sources
 Requirements:
 
-- Java SDK >=1.6
-- Apache ant
-- Subversion client 
+- Java SDK >=1.6;
+- Apache ant;
+- Subversion client. 
 
 Open a shell and execute:
 
 <div class="code" src="example_install_1.txt"></div>
 
-The ant script will automatically build and install Jolie for you. The default is to install in /opt/jolie, but the 
-installation parameters can be controlled by editing buildconfig/config.properties.
+The ant script will automatically build and install Jolie for you. The default is to install in `/opt/jolie`, but the 
+installation parameters can be controlled by editing `buildconfig/config.properties`.
 
 A Jolie launcher script will be put in `/usr/local/bin` (this parameter is configurable, too), thus executing a Jolie script will be just a matter of:
 
@@ -28,7 +30,7 @@ A Jolie launcher script will be put in `/usr/local/bin` (this parameter is confi
 
 ---
 
-## Windows
+## <a id="windows"></a>On Windows
 
 ### From sources
 
@@ -40,11 +42,11 @@ Install Ant for building sources from this [link](http://ant.apache.org/).
 
 #### Installing:
 
-Download JOLIE's sources with your svn client from <https://jolie.svn.sourceforge.net/svnroot/jolie/trunk>
+Download JOLIE's sources with your svn client from `https://jolie.svn.sourceforge.net/svnroot/jolie/trunk`
 
 Go into the trunk directory.
 
-Open the buildconfig/config.properties file and change the parameters `install.launcher_dir` and `install.dir` 
+Open the `buildconfig/config.properties` file and change the parameters `install.launcher_dir` and `install.dir` 
 by replacing the existing directories with your desired ones. Use `\\` instead of the single backslashes when writing paths. Example:
 
 <div class="code" src="example_install_3.txt"></div>

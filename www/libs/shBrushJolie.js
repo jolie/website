@@ -1,4 +1,4 @@
-SyntaxHighlighter.brushes.Custom = function()
+SyntaxHighlighter.brushes.Jolie = function()
 {
   var funcs       = 'is_defined undef';
   var keywords    = 'include main outputPort inputPort '+
@@ -27,5 +27,5 @@ SyntaxHighlighter.brushes.Custom = function()
 	});
 };
 
-SyntaxHighlighter.brushes.Custom.prototype = new SyntaxHighlighter.Highlighter();
-SyntaxHighlighter.brushes.Custom.aliases  = ['jolie'];
+SyntaxHighlighter.brushes.Jolie.prototype = new SyntaxHighlighter.Highlighter();
+SyntaxHighlighter.brushes.Jolie.aliases  = ['jolie'];

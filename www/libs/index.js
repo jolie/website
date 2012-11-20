@@ -24,12 +24,16 @@ var ext_to_lang_hash = {
         },
         "java": {
             "lang": "java"
+        },
+        "txt": {
+            "lang": "plain"
         }
     }
 };
 
 $(document).ready(function() {
-    SyntaxHighlighter.defaults.toolbar = false;
+    SyntaxHighlighter.defaults["toolbar"] = false;
+    SyntaxHighlighter.defaults["auto-links"] = false;
     adjustHeights();
     History.Adapter.bind(window, "statechange", history);
     history();
