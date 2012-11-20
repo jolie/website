@@ -2,6 +2,8 @@
 
 SODEP (Simple Operation Data Exchange Protocol) is a binary protocol created and developed for Jolie, in order to provide a simple, safe and efficient protocol for service communications.
 
+Protocol name in port definition: `sodep`.
+
 ---
 
 ## SODEP Parameters
