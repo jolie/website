@@ -5,14 +5,12 @@ A protocol defines how data to be sent or received shall be, respectively, encod
 Jolie natively supports a large set of protocols:
 
 - HTTP;
-- HTTPs;
+- HTTPS;
 - JSON/RPC;
 - XML/RPC;
 - SOAP;
-- RMI;
-- Local Sockets;
 - SODEP;
-- SODEPs.
+- SODEPS.
 
 Each protocol has its own parameters that can be set in order to adapt to the requirements of the communications.
 

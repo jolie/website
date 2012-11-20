@@ -33,7 +33,7 @@
 <p>A Java Service can also call an operation of the embedder by means of the <code>sendMessage</code> method of Jolie standard library. In this example we use the <code>Value</code> and <code>ValueVector</code> objects to handle a custom-typed message from a request-response operation invoked on the embedder.</p>
 <div class="code" src="embedding_java_3.ol"></div>
 
-<p>The embedder acts as a bridge between two embedded Java Services, <code>MyJavaExample</code> which requests a <code>split</code> operation and <code>Splitter</code> which implements it.</p>
+<p>The embedder acts as a bridge between two embedded Java Services, <code>MyJavaExample</code> which requests a <code>split</code> operation and, <code>Splitter</code> which implements it.</p>
 <div class="code" src="embedding_java_4.java"></div>
 
 <p>After <code>start()</code> is called by the embedder, our Java Service creates a <code>Value</code> object according to the <code>Split_req</code> type definition. At Line 20 it creates a request message, defining the invoked operation (<code>split</code>), the resource (<code>/</code>), and the message (<code>s_req</code>). Finally, at Line 21, it sends the request and waits for receiving a response.</p>

@@ -52,7 +52,7 @@ A Java Service can also call an operation of the embedder by means of the `sendM
 
 <div class="code" src="embedding_java_3.ol"></div>
 
-The embedder acts as a bridge between two embedded Java Services, `MyJavaExample` which requests a `split` operation and `Splitter` which implements it.
+The embedder acts as a bridge between two embedded Java Services, `MyJavaExample` which requests a `split` operation and, `Splitter` which implements it.
 
 <div class="code" src="embedding_java_4.java"></div>
 

@@ -167,20 +167,38 @@
                 "label": "SOAP"
             },
             {
-                "url": "protocols/rmi",
-                "label": "RMI"
-            },
-            {
-                "url": "protocols/localsocket",
-                "label": "Local Sockets"
-            },
-            {
                 "url": "protocols/sodep",
                 "label": "SODEP"
             },
             {
                 "url": "protocols/sodeps",
                 "label": "SODEPs"
+            }
+        ]
+    },{        
+        "label": "Locations",
+        "children": [
+            {
+                "url": "locations/introduction",
+                "label": "Introduction"
+            },{
+                "url": "locations/socket",
+                "label": "Socket"
+            },{
+                "url": "locations/local",
+                "label": "Local"
+            },
+            {
+                "url": "locations/btl2cap",
+                "label": "Btl2Cap"
+            },
+            {
+                "url": "locations/rmi",
+                "label": "RMI"
+            },
+            {
+                "url": "locations/localsocket",
+                "label": "LocalSocket"
             }
         ]
     }

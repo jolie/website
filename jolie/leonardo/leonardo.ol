@@ -13,7 +13,7 @@ RequestResponse:
 	default(DefaultOperationHttpRequest)(undefined)
 }
 
-inputPort HTTPInput {
+inputPort HTTPInput { 
 	Protocol: http {
 		.keepAlive = 0; // Do not keep connections open
 		.debug = DebugHttp; 

@@ -285,7 +285,7 @@ function parseAnchors() {
         else{
             var link = $(this).attr("href");
             var dom = History.getState().url.split("?")[0];
-            $(this).attr("href",dom+content_folder+link);
+            $(this).attr("href", content_folder+link);
         }
     });
 }

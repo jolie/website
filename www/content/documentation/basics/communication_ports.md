@@ -21,12 +21,14 @@ A location must indicate the communication medium the port has to use and its re
 
 Jolie currently supports four media:
 
-- `btl2cap` (Bluetooth L2CAP);
-- `localsocket` (Unix local sockets);
-- `rmi` (Java RMI);
 - `socket` (TCP/IP sockets).
+- `btl2cap` (Bluetooth L2CAP);
+- `rmi` (Java RMI);
+- `localsocket` (Unix local sockets);
 
-An example of a valid location is: `"socket://www.mysite.com:80/"`, where `socket` is the medium and the following part represents its parameters.
+An example of a valid location is: `"socket://www.mysite.com:80/"`, where `socket://` is the location medium and the following part represents its parameters.
+
+For a thorough description of the locations supported by Jolie and their parameters see [Locations](location/introduction) section.
 
 ### Protocols
 
