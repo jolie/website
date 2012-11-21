@@ -73,41 +73,53 @@ ul {
 }
 
 #top_menu {
-	margin-top: -5px;
+	margin-top: -14px;
 }
 
-.menu_item{
-	vertical-align: middle;
-	display: inline-block;
-	text-align: center;
-	border-top: 1px;
-	border-left: 1px;
-	border-right: 1px;
-	border-color: grey;
-	border-style: solid;
-	border-radius: 5px 5px 0px 0px;
-	-moz-border-radius: 5px 5px 0px 0px;
-	-webkit-border-radius: 5px 5px 0px 0px;
-	margin-left: -3px;
-	background-color: lightGrey;
-	cursor: pointer;
+.menu_item, .left_menu_item, .right_menu_item {
+	margin-top: 5px;
+	margin-left: -1px;
+	border-left-color: #F4F4F4;
 	text-decoration: none;
-	color: black;
-	-webkit-touch-callout: none;
-	-webkit-user-select: none;
-	-khtml-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
-	padding: 4px 6px 4px 6px;
+	text-shadow: 0 1px 0 white;
+	font: bold 11px Helvetica, Arial, sans-serif;
+	color: #444;
+	line-height: 17px;
+	height: 18px;
+	display: inline-block;
+	float: left;
+	padding: 5px 6px 4px 6px;
+	background: #F3F3F3;
+	border: solid 1px #D9D9D9;
+	-webkit-transition: border-color .20s;
+	-moz-transition: border-color .20s;
+	-o-transition: border-color .20s;
+	transition: border-color .20s;
+	user-select:none;
+	cursor: pointer;
 }
 
-.menu_item:hover{
-	background-color: grey;
+.left_menu_item{
+	border-top-left-radius: 2px;
+	border-bottom-left-radius: 2px;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
 }
 
-.menu_item#active{
+.right_menu_item{
+	border-bottom-left-radius: 2px;
+	border-top-left-radius: 2px;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+}
+
+.menu_item:hover, .left_menu_item:hover, .right_menu_item:hover {
+	background-color: lightgrey;
+}
+
+.menu_item#active, .left_menu_item#active, .right_menu_item#active {
 	background-color: white;
+	border-bottom-color: white;
 } 
 
 #rss_feed{
@@ -462,7 +474,7 @@ div.caption {
 }
 
 #menu_content p, #menu_content ul {
-  font-family: "LoraRegular", Georgia, Palatino, 'Palatino Linotype', Times, 'Times New Roman', serif;
+  font-family: Georgia, "LoraRegular", Palatino, 'Palatino Linotype', Times, 'Times New Roman', serif;
   font-size:16px;
   line-height:1.5em;
 }
