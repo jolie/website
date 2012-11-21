@@ -34,7 +34,6 @@ var ext_to_lang_hash = {
 $(document).ready(function() {
     SyntaxHighlighter.defaults["toolbar"] = false;
     SyntaxHighlighter.defaults["auto-links"] = false;
-    adjustHeights();
     History.Adapter.bind(window, "statechange", history);
     history();
 });
@@ -114,10 +113,11 @@ function adjustHeights() {
     menu_content_h = $("#menu_content").height();
     var body_h = $("body").height();
     var header_h = $("#header").height();
-    var subheader_h = $("#subheader").height()
+    var subheader_h = $("#logo-down").height();
     var footer_h = $("#footer").height();
     var menu_content_h = body_h - (header_h + subheader_h + footer_h);
     $("#menu_content").height(menu_content_h);
+    $("#doc_content").height(menu_content_h-2);
 }
 
 function showErrorPage(inElement , errorType, textStatus, errorThrown) {
@@ -167,11 +167,15 @@ function scrollify(element) {
 }
 
 function zenMenu(zen) {
-    var color = ""
-    if (zen) {
-        color = "#F1F1F1";
+    var height="13px";
+    var border="";
+    if (zen){
+        height = "31px";
+        border="1px solid #C4C4C4";
     }
-    $("#logo-down").css("background-color", color);
+    $("#logo-down").css("height",height);
+    $("#logo-down").css("border-right",border);
+    adjustHeights();
 }
 
 function loadMenuContent(content_path) {
@@ -433,7 +437,7 @@ function TOCEvents() {
         } else {
             $(".dropdown").css("border-bottom-width", "1px")
         }
-        $(".submenu").slideToggle();
+        $(".submenu").slideToggle(200);
     });
     $(".submenu").mouseleave(function() {
         $(".dropdown").css("border-bottom-width", "1px");

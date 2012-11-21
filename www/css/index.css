@@ -17,10 +17,14 @@ pre , code, kbd, samp {
   border: 1px solid #CCC; 
 }
 
+ul {
+	padding-left: 5%;
+}
+
 #header{
-	background: #F1F1F1;
+	/*background: #F1F1F1;
 	background: -webkit-gradient(radial,100 36,0,100 -40,120,from(#FAFAFA),to(#F1F1F1)),#F1F1F1;
-	height: 86px;
+	*/height: 86px;
 	overflow:hidden;
 }
 
@@ -62,9 +66,10 @@ pre , code, kbd, samp {
 	background-repeat: no-repeat;
 	vertical-align: text-bottom;
 	text-align: right;
-	height: 29px;
+	height: 13px;
 	background-size: 94px;
-	background-position: 22px -77px;
+	background-position: 24px -77px;
+	margin-left: 4px;
 }
 
 #top_menu {
@@ -144,7 +149,8 @@ h3 {
 #footer{
 	height: 20px;
 	font-size:1em;
-	background: -webkit-gradient(radial,100 36,0,100 -40,120,from(#FAFAFA),to(#F1F1F1)),#F1F1F1;
+	background: white;
+	border-top: 1px solid #C4C4C4;
 }
 
 .scrollable_container{
@@ -182,6 +188,7 @@ h3 {
 
 #TOC_menu {
 	padding-top: 5px;
+	padding-bottom: 5px;
 }
 
 .dropdown, .dropdown:hover{
@@ -298,7 +305,7 @@ h3 {
 
 #doc_side_menu, #menu_container{
 	margin-right: 2px;
-	background: #F1F1F1;
+	/*background: #F1F1F1;*/
 	overflow: hidden;
 }
 
@@ -337,9 +344,14 @@ ul.jqtree-tree li div{
 
 #doc_content, #community_content, #about_jolie_content{
 	padding-top: 2px;
-	margin-left:0px;
+	margin-left:-3px;
 	margin-right:3px;
 	height: 98%;
+	border-left: 1px solid #C4C4C4;
+}
+
+#community_content, #about_jolie_content {
+	margin-left: -6px;
 }
 
 #doc_content a {
@@ -418,7 +430,7 @@ div.caption {
 
 #community_side_menu, #about_jolie_side_menu{
 	height: 100%;
-	background-color: #DDD;
+	/*background-color: #F1F1F1;*/
 }
 
 #community_side_menu li, #about_jolie_side_menu li {
@@ -433,7 +445,8 @@ div.caption {
 }
 
 #community_side_menu #active, #about_jolie_side_menu #active{
-	background-color: white;
+	/*background-color: white;*/
+	border: 2px solid #F0F0F0;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
     padding-left: 5px;
