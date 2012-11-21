@@ -1,11 +1,10 @@
 ## Socket location
 
-In Jolie a socket location identifies as a network socket. 
+In Jolie a socket location defines a TCP/IP network socket. 
 
 A socket location is an address expressed as a URI in the form `socket://domain:port`, where:
 
-- `socket` defines the Jolie medium;
-- `domain` identify the domain the resource belongs to. It can be either a domain name or an IP address;
+- `domain` identifies the domain the resource belongs to. It can be either a domain name or an IP address;
 - `port` defines the number used by a port.
 
 Sockets can identify:

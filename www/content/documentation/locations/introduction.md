@@ -11,7 +11,7 @@ Jolie natively supports four media:
 - `rmi` (Java RMI);
 - `localsocket` (Unix local sockets).
 
-In addition, when embedding a service, Jolie supports the `local` media, which exploits system's memory to send and receive messages.
+In addition, when embedding a service, Jolie supports the `local` medium, which exploits system's memory to send and receive messages.
 
 An example of a valid location is: `socket://www.mysite.com:80/`, where `socket` is the `medium` and the following part represents the `parameters`.
 
