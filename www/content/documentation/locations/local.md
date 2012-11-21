@@ -1,6 +1,6 @@
 ## Local location
 
-An embedded service in Jolie can communicate with its embedder exploiting the `local` medium, which uses the shared memory between the two services in order to handle their communication in an lightweight and efficient way.
+An embedded service in Jolie can communicate with its embedder exploiting the `local` medium. `local` communications exploit the shared memory between the services in order to handle their message delivery in an lightweight and efficient way.
 
 The `local` medium has no parameters.
 

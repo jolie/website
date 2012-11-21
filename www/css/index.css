@@ -203,14 +203,15 @@ h3 {
 	padding-bottom: 5px;
 }
 
-.dropdown, .dropdown:hover{
-	margin: 3px -22px 0 0;
+.dropdown {
+	margin-right: -22px;
+	margin-top:3px;
+	margin-left: 10px;
 	position: relative;
 	text-align: left;
 	cursor: pointer;
 	font-weight: bold;
 	padding-left: 0px;
-	margin-left: -10px;
 	margin-top: 0px;
 	background-color: #F9F9F9;
 	background-image: -webkit-linear-gradient(top,white,#F7F7F7);
@@ -219,9 +220,6 @@ h3 {
 	background-image: -o-linear-gradient(top,white,#F7F7F7);
 	background-image: linear-gradient(top,white,#F7F7F7);
 	border: 1px solid #C4C4C4;
-}
-
-.dropdown {
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
 	border-radius: 5px;
@@ -291,7 +289,7 @@ h3 {
 
 .to_top{
 	color: #A00;
-	text-align: center;
+	text-align: right;
 	font-weight: bold;
 	cursor: pointer;
 	padding-right: 19px;
@@ -364,6 +362,7 @@ ul.jqtree-tree li div{
 
 #community_content, #about_jolie_content {
 	margin-left: -6px;
+	z-index: 0;
 }
 
 #doc_content a {
@@ -442,7 +441,8 @@ div.caption {
 
 #community_side_menu, #about_jolie_side_menu{
 	height: 100%;
-	/*background-color: #F1F1F1;*/
+	z-index: 999;
+	position: relative;
 }
 
 #community_side_menu li, #about_jolie_side_menu li {
@@ -451,17 +451,22 @@ div.caption {
 	line-height: 2em;
 	list-style: none;
 	margin-bottom: 10px;
-	line-height: 15px;
+	line-height: 20px;
 	padding-top: 5px;
 	padding-bottom: 5px;
+	font-size: 14px;
+	margin-left: 0px;
+	padding-right: 5px;
 }
 
 #community_side_menu #active, #about_jolie_side_menu #active{
-	/*background-color: white;*/
-	border: 2px solid #F0F0F0;
+	background-color: white;
+	border: 1px solid #C4C4C4;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
+    border-right-color: white;
     padding-left: 5px;
+    font-size: 20px;
 }
 
 #community_content img{

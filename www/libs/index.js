@@ -118,6 +118,8 @@ function adjustHeights() {
     var menu_content_h = body_h - (header_h + subheader_h + footer_h);
     $("#menu_content").height(menu_content_h);
     $("#doc_content").height(menu_content_h-2);
+    $("#community_content").height(menu_content_h-2);
+    $("#about_jolie_content").height(menu_content_h-2);
 }
 
 function showErrorPage(inElement , errorType, textStatus, errorThrown) {
@@ -408,12 +410,12 @@ function TOCCreator(create) {
     if (create) {
         var tn = 0;
         var titles = $("#doc_content h2");
-        var title_list = "<div class='grid_5 push_1 dropdown'>" + "<div class='dropdowntitle'>Table of Contents</div>";
+        var title_list = "<div class='grid_4 dropdown'>" + "<div class='dropdowntitle'>Table of Contents</div>";
         title_list += "<div class='grid_9 submenu'><ul class='root'>";
         $.each(titles, function(key, title) {
             title_list += "<li onclick='TOC_scroll(  " + (tn++) + "  );'>" + $(title).text() + "</li>"
         });
-        title_list += "</ul></div></div><div class=\"grid_5 push_8 to_top\"" + " onclick='$(  \"#doc_content\"  ).nanoScroller(  { scroll:\"top\"}  );' class='grid_5'>" + " Return to Top <span style='color:grey'>" + unescape("%u21E7") + "</span></div>";
+        title_list += "</ul></div></div><div class=\"grid_3 push_12 to_top\"" + " onclick='$(  \"#doc_content\"  ).nanoScroller(  { scroll:\"top\"}  );'>" + "Return to Top<span style='padding-left:5px; color:grey'>" + unescape("%u21E7") + "</span></div>";
         $("#TOC_menu").html(title_list);
     } else {
         $("#TOC_menu").html("");
