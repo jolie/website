@@ -32,8 +32,7 @@ var ext_to_lang_hash = {
 };
 
 function browser_related_tweaks(){
-    var browser = navigator.appName;
-    if (browser == "Netscape") {
+    if ($.browser.mozilla) {
         $("#logo-down").css("background-position","23px -77px");
     }
 }
