@@ -18,7 +18,8 @@ pre , code, kbd, samp {
 }
 
 #header{
-	background: #DDD;
+	background: #F1F1F1;
+	background: -webkit-gradient(radial,100 36,0,100 -40,120,from(#FAFAFA),to(#F1F1F1)),#F1F1F1;
 	height: 86px;
 	overflow:hidden;
 }
@@ -61,7 +62,7 @@ pre , code, kbd, samp {
 	background-repeat: no-repeat;
 	vertical-align: text-bottom;
 	text-align: right;
-	height: 22px;
+	height: 29px;
 	background-size: 94px;
 	background-position: 22px -77px;
 }
@@ -143,7 +144,7 @@ h3 {
 #footer{
 	height: 20px;
 	font-size:1em;
-	background-color: #DDD;
+	background: -webkit-gradient(radial,100 36,0,100 -40,120,from(#FAFAFA),to(#F1F1F1)),#F1F1F1;
 }
 
 .scrollable_container{
@@ -179,29 +180,59 @@ h3 {
 
 /* DOCUMENTATION CSS */
 
-.dropdown {
+#TOC_menu {
+	padding-top: 5px;
+}
+
+.dropdown, .dropdown:hover{
 	margin: 3px -22px 0 0;
 	position: relative;
 	text-align: left;
 	cursor: pointer;
 	font-weight: bold;
-	border:1px solid grey;
 	padding-left: 0px;
 	margin-left: -10px;
 	margin-top: 0px;
+	background-color: #F9F9F9;
+	background-image: -webkit-linear-gradient(top,white,#F7F7F7);
+	background-image: -moz-linear-gradient(top,white,#F7F7F7);
+	background-image: -ms-linear-gradient(top,white,#F7F7F7);
+	background-image: -o-linear-gradient(top,white,#F7F7F7);
+	background-image: linear-gradient(top,white,#F7F7F7);
+	border: 1px solid #C4C4C4;
+}
+
+.dropdown {
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+
+.dropdown:hover {
+	-webkit-border-bottom-left-radius: 0px;
+	-webkit-border-top-left-radius: 5px;
+	-webkit-border-top-right-radius: 5px;
+	-webkit-border-bottom-right-radius: 0px;
+	-moz-border-radius-topleft: 5px;
+	-moz-border-radius-bottomleft: 0px;
+	-moz-border-radius-topright: 5px;
+	-moz-border-radius-bottomright: 0px;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	border-bottom-left-radius: 0px; 
+	border-bottom-right-radius: 0px; 
 }
 
 .submenu {
-	background: #fff;
+	background: #F9F9F9;
 	position: absolute;
 	left: -11px;
-	top: 15px;
+	top: 20px;
 	z-index: 100;
 	display: none;
 	margin-left: 10px;
 	padding: 0px 0px 5px 0px;
-	border: 1px solid grey;
-	border-top-width: 0px;
+	border: 1px solid #C4C4C4;
 }
 
 .dropdown li {
@@ -214,7 +245,7 @@ h3 {
 	text-decoration:none;
 	padding-left: 10px;
 	margin-left: 0px;
-
+	padding-bottom: 6px;
 }
 
 .dropdown li:hover {
@@ -226,6 +257,9 @@ h3 {
 .dropdowntitle {
 	color: #A00;
 	margin-left: 10px;
+	padding-left: 20px;
+	background: url(../imgs/bookmark.png);
+	background-repeat: no-repeat;
 }
 
 .root {
@@ -237,11 +271,21 @@ h3 {
 }
 
 .to_top{
+	color: #A00;
 	text-align: center;
 	font-weight: bold;
 	cursor: pointer;
 	padding-right: 19px;
-	border: 1px solid grey;
+	background-color: #F9F9F9;
+	background-image: -webkit-linear-gradient(top,white,#F7F7F7);
+	background-image: -moz-linear-gradient(top,white,#F7F7F7);
+	background-image: -ms-linear-gradient(top,white,#F7F7F7);
+	background-image: -o-linear-gradient(top,white,#F7F7F7);
+	background-image: linear-gradient(top,white,#F7F7F7);
+	border: 1px solid #C4C4C4;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
 }
 
 .syntax + div .syntaxhighlighter .line {
@@ -254,7 +298,7 @@ h3 {
 
 #doc_side_menu, #menu_container{
 	margin-right: 2px;
-	background: #DDD;
+	background: #F1F1F1;
 	overflow: hidden;
 }
 
