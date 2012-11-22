@@ -6,5 +6,6 @@ Protocol name in Jolie port definition: `rmi`.
 
 ---
 
-## RMI Parameters
+## RMI locations
 
+When using RMI Jolie registers the port into a Java RMI Register service. RMI locations are in the form `rmi://hostname:port/name` where the parameter `name` is mandatory and must be unique.

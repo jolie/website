@@ -68,12 +68,12 @@ ul {
 	text-align: right;
 	height: 13px;
 	background-size: 94px;
-	background-position: 25px -77px;
-	margin-left: 3px;
+	background-position: 24px -77px;
+	margin-left: 4px;
 }
 
 #top_menu {
-	margin-top: -14px;
+	margin-top: -15px;
 }
 
 .menu_item, .left_menu_item, .right_menu_item {
@@ -354,14 +354,14 @@ ul.jqtree-tree li div{
 
 #doc_content, #community_content, #about_jolie_content{
 	padding-top: 2px;
-	margin-left:-4px;
+	margin-left:-3px;
 	margin-right:3px;
 	height: 98%;
 	border-left: 1px solid #C4C4C4;
 }
 
 #community_content, #about_jolie_content {
-	margin-left: -7px;
+	margin-left: -6px;
 	z-index: 0;
 }
 
@@ -385,7 +385,12 @@ ul.jqtree-tree li div{
 	font-size: 1em;
 	overflow-x:hidden;
 	display: block;
-	width: 98%;
+	width: 94%;
+	-ms-word-break: normal;
+    word-break: normal;
+	-webkit-hyphens: auto;
+	-moz-hyphens: auto;
+	hyphens: auto;
 }
 
 .doc_image img{

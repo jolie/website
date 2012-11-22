@@ -6,8 +6,8 @@ include "console.iol"
 execution { concurrent }
 
 inputPort FrontendInput {
-Location: "local"
-Interfaces: FrontendInterface
+	Location: "local"
+	Interfaces: FrontendInterface
 }
 
 main
