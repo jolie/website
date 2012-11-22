@@ -24,7 +24,7 @@ main
 			j = #menu.topics;
 			apiTopic -> menu.topics[ j ];
 			apiTopic.label = "Standard Library API";
-			
+
 			for( i = 0; z = 0, i < #listResult.result, i++ ) {
 				match = listResult.result[ i ];
 				match.regex = "(.+)\\.html";
