@@ -21,12 +21,13 @@ main
 		apiTopic -> menu.topics[ j ];
 		apiTopic.label = "Standard Library API";
 		listRequest.directory = "../../www/content/documentation/jsl/";
+		listRequest.regex = ".+\\.html";
 		list@File( listRequest )( listResult );
 		for( i = 0; z = 0, i < #listResult.result, i++ ) {
 			match = listResult.result[ i ];
 			match.regex = "(.+)\\.html";
 			match@StringUtils( match )( matchResult );
-			if ( matchResult.group[1] != "index" && matchResult.group[1] != "" ) { // Do not include index.html or empty names
+			if ( matchResult.group[1] != "index" ) { // Do not include index.html
 				apiTopic.children[ z ].label = matchResult.group[1];
 				apiTopic.children[ z ].url = "jsl/" + matchResult.group[1];
 				z++
