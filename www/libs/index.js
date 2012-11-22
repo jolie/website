@@ -33,7 +33,7 @@ var ext_to_lang_hash = {
 
 function browser_related_tweaks(){
     if ($.browser.mozilla) {
-        $("#logo-down").css("background-position","23px -77px");
+        $("#logo-down").css("background-position","24px -77px");
     }
 }
 
@@ -58,84 +58,41 @@ function history() {
     }
     var url_params = URL2jParam(url);
     if (!url_params.top_menu) {
+
         menu($("a[ref='news']"));
+
     } else if (url_params.top_menu == "documentation" && url_params.sideMenuAction) {
+        // if its NOT the first visit, only load the doc page and opens its topic in side menu
         if (!visited_menu) {
-            menu($("a[ref='documentation']"));
-            openTopic($('#doc_side_menu'), url_params.sideMenuAction);
+            menu($("a[ref='documentation']"), url_params.sideMenuAction );
         }
-        loadDocContent(url_params.sideMenuAction);
+        loadDocContent(url_params.sideMenuAction); /// <--- loads doc page content
     } else if (url_params.top_menu == "community") {
-        menu($("a[ref='community']"));
+
         if (!url_params.sideMenuAction) {
-            sideMenuAction('community', 'people')
+            sideMenuAction('community', 'people');
         } else {
-            loadCommunityContent("li[ref='" + url_params.sideMenuAction + "']", url_params.sideMenuAction);
+            // loads the proper community page
+            var callback = function(){
+                loadCommunityContent("li[ref='" + url_params.sideMenuAction + "']", url_params.sideMenuAction);
+            };
+            menu($("a[ref='community']"), url_params.sideMenuAction, callback);
         }
     } else if (url_params.top_menu == "about_jolie") {
-        menu($("a[ref='about_jolie']"));
         if (!url_params.sideMenuAction) {
-            sideMenuAction('about_jolie', 'contacts')
+            sideMenuAction('about_jolie', 'contacts');
         } else {
-            loadAboutJolieContent("li[ref='" + url_params.sideMenuAction + "']", url_params.sideMenuAction);
+            var callback = function(){
+                loadAboutJolieContent("li[ref='" + url_params.sideMenuAction + "']", url_params.sideMenuAction);
+            };
+            menu($("a[ref='about_jolie']"), url_params.sideMenuAction, callback);
         }
     } else {
         menu($("a[ref='" + url_params.top_menu + "']"));
     }
 }
 
-function top_menu(el) {
-    History.pushState(null, null, "?top_menu=" + $(el).attr("ref"));
-    TOCCreator(false);
-}
-
-function URL2jParam(url) {
-    jParam = {};
-    var uParams = url.substring(url.indexOf("?") + 1);
-    uParams = uParams.split("&");
-    $.each(uParams, function(key, sParam) {
-        var key = sParam.substring(0, sParam.indexOf("="));
-        var value = sParam.substring(sParam.indexOf("=") + 1);
-        jParam[key] = value;
-    });
-    return jParam;
-}
-
-function adjustDocPrintHeight(){
-    var content_height = 0;
-    var elements = "";
-    $.each($("#doc_content .content > *"),function() {
-        var that = this;
-        if ( $( "> .syntaxhighlighter", this ).size() > 0 ){
-            that = $( "> .syntaxhighlighter", this );
-        }
-        var eh = parseInt ( $( that ).outerHeight( true ) );
-        content_height += eh;
-    });
-    $("style").html( "@media print{#menu_content{display: block; height:" + 
-                    content_height + "px !important;}}" );
-}
-
-function adjustHeights() {
-    menu_content_h = $("#menu_content").height();
-    var body_h = $("body").height();
-    var header_h = $("#header").height();
-    var subheader_h = $("#logo-down").height();
-    var footer_h = $("#footer").height();
-    var menu_content_h = body_h - (header_h + subheader_h + footer_h);
-    $("#menu_content").height(menu_content_h);
-    $("#doc_content").height(menu_content_h-2);
-    $("#community_content").height(menu_content_h-2);
-    $("#about_jolie_content").height(menu_content_h-2);
-}
-
-function showErrorPage(inElement , errorType, textStatus, errorThrown) {
-    $( inElement ).html("<div style=\"margin-top:50px\" " + "class=\"grid_14 push_8\"><h1>404</h1>" + "<h3>Text Status</h3><p>" + textStatus + "</p>" + "<h3>Error Thrown</h3><p>" + errorThrown + "</p></div>");
-    scrollify( inElement );
-
-}
-
-function menu(elem) {
+function menu(elem, rel_value, callback) {
     if (!$(elem).attr("src")) {
         showErrorPage( $( "#menu_content" ), "Bad request");
     } else {
@@ -143,57 +100,35 @@ function menu(elem) {
             $(e).removeAttr("id");
         });
         $(elem).attr("id", "active");
-        $.ajaxSetup({
-            async: false
-        });
         visited_menu = true;
         if ( $( elem ).attr( "ref" ) == "news" ){
             loadNews( $( elem ).attr( "src" ) );
         } else {
-            loadMenuContent($(elem).attr("src"));
+
+            loadMenuContent($(elem).attr("src"), callback ); /// <---- loads the page-specific content
+
             if ($(elem).attr("ref") == "documentation") {
-                docLoadSideMenu();
+                docLoadSideMenu(rel_value);
                 zenMenu(true);
             } else if ($(elem).attr("ref") == "about_jolie" || $(elem).attr("ref") == "community") {
                 zenMenu(true);
             } else {
                 zenMenu(false);
             }
-            $.ajaxSetup({
-                async: true
-            });
         }
     }
 }
 
-function scrollify(element) {
-    $.each($(element), function(key, e) {
-        var content = $(e).html();
-        $(e).html("<div class=\"content\">" + content + "</div>");
-        $(e).addClass("nano");
-        $(e).nanoScroller();
-    });
-}
-
-function zenMenu(zen) {
-    var height="13px";
-    var border="";
-    if (zen){
-        height = "31px";
-        border="1px solid #C4C4C4";
-    }
-    $("#logo-down").css("height",height);
-    $("#logo-down").css("border-right",border);
-    adjustHeights();
-}
-
-function loadMenuContent(content_path) {
+function loadMenuContent(content_path, callback) {
     setLoading( "#menu_content ");
     $.ajax({
         url: content_folder + content_path,
         success: function( data ) {
             $( "#menu_content" ).append( "<div class=\"temp\">" + data + "<div>" );
             loadCode( content_folder + content_path.split("/")[0] + "/" );
+            if(callback){
+                callback.apply();
+            }
         },
         error: function(errorType, textStatus, errorThrown) {
             showErrorPage( $( "#menu_content" ), errorType, textStatus, errorThrown);
@@ -202,6 +137,7 @@ function loadMenuContent(content_path) {
 }
 
 function loadGenericContent(content_path, dom_location) {
+    setLoading( dom_location );
     $.ajax({
         url: content_folder + content_path,
         success: function(data) {
@@ -212,99 +148,6 @@ function loadGenericContent(content_path, dom_location) {
             showErrorPage( $( "#menu_content" ), errorType, textStatus, errorThrown);
         }
     });
-}
-
-// NEWS FUNCTIONS
-
-function loadNews( content_path ){
-    zenMenu(false);
-    setLoading( "#menu_content ");
-    $.ajax({
-        dataType: "json",
-        url: content_folder + content_path,
-        success: function( data ) {
-            var newsData = "<div class=\"scrollable_container\">";
-            $.each( data.news, function(i, item) {
-                newsData += marked ( item.article.content);
-                newsData += "<div class=\"news_separator\">Published on <span class=\"time\">" +
-                        item.article.date + "</span>, by <span class=\"user\">" +
-                        item.article.author + "</span></div>";
-            });
-            newsData += "</div>";
-            $("#menu_content").html( newsData );
-            scrollify(".scrollable_container");
-        },
-        error: function(errorType, textStatus, errorThrown) {
-            showErrorPage( $( "#menu_content" ), errorType, textStatus, errorThrown);
-        }
-    });
-}
-
-// DOCUMENTATION FUNCTIONS
-
-function docLoadSideMenu() {
-    $.ajax({
-        url: documentation_folder + "menu.json",
-        dataType: 'json',
-        success: function(data) {
-            $('#doc_side_menu').html("");
-            $('#doc_side_menu').tree({
-                data: addNodeId(data),
-                autoOpen: false,
-                selectable: true
-            });
-            loadMenuEvents();
-        },
-        error: function(errorType, textStatus, errorThrown) {
-            showErrorPage( $( "#menu_content" ), errorType, textStatus, errorThrown);
-        }
-    });
-}
-
-function addNodeId(json) {
-    var id = 1;
-    $.each(json, function(ti, topic) {
-        $.each(topic.children, function(ni, node) {
-            json[ti].children[ni]["id"] = id++;
-        })
-    });
-    return json;
-}
-
-function loadMenuEvents() {
-    $('#doc_side_menu').bind('tree.click', function(event) {
-        var node = event.node;
-        if (typeof node.url != "undefined") {
-            History.pushState("", "", "?top_menu=documentation&sideMenuAction=" + node.url);
-        } else {
-            $("#doc_side_menu").tree('toggle', node);
-            $(".jqtree-selected").removeClass("jqtree-selected");
-        }
-    });
-}
-
-function pushDocLink(page_name) {
-    visited_menu = false;
-    History.pushState("", "", "?top_menu=documentation&sideMenuAction=" + page_name);
-}
-
-function parseAnchors() {
-    $.each($("#doc_content a"), function() {
-        if(!$(this).parent().hasClass("download")){
-            var link = $(this).attr("href");
-            $(this).removeAttr("href");
-            $(this).attr("onclick", "pushDocLink('" + link + "');");
-        }
-        else{
-            var link = $(this).attr("href");
-            var dom = History.getState().url.split("?")[0];
-            $(this).attr("href", content_folder+link);
-        }
-    });
-}
-
-function setLoading( element ){
-    $( element ).html( "<div class=\"ajax_load\"></div>");
 }
 
 function loadDocContent(content_path) {
@@ -380,6 +223,174 @@ function loadCode( folder, isDoc ) {
         loadCallback( isDoc );
     }
 }
+
+function top_menu(el) {
+    History.pushState(null, null, "?top_menu=" + $(el).attr("ref"));
+    TOCCreator(false);
+}
+
+function URL2jParam(url) {
+    jParam = {};
+    var uParams = url.substring(url.indexOf("?") + 1);
+    uParams = uParams.split("&");
+    $.each(uParams, function(key, sParam) {
+        var key = sParam.substring(0, sParam.indexOf("="));
+        var value = sParam.substring(sParam.indexOf("=") + 1);
+        jParam[key] = value;
+    });
+    return jParam;
+}
+
+function adjustDocPrintHeight(){
+    var content_height = 0;
+    var elements = "";
+    $.each($("#doc_content .content > *"),function() {
+        var that = this;
+        if ( $( "> .syntaxhighlighter", this ).size() > 0 ){
+            that = $( "> .syntaxhighlighter", this );
+        }
+        var eh = parseInt ( $( that ).outerHeight( true ) );
+        content_height += eh;
+    });
+    $("style").html( "@media print{#menu_content{display: block; height:" + 
+                    content_height + "px !important;}}" );
+}
+
+function adjustHeights() {
+    menu_content_h = $("#menu_content").height();
+    var body_h = $("body").height();
+    var header_h = $("#header").height();
+    var subheader_h = $("#logo-down").height();
+    var footer_h = $("#footer").height();
+    var menu_content_h = body_h - (header_h + subheader_h + footer_h);
+    $("#menu_content").height(menu_content_h);
+    $("#doc_content").height(menu_content_h-2);
+    $("#community_content").height(menu_content_h-2);
+    $("#about_jolie_content").height(menu_content_h-2);
+}
+
+function showErrorPage(inElement , errorType, textStatus, errorThrown) {
+    $( inElement ).html("<div style=\"margin-top:50px\" " + "class=\"grid_14 push_8\"><h1>404</h1>" + "<h3>Text Status</h3><p>" + textStatus + "</p>" + "<h3>Error Thrown</h3><p>" + errorThrown + "</p></div>");
+    scrollify( inElement );
+
+}
+
+function scrollify(element) {
+    $.each($(element), function(key, e) {
+        var content = $(e).html();
+        $(e).html("<div class=\"content\">" + content + "</div>");
+        $(e).addClass("nano");
+        $(e).nanoScroller();
+    });
+}
+
+function zenMenu(zen) {
+    var height="13px";
+    var border="";
+    if (zen){
+        height = "31px";
+        border="1px solid #C4C4C4";
+    }
+    $("#logo-down").css("height",height);
+    $("#logo-down").css("border-right",border);
+    adjustHeights();
+}
+
+// NEWS FUNCTIONS
+
+function loadNews( content_path ){
+    zenMenu(false);
+    setLoading( "#menu_content ");
+    $.ajax({
+        dataType: "json",
+        url: content_folder + content_path,
+        success: function( data ) {
+            var newsData = "<div class=\"scrollable_container\">";
+            $.each( data.news, function(i, item) {
+                newsData += marked ( item.article.content);
+                newsData += "<div class=\"news_separator\">Published on <span class=\"time\">" +
+                        item.article.date + "</span>, by <span class=\"user\">" +
+                        item.article.author + "</span></div>";
+            });
+            newsData += "</div>";
+            $("#menu_content").html( newsData );
+            scrollify(".scrollable_container");
+        },
+        error: function(errorType, textStatus, errorThrown) {
+            showErrorPage( $( "#menu_content" ), errorType, textStatus, errorThrown);
+        }
+    });
+}
+
+// DOCUMENTATION FUNCTIONS
+
+function docLoadSideMenu(rel_value) {
+    $.ajax({
+        url: documentation_folder + "menu.json",
+        dataType: 'json',
+        success: function(data) {
+            var doc_side_menu = $("#doc_side_menu");
+            doc_side_menu.html("");
+            doc_side_menu.tree({
+                data: addNodeId(data),
+                autoOpen: false,
+                selectable: true
+            });
+            loadMenuEvents();
+            openTopic(doc_side_menu, rel_value);
+        },
+        error: function(errorType, textStatus, errorThrown) {
+            showErrorPage( $( "#menu_content" ), errorType, textStatus, errorThrown);
+        }
+    });
+}
+
+function addNodeId(json) {
+    var id = 1;
+    $.each(json, function(ti, topic) {
+        $.each(topic.children, function(ni, node) {
+            json[ti].children[ni]["id"] = id++;
+        })
+    });
+    return json;
+}
+
+function loadMenuEvents() {
+    $('#doc_side_menu').bind('tree.click', function(event) {
+        var node = event.node;
+        if (typeof node.url != "undefined") {
+            History.pushState("", "", "?top_menu=documentation&sideMenuAction=" + node.url);
+        } else {
+            $("#doc_side_menu").tree('toggle', node);
+            $(".jqtree-selected").removeClass("jqtree-selected");
+        }
+    });
+}
+
+function pushDocLink(page_name) {
+    visited_menu = false;
+    History.pushState("", "", "?top_menu=documentation&sideMenuAction=" + page_name);
+}
+
+function parseAnchors() {
+    $.each($("#doc_content a"), function() {
+        if(!$(this).parent().hasClass("download")){
+            var link = $(this).attr("href");
+            $(this).removeAttr("href");
+            $(this).attr("onclick", "pushDocLink('" + link + "');");
+        }
+        else{
+            var link = $(this).attr("href");
+            var dom = History.getState().url.split("?")[0];
+            $(this).attr("href", content_folder+link);
+        }
+    });
+}
+
+function setLoading( element ){
+    $( element ).html( "<div class=\"ajax_load\"></div>");
+}
+
 
 function getLanguageFromExtension(fileName) {
     var extension = fileName.substring(fileName.lastIndexOf(".") + 1);
