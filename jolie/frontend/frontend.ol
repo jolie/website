@@ -26,7 +26,7 @@ main
 			match = listResult.result[ i ];
 			match.regex = "(.+)\\.html";
 			match@StringUtils( match )( matchResult );
-			if ( matchResult.group[1] != "index" ) {
+			if ( matchResult.group[1] != "index" && matchResult.group[1] != "" ) { // Do not include index.html or empty names
 				apiTopic.children[ z ].label = matchResult.group[1];
 				apiTopic.children[ z ].url = "jsl/" + matchResult.group[1];
 				z++
