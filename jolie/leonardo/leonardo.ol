@@ -2,6 +2,7 @@ include "console.iol"
 include "file.iol"
 include "string_utils.iol"
 include "protocols/http.iol"
+include "../frontend/frontend.iol"
 
 include "config.iol"
 include "admin.iol"
@@ -13,25 +14,35 @@ RequestResponse:
 	default(DefaultOperationHttpRequest)(undefined)
 }
 
+outputPort Frontend {
+Interfaces: FrontendInterface
+}
+
 inputPort HTTPInput { 
-	Protocol: http {
-		.keepAlive = 0; // Do not keep connections open
-		.debug = DebugHttp; 
-		.debug.showContent = DebugHttpContent;
-		.format -> format;
-		.contentType -> mime;
-		.statusCode -> statusCode;
-		.redirect -> location;
-		.default = "default"
-	}
-	Location: Location_Leonardo
-	Interfaces: HTTPInterface
+Protocol: http {
+	.keepAlive = true; // Do not keep connections open
+	.debug = DebugHttp; 
+	.debug.showContent = DebugHttpContent;
+	.format -> format;
+	.contentType -> mime;
+	.statusCode -> statusCode;
+	.redirect -> location;
+	.default = "default"
+}
+Location: Location_Leonardo
+Interfaces: HTTPInterface
+Aggregates: Frontend
 }
 
 inputPort AdminInput {
 Location: "socket://localhost:9000/"
 Protocol: sodep
 Interfaces: AdminInterface
+}
+
+embedded {
+Jolie:
+	"../frontend/frontend.ol" in Frontend
 }
 
 init

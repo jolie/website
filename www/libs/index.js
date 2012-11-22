@@ -326,13 +326,19 @@ function loadNews( content_path ){
 
 function docLoadSideMenu(rel_value) {
     $.ajax({
-        url: documentation_folder + "menu.json",
+//         url: documentation_folder + "menu.json",
+		url: '/documentationMenu',
         dataType: 'json',
+		contentType: 'application/json',
         success: function(data) {
             var doc_side_menu = $("#doc_side_menu");
             doc_side_menu.html("");
+			if ( !(data.topics instanceof Array) ) {
+				data.topics = [ data.topics ];
+			}
+			//alert( data.topics.length );
             doc_side_menu.tree({
-                data: addNodeId(data),
+                data: addNodeId(data.topics),
                 autoOpen: false,
                 selectable: true
             });
@@ -347,9 +353,13 @@ function docLoadSideMenu(rel_value) {
 
 function addNodeId(json) {
     var id = 1;
+	//alert( JSON.stringify( json.topics ) );
     $.each(json, function(ti, topic) {
-        $.each(topic.children, function(ni, node) {
-            json[ti].children[ni]["id"] = id++;
+        $.each(topic.children, function(ni, child) {
+			if ( !(topic.children instanceof Array) ) {
+				topic.children = [ topic.children ];
+			}
+            child["id"] = id++;
         })
     });
     return json;
