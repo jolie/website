@@ -1,4 +1,4 @@
-## RMI Protocol
+## RMI
 
 RMI (Remote Method Invocation) is a Java API provided as an object-oriented equivalent of remote procedure calls.
 

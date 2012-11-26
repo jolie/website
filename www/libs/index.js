@@ -32,7 +32,7 @@ var ext_to_lang_hash = {
 };
 
 function browser_related_tweaks(){
-    if ($.browser.mozilla) {
+    if ($.browser.mozilla || /(?:windows)(?:.+)(?:chrome)/.test(navigator.userAgent.toLowerCase()) ) {
         $("#logo-down").css("background-position","23px -77px");
     }
 }
