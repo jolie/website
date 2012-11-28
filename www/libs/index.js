@@ -187,7 +187,7 @@ function loadCode( folder, isDoc ) {
         if (typeof folder == "undefined") {
             folder = documentation_folder;
         }
-        $("div.syntax, div.code" ).each(function() {
+        $( "div.syntax, div.code" ).each(function() {
             var el = $(this);
             var src_file = el.attr("src");
             // IF SOURCE HAS TO BE LOADED
@@ -215,8 +215,13 @@ function loadCode( folder, isDoc ) {
                 }
                 // OR HAS JUST TO BE HIGHLIGHTED (EMBEDDED)
             } else {
-                var lang = el.attr("lang");
+                var lang = "plain";
+                if (el.attr("lang")){
+                    lang = el.attr("lang");
+                }
                 el.after("<pre class=\"brush: " + lang + "\">" + el.html() + "</pre>");
+                el.html("");
+                loadCallback( isDoc );
             }
         });
     } else {

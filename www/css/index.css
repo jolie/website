@@ -56,19 +56,23 @@ ul {
 	background-repeat: no-repeat;
 	vertical-align: text-bottom;
 	text-align: right;
-	height: 86px;
-	background-size: 94px;
-	background-position: 22px 10px;
+	height: 92px;
+	background-size: 97px;
+	z-index: 1000;
+	position: absolute;
+	width: 96px;
+	top: 7px;
+	left: 20%;
 }
 
 #logo-down{
-	background: url(../imgs/jolie_logo.png);
+	/*background: url(../imgs/jolie_logo.png);*/
 	background-repeat: no-repeat;
 	vertical-align: text-bottom;
 	text-align: right;
 	height: 13px;
 	background-size: 94px;
-	background-position: 24px -77px;
+	background-position: 23px -77px;
 	margin-left: 4px;
 }
 
@@ -386,10 +390,11 @@ ul.jqtree-tree li div{
 	overflow-x:hidden;
 	display: block;
 	width: 94%;
-	-ms-word-break: normal;
-    word-break: normal;
-	-webkit-hyphens: auto;
-	-moz-hyphens: auto;
+	-ms-word-break: break-all; 
+	word-break: break-all; 
+	word-break: break-word; 
+	-webkit-hyphens: auto; 
+	-moz-hyphens: auto; 
 	hyphens: auto;
 }
 
