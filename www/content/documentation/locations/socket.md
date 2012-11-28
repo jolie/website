@@ -2,7 +2,7 @@
 
 In Jolie a socket location defines a TCP/IP network socket. 
 
-Socket's location name in Jolie port definition is `socket`.
+Socket location name in Jolie port definition is `socket`.
 
 A socket location is an address expressed as a URI in the form `socket://host:port/path`, where:
 

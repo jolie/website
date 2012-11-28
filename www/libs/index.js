@@ -386,10 +386,19 @@ function parseAnchors() {
     $.each($("#doc_content a"), function() {
         if(!$(this).parent().hasClass("download")){
             var link = $(this).attr("href");
-            $(this).removeAttr("href");
-            $(this).attr("onclick", "pushDocLink('" + link + "');");
+            // if it's an page internal anchor
+            if( /^(?:#\w+)$/.test( link ) ){
+                $(this).removeAttr("href");
+                link = /^(?:#)(\w+)$/.exec( link )[1];
+                $(this).attr("onclick","docContentScroll('" + link + "')");
+            } 
+            // if it's an in-site external anchor
+            else if ( !/^(?:\w+:\/{2,3}.+)$/.test( link ) ) {
+                $(this).removeAttr("href");
+                $(this).attr("onclick", "pushDocLink('" + link + "');");
+            }
         }
-        else{
+        else {
             var link = $(this).attr("href");
             var dom = History.getState().url.split("?")[0];
             $(this).attr("href", content_folder+link);
@@ -449,6 +458,15 @@ function TOCCreator(create) {
         $("#TOC_menu").html("");
     }
     TOCEvents();
+}
+
+function docContentScroll( anchorName ){
+    $("#doc_content").nanoScroller({
+        scroll: 'top'
+    });
+    $( "#doc_content" ).nanoScroller({
+        scrollTo: $("a[name=" + anchorName + "]")
+    }); 
 }
 
 function TOC_scroll(ei) {
