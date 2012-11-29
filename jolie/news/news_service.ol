@@ -39,45 +39,41 @@ main
 					println@Console( response )() 
 			);
 
-			if( article.text instanceof string && 
-				article.author instanceof string ){
+			getCurrentDateValues@Time()(currentDate);
 
-				getCurrentDateValues@Time()(currentDate);
+			with ( currentDate ){
+				filename = 	"" + .year + .month + .day;
 
-				with ( currentDate ){
-					filename = 	"" + .year + .month + .day;
+				currentDate = .month + "/" + .day + "/" + .year
+			};
 
-					currentDate = .month + "/" + .day + "/" + .year
-				};
+			listRequest.directory = NEWS_FOLDER;
+			listRequest.regex = filename + "_\\d\\.xml";
+			list@File( listRequest )( listResponse );
+			filename += "_" + ( #listResponse.result + 1 );
 
-				listRequest.directory = NEWS_FOLDER;
-				listRequest.regex = filename + "_\\d\\.xml";
-				list@File( listRequest )( listResponse );
-				filename += "_" + ( #listResponse.result + 1 );
+			articleContent = "<article>\n" +
+								"<text>\n" + article.text +"\n</text>\n" +
+								"<author>\n" + article.author + "\n</author>\n" +
+								"<date>\n" + currentDate + "\n</date>\n" +
+							"</article>";
 
-				articleContent = "<article>\n" +
-									"<text>\n" + article.text +"\n</text>\n" +
-									"<author>\n" + article.author + "\n</author>\n" +
-									"<date>\n" + currentDate + "\n</date>\n" +
-								"</article>";
+			with ( file ){
+				.content = articleContent;
+				.filename = NEWS_FOLDER + "/" + filename + ".xml"
+			};
 
-				with ( file ){
-					.content = articleContent;
-					.filename = NEWS_FOLDER + "/" + filename + ".xml"
-				};
-
-				writeFile@File( file )();
-				statusCode = 200;
-				response = "Article stored as: " + filename
-			}
-
-			else {
-				readFileReq.filename = "../news/submit_news.html";
-				readFile@File( readFileReq )( response );
-				statusCode = 200
-			}
+			writeFile@File( file )();
+			statusCode = 200;
+			response = "Article stored as: " + filename
 		}
 	}]{nullProcess}
+
+	[ postForm()( response ){
+		readFileReq.filename = "../news/submit_news.html";
+		readFile@File( readFileReq )( response );
+		statusCode = 200
+	}]{ nullProcess }
 
 	[ getNews( newsRequest )( response ){
 		scope( s ){

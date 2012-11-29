@@ -14,5 +14,6 @@ interface GetNewsInterface {
 
 interface PostNewsInterface {
 	RequestResponse:
-		postNews( undefined )( string )
+		postNews( Article )( string ),
+		postForm( void )( string )
 }		
