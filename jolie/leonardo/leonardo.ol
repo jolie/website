@@ -3,6 +3,7 @@ include "file.iol"
 include "string_utils.iol"
 include "protocols/http.iol"
 include "../frontend/frontend.iol"
+include "../news/news_service_interface.iol"
 
 include "config.iol"
 include "admin.iol"
@@ -18,6 +19,10 @@ outputPort Frontend {
 Interfaces: FrontendInterface
 }
 
+outputPort NewsService {
+	Interfaces: GetNewsInterface
+}
+
 inputPort HTTPInput { 
 Protocol: http {
 	.keepAlive = true; // Do not keep connections open
@@ -31,7 +36,7 @@ Protocol: http {
 }
 Location: Location_Leonardo
 Interfaces: HTTPInterface
-Aggregates: Frontend
+Aggregates: Frontend, NewsService
 }
 
 inputPort AdminInput {
@@ -42,12 +47,14 @@ Interfaces: AdminInterface
 
 embedded {
 Jolie:
-	"../frontend/frontend.ol" in Frontend
+	"../frontend/frontend.ol" in Frontend,
+	"../news/news_service.ol" in NewsService
 }
 
 init
 {
-	documentRootDirectory = WWWDirectory
+	documentRootDirectory = WWWDirectory;
+	format = html
 }
 
 main

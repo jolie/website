@@ -307,15 +307,20 @@ function loadNews( content_path ){
     zenMenu(false);
     setLoading( "#menu_content ");
     $.ajax({
-        dataType: "json",
-        url: content_folder + content_path,
+        dataType: "text",
+        type: "POST",
+        url: "/getNews",
         success: function( data ) {
+            data = $( $.parseXML( $ ( "<div></div>" ).html( data ).text()));
+
             var newsData = "<div class=\"scrollable_container\">";
-            $.each( data.news, function(i, item) {
-                newsData += marked ( item.article.content);
+            $.each( data.find("article"), function(i, item) {
+                newsData += marked ( $( item ).find( "text").text());
                 newsData += "<div class=\"news_separator\">Published on <span class=\"time\">" +
-                        item.article.date + "</span>, by <span class=\"user\">" +
-                        item.article.author + "</span></div>";
+                        $ ( item ).find( "date" ).text() + 
+                        "</span>, by <span class=\"user\">" +
+                        $ ( item ).find( "author" ).text() + 
+                        "</span></div>";
             });
             newsData += "</div>";
             $("#menu_content").html( newsData );
