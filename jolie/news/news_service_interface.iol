@@ -7,6 +7,17 @@ type Article: void{
 	.author: string
 }
 
+type EditArticle: void{
+	.text: string
+	.author: string
+	.date: string
+	.filename: string
+}
+
+type FileRequest: void{
+	.filename: string
+}
+
 interface GetNewsInterface {
 	RequestResponse:
 		getNews( NewsRequest )( string )
@@ -15,5 +26,8 @@ interface GetNewsInterface {
 interface PostNewsInterface {
 	RequestResponse:
 		postNews( Article )( string ),
-		postForm( void )( string )
-}		
+		deleteNews( FileRequest )( string ),
+		getSingleNews( FileRequest )( string ),
+		editArticle( EditArticle )( string ),
+		newsAdmin( undefined )( string )
+}

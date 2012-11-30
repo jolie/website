@@ -1,0 +1,126 @@
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript" src="http://localhost:8000/libs/jquery-1.8.2.min.js" ></script>
+	<script type="text/javascript">
+		$( document ).ready( function(){
+			loadContent( "editNews" );
+		});
+
+		function loadContent( action ){
+			$.post(
+				"newsAdmin",
+				{ "action": action },
+				function ( data ){
+					$("#content").html( data );
+				}
+			);
+		}
+
+		function deleteNews( filename ){
+			$.post(
+				"deleteNews",
+				{ "filename" : filename },
+				function( data ){
+					alert(data);
+					loadContent( "editNews" );
+				}
+			);
+		}
+
+		function sendEdit(){
+			$.post(
+				"editArticle",
+				{ 
+					"filename"	: 	$( "#filename" ).text(),
+					"text" 		: 	$( "textarea[name=text]" ).val(),
+					"author"	: 	$( "input[name=author]").val(),
+					"date" 		: 	$( "#date" ).text()
+				},
+				function( data ){
+					alert( data );
+					editNews( $( "#filename" ).text() );
+				}
+			);
+		}
+
+		function sendPost(){
+			$.post(
+				"postNews",
+				{
+					"text" 	: 	$( "textarea[name=text]" ).val(),
+					"author": 	$( "input[name=author]").val()
+				},
+				function ( data ) {
+					alert( data );
+					loadContent( "editNews" );
+				}
+			);
+		}
+
+		function editNews( filename ){
+			$.post(
+				"newsAdmin",
+				{ "action" : "editArticle" },
+				function ( data ){
+					$("#content").html( data );
+					$.post(
+						"getSingleNews",
+						{ "filename" : filename },
+						function( data ){
+							xml = $( $.parseXML( data ));
+							$( "textarea[name=text]" ).val( xml.find( "text" ).text() );
+							$( "input[name=author]" ).val( xml.find( "author" ).text() );
+							$( "#filename" ).text( filename );
+							$( "#date" ).text( xml.find( "date" ).text() );
+						}
+					);
+				}
+			);
+		}
+	</script>
+	<style type="text/css">
+
+		html,body {
+		    height: 95%;
+		}
+
+		#menu, #content {
+		    float:left;
+		    height: 100%;
+		}
+
+		#menu{
+		    width:15%;
+		    max-width: 100px;
+		    border-right: 1px solid #C9C9C9;
+		}
+
+		a {
+		    cursor: pointer;
+		    margin-left: 10px;
+		}
+
+		td {
+			border-bottom: 1px solid #C9C9C9;
+			padding-bottom: 10px;
+			padding-right: 20px;
+			padding-left: 20px;
+		}
+
+		#content{
+		   width:80%;
+		   margin-left: 10px;
+		}
+
+	</style>
+</head>
+<body>
+	<h1>News Service Administration</h1>
+<div id="menu">
+    <div><a onClick="loadContent('postNews')">Post a News</a></div>
+    <div><a onClick="loadContent('editNews')">Edit News</a></div>
+</div>
+<div id="content"></div>
+</body>
+</html>

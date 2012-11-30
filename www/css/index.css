@@ -60,7 +60,8 @@ ul {
 	background-size: 97px;
 	z-index: 1000;
 	position: absolute;
-	width: 96px;
+	width: 98px;
+	top: 10px;
 }
 
 #logo-down{

@@ -1,6 +1,6 @@
 <html>
 <head>
-	<title>Submit News</title>
+	<title>Edit Article</title>
 	<style type="text/css">
 
 		form{
@@ -55,7 +55,8 @@
 	</style>
 </head>
 <body>
-	<h1>Submit News Form</h1>
+	<h1>Edit News Form</h1>
+	<p>News <span id="filename"></span>. Created: <span id="date"></span></p>
 	<form onsubmit="return false;">
 		<fieldset id="text">
 			<legend>News Text</legend>
@@ -64,7 +65,7 @@
 		<fieldset id="author">
 			<legend>Author</legend>
 			<input type="text" name="author" />
-		</fieldset><button onClick="sendPost()">Submit</button>
+		</fieldset><button onClick="sendEdit()">Submit</button>
 	</form>
 	<div id="cheatsheet">
 		<h2>A Markdown cheatsheet</h2>
