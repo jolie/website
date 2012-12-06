@@ -53,8 +53,7 @@ Jolie:
 
 init
 {
-	documentRootDirectory = WWWDirectory;
-	format = html
+	documentRootDirectory = WWWDirectory
 }
 
 main

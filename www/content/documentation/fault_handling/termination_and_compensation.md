@@ -12,6 +12,21 @@ In case the handler refers to `this`, it is a *termination* or *recovery handler
 
 Installing a handler overwrites the previous one for the same fault or scope name; however, handlers can be composed by using the `cH` placeholder, which is replaced by the code of the previously installed handler.
 
+Fig. 1 displays a scenario in which a scope A contains an activity that executes:
+
+- an activity *P*;
+- the scope *B*;
+- the scope *C*.
+
+Let us suppose that *C* finishes its execution. As a result, its compensation handler is promoted at the level of its parent's compensation handler (1). Afterwards, if *P* rises a fault *f* while the scope *B* is still running its execution (2), the scope *B* is stopped and its termination handler is executed (3). When the termination handler of *B* is finished, the fault handler of *A* can be executed (4).
+
+Fault handlers can execute compensations by invoking the compensation handlers loaded within the corresponding scope, e.g., in the previous scenario the fault handler of A invokes the compensation handler of C.
+
+<div class="doc_image">
+	<img src="content/documentation/fault_handling/imgs/termination_and_compensation.jpg" />
+	<p><b>Fig.1</b> Code <em>P</em> is executed in parallel with scopes <em>B</em> and <em>C</em> within scope <em>A</em>. <em>C</em> is supposed to be successfully ended, whereas <em>B</em> is terminated during its execution by the fault <em>f</em> raised by <em>P</em>. The fault handler of <em>A</em> can execute the compensation handler loaded by <em>C</em>.</p>
+</div>
+
 ---
 
 ## Termination

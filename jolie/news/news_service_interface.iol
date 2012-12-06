@@ -20,7 +20,8 @@ type FileRequest: void{
 
 interface GetNewsInterface {
 	RequestResponse:
-		getNews( NewsRequest )( string )
+		getNews( NewsRequest )( string ),
+		getRss( NewsRequest )( string )
 }
 
 interface PostNewsInterface {

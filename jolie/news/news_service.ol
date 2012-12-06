@@ -24,10 +24,9 @@ execution { concurrent }
 constants {
 	NEWS_FOLDER = "../news/news_storage",
 	DELETED_FOLDER = "../news/news_trash"
-
 }
 
-init 
+init
 {
 	ACTION_PAGES.postNews = "../news/submit_news.html";
 	ACTION_PAGES.editNews = "../news/edit_news.html";
@@ -63,7 +62,17 @@ main
 			list@File( listRequest )( listResponse );
 			filename += "_" + ( #listResponse.result + 1 );
 
+			title = article.text;
+			title.regex="(?m)^(?:#{1,6} |<h\\d>)(.+)(?:|</h\\d>)$";
+			find@StringUtils( title )( result );
+			if( result ){
+				title = result.group[1]
+			} else {
+				title = "untitled"
+			};
+
 			articleContent = "<article>\n" +
+								"<title>" + title + "</title>\n" +
 								"<text>" + article.text +"</text>\n" +
 								"<author>" + article.author + "</author>\n" +
 								"<date>" + currentDate + "</date>\n" +
@@ -249,4 +258,45 @@ main
 			statusCode = 200
 		}
 	}]{ nullProcess }
+
+	[ getRss( newsRequest )( response ){
+		scope( s ){
+			install( IOException FileNotFound => 
+				println@Console( "Error on: " + filename )();
+				statusCode = 500
+			);
+
+			listRequest.directory = NEWS_FOLDER;
+			listRequest.regex = "\\d+_\\d\\.xml";
+			list@File( listRequest )( listResponse );
+			newsRange = #listResponse.result;
+			if( newsRequest.number > 0 &&
+				#newsRage > newsRequest.number ){
+				newsRange = newsRequest.number
+			};
+			response = "<?xml version=\"1.0\" encoding=\"utf-8\"?><rss version=\"2.0\">"+
+							"<channel><title>Jolie Website</title><link>http://www.jolie-lang.org</link>"+
+							"<description>The Jolie Website News</description>";
+			for( i = 0, i < newsRange, i++ ){
+				readFileReq.filename = NEWS_FOLDER + "/" + listResponse.result[ i ];
+				readFile@File( readFileReq )( article );
+				xmlToValue@XmlUtils( article )( article );
+				length@StringUtils( article.text )( article.text.length );
+					if( article.text.length > 0 ){
+						with ( article ){
+						article += "<item>" +
+										"<title>" + .title + "</title>" +
+										"<link>http://www.jolie-lang.org/?top_menu=news</link>" +
+										"<description>" + .text + "</description>" +
+									"</item>"
+						}
+					};
+				response += article
+			};
+			global.format = "text/rss";
+			response += "</channel></rss>";
+			statusCode = 200
+		}
+	}]{ nullProcess }
+
 }

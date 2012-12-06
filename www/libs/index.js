@@ -31,25 +31,28 @@ var ext_to_lang_hash = {
     }
 };
 
-function browser_related_tweaks(){
-    if ($.browser.mozilla || /(?:windows)(?:.+)(?:chrome)/.test(navigator.userAgent.toLowerCase()) ) {
-        $("#logo-down").css("background-position","23px -77px");
-    }
-}
-
 $(document).ready(function() {
     SyntaxHighlighter.defaults["toolbar"] = false;
     SyntaxHighlighter.defaults["auto-links"] = false;
     History.Adapter.bind(window, "statechange", history);
     history();
-    browser_related_tweaks();
 });
 
-// GENERAL FUNCTIONS
+// GENERIC FUNCTIONS
 $(window).resize(function() {
     $("#menu_content").css("height", "auto");
     adjustHeights();
 });
+
+function col_adjust(){
+    $.each( $(".col_container"), function(i, e){
+        var height = 0;
+        $.each( $( "div", $( e )), function(i, se){
+            height = Math.max( parseInt( $( se ).css( "height" )), height );
+        });
+        $( e ).css( "height", height );
+    });
+}
 
 function history() {
     var url = History.getState().url;
@@ -57,18 +60,23 @@ function history() {
         url = url.substring(0, url.indexOf("#"));
     }
     var url_params = URL2jParam(url);
+    
     if (!url_params.top_menu) {
 
         menu($("a[ref='news']"));
 
-    } else if (url_params.top_menu == "documentation" && url_params.sideMenuAction) {
+    } 
+
+    else if (url_params.top_menu == "documentation" && url_params.sideMenuAction) {
         // if its NOT the first visit, only load the doc page and opens its topic in side menu
         if (!visited_menu) {
             menu($("a[ref='documentation']"), url_params.sideMenuAction );
         }
         loadDocContent(url_params.sideMenuAction); /// <--- loads doc page content
-    } else if (url_params.top_menu == "community") {
 
+    } 
+
+    else if (url_params.top_menu == "community") {
         if (!url_params.sideMenuAction) {
             sideMenuAction('community', 'people');
         } else {
@@ -78,16 +86,31 @@ function history() {
             };
             menu($("a[ref='community']"), url_params.sideMenuAction, callback);
         }
-    } else if (url_params.top_menu == "about_jolie") {
+    } 
+
+    else if (url_params.top_menu == "projects") {
+        if(!url_params.sideMenuAction){
+            sideMenuAction("projects", "leonardo");
+        } else {
+            var callback = function(){
+                loadProjectsContent("li[ref='" + url_params.sideMenuAction + "']", url_params.sideMenuAction);
+            };
+            menu($("a[ref='projects']"), url_params.sideMenuAction, callback);
+        }
+    } 
+
+    else if (url_params.top_menu == "about_jolie") {
         if (!url_params.sideMenuAction) {
-            sideMenuAction('about_jolie', 'contacts');
+            sideMenuAction('about_jolie', 'jolie_style');
         } else {
             var callback = function(){
                 loadAboutJolieContent("li[ref='" + url_params.sideMenuAction + "']", url_params.sideMenuAction);
             };
             menu($("a[ref='about_jolie']"), url_params.sideMenuAction, callback);
         }
-    } else {
+    } 
+
+    else {
         menu($("a[ref='" + url_params.top_menu + "']"));
     }
 }
@@ -110,7 +133,10 @@ function menu(elem, rel_value, callback) {
             if ($(elem).attr("ref") == "documentation") {
                 docLoadSideMenu(rel_value);
                 zenMenu(true);
-            } else if ($(elem).attr("ref") == "about_jolie" || $(elem).attr("ref") == "community") {
+            } else if ( $(elem).attr("ref") == "about_jolie"    ||
+                        $(elem).attr("ref") == "community"      ||
+                        $(elem).attr("ref") == "projects"
+                    ){
                 zenMenu(true);
             } else {
                 zenMenu(false);
@@ -313,7 +339,7 @@ function loadNews( content_path ){
         success: function( data ) {
             data = $( $.parseXML( $ ( "<div></div>" ).html( data ).text()));
 
-            var newsData = "<div class=\"scrollable_container\">";
+            var newsData = "<div class=\"hyphenate scrollable_container\">";
             $.each( data.find("article"), function(i, item) {
                 newsData += marked ( $( item ).find( "text").text());
                 newsData += "<div class=\"news_separator\">Published on <span class=\"time\">" +
@@ -513,6 +539,14 @@ function loadCommunityContent(element, page_title) {
     $("#community_sideMenuAction li").removeAttr("id");
     $(element).attr("id", "active");
     loadGenericContent("community/" + page_title + ".html", "#community_content");
+}
+
+// PROJECTS FUNCTIONS
+
+function loadProjectsContent(element, page_title){
+    $("#projects_sideMenuAction li").removeAttr("id");
+    $(element).attr("id", "active");
+    loadGenericContent("projects/" + page_title + ".html", "#projects_content");
 }
 
 // ABOUT JOLIE FUNCTIONS

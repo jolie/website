@@ -1,4 +1,4 @@
-<div class="scrollable_container nano">
+<div class="scrollable_container hyphenate nano">
 
 # Install
 
