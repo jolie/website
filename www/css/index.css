@@ -534,7 +534,7 @@ div.caption {
 	width: 80px;
 }
 
-.role ul li{
+.role ul li,.highlights ul li{
 	font: 13px/1.5 'Helvetica Neue',Arial,'Liberation Sans',FreeSans,sans-serif;
 }
 
