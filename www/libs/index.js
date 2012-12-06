@@ -44,13 +44,14 @@ $(window).resize(function() {
     adjustHeights();
 });
 
-function col_adjust(){
-    $.each( $(".col_container"), function(i, e){
+function colAdjust(){
+    $.each( $( ".col_container" ), function(i,e){
         var height = 0;
-        $.each( $( "div", $( e )), function(i, se){
-            height = Math.max( parseInt( $( se ).css( "height" )), height );
-        });
-        $( e ).css( "height", height );
+        $.each( $( e ).find( ".business_card" ), function(i, se){
+                height = Math.max( parseInt( $( se ).css( "height" )), height );
+                $( se ).css( "height", "100%");
+            });
+        $( e ).css( "height", height+"px" );
     });
 }
 
@@ -85,17 +86,6 @@ function history() {
                 loadCommunityContent("li[ref='" + url_params.sideMenuAction + "']", url_params.sideMenuAction);
             };
             menu($("a[ref='community']"), url_params.sideMenuAction, callback);
-        }
-    } 
-
-    else if (url_params.top_menu == "projects") {
-        if(!url_params.sideMenuAction){
-            sideMenuAction("projects", "leonardo");
-        } else {
-            var callback = function(){
-                loadProjectsContent("li[ref='" + url_params.sideMenuAction + "']", url_params.sideMenuAction);
-            };
-            menu($("a[ref='projects']"), url_params.sideMenuAction, callback);
         }
     } 
 
@@ -134,8 +124,7 @@ function menu(elem, rel_value, callback) {
                 docLoadSideMenu(rel_value);
                 zenMenu(true);
             } else if ( $(elem).attr("ref") == "about_jolie"    ||
-                        $(elem).attr("ref") == "community"      ||
-                        $(elem).attr("ref") == "projects"
+                        $(elem).attr("ref") == "community"
                     ){
                 zenMenu(true);
             } else {
@@ -169,6 +158,7 @@ function loadGenericContent(content_path, dom_location) {
         success: function(data) {
             $(dom_location).html(data);
             scrollify(".scrollable_container");
+            colAdjust();
         },
         error: function(errorType, textStatus, errorThrown) {
             showErrorPage( $( "#menu_content" ), errorType, textStatus, errorThrown);
@@ -204,6 +194,7 @@ function loadCallback( isDoc ){
         }
         SyntaxHighlighter.highlight();
         adjustDocPrintHeight();
+        colAdjust();
     }
 }
 
@@ -539,14 +530,6 @@ function loadCommunityContent(element, page_title) {
     $("#community_sideMenuAction li").removeAttr("id");
     $(element).attr("id", "active");
     loadGenericContent("community/" + page_title + ".html", "#community_content");
-}
-
-// PROJECTS FUNCTIONS
-
-function loadProjectsContent(element, page_title){
-    $("#projects_sideMenuAction li").removeAttr("id");
-    $(element).attr("id", "active");
-    loadGenericContent("projects/" + page_title + ".html", "#projects_content");
 }
 
 // ABOUT JOLIE FUNCTIONS
