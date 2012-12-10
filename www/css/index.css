@@ -192,8 +192,8 @@ h3 {
 }
 
 .scrollable_container .content { padding: 10px; }
-.scrollable_container .pane   { background: #888; }
-.scrollable_container .slider { background: #111; }
+.scrollable_container .pane   { /*background: #888;*/ }
+.scrollable_container .slider { /*background: #111;*/ }
 
 /* NEWS CSS */
 
@@ -479,7 +479,7 @@ div.caption {
 	font-size: 14px;
 	margin-left: 0px;
 	padding-right: 5px;
-	width: 100%;
+	width: 117px;
 }
 
 #community_side_menu #active, #about_jolie_side_menu #active{
