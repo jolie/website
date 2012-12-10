@@ -17,7 +17,9 @@ public class JavaExample extends JavaService {
 
 		try {
 			System.out.println("Sent request");
-			CommMessage request = CommMessage.createRequest( "split", "/", s_req );
+			CommMessage request = CommMessage.createRequest( 	"split", 
+																"/", 
+																s_req );
 			CommMessage response = sendMessage( request ).recvResponseFor( request );
 			System.out.println("Received response");
 

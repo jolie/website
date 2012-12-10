@@ -79,7 +79,7 @@ function history() {
 
     else if (url_params.top_menu == "community") {
         if (!url_params.sideMenuAction) {
-            sideMenuAction('community', 'people');
+            sideMenuAction('community', 'people', true);
         } else {
             // loads the proper community page
             var callback = function(){
@@ -91,7 +91,7 @@ function history() {
 
     else if (url_params.top_menu == "about_jolie") {
         if (!url_params.sideMenuAction) {
-            sideMenuAction('about_jolie', 'jolie_style');
+            sideMenuAction('about_jolie', 'jolie_style', true);
         } else {
             var callback = function(){
                 loadAboutJolieContent("li[ref='" + url_params.sideMenuAction + "']", url_params.sideMenuAction);
@@ -520,8 +520,12 @@ function TOCEvents() {
     });
 }
 
-function sideMenuAction(page, content) {
-    History.pushState("", "", "?top_menu=" + page + "&sideMenuAction=" + content);
+function sideMenuAction(page, content, isDefault) {
+    if (isDefault) {
+        History.replaceState("", "", "?top_menu=" + page + "&sideMenuAction=" + content);
+    } else {
+        History.pushState("", "", "?top_menu=" + page + "&sideMenuAction=" + content);
+    }
 }
 
 // COMMUNITY FUNCTIONS

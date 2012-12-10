@@ -17,6 +17,7 @@ pre , code, kbd, samp {
   border: 1px solid #CCC;
   text-align: left;
   display: inline-block;
+  padding: 2px;
 }
 
 ul {
@@ -26,14 +27,7 @@ ul {
 #header{
 	height: 140px;
 	overflow:hidden;
-	background: rgb(160,0,0); /* Old browsers */
-	background: -moz-linear-gradient(top,  rgba(160,0,0,1) 0%, rgba(193,0,0,1) 20%, rgba(193,0,0,1) 80%, rgba(160,0,0,1) 100%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(160,0,0,1)), color-stop(20%,rgba(193,0,0,1)), color-stop(80%,rgba(193,0,0,1)), color-stop(100%,rgba(160,0,0,1))); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(top,  rgba(160,0,0,1) 0%,rgba(193,0,0,1) 20%,rgba(193,0,0,1) 80%,rgba(160,0,0,1) 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(top,  rgba(160,0,0,1) 0%,rgba(193,0,0,1) 20%,rgba(193,0,0,1) 80%,rgba(160,0,0,1) 100%); /* Opera 11.10+ */
-	background: -ms-linear-gradient(top,  rgba(160,0,0,1) 0%,rgba(193,0,0,1) 20%,rgba(193,0,0,1) 80%,rgba(160,0,0,1) 100%); /* IE10+ */
-	background: linear-gradient(to bottom,  rgba(160,0,0,1) 0%,rgba(193,0,0,1) 20%,rgba(193,0,0,1) 80%,rgba(160,0,0,1) 100%); /* W3C */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a00000', endColorstr='#a00000',GradientType=0 ); /* IE6-9 */
+	background: #CC0F16 url(../imgs/pattern.png)
 
 }
 
@@ -61,8 +55,7 @@ ul {
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
 	border-radius: 5px;
-	background-color: #415786;
-	border: 1px solid darkred;
+	background-color: #AC1419;
 	padding: 5px;
 }
 
@@ -80,7 +73,7 @@ ul {
 	z-index: 1000;
 	position: absolute;
 	width: 155px;
-	top: 10px;
+	top: 16px;
 }
 
 #logo-up p {
@@ -101,7 +94,7 @@ ul {
 }
 
 #top_menu {
-	margin-top: 106px;
+	margin-top: 15px;
 }
 
 .menu_item, .left_menu_item, .right_menu_item {
@@ -117,7 +110,7 @@ ul {
 	display: inline-block;
 	float: left;
 	padding: 5px 6px 4px 6px;
-	background: darkRed;
+	background: #B80F16;
 	border: solid 1px black;
 	-webkit-transition: border-color .20s;
 	-moz-transition: border-color .20s;
@@ -128,15 +121,15 @@ ul {
 }
 
 .left_menu_item{
-	border-top-left-radius: 2px;
+	border-top-left-radius: 5px;
 }
 
 .right_menu_item{
-	border-top-right-radius: 2px;
+	border-top-right-radius: 5px;
 }
 
 .menu_item:hover, .left_menu_item:hover, .right_menu_item:hover {
-	background-color: #A00;
+	background-color: #CC0F16;
 }
 
 .menu_item#active, .left_menu_item#active, .right_menu_item#active {
@@ -147,7 +140,6 @@ ul {
 } 
 
 #rss_feed{
-	padding-top: 53px;
 }
 
 h1,h2,h3{
@@ -188,6 +180,7 @@ h3 {
 	background: white;
 	border-top: 1px solid #C4C4C4;
 	text-align: right;
+	z-index: 100;
 }
 
 .scrollable_container{
@@ -377,7 +370,7 @@ ul.jqtree-tree li div{
 	padding-bottom: 3px;
 }
 
-#doc_content, #community_content, #about_jolie_content, #projects_content{
+#doc_content, #community_content, #about_jolie_content{
 	padding-top: 2px;
 	margin-left:-3px;
 	margin-right:3px;
@@ -385,7 +378,7 @@ ul.jqtree-tree li div{
 	border-left: 1px solid #C4C4C4;
 }
 
-#community_content, #about_jolie_content, #projects_content {
+#community_content, #about_jolie_content {
 	margin-left: -6px;
 	z-index: 0;
 }
@@ -464,13 +457,13 @@ div.caption {
 
 /* COMMUNITY CSS */
 
-#community_side_menu, #about_jolie_side_menu, #projects_side_menu{
+#community_side_menu, #about_jolie_side_menu{
 	height: 100%;
 	z-index: 999;
 	position: relative;
 }
 
-#community_side_menu li, #about_jolie_side_menu li, #projects_side_menu li {
+#community_side_menu li, #about_jolie_side_menu li {
 	cursor: pointer;
 	user-select: none;
 	line-height: 2em;
@@ -482,9 +475,10 @@ div.caption {
 	font-size: 14px;
 	margin-left: 0px;
 	padding-right: 5px;
+	width: 100%;
 }
 
-#community_side_menu #active, #about_jolie_side_menu #active, #projects_side_menu #active{
+#community_side_menu #active, #about_jolie_side_menu #active{
 	background-color: white;
 	border: 1px solid #C4C4C4;
     border-top-left-radius: 5px;
