@@ -20,6 +20,10 @@ pre , code, kbd, samp {
   padding: 2px;
 }
 
+pre code {
+	border: 0px;
+}
+
 ul {
 	padding-left: 5%;
 }
