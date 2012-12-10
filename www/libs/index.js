@@ -246,8 +246,8 @@ function loadCode( folder, isDoc ) {
     }
 }
 
-function top_menu(el) {
-    History.pushState(null, null, "?top_menu=" + $(el).attr("ref"));
+function top_menu(href) {
+    History.pushState(null, null, "?top_menu=" + $("a[href='" + href + "']").attr("ref"));
     TOCCreator(false);
 }
 
@@ -521,6 +521,10 @@ function TOCEvents() {
 }
 
 function sideMenuAction(page, content, isDefault) {
+    if ( !content ){
+        content = (/(?:&sideMenuAction=)(\w+)(?:|&)/.exec(page))[1];
+        page = (/(?:\?top_menu=)(\w+)(?:|&)/.exec(page))[1];
+    }
     if (isDefault) {
         History.replaceState("", "", "?top_menu=" + page + "&sideMenuAction=" + content);
     } else {

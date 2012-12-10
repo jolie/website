@@ -46,13 +46,55 @@
 				<div id="tagline" class="push_1 grid_8"><p id="tag" class="hyphenate">The open source language for efficiently programming your dynamic and maintainable service-oriented applications.</p></div>
 				<div id="top_menu" class="grid_17 push_4">
 					<div>
-						<a onClick="top_menu(this);" ref="news" class="left_menu_item" src="news" id="active">Home</a>
-						<a onClick="top_menu(this);" ref="downloads" class="menu_item" src="downloads/downloads.html">Downloads</a>
-						<a onClick="top_menu(this);" ref="documentation" class="menu_item" src="documentation/documentation.html">Documentation</a>
-						<a onClick="top_menu(this);" ref="community" class="menu_item" src="community/community.html">Community</a>
-						<a onClick="top_menu(this);" ref="publications" class="menu_item" src="publications/publications.html">Publications</a>
-						<a onClick="top_menu(this);" ref="projects" class="menu_item" src="projects/projects.html">Projects</a>
-						<a onClick="top_menu(this);" ref="about_jolie" class="right_menu_item" src="about_jolie/about_jolie.html">About Jolie</a>
+						<a 
+						href="?top_menu=news"
+						onClick="top_menu('?top_menu=news');return false;" 
+						ref="news" 
+						class="left_menu_item"
+						src="news" id="active">
+						Home</a>
+						<a 
+						href="?top_menu=downloads"
+						onClick="top_menu('?top_menu=downloads');return false;" 
+						ref="downloads" 
+						class="menu_item" 
+						src="downloads/downloads.html">
+						Downloads</a>
+						<a 
+						href="?top_menu=documentation"
+						onClick="top_menu('?top_menu=documentation');return false;" 
+						ref="documentation" 
+						class="menu_item" 
+						src="documentation/documentation.html">
+						Documentation</a>
+						<a 
+						href="?top_menu=community"
+						onClick="top_menu('?top_menu=community');return false;" 
+						ref="community" 
+						class="menu_item" 
+						src="community/community.html">
+						Community</a>
+						<a 
+						href="?top_menu=publications"
+						onClick="top_menu('?top_menu=publications');return false;" 
+						ref="publications" 
+						class="menu_item" 
+						src="publications/publications.html">
+						Publications</a>
+						<a 
+						href="?top_menu=projects"
+						onClick="top_menu('?top_menu=projects');return false;" 
+						ref="projects" 
+						class="menu_item" 
+						src="projects/projects.html">
+						Projects</a>
+						<a 
+						href="?top_menu=about_jolie"
+						onClick="top_menu('?top_menu=about_jolie');return false;" 
+						ref="about_jolie" 
+						class="right_menu_item" 
+						src="about_jolie/about_jolie.html">
+						About Jolie</a>
 					</div>
 				</div>
 				<div id="rss_feed" class="grid_1 push_1"><a href="/getRss"><img style="width:24px" src="imgs/Feed-icon.svg"/></a></div>
