@@ -63,7 +63,7 @@ main
 			filename += "_" + ( #listResponse.result + 1 );
 
 			title = article.text;
-			title.regex="(?m)^(?:#{1,6} |<h\\d>)(.+)(?:|</h\\d>)$";
+			title.regex="(?m)^(?:#{1,6} |<h\d>)([^<->]+)(?:|</h\d>)$";
 			find@StringUtils( title )( result );
 			if( result ){
 				title = result.group[1]
