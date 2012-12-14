@@ -313,6 +313,18 @@ function zenMenu(zen) {
     }
     $("#logo-down").css("border-right",border);
     adjustHeights();
+    social_links();
+}
+
+function social_links(){
+    var currentUrl = window.location.href;
+    var social_links =  "<a class=\"fbIcon\" href=\"http://www.facebook.com/sharer.php?u=" + 
+                            currentUrl + "\"></a>" +
+                        "<a class=\"twIcon\" href=\"http://twitter.com/intent/tweet?source=sharethiscom&url=" + 
+                            currentUrl + "\"></a>" +
+                        "<a class=\"gpIcon\" href=\"https://plus.google.com/share?url=" + 
+                            currentUrl + "\"></a>";
+    $("#social_links").html( social_links );
 }
 
 // NEWS FUNCTIONS
@@ -350,7 +362,6 @@ function loadNews( content_path ){
 
 function docLoadSideMenu(rel_value) {
     $.ajax({
-//         url: documentation_folder + "menu.json",
 		url: '/documentationMenu',
         dataType: 'json',
 		contentType: 'application/json',
