@@ -48,6 +48,7 @@ function colAdjust(){
     $.each( $( ".col_container" ), function(i,e){
         var height = 0;
         $.each( $( e ).find( ".business_card" ), function(i, se){
+                $( se ).css( "height", "");
                 height = Math.max( parseInt( $( se ).css( "height" )), height );
                 $( se ).css( "height", "100%");
             });
@@ -144,6 +145,9 @@ function loadMenuContent(content_path, callback) {
             if(callback){
                 callback.apply();
             }
+            colAdjust();
+            // timeout due to @font-face load latency
+            setTimeout(function(){colAdjust();},1000);
         },
         error: function(errorType, textStatus, errorThrown) {
             showErrorPage( $( "#menu_content" ), errorType, textStatus, errorThrown);
@@ -194,7 +198,6 @@ function loadCallback( isDoc ){
         }
         SyntaxHighlighter.highlight();
         adjustDocPrintHeight();
-        colAdjust();
     }
 }
 
