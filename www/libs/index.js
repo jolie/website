@@ -287,11 +287,11 @@ function adjustHeights() {
     var header_h = $("#header").height();
     var subheader_h = $("#logo-down").height();
     var footer_h = $("#footer").height();
-    var menu_content_h = body_h - (header_h + subheader_h + footer_h);
+    var menu_content_h = body_h - (header_h + subheader_h + footer_h + 1);
     $("#menu_content").height(menu_content_h);
-    $("#doc_content").height(menu_content_h-2);
-    $("#community_content").height(menu_content_h-2);
-    $("#about_jolie_content").height(menu_content_h-2);
+    $("#doc_content").height(menu_content_h+5);
+    $("#community_content").height(menu_content_h+5);
+    $("#about_jolie_content").height(menu_content_h+5);
 }
 
 function showErrorPage(inElement , errorType, textStatus, errorThrown) {

@@ -225,6 +225,7 @@ h3 {
 
 #menu_content{
 	height: 80%;
+	overflow: hidden;
 	/*overflow-y: auto;*/
 }
 
@@ -235,6 +236,8 @@ h3 {
 	background: white;
 	border-top: 1px solid #C4C4C4;
 	color: #A2A2A2;
+	position: relative;
+	z-index: 1000;
 }
 
 #footer p {
@@ -431,7 +434,6 @@ ul.jqtree-tree li div{
 	padding-top: 2px;
 	margin-left:-3px;
 	margin-right:3px;
-	height: 98%;
 	border-left: 1px solid #C4C4C4;
 }
 
