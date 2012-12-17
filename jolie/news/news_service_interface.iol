@@ -18,6 +18,10 @@ type FileRequest: void{
 	.filename: string
 }
 
+type markedReq: void{
+	.text: string
+}
+
 interface GetNewsInterface {
 	RequestResponse:
 		getNews( NewsRequest )( string ),
@@ -31,4 +35,9 @@ interface PostNewsInterface {
 		getSingleNews( FileRequest )( string ),
 		editArticle( EditArticle )( string ),
 		newsAdmin( undefined )( string )
+}
+
+interface MarkedInterface{
+	RequestResponse:
+		marked( markedReq )( string )
 }

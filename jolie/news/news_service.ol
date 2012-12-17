@@ -19,6 +19,15 @@ inputPort NewsServiceInput {
 	Interfaces: GetNewsInterface
 }
 
+outputPort MarkedService{
+	Interfaces: MarkedInterface
+}
+
+embedded{
+	JavaScript:
+		"../news/marked.js" in MarkedService
+}
+
 execution { concurrent }
 
 constants {
@@ -284,6 +293,8 @@ main
 				length@StringUtils( article.text )( article.text.length );
 					if( article.text.length > 0 ){
 						with ( article ){
+							markedReq.text = .text;
+							marked@MarkedService( markedReq )( .text );
 						article += "<item>" +
 										"<title>" + .title + "</title>" +
 										"<link>http://www.jolie-lang.org/?top_menu=news</link>" +
