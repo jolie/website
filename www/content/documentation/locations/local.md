@@ -8,4 +8,6 @@ An example using this medium can be found in part "Handling structured messages 
 
 The `local` medium can be used for service internal self communications, as shown in the example below:
 
-<div class="code" src="local_1.ol"></div>
+<div class="code" src="local.ol"></div>
+
+The operation `hanoi` receives an external http request (e.g., a GET `http://localhost:8000/hanoi?src=source&aux=auxiliary&dst=destination&n=5`) and fires the local operation `hanoiSolver` which uses the `local` location for recursively call itself and build the solution.
