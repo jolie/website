@@ -15,16 +15,23 @@ type MessageType: void {
 }
 
 type LogType: void {
-	.sid
+	.sid: string
 }
 
 interface ChatInterface {
-	RequestResponse: login( LoginType )( LogType )
-	OneWay: subscribe( SubscriptionType ), sendMessage( MessageType ), logout( LogType )
+	RequestResponse: 
+		login( LoginType )( LogType )
+	OneWay: 
+		subscribe( SubscriptionType ), 
+		sendMessage( MessageType ), 
+		logout( LogType )
 }
 
 // server.ol
 
 cset {
-	sid: SubscriptionType.sid, MessageType.sid, LogType.sid
+	sid: 
+		SubscriptionType.sid, 
+		MessageType.sid, 
+		LogType.sid
 }
