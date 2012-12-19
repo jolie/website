@@ -304,9 +304,9 @@ main
 					};
 				response += article
 			};
-			global.format = "text/rss";
 			response += "</channel></rss>";
 			statusCode = 200
+
 		}
 	}]{ nullProcess }
 

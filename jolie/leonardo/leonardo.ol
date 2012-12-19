@@ -12,7 +12,8 @@ execution { concurrent }
 
 interface HTTPInterface {
 RequestResponse:
-	default(DefaultOperationHttpRequest)(undefined)
+	default(DefaultOperationHttpRequest)(undefined),
+	getRss( void )( string )
 }
 
 outputPort Frontend {
@@ -24,19 +25,20 @@ outputPort NewsService {
 }
 
 inputPort HTTPInput { 
-Protocol: http {
-	.keepAlive = true; // Do not keep connections open
-	.debug = DebugHttp; 
-	.debug.showContent = DebugHttpContent;
-	.format -> format;
-	.contentType -> mime;
-	.statusCode -> statusCode;
-	.redirect -> location;
-	.default = "default"
-}
-Location: Location_Leonardo
-Interfaces: HTTPInterface
-Aggregates: Frontend, NewsService
+	Protocol: http {
+		.keepAlive = true; // Do not keep connections open
+		.debug = DebugHttp; 
+		.debug.showContent = DebugHttpContent;
+		.format -> format;
+		.contentType -> mime;
+		.statusCode -> statusCode;
+		.redirect -> location;
+		.default = "default"
+	}
+
+	Location: Location_Leonardo
+	Interfaces: HTTPInterface
+	Aggregates: Frontend, NewsService
 }
 
 inputPort AdminInput {
@@ -61,6 +63,7 @@ main
 
 	[ default( request )( response ) {
 		scope( s ) {
+
 			install( FileNotFound => println@Console( "File not found: " + file.filename )(); statusCode = 404 );
 
 			s = request.operation;
@@ -89,5 +92,10 @@ main
 	} ] { nullProcess }
 
 	[ shutdown()() { nullProcess } ] { exit }
+
+	[ getRss()(response){
+		getRss@NewsService()( response );
+		format = "html"
+	} ]{ nullProcess }
 }
 
