@@ -2,3 +2,6 @@
 <p>An embedded service in Jolie can communicate with its embedder exploiting the <code>local</code> medium. <code>local</code> communications uses the shared memory between embedded and embedder services in order to handle message delivery in an lightweight and efficient way.</p>
 <p>The <code>local</code> medium has no parameters and needs no protocol when used into a protocol definition.</p>
 <p>An example using this medium can be found in part &quot;Handling structured messages and embedder's operations invocation&quot; of <a href="architectural_composition/embedding_java">Embedding Java Services</a> subsection.</p>
+<p>The <code>local</code> medium can be used for service internal self communications, as shown in the example below:</p>
+<div class="code" src="local_1.ol"></div>
+
