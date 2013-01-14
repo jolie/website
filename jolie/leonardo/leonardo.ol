@@ -26,7 +26,7 @@ outputPort NewsService {
 
 inputPort HTTPInput { 
 	Protocol: http {
-		.keepAlive = true; // Do not keep connections open
+		.keepAlive = false; // Do not keep connections open
 		.debug = DebugHttp; 
 		.debug.showContent = DebugHttpContent;
 		.format -> format;
