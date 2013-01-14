@@ -85,7 +85,7 @@ ul {
 }
 
 #tagline p {
-	line-height: 11px;
+	line-height: 17px;
 	margin-bottom: 0px;
 }
 
@@ -95,7 +95,7 @@ ul {
 }
 
 #tC {
-	background: rgba(0, 0, 0, 0.18);
+	/* background: rgba(0, 0, 0, 0.18); */
 	padding: 7px;
 	color: white;
 	border-radius: 10px;
