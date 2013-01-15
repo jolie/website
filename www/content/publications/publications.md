@@ -3,9 +3,9 @@
 # Publications
 
 -	_Composing Services with JOLIE_
-	
+	<br/>
 	Fabrizio Montesi, Claudio Guidi, Gianluigi Zavattaro.
-	
+	<br/>
 	In Proceedings of ECOWS 2007.
 	[PDF][jolie:ecows07:pdf] [Bibtex][jolie:ecows07:bibtex]
 
