@@ -6,9 +6,11 @@
 
 ## <a id="linux"></a>On Linux and Mac
 
+(*
 ### openSuse - one click installation
 
 [openSuse 11.3](http://download.opensuse.org/repositories/home:/fmontesi/openSUSE_11.3/jolie.ymp)
+*)
 
 ### From sources
 Requirements:
