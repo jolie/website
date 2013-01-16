@@ -92,11 +92,13 @@ function history() {
 
     else if (url_params.top_menu == "about_jolie") {
         if (!url_params.sideMenuAction) {
+            alert("sideMenuAction is not defined");
             sideMenuAction('about_jolie', 'jolie_style', true);
         } else {
             var callback = function(){
                 loadAboutJolieContent("li[ref='" + url_params.sideMenuAction + "']", url_params.sideMenuAction);
             };
+            alert("sideMenuAction is defined: " + url_params.sideMenuAction);
             menu($("a[ref='about_jolie']"), url_params.sideMenuAction, callback);
         }
     } 
@@ -250,7 +252,7 @@ function loadCode( folder, isDoc ) {
 }
 
 function top_menu(href) {
-    History.pushState(null, null, "?top_menu=" + $("a[href='" + href + "']").attr("ref"));
+    History.pushState(null, null, "?top_menu=" + $("a[href='" + href + "'][ref]").attr("ref"));
     TOCCreator(false);
 }
 
