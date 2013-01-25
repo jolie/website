@@ -26,6 +26,10 @@
 	<br/>
 	In Proceedings of PLACES 2013.
 
+-	_PaaSSOA: An Open PaaS Architecture for Service Oriented Applications_
+	<br>Claudio Guidi, Paolo Anedda, Tullio Vardanega
+	ESOCC 2012, First European Conference on Service Oriented and Cloud Computing. 
+
 -	_Service integration via target-transparent mediation._
 	<br/>
 	Mila Dalla Preda, Maurizio Gabbrielli, Claudio Guidi, Jacopo Mauro, Fabrizio Montesi.
@@ -101,12 +105,55 @@
 	In Proceedings of IEEE ECOWS 2007.
 	[PDF][jolie:ecows07:pdf] [Bibtex][jolie:ecows07:bibtex]
 
+-	Replicating Web Services for Scalability
+	<br>Mario Bravetti, Stephen Gilmore, Claudio Guidi, Marco Tribastone
+	In Proc. of Trustworthy Global Computing (TGC 2007).
+	Volume 4912 of LNCS, pages 204-221, 2007.
+
+
+-	_Formalizing mobility in Service Oriented Computing_
+	<br>Claudio Guidi, Roberto Lucchi</br>
+	Journal of Software (JSW), Academy Publisher, Volume 2, Issue 1, February 2007
+
+- 	_SOCK: a calculus for service oriented computing_
+	<br>Nadia Busi, Roberto Gorrieri, Claudio Guidi, Roberto Lucchi, Gianluigi Zavattaro
+	In Proc. of 4th International Conference on Service Oriented Computing (ICSOC 2006). Volume 4294 of LNCS, pages 327-338, 2006
+
+-	_Mobility mechanisms in Service Oriented Computing_
+	<br>Claudio Guidi, Roberto Lucchi</br>
+	In Proc. of 8th International Conference on on Formal Methods for Open Object-Based Distributed Systems (FMOODS06). Volume 4037 of LNCS pages 233-250, 2006.
+
 -	_JOLIE: a Java Orchestration Language Interpreter Engine_
 	<br/>
 	Fabrizio Montesi, Claudio Guidi, Roberto Lucchi, Gianluigi Zavattaro.
 	<br/>
 	In Proceedings of CoOrg 2006 (ENTCS).
 	[PDF][jolie:coorg06:pdf] [Bibtex][jolie:coorg06:bibtex]
+
+-	_Choreography and Orchestration conformance for system design_
+	<br>Nadia Busi, Roberto Gorrieri, Claudio Guidi, Roberto Lucchi, Gianluigi Zavattaro
+	In Proc. of 8th International Conference on Coordination Models and Languages (COORDINATION 06). Volume 4038 of LNCS, pages 63-81, 2006.
+
+-	_Choreography and Orchestration: a synergic approach for system design_
+	<br>Nadia Busi, Roberto Gorrieri, Claudio Guidi, Roberto Lucchi, Gianluigi Zavattaro
+	In Proc. of 3rd International Conference on Service Oriented Computing (ICSOC 05), Volume 3826 of LNCS, pages 228-240, 2005.
+
+-	_Reasoning about interaction patterns in Choreography_
+	<br>Roberto Gorrieri, Claudio Guidi, Roberto Lucchi,
+	In Proc. of 2nd International Workshop on Web Services and Formal Methods (WS-FM 05), volume 3670 of LNCS, pages 333-348. Springer-Verlag, 2005.
+
+-	_Towards a formal framework for Choreography_
+	<br>Nadia Busi, Roberto Gorrieri, Claudio Guidi, Roberto Lucchi, Gianluigi Zavattaro
+	In Proc. of International Workshop on Distributed and Mobile Collaboration (DMC 2005), IEEE Computer Society Press.
+
+-	_Supporting e-commerce systems formalization with choreography languages_
+	<br>Mario Bravetti, Claudio Guidi, Roberto Lucchi, Gianluigi Zavattaro
+	In Proc. of ACM Symposium on Applied Computing (SAC 05), ACM Press, 2005.
+
+-	_A Formal Framework for Web Services Coordination_
+	<br>Claudio Guidi, Roberto Lucchi, Manuel Mazzara
+	In Proc. of 3rd International Workshop on Foundations of Coordination Languages and Software Architectures (FOCLASA 04) 
+	Electronic Notes in Theoretical Computer Science, Volume 180, Issue 2, 26 June 2007, Pages 55-70
 
 </div>
 
