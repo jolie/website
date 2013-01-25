@@ -26,6 +26,12 @@
 	<br/>
 	In Proceedings of PLACES 2013.
 
+-	_Service integration via target-transparent mediation._
+	<br/>
+	Mila Dalla Preda, Maurizio Gabbrielli, Claudio Guidi, Jacopo Mauro, Fabrizio Montesi.
+	<br/>
+	In Proceedings of IEEE SOCA 2012.
+
 -	_Interface-Based Service Composition with Aggregation_
 	<br/>
 	Mila Dalla Preda, Maurizio Gabbrielli, Claudio Guidi, Jacopo Mauro, Fabrizio Montesi.
