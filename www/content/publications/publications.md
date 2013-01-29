@@ -52,11 +52,24 @@
 	<br/>
 	In Proceedings of ICSOC 2011.
 
+-	_Graceful Interruption of Request-Response Service Interactions_
+	<br/>
+	Mila Dalla Preda, Maurizio Gabbrielli, Ivan Lanese, Jacopo Mauro, Gianluigi Zavattaro.
+	<br/>
+	In Proceedings of ICSOC 2011.
+
 -	_An Efficient Management of Correlation Sets with Broadcast_
 	<br/>
 	Jacopo Mauro, Maurizio Gabbrielli, Claudio Guidi, Fabrizio Montesi.
 	<br/>
 	In Proceedings of COORDINATION 2011.
+
+-	_On the Expressive Power of Primitives for Compensation Handling_
+	<br/>
+	Ivan Lanese, Cátia Vaz, Carla Ferreira.
+	<br/>
+	In Proceedings of ESOP 2010.
+
 
 -	_Error Handling: From Theory to Practice_
 	<br/>
@@ -75,6 +88,12 @@
 	Claudio Guidi, Ivan Lanese, Fabrizio Montesi, Gianluigi Zavattaro.
 	<br/>
 	In Fundamenta Informaticae, 2009.
+
+-	_Programming Sagas in SOCK_
+	<br/>
+	Ivan Lanese, Gianluigi Zavattaro.
+	<br/>
+	In Proceedings of SEFM 2009.
 
 -	_Reasoning About a Service-oriented Programming Paradigm_
 	<br/>
