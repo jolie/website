@@ -342,7 +342,7 @@ function loadNews( content_path ){
         success: function( data ) {
             data = $( $.parseXML( $ ( "<div></div>" ).html( data ).text()));
 
-            var newsData = "<div class=\"hyphenate scrollable_container\">";
+            var newsData = "<div style=\"text-align:right;\"><a href=\"?top_menu=community&sideMenuAction=contacts\">Register</a> to our Mailing List</div><div class=\"hyphenate scrollable_container\">";
             $.each( data.find("article"), function(i, item) {
                 newsData += marked ( $( item ).find( "text").text());
                 newsData += "<div class=\"news_separator\">Published on <span class=\"time\">" +
