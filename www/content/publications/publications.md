@@ -36,6 +36,10 @@
 	<br/>
 	In Proceedings of IEEE SOCA 2012.
 
+-	_Towards a New Paas Architecture Generation._
+	<br/>Claudio Guidi, Paolo Anedda, Tullio Vardanega<br/>
+	CLOSER 2012, 2nd international Conference on Cloud Computing and Service Science. 
+
 -	_Interface-Based Service Composition with Aggregation_
 	<br/>
 	Mila Dalla Preda, Maurizio Gabbrielli, Claudio Guidi, Jacopo Mauro, Fabrizio Montesi.
