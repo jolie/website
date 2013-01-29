@@ -6,7 +6,8 @@ include "xml_utils.iol"
 include "news_service_interface.iol"
 
 inputPort NewsService {
-  Location: "socket://localhost:8001/"
+//  Location: "socket://localhost:8001/"
+  Location: "local"
   Protocol: http { 
   		.format = "html";
   		.statusCode -> statusCode
