@@ -2,7 +2,7 @@
 
 # Publications
 
--	_Deadlock-freedom-by-design: multiparty asynchronous global programming_
+-	_Deadlock-freedom-by-design: Multiparty Asynchronous Global Programming_
 	<br/>
 	Marco Carbone, Fabrizio Montesi.
 	<br/>
