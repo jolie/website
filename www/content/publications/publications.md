@@ -2,6 +2,12 @@
 
 # Publications
 
+-	_Deadlock-freedom-by-design: multiparty asynchronous global programming_
+	<br/>
+	Marco Carbone, Fabrizio Montesi.
+	<br/>
+	In Proceedings of ACM POPL 2013.
+
 -	_Service-oriented Programming with Jolie_
 	<br/>
 	Fabrizio Montesi, Claudio Guidi, Gianluigi Zavattaro.
@@ -13,12 +19,6 @@
 	Fabrizio Montesi.
 	<br/>
 	In Proceedings of ACM SAC 2013.
-
--	_Deadlock-freedom-by-design: multiparty asynchronous global programming_
-	<br/>
-	Marco Carbone, Fabrizio Montesi.
-	<br/>
-	In Proceedings of ACM POPL 2013.
 
 -	_Merging Multiparty Protocols in Multiparty Choreographies_
 	<br/>
