@@ -5,14 +5,14 @@ include "string_utils.iol"
 include "xml_utils.iol"
 include "news_service_interface.iol"
 
-/*inputPort NewsService {
+inputPort NewsService {
   Location: "socket://localhost:8001/"
   Protocol: http { 
   		.format = "html";
   		.statusCode -> statusCode
   	 }
   Interfaces: PostNewsInterface
-}*/
+}
 
 inputPort NewsServiceInput {
 	Location: "local"
