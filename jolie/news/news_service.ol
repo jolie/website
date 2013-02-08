@@ -58,13 +58,10 @@ main
 					println@Console( response )() 
 			);
 
-			getCurrentDateValues@Time()(currentDate);
-
-			with ( currentDate ){
-				filename = 	"" + .year + .month + .day;
-
-				currentDate = .month + "/" + .day + "/" + .year
-			};
+			tR.format = "MM/dd/yyyy";
+			getCurrentDateTime@Time(tR)(currentDate);
+			tR.format = "yyyyMMdd";
+			getCurrentDateTime@Time(tR)(filename);
 
 			listRequest.directory = NEWS_FOLDER;
 			listRequest.regex = filename + "_\\d\\.xml";
@@ -258,7 +255,7 @@ main
 				newsRange = newsRequest.number
 			};
 			response = "<news>";
-			for( i = 0, i < newsRange, i++ ){
+			for( i = ( newsRange-1 ) , i >= 0, i-- ){
 				readFileReq.filename = NEWS_FOLDER + "/" + listResponse.result[ i ];
 				readFile@File( readFileReq )( article );
 				response += article
