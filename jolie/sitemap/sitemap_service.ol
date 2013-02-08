@@ -93,9 +93,9 @@ main
 				tM = fR.group[ 1 ];
 				sMA = fR.group[ 2 ] + "/" + sMA
 			};
-			is_valid_file.url = "?top_menu=" + tM;
+			is_valid_file.url = "%3Ftop_menu%3D" + tM;
 			if ( tM != sMA ){
-				is_valid_file.url += "&sideMenuAction=" + sMA	
+				is_valid_file.url += "%26sideMenuAction%3D" + sMA	
 			}
 		}
 	}]{ nullProcess }
