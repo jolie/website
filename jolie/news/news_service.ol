@@ -251,11 +251,11 @@ main
 			list@File( listRequest )( listResponse );
 			newsRange = #listResponse.result;
 			if( newsRequest.number > 0 &&
-				#newsRage > newsRequest.number ){
+				newsRange > newsRequest.number ){
 				newsRange = newsRequest.number
 			};
 			response = "<news>";
-			for( i = ( newsRange-1 ) , i >= 0, i-- ){
+			for( i = ( #listResponse.result-1 ) , i >= (#listResponse.result - newsRange ), i-- ){
 				readFileReq.filename = NEWS_FOLDER + "/" + listResponse.result[ i ];
 				readFile@File( readFileReq )( article );
 				response += article
