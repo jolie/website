@@ -3,6 +3,7 @@ include "file.iol"
 include "time.iol"
 include "string_utils.iol"
 include "xml_utils.iol"
+include "html_utils.iol"
 include "news_service_interface.iol"
 
 inputPort NewsService {
@@ -69,12 +70,18 @@ main
 			filename += "_" + ( #listResponse.result + 1 );
 
 			title = article.text;
-			title.regex="(?m)^(?:#{1,6} |<h\\d>)([^<->]+)(?:|</h\\d>)$";
+			title.regex="(?m)^(?:#{1,6} )(.*)$";
 			find@StringUtils( title )( result );
 			if( result ){
 				title = result.group[1]
 			} else {
-				title = "untitled"
+				title.regex="(?:<h\\d>)(.*)(</h\\d>)";
+				find@StringUtils( title )( result );
+				if( result ){
+					title = result.group[1]
+				} else {
+					title = "untitled"
+				}
 			};
 
 			articleContent = "<article>\n" +
@@ -177,7 +184,23 @@ main
 
 			filename = editRequest.filename;
 
+			title = editRequest.text;
+			title.regex="(?m)^(?:#{1,6} )(.*)$";
+			find@StringUtils( title )( result );
+			if( result ){
+				title = result.group[1]
+			} else {
+				title.regex="(?:<h\\d>)(.*)(</h\\d>)";
+				find@StringUtils( title )( result );
+				if( result ){
+					title = result.group[1]
+				} else {
+					title = "untitled"
+				}
+			};
+
 			articleContent = "<article>\n" +
+								"<title>" + title + "</title>\n" +
 								"<text>" + editRequest.text +"</text>\n" +
 								"<author>" + editRequest.author + "</author>" +
 								"<date>" + editRequest.date + "</date>\n" +
@@ -292,6 +315,7 @@ main
 						with ( article ){
 							markedReq.text = .text;
 							marked@MarkedService( markedReq )( .text );
+							escapeHTML@HTMLUtils( .text )( .text );
 						article += "<item>" +
 										"<title>" + .title + "</title>" +
 										"<link>http://www.jolie-lang.org/?top_menu=news</link>" +
