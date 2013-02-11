@@ -271,6 +271,7 @@ main
 
 			listRequest.directory = NEWS_FOLDER;
 			listRequest.regex = "\\d+_\\d\\.xml";
+			listRequest.order.byname = true;
 			list@File( listRequest )( listResponse );
 			newsRange = #listResponse.result;
 			if( newsRequest.number > 0 &&
