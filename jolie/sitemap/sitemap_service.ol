@@ -18,7 +18,8 @@ Interfaces: SiteMapInterface
 execution { concurrent }
 
 constants {
-	SITE_FOLDER = "../../www/content"
+	SITE_FOLDER = "../../www/content",
+	JOLIE_URL = "http://www.jolie-lang.org/"
 }
 
 init
@@ -53,7 +54,7 @@ main
 		if ( is_valid_file ){
 			exResp = true;
 			exResp.result = "<url>
-	<loc>" + is_valid_file.url + "</loc>
+	<loc>" + JOLIE_URL + is_valid_file.url + "</loc>
         <changefreq>monthly</changefreq>
     </url>"
 		} else {
