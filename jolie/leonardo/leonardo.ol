@@ -58,12 +58,26 @@ init
 	documentRootDirectory = WWWDirectory
 }
 
+define checkForMaliciousPath
+{
+	c = s.result[0];
+	c.substring = "..";
+	contains@StringUtils( c )( b );
+	if ( b ) {
+		throw( FileNotFound )
+	};
+	c.substring = ".svn";
+	contains@StringUtils( c )( b );
+	if ( b ) {
+		throw( FileNotFound )
+	}
+}
+
 main
 {
 
 	[ default( request )( response ) {
 		scope( s ) {
-
 			install( FileNotFound => println@Console( "File not found: " + file.filename )(); statusCode = 404 );
 
 			s = request.operation;
@@ -74,6 +88,8 @@ main
 			if ( s.result[0] == "" ) {
 				s.result[0] = "index.html"
 			};
+
+			checkForMaliciousPath;
 
 			file.filename = documentRootDirectory + s.result[0];
 
