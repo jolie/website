@@ -122,7 +122,7 @@ Subnodes are always prefixed by the <code>.</code> symbol.
 <p><code>SumInput</code> port declaration.</p>
 <hr />
 <h2 id="type-mismatching">Type mismatching</h2>
-<p>In Jolie, whenever a message is sent or received through a port, its type is checked against what specified in the port's interface. An invoker sending a message with a wrong type receives a <code>TypeMismarch</code> fault.</p>
+<p>In Jolie, whenever a message is sent or received through a port, its type is checked against what specified in the port's interface. An invoker sending a message with a wrong type receives a <code>TypeMismatch</code> fault.</p>
 <p>The <code>TypeMismatch</code> fault can be handled by exploiting the <a href="fault_handling/basics">fault handling</a>, as shown in the following example:</p>
 <div class="code" src="communication_ports_8.ol"></div>
 
