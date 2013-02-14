@@ -1,4 +1,4 @@
-// inteface.ol
+w// inteface.ol
 
 type LoginType: void {
 	.name: string
@@ -30,8 +30,7 @@ interface ChatInterface {
 // server.ol
 
 cset {
-	sid: 
-		SubscriptionType.sid, 
-		MessageType.sid, 
-		LogType.sid
+	sid: SubscriptionType.sid
+		 MessageType.sid
+		 LogType.sid
 }

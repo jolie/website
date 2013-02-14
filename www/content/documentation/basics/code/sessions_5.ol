@@ -15,14 +15,14 @@ type JoinRequest: void {
 }
 
 type Question: void{
-	.studentId: string,
-	.examId: string,
+	.studentId: string
+	.examId: string
 	.question: string
 }
 
 type Answer: void{
-	.studentId: string,
-	.examId: string,
+	.studentId: string
+	.examId: string
 	.question: string
 }
 

@@ -5,9 +5,14 @@ include "security_utils.iol"
 
 execution { concurrent }
 
-cset { name: CreateRoomRequest.name SendMessage.roomName }
+cset { 
+	name: 	CreateRoomRequest.name
+			SendMessage.roomName 
+}
 
-cset { adminToken: CloseRoomMessage.adminToken }
+cset { 
+	adminToken: CloseRoomMessage.adminToken 
+}
 
 inputPort ChatInput {
 Location: "socket://localhost:8000/"

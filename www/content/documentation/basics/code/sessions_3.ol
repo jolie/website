@@ -6,7 +6,7 @@ main
 	opMessage.sid = response.sid;
 	// if user wants to print
 		opMessage.message="my Message";
-		print@PrintService( opMessage )
+		print@PrintService( opMessage );
 	// else he wants to logout
-		logout@PrintService( opMessage );
+		logout@PrintService( opMessage )
 }

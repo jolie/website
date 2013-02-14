@@ -16,6 +16,7 @@ type SendMessage:void {
 }
 
 interface ChatInterface {
-OneWay: publish(SendMessage), close(CloseRoomMessage)
+OneWay: publish(SendMessage), 
+		close(CloseRoomMessage)
 RequestResponse: create(CreateRoomRequest)(string)	
 }
