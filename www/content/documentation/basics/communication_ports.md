@@ -75,8 +75,8 @@ Finally, let us define the `SunServ` outputPort, which is used to invoke the ser
 
 Jolie defines two types of operations:
 
-- one-way operations, which receives a message;
-- request-response operations, which replies or receives a message and sends back a response.
+- one-way operations, which receive a message;
+- request-response operations, which reply or receive a message and send back a response.
 
 Thus an interface is a collection of operation types, a list of One-Way and Request-Response operation declarations.
 
