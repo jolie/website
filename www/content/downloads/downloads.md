@@ -38,7 +38,7 @@ Install Ant for building sources from this [link](http://ant.apache.org/).
 
 #### Installing:
 
-Download Jolie's sources with your svn client from `https://jolie.svn.sourceforge.net/svnroot/jolie/branches/jolie_1_0`
+Download Jolie's sources with your svn client from `svn://svn.code.sf.net/p/jolie/code/branches/jolie_1_0`
 
 Open the `buildconfig/config.properties` file and change the parameters `install.launcher_dir` and `install.dir` 
 by replacing the existing directories with your desired ones. Use `\\` instead of the single backslashes when writing paths. Example:
@@ -69,7 +69,7 @@ Homepage: [http://kate-editor.org/](http://kate-editor.org/)
 
 A syntax highlighting description file for KatePart (which is used by most KDE applications and the Kate editor itself) is available.
 
-Download the [latest version](http://jolie.svn.sourceforge.net/viewvc/jolie/branches/jolie_1_0/support/katepart/syntax/jolie.xml) and put it in your `$KDE_HOME/share/apps/katepart/syntax directory`.
+Download the [latest version](http://www.jolie-lang.org/files/katepart/jolie.xml) and put it in your `$KDE_HOME/share/apps/katepart/syntax directory`.
 
 You can discover your `$KDE_HOME` directory by issuing the kde4 config localprefix command.
 
