@@ -73,4 +73,9 @@ Download the [latest version](http://www.jolie-lang.org/files/katepart/jolie.xml
 
 You can discover your `$KDE_HOME` directory by issuing the kde4 config localprefix command.
 
+### Sublime Text
+
+A bundle for [Sublime Text 2](http://www.sublimetext.com/) with syntax highlighting, code completion, and sublime-build(s) for Jolie.
+
+Refer to [github's repository](https://github.com/thesave/sublime-Jolie) for downloading and installing the latest version.
 </div>
