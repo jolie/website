@@ -9,6 +9,6 @@ type RequestUserCreationType:void {
 
 interface JpsrFrontendInterface {
 RequestResponse:
-	requestUserCreation(RequestUserCreationType)(void),
-	confirmEmail(ConfirmEmailType)(void)
+	requestUserCreation(RequestUserCreationType)(string),
+	confirmEmail(ConfirmEmailType)(string)
 }

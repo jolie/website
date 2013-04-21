@@ -66,7 +66,8 @@ Jolie:
 init
 {
 	getServiceDirectory@File()( thisDir );
-	documentRootDirectory = thisDir + "/" + WWWDirectory
+	documentRootDirectory = thisDir + "/" + WWWDirectory;
+	format = "html"
 }
 
 define checkForMaliciousPath

@@ -39,7 +39,8 @@ RequestResponse:
 	createUser(CreateUserType)(void) throws InvalidUsername(string),
 	createFreshPassword(ChangePasswordType)(string) throws InvalidUsername(string),
 	changePassword(ChangePasswordType)(void) throws AuthenticationFailed(string),
-	updateFreshKey(UpdateFreshKeyType)(string) throws AuthenticationFailed(string)
+	updateFreshKey(UpdateFreshKeyType)(string) throws AuthenticationFailed(string),
+	existsUser(string)(bool)
 }
 
 outputPort AccountManager {

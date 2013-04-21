@@ -4,6 +4,7 @@ include "../../account_manager/AccountManager.iol"
 include "console.iol"
 include "string_utils.iol"
 include "smtp.iol"
+include "file.iol"
 
 execution { concurrent }
 
@@ -18,7 +19,9 @@ cset {
 
 init
 {
-	install( SMTPFault => println@Console( main.SMTPFault.stackTrace )() )
+	install( SMTPFault => println@Console( main.SMTPFault.stackTrace )() );
+	getServiceDirectory@File()( thisDir );
+	wwwDir = thisDir + "/../www"
 }
 
 main
@@ -40,10 +43,24 @@ main
 		;
 		m.contentType = "text/html";
 
-		sendMail@SMTP( m )()
+		existsUser@AccountManager( request.username )( b );
+		if ( b ) {
+			f.filename = wwwDir + "/requestUserCreation_userExists.html";
+			println@Console( m.content )()
+		} else {
+			f.filename = wwwDir + "/requestUserCreation_ok.html"//;
+			//sendMail@SMTP( m )()
+		};
+		readFile@File( f )( response )
 	} ] {
-		confirmEmail()( response ) {
-			response = "OK"
+		confirmEmail( request )( response ) {
+			scope( s ) {
+				install( InvalidUsername => response = "NOT OK" );
+				c.username = request.username;
+				c.password = request.password;
+				createUser@AccountManager( c )();
+				response = "OK"
+			}
 		}
 	}
 }

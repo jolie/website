@@ -105,6 +105,13 @@ main
 		q.password = request.password;
 		update@Database( q )()
 	} ] { nullProcess }
+	
+	[ existsUser( username )( b ) {
+		q = "select id from users where email=:username";
+		q.username = username;
+		query@Database( q )( result );
+		b = #result.row > 0
+	} ] { nullProcess }
 
 	[ createFreshPassword( request )( response ) {
 		/* q = "select id from users where email=:username";

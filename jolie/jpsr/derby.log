@@ -1,6 +1,6 @@
 ----------------------------------------------------------------
-2013-04-21 12:22:14.292 GMT:
- Booting Derby version The Apache Software Foundation - Apache Derby - 10.5.3.0 - (802917): instance a816c00e-013e-2c8b-6952-000005baa890
+2013-04-21 14:22:23.553 GMT:
+ Booting Derby version The Apache Software Foundation - Apache Derby - 10.5.3.0 - (802917): instance a816c00e-013e-2cf9-6a82-0000057a5ed0
 on database directory /home/fmontesi/programs/jolie/web/trunk/jolie/jpsr/account_manager/db/account_manager  
 
 Database Class Loader started - derby.database.classpath=''
