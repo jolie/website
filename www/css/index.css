@@ -20,6 +20,17 @@ pre , code, kbd, samp {
   padding: 2px;
 }
 
+.cite {
+	background: rgb(82, 82, 82);
+	margin-left: 20%;
+	font-style: italic;
+	font-family: Georgia;
+	border-radius: 5px;
+	padding: 10px;
+	color: white;
+	font-size: 10pt !important;
+}
+
 .gpIcon, .twIcon, .fbIcon {
 	background-size: 16px;
 	background-repeat: no-repeat;
@@ -430,14 +441,14 @@ ul.jqtree-tree li div{
 	padding-bottom: 3px;
 }
 
-#doc_content, #community_content, #about_jolie_content{
+#doc_content, #community_content, #about_jolie_content, #projects_content{
 	padding-top: 2px;
 	margin-left:-3px;
 	margin-right:3px;
 	border-left: 1px solid #C4C4C4;
 }
 
-#community_content, #about_jolie_content {
+#community_content, #about_jolie_content, #projects_content {
 	margin-left: -6px;
 	background-color: white;
 }
@@ -516,11 +527,11 @@ div.caption {
 
 /* COMMUNITY CSS */
 
-#community_side_menu, #about_jolie_side_menu{
+#community_side_menu, #about_jolie_side_menu, #projects_side_menu{
 	height: 100%;
 }
 
-#community_side_menu li, #about_jolie_side_menu li {
+#community_side_menu li, #about_jolie_side_menu li, #projects_side_menu li {
 	cursor: pointer;
 	user-select: none;
 	line-height: 2em;
@@ -537,7 +548,7 @@ div.caption {
 	z-index: 100;
 }
 
-#community_side_menu #active, #about_jolie_side_menu #active{
+#community_side_menu #active, #about_jolie_side_menu #active, #projects_side_menu #active{
 	background-color: white;
 	border: 1px solid #C4C4C4;
     border-top-left-radius: 5px;
