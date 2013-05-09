@@ -1,77 +1,42 @@
-<div class="grid_20 push_3 scrollable_container nano hyphenate">
-	<h2>Projects involving Jolie:</h2>
-	<div class="list_container">
-		<div class="col_container">
-			<div class="business_card grid_9">
-				<div class="name">Chor</div>
-				<div class="highlights"><b>Highlights: </b>
-					<ul>
-						<li>a new programming language based on choreographies that supports code generation of Jolie services.</li>
-					</ul>
-				</div><div class="clear"></div>
-				<div><p>Chor is a new programming language for communicating systems, based on choreographies. Choreographies are global descriptions of system implementations, where the behaviour of all entities in a system is given in a single program. Choreographies enhance the quality of software, as they represent "formal blueprints" of how communicating systems should behave and offer a concise view of the message flows enacted by a system. In Chor, a choreography can then be projected (or compiled, if you like) onto a set of separate programs that can be run in a distributed system. </p></div>
-				<div><b>Project Website: </b><a href="http://www.chor-lang.org/">http://www.chor-lang.org/</a></div>
-			</div>
-			<div class="business_card grid_9">
-				<div class="name">Jeye</div>
-				<div class="highlights"><b>Highlights: </b>
-					<ul>
-						<li>A web designer for Jolie services.</li>
-					</ul>
-				</div><div class="clear"></div>
-				<div><p>jEye is web application which allows for the design of Jolie workflow by exploiting a web GUI developed in GWT.
-					The server side of jEye is a Service Oriented Architecture fully implemented with Jolie. In particular,
-					we exploit service recursion for developing the Jolie parser which converts the wirkflow definition provided
-					by the web GUI into a real and executable Jolie service. At the present jEys is a prototype.</p></div>
-				<div><b>Project Website: </b><a href="http://jeye.sourceforge.net/">http://jeye.sourceforge.net/</a></div>
-			</div>
-		</div>
-		<div class="col_container">
-			<div class="business_card grid_9">
-				<div class="name">Joliepse</div>
-				<div class="highlights"><b>Highlights: </b>
-					<ul>
-						<li>An IDE for Jolie powered by Xtext framework.</li>
-					</ul>
-				</div><div class="clear"></div>
-				<div><p>Joliepse is an Integrated Development Environment (IDE) for the JOLIE programming language, powered by the <a href="http://www.eclipse.org/Xtext/">Xtext framework</a>. Joliepse provides code templating, code completion, syntax coloring, navigation, reference finding, outline views and syntax checking / error markers. </p></div>
-				<div><b>Project Website: </b><a href="http://www.jolie-lang.org/joliepse.php">http://www.jolie-lang.org/joliepse.php</a></div>
-			</div>
-			<div class="business_card grid_9">
-				<div class="name">JoRBA</div>
-				<div class="highlights"><b>Highlights: </b>
-					<ul>
-						<li>An adaptation framework written in Jolie.</li>
-					</ul>
-				</div><div class="clear"></div>
-				<div><p>JoRBA (Jolie Rule-Based Adaptation framework), is a proof-of-concept framework implementation of adaptation mechanisms written Jolie.</p></div>
-				<div><b>Project Website: </b><a href="http://www.jolie-lang.org/examples/tgc10/JoRBAv0.1.zip">http://www.jolie-lang.org/examples/tgc10/JoRBAv0.1.zip</a></div>
-			</div>
-		</div>	
-		<div class="col_container">
-			<div class="business_card grid_9">
-				<div class="name">Leonardo</div>
-				<div class="highlights"><b>Highlights: </b>
-					<ul>
-						<li>Tiny yet powerful Web Server written in pure Jolie.</li>
-					</ul>
-				</div><div class="clear"></div>
-				<div><p>Leonardo is very flexible, and can scale from serving simple static HTML content to supporting powerful dynamic web applications. Leonardo is particularly suited to integrate Web Development with Service-Oriented Architectures (SOAs)</p></div>
-				<div><b>Project Website: </b><a href="http://sourceforge.net/projects/leonardo">http://sourceforge.net/projects/leonardo</a></div>
-			</div>
-			<div class="business_card grid_9">
-				<div class="name">PaaSSOA</div>
-				<div class="highlights"><b>Highlights: </b>
-					<ul>
-						<li>A Cloud Computing platform for the deployment of SOAs, developed in Jolie.</li>
-					</ul>
-				</div><div class="clear"></div>
-				<div><p>PaaSSOA is a Service Oriented PaaS framework for deploying service oriented architectures in a Cloud Envirnoment.
-					It is fully implemented in Jolie and it provides a web GUI developed in GWT for interacting with the system
-					anche checking the status of all the deployed services. At the present PaaSSOA is a prototype.</p></div>
-				<div><b>Project Website: </b><a href="http://sourceforge.net/projects/paassoa">http://sourceforge.net/projects/paassoa</a></div>
-			</div>
-		</div>
-		
+<div id="projects_side_menu" class="grid_4">
+	<div class="scrollable_container hyphenate grid_5">
+		<ul>
+			<!-- <li 
+				ref="intro" 
+				href="?top_menu=projects&sideMenuAction=intro"
+				onClick="sideMenuAction('?top_menu=projects&sideMenuAction=intro')">
+				Introduction</li>  -->
+			<li 
+				ref="chor" 
+				href="?top_menu=projects&sideMenuAction=chor"
+				onClick="sideMenuAction('?top_menu=projects&sideMenuAction=chor')">
+				Chor</li>
+			<li 
+				ref="jeye" 
+				href="?top_menu=projects&sideMenuAction=jeye"
+				onClick="sideMenuAction('?top_menu=projects&sideMenuAction=jeye')">
+				jEye</li>
+			<li 
+				ref="joliepse" 
+				href="?top_menu=projects&sideMenuAction=joliepse"
+				onClick="sideMenuAction('?top_menu=projects&sideMenuAction=joliepse')">
+				Joliepse</li>
+			<li 
+				ref="jorba" 
+				href="?top_menu=projects&sideMenuAction=jorba"
+				onClick="sideMenuAction('?top_menu=projects&sideMenuAction=jorba')">
+				JoRBA</li>
+			<li 
+				ref="leonardo" 
+				href="?top_menu=projects&sideMenuAction=leonardo"
+				onClick="sideMenuAction('?top_menu=projects&sideMenuAction=leonardo')">
+				Leonardo</li>
+			<li 
+				ref="paassoa" 
+				href="?top_menu=projects&sideMenuAction=paassoa"
+				onClick="sideMenuAction('?top_menu=projects&sideMenuAction=paassoa')">
+				PaaSSoA</li>
+		</ul>
 	</div>
 </div>
+<div id="projects_content" class="grid_20 hyphenate scrollable_container"></div>
