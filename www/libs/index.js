@@ -90,6 +90,19 @@ function history() {
         }
     } 
 
+    else if (url_params.top_menu == "projects") {
+        if (!url_params.sideMenuAction) {
+            //sideMenuAction('projects', 'intro', true);
+            sideMenuAction('projects', 'chor', true);
+        } else {
+            // loads the proper projects page
+            var callback = function(){
+                loadProjectsContent("li[ref='" + url_params.sideMenuAction + "']", url_params.sideMenuAction);
+            };
+            menu($("a[ref='projects']"), url_params.sideMenuAction, callback);
+        }
+    } 
+
     else if (url_params.top_menu == "about_jolie") {
         if (!url_params.sideMenuAction) {
             sideMenuAction('about_jolie', 'jolie_style', true);
@@ -125,7 +138,8 @@ function menu(elem, rel_value, callback) {
                 docLoadSideMenu(rel_value);
                 zenMenu(true);
             } else if ( $(elem).attr("ref") == "about_jolie"    ||
-                        $(elem).attr("ref") == "community"
+                        $(elem).attr("ref") == "community"      ||
+                        $(elem).attr("ref") == "projects"
                     ){
                 zenMenu(true);
             } else {
@@ -291,6 +305,7 @@ function adjustHeights() {
     $("#menu_content").height(menu_content_h);
     $("#doc_content").height(menu_content_h+5);
     $("#community_content").height(menu_content_h+5);
+    $("#projects_content").height(menu_content_h+5);
     $("#about_jolie_content").height(menu_content_h+5);
 }
 
@@ -549,6 +564,14 @@ function loadCommunityContent(element, page_title) {
     $("#community_sideMenuAction li").removeAttr("id");
     $(element).attr("id", "active");
     loadGenericContent("community/" + page_title + ".html", "#community_content");
+}
+
+// PROJECTS FUNCTIONS
+
+function loadProjectsContent(element, page_title) {
+    $("#community_sideMenuAction li").removeAttr("id");
+    $(element).attr("id", "active");
+    loadGenericContent("projects/" + page_title + ".html", "#projects_content");
 }
 
 // ABOUT JOLIE FUNCTIONS
