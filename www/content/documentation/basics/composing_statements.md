@@ -49,7 +49,7 @@ In this example we concurrently retrieve information from both a forecast and a 
 
 <div class="code" src="composing_statements_workflow_5.ol"></div>
 
-<div class="download"><a href="composing_statements_parallel.zip">Click here to download the comprehensive code of the example above.</a></div>
+<div class="download"><a href="documentation/basics/code/composing_statements_parallel.zip">Click here to download the comprehensive code of the example above.</a></div>
 
 Concurrent access to shared variables can be restricted through [synchronized](language_references/synchronized) blocks.
 
