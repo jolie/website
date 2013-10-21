@@ -173,6 +173,10 @@
             {
                 "url": "protocols/sodeps",
                 "label": "SODEPs"
+            },
+            {
+                "url": "protocols/ssl",
+                "label": "SSL"
             }
         ]
     },{        
