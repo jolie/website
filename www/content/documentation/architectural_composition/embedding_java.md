@@ -62,4 +62,4 @@ After receiving the response, the service prints at console the subnodes of the 
 
 The comprehensive code of this example can be downloaded here:
 
-<div class="download"><a href="documentation/architectural_composition/code/embedding_java_code.zip">Processes Code Example</a></div>
+<div class="download"><a href="documentation/architectural_composition/code/embedding_java_code.zip">Embedding Java Code Example</a></div>
