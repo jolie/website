@@ -22,4 +22,4 @@ In the example above we include the `runtime.iol` library (part of Jolie's stand
 
 The comprehensive code examples of both the static (wrong) and dynamic embedding can be downloaded here:
 
-<div class="download"><a href="documentation/architectural_composition/code/dynamic_embedding_code.zip">Processes Code Example</a></div>
+<div class="download"><a href="documentation/architectural_composition/code/dynamic_embedding_code.zip">Dynamic Embedding Code Example</a></div>
