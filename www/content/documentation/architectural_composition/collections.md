@@ -30,4 +30,4 @@ Above, the aggregator exposes the inputPort `AggregatorInput` that aggregates th
 
 The comprehensive files of the example above can be downloaded from the following link:
 
-<div class="download"><a href="documentation/achitectural_composition/code/aggregation_code.zip">Aggregation and interface extender Code Example</a></div>
+<div class="download"><a href="documentation/architectural_composition/code/aggregation_code.zip">Aggregation and interface extender Code Example</a></div>
