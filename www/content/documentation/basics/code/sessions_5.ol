@@ -1,5 +1,7 @@
 //interface.ol
 
+include "types/Binding.iol"
+
 type Exam: void {
 	.professor: Binding
 	.studentId: string
@@ -32,15 +34,31 @@ type Score: void{
 	.score: int
 }
 
-interface ExamInterface{
-	RequestResponse:	getExams( string )( Exams ),
-						ask( Question )( Answer )
-						
-	OneWay:	openExam( Exam ),
-			join( joinRequest )
-			requestQuestion( Exam ),
-			receiveQuestion( Question ),
-			forwardAnswer( Answer ),
-			ok( Score ),
-			wrong( Score )
+interface StudentInterface {
+	OneWay: 
+		ok( Score ),
+		wrong( Score )
+
+	RequestResponse: 
+		ask( Question )( Answer )
+}
+
+interface ProfessorInterface {
+	OneWay: 
+		requestQuestion( Exam )
+		forwardAnswer( Answer )
+
+	RequestResponse:
+		receiveQuestion( void )( Question )
+}
+
+interface ExamInterface{					
+	OneWay:	
+		openExam( Exam ),
+		join( JoinRequest ),
+		ok( Score ),
+		wrong( Score )
+	
+	RequestResponse:	
+		getExams( string )( Exams )
 }

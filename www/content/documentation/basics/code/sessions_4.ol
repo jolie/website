@@ -1,4 +1,4 @@
-w// inteface.ol
+// inteface.ol
 
 type LoginType: void {
 	.name: string

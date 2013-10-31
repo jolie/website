@@ -1,34 +1,37 @@
 // server.ol
 
-outputPort Student { ... }
-outputPort Professor { ... }
-inputPort Exam { ... }
+outputPort Student { Interfaces: StudentInterface }
+outputPort Professor { Interfaces: ProfessorInterface }
+inputPort Exam { Interfaces: ExamInterface }
 
-cset {
-	studentId: 	Exam.studentId
-				Question.studentId
-				Answer.studentId
-				Score.studentId,
+cset 
+{
+	studentId:
+		Exam.studentId
+		Question.studentId
+		Answer.studentId
+		Score.studentId,
 
-	examId: Exam.examId
-			Question.examId
-			Answer.examId
-			Score.examId
+	examId:
+		Exam.examId
+		Question.examId
+		Answer.examId
+		Score.examId
 }
 
 main
 {
-	[ getExams( studentId )( global.(studentId) ) { nullProcess } ]
-	{ nullProcess }
+	[ getExams( studentId )( global.exam.( studentId ) ) { 
+		nullProcess } 
+	]{ nullProcess }
 
 	[ openExam( exam ) ] {
 		Professor << exam.professor;
-		global.(exam.studentId).(exam.examId) << exam;
+		global.exams.( exam.studentId ).( exam.examId ) << exam;
 
-		join( joinRequest )() {
-			undef( global.(exam.studentId).(exam.examId) );
-			Student << joinRequest.student
-		};
+		join( joinRequest );
+		undef( global.exam.( exam.studentId ).( exam.examId );
+		Student << joinRequest.student;
 
 		requestQuestion@Professor( exam );
 		receiveQuestion( question );		
