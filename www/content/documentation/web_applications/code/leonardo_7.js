@@ -9,7 +9,7 @@ $( document ).ready( function() {
           ] 
         },
         function( response ) {
-        	 $( "#result" ).html( response.$ );
+        	 $( "#result" ).html( response );
       	 }
     	 );
   	})
