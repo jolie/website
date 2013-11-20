@@ -38,7 +38,7 @@ Keep in mind that, in Jolie, <code>;</code> is NOT the &quot;end of statement&qu
 <a href="documentation/basics/code/composing_statements_parallel.zip">Click here to download the comprehensive code of the example above.</a>
 </div>
 
-<p>Concurrent access to shared variables can be restricted through <a href="language_references/synchronized">synchronized</a> blocks.</p>
+<p>Concurrent access to shared variables can be restricted through <a href="basics/processes#synchronisation">synchronized</a> blocks.</p>
 <hr />
 <h2 id="input-choice">Input choice</h2>
 <p>The input choice implements <strong>input-guarded choice</strong>. Namely, it supports the receiving of a message for any of the statements in the choice. When a message for an input statement <code>IS_i</code> can be received, then all the other branches are deactivated and <code>IS_i</code> is executed. Afterwards, the related branch behaviour <code>block_code_1</code> is executed. A static check enforces all the input choices to have different operations, so to avoid ambiguity.</p>

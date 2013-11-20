@@ -51,7 +51,7 @@ In this example we concurrently retrieve information from both a forecast and a 
 
 <div class="download"><a href="documentation/basics/code/composing_statements_parallel.zip">Click here to download the comprehensive code of the example above.</a></div>
 
-Concurrent access to shared variables can be restricted through [synchronized](language_references/synchronized) blocks.
+Concurrent access to shared variables can be restricted through [synchronized](basics/processes#synchronisation) blocks.
 
 ---
 
