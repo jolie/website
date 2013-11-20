@@ -18,6 +18,6 @@ main
 	);
 
 	percent( request )( response ){
-		response.percent_value = double( request.part )/request.total;
+		response.percent_value = double( request.part )/request.total
 	}
 }

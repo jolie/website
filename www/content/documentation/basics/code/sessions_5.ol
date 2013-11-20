@@ -1,4 +1,4 @@
-//interface.ol
+//interface.iol
 
 include "types/Binding.iol"
 

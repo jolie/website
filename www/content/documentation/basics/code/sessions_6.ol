@@ -1,5 +1,7 @@
 // server.ol
 
+include "interface.iol"
+
 outputPort Student { Interfaces: StudentInterface }
 outputPort Professor { Interfaces: ProfessorInterface }
 inputPort Exam { Interfaces: ExamInterface }
@@ -34,7 +36,7 @@ main
 		Student << joinRequest.student;
 
 		requestQuestion@Professor( exam );
-		receiveQuestion( question );		
+		receiveQuestion@Professor( )( question );		
 		ask@Student( question )( answer );
 		forwardAnswer@Professor( answer );
 		[ ok( score ) ] {
