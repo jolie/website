@@ -41,7 +41,7 @@ Keep in mind that, in Jolie, <code>;</code> is NOT the &quot;end of statement&qu
 <p>Concurrent access to shared variables can be restricted through <a href="basics/processes#synchronisation">synchronized</a> blocks.</p>
 <hr />
 <h2 id="input-choice">Input choice</h2>
-<p>The input choice implements <strong>input-guarded choice</strong>. Namely, it supports the receiving of a message for any of the statements in the choice. When a message for an input statement <code>IS_i</code> can be received, then all the other branches are deactivated and <code>IS_i</code> is executed. Afterwards, the related branch behaviour <code>block_code_1</code> is executed. A static check enforces all the input choices to have different operations, so to avoid ambiguity.</p>
+<p>The input choice implements <strong>input-guarded choice</strong>. Namely, it supports the receiving of a message for any of the statements in the choice. When a message for an input statement <code>IS_i</code> can be received, then all the other branches are deactivated and <code>IS_i</code> is executed. Afterwards, the related branch behaviour <code>branch_code_1</code> is executed. A static check enforces all the input choices to have different operations, so to avoid ambiguity.</p>
 <p>The syntax of an input choice is:</p>
 <div class="syntax" src="syntax_composing_statements_workflow_3.ol"></div>
 

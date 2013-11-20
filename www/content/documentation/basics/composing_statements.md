@@ -57,7 +57,7 @@ Concurrent access to shared variables can be restricted through [synchronized](b
 
 ## Input choice
 
-The input choice implements **input-guarded choice**. Namely, it supports the receiving of a message for any of the statements in the choice. When a message for an input statement `IS_i` can be received, then all the other branches are deactivated and `IS_i` is executed. Afterwards, the related branch behaviour `block_code_1` is executed. A static check enforces all the input choices to have different operations, so to avoid ambiguity.
+The input choice implements **input-guarded choice**. Namely, it supports the receiving of a message for any of the statements in the choice. When a message for an input statement `IS_i` can be received, then all the other branches are deactivated and `IS_i` is executed. Afterwards, the related branch behaviour `branch_code_1` is executed. A static check enforces all the input choices to have different operations, so to avoid ambiguity.
 
 The syntax of an input choice is:
 
