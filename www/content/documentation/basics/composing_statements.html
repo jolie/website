@@ -23,7 +23,7 @@ Keep in mind that, in Jolie, <code>;</code> is NOT the &quot;end of statement&qu
 <p>The parallel operator <code>|</code> states that both left and right operands are executed <em>concurrently</em>. The syntax of the parallel operator is:</p>
 <div class="syntax" src="syntax_composing_statements_workflow_2.ol"></div>
 
-<p>It is a good practice to explicitly group statements when mixing sequence and parallel operators. Statements can be grouped by enclosing them within curly brackets <code>{}</code>, like in the following example:</p>
+<p>It is a good practice to explicitly group statements when mixing sequence and parallel operators. Statements can be grouped by enclosing them within an unlabelled <a href="fault_handling/basics">scope</a> represented by a pair of curly brackets <code>{}</code>, like in the following example:</p>
 <div class="code" src="composing_statements_workflow_7.ol"></div>
 
 <p>The parallel operator has always priority on the sequence one, thus the following code snippets are equivalent:</p>

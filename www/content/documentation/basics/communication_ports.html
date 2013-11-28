@@ -51,8 +51,8 @@
 <h2 id="interfaces">Interfaces</h2>
 <p>Jolie defines two types of operations:</p>
 <ul>
-<li>one-way operations, which receive a message;</li>
-<li>request-response operations, which reply or receive a message and send back a response.</li>
+<li>one-way operations, which receive or send a message;</li>
+<li>request-response operations, which either receive a message and send back a response or send a request and receive back a response.</li>
 </ul>
 <p>Thus an interface is a collection of operation types, a list of One-Way and Request-Response operation declarations.</p>
 <p>The basic declaration of an interface lists all the names of the its operations, grouped by type:</p>
@@ -121,6 +121,21 @@ Subnodes are always prefixed by the <code>.</code> symbol.
 
 <p><code>SumInput</code> port declaration.</p>
 <hr />
+<h2 id="using-communication-ports">Using communications ports</h2>
+<p>Once defined, ports can be used for input and output communications. Below we present the syntax of one-way and request-response operations used in the behaviour part for sending (output) and receiving (input) messages.</p>
+<h3>Input operations</h3>
+<p>Receiving one-way operations receive a message and store its content into the provided variable.</p>
+<div class="syntax" src="syntax_communication_ports_6.iol"></div>
+<p>On the other hand, request-response operations receive a message, do some processing and eventually return back a response. Therefore receiving request-response operations are associated to a scope that contains the code block executed before sending the content of the response variable - the variable provided as argument of the second pair of round brackets.</p>
+<div class="syntax" src="syntax_communication_ports_7.iol"></div> 
+<h3>Output operations</h3>
+<p>Sending one-way operations are similar to receiving ones although their syntax indicates also the port on which they execute their output.</p>
+<div class="syntax" src="syntax_communication_ports_8.iol"></div>
+<p>Analogously, also sending request-response operations indicate the port used to send their message. As for sending one-ways no code block is associated with the receiving operation as it simply sends a message and wait until it receives a response from the requested service.</p>
+<div class="syntax" src="syntax_communication_ports_9.iol"></div>
+
+<hr />
+
 <h2 id="type-mismatching">Type mismatching</h2>
 <p>In Jolie, whenever a message is sent or received through a port, its type is checked against what specified in the port's interface. An invoker sending a message with a wrong type receives a <code>TypeMismatch</code> fault.</p>
 <p>The <code>TypeMismatch</code> fault can be handled by exploiting the <a href="fault_handling/basics">fault handling</a>, as shown in the following example:</p>

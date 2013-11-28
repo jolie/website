@@ -34,7 +34,7 @@ The parallel operator `|` states that both left and right operands are executed 
 
 <div class="syntax" src="syntax_composing_statements_workflow_2.ol"></div>
 
-It is a good practice to explicitly group statements when mixing sequence and parallel operators. Statements can be grouped by enclosing them within curly brackets `{}`, like in the following example:
+It is a good practice to explicitly group statements when mixing sequence and parallel operators. Statements can be grouped by enclosing them within an unlabelled [scope](fault_handling/basics) represented by a pair curly brackets `{}`, like in the following example:
 
 <div class="code" src="composing_statements_workflow_7.ol"></div>
 
