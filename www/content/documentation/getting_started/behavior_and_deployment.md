@@ -55,7 +55,7 @@ Finally below follow both server's and client's deployment code.
 
 <div class="code" src="behaviour_and_deployment_client_deployment.ol"></div>
 
-The wwo declarations are very similar: they share the same of location, protocol, and interface.
+The two declarations are very similar: they share the same of location, protocol, and interface.
 
 ## Putting it all together
 
