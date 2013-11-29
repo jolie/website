@@ -18,12 +18,13 @@
 <div class="code" src="behaviour_and_deployment_client_behaviour.ol"></div>
 
 <p>Complementary to the server's behaviour, the client's behaviour consists in invoking the operation <code>twice</code> exposed by the server, passing the number 5 as the invocation value. After sending the request to the server, the operation will wait for a response, storing it in the variable <code>response</code>. Finally, the result is printed on screen (Line 4).</p>
+<p>For a thorough explanation of the usage of operations, see section <a href="basics/communication_ports#using-communication-ports">Communication Ports</a>.</p>
 <h2 id="deployment">Deployment</h2>
 <p>The communication primitives in behaviours are concretely supported by communication ports.</p>
 <p>There are two kinds of ports: <em>input ports</em> expose input operations to other services, and <em>output ports</em> define how to invoke the operations of other services. Input and output ports are dual concepts and their syntaxes are quite similar. Ports are based upon the three fundamental concepts of <em>location</em>, <em>protocol</em> and <em>interface</em>. The former two define the concrete binding information between a Jolie program and other services. The last, instead, defines type information that is expected to be satisfied by the behaviour that uses the ports.</p>
 <p>A location, e.g. a TCP/IP address, expresses the communication medium that a service uses for exposing its interface or contacting another service.</p>
 <p>A protocol defines how data to be sent or received should be encoded (output) or decoded (input).</p>
-<p>Finally, a port must specify the interface that is accessible through it. For a thorough explanation of interfaces, see section <a href="basics/communication_ports">Communication Ports</a>.</p>
+<p>Finally, a port must specify the interface that is accessible through it. For a thorough explanation of interfaces, see section <a href="basics/communication_ports#interfaces">Communication Ports</a>.</p>
 <p>In our example the <code>TwiceInterface</code> interface declares the operation <code>twice</code> as a request-response operation. A request-response operation receives a request and sends back a response. Both input and output messages of <code>twice</code> are typed as <code>int</code> (denoting integers):</p>
 <div class="code" src="behaviour_and_deployment_twiceInterface.iol"></div>
 
@@ -34,7 +35,7 @@
 <h3 id="client-1">Client</h3>
 <div class="code" src="behaviour_and_deployment_client_deployment.ol"></div>
 
-<p>The Two declarations are very similar: they share the same of location, protocol, and interface.</p>
+<p>The two declarations are very similar: they share the same of location, protocol, and interface.</p>
 <h2 id="putting-it-all-together">Putting it all together</h2>
 <p>We can now give the complete programs for client and server by putting together their respective deployment and behaviour parts.</p>
 <h2 id="servers-code">Server's code</h2>
