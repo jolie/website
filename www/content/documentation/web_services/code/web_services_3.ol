@@ -4,7 +4,7 @@ include "string_utils.iol"
 execution{ concurrent }
 
 type Name: void {
-  .name: string
+	.name: string
 	.surname: string
 }
 
@@ -30,8 +30,8 @@ type GetAddressResponse: void {
 
 interface MyServiceInterface {
 RequestResponse:
-	getAddress( GetAddressRequest )( GetAddressResponse )
-    throws NameDoesNotExist( FaultType )
+	getAddress( GetAddressRequest )( GetAddressResponse ) 
+		throws NameDoesNotExist( FaultType )
 }
 
 inputPort MyServiceSOAPPort {
@@ -44,8 +44,8 @@ main {
 	getAddress( request )( response ) {
 		valueToPrettyString@StringUtils( request )( s );
 		println@Console( "Received:" + s )();
-		if (  request.person.name == "Homer" && 
-          request.person.surname == "Simpsons" ) {
+		if (  request.person.name == "Homer" &&
+			request.person.surname == "Simpsons" ) {
 			with( response.address ) {
 				.country = "USA";
 				.city = "Springfield";
