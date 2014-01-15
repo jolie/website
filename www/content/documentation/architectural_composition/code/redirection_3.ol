@@ -37,9 +37,9 @@ main
 		if ( command == "relocateSub" ) {
 			showInputDialog@SwingUI( "The current service location is: " +
 				SubService.location + 
-				"\nInsert the new 'SumService' location" )( location );
-			SubService.location = request.location;
-			println@Console( "New location set for SumService: " +
+				"\nInsert the new 'SubService' location" )( location );
+			SubService.location = location;
+			println@Console( "New location set for SubService: " +
 				SubService.location )()
 		};
 		if ( command == "exit" ) {

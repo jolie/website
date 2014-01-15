@@ -15,7 +15,7 @@ outputPort C {
 }
 
 embedded {
-	Java: "example.serviceB" in B
+	Java: "example.serviceC" in C
 }
 
 inputPort M {
