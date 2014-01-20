@@ -1,7 +1,6 @@
+//client.ol
 include "console.iol"
 include "interface.iol"
-
-//server.ol
 
 outputPort Guess {
 	Protocol: sodep
