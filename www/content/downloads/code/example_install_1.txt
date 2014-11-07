@@ -1,0 +1,3 @@
+svn co svn://svn.code.sf.net/p/jolie/code/branches/jolie_1_0 jolie-src
+cd jolie-src
+ant & sudo ant install

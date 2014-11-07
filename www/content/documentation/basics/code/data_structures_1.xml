@@ -1,0 +1,14 @@
+<animals>
+	<pet>
+		<name>cat</name>
+	</pet>
+	<pet>
+		<name>dog</name>
+	</pet>
+	<wild>
+		<name>tiger</name>
+	</wild>
+	<wild>
+		<name>lion</name>
+	</wild>
+</animals>

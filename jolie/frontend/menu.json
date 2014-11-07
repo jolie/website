@@ -1,0 +1,206 @@
+{ "topics" : [
+    {
+        "label": "Getting started",
+        "children": [
+            {
+                "url": "getting_started/hello_world",
+                "label": "Hello, World!"
+            },
+            {
+                "url": "getting_started/behavior_and_deployment",
+                "label": "Behaviour and Deployment"
+            }
+        ]
+    },
+    {
+        "label": "Basics",
+        "children": [
+            {
+                "url": "basics/handling_simple_data",
+                "label": "Handling Simple Data"
+            },
+            {
+                "url": "basics/composing_statements",
+                "label": "Composing Statements"
+            },
+            {
+                "url": "basics/define",
+                "label": "Define"
+            },
+            {
+                "url": "basics/data_structures",
+                "label": "Data Structures"
+            },
+            {
+                "url": "basics/constants",
+                "label": "Constants"
+            },
+            {
+                "url": "basics/communication_ports",
+                "label": "Communication Ports"
+            },
+            {
+                "url": "basics/processes",
+                "label": "Processes"
+            },
+            {
+                "url": "basics/dynamic_binding",
+                "label": "Dynamic Binding"
+            },
+            {
+                "url": "basics/sessions",
+                "label": "Sessions"
+            }
+        ]
+    },
+    {
+        "label": "Fault Handling",
+        "children": [
+            {
+                "url": "fault_handling/basics",
+                "label": "Basics"
+            },
+            {
+                "url": "fault_handling/termination_and_compensation",
+                "label": "Termination and Compensation"
+            }
+        ]
+    },
+    {
+        "label": "Architectural Composition",
+        "children": [
+            {
+                "url": "architectural_composition/introduction",
+                "label": "Introduction"
+            },
+            {
+                "url": "architectural_composition/embedding",
+                "label": "Embedding"
+            },
+            {
+                "url": "architectural_composition/embedding_jolie",
+                "label": "Embedding Jolie Services"
+            },
+            {
+                "url": "architectural_composition/embedding_java",
+                "label": "Embedding Java Services"
+            },
+            {
+                "url": "architectural_composition/embedding_javascript",
+                "label": "Embedding JavaScript Services"
+            },{
+                "url": "architectural_composition/dynamic_embedding",
+                "label": "Dynamic Embedding"
+            },
+            {
+                "url": "architectural_composition/aggregation",
+                "label": "Aggregation"
+            },
+            {
+                "url": "architectural_composition/couriers",
+                "label": "Couriers"
+            },
+            {
+                "url": "architectural_composition/redirection",
+                "label": "Redirection"
+            },
+            {
+                "url": "architectural_composition/collections",
+                "label": "Collections"
+            }
+        ]
+    },
+    {
+        "label": "Web Services",
+        "children": [        
+            {
+                "url": "web_services/web_services",
+                "label": "web_services"
+            },
+            {
+                "url": "web_services/wsdl2jolie",
+                "label": "wdsl2jolie"
+            },
+            {
+                "url": "web_services/jolie2wsdl",
+                "label": "jolie2wsdl"
+            }
+        ]
+    },
+    {
+        "label": "Web Applications",
+        "children": [
+            {
+                "url": "web_applications/leonardo",
+                "label": "Leonardo: the Jolie Web Server"
+            },
+            {
+                "url": "web_applications/web_get_post",
+                "label": "HTTP GET/POST Requests"
+            }
+        ]
+    },
+    {
+        "label": "Protocols",
+        "children": [
+            {
+                "url": "protocols/introduction",
+                "label": "Introduction"
+            },{
+                "url": "protocols/http",
+                "label": "HTTP"
+            },
+            {
+                "url": "protocols/https",
+                "label": "HTTPs"
+            },
+            {
+                "url": "protocols/jsonrpc",
+                "label": "JSON/RPC"
+            },
+            {
+                "url": "protocols/xmlrpc",
+                "label": "XML/RPC"
+            },
+            {
+                "url": "protocols/soap",
+                "label": "SOAP"
+            },
+            {
+                "url": "protocols/sodep",
+                "label": "SODEP"
+            },
+            {
+                "url": "protocols/sodeps",
+                "label": "SODEPs"
+            }
+        ]
+    },{        
+        "label": "Locations",
+        "children": [
+            {
+                "url": "locations/introduction",
+                "label": "Introduction"
+            },{
+                "url": "locations/socket",
+                "label": "Socket"
+            },{
+                "url": "locations/local",
+                "label": "Local"
+            },
+            {
+                "url": "locations/btl2cap",
+                "label": "Btl2Cap"
+            },
+            {
+                "url": "locations/rmi",
+                "label": "RMI"
+            },
+            {
+                "url": "locations/localsocket",
+                "label": "LocalSocket"
+            }
+        ]
+    }
+]
+}
