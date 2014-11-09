@@ -78,6 +78,42 @@ ul {
 	/*filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5885E4', endColorstr='#84a5eb',GradientType=0 );*/
 }
 
+.documentation {
+	background: linear-gradient(to bottom, white 0%,#ccc 100%);
+	width:960px;
+	margin-left:auto;
+	margin-right:auto;
+	padding:50px;
+	font-size:24px;
+	border-radius:30px;
+	border: 5px solid #443637;
+	color: #443637;	
+}
+
+.documentation h2 {
+	line-height:44px !important;
+}
+
+.documentation a {
+	color:#443637;
+}  
+
+.documentation a:hover {
+	color:black;
+}  
+
+.documentation .code {
+	font-size: 16px !important;
+}
+
+.documentation .gutter {
+	font-size: 16px !important;
+}
+
+.download_code {
+	font-size:18px;
+}
+
 .home_contact_us {
 	padding-top:20px;
 	font-size:28px;
@@ -172,6 +208,31 @@ ul {
 	margin-right:auto;
 }
 
+
+
+.no_home {
+	background: linear-gradient(to bottom, white 0%,#ccc 100%);
+	width:960px;
+	margin-left:auto;
+	margin-right:auto;
+	padding:50px;
+	font-size:24px;
+	border-radius:30px;
+	border: 5px solid #443637;
+	color: #443637;
+}
+
+.no_home h2 {
+	line-height:44px !important;
+}
+
+.no_home a {
+	color:#443637;
+}  
+
+.no_home a:hover {
+	color:black;
+}  
 
 
 .ajax_load {
@@ -522,6 +583,7 @@ h3 {
 
 #menu_container{
 	margin-left: 5px;
+	width:200px;
 }
 
 #menu_container *{
@@ -680,11 +742,17 @@ div.caption {
 
 .business_card{
 	border: 1px solid #C9C9C9;
-	-webkit-border-radius: 6px;
-	-moz-border-radius: 6px;
-	border-radius: 6px;
-	padding: 5px;
-	margin-bottom: 5px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	padding: 10px;
+	padding-left:50px;
+	padding-right:50px;
+	margin-bottom: 30px;
+	margin-left:auto;
+	margin-right:auto;
+	width:860px;
+	background-color:#eee;
 }
 
 .business_card p{
@@ -721,6 +789,8 @@ div.caption {
 	font-size: 26px;
 	text-align: right;
 	color: #424242;
+	font-weight: bold;
+	margin-bottom: 20px;
 }
 
 .tagline{
