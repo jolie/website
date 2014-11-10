@@ -114,6 +114,16 @@ ul {
 	font-size:18px;
 }
 
+.highlight {
+	color: white;
+	text-shadow: 0 3px 0 rgba(0, 0, 0, 1);
+	opacity:0.8;	
+	font-weight:bold;
+	margin:70px;
+	font-size:34px;
+	font-style:italic;
+}
+
 .home_contact_us {
 	padding-top:20px;
 	font-size:28px;
@@ -180,11 +190,17 @@ ul {
 	text-shadow: 0 3px 0 rgba(255, 255, 255, 1);
 }
 
+
+
 #home_section_3 td {
 	font-size:24px;
 	font-weight: bold;
 	text-align: center;
 	width: 400px;
+}
+
+#home_section_5 td {	
+	vertical-align:middle;
 }
 
 #home_section_7 td {

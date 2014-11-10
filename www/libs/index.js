@@ -63,10 +63,15 @@ function history() {
     }
     var url_params = URL2jParam(url);
     
-    if (!url_params.top_menu) {
-
-        menu($("a[ref='news']"));
-
+    if (url_params.top_menu == "news") {
+        if (!url_params.sideMenuAction) {
+            sideMenuAction('news', 'jolie_style', true);
+        } else {
+            var callback = function(){
+                loadAboutJolieContent("li[ref='" + url_params.sideMenuAction + "']", url_params.sideMenuAction);
+            };
+            menu($("a[ref='news']"), url_params.sideMenuAction, callback);
+        }
     } 
 
     else if (url_params.top_menu == "documentation" && url_params.sideMenuAction) {
@@ -128,24 +133,22 @@ function menu(elem, rel_value, callback) {
         });
         $(elem).attr("id", "active");
         visited_menu = true;
-        if ( $( elem ).attr( "ref" ) == "news" ){
-            loadNews( $( elem ).attr( "src" ) );
-        } else {
+        
 
-            loadMenuContent($(elem).attr("src"), callback ); /// <---- loads the page-specific content
+	loadMenuContent($(elem).attr("src"), callback ); /// <---- loads the page-specific content
 
-            if ($(elem).attr("ref") == "documentation") {
-                docLoadSideMenu(rel_value);
-                zenMenu(true);
-            } else if ( $(elem).attr("ref") == "about_jolie"    ||
-                        $(elem).attr("ref") == "community"      ||
-                        $(elem).attr("ref") == "projects"
-                    ){
-                zenMenu(true);
-            } else {
-                zenMenu(false);
-            }
-        }
+	if ($(elem).attr("ref") == "documentation") {
+	    docLoadSideMenu(rel_value);
+	    zenMenu(true);
+	} else if ( $(elem).attr("ref") == "about_jolie"    ||
+		    $(elem).attr("ref") == "community"      ||
+		    $(elem).attr("ref") == "projects"
+		){
+	    zenMenu(true);
+	} else {
+	    zenMenu(false);
+	}
+        
     }
 }
 

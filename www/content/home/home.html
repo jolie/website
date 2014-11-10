@@ -15,7 +15,8 @@
 	<div class="home_section_text">
 	Jolie is the first language which crystalizes microservices programming concepts.
 	Programmers and system designers can focus on services and their functionalities
-	without taking care of their deployment. Program once, deploy more!
+	without taking care of their deployment.
+	<div class='highlight'>Distribution, reusability and orchestration are achieved by design. No functions, no objects but services!</div>	
 	</div>
 	</div>
 </div>
@@ -37,10 +38,10 @@
 
 <div id="home_section_4" class="home_section home_section_even">
 	<div class="home_section_inside">
-	<div class="home_section_title">Protocol independence: Jolie services are ESB free!</div>
+	<div class="home_section_title">Protocol independence!</div>
 	<div class="home_section_text">
 	Your Jolie services can receive messages by using a protocol and then send a message by using another protocol.
-	You don't need ESB framework and you can customize your own protocols.
+	You don't need special frameworks and you can customize your own protocols.
 	<div class="home_section_image"><img src='imgs/protocolindependence.png'></div>
 	</div>
 	</div>
@@ -48,14 +49,45 @@
 
 <div id="home_section_5" class="home_section home_section_odd">
 	<div class="home_section_inside">
-	<div class="home_section_title">Structured architectural primitives</div>
+	<div class="home_section_title">Structured primitives both for behaviour and architetcures!</div>
 	<div class="home_section_text">
 	Jolie offers primitives for determining the 
 	structure of your software architecture: Aggregation, Redirection, and Embedding. 
 	They allow you to design architectures within service's code.
-	<div class="home_section_code">
+	<table>
+	    <tr>
+	    <td vertical-align='middle'>
+	    <b>Orchestration:</b> in Jolie there are no differences among services and orchestrators. 
+	    A service is always an orchestrator and viceversa.
+	    </td><td>
+	    <img src='imgs/orchestration.png'>
+	    </td>
+	    </tr>
+	    <tr>
+	    <td vertical-align='middle'>
+	    <b>Aggregation:</b> Aggregation allows to compose the API of the existing services into a new one just connecting services.
+	    </td><td>
+	    <img src='imgs/aggregation.png'>
+	    </td>
+	    </tr>
+	    <tr>
+	    <td vertical-align='middle'>
+	    <b>Redirection:</b> ...
+	    </td><td>
+	    
+	    </td>
+	    </tr>
+	    <tr>
+	    <td vertical-align='middle'>
+	    <b>Embedding:</b> ...
+	    </td><td>
+	    
+	    </td>
+	    </tr>
+	</table>
+	<!--<div class="home_section_code">
 		<div class="code" src="../../documentation/architectural_composition/code/aggregation_2.ol"></div>
-	</div>
+	</div>-->
 	</div>
 	</div>
 </div>
@@ -83,6 +115,7 @@
 	      <td>
 		    You do not need special frameworks for deploying services, just install the Java based interpreter
 		    of Jolie and run the services you write. You can run a service in single line command!
+		    : Jolie services are ESB free
 			  <div class="home_section_code">
 				  <div class="code" src="./run.ol"></div>
 		    </div>
