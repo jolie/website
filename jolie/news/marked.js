@@ -1,3 +1,4 @@
+load("nashorn:mozilla_compat.js");
 importClass( java.lang.System );
 
 /**
