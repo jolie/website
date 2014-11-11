@@ -1,4 +1,4 @@
-importClass( java.lang.System );
+// importClass( java.lang.System );
 
 /**
  * Block-Level Grammar
