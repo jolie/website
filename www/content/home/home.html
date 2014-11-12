@@ -23,13 +23,16 @@
 
 <div id="home_section_3" class="home_section home_section_odd">
 	<div class="home_section_inside">
-	<div class="home_section_title">No differences between remote services and local services</div>
+	<div class="home_section_title">Built for the networked age: distributable by design</div>
 	<div class="home_section_text">
-	In Jolie there is no difference between local services and remote services. You can build a monolithical applications
-	as it is a microservice application. If you decide to distribute a part of it, just take it and execute it 
-	in another machine.<br>
+	Jolie code is always contained in services, which can be either local
+	or remote. You can always move your services from being local to remote and vice versa,
+	without altering the logic of your programs.
+	Monolithical applications can scale to being distributed by design:
+	if you decide to distribute a part of it, just take it and execute it in another machine.<br/>
 	<table>
-	    <tr><td>Program your microservice system<br><br><img src='imgs/simplesystem.png'></td><td>Deploy it in a monolithical application<br><img src='imgs/monolithicaldeployment.png'></td></tr>
+	    <tr><td>Program your microservice system<br><br><img src='imgs/simplesystem.png'></td><td>Deploy it in 
+a single machine<br><img src='imgs/monolithicaldeployment.png'></td></tr>
 	    <tr><td>Deploy it in two<br>different machines<br><img src='imgs/doubledeployment.png'></td><td>Deploy it in<br>four different machines<br><img src='imgs/fourdeployment.png'></td></tr>
 	</table>
 	</div>
@@ -38,10 +41,12 @@
 
 <div id="home_section_4" class="home_section home_section_even">
 	<div class="home_section_inside">
-	<div class="home_section_title">Protocol independence!</div>
+	<div class="home_section_title">Protocol agnostic</div>
 	<div class="home_section_text">
-	Your Jolie services can receive messages by using a protocol and then send a message by using another protocol.
-	You don't need special frameworks and you can customize your own protocols.
+	Jolie is protocol agnostic: your services can exchange data by using different protocols.
+	Bridging two networks using different protocols is a matter of a few lines of code!
+	And if you need a protocol that Jolie does not support yet, there is an API for easily developing
+	new ones in Java.
 	<div class="home_section_image"><img src='imgs/protocolindependence.png'></div>
 	</div>
 	</div>
