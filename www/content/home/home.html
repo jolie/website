@@ -128,14 +128,17 @@ as Java and Javascript (with more coming)!
 	</table>
 	</div>
 	</div>
-	
 </div>
 
 <div id="home_section_6" class="home_section home_section_odd">
 	<div class="home_section_inside">
-	      <div class="home_section_title">Termination, compensation and dynamic error handling are powerful means for dealing with faults!</div>
-	      <div class="home_section_text">Error handlers can be updated dynamically depending on the executed activities thanks to the <b>install</b> primitive.
-	      Termination and compensation handlers facilitate the design of orchestrators with inner parallel activities.
+	      <div class="home_section_title">Dynamic error handling for parallel code</div>
+	      <div class="home_section_text">
+	      Programming reliable parallel code is challenging because faults may cause
+	      side-effects in parallel activities.
+	      Jolie comes with a solid semantics for parallel fault handling.
+	      Programmers can update the behaviour of fault handlers at runtime, following the execution of activities 
+thanks to the <code>install</code> primitive.
 		<div class="home_section_code">
 			<div class="code" src="../../home/code/errors.ol"></div>
 		</div>
@@ -147,31 +150,36 @@ as Java and Javascript (with more coming)!
 	<div class="home_section_inside">
 	<div class="home_section_title">Revolutionize the way you develop web applications</div>
 	<div class="home_section_text">
-	In Jolie <b>interfaces are clearly defined</b>, thus web GUIs are completely independent and technologically decoupled from the microservice
-	system. A special few lines of code service, called Leonardo, acts as a web server which can interoperate with
-	web applications written in different technologies. In Jolie there is native support for GWT, JS and JSON.
-	 <img style='width:960px;' src='imgs/interface.png'>
+	<b>Jolie requires
+	interfaces to be clearly defined</b>, thus web GUIs are completely independent from the microservice
+	system they interact with. A Jolie service of a few lines of code, called Leonardo, acts as a web server 
+which can interoperate with web applications written in different technologies. For example, we natively support
+JSON, XML, AJAX, GWT, and other technologies.
+	 <img style="width:960px;" src="imgs/interface.png">
 	</div>
 	</div>
 </div>
 
 <div id="home_section_8" class="home_section home_section_odd">
 	<div class="home_section_inside">
-	<div class="home_section_title">Start now to build your distributed system!<br>You don't need frameworks, just an interpreter!</div>
+	<div class="home_section_title">Start now to build your distributed system!<br>You do not need frameworks, just an 
+interpreter.</div>
 	<div class="home_section_text">
 	<table>
 	  <tr>
 	      <td>
-		    <img src='imgs/lego.png'>
+		    <img src="imgs/lego.png">
 	      </td>
 	      <td>
-		    You do not need special frameworks for deploying services, nor ESB for achieving integration. 
-		    You just install the Java based interpreter of Jolie and run the services you write. 
-		    You can run a service in single line command!		    
+		    You do not need special frameworks for deploying services, nor an ESB for achieving integration:
+		    you just need to install the Jolie interpreter, write a few lines of code, and run them with
+		    a single command:
+<!-- 		    You can just install the Java-based interpreter of Jolie and run the services you write. -->
+<!-- 		    You can run a service with a single command line! -->
 		    <div class="home_section_code">
 			  <div class="code" src="./run.ol"></div>
 		    </div>
-		    You can start to build your architecture just now with few lines of code!
+<!-- 		    You can start to build your architecture just now with few lines of code! -->
 	      </td>
 	  </tr>
 	 </table>
@@ -186,7 +194,7 @@ as Java and Javascript (with more coming)!
 	<table>
 	  <tr>
 	      <td>
-		    <img align='right' src='imgs/news.png'>
+		    <img align="right" src="imgs/news.png">
 	      </td>
 	      <td>
 		    Keep in touch with us and participate actively to the Jolie community!<br>
