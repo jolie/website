@@ -74,41 +74,53 @@ same time (<code>|</code>), but only after (<code>;</code>) operation
 
 <div id="home_section_5" class="home_section home_section_even">
 	<div class="home_section_inside">
-	<div class="home_section_title">Structured primitives both for behaviour and architetcures!</div>
+	<div class="home_section_title">Everything you build can be used to build again</div>
 	<div class="home_section_text">
-	Jolie offers primitives for determining the 
-	structure of your software architecture: Aggregation, Redirection, and Embedding. 
-	They allow you to design architectures within service's code.
+	Jolie offers many ways for building complex software from simple services.
+	Even the deployment architecture of a system can be programmed with native
+	primitives, generalising common practices.
+	Whatever you build, is again a service that you can expose; so,
+	it can be reused to build again!
+	Here are some examples of composition:
+<!-- 	Jolie offers primitives for determining the  -->
+<!-- 	structure of your software architecture: Aggregation, Redirection, and Embedding.  -->
 	<table>
 	    <tr>
-	    <td vertical-align='middle'>
-	    <b>Orchestration:</b> in Jolie there are no differences among services and orchestrators. 
-	    A service is always an orchestrator and viceversa.
+	    <td vertical-align="middle">
+	    <b>Orchestration:</b>
+	    an orchestrator is a service that offers functionalities obtained by coordinating other 
+	    services with a workflow.
+<!-- 	    in Jolie there are no differences among services and orchestrators.  -->
+<!-- 	    A service is always an orchestrator and viceversa. -->
 	    </td><td>
-	    <img src='imgs/orchestration.png'>
+	    <img src="imgs/orchestration.png">
 	    </td>
 	    </tr>
 	    <tr>
-	    <td vertical-align='middle'>
-	    <b>Aggregation:</b> Aggregation allows to compose the API of the existing services into a new one just connecting services.
+	    <td vertical-align="middle">
+	    <b>Aggregation:</b> a generalisation of proxies and load balancers, which you can use to compose and 
+ expose the APIs of separate services.
 	    </td><td>
-	    <img src='imgs/aggregation.png'>
+	    <img src="imgs/aggregation.png">
 	    </td>
 	    </tr>
 	    <tr>
-	    <td vertical-align='middle'>
-	    <b>Redirection:</b> Redirection allows to create services which act as proxy towards other services.
+	    <td vertical-align="middle">
+	    <b>Redirection:</b> a generalisation of virtual servers, which hides the actual locations of services
+	    to clients by assigning logical names to services.
 	    </td><td>
-	    <img src='imgs/redirection.png'>
+	    <img src="imgs/redirection.png">
 	    </td><td>
 	    
 	    </td>
 	    </tr>
 	    <tr>
-	    <td vertical-align='middle'>
-	    <b>Embedding:</b> Embedding allows to run services into other services as they are inner components or children processes.
+	    <td vertical-align="middle">
+	    <b>Embedding:</b> a generalisation of application servers, which runs other services as inner 
+components. It enables fast local communications and can even run code written in different languages than Jolie, such
+as Java and Javascript (with more coming)!
 	    </td><td>
-	    <img src='imgs/embedding.png'>
+	    <img src="imgs/embedding.png">
 	    </td><td>
 	    
 	    </td>
