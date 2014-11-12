@@ -2,6 +2,11 @@ html{
 	height: 100%;
 }
 
+iframe {
+  margin-top:10px;
+  margin-bottom:10px;
+}
+
 body{
   color:#444444;
   height: 100%;
@@ -66,13 +71,13 @@ ul {
 }
 
 .documentation {
-	background: -moz-linear-gradient(top,  white 0%, #ccc 100%);
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,white), color-stop(100%,#ccc));	
-	background: -webkit-linear-gradient(top,  white 0%,#ccc 100%);
-	background: -o-linear-gradient(top,  white 0%,#ccc 100%);		
-	background: -ms-linear-gradient(top,  white 0%,#ccc 100%);	
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='white', endColorstr='#ccc',GradientType=0 );
-	background: linear-gradient(to bottom, white 0%,#ccc 100%);
+	background: -moz-linear-gradient(top,  white 0%, #eee 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,white), color-stop(100%,#eee));	
+	background: -webkit-linear-gradient(top,  white 0%,#eee 100%);
+	background: -o-linear-gradient(top,  white 0%,#eee 100%);		
+	background: -ms-linear-gradient(top,  white 0%,#eee 100%);	
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='white', endColorstr='#eee',GradientType=0 );
+	background: linear-gradient(to bottom, white 0%,#eee 100%);
 	width:960px;
 	margin-left:auto;
 	margin-right:auto;
@@ -83,15 +88,17 @@ ul {
 	color: #443637;	
 }
 
-.documentation h2 {
+#core h2 {
 	line-height:44px !important;
+	color: #79140a;
+	text-shadow: 0 3px 0 rgba(220, 220, 220, 1);
 }
 
-.documentation a {
-	color:#443637;
+#core a {
+	color:#79140a;
 }  
 
-.documentation a:hover {
+#core a:hover {
 	color:black;
 }  
 
@@ -635,7 +642,6 @@ h3 {
 }
 
 #doc_side_menu{
-	margin-left: -10px;
 }
 
 ul.jqtree-tree {
@@ -660,9 +666,11 @@ ul.jqtree-tree li div{
 
 #doc_content, #community_content, #about_jolie_content, #projects_content{
 	padding-top: 2px;
-	margin-left:-3px;
+	margin-left: 0px;
 	margin-right:3px;
-	border-left: 1px solid #C4C4C4;
+	padding-left:20px;
+	padding-right:20px;
+	border-left: 1px solid #ccc;
 }
 
 #community_content, #about_jolie_content, #projects_content {
@@ -671,7 +679,6 @@ ul.jqtree-tree li div{
 }
 
 #doc_content a {
-	color: blue;
 	text-decoration: underline;
 	cursor: pointer;
 }

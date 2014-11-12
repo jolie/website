@@ -322,7 +322,7 @@ function scrollify(element) {
     $.each($(element), function(key, e) {
         var content = $(e).html();
         $(e).html("<div class=\"content\">" + content + "</div>");
-        $(e).addClass("nano");
+        //$(e).addClass("nano");
         $(e).nanoScroller();
     });
 }
