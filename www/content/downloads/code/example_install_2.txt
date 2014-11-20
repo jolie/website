@@ -1,1 +1,1 @@
-jolie file.ol
+jolie my_program.ol

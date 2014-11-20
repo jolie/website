@@ -1,17 +1,71 @@
-<div class="scrollable_container hyphenate nano">
+<div class="no_home scrollable_container hyphenate nano">
 
-# Install
+# Download and Install
 
-<div style="margin-bottom:20px;margin-left:auto;text-align:center;margin-right:auto;width:80%;-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;border:1px solid lightgrey"><div style="padding: 10px 0px 10px 0px;vertical-align:middle;width:49%;display:inline-block;border-right:1px solid lightgrey;font-size:20px;"><a href="#linux">On Linux and Mac</a></div><div style="padding: 10px 0px 10px 0px;vertical-align:middle;width:49%;display:inline-block;font-size:20px;"><a href="#windows">On Windows</a></div></div>
+Jolie requires Java to run, so make sure to have [Java](http://www.java.com/) installed before proceeding.
 
-## <a id="linux"></a>On Linux and Mac
+Regardless of the method you choose, after installation executing a Jolie script will be just a matter of invoking the Jolie
+interpreter.
 
-### From sources
-Requirements:
+<div class="code" src="example_install_2.txt"></div>
 
-- Java SDK >=1.6;
-- Apache ant;
-- Subversion client. 
+<!--<div style="margin-bottom:20px;margin-left:auto;text-align:center;margin-right:auto;width:80%;-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;border:1px solid lightgrey">
+<div style="padding: 10px 0px 10px 0px;vertical-align:middle;width:49%;display:inline-block;border-right:1px solid lightgrey;font-size:20px;">
+<a href="#nix">
+On Linux and Mac
+<img src="/imgs/os_linux.png" title="Linux" height="100px"/>
+</a>
+</div>
+<div style="padding: 10px 0px 10px 0px;vertical-align:middle;width:49%;display:inline-block;font-size:20px;">
+<a href="#windows">On Windows</a>
+</div>
+</div>-->
+
+---
+
+## The easy way (binary installer)
+
+This method requires Java 6 (also called Java 1.6) or later to be installed before proceeding.
+
+### Step 1
+
+Download the Java-based installer of the latest stable release of Jolie:
+
+<div class="download">
+<a href="/files/releases/jolie-1.1.jar" onclick="_gaq.push(['_trackEvent','Download','JolieInstaller',this.href]);">
+Jolie Installer
+</a>
+</div>
+
+### Step 2
+
+Open a shell terminal. From the directory in which you downloaded the installer,
+execute `java -jar jolie-1.1.jar` and follow the on-screen instructions.
+
+---
+
+## The hard way (compile from sources)
+
+This method will download the development version of Jolie (`trunk`).
+It requires the following software to be installed before proceeding:
+
+* JDK (Java SE Development Kit), version 6 or later
+* Apache ant
+* A subversion client
+
+<div style="float:left">
+<p>Jump to the instructions for your Operating System:
+<!-- <div style="float:left"> -->
+<a href="#nix"><img src="/imgs/os_linux.png" title="Linux" height="80px"/></a>
+<a href="#nix"><img src="/imgs/os_mac.png" title="Mac OS" height="80px"/></a>
+<a href="#windows"><img src="/imgs/os_win.png" title="Windows" height="80px"/></a>
+</p>
+<!-- </div> -->
+</div>
+
+<div style="clear: both;"></div>
+
+### <a id="nix"></a>Linux and Mac OS
 
 Open a shell and execute:
 
@@ -20,62 +74,70 @@ Open a shell and execute:
 The ant script will automatically build and install Jolie for you. The default is to install in `/opt/jolie`, but the 
 installation parameters can be controlled by editing `buildconfig/config.properties`.
 
-A Jolie launcher script will be put in `/usr/local/bin` (this parameter is configurable, too), thus executing a Jolie script will be just a matter of:
-
-<div class="code" src="example_install_2.txt"></div>
+A Jolie launcher script will be put in `/usr/local/bin` (this parameter is configurable in `buildconfig/config.properties`, too).
 
 ---
 
 ## <a id="windows"></a>On Windows
 
-### From sources
+Here are some useful links to get the required tools:
 
-#### Requirements:
+* JDK (Java SE Development Kit): [link](http://java.sun.com/javase/downloads/index.jsp)
 
-Install the latest JDK (Java SE Development Kit) from this [link](http://java.sun.com/javase/downloads/index.jsp) Install a Subversion client (e.g. [Tortoise](http://tortoisesvn.tigris.org/))
+* Tortoise Subversion client: [link](http://tortoisesvn.tigris.org/)
 
-Install Ant for building sources from this [link](http://ant.apache.org/).
+* Apache Ant: [link](http://ant.apache.org/).
 
-#### Installing:
-
-Download Jolie's sources with your svn client from `svn://svn.code.sf.net/p/jolie/code/branches/jolie_1_0`
+Download the source code with your svn client from `svn://svn.code.sf.net/p/jolie/code/trunk`
 
 Open the `buildconfig/config.properties` file and change the parameters `install.launcher_dir` and `install.dir` 
-by replacing the existing directories with your desired ones. Use `\\` instead of the single backslashes when writing paths. Example:
+by replacing the existing directories with your desired ones. Use `\\` instead of the single backslashes when writing paths.
+Here is an example:
 
 <div class="code" src="example_install_3.txt"></div>
 
-Edit your PATH environment variable so that it includes the `install.launcher_dir` directory [instructions for managing environment variables under Windows XP](http://support.microsoft.com/kb/310519) 
-Execute the `ant dist install` command.
+Edit your PATH environment variable so that it includes the `install.launcher_dir` directory.
+You can find some instructions on managing environment variables in Windows XP at this
+[link](http://support.microsoft.com/kb/310519).
 
-If the install path contains spaces you will experience a problem in launching the jolie executable. This is due to a problem on the command `set joliepath` present in jolie.bat that can be found in the intall directoy that you have previously specified.
+Execute the `ant dist-install` command from inside the directory where you downloaded the source code of Jolie.
 
-To solve this you must substitute the `\` characters before and after the path containing the space with `//` and include the same part of the path between `""`.
+### Troubleshooting (Windows)
 
-For instance, if you did choose to use the same directory of this tutorial you can correct the `set` command with the following code.
+If the install path contains spaces you will experience a problem in launching the Jolie executable.
+This is due to a problem on the command `set joliepath` present in jolie.bat that can be found in
+the installation directoy that you specified previously.
+
+To solve this you must substitute the `\` characters before and after the path containing the space with
+`//` and include the same part of the path between `""`.
+
+For instance, if you chose to use the same directory as in this tutorial you can correct the `set`
+command with the following code.
 
 <div class="code" src="example_install_4.txt"></div>
 
-You can now execute Jolie scripts by issuing the jolie command to a console, e.g.:
+You can now execute Jolie scripts by issuing the `jolie` command in a console, for example:
 
 <div class="code" src="example_install_5.txt"></div>
 
 ---
 
-## Support for external tools
+# Support for external tools
 
-### Kate
+## Kate
+
 Homepage: [http://kate-editor.org/](http://kate-editor.org/)
 
 A syntax highlighting description file for KatePart (which is used by most KDE applications and the Kate editor itself) is available.
 
 Download the [latest version](http://www.jolie-lang.org/files/katepart/jolie.xml) and put it in your `$KDE_HOME/share/apps/katepart/syntax directory`.
 
-You can discover your `$KDE_HOME` directory by issuing the kde4 config localprefix command.
+You can discover your `$KDE_HOME` directory by issuing the `kde4 config localprefix` command.
 
-### Sublime Text
+## Sublime Text
 
 A bundle for [Sublime Text 2](http://www.sublimetext.com/) with syntax highlighting, code completion, and sublime-build(s) for Jolie.
 
-Refer to [github's repository](https://github.com/thesave/sublime-Jolie) for downloading and installing the latest version.
+Refer to this [github repository](https://github.com/thesave/sublime-Jolie) for downloading and installing the latest version.
+
 </div>
