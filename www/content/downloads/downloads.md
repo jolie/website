@@ -76,9 +76,7 @@ installation parameters can be controlled by editing `buildconfig/config.propert
 
 A Jolie launcher script will be put in `/usr/local/bin` (this parameter is configurable in `buildconfig/config.properties`, too).
 
----
-
-## <a id="windows"></a>On Windows
+### <a id="windows"></a>On Windows
 
 Here are some useful links to get the required tools:
 
