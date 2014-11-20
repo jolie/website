@@ -417,29 +417,27 @@ ul {
       padding-top:20px;
 }
 
-h1,h2,h3{
-	display: block;
-	padding: 3px 15px;
+h1, h2, h3 {
+/* 	display: block; */
+/* 	padding: 3px 15px; */
 	font-weight: bold;
-	line-height: 22px;
+/* 	line-height: 22px; */
 	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
 	color: #333333;
 }
 
 h1 {
-	font-size: 2em;
+	font-size: 16pt;
 }
 
 h2 {
-	font-size: 1.8em;
-	font-weight: bold;
-	padding-left: 5px;
+	font-size: 14pt;
+/* 	padding-left: 5px; */
 }
 
 h3 {
-	font-size: 1.4em;
-	font-weight: bold;
-	padding-left: 10px;
+	font-size: 12pt;
+/* 	padding-left: 10px; */
 }
 
 #core {
