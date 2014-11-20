@@ -1,5 +1,7 @@
 type NewsRequest: void{
 	.number?: int
+	.order?: string
+	.from?: int
 }
 
 type Article: void{
@@ -40,4 +42,9 @@ interface PostNewsInterface {
 interface MarkedInterface{
 	RequestResponse:
 		marked( markedReq )( string )
+}
+
+interface ToMarkdownInterface{
+	RequestResponse:
+		convertToMarkdown( markedReq )( string )
 }
