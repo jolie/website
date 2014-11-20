@@ -2,9 +2,15 @@ html{
 	height: 100%;
 }
 
-iframe {
-  margin-top:10px;
+.iframe {
+  margin-top:20px;
   margin-bottom:10px;
+  margin-left:80px;
+}
+
+.iframe iframe {
+  border: 3px solid #443637;
+  border-radius: 20px;
 }
 
 body{
