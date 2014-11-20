@@ -19,7 +19,7 @@ and a list of [scientific publications](#publications) related to Jolie.
 
 The [University of Southern Denmark](http://www.sdu.dk/) offers a
 [full MSc course](http://fabriziomontesi.com/teaching/imds-f2014/) that covers Jolie programming and its
-integration with mainstream practices in software development and other research project
+integration with mainstream practices in software development and other research projects
 (for example, [Choreographic Programming](http://www.chor-lang.org/)).
 
 The following Universities partially cover Jolie as part of their courses in Computer Science:
