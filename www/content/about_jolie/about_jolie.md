@@ -25,9 +25,10 @@ Releases and improvements are coordinated by the project maintainer,
 in our <a href="?top_menu=community" onClick="top_menu('?top_menu=community');return false;"
 ref="community" title="community" src="community/community.html">
 mailing list</a> and regular online meetings.
-This website is maintained by [Saverio Giallorenzo](http://www.cs.unibo.it/~sgiallor/),
-[Claudio Guidi](http://claudioguidi.blogspot.com/),
-and [Fabrizio Montesi](http://www.fabriziomontesi.com/).
+The design of the language was initially conceived and is currently guided by
+[Claudio Guidi](http://claudioguidi.blogspot.com/) and [Fabrizio Montesi](http://www.fabriziomontesi.com/), who 
+coordinate help from various contributors.
+This website is maintained by [Saverio Giallorenzo](http://www.cs.unibo.it/~sgiallor/).
 The website is written in Jolie and it is itself open source: it is included in the SVN repository of Jolie. Every
 developer with access to the Jolie codebase can also update the website (directory
 `web`).
