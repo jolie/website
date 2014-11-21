@@ -9,7 +9,7 @@ include "quicksort_interface.iol"
 include "atom_reader_interface.iol"
 
 inputPort NewsService {
-Location: "socket://localhost:8001/"
+Location: "socket://localhost:8002/"
 Protocol: http { 
 		.format = "html";
   		.statusCode -> statusCode

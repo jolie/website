@@ -1,4 +1,4 @@
-<div class="no_home scrollable_container hyphenate nano">
+<div class="standard_page">
 
 # Download and Install
 
