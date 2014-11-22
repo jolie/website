@@ -352,10 +352,10 @@ function social_links(){
 
 function loadNews( content_path ){
     zenMenu(false);
-    setLoading( "#menu_content ");
+    setLoading( "#menu_content" );
     $.ajax({
         dataType: "text",
-        type: "POST",
+        type: "GET",
         url: "/getNews",
         success: function( data ) {
             data = $( $.parseXML( $ ( "<div></div>" ).html( data ).text()));
