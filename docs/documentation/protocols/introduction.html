@@ -1,0 +1,29 @@
+<h2 id="jolie-protocols">Jolie Protocols</h2>
+<p>A protocol defines how data to be sent or received shall be, respectively, encoded or decoded, following an isomorphism.</p>
+<p>Jolie natively supports a large set of protocols:</p>
+<ul>
+<li>HTTP;</li>
+<li>HTTPS;</li>
+<li>JSON/RPC;</li>
+<li>XML/RPC;</li>
+<li>SOAP;</li>
+<li>SODEP;</li>
+<li>SODEPS.</li>
+</ul>
+<p>Each protocol has its own parameters that can be set in order to adapt to the requirements of the communications.</p>
+<p>In this section we explain what parameters can be set for each protocol.</p>
+<h2 id="setting-static-parameters">Setting (static) parameters</h2>
+<p>The parameters of the protocol are specified in the input/output <a href="basics/communication_ports">port</a> definition. Unless required, if a parameter is not defined it is set to its default value according to its protocol specification.</p>
+<p>Let us recall the examples given in <a href="web_applications/web_get_post">HTTP GET/POST Requests</a> where we set the parameters <code>method</code> and <code>format</code>, of protocol <code>http</code>, to define what kind of messages the port shall send or receive.</p>
+<div class="code" src="protocols_1.ol"></div>
+
+<p>In the example above, we statically set - with an assignment <code>=</code> - some of http protocol's parameters in order to send <code>get</code> and <code>post</code> requests or to define what kind of requests will be received.</p>
+<p>Besides defining a parameter as a static value, which remains the same during the whole execution of the program, we can exploit Jolie runtime variable evaluation to change them according to our application behaviour.</p>
+<hr />
+<h2 id="setting-dynamic-parameters">Setting dynamic parameters</h2>
+<p>Protocol's parameters can be set dynamically using the alias <code>-&gt;</code> operator.</p>
+<p>To exemplify how to dynamically set the parameters of a protocol, we refer to the <a href="web_applications/leonardo">Leonardo</a>'s inputPort definition:</p>
+<div class="code" src="protocols_2.ol"></div>
+
+<p>As shown, except <code>keepAlive</code>, <code>debug.showContent</code>, and <code>default</code> parameters that are statically set, all other parameters are aliased to a variable whose value can be changed at runtime, during Leonardo's execution.</p>
+<p>Besides aliasing protocol's parameter, we can access and modify them using the standard Jolie construct for <a href="basics/dynamic_binding">dynamic port binding</a>.</p>

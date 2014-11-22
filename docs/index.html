@@ -6,35 +6,49 @@
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
     <link rel="stylesheet" type="text/css" href="css/docs.css">
+      <!-- code highlight css -->
+        <link rel="stylesheet" type="text/css" 
+          href="css/code_highlight/shCore.css"/>
+        <link rel="stylesheet" type="text/css" 
+          href="css/code_highlight/shThemeEclipse.css"/>
+      <!-- end code highlight css -->
     <!-- end css load section -->
 
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 </head>
 
 <body class="container">
-    <div id="site_header" class="col-xs-3">
-			<img id="jolie_logo" class="center-block" src="imgs/jolie_logo.png" alt="">
-    </div>
-    <div class="col-xs-9" id="js_header">
-      <ol class="breadcrumb">
-          <li class="active">Header</li>
-      </ol>
-  	</div>
-  	<div class="clearfix"></div>
-    <div class="container col-xs-3 js_container">
-        <div id="js_search" class="col-xs-12">
-          <input type="text" class="form-control" placeholder="Search">
+    <div class="container col-xs-3">
+        <div id="js_site_header" class="col-xs-12">
+            <img id="jolie_logo" class="center-block" src="imgs/jolie_logo.png" alt="">
+            <div id="js_search" class="col-xs-12">
+                <input type="text" class="form-control" placeholder="Search">
+            </div>
         </div>
-        <div class="col-xs-12" id="js_menu"></div>
+        <div class="container col-xs-12 js_container">
+            <div class="col-xs-12" id="js_menu"></div>
+        </div>
     </div>
-
-    <div class="col-xs-9 container">
-        <div class="col-xs-12 js_container" id="js_content"></div>
+    <div class="container col-xs-9">
+        <div class="col-xs-12" id="js_header">
+            <ol class="breadcrumb">
+                <li class="active">Header</li>
+            </ol>
+        </div>
+            <div class="col-xs-12 js_container" id="js_content"></div>
     </div>
 </body>
 <!-- scripts load section -->
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
+  <!-- scripts for syntax markup -->
+<script src="js/code_highlight/shCore.js"></script>
+<script src="js/code_highlight/shBrushJolie.js"></script>
+<script src="js/code_highlight/shBrushPlain.js"></script>
+<script src="js/code_highlight/shBrushJava.js"></script>
+<script src="js/code_highlight/shBrushXml.js"></script>
+<script src="js/code_highlight/shBrushJScript.js"></script>
+  <!-- end scripts for syntax markup -->
 <script src="js/docs.js"></script>
 <!-- end scripts load section -->
 

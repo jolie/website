@@ -1,0 +1,85 @@
+<h2 id="defining-a-jolie-application-behaviour">Defining a Jolie application behaviour</h2>
+<p>The behaviour of a Jolie application is defined by conditions, loops, and statement execution rules.</p>
+<p>Whilst conditions and loops implement the standard conditional and iteration constructs, execution rules defines the priority among code blocks.</p>
+<hr />
+<h2 id="statement-execution-operators">Statement execution operators</h2>
+<p>Jolie offers three kinds of operators to compose statements in sequence, parallel, or as a set of input choices.</p>
+<h2 id="sequence">Sequence</h2>
+<p>The sequence operator <code>;</code> denotes that the left operand of the statement is executed <em>before</em> the one on the right. The sequence operator syntax is:</p>
+<div class="syntax" src="syntax_composing_statements_workflow_1.ol"></div>
+
+<p>A valid use of the sequence operator is as it follows:</p>
+<div class="code" src="composing_statements_workflow_1.ol"></div>
+
+<div class="attention"><p>
+Keep in mind that, in Jolie, <code>;</code> is NOT the &quot;end of statement&quot; marker.
+</p></div>
+
+<p>For the sake of clarity, let us consider an INVALID use of the sequence operator:</p>
+<div class="code" src="composing_statements_workflow_2.ol"></div>
+
+<hr />
+<h2 id="parallel">Parallel</h2>
+<p>The parallel operator <code>|</code> states that both left and right operands are executed <em>concurrently</em>. The syntax of the parallel operator is:</p>
+<div class="syntax" src="syntax_composing_statements_workflow_2.ol"></div>
+
+<p>It is a good practice to explicitly group statements when mixing sequence and parallel operators. Statements can be grouped by enclosing them within an unlabelled <a href="fault_handling/basics">scope</a> represented by a pair of curly brackets <code>{}</code>, like in the following example:</p>
+<div class="code" src="composing_statements_workflow_7.ol"></div>
+
+<p>The parallel operator has always priority on the sequence one, thus the following code snippets are equivalent:</p>
+<div class="code" src="composing_statements_workflow_3.ol"></div>
+<div class="code" src="composing_statements_workflow_4.ol"></div>
+
+<p>Parallel execution is especially useful when dealing with multiple services, in order to minimize waiting times by managing multiple communications at once.</p>
+<p>In this example we concurrently retrieve information from both a forecast and a traffic service:</p>
+<div class="code" src="composing_statements_workflow_5.ol"></div>
+
+<div class="download">
+<a href="documentation/basics/code/composing_statements_parallel.zip">Click here to download the comprehensive code of the example above.</a>
+</div>
+
+<p>Concurrent access to shared variables can be restricted through <a href="basics/processes#synchronisation">synchronized</a> blocks.</p>
+<hr />
+<h2 id="input-choice">Input choice</h2>
+<p>The input choice implements <strong>input-guarded choice</strong>. Namely, it supports the receiving of a message for any of the statements in the choice. When a message for an input statement <code>IS_i</code> can be received, then all the other branches are deactivated and <code>IS_i</code> is executed. Afterwards, the related branch behaviour <code>branch_code_1</code> is executed. A static check enforces all the input choices to have different operations, so to avoid ambiguity.</p>
+<p>The syntax of an input choice is:</p>
+<div class="syntax" src="syntax_composing_statements_workflow_3.ol"></div>
+
+<p>Let us consider the example below in which only <code>buy</code> or <code>sell</code> operation can execute, while the other is discarded.</p>
+<div class="code" src="composing_statements_workflow_6.ol"></div>
+
+<hr />
+<h2 id="conditions-and-conditional-operator">Conditions and conditional operator</h2>
+<p>Conditions are used in control flow statements in order to check a boolean expression. Conditions can use the following relational operators:</p>
+<ul>
+<li><code>==</code>: is equal to;</li>
+<li><code>!=</code>: is not equal to;</li>
+<li><code>&lt;</code>: is lower than;</li>
+<li><code>&lt;=</code>: is lower than or equal to;</li>
+<li><code>&gt;</code>: is higher than;</li>
+<li><code>&gt;=</code>: is higher than or equal to;</li>
+<li><code>!</code>: negation</li>
+</ul>
+<p>Conditions can be used as expressions and their evaluation always returns a boolean value (true or false). That value is the argument of conditional operators.</p>
+<p>Some valid conditions are:</p>
+<div class="code" src="composing_statements_controlflow_5.ol"></div>
+
+<p>The statement <code>if ... else</code> is used to write deterministic choices:</p>
+<div class="syntax" src="syntax_composing_statements_controlflow_1.ol"></div>
+
+<p>Note that the <code>else</code> block is optional (denoted by its enclosure in square brackets).</p>
+<p>Like in many other languages, the <code>if ... else</code> statement can be nested and combined:</p>
+<div class="code" src="composing_statements_controlflow_4.ol"></div>
+
+<hr />
+<h2 id="for-and-while">for and while</h2>
+<p>The <code>while</code> statement executes a code block as long as its condition is true.</p>
+<div class="syntax" src="syntax_composing_statements_controlflow_3.ol"></div>
+
+<p>Like the <code>while</code> statement, <code>for</code> executes a code block as long as its condition is true, but it explicitly defines its initialization code and the post-cycle code block, which is executed after each iteration.</p>
+<div class="syntax" src="syntax_composing_statements_controlflow_2.ol"></div>
+
+<p>Example:</p>
+<div class="code" src="composing_statements_controlflow_1.ol"></div>
+
+
