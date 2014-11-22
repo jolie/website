@@ -1,0 +1,61 @@
+<h2 id="termination-and-compensation">Termination and compensation</h2>
+<p><em>Termination</em> and <em>compensation</em> are mechanisms which deal with the recovery of activities.</p>
+<p>Termination deals with the recovery of an activity that is still running.</p>
+<p>Compensation deals with the recovery of an activity that has successfully completed its execution.</p>
+<p>Each scope can be equipped with an error handler that contains the code to be executed for its recovery. As for fault handlers, recovery handlers can be dynamically installed by means of the <code>install</code> statement. Besides using a specific fault name, which installs the handler as a <em>fault handler</em>, the handler can refer to <code>this</code> or <code>default</code> keywords.</p>
+<p>In case the handler refers to <code>this</code>, it is a <em>termination</em> or <em>recovery handler</em> for the enclosing scope, if it refers to <code>default</code>, the handler is installed as a <em>fallback fault</em> handler for all faults that do not have a specific fault handler.</p>
+<p>Installing a handler overwrites the previous one for the same fault or scope name; however, handlers can be composed by using the <code>cH</code> placeholder, which is replaced by the code of the previously installed handler.</p>
+<p>Fig. 1 displays a scenario in which a scope A contains an activity that executes:</p>
+<ul>
+<li>an activity <em>P</em>;</li>
+<li>the scope <em>B</em>;</li>
+<li>the scope <em>C</em>.</li>
+</ul>
+<p>Let us suppose that <em>C</em> finishes its execution. As a result, its compensation handler is promoted at the level of its parent's compensation handler (1). Afterwards, if <em>P</em> rises a fault <em>f</em> while the scope <em>B</em> is still running its execution (2), the scope <em>B</em> is stopped and its termination handler is executed (3). When the termination handler of <em>B</em> is finished, the fault handler of <em>A</em> can be executed (4).</p>
+<p>Fault handlers can execute compensations by invoking the compensation handlers loaded within the corresponding scope, e.g., in the previous scenario the fault handler of A invokes the compensation handler of C.</p>
+<div class="doc_image">
+    
+<img src="content/documentation/fault_handling/imgs/termination_and_compensation.jpg" />
+<p>
+<b>Fig.1</b> Code <em>P</em> is executed in parallel with scopes <em>B</em> and <em>C</em> within scope <em>A</em>. <em>C</em> is supposed to be successfully ended, whereas <em>B</em> is terminated during its execution by the fault <em>f</em> raised by <em>P</em>. The fault handler of <em>A</em> can execute the compensation handler loaded by <em>C</em>.
+</p>
+</div>
+
+<hr />
+<h2 id="termination">Termination</h2>
+<p>Termination is a mechanism used to recover from errors: it is automatically triggered when a scope is unexpectedly terminated from a parallel behaviour and must be smoothly stopped.</p>
+<p>Termination is triggered when a sibling activity raises a fault. Let us consider the following example:</p>
+<div class="code" src="termination_and_compensation_1.ol"></div>
+
+<p>In the example above, the code at Lines 7 and 13 is executed concurrently. In <code>scope_name</code>, a recovery handler is initially installed and then the code at Line 10 is executed. Besides, the parallel activity may raise the fault at line 13. In that case a termination is triggered and the corresponding recovery code is executed.</p>
+<h3 id="terminating-child-scopes">Terminating child scopes</h3>
+<p>When termination is triggered on a scope, the latter recursively terminates its own child scopes. Once all child scopes terminated, the recovery handler is executed. Let us consider the following example:</p>
+<div class="code" src="termination_and_compensation_2.ol"></div>
+
+<p>If the fault is raised when the scope <code>son</code> is still executing (we use Jolie's standard library <code>time</code> for making the child process wait for 500 milliseconds), a termination is triggered for scope <code>grandFather</code>, which triggers the termination of scope <code>father</code>. Finally, scope <code>father</code> triggers the termination of the scope <code>son</code>, which executes its own recovery handler. Inside-out, <code>son</code>'s, <code>father</code>'s and <code>grandFather</code>'s recovery handlers are executed subsequently.</p>
+<h3 id="dynamic-installation-of-recovery-handlers">Dynamic installation of recovery handlers</h3>
+<p>Recovery handlers can be dynamically updated like fault handlers. Example:</p>
+<div class="code" src="termination_and_compensation_3.ol"></div>
+
+<p>When <code>a_fault</code> is raised, the lastly installed recovery handler is executed.</p>
+<hr />
+<h2 id="handler-composition---the-ch-placeholder">Handler composition - the <code>cH</code> placeholder</h2>
+<p>Besides replacing a recovery handlers, it may be useful to add code to the current handler, without replacing the entire previously installed code. Jolie provides the keyword <code>cH</code> as a placeholder for the <em>current handler</em>.</p>
+<p>Let us consider the following example:</p>
+<div class="code" src="termination_and_compensation_4.ol"></div>
+
+<p><code>cH</code> can be composed within another handler by means of the sequence and parallel operators. The resulting handler will be the composition of the previous one (represented by <code>cH</code>) and the new one.</p>
+<hr />
+<h2 id="compensation">Compensation</h2>
+<p>Compensation allows to handle the recovery of a scope which has successfully executed. When a scope finishes with success its own activities, its current recovery handler is promoted to the parent scope in order to be available for compensation.</p>
+<p>Compensation is invoked by means of the <code>comp</code> statement, which can be used only within a handler.</p>
+<p>Let us consider the following example showing how to perform a compensation:</p>
+<div class="code" src="termination_and_compensation_5.ol"></div>
+
+<p>When scope <code>example_scope</code> ends with success, its current recovery handler is promoted to the parent scope (<code>main</code>) in order to be available for compensation. At the end of the program, the <code>a_fault</code> is raised, triggering the execution of its fault handler, defined at Lines 5-8. At Line 7 the compensation of scope <code>example_scope</code> is executed, triggering the execution of the corresponding recovery handler (in this case, the one at Line 15, including the first at Line 11).</p>
+<hr />
+<h2 id="installation-time-variable-evaluation">Installation-time variable evaluation</h2>
+<p>Handlers need to use and manipulate variable data often and a handler may need to refer to the status of a variable at the moment of its installation. Hence, Jolie provides the <code>^</code> operator which &quot;freezes&quot; a variable state within an installed handler. <code>^</code> is applied to a variable by prefixing it, as shown in the example below.</p>
+<div class="code" src="termination_and_compensation_6.ol"></div>
+
+<p>The install primitive contained in the <code>while</code> loop updates the scope recovery handler at each iteration. In the process the value of the variable <code>i</code> is frozen within the handler.</p>

@@ -1,0 +1,16 @@
+<zoo>
+	<sector_a>
+		<pet>
+			<name>cat</name>
+		</pet>
+		<pet>
+			<name>dog</name>
+		</pet>
+		<wild>
+			<name>tiger</name>
+		</wild>
+		<wild>
+			<name>lion</name>
+		</wild>
+	</sector_a>
+</zoo>
