@@ -44,7 +44,7 @@ Jolie:
 
 define buildEntryHtml
 {
-	html = "<div class=\"standard_page\"><div class=\"standard_page_body\">";
+	html = "<div class=\"standard_page\">";
 	entry -> blogsContent.entry[i];
 	lastTimestamp = 0;
 	for( i = 0, i < #blogsContent.entry, i++ ) {
@@ -58,7 +58,7 @@ define buildEntryHtml
 		+ "<div class=\"BlogEntryContent\">" + entry.content + "</div>"
 		+ "</div>"
 	};
-	html += "</div></div>"
+	html += "</div>"
 }
 
 init
