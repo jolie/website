@@ -28,6 +28,7 @@ include "quicksort.iol"
 include "blog_reader.iol"
 
 constants {
+	MaxEntries = 50,
 	BlogRefreshTimeout = 60000 // 1 min
 }
 
@@ -129,6 +130,9 @@ main
 			Blog.protocol.osc.getAtom.alias = " "
 		};
 		fetchEntries;
+		while( #cacheEntries.entry > MaxEntries ) {
+			undef( cacheEntries.entry[ #cacheEntries.entry - 1 ] );
+		};
 		synchronized( Cache ) {
 			global.cache.(Blog.location).entry << cacheEntries;
 			global.cache.(Blog.location).binding << Blog
