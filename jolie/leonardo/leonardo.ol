@@ -26,8 +26,8 @@ include "protocols/http.iol"
 include "../frontend/frontend.iol"
 include "../news/news_service_interface.iol"
 
-include "virtual_hosts.iol"
 include "config.iol"
+include "virtual_hosts.iol"
 include "admin.iol"
 
 execution { concurrent }
@@ -48,7 +48,7 @@ Interfaces: GetNewsInterface
 
 inputPort HTTPInput { 
 Protocol: http {
-	.keepAlive = false; // Do not keep connections open
+	// .keepAlive = false; // Do not keep connections open
 	.debug = DebugHttp; 
 	.debug.showContent = DebugHttpContent;
 	.format -> format;
