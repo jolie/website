@@ -1,4 +1,3 @@
-
 @import url("blogs.css");
 
 html {
@@ -39,7 +38,7 @@ pre, code, kbd, samp {
 
 #header{
 	height: 140px;
-	overflow:hidden;
+	overflow: hidden;
 	border-bottom: 2px solid #C4C4C4;
 	background: -moz-linear-gradient(top,  #443637 0%, #050000 100%);
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#443637), color-stop(100%,#050000));	
@@ -243,31 +242,6 @@ pre, code, kbd, samp {
 	display: none;
 }
 
-#tagline {
-}
-
-#tagline p {
-	line-height: 17px;
-	margin-bottom: 0px;
-}
-
-#tagline #tag{
-	font-size: 11px;
-	text-align: justify;
-}
-
-#tC {
-	/* background: rgba(0, 0, 0, 0.18); */
-	padding: 7px;
-	color: white;
-	border-radius: 10px;
-}
-
-#tag_title{
-	padding-bottom: 9px;
-	font-size: 16px;
-}
-
 #logo-up{
 	background: url(../imgs/eye.png);
 	background-repeat: no-repeat;
@@ -297,9 +271,6 @@ pre, code, kbd, samp {
 	margin-left: 4px;
 }
 
-#top_menu {
-	
-}
 
 .menu_item, .left_menu_item, .right_menu_item {
 	margin-top: 5px;
