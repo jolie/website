@@ -1,0 +1,20 @@
+.BlogDateGroup {
+	border-bottom: 1px solid gray;
+}
+
+.BlogEntry {
+	font-size: medium;
+	margin-bottom: 2em;
+}
+
+.BlogEntryAuthor {
+	font-size: large;
+}
+
+.BlogEntryTitle {
+	font-size: x-large;
+}
+
+.BlogEntryContent {
+	font-size: medium;
+}

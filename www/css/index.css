@@ -1,3 +1,6 @@
+
+@import url("blogs.css");
+
 html{
 	height: 100%;
 }
@@ -864,3 +867,4 @@ body{
 	margin-left:auto;
 	margin-right:auto;
 }
+

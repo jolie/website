@@ -63,7 +63,7 @@ function history() {
     }
     var url_params = URL2jParam(url);
     
-    if (url_params.top_menu == "news") {
+    /* if (url_params.top_menu == "news") {
         if (!url_params.sideMenuAction) {
             sideMenuAction('news', 'jolie_style', true);
         } else {
@@ -74,7 +74,7 @@ function history() {
         }
     } 
 
-    else if (url_params.top_menu == "documentation" && url_params.sideMenuAction) {
+    else */if (url_params.top_menu == "documentation" && url_params.sideMenuAction) {
         // if its NOT the first visit, only load the doc page and opens its topic in side menu
         if (!visited_menu) {
             menu($("a[ref='documentation']"), url_params.sideMenuAction );
@@ -152,10 +152,20 @@ function menu(elem, rel_value, callback) {
     }
 }
 
+function getContentFolder(content_path)
+{
+	if (content_path == "news" || content_path == "planet") {
+		return "";
+	} else {
+		return content_folder;
+	}
+}
+
 function loadMenuContent(content_path, callback) {
     setLoading( "#menu_content ");
-    $.ajax({
-        url: content_folder + content_path,
+	
+	$.ajax({
+        url: getContentFolder( content_path ) + content_path,
         success: function( data ) {
             $( "#menu_content" ).append( "<div class=\"temp\">" + data + "<div>" );
             loadCode( content_folder + content_path.split("/")[0] + "/" );

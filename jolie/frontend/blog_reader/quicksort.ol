@@ -46,5 +46,5 @@ main
  			};
  			res << qsLeft
  		}
- 	 }]{ nullProcess } 
+ 	 } ] { nullProcess } 
 }

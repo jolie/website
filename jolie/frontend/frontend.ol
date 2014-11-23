@@ -1,3 +1,25 @@
+/***************************************************************************
+ *   Copyright (C) 2013 by Saverio Giallorenzo                             *
+ *   Copyright (C) 2014 by Fabrizio Montesi <famontesi@gmail.com>          *
+ *                                                                         *
+ *   This program is free software; you can redistribute it and/or modify  *
+ *   it under the terms of the GNU Library General Public License as       *
+ *   published by the Free Software Foundation; either version 2 of the    *
+ *   License, or (at your option) any later version.                       *
+ *                                                                         *
+ *   This program is distributed in the hope that it will be useful,       *
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
+ *   GNU General Public License for more details.                          *
+ *                                                                         *
+ *   You should have received a copy of the GNU Library General Public     *
+ *   License along with this program; if not, write to the                 *
+ *   Free Software Foundation, Inc.,                                       *
+ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
+ *                                                                         *
+ *   For details about the authors of this software, see the AUTHORS file. *
+ ***************************************************************************/
+
 include "frontend.iol"
 include "file.iol"
 include "string_utils.iol"
@@ -20,19 +42,41 @@ Jolie:
 	"blog_reader/main.ol" in BlogReader
 }
 
+define buildEntryHtml
+{
+	html = "<div class=\"standard_page\"><div class=\"standard_page_body\">";
+	entry -> blogsContent.entry[i];
+	lastTimestamp = 0;
+	for( i = 0, i < #blogsContent.entry, i++ ) {
+		if ( entry.timestamp != lastTimestamp ) {
+			html += "<p class=\"BlogDateGroup\">" + entry.date + "</p>";
+			lastTimestamp = entry.timestamp
+		};
+		html += "<div class=\"BlogEntry\">"
+		+ "<p class=\"BlogEntryAuthor\"><a href=\"" + entry.links.blog + "\">" + entry.author + "</a></p>"
+		+ "<p class=\"BlogEntryTitle\"><a href=\"" + entry.links.entry + "\">" + entry.title + "</a></p>"
+		+ "<div class=\"BlogEntryContent\">" + entry.content + "</div>"
+		+ "</div>"
+	};
+	html += "</div></div>"
+}
+
 init
 {
 	with( newsBlog ) { 
-		.location = "socket://jolie-lang.blogspot.com:80/feeds/posts/default";
-		.protocol = "http"
+		.url = "http://jolie-lang.blogspot.com/";
+		.binding.location = "socket://jolie-lang.blogspot.com:80/feeds/posts/default";
+		.binding.protocol = "http"
 	};	
 	with( planetBlogs[0] ) {
-		.location = "socket://fmontesi.blogspot.com:80/feeds/posts/default/-/jolie";
-		.protocol = "http"
+		.url = "http://fmontesi.blogspot.com/";
+		.binding.location = "socket://fmontesi.blogspot.com:80/feeds/posts/default/-/jolie";
+		.binding.protocol = "http"
 	};
 	with( planetBlogs[1] ) {
-		.location = "socket://claudioguidi.blogspot.it:80/feeds/posts/default/-/jolie";
-		.protocol = "http"
+		.url = "http://claudioguidi.blogspot.com/";
+		.binding.location = "socket://claudioguidi.blogspot.it:80/feeds/posts/default/-/jolie";
+		.binding.protocol = "http"
 	}
 }
 
@@ -67,17 +111,17 @@ main
 	[ getRss()( response ) {
 		// getRss@NewsService()( response )
 		nullProcess
-	} ]{ nullProcess }
-	
-	[ news()( response ) {
-		request.blogs -> newsBlog;
-		readBlogs@BlogReader( request )( d );
-		valueToPrettyString@StringUtils( d )( response )
 	} ] { nullProcess }
 	
-	[ planet()( response ) {
+	[ news()( html ) {
+		request.blogs -> newsBlog;
+		readBlogs@BlogReader( request )( blogsContent );
+		buildEntryHtml
+	} ] { nullProcess }
+	
+	[ planet()( html ) {
 		request.blogs -> planetBlogs;
-		readBlogs@BlogReader( request )( d );
-		valueToPrettyString@StringUtils( d )( response )
+		readBlogs@BlogReader( request )( blogsContent );
+		buildEntryHtml
 	} ] { nullProcess }
 }

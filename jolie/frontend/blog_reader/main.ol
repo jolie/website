@@ -28,6 +28,7 @@ include "quicksort.iol"
 include "blog_reader.iol"
 
 constants {
+	Attrs = "@Attributes",
 	MaxEntries = 50,
 	BlogRefreshTimeout = 60000 // 1 min
 }
@@ -46,7 +47,7 @@ interface LocalInterface {
 OneWay:
 	timeout(void)
 RequestResponse:
-	fillCache(Binding)(void),
+	fillCache(BlogDescriptor)(void),
 }
 
 inputPort BlogReaderInput {
@@ -72,6 +73,22 @@ init
 	getLocalLocation@Runtime()( Self.location )
 }
 
+define getPrettyMonth
+{
+	if ( monthNumber == 1 ) { month = "January" }
+	else if ( monthNumber == 2 ) { month = "February" }
+	else if ( monthNumber == 3 ) { month = "March" }
+	else if ( monthNumber == 4 ) { month = "April" }
+	else if ( monthNumber == 5 ) { month = "May" }
+	else if ( monthNumber == 6 ) { month = "June" }
+	else if ( monthNumber == 7 ) { month = "July" }
+	else if ( monthNumber == 8 ) { month = "August" }
+	else if ( monthNumber == 9 ) { month = "September" }
+	else if ( monthNumber == 10 ) { month = "October" }
+	else if ( monthNumber == 11 ) { month = "November" }
+	else if ( monthNumber == 12 ) { month = "December" }
+}
+
 define fetchEntries
 {
 	scope( fetch ){
@@ -87,14 +104,21 @@ define fetchEntries
 			with( cacheEntries[ cacheEntryIndex ] ){
 				.title = atomEntry.title;
 				.author = atomEntry.author.name;
-				if( atomEntry.content.("@Attributes").type == "html" ) {
-					.text = "<h1>" + atomEntry.title + "</h1>" + atomEntry.content
-				} else { .text = "Unsupported content type." };
-
+				.content = atomEntry.content;
 				date = atomEntry.updated;
 				find@StringUtils( date )( aDate );
 				.timestamp = int( aDate.group[1] + aDate.group[2] + aDate.group[3] );
-				.date = aDate.group[2] + "/" + aDate.group[3] + "/" + aDate.group[1]
+				monthNumber = int( aDate.group[2] );
+				getPrettyMonth;
+				.date = month + " " + aDate.group[3] + ", " + aDate.group[1];
+				for( i = 0, i < #atomEntry.link, i++ ) {
+					/* if ( atomEntry.link[i].(Attrs).rel == "alternate" ) {
+						
+					} else */ if ( atomEntry.link[i].(Attrs).rel == "alternate" ) {
+						.links.entry = atomEntry.link[i].(Attrs).href
+					}
+				};
+				.links.blog = blogDescriptor.url
 			}
 		}
 	}
@@ -116,8 +140,8 @@ main
 {
 	[ readBlogs( request )( response ) {
 		for( blog -> request.blogs[ blogIdx ]; blogIdx = 0, blogIdx < #request.blogs, blogIdx++ ) {
-			blogCache -> global.cache.(blog.location);
-			if ( !is_defined( global.cache.(blog.location) ) ) {
+			blogCache -> global.cache.(blog.binding.location);
+			if ( !is_defined( global.cache.(blog.binding.location) ) ) {
 				fillCache@Self( blog )()
 			};
 			addEntriesToResponse;
@@ -125,23 +149,24 @@ main
 		}
 	} ] { nullProcess }
 
-	[ fillCache( Blog )() {
+	[ fillCache( blogDescriptor )() {
+		Blog -> blogDescriptor.binding;
 		if ( Blog.protocol == "http" ) {
 			Blog.protocol.osc.getAtom.alias = " "
 		};
 		fetchEntries;
-		while( #cacheEntries.entry > MaxEntries ) {
-			undef( cacheEntries.entry[ #cacheEntries.entry - 1 ] )
+		while( #cacheEntries > MaxEntries ) {
+			undef( cacheEntries[ #cacheEntries - 1 ] )
 		};
 		synchronized( Cache ) {
 			global.cache.(Blog.location).entry << cacheEntries;
-			global.cache.(Blog.location).binding << Blog
+			global.cache.(Blog.location).blogDescriptor << blogDescriptor
 		}
 	} ] { nullProcess }
 
 	[ timeout() ] {
 		foreach( blogLoc : global.cache ) {
-			fillCache@Self( global.cache.(blogLoc).binding )()
+			fillCache@Self( global.cache.(blogLoc).blogDescriptor )()
 		};
 		setNextTimeout@Time( BlogRefreshTimeout )
 	}
