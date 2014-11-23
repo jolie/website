@@ -1,0 +1,4 @@
+define checkForHost
+{
+	documentRootDirectory = WWWDirectory
+}

@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2013 by Fabrizio Montesi <famontesi@gmail.com>          *
+ *   Copyright (C) 2013-2014 by Fabrizio Montesi <famontesi@gmail.com>     *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU Library General Public License as       *
@@ -26,6 +26,7 @@ include "protocols/http.iol"
 include "../frontend/frontend.iol"
 include "../news/news_service_interface.iol"
 
+include "virtual_hosts.iol"
 include "config.iol"
 include "admin.iol"
 
@@ -42,24 +43,25 @@ Interfaces: FrontendInterface
 }
 
 outputPort NewsService {
-	Interfaces: GetNewsInterface
+Interfaces: GetNewsInterface
 }
 
 inputPort HTTPInput { 
-	Protocol: http {
-		.keepAlive = false; // Do not keep connections open
-		.debug = DebugHttp; 
-		.debug.showContent = DebugHttpContent;
-		.format -> format;
-		.contentType -> mime;
-		.statusCode -> statusCode;
-		.redirect -> location;
-		.default = "default"
-	}
+Protocol: http {
+	.keepAlive = false; // Do not keep connections open
+	.debug = DebugHttp; 
+	.debug.showContent = DebugHttpContent;
+	.format -> format;
+	.contentType -> mime;
+	.statusCode -> statusCode;
+	.redirect -> location;
+	.default = "default";
+	.host -> host
+}
 
-	Location: Location_Leonardo
-	Interfaces: HTTPInterface
-	Aggregates: Frontend, NewsService
+Location: Location_Leonardo
+Interfaces: HTTPInterface
+Aggregates: Frontend, NewsService
 }
 
 inputPort AdminInput {
@@ -96,7 +98,6 @@ define checkForMaliciousPath
 
 main
 {
-
 	[ default( request )( response ) {
 		scope( s ) {
 			install( FileNotFound => println@Console( "File not found: " + file.filename )(); statusCode = 404 );
@@ -105,12 +106,21 @@ main
 			s.regex = "\\?";
 			split@StringUtils( s )( s );
 			
-			// Default page: index.html 
+			// Default page: index.html
+			shouldAddIndex = false;
 			if ( s.result[0] == "" ) {
-				s.result[0] = "index.html"
+				shouldAddIndex = true
+			} else {
+				e = s.result[0];
+				e.suffix = "/";
+				endsWith@StringUtils( e )( shouldAddIndex )
+			};
+			if ( shouldAddIndex ) {
+				s.result[0] += "index.html"
 			};
 
 			checkForMaliciousPath;
+			checkForHost;
 
 			file.filename = documentRootDirectory + s.result[0];
 
@@ -130,7 +140,7 @@ main
 
 	[ shutdown()() { nullProcess } ] { exit }
 
-	[ getRss()(response){
+	[ getRss()( response ){
 		getRss@NewsService()( response );
 		format = "html"
 	} ]{ nullProcess }
