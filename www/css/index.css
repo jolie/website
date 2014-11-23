@@ -16,10 +16,6 @@ pre, code, kbd, samp {
   padding: 2px;
 }
 
-ul {
-	padding-left: 1em;
-}
-
 .cite {
 	background: rgb(82, 82, 82);
 	margin-left: 20%;
@@ -860,4 +856,8 @@ body {
 
 .download a:hover {	
 	color:#79140a !important;	
+}
+
+ul {
+	padding-left: 1em;
 }
