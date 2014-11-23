@@ -2,12 +2,38 @@ include "frontend.iol"
 include "file.iol"
 include "string_utils.iol"
 include "console.iol"
+include "blog_reader/blog_reader.iol"
 
 execution { concurrent }
 
 inputPort FrontendInput {
-	Location: "local"
-	Interfaces: FrontendInterface
+Location: "local"
+Interfaces: FrontendInterface
+}
+
+outputPort BlogReader {
+Interfaces: BlogReaderInterface
+}
+
+embedded {
+Jolie:
+	"blog_reader/main.ol" in BlogReader
+}
+
+init
+{
+	with( newsBlog ) { 
+		.location = "socket://jolie-lang.blogspot.com:80/feeds/posts/default";
+		.protocol = "http"
+	};	
+	with( planetBlogs[0] ) {
+		.location = "socket://fmontesi.blogspot.com:80/feeds/posts/default/-/jolie";
+		.protocol = "http"
+	};
+	with( planetBlogs[1] ) {
+		.location = "socket://claudioguidi.blogspot.it:80/feeds/posts/default/-/jolie";
+		.protocol = "http"
+	}
 }
 
 main
@@ -36,5 +62,22 @@ main
 				}
 			}
 		}
+	} ] { nullProcess }
+
+	[ getRss()( response ) {
+		// getRss@NewsService()( response )
+		nullProcess
+	} ]{ nullProcess }
+	
+	[ news()( response ) {
+		request.blogs -> newsBlog;
+		readBlogs@BlogReader( request )( d );
+		valueToPrettyString@StringUtils( d )( response )
+	} ] { nullProcess }
+	
+	[ planet()( response ) {
+		request.blogs -> planetBlogs;
+		readBlogs@BlogReader( request )( d );
+		valueToPrettyString@StringUtils( d )( response )
 	} ] { nullProcess }
 }

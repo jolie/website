@@ -34,16 +34,11 @@ execution { concurrent }
 
 interface HTTPInterface {
 RequestResponse:
-	default(DefaultOperationHttpRequest)(undefined),
-	getRss( void )( string )
+	default(DefaultOperationHttpRequest)(undefined)
 }
 
 outputPort Frontend {
 Interfaces: FrontendInterface
-}
-
-outputPort NewsService {
-Interfaces: GetNewsInterface
 }
 
 inputPort HTTPInput { 
@@ -61,7 +56,7 @@ Protocol: http {
 
 Location: Location_Leonardo
 Interfaces: HTTPInterface
-Aggregates: Frontend, NewsService
+Aggregates: Frontend
 }
 
 inputPort AdminInput {
@@ -72,13 +67,13 @@ Interfaces: AdminInterface
 
 embedded {
 Jolie:
-	"../frontend/frontend.ol" in Frontend,
-	"../news/news_service.ol" in NewsService
+	"../frontend/frontend.ol" in Frontend
 }
 
 init
 {
-	documentRootDirectory = WWWDirectory
+	documentRootDirectory = WWWDirectory;
+	format = "html"
 }
 
 define checkForMaliciousPath
@@ -139,10 +134,5 @@ main
 	} ] { nullProcess }
 
 	[ shutdown()() { nullProcess } ] { exit }
-
-	[ getRss()( response ){
-		getRss@NewsService()( response );
-		format = "html"
-	} ]{ nullProcess }
 }
 

@@ -27,9 +27,9 @@ inputPort AtomNewsFetcher {
 
 init
 {
-	blogs[0].location = "socket://fmontesi.blogspot.com:80/feeds/posts/";
+	blogs[0].location = "socket://fmontesi.blogspot.com:80/feeds/posts/-/jolie";
 	blogs[0].protocol = "http";
-	blogs[1].location = "socket://claudioguidi.blogspot.it:80/feeds/posts/";
+	blogs[1].location = "socket://claudioguidi.blogspot.it:80/feeds/posts/-/jolie";
 	blogs[1].protocol = "http"
 }
 
@@ -42,8 +42,8 @@ define getNewsProcedure
 			getNewsProcedure;
 			println@Console( "Executed getNewsProcedure" )()
 		);
-	
-  	date.regex = "(\\d{4})-(\\d{2})-(\\d{2})";
+
+		date.regex = "(\\d{4})-(\\d{2})-(\\d{2})";
 		entry -> atom.entry[ entryIdx ];
 		for( Blog -> blogs[ blogIdx ]; blogIdx = 0, blogIdx < #blogs, blogIdx++ ) {
 			default@Blog()( atom );
