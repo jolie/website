@@ -131,7 +131,7 @@ main
 		};
 		fetchEntries;
 		while( #cacheEntries.entry > MaxEntries ) {
-			undef( cacheEntries.entry[ #cacheEntries.entry - 1 ] );
+			undef( cacheEntries.entry[ #cacheEntries.entry - 1 ] )
 		};
 		synchronized( Cache ) {
 			global.cache.(Blog.location).entry << cacheEntries;
