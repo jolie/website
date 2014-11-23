@@ -24,6 +24,7 @@ include "string_utils.iol"
 include "xml_utils.iol"
 include "runtime.iol"
 include "time.iol"
+include "quicksort.iol"
 include "blog_reader.iol"
 
 constants {
@@ -33,7 +34,7 @@ constants {
 execution { concurrent }
 
 interface BlogInterface {
-RequestResponse: default(undefined)(undefined)
+RequestResponse: getAtom(undefined)(undefined)
 }
 
 outputPort Blog {
@@ -56,6 +57,15 @@ outputPort Self {
 Interfaces: LocalInterface
 }
 
+outputPort Quicksort {
+Interfaces: QuicksortInterface
+}
+
+embedded {
+Jolie:
+	"quicksort.ol" in Quicksort
+}
+
 init
 {
 	getLocalLocation@Runtime()( Self.location )
@@ -70,7 +80,7 @@ define fetchEntries
 
 		date.regex = "(\\d{4})-(\\d{2})-(\\d{2})";
 		atomEntry -> atom.entry[ atomEntryIndex ];
-		default@Blog()( atom );
+		getAtom@Blog()( atom );
 		for( atomEntryIndex = 0, atomEntryIndex < #atom.entry, atomEntryIndex++ ) {
 			cacheEntryIndex = #cacheEntries;
 			with( cacheEntries[ cacheEntryIndex ] ){
@@ -82,7 +92,7 @@ define fetchEntries
 
 				date = atomEntry.updated;
 				find@StringUtils( date )( aDate );
-				cacheEntries[ cacheEntryIndex ] = int( aDate.group[1] + aDate.group[2] + aDate.group[3] );
+				.timestamp = int( aDate.group[1] + aDate.group[2] + aDate.group[3] );
 				.date = aDate.group[2] + "/" + aDate.group[3] + "/" + aDate.group[1]
 			}
 		}
@@ -109,19 +119,22 @@ main
 			if ( !is_defined( global.cache.(blog.location) ) ) {
 				fillCache@Self( blog )()
 			};
-			addEntriesToResponse
+			addEntriesToResponse;
+			quicksort@Quicksort( response )( response )
 		}
 	} ] { nullProcess }
-	
+
 	[ fillCache( Blog )() {
 		if ( Blog.protocol == "http" ) {
-			Blog.protocol.osc.default.alias = " "
+			Blog.protocol.osc.getAtom.alias = " "
 		};
 		fetchEntries;
-		global.cache.(Blog.location).entry << cacheEntries;
-		global.cache.(Blog.location).binding << Blog
+		synchronized( Cache ) {
+			global.cache.(Blog.location).entry << cacheEntries;
+			global.cache.(Blog.location).binding << Blog
+		}
 	} ] { nullProcess }
-	
+
 	[ timeout() ] {
 		foreach( blogLoc : global.cache ) {
 			fillCache@Self( global.cache.(blogLoc).binding )()

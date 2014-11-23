@@ -1,0 +1,1 @@
+type BlogEntry:undefined
