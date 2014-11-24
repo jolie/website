@@ -1,7 +1,36 @@
 @import url("blogs.css");
 
+/*.download {
+	border-radius: 20px;
+	text-align: center;
+	background: white;
+	color: #79140a;
+	width: 30%;
+	margin-left: auto;
+	margin-right: auto;
+	background-image: url(../imgs/download.png);
+	padding: 20px 60px;
+	height:80px; 
+	background-repeat: no-repeat;
+	background-position: 10px;
+	margin-bottom: 20px;	
+	border:1px solid #ccc;
+}
+
+.download a {
+	margin-left: 100px;
+	padding-top: 40px;
+	padding: 30px;
+	font-size: large;	
+	font-weight: bold;
+}
+
+.download a:hover {	
+	color:#79140a !important;	
+}*/
+
 #jolie-logo{
 	background: url( ../imgs/eye_i.png );
-  background-repeat: no-repeat;
-  height: 85px;
+	background-repeat: no-repeat;
+	height: 85px;
 }
