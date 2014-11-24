@@ -45,21 +45,22 @@ Jolie:
 
 define buildEntryHtml
 {
-	html = "<!--Themed--><div class=\"standard_page\">";
+	html = "<!--Themed-->";
 	entry -> blogsContent.entry[i];
 	lastTimestamp = 0;
 	for( i = 0, i < #blogsContent.entry, i++ ) {
 		if ( entry.timestamp != lastTimestamp ) {
 			html += "<p class=\"BlogDateGroup\">" + entry.date + "</p>";
 			lastTimestamp = entry.timestamp
+		} else if ( i > 0 ) {
+			html += "<div class=\"BlogEntrySeparator\"></div>"
 		};
 		html += "<div class=\"BlogEntry\">"
-		+ "<p class=\"BlogEntryAuthor\"><a href=\"" + entry.links.blog + "\">" + entry.author + "</a></p>"
+		+ "<p class=\"BlogEntryAuthor\">Posted by <a href=\"" + entry.links.blog + "\">" + entry.author + "</a></p>"
 		+ "<p class=\"BlogEntryTitle\"><a href=\"" + entry.links.entry + "\">" + entry.title + "</a></p>"
 		+ "<div class=\"BlogEntryContent\">" + entry.content + "</div>"
 		+ "</div>"
-	};
-	html += "</div>"
+	}
 }
 
 init

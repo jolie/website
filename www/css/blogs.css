@@ -1,10 +1,12 @@
 .BlogDateGroup {
 	border-bottom: 1px solid gray;
+/* 	margin-top: 1em; */
+	margin-bottom: 1em;
 }
 
 .BlogEntry {
-	font-size: medium;
-	margin-bottom: 2em;
+	margin-bottom: 1em;
+	font-size: large;
 }
 
 .BlogEntryAuthor {
@@ -16,5 +18,14 @@
 }
 
 .BlogEntryContent {
-	font-size: medium;
+/* 	font-size: large; */
+}
+
+.BlogEntrySeparator {
+	width: 100%;
+	height: 0.5em;
+	background-color: #EDEFEC;
+	border: none;
+	margin-bottom: 1em;
+/* 	margin-top: 1em; */
 }

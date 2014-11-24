@@ -7,13 +7,13 @@
 	background: linear-gradient(to bottom, #443637 0%,#050000 100%)
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#443637', endColorstr='#050000',GradientType=0 );
 	border-bottom: 0.2em solid #C4C4C4;
-	font-size: x-large;
+	font-size: large;
 	min-height: 120px;
 	padding: 1em;
 }
 
 #header-jolie-logo {
-	background: url(../imgs/eye_i.png);
+	background: url(../imgs/eye.png);
 	background-size: auto 100%;
 	background-position: center; 
 	background-repeat: no-repeat;

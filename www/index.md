@@ -1,12 +1,12 @@
 <!--Themed-->
 
-
+<div class="landing-page">
 <div class="container col-xs-12">
   <div class="row vertical-align">
-    <div class="col-xs-6">
-      <img class="img-responsive" src="imgs/microservice-logo.png">
+    <div class="span6">
+      <img class="img-responsive" src="imgs/microservice-logo.png"/>
     </div>
-    <div class="col-xs-6">
+    <div class="span6">
       <div><h1>The first language for Microservices</h1>
       </div>
     </div>
@@ -207,3 +207,5 @@ command:
   </div>
 </div>
 <div class="clearfix"></div>
+
+</div>
