@@ -15,14 +15,13 @@ var extLang = {
   }
 };
 
+var activeMenuItem = function () {
+    var path = window.location.pathname;
+    $( "#header a.active" ).attr( "class", "");
+    $( "#header a[href=\"" + path + "\"]" ).attr( "class", "active" );
+};
+
 // Loaded on start
-$( document ).ready( function() {
-	$('.nav li a').click(function(e) {
-		$('.nav li a.active').removeClass('active');
-		var $this = $(this);
-		if (!$this.hasClass('active')) {
-			$this.addClass('active');
-		}
-		// e.preventDefault();
-	});
+$( document ).ready( function () {
+ activeMenuItem();
 });
