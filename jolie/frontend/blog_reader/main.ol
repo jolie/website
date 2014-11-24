@@ -93,7 +93,8 @@ define fetchEntries
 {
 	scope( fetch ){
 		install( IOException => 
-			println@Console( "IOException fetching " + Blog.location )()
+			nullProcess
+			// println@Console( "IOException fetching " + Blog.location )()
 		);
 
 		date.regex = "(\\d{4})-(\\d{2})-(\\d{2})";
