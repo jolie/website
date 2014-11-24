@@ -16,22 +16,23 @@ onClick="top_menu('?top_menu=community');return false;"
 ref="community" title="community" src="community/community.html">
 contact us</a>.
 
+This website is written in Jolie and it is itself open source: it is included in the SVN repository of the Jolie 
+project. Every developer with access to the Jolie codebase can also update the website (directory
+`web`).
+
 # The Jolie Team
 
 Jolie is a collaborative effort by many people spread over the world. You can see some of its history
 [here](http://en.wikipedia.org/wiki/Jolie_%28programming_language%29).
+The design of the Jolie language was initially conceived and is
+currently moderated by [Claudio Guidi](http://claudioguidi.blogspot.com/) and
+[Fabrizio Montesi](http://www.fabriziomontesi.com/).
 Releases and improvements are coordinated by the project maintainer,
 [Fabrizio Montesi](http://www.fabriziomontesi.com/), and mainly discussed
 in our <a href="?top_menu=community" onClick="top_menu('?top_menu=community');return false;"
 ref="community" title="community" src="community/community.html">
 mailing list</a> and regular online meetings.
-The design of the language was initially conceived and is currently guided by
-[Claudio Guidi](http://claudioguidi.blogspot.com/) and [Fabrizio Montesi](http://www.fabriziomontesi.com/), who 
-coordinate help from various contributors.
-This website is maintained by [Saverio Giallorenzo](http://www.cs.unibo.it/~sgiallor/).
-The website is written in Jolie and it is itself open source: it is included in the SVN repository of Jolie. Every
-developer with access to the Jolie codebase can also update the website (directory
-`web`).
+The Jolie website is maintained by [Saverio Giallorenzo](http://www.cs.unibo.it/~sgiallor/).
 
 We often use the term `The Jolie Team` to refer to the people who
 contributed to the development of Jolie by writing code (copyright holders).
