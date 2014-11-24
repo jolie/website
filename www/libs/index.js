@@ -2,6 +2,7 @@ var content_folder = "content/";
 var documentation_folder = content_folder + "documentation/";
 var visited_menu = false;
 
+
 var ext_to_lang_hash = {
     "ext": {
         "xml": {
@@ -39,6 +40,7 @@ $(document).ready(function() {
 });
 
 // GENERIC FUNCTIONS
+
 $(window).resize(function() {
     $("#menu_content").css("height", "auto");
     adjustHeights();
@@ -274,6 +276,12 @@ function loadCode( folder, isDoc ) {
     } else {
         loadCallback( isDoc );
     }
+}
+
+function scroll_home( element_name ) {
+  $(document.body).animate({
+    'scrollTop':   $('#' + element_name ).offset().top
+  }, 300);
 }
 
 function top_menu(href) {

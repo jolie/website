@@ -785,6 +785,24 @@ body {
 	margin-bottom: 20px;
 }
 
+.scroll_home {
+	position:absolute;
+	right:20px;
+	padding:10px;
+	background-color: #79140a;
+	color:white;
+	width:70px;
+	border-radius:30px;
+	text-align:center;
+	font-size:16px;
+}
+
+.scroll_home:hover {
+	cursor:pointer;
+	background-color: white;
+	color:#79140a;
+}
+
 .syntaxhighlighter .line {
     font-size: normal !important;
     white-space: pre-wrap !important;
