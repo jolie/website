@@ -17,7 +17,7 @@ var adjThs = 10;
 var root = "documentation/";
 var docs_code_folder = "code/";
 var docs_syntax_folder = "syntax/";
-var files_menu = root + "documentationMenu";
+var files_menu = "/documentationMenu";
 
 // counter and logic for syntax highlighting
 var shc = 0;
@@ -57,7 +57,7 @@ var loadPage = function(){
 
 var loadMenu = function() {
 	$.getJSON( files_menu, function(json, textStatus) {
-			var menu = createMenu( json );
+			var menu = createMenu( json.topics );
 			$( css_menu ).html( menu );
 	});
 };

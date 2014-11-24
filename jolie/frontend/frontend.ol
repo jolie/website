@@ -25,6 +25,7 @@ include "file.iol"
 include "string_utils.iol"
 include "console.iol"
 include "blog_reader/blog_reader.iol"
+include "json_utils.iol"
 
 execution { concurrent }
 
@@ -83,11 +84,11 @@ init
 main
 {
 	[ documentationMenu()( menu ) {
-		f.filename = "../frontend/menu.json";
+		f.filename = "../../docs/documentation/menu.json";
 		f.format = "json";
 		readFile@File( f )( menu );
 		
-		listRequest.directory = "../../www/content/documentation/jsl/";
+		listRequest.directory = "../../docs/documentation/jsl/";
 		listRequest.regex = ".+\\.html";
 		list@File( listRequest )( listResult );
 		if ( #listResult.result > 0 ) {
@@ -101,11 +102,12 @@ main
 				match@StringUtils( match )( matchResult );
 				if ( matchResult.group[1] != "index" ) { // Do not include index.html
 					apiTopic.children[ z ].label = matchResult.group[1];
-					apiTopic.children[ z ].url = "jsl/" + matchResult.group[1];
+					apiTopic.children[ z ].url = "jsl/" + matchResult.group[1] + ".html";
 					z++
 				}
 			}
-		}
+		};
+		getJsonString@JsonUtils( menu )( menu )
 	} ] { nullProcess }
 
 	[ getRss()( response ) {
