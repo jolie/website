@@ -1,4 +1,4 @@
-<div class="no_home">
+<div class="standard_page"><div class="standard_page_body">
 
 # Get in touch
 
@@ -37,4 +37,4 @@ for more information.
 [italianaSoftware](http://www.italianasoftware.com/) offers industrial courses for learning Jolie and
 commercial support for the language.
 
-</div>
+</div></div>

@@ -1,4 +1,4 @@
-<div class="no_home">
+<div class="standard_page"><div class="standard_page_body">
 
 # Jolie is open
 
@@ -119,6 +119,8 @@ The server infrastructure for this website is kindly provided by the [University
 ## Past Sponsors
 
 * [EU Project SENSORIA](http://www.sensoria-ist.eu/): R&D.
+* [DISI Department - University of Bologna] (http://www.informatica.unibo.it/it/Dipartimento)
+* [Department of Mathematics - University of Padova] (http://www.math.unipd.it/it/)
  
 
-</div>
+</div></div>

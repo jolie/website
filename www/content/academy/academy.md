@@ -1,4 +1,4 @@
-<div class="no_home">
+<div class="standard_page"><div class="standard_page_body">
 
 # Introduction
 
@@ -270,7 +270,7 @@ A good starting point for reading up about Jolie is [this Book Chapter](http://f
 	In Proc. of 3rd International Workshop on Foundations of Coordination Languages and Software Architectures (FOCLASA 04) 
 	Electronic Notes in Theoretical Computer Science, Volume 180, Issue 2, 26 June 2007, Pages 55-70
 
-</div>
+</div></div>
 
 [m14:pdf]: http://arxiv.org/pdf/1410.3712
 

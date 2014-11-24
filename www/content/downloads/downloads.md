@@ -1,4 +1,4 @@
-<div class="standard_page">
+<div class="standard_page"><div class="standard_page_body">
 
 # Download and Install
 
@@ -138,4 +138,4 @@ A bundle for [Sublime Text 2](http://www.sublimetext.com/) with syntax highlight
 
 Refer to this [github repository](https://github.com/thesave/sublime-Jolie) for downloading and installing the latest version.
 
-</div>
+</div></div>

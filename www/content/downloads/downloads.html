@@ -1,5 +1,6 @@
 <div class="standard_page"><div class="standard_page_body">
-<h1>Download and Install</h1>
+
+<h1 id="download-and-install">Download and Install</h1>
 <p>Jolie requires Java to run, so make sure to have <a href="http://www.java.com/">Java</a> installed before proceeding.</p>
 <p>Regardless of the method you choose, after installation executing a Jolie script will be just a matter of invoking the Jolie interpreter.</p>
 <div class="code" src="example_install_2.txt">
@@ -16,17 +17,19 @@ On Linux and Mac
 <a href="#windows">On Windows</a>
 </div>
 </div>-->
-<h2>The easy way (binary installer)</h2>
+
+<hr />
+<h2 id="the-easy-way-binary-installer">The easy way (binary installer)</h2>
 <p>This method requires Java 6 (also called Java 1.6) or later to be installed before proceeding.</p>
-<h3>Step 1</h3>
+<h3 id="step-1">Step 1</h3>
 <p>Download the Java-based installer of the latest stable release of Jolie:</p>
 <div class="download">
 <a href="/files/releases/jolie-1.1.jar" onclick="_gaq.push(['_trackEvent','Download','JolieInstaller',this.href]);"> Jolie Installer </a>
 </div>
-<h3>Step 2</h3>
+<h3 id="step-2">Step 2</h3>
 <p>Open a shell terminal. From the directory in which you downloaded the installer, execute <code>java -jar jolie-1.1.jar</code> and follow the on-screen instructions.</p>
-
-<h2>The hard way (compile from sources)</h2>
+<hr />
+<h2 id="the-hard-way-compile-from-sources">The hard way (compile from sources)</h2>
 <p>This method will download the development version of Jolie (<code>trunk</code>). It requires the following software to be installed before proceeding:</p>
 <ul>
 <li>JDK (Java SE Development Kit), version 6 or later</li>
@@ -39,9 +42,9 @@ Jump to the instructions for your Operating System: <!-- <div style="float:left"
 </p>
 <!-- </div> -->
 </div>
-<div style="clear: both;">
 
-</div>
+<div style="clear: both;"></div>
+
 <h3><a id="nix"></a>Linux and Mac OS</h3>
 <p>Open a shell and execute:</p>
 <div class="code" src="example_install_1.txt">
@@ -77,11 +80,14 @@ Jump to the instructions for your Operating System: <!-- <div style="float:left"
 <hr />
 <h1>Support for external tools</h1>
 <h2>Kate</h2>
-<p>Homepage: <a href="http://kate-editor.org/" class="uri">http://kate-editor.org/</a></p>
+<p>Homepage: <a href="http://kate-editor.org/">http://kate-editor.org/</a></p>
 <p>A syntax highlighting description file for KatePart (which is used by most KDE applications and the Kate editor itself) is available.</p>
 <p>Download the <a href="http://www.jolie-lang.org/files/katepart/jolie.xml">latest version</a> and put it in your <code>$KDE_HOME/share/apps/katepart/syntax directory</code>.</p>
 <p>You can discover your <code>$KDE_HOME</code> directory by issuing the <code>kde4 config localprefix</code> command.</p>
 <h2>Sublime Text</h2>
 <p>A bundle for <a href="http://www.sublimetext.com/">Sublime Text 2</a> with syntax highlighting, code completion, and sublime-build(s) for Jolie.</p>
 <p>Refer to this <a href="https://github.com/thesave/sublime-Jolie">github repository</a> for downloading and installing the latest version.</p>
-</div></div>
+</div>
+</div>
+
+
