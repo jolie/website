@@ -17,7 +17,7 @@ var adjThs = 10;
 var root = "documentation/";
 var docs_code_folder = "code/";
 var docs_syntax_folder = "syntax/";
-var files_menu = root + "menu.json";
+var files_menu = root + "documentationMenu";
 
 // counter and logic for syntax highlighting
 var shc = 0;
