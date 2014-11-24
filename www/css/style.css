@@ -33,6 +33,11 @@ body {
 	font-size: large;
 }
 
+.vcenter {
+    display: flex;
+    align-items: center;
+}
+
 #header {
 /* 	background-image: url(../imgs/background.png); */
 	background: -moz-linear-gradient(top,  #443637 0%, #050000 100%);
@@ -44,6 +49,8 @@ body {
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#443637', endColorstr='#050000',GradientType=0 );
 	border-bottom: 0.2em solid #C4C4C4;
 	font-size: x-large;
+	min-height: 120px;
+	padding: 1em;
 }
 
 #header-jolie-logo {
@@ -52,8 +59,8 @@ body {
 	height: 85px;
 }
 
-#header-nav-menu {
-	padding: 1em;
+#header-nav-menu li {
+	color: black;
 }
 
 #footer {
