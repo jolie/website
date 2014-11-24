@@ -1,0 +1,67 @@
+.landing-img {
+	max-width: 100%;
+}
+
+.landing-motto {
+	font-size: 200%;
+	font-style: italic;
+}
+
+.landing-page h1 {
+	border: none;
+	font-size: 350%;
+	color: white;
+	font-weight: bold;
+	text-shadow: 0 3px 0 rgba(0, 0, 0, 1);
+}
+
+.landing-page h2 {
+	color: white;
+	font-weight: bold;
+	text-shadow: 0 3px 0 rgba(0, 0, 0, 1);
+}
+
+.landing-page {
+	background-image: url('../imgs/stars.jpg');
+	background-size: cover;
+	background-attachment: fixed;
+}
+
+.full-width {
+	width: 100%;
+}
+
+.landing-banner-transparent {
+	border-bottom: 0.2em solid #C4C4C4;
+	padding: 2em;
+}
+
+.landing-banner-dark {
+	background: -moz-linear-gradient(top,  #443637 0%, #050000 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#443637), color-stop(100%,#050000));	
+	background: -webkit-linear-gradient(top,  #443637 0%,#050000 100%);
+	background: -o-linear-gradient(top,  #443637 0%,#050000 100%);		
+	background: -ms-linear-gradient(top,  #443637 0%,#050000 100%);
+	background: linear-gradient(to bottom, #443637 0%,#050000 100%)
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#443637', endColorstr='#050000',GradientType=0 );
+	border-bottom: 0.2em solid #C4C4C4;
+	color: white;
+	padding: 2em;
+}
+
+.landing-banner-light {
+	padding: 2em;
+	background: -moz-linear-gradient(top,  white 0%, #ccc 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,white), color-stop(100%,#ccc));	
+	background: -webkit-linear-gradient(top,  white 0%,#ccc 100%);
+	background: -o-linear-gradient(top,  white 0%,#ccc 100%);		
+	background: -ms-linear-gradient(top,  white 0%,#ccc 100%);	
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='white', endColorstr='#ccc',GradientType=0 );
+	background: linear-gradient(to bottom, white 0%,#ccc 100%);border-bottom: 0.2em solid #C4C4C4;
+	color: black;
+}
+
+.landing-banner-light h2 {
+	color: black;
+	text-shadow: 0 3px 0 lightgrey;
+}
