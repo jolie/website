@@ -5,11 +5,7 @@
 Jolie has strong roots within academia and is used in many research and teaching activities.
 If you do not see your project or university in the following, feel free to
 to ask us how to collaborate on our
-<a href="?top_menu=community" onClick="top_menu('?top_menu=community');return false;"
-ref="community" title="community" src="community/community.html">
-mailing list
-</a>.
-
+[mailing list](community.html).
 Below, we list some resources and useful information for [students](#study) and [researchers](#research),
 and a list of [scientific publications](#publications) related to Jolie.
 

@@ -11,10 +11,7 @@ of Jolie in enterprise proprietary software.
 Simply put, Jolie can be safely used to develop, coordinate, and integrate proprietary software.
 However, all modifications and improvements to the implementation of the Jolie interpreter and related
 libraries must be publicly shared.
-If you are in doubt about your usage of Jolie, please <a href="?top_menu=community"
-onClick="top_menu('?top_menu=community');return false;"
-ref="community" title="community" src="community/community.html">
-contact us</a>.
+If you are in doubt about your usage of Jolie, please [contact us](community.html).
 
 This website is written in Jolie and it is itself open source: it is included in the SVN repository of the Jolie 
 project. Every developer with access to the Jolie codebase can also update the website (directory
@@ -29,12 +26,10 @@ currently moderated by [Claudio Guidi](http://claudioguidi.blogspot.com/) and
 [Fabrizio Montesi](http://www.fabriziomontesi.com/).
 Releases and improvements are coordinated by the project maintainer,
 [Fabrizio Montesi](http://www.fabriziomontesi.com/), and mainly discussed
-in our <a href="?top_menu=community" onClick="top_menu('?top_menu=community');return false;"
-ref="community" title="community" src="community/community.html">
-mailing list</a> and regular online meetings.
+in our [mailing list](community.html) and regular online meetings.
 The Jolie website is maintained by [Saverio Giallorenzo](http://www.cs.unibo.it/~sgiallor/).
 
-We often use the term `The Jolie Team` to refer to the people who
+We often use the term *The Jolie Team* to refer to the people who
 contributed to the development of Jolie by writing code (copyright holders).
 In the list below, we also give credit to people who
 contributed to the project through other means (research, useful discussions,

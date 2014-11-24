@@ -25,10 +25,7 @@ Please tag your questions with the keyword `jolie`.
 # Academy
 
 Jolie is actively used in many research and teaching topics at different academic institutions. See
-the
-<a href="?top_menu=academy" onclick="top_menu('?top_menu=academy');return false;" ref="academy"
-title="academy" src="academy/academy.html">academy page</a>
-for more information.
+the [academy page](academy.html) for more information.
 
 ---
 
