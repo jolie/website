@@ -39,11 +39,6 @@ body {
 	padding-bottom: 1em;
 }
 
-.vcenter {
-    display: flex;
-    align-items: center;
-}
-
 #header {
 /* 	background-image: url(../imgs/background.png); */
 	background: -moz-linear-gradient(top,  #443637 0%, #050000 100%);
@@ -61,12 +56,12 @@ body {
 
 #header-jolie-logo {
 	background: url(../imgs/eye_i.png);
-	background-size: auto 100px;
+	background-size: auto 100%;
+  background-position: center; 
 	background-repeat: no-repeat;
 	height: 100px;
 	margin-left: 1em;
 }
-
 
 #header-nav-menu a {
 	color: white;
