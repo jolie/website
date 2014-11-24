@@ -1,1 +1,0 @@
-op_name ( request_type )( response_type ) throws fault_name ( fault_type )
