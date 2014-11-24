@@ -46,11 +46,6 @@ body {
 	font-size: x-large;
 }
 
-#footer {
-/* 	background-image: url(../imgs/background.png); */
-	font-size: medium;
-}
-
 #header-jolie-logo {
 	background: url(../imgs/eye_i.png);
 	background-repeat: no-repeat;
@@ -59,4 +54,9 @@ body {
 
 #header-nav-menu {
 	padding: 1em;
+}
+
+#footer {
+/* 	background-image: url(../imgs/background.png); */
+	font-size: medium;
 }
