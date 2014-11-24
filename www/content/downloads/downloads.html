@@ -1,23 +1,10 @@
-<div class="standard_page"><div class="standard_page_body">
-
+<!--Themed-->
 <h1 id="download-and-install">Download and Install</h1>
 <p>Jolie requires Java to run, so make sure to have <a href="http://www.java.com/">Java</a> installed before proceeding.</p>
 <p>Regardless of the method you choose, after installation executing a Jolie script will be just a matter of invoking the Jolie interpreter.</p>
 <div class="code" src="example_install_2.txt">
 
 </div>
-<!--<div style="margin-bottom:20px;margin-left:auto;text-align:center;margin-right:auto;width:80%;-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;border:1px solid lightgrey">
-<div style="padding: 10px 0px 10px 0px;vertical-align:middle;width:49%;display:inline-block;border-right:1px solid lightgrey;font-size:20px;">
-<a href="#nix">
-On Linux and Mac
-<img src="/imgs/os_linux.png" title="Linux" height="100px"/>
-</a>
-</div>
-<div style="padding: 10px 0px 10px 0px;vertical-align:middle;width:49%;display:inline-block;font-size:20px;">
-<a href="#windows">On Windows</a>
-</div>
-</div>-->
-
 <hr />
 <h2 id="the-easy-way-binary-installer">The easy way (binary installer)</h2>
 <p>This method requires Java 6 (also called Java 1.6) or later to be installed before proceeding.</p>
@@ -38,21 +25,20 @@ On Linux and Mac
 </ul>
 <div style="float:left">
 <p>
-Jump to the instructions for your Operating System: <!-- <div style="float:left"> --> <a href="#nix"><img src="/imgs/os_linux.png" title="Linux" height="80px"/></a> <a href="#nix"><img src="/imgs/os_mac.png" title="Mac OS" height="80px"/></a> <a href="#windows"><img src="/imgs/os_win.png" title="Windows" height="80px"/></a>
+Jump to the instructions for your Operating System: <a href="#nix"><img src="/imgs/os_linux.png" title="Linux" height="80px"/></a> <a href="#nix"><img src="/imgs/os_mac.png" title="Mac OS" height="80px"/></a> <a href="#windows"><img src="/imgs/os_win.png" title="Windows" height="80px"/></a>
 </p>
-<!-- </div> -->
 </div>
+<div style="clear: both;">
 
-<div style="clear: both;"></div>
-
-<h3><a id="nix"></a>Linux and Mac OS</h3>
+</div>
+<h3 id="linux-and-mac-os"><a id="nix"></a>Linux and Mac OS</h3>
 <p>Open a shell and execute:</p>
 <div class="code" src="example_install_1.txt">
 
 </div>
 <p>The ant script will automatically build and install Jolie for you. The default is to install in <code>/opt/jolie</code>, but the installation parameters can be controlled by editing <code>buildconfig/config.properties</code>.</p>
 <p>A Jolie launcher script will be put in <code>/usr/local/bin</code> (this parameter is configurable in <code>buildconfig/config.properties</code>, too).</p>
-<h3><a id="windows"></a>On Windows</h3>
+<h3 id="on-windows"><a id="windows"></a>On Windows</h3>
 <p>Here are some useful links to get the required tools:</p>
 <ul>
 <li><p>JDK (Java SE Development Kit): <a href="http://java.sun.com/javase/downloads/index.jsp">link</a></p></li>
@@ -66,7 +52,7 @@ Jump to the instructions for your Operating System: <!-- <div style="float:left"
 </div>
 <p>Edit your PATH environment variable so that it includes the <code>install.launcher_dir</code> directory. You can find some instructions on managing environment variables in Windows XP at this <a href="http://support.microsoft.com/kb/310519">link</a>.</p>
 <p>Execute the <code>ant dist-install</code> command from inside the directory where you downloaded the source code of Jolie.</p>
-<h3>Troubleshooting (Windows)</h3>
+<h3 id="troubleshooting-windows">Troubleshooting (Windows)</h3>
 <p>If the install path contains spaces you will experience a problem in launching the Jolie executable. This is due to a problem on the command <code>set joliepath</code> present in jolie.bat that can be found in the installation directoy that you specified previously.</p>
 <p>To solve this you must substitute the <code>\</code> characters before and after the path containing the space with <code>//</code> and include the same part of the path between <code>&quot;&quot;</code>.</p>
 <p>For instance, if you chose to use the same directory as in this tutorial you can correct the <code>set</code> command with the following code.</p>
@@ -78,16 +64,12 @@ Jump to the instructions for your Operating System: <!-- <div style="float:left"
 
 </div>
 <hr />
-<h1>Support for external tools</h1>
-<h2>Kate</h2>
-<p>Homepage: <a href="http://kate-editor.org/">http://kate-editor.org/</a></p>
+<h1 id="support-for-external-tools">Support for external tools</h1>
+<h2 id="kate">Kate</h2>
+<p>Homepage: <a href="http://kate-editor.org/" class="uri">http://kate-editor.org/</a></p>
 <p>A syntax highlighting description file for KatePart (which is used by most KDE applications and the Kate editor itself) is available.</p>
 <p>Download the <a href="http://www.jolie-lang.org/files/katepart/jolie.xml">latest version</a> and put it in your <code>$KDE_HOME/share/apps/katepart/syntax directory</code>.</p>
 <p>You can discover your <code>$KDE_HOME</code> directory by issuing the <code>kde4 config localprefix</code> command.</p>
-<h2>Sublime Text</h2>
+<h2 id="sublime-text">Sublime Text</h2>
 <p>A bundle for <a href="http://www.sublimetext.com/">Sublime Text 2</a> with syntax highlighting, code completion, and sublime-build(s) for Jolie.</p>
 <p>Refer to this <a href="https://github.com/thesave/sublime-Jolie">github repository</a> for downloading and installing the latest version.</p>
-</div>
-</div>
-
-

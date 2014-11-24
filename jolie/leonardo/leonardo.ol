@@ -52,7 +52,6 @@ Protocol: http {
 	.default = "default";
 	.host -> host
 }
-
 Location: Location_Leonardo
 Interfaces: HTTPInterface
 Aggregates: Frontend
@@ -115,7 +114,7 @@ main
 
 			checkForMaliciousPath;
 			checkForHost;
-
+			
 			file.filename = documentRootDirectory + s.result[0];
 
 			getMimeType@File( file.filename )( mime );
@@ -128,10 +127,23 @@ main
 				file.format = format = "binary"
 			};
 
-			readFile@File( file )( response )
+			readFile@File( file )( response );
+
+			response.prefix = "<!--Themed-->";
+			startsWith@StringUtils( response )( isThemed );
+			undef( response.prefix );
+			if ( isThemed ) {
+				file.format = "text";
+				file.filename = documentRootDirectory + "header.html";
+				readFile@File( file )( header );
+				file.format = "text";
+				file.filename = documentRootDirectory + "footer.html";
+				readFile@File( file )( footer );
+				response = header + response + footer
+			}
 		}
 	} ] { nullProcess }
-
+	
 	[ shutdown()() { nullProcess } ] { exit }
 }
 

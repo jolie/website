@@ -1,4 +1,4 @@
-<div class="standard_page"><div class="standard_page_body">
+<!--Themed-->
 
 # Download and Install
 
@@ -8,18 +8,6 @@ Regardless of the method you choose, after installation executing a Jolie script
 interpreter.
 
 <div class="code" src="example_install_2.txt"></div>
-
-<!--<div style="margin-bottom:20px;margin-left:auto;text-align:center;margin-right:auto;width:80%;-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;border:1px solid lightgrey">
-<div style="padding: 10px 0px 10px 0px;vertical-align:middle;width:49%;display:inline-block;border-right:1px solid lightgrey;font-size:20px;">
-<a href="#nix">
-On Linux and Mac
-<img src="/imgs/os_linux.png" title="Linux" height="100px"/>
-</a>
-</div>
-<div style="padding: 10px 0px 10px 0px;vertical-align:middle;width:49%;display:inline-block;font-size:20px;">
-<a href="#windows">On Windows</a>
-</div>
-</div>-->
 
 ---
 
@@ -55,12 +43,10 @@ It requires the following software to be installed before proceeding:
 
 <div style="float:left">
 <p>Jump to the instructions for your Operating System:
-<!-- <div style="float:left"> -->
 <a href="#nix"><img src="/imgs/os_linux.png" title="Linux" height="80px"/></a>
 <a href="#nix"><img src="/imgs/os_mac.png" title="Mac OS" height="80px"/></a>
 <a href="#windows"><img src="/imgs/os_win.png" title="Windows" height="80px"/></a>
 </p>
-<!-- </div> -->
 </div>
 
 <div style="clear: both;"></div>
@@ -137,5 +123,3 @@ You can discover your `$KDE_HOME` directory by issuing the `kde4 config localpre
 A bundle for [Sublime Text 2](http://www.sublimetext.com/) with syntax highlighting, code completion, and sublime-build(s) for Jolie.
 
 Refer to this [github repository](https://github.com/thesave/sublime-Jolie) for downloading and installing the latest version.
-
-</div></div>
