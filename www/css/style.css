@@ -31,6 +31,7 @@
 
 body {
 	font-size: large;
+	text-align: justify;
 }
 
 .vcenter {
@@ -54,17 +55,39 @@ body {
 }
 
 #header-jolie-logo {
-	background: url(../imgs/eye_i.png);
+	background: url(../imgs/eye.png);
+	background-size: auto 100px;
 	background-repeat: no-repeat;
-	height: 85px;
+	height: 100px;
+	margin-left: 1em;
+}
+
+
+#header-nav-menu a {
+	color: white;
+	text-decoration: none;
 }
 
 #header-nav-menu li {
+	margin-left: 0.2em;
+	margin-right: 0.2em;
+}
+
+#header-nav-menu a:hover {
+	background-color: #7d2c2b;
+	color: white;
+	border-radius: 1em;
+	text-decoration: none;
+}
+
+#header-nav-menu li .active {
+	background-color: white;
 	color: black;
+	border-radius: 1em;
+	text-decoration: none;
 }
 
 #footer {
-/* 	background-image: url(../imgs/background.png); */
 	font-size: smaller;
 	padding-top: 40px;
 	padding-bottom: 40px;
