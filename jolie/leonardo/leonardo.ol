@@ -89,6 +89,31 @@ define checkForMaliciousPath
 	}
 }
 
+define applyTheme
+{
+	if ( response instanceof string ) {
+		response.prefix = "<!--Themed-->";
+		startsWith@StringUtils( response )( isThemed );
+		undef( response.prefix );
+		if ( isThemed ) {
+			file.format = "text";
+			file.filename = documentRootDirectory + "header.html";
+			readFile@File( file )( header );
+			file.format = "text";
+			file.filename = documentRootDirectory + "footer.html";
+			readFile@File( file )( footer );
+			response = header + response + footer
+		}
+	}
+}
+
+courier HTTPInput {
+	[ interface FrontendInterface( request )( response ) ] {
+		forward( request )( response );
+		applyTheme
+	}
+}
+
 main
 {
 	[ default( request )( response ) {
@@ -129,17 +154,8 @@ main
 
 			readFile@File( file )( response );
 
-			response.prefix = "<!--Themed-->";
-			startsWith@StringUtils( response )( isThemed );
-			undef( response.prefix );
-			if ( isThemed ) {
-				file.format = "text";
-				file.filename = documentRootDirectory + "header.html";
-				readFile@File( file )( header );
-				file.format = "text";
-				file.filename = documentRootDirectory + "footer.html";
-				readFile@File( file )( footer );
-				response = header + response + footer
+			if ( file.format == "text" ) {
+				applyTheme
 			}
 		}
 	} ] { nullProcess }

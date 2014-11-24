@@ -45,7 +45,7 @@ Jolie:
 
 define buildEntryHtml
 {
-	html = "<div class=\"standard_page\">";
+	html = "<!--Themed--><div class=\"standard_page\">";
 	entry -> blogsContent.entry[i];
 	lastTimestamp = 0;
 	for( i = 0, i < #blogsContent.entry, i++ ) {
