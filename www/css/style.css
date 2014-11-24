@@ -34,6 +34,11 @@ body {
 	text-align: justify;
 }
 
+.page-content {
+	padding-top: 1em;
+	padding-bottom: 1em;
+}
+
 .vcenter {
     display: flex;
     align-items: center;
