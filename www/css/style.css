@@ -60,7 +60,7 @@ body {
 }
 
 #header-jolie-logo {
-	background: url(../imgs/eye.png);
+	background: url(../imgs/eye_i.png);
 	background-size: auto 100px;
 	background-repeat: no-repeat;
 	height: 100px;
@@ -92,11 +92,24 @@ body {
 	text-decoration: none;
 }
 
+.landing-img{
+	max-width: 100%;
+}
+
+#landing-motto {
+	font-size: 300%;
+}
+
+.vertical-align {
+    display: flex;
+    align-items: center;
+}
+
 #footer {
 	font-size: smaller;
 	padding-top: 40px;
 	padding-bottom: 40px;
-	margin-top: 100px;
+	margin-top: 50px;
 	color: #777;
 	text-align: center;
 	border-top: 1px solid #e5e5e5;
