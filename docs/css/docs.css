@@ -1,0 +1,40 @@
+.js_container {
+	overflow-y: scroll;
+}
+
+#js_header {
+	font-size: 1em;
+}
+
+#js_site_header{
+	margin-bottom: 5px;
+}
+
+#jolie_logo {
+	max-height: 65px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+#js_menu ul {
+	padding-left: 5%;
+}
+
+#js_menu li {
+	padding-left: 5%;
+}
+
+.doc_image img {
+	width: 80%;
+	margin-left: 10%;
+	margin-bottom: 1em;
+	margin-top: 1em;
+}
+
+a.menu_selected {
+	font-weight: bolder;
+}
+
+a.toc_selected {
+	text-decoration: underline;
+}

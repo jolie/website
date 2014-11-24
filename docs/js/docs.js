@@ -110,8 +110,30 @@ var loadMenuItem = function( event ){
 		$( css_content ).html( data );
 		loadCode( href );
 		loadSyntax( href );
+		addTOCToParent( data, el );
+		$( css_content ).scrollTop( 0 );
 	});
 	return false;
+};
+
+var addTOCToParent = function ( data, el ) {
+	$( css_menu ).find( ".TOC" ).each( function( i, e ) {
+		$( e ).remove();
+	});
+	var ul = $( "<ul></ul>" ).attr( "class", "TOC" );
+	$( css_content ).find( "h2" ).each( function( i, e ) {
+		ul.append( $( "<li></li>" )
+			.append( $( "<a></a>")
+				.attr( "href", "#" + $( e ).attr( "id" ) )
+				.text( $( e ).text() ).click( function( event ) {
+					$( css_menu ).find( ".toc_selected" ).each( function(i, e) {
+						$( e ).attr( "class", "" );
+					});
+					var sube = $( event.target );
+					sube.attr( "class" , "toc_selected" );
+				}) ) );
+	});
+	el.parent().append( ul );
 };
 
 var loadCode = function ( href ) {
