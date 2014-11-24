@@ -24,7 +24,6 @@ include "file.iol"
 include "string_utils.iol"
 include "protocols/http.iol"
 include "../frontend/frontend.iol"
-include "../news/news_service_interface.iol"
 
 include "config.iol"
 include "virtual_hosts.iol"

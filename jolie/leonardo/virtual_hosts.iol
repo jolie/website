@@ -21,5 +21,9 @@
 
 define checkForHost
 {
-	documentRootDirectory = WWWDirectory
+	if ( host == "docs.jolie-lang.org" || args[0] == "docs" ) {
+		documentRootDirectory = "../../docs/"
+	} else {
+		documentRootDirectory = WWWDirectory
+	}
 }
