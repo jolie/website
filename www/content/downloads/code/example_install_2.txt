@@ -1,1 +1,0 @@
-jolie my_program.ol

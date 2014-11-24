@@ -5,9 +5,7 @@
 Jolie requires Java to run, so make sure to have [Java](http://www.java.com/) installed before proceeding.
 
 Regardless of the method you choose, after installation executing a Jolie script will be just a matter of invoking the Jolie
-interpreter.
-
-<div class="code" src="example_install_2.txt"></div>
+interpreter: `jolie your_file.ol`
 
 ---
 
@@ -55,7 +53,11 @@ It requires the following software to be installed before proceeding:
 
 Open a shell and execute:
 
-<div class="code" src="example_install_1.txt"></div>
+<pre name="code">
+svn co svn://svn.code.sf.net/p/jolie/code/trunk jolie-src
+cd jolie-src
+ant && sudo ant install
+</pre>
 
 The ant script will automatically build and install Jolie for you. The default is to install in `/opt/jolie`, but the 
 installation parameters can be controlled by editing `buildconfig/config.properties`.
@@ -78,7 +80,10 @@ Open the `buildconfig/config.properties` file and change the parameters `install
 by replacing the existing directories with your desired ones. Use `\\` instead of the single backslashes when writing paths.
 Here is an example:
 
-<div class="code" src="example_install_3.txt"></div>
+<pre>
+install.launcher_dir=C:\\Program Files\\jolie
+install.dir=C:\\Program Files\\jolie
+</pre>
 
 Edit your PATH environment variable so that it includes the `install.launcher_dir` directory.
 You can find some instructions on managing environment variables in Windows XP at this
@@ -98,11 +103,11 @@ To solve this you must substitute the `\` characters before and after the path c
 For instance, if you chose to use the same directory as in this tutorial you can correct the `set`
 command with the following code.
 
-<div class="code" src="example_install_4.txt"></div>
+<pre>
+set joliepath=C://"Program Files"//jolie\
+</pre>
 
-You can now execute Jolie scripts by issuing the `jolie` command in a console, for example:
-
-<div class="code" src="example_install_5.txt"></div>
+You can now execute Jolie scripts by issuing the `jolie` command in a console, for example: `jolie your_file.ol`
 
 ---
 

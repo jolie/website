@@ -1,3 +1,0 @@
-svn co svn://svn.code.sf.net/p/jolie/code/trunk jolie-src
-cd jolie-src
-ant && sudo ant install
