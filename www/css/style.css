@@ -1,4 +1,5 @@
 @import url("blogs.css");
+@import url("header.css");
 
 /*.download {
 	border-radius: 20px;
@@ -39,55 +40,7 @@ body {
 	padding-bottom: 1em;
 }
 
-#header {
-/* 	background-image: url(../imgs/background.png); */
-	background: -moz-linear-gradient(top,  #443637 0%, #050000 100%);
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#443637), color-stop(100%,#050000));	
-	background: -webkit-linear-gradient(top,  #443637 0%,#050000 100%);
-	background: -o-linear-gradient(top,  #443637 0%,#050000 100%);		
-	background: -ms-linear-gradient(top,  #443637 0%,#050000 100%);
-	background: linear-gradient(to bottom, #443637 0%,#050000 100%)
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#443637', endColorstr='#050000',GradientType=0 );
-	border-bottom: 0.2em solid #C4C4C4;
-	font-size: x-large;
-	min-height: 120px;
-	padding: 1em;
-}
-
-#header-jolie-logo {
-	background: url(../imgs/eye_i.png);
-	background-size: auto 100%;
-  background-position: center; 
-	background-repeat: no-repeat;
-	height: 100px;
-	margin-left: 1em;
-}
-
-#header-nav-menu a {
-	color: white;
-	text-decoration: none;
-}
-
-#header-nav-menu li {
-	margin-left: 0.2em;
-	margin-right: 0.2em;
-}
-
-#header-nav-menu a:hover {
-	background-color: #7d2c2b;
-	color: white;
-	border-radius: 1em;
-	text-decoration: none;
-}
-
-#header-nav-menu li .active {
-	background-color: white;
-	color: black;
-	border-radius: 1em;
-	text-decoration: none;
-}
-
-.landing-img{
+.landing-img {
 	max-width: 100%;
 }
 
