@@ -23,7 +23,7 @@ function activeMenuItem() {
 
 function landingPage() {
 	var path = window.location.pathname;
-	if ( path == "/index.html" ) {
+	if ( path == "/index.html" || path == "/" || path == "" ) {
 		$( ".page-content" ).attr( "class", "landing-page" );
 		$( "#page-col" ).attr( "class", "" );
 	}
