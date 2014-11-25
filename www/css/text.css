@@ -1,11 +1,12 @@
 h1 {
 	color: #A80C1E;
-	font-size: 250%;
+	font-size: 42px;
 	letter-spacing: -0.05em;
 	line-height: 1em;
 	padding-bottom: 0.1em;
 	border-bottom: 1px solid gray;
 	margin-bottom: 0.5em;
+	padding-top:0.4em;
 /* 	font-family: serif; */
 }
 
@@ -16,7 +17,7 @@ h2 {
 }
 
 h3 {
-	font-size: x-large;
+	font-size: 20px;
 	color: #666666;
 /* 	padding-left: 0.5em; */
 	font-style: italic;

@@ -1,6 +1,6 @@
 <!--Themed-->
 
-<div class="container full-width text-center landing-banner-transparent">
+<div id="section0" class="container full-width text-center landing-banner-transparent">
 	<div class="col-xs-12" style="padding: 1em;">
 		<div class="row vertical-align">
 			<div class="col-xs-5 text-center">
@@ -8,28 +8,28 @@
 			</div>
 			<div class="col-xs-7">
 			<h1>The first language for Microservices</h1>
+			<a href="/downloads.html">Download</a> <a href="/documentation.html">Tutorials</a>
 			</div>
 		</div>
 	</div>
 </div>
 
-<div class="container full-width landing-banner-dark">
+<div id="section1" class="container full-width landing-banner-dark">
 <div class="col-xs-12">
-	<h2 id="native-microservice-programming">Native microservice programming</h2>
+	<h2 id="native-microservice-programming">Native microservice programming</h2><div class="next-container"><a class="next" onclick="scroll_to_section('section2')">Next</a></div>
 	<p>Jolie crystallises the programming concepts of microservices as native language features:
 	<i>the basic building blocks of software are not objects or functions, but rather
 	services</i> that can always be relocated and replicated as needed.
 	Distribution and reusability are achieved by design.</p>
-	<p class="landing-motto">Jolie is a service-oriented language.</p>
+	<p class="landing-motto">Jolie is a service-oriented language.</p>	
 </div>
 </div>
 
 <div class="container full-width landing-banner-separator"></div>
 
-<div class="container full-width landing-banner-light">
+<div id="section2" class="container full-width landing-banner-light">
 <div class="col-xs-12">
-
-<h2 id="built-for-the-networked-age-distributable-by-design">Built for the networked age: distributable by design</h2>
+<h2 id="built-for-the-networked-age-distributable-by-design">Built for the networked age: distributable by design</h2><div class="next-container"><a class="next" onclick="scroll_to_section('section3')">Next</a></div>
 <p>Jolie code is always contained in services, which you can always move from being local to remote and vice versa, without altering the logic of your programs. A monolithical application can scale to being distributed by design: if you decide to distribute a part of it, just take it and execute it in another machine.</p>
 <div class="col-xs-6 text-center">
   
@@ -60,9 +60,9 @@
 
 <div class="container full-width landing-banner-separator"></div>
 
-<div class="container full-width landing-banner-dark">
+<div id="section3" class="container full-width landing-banner-dark">
 <div class="col-xs-12">
-	<h2 id="protocol-agnostic">Protocol agnostic</h2>
+	<h2 id="protocol-agnostic">Protocol agnostic</h2><div class="next-container"><a class="next" onclick="scroll_to_section('section4')">Next</a></div>
 	<p>Jolie is protocol agnostic: your services can exchange data by using different protocols. Bridging two networks using different protocols is a matter of a few lines of code! And if you need a protocol that Jolie does not support yet, there is an API for easily developing new ones in Java.</p>
 	<div class="text-center">
 	<img src="imgs/protocolindependence.png">
@@ -72,10 +72,10 @@
 
 <div class="container full-width landing-banner-separator"></div>
 
-<div class="container full-width landing-banner-light">
+<div id="section4" class="container full-width landing-banner-light">
 <div class="col-xs-12">
 
-<h2>Everything you build can be used to build again</h2>
+<h2>Everything you build can be used to build again</h2><div class="next-container"><a class="next" onclick="scroll_to_section('section5')">Next</a></div>
 <p>Jolie offers many ways for building complex software from simple services. Even the deployment architecture of a system can be programmed with native primitives, generalising common practices. Whatever you build, is again a service that you can expose; so, it can be reused to build again! Here are some examples of composition:</p>
 
 <div class="container col-xs-12">
@@ -136,9 +136,9 @@
 
 <div class="container full-width landing-banner-separator"></div>
 
-<div class="container full-width landing-banner-dark">
+<div id="section5" class="container full-width landing-banner-dark">
 <div class="col-xs-12">
-<h2 id="structured-workflows">Structured workflows</h2>
+<h2 id="structured-workflows">Structured workflows</h2><div class="next-container"><a class="next" onclick="scroll_to_section('section6')">Next</a></div>
 <p>Jolie comes with native primitives for structuring workflows, for example in sequences (one after the other) or parallels (go at the same time). This makes the code follow naturally from the requirements, avoiding error-prone bookkeeping variables for checking what happened so far in a computation. For example, the following code says that the operations <code>publish</code> and <code>edit</code> become available at the same time (<code>|</code>), but only after (<code>;</code>) operation <code>login</code> is invoked:</p>
 <pre>
 login( credentials )() { checkCredentials };
@@ -150,33 +150,27 @@ login( credentials )() { checkCredentials };
 <h2 id="dynamic-error-handling-for-parallel-code">Dynamic error handling for parallel code</h2>
 <p>Programming reliable parallel code is challenging because faults may cause side-effects in parallel activities. Jolie comes with a solid semantics for parallel fault handling. Programmers can update the behaviour of fault handlers at runtime, following the execution of activities thanks to the <code>install</code> primitive.</p>
 <pre>
-include "console.iol"
-include "time.iol"
+<b  class="keyword">include</b> <span class="string">"console.iol"</span>
+<b  class="keyword">include</b> <span class="string">"time.iol"</span>
 
-main
+<b class="keyword">main</b>
 {
-    scope( grandFather )
+    <b  class="keyword">scope</b>( grandFather )
     {
-        install( this => 
-            println@Console( "recovering grandFather" )()
-        );
-        scope( father )
+        <b  class="keyword">install</b>( <b class="keyword">this</b> => println@Console( <span class="string">"recovering grandFather"</span> )() );
+        <b  class="keyword">scope</b>( father )
         {
-            install( this => 
-                println@Console( "recovering father" )()
-            );
-            scope ( son )
+            <b class="keyword">install</b>( <b class="keyword">this</b> => println@Console( <span class="string">"recovering father"</span> )() );
+            <b class="keyword">scope</b> ( son )
             {
-                install( this => 
-                    println@Console( "recovering son" )()
-                );
+                <b class="keyword">install</b>( <b class="keyword">this</b> => println@Console( <span class="string">"recovering son"</span> )() );
                 sleep@Time( 500 )();
-                println@Console( "Son's code block" )()
+                println@Console( <span class="string">"Son's code block"</span> )()
             }
         }
     }
     |
-    throw( a_fault )
+    <b class="keyword">throw</b>( a_fault )
 }
 </pre>
 
@@ -185,9 +179,9 @@ main
 
 <div class="container full-width landing-banner-separator"></div>
 
-<div class="container full-width landing-banner-light">
+<div id="section6" class="container full-width landing-banner-light">
 <div class="col-xs-12">
-<h2 id="revolutionise-the-way-you-develop-web-applications">Revolutionise the way you develop web applications</h2>
+<h2 id="revolutionise-the-way-you-develop-web-applications">Revolutionise the way you develop web applications</h2><div class="next-container"><a class="next" onclick="scroll_to_section('section7')">Next</a></div>
 <p><strong>Jolie requires interfaces to be clearly defined</strong>, thus web GUIs are completely independent from the microservice system they interact with. A Jolie service of a few lines of code, called Leonardo, acts as a web server which can interoperate with web applications written in different technologies. For example, we natively support JSON, XML, AJAX, GWT, and other technologies.</p>
 <div class="col-xs-offset-1 col-xs-10">
 <img class="img-responsive" src="imgs/interface.png">
@@ -197,9 +191,9 @@ main
 
 <div class="container full-width landing-banner-separator"></div>
 
-<div class="container full-width landing-banner-dark">
+<div id="section7" class="container full-width landing-banner-dark">
 <div class="col-xs-12">
-	<h2 id="solid-foundations">Solid foundations</h2>
+	<h2 id="solid-foundations">Solid foundations</h2><div class="next-container"><a class="next" onclick="scroll_to_section('section8')">Next</a></div>
 <!-- 	<div class="container col-xs-12"> -->
 	<div class="row vertical-align">
 		<div class="col-xs-4">
@@ -216,15 +210,15 @@ main
 
 <div class="container full-width landing-banner-separator"></div>
 
-<div class="container full-width landing-banner-light">
+<div id="section8" class="container full-width landing-banner-light">
 <div class="col-xs-12">
-<h2 id="join-us">Join us!</h2>
+<h2 id="join-us">Join us!</h2><div class="next-container"><a class="next" onclick="scroll_to_section('section9')">Next</a></div>
 <!-- <div class="container col-xs-12"> -->
   <div class="row vertical-align">
-<div class="col-xs-8">
-Jolie is an <a href="about_jolie.html">open source project</a>, with a growing community of contributors and users that you are welcome to <a href="community.html">join</a>. Check out our <a href="news.html">project news</a>, or have a look at our <a href="blogs.html">contributor blogs</a>.
+<div class="col-xs-9">
+Jolie is an <a href="about_jolie.html">open source project</a>, with a growing community of contributors and users that you are welcome to <a href="community.html">join</a>. Check out our <a href="news.html">project news</a>, or have a look at our <a href="/planet">contributor blogs</a>.
 </div> 
-<div class="col-xs-4">
+<div class="col-xs-3">
 <img class="img-responsive" src="imgs/news.png">
 </div>
 <div class="clearfix"></div>
@@ -235,7 +229,7 @@ Jolie is an <a href="about_jolie.html">open source project</a>, with a growing c
 
 <div class="container full-width landing-banner-separator"></div>
 
-<div class="container full-width landing-banner-dark">
+<div id="section9" class="container full-width landing-banner-dark">
 <div class="col-xs-12">
 <h2 id="start-now-to-build-your-distributed-system">Start now to build your distributed system!</h2>
 <!-- <div class="container col-xs-12"> -->
@@ -248,10 +242,11 @@ Jolie is an <a href="about_jolie.html">open source project</a>, with a growing c
 <h3 id="you-do-not-need-frameworks-just-an-interpreter.">You do not need frameworks, just an interpreter.</h3>
 You do not need special frameworks for deploying services, nor an ESB for achieving
 integration: you just need to install the Jolie interpreter, write a few lines
-of code, and run them with a single command: <code>jolie my_service.ol</code>
+of code, and run them with a single command: <br><code>jolie my_service.ol</code></br>
 </div>
   </div>
 <!-- </div> -->
 </div>
 </div>
 <div class="clearfix"></div>
+<div class="container full-width landing-banner-separator"></div>

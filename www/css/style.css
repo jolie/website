@@ -12,7 +12,7 @@
 	padding-bottom: 1em;
 	padding-left: 5em;
 	padding-right: 0.5em;
-	border: 2px solid #A80C1E;
+	border: 1px solid #ccc;
 	display: inline-block;
 }
 
@@ -24,8 +24,10 @@
 }
 
 body {
-	font-size: large;
-	text-align: justify;
+	font-size: 25px;
+	text-align: justify;	
+	font-family: 'OpenSansRegular', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
 }
 
 .page-content {
@@ -34,16 +36,22 @@ body {
 }
 
 .vertical-align {
-    display: flex;
-    align-items: center;
+	display: flex;
+	align-items: center;
 }
 
 #footer {
-	font-size: smaller;
-	padding-top: 40px;
-	padding-bottom: 40px;
-	margin-top: 50px;
-	color: #777;
+	font-size: 20px;
+	padding-top: 80px;
+	padding-bottom: 80px;
 	text-align: center;
-	border-top: 1px solid #e5e5e5;
+	background: -moz-linear-gradient(top,  #443637 0%, #050000 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#443637), color-stop(100%,#050000));	
+	background: -webkit-linear-gradient(top,  #443637 0%,#050000 100%);
+	background: -o-linear-gradient(top,  #443637 0%,#050000 100%);		
+	background: -ms-linear-gradient(top,  #443637 0%,#050000 100%);
+	background: linear-gradient(to bottom, #443637 0%,#050000 100%)
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#443637', endColorstr='#050000',GradientType=0 );
+	color:white;
 }
+

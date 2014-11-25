@@ -18,13 +18,12 @@
 }
 
 .BlogEntryContent {
-/* 	font-size: large; */
+ 	font-size: 24px;
 }
 
 .BlogEntrySeparator {
 	width: 100%;
 	height: 0.5em;
-	background-color: #EDEFEC;
 	border: none;
 	margin-bottom: 1em;
 /* 	margin-top: 1em; */

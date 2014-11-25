@@ -3,22 +3,30 @@
 }
 
 .landing-motto {
-	font-size: 200%;
+	font-size: 42px;
 	font-style: italic;
+	font-weight:bold;
+	text-align:right;
+	padding-top:25px;
+	padding-bottom:25px;
+	color:white;
 }
 
 .landing-page h1 {
 	border: none;
-	font-size: 350%;
+	font-size: 80px;
 	color: white;
 	font-weight: bold;
 	text-shadow: 0 3px 0 rgba(0, 0, 0, 1);
+	text-align:left;
+	font-family: Helvetica, Arial;
 }
 
 .landing-page h2 {
 	color: white;
 	font-weight: bold;
 	text-shadow: 0 3px 0 rgba(0, 0, 0, 1);
+	font-size:45px;
 }
 
 .landing-page {
@@ -27,17 +35,28 @@
 	background-attachment: fixed;
 }
 
+.landing-page .col-xs-12{
+	width: 960px;
+	margin-left: auto;
+	margin-right: auto;
+	float:none;
+}
+
 .full-width {
 	width: 100%;
 }
 
+.keyword {
+	color: black;
+}
+
 .landing-banner-transparent {
-	border-bottom: 0.2em solid #C4C4C4;
+	border-bottom: 1px solid #C4C4C4;
 	padding: 2em;
 }
 
 .landing-banner-separator {
-	border-bottom: 0.2em solid #C4C4C4;
+	border-bottom: 1px solid #C4C4C4;
 	padding: 1em;
 }
 
@@ -49,9 +68,10 @@
 	background: -ms-linear-gradient(top,  #443637 0%,#050000 100%);
 	background: linear-gradient(to bottom, #443637 0%,#050000 100%)
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#443637', endColorstr='#050000',GradientType=0 );
-	border-bottom: 0.2em solid #C4C4C4;
-	color: white;
+	border-bottom: 1px solid #C4C4C4;
+	color: #bbb;
 	padding: 2em;
+	font-size:30px;
 }
 
 .landing-banner-light {
@@ -63,10 +83,57 @@
 	background: -ms-linear-gradient(top,  white 0%,#ccc 100%);	
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='white', endColorstr='#ccc',GradientType=0 );
 	background: linear-gradient(to bottom, white 0%,#ccc 100%);border-bottom: 0.2em solid #C4C4C4;
-	color: black;
+	color: #555;
+	font-size:30px;
 }
 
 .landing-banner-light h2 {
 	color: black;
 	text-shadow: 0 3px 0 lightgrey;
+}
+
+.next-container {
+	text-align:right;
+	width:960px;
+}
+
+.next {
+	padding-right:26px;	
+	font-style: italic;
+	font-size:24px;
+}
+
+.next:hover {
+	cursor: pointer;
+	text-decoration:none;
+}
+
+#section0 a {
+	margin-right:10px;
+	padding:20px;
+	padding-top:10px;
+	padding-bottom:10px;
+	border-radius:20px;
+	background-color:#FE9A2E;
+	opacity:0.9;
+	font-weight:bold;
+	color:white;
+	border:4px solid #B45F04;
+	float:left;
+}
+
+#section0 a:hover {
+	background-color:#B45F04;
+	border:4px solid #FE9A2E;
+	cursor:pointer;
+	text-decoration:none;
+}
+
+#section9 h3 {
+	font-size:30px;
+	color:white;
+}
+
+.string {
+	color: red;
 }
