@@ -2,11 +2,17 @@
 	border-bottom: 1px solid gray;
 /* 	margin-top: 1em; */
 	margin-bottom: 1em;
+	margin-right:auto;
+	margin-left:auto;
+	width:860px;
 }
 
 .BlogEntry {
 	margin-bottom: 1em;
 	font-size: large;
+	margin-right:auto;
+	margin-left:auto;
+	width:860px;
 }
 
 .BlogEntryAuthor {
