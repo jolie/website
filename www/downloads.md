@@ -7,7 +7,6 @@ Jolie requires Java to run, so make sure to have [Java](http://www.java.com/) in
 Regardless of the method you choose, after installation executing a Jolie script will be just a matter of invoking the Jolie
 interpreter: `jolie your_file.ol`
 
----
 
 ## The easy way (binary installer)
 
@@ -17,8 +16,9 @@ This method requires Java 6 (also called Java 1.6) or later to be installed befo
 
 Download the Java-based installer of the latest stable release of Jolie:
 
-<div class="download">
-<a href="/files/releases/jolie-1.1.jar" onclick="_gaq.push(['_trackEvent','Download','JolieInstaller',this.href]);">
+<div class="col-xs-12">
+<a class="download" href="/files/releases/jolie-1.1.jar" 
+onclick="_gaq.push(['_trackEvent','Download','JolieInstaller',this.href]);">
 Jolie Installer
 </a>
 </div>
@@ -28,7 +28,7 @@ Jolie Installer
 Open a shell terminal. From the directory in which you downloaded the installer,
 execute `java -jar jolie-1.1.jar` and follow the on-screen instructions.
 
----
+
 
 ## The hard way (compile from sources)
 
@@ -109,7 +109,7 @@ set joliepath=C://"Program Files"//jolie\
 
 You can now execute Jolie scripts by issuing the `jolie` command in a console, for example: `jolie your_file.ol`
 
----
+
 
 # Support for external tools
 
