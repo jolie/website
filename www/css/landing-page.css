@@ -2,25 +2,9 @@
 	max-width: 100%;
 }
 
-.landing-text {
-	font-size: 2.5vw;
-}
-
-#landing-motto {
-	font-size: 4.3vw;
-	font-weight: bolder;
-	color: white;
-}
-
-.landing-button {
-	font-size: 2.2vw;
-}
-
-#landing-splash-container {
-	background-image: url( ../imgs/top.jpg );
-	background-repeat: no-repeat;
-	background-color: rgb(101, 19, 103);
-	padding-top: 20px;
+.landing-motto {
+	font-size: 200%;
+	font-style: italic;
 }
 
 .landing-page h1 {
