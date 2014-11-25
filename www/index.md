@@ -1,18 +1,27 @@
 <!--Themed-->
+</div></div></div>
 
 <div class="landing-page">
-<div class="container col-xs-12">
+<div id="landing-splash-container" class="container col-xs-12">
   <div class="row vertical-align">
-    <div class="span6">
-      <img class="img-responsive" src="imgs/microservice-logo.png"/>
+    <div class="col-xs-5">
+      <img class="pull-right img-responsive" src="imgs/microservice-logo.png">
     </div>
-    <div class="span6">
-      <div><h1>The first language for Microservices</h1>
+    <div class="col-xs-5">
+      <div class="text-left" id="landing-motto">
+        The first language for Microservices
+        <a href="/downloads.html">
+        <button type="button" class="landing-button btn btn-success btn-lg">
+        Download</button></a>
+        <a href="documentation.html">
+        <button type="button" class="landing-button btn btn-success btn-lg">
+        Tutorials & Docs</button></a></div></div>
       </div>
     </div>
   </div>
 </div>
 
+<div class="container">
 ## Native microservice programming
 
 Jolie crystallises the programming concepts of microservices as native
@@ -20,7 +29,7 @@ language features: the basic building blocks of software are not objects or
 functions, but rather services that can always be relocated and replicated as
 needed. Distribution and reusability are achieved by design.
 
-Jolie is a service-oriented language.
+<div class="text-right landing-text"><strong>Jolie is a service-oriented language.</strong></div>
 
 ## Built for the networked age: distributable by design
 
@@ -30,21 +39,23 @@ your programs. A monolithical application can scale to being distributed
 by design: if you decide to distribute a part of it, just take it and
 execute it in another machine.
 
-<div class="col-xs-6 text-center">
-  ### Program your microservice system
-  <img class="landing-img" src="imgs/basesystem.png">
-</div>
-<div class="col-xs-6 text-center">
-  ### Deploy it in a single machine
-  <img class="landing-img" src="imgs/monolithicaldeployment.png">
-</div>
-<div class="col-xs-6 text-center">
-  ### Deploy it in two different machines
-  <img class="landing-img" src="imgs/doubledeployment.png">
-</div>
-<div class="col-xs-6 text-center">
-  ### Deploy it in four different machines
-  <img class="landing-img" src="imgs/fourdeployment.png">
+<div class="container">
+  <div class="col-xs-6 text-center">
+### Program your microservice system
+<img class="landing-img" src="imgs/basesystem.png">
+  </div>
+  <div class="col-xs-6 text-center">
+### Deploy it in a single machine
+<img class="landing-img" src="imgs/monolithicaldeployment.png">
+  </div>
+  <div class="col-xs-6 text-center">
+### Deploy it in two different machines
+<img class="landing-img" src="imgs/doubledeployment.png">
+  </div>
+  <div class="col-xs-6 text-center">
+### Deploy it in four different machines
+<img class="landing-img" src="imgs/fourdeployment.png">
+  </div>
 </div>
 <div class="clearfix"></div>
 
@@ -69,7 +80,7 @@ build again! Here are some examples of composition:
 
 <div class="container col-xs-12">
   <div class="row vertical-align">
-    <div class="col-xs-8">**Orchestration:** an orchestrator is a service that offers functionalities obtained by coordinating other services with a workflow. </div> 
+    <div class="landing-text col-xs-8">**Orchestration:** an orchestrator is a service that offers functionalities obtained by coordinating other services with a workflow. </div> 
     <div class="col-xs-4">
       <img class="img-responsive" src="imgs/orchestration.png">
     </div> 
@@ -78,7 +89,7 @@ build again! Here are some examples of composition:
 
 <div class="container col-xs-12">
   <div class="row vertical-align">
-    <div class="col-xs-8">**Aggregation:** a generalisation of proxies and load balancers, which you can use to compose and expose the APIs of separate services.</div>
+    <div class="landing-text col-xs-8">**Aggregation:** a generalisation of proxies and load balancers, which you can use to compose and expose the APIs of separate services.</div>
     <div class="col-xs-4">
       <img class="img-responsive" src="imgs/aggregation.png">
     </div>
@@ -87,7 +98,7 @@ build again! Here are some examples of composition:
 
 <div class="container col-xs-12">
   <div class="row vertical-align">
-    <div class="col-xs-8">**Redirection:** a generalisation of virtual servers, which hides the actual locations of services to clients by assigning logical names to services.</div>
+    <div class="landing-text col-xs-8">**Redirection:** a generalisation of virtual servers, which hides the actual locations of services to clients by assigning logical names to services.</div>
     <div class="col-xs-4">
       <img class="img-responsive" src="imgs/redirection.png">
     </div>
@@ -96,7 +107,7 @@ build again! Here are some examples of composition:
 
 <div class="container col-xs-12">
   <div class="row vertical-align">
-    <div class="col-xs-8">**Embedding:** a generalisation of application servers, which runs other services as inner components. It enables fast local communications and can even run code written in different languages than Jolie, such as Java and Javascript (with more coming)!</div>
+    <div class="landing-text col-xs-8">**Embedding:** a generalisation of application servers, which runs other services as inner components. It enables fast local communications and can even run code written in different languages than Jolie, such as Java and Javascript (with more coming)!</div>
     <div class="col-xs-4">
       <img class="img-responsive" src="imgs/embedding.png">
     </div>
@@ -193,10 +204,10 @@ other technologies.
 ## Start now to build your distributed system!
 <div class="container col-xs-12">
   <div class="row vertical-align">
-    <div class="col-xs-4">
+    <div class="col-xs-3">
       <img class="img-responsive" src="imgs/lego.png">
     </div>
-    <div class="col-xs-8">
+    <div class="col-xs-9">
 ### You do not need frameworks, just an interpreter.
 You do not need special frameworks for deploying
 services, nor an ESB for achieving integration: you just need to install the
