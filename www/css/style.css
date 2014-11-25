@@ -5,36 +5,28 @@
 
 .download {
 	border-radius: 20px;
-	text-align: center;
-	background: white;
-	color: #79140a;
-	width: auto;
-	background-image: url(../imgs/download.png);
-	padding: 20px 60px;
-	height:80px; 
+	background-image: url(../imgs/download-icon.png);
 	background-repeat: no-repeat;
-	background-position: 10px;
-/* 	margin-bottom: 20px;	 */
-	border:1px solid #ccc;
+	background-size: contain;
+	padding-top: 1em;
+	padding-bottom: 1em;
+	padding-left: 5em;
+	padding-right: 0.5em;
+	border: 2px solid #A80C1E;
+	display: inline-block;
 }
 
-.download a {
-	margin-left: 100px;
-	padding-top: 40px;
-	padding: 30px;
-	font-size: large;	
-	font-weight: bold;
+.download:hover {
+	background: #D3B5B6;
+	background-image: url(../imgs/download-icon.png);
+	background-repeat: no-repeat;
+	background-size: contain;
+/* 	color: black; */
 }
-
-.download a:hover {	
-	color:#79140a !important;	
-}
-
 
 body {
 	font-size: large;
 	text-align: justify;
-/* 	font-family: serif; */
 }
 
 .page-content {
