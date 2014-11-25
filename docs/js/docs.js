@@ -45,21 +45,27 @@ var loadFunctions = function (){
 	$( window ).resize( resizeHeight );
 
 	loadMenu();
-	loadPage();
-
 };
 
 // DOCUMENTS LOGIC
 
 var loadPage = function(){
-
-}
+	$( css_menu ).find( "a[href=\"getting_started/hello_world.html\"]" ).trigger( "click" );
+};
 
 var loadMenu = function() {
 	$.getJSON( files_menu, function(json, textStatus) {
 			var menu = createMenu( json.topics );
 			$( css_menu ).html( menu );
+			addIdToJSL();
+			// also loads the default page
+			loadPage();
 	});
+};
+
+var addIdToJSL = function () {
+	var jslEl = $( css_menu ).find( "span:contains(\"Standard Library API\")" );
+	$( jslEl ).attr( "id", "jsl" );
 };
 
 var createMenu = function ( json ) {
@@ -107,49 +113,66 @@ var loadMenuItem = function( event ){
 	var href = el.attr( "href" );
 	var doc = root + href;
 	$.get( doc, function( data ) {
-		$( css_content ).html( data );
+		var html = $( "<div></div>" ).append( data );
+		$( html ).find( "style" ).remove();
+		$( css_content ).html( html );
 		loadCode( href );
 		loadSyntax( href );
-		addTOCToParent( data, el );
+		addTOCToParent( el );
 		$( css_content ).scrollTop( 0 );
 	});
 	return false;
 };
 
-var addTOCToParent = function ( data, el ) {
-	$( css_menu ).find( ".TOC" ).each( function( i, e ) {
+var addTOCToParent = function ( el ) {
+	// we do not add the TOC to APIs
+	var par = $( el ).parent().parent();
+	while( par.prop( "tagName" ).toLowerCase() != "li" ){
+		par = par.parent();
+	}
+	if( par.find( "span" ).text() != "Standard Library API" ){
+
+		$( css_menu ).find( ".TOC" ).each( function( i, e ) {
 		$( e ).remove();
-	});
-	var ul = $( "<ul></ul>" ).attr( "class", "TOC" );
-	$( css_content ).find( "h2" ).each( function( i, e ) {
-		ul.append( $( "<li></li>" )
-			.append( $( "<a></a>")
-				.attr( "href", "#" + $( e ).attr( "id" ) )
-				.text( $( e ).text() ).click( function( event ) {
-					$( css_menu ).find( ".toc_selected" ).each( function(i, e) {
-						$( e ).attr( "class", "" );
-					});
-					var sube = $( event.target );
-					sube.attr( "class" , "toc_selected" );
-				}) ) );
-	});
-	el.parent().append( ul );
+		});
+		var ul = $( "<ul></ul>" ).attr( "class", "TOC" );
+		$( css_content ).find( "h2" ).each( function( i, e ) {
+			ul.append( $( "<li></li>" )
+				.append( $( "<a></a>")
+					.attr( "href", "#" + $( e ).attr( "id" ) )
+					.text( $( e ).text() ).click( function( event ) {
+						$( css_menu ).find( ".toc_selected" ).each( function(i, e) {
+							$( e ).attr( "class", "" );
+						});
+						var sube = $( event.target );
+						sube.attr( "class" , "toc_selected" );
+					}) ) );
+		});
+		el.parent().append( ul );
+	}
+
 };
 
 var loadCode = function ( href ) {
 	var parent_folder = href.match(/(.+\/)/)[0];
 	$( css_content ).find( ".code" ).each( function( i, el ) {
-		syntH.get();
-		var file = $( el ).attr( "src" );
-		var path = root + parent_folder + docs_code_folder + file;
-		$.get( path , function( data ) {
-			$( el ).html( $( "<pre></pre>" )
-				.attr("class", "brush: " + getLangFromExt( file ) )
-				.text( data ) );
-			syntH.put();
-		}, "text");
-	});
-};
+		var src = $( el ).attr( "src" );
+		if ( typeof src !== typeof undefined && src !== false ){
+			syntH.get();
+			var file = $( el ).attr( "src" );
+			var path = root + parent_folder + docs_code_folder + file;
+			$.get( path , function( data ) {
+				$( el ).html( $( "<pre></pre>" )
+					.attr("class", "brush: " + getLangFromExt( file ) )
+					.text( data ) );
+				syntH.put();
+			}, "text");
+	} else {
+		$( el ).html( $( "<pre></pre>" )
+					.attr("class", "brush: " + $( el ).attr( "lang" ) )
+					.text( $( el ).text() ) );
+	}
+});};
 
 var loadSyntax = function ( href ) {
 	var parent_folder = href.match(/(.+\/)/)[0];
