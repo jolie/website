@@ -7,7 +7,7 @@
 	background: linear-gradient(to bottom, #443637 0%,#050000 100%)
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#443637', endColorstr='#050000',GradientType=0 );
 	border-bottom: 0.2em solid #C4C4C4;
-	font-size: large;
+	font-size: x-large;
 	min-height: 120px;
 	padding: 1em;
 }
