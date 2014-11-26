@@ -2,6 +2,7 @@
 
 .slide td {
     vertical-align: top;
+    width:50%;
 }
 
 .slide-title {
@@ -15,10 +16,13 @@
     font-size:0.7em;
 }
 
-.slide-description {
-    padding-left: 2em;
+.slide-embed {
+    width:100%;
+}
+
+.slide-description {    
     padding-top:2em;
     font-size:0.9em;
     font-style:italic;
-    width:70%;
+    width:100%;
 }
