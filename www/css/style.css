@@ -5,7 +5,7 @@
 @import url("landing-page.css");
 
 .download {
-	border-radius: 20px;
+	border-radius: 1em;
 	background-image: url(../imgs/download-icon.png);
 	background-repeat: no-repeat;
 	background-size: contain;
@@ -13,7 +13,7 @@
 	padding-bottom: 1em;
 	padding-left: 5em;
 	padding-right: 0.5em;
-	border: 1px solid #ccc;
+	border: 0.05em solid #ccc;
 	display: inline-block;
 }
 
@@ -25,7 +25,7 @@
 }
 
 body {
-	font-size: 22px;
+	font-size: 2.5em;
 	text-align: justify;	
 	font-family: 'OpenSansRegular', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
