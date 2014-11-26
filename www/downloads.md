@@ -1,5 +1,13 @@
 <!--Themed-->
 
+<div class="col-xs-12 page-nav-menu">
+<ul class="nav nav-pills">
+<li role="presentation"><a class="active" href="/index.html">Home</a></li>
+<li role="presentation"><a href="/downloads.html">Download & Install</a></li>
+<li role="presentation"><a href="/news">News</a></li>
+</ul>
+</div>
+
 # Download and Install
 
 Jolie requires Java to run, so make sure to have [Java](http://www.java.com/) installed before proceeding.
