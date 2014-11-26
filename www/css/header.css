@@ -8,9 +8,15 @@
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#443637', endColorstr='#050000',GradientType=0 );
 	border-bottom: 0.05em solid #C4C4C4;
 	font-size: x-large;
-	min-height: 120px;
+/* 	height: 120px; */
 	padding: 1em;
 }
+
+/*
+ * Adds the height of the header, to avoid covering the body. See the relative javascript in site.js
+ */
+
+/* body { padding-top: 150px; } */
 
 #header-jolie-logo {
 	background: url(../imgs/eye.png);

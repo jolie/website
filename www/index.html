@@ -1,6 +1,7 @@
 <!--Themed-->
 
 <div id="section0" class="container full-width text-center landing-banner-transparent">
+	<div class="container col-xs-12" style="padding: 1em;">
 	<div class="col-xs-12" style="padding: 1em;">
 		<div class="row vertical-align">
 			<div class="col-xs-5 text-center">
@@ -12,9 +13,11 @@
 			</div>
 		</div>
 	</div>
+	</div>
 </div>
 
 <div id="section1" class="container full-width landing-banner-dark">
+<div class="container col-xs-12">
 <div class="col-xs-12">
 	<div class="next-container"><a class="next" onclick="scroll_to_section('section2')">Next</a></div>
 	<h2 id="native-microservice-programming">Native microservice programming</h2>
@@ -23,6 +26,7 @@
 	services</i> that can always be relocated and replicated as needed.
 	Distribution and reusability are achieved by design.</p>
 	<p class="landing-motto">Jolie is a service-oriented language.</p>	
+</div>
 </div>
 </div>
 
@@ -155,27 +159,27 @@ login( credentials )() { checkCredentials };
 <h2 id="dynamic-error-handling-for-parallel-code">Dynamic error handling for parallel code</h2>
 <p>Programming reliable parallel code is challenging because faults may cause side-effects in parallel activities. Jolie comes with a solid semantics for parallel fault handling. Programmers can update the behaviour of fault handlers at runtime, following the execution of activities thanks to the <code>install</code> primitive.</p>
 <pre>
-<b  class="keyword">include</b> <span class="string">"console.iol"</span>
-<b  class="keyword">include</b> <span class="string">"time.iol"</span>
+<span class="keyword">include</span> <span class="string">"console.iol"</span>
+<span class="keyword">include</span> <span class="string">"time.iol"</span>
 
-<b class="keyword">main</b>
+<span class="keyword">main</span>
 {
-    <b  class="keyword">scope</b>( grandFather )
+    <span  class="keyword">scope</span>( grandFather )
     {
-        <b  class="keyword">install</b>( <b class="keyword">this</b> => println@Console( <span class="string">"recovering grandFather"</span> )() );
-        <b  class="keyword">scope</b>( father )
+        <span  class="keyword">install</span>( <span class="keyword">this</span> => println@Console( <span class="string">"recovering grandFather"</span> )() );
+        <span  class="keyword">scope</span>( father )
         {
-            <b class="keyword">install</b>( <b class="keyword">this</b> => println@Console( <span class="string">"recovering father"</span> )() );
-            <b class="keyword">scope</b> ( son )
+            <span class="keyword">install</span>( <span class="keyword">this</span> => println@Console( <span class="string">"recovering father"</span> )() );
+            <span class="keyword">scope</span> ( son )
             {
-                <b class="keyword">install</b>( <b class="keyword">this</b> => println@Console( <span class="string">"recovering son"</span> )() );
+                <span class="keyword">install</span>( <span class="keyword">this</span> => println@Console( <span class="string">"recovering son"</span> )() );
                 sleep@Time( 500 )();
                 println@Console( <span class="string">"Son's code block"</span> )()
             }
         }
     }
     |
-    <b class="keyword">throw</b>( a_fault )
+    <span class="keyword">throw</span>( a_fault )
 }
 </pre>
 

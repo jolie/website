@@ -29,9 +29,25 @@ function landingPage() {
 	}
 };
 
+var bodyPadding = 0;
+
+function scroll_to_section( section )
+{
+	$( "html,body" ).animate( {
+	scrollTop:
+		$("#" + section).offset().top
+		// + $( "body" ).css( "padding-top" )
+	}, 500 );
+}
+
+function bodyPadding()
+{
+	// $( "body" ).css( "padding-top", $( "#header" ).height() );
+}
 
 // Loaded on start
 $( document ).ready( function () {
 	activeMenuItem();
 	landingPage();
+	bodyPadding();
 });
