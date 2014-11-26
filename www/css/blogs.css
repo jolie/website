@@ -1,16 +1,17 @@
 .BlogDateGroup {
 	border-bottom: 1px solid gray;
-/* 	margin-top: 1em; */
+	margin-top: 2em;
 	margin-bottom: 1em;
 	margin-right:auto;
 	margin-left:auto;
+	font-size:1.5em;
 }
 
 .BlogEntry {
 	margin-bottom: 1em;
 	font-size: large;
 	margin-right:auto;
-	margin-left:auto;
+	margin-left:auto;	
 }
 
 .BlogEntryAuthor {
@@ -19,10 +20,35 @@
 
 .BlogEntryTitle {
 	font-size: xx-large;
+	padding-right:1em;
 }
 
 .BlogEntryContent {
- 	font-size: 24px;
+ 	font-size: 1.4em;
+	height:10em;
+	overflow:hidden;
+	border-bottom:0em solid #eee;
+	border-radius:0 0 10em 0;
+	box-shadow:0.6em 0.6em 0.6em #ddd;
+	padding-right:1em;
+}
+
+.BlogEntryContentReadMore {
+	text-align:right;
+	font-size:2.2em;
+	color:#888;
+	text-shadow:0.09em 0.09em #ddd;
+	margin-top: -1.2em;
+}
+
+.BlogEntryContentReadMore a {
+	color:#888;
+}
+
+.BlogEntryContentReadMore a:hover {
+	color: #A80C1E;
+	text-decoration: none;
+	cursor: pointer;
 }
 
 .BlogEntrySeparator {
