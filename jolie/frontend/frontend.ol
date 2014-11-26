@@ -25,22 +25,32 @@ include "file.iol"
 include "string_utils.iol"
 include "console.iol"
 include "blog_reader/blog_reader.iol"
+include "slideshare/SlideShareInterface.iol"
 include "json_utils.iol"
 
 execution { concurrent }
 
-inputPort FrontendInput {
-Location: "local"
-Interfaces: FrontendInterface
+
+
+outputPort SlideShare {
+Interfaces: SlideShareInterface
 }
 
 outputPort BlogReader {
 Interfaces: BlogReaderInterface
 }
 
+inputPort FrontendInput {
+Location: "local"
+Interfaces: FrontendInterface
+Aggregates: SlideShare
+}
+
 embedded {
 Jolie:
-	"blog_reader/main.ol" in BlogReader
+	"blog_reader/main.ol" in BlogReader,
+	"slideshare/slideshare.ol" in SlideShare
+	
 }
 
 define buildEntryHtml
@@ -127,4 +137,28 @@ main
 		readBlogs@BlogReader( request )( blogsContent );
 		buildEntryHtml
 	} ] { nullProcess }
+	
+	[ documentation()( html ) { 
+	
+		request.username_for = "JolieLang";
+		get_slideshows_by_user@SlideShare( request )( response );
+		html = "<!--Themed--><h1 id=\"documentation\">Documentation</h1>"
+		      + "<p>You can find the complete documentation of the language and the Jolie Standard Library (JSL) here:"
+		      + "<a href=\"http://docs.jolie-lang.org/\">docs.jolie-lang.org</a></p>"
+		      + "<h1 id=\"tutorials\">Tutorials</h1>"
+		      + "<div class=\"slides\">";
+		for( x = 0, x < #response.Slideshow, x++ ) {
+		      sp_rq = response.Slideshow[ x ].Embed;
+		      sp_rq.regex = "</iframe>";
+		      split@StringUtils( sp_rq )( sp_rs );		      
+		      html = html + "<div class=\"slide\"><div class=\"slide-title\">" + response.Slideshow[ x ].Title + "</div>"
+				  + "<div class=\"slide-created\">" + response.Slideshow[ x ].Created + "</div>"
+				  + "<table><tr><td><div class=\"slide-embed\">" + sp_rs.result[ 0 ] + "</iframe></div></td>"
+				  + "<td><div class=\"slide-description\">\"" + response.Slideshow[ x ].Description + "\"</div></td></tr></table>"				  
+				  + "</div>"
+		}
+		;  
+		   
+		html = html + "</div></div>"
+	}] { nullProcess }
 }
