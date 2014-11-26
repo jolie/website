@@ -63,7 +63,10 @@ main {
 			    .hash = result.sha1;
 			    .username_for=request.username_for
 		    };
-		    get_slideshows_by_user@SlideShare( request )( global.response )
+		    scope( slidsh ) {
+			    install( default => nullProcess );
+			    get_slideshows_by_user@SlideShare( request )( global.response )
+		    }
 	    };
 	    response -> global.response
       }
