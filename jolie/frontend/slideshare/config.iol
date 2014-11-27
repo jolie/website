@@ -1,4 +1,0 @@
-constants {
-	APIKEY = "API_KEY",
-	SHAREDSECRET = "SHARED_SECRET"
-}
