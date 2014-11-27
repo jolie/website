@@ -140,7 +140,6 @@ main
 	} ] { nullProcess }
 	
 	[ documentation()( html ) { 
-	
 		request.username_for = "JolieLang";
 		get_slideshows_by_user@SlideShare( request )( response );
 		html = "<!--Themed--><h1 id=\"documentation\">Documentation</h1>"
@@ -152,14 +151,13 @@ main
 		      sp_rq = response.Slideshow[ x ].Embed;
 		      sp_rq.regex = "</iframe>";
 		      split@StringUtils( sp_rq )( sp_rs );		      
-		      html = html + "<div class=\"slide\"><div class=\"slide-title\">" + response.Slideshow[ x ].Title + "</div>"
+		      html += "<div class=\"slide\"><div class=\"slide-title\">" + response.Slideshow[ x ].Title + "</div>"
 				  + "<div class=\"slide-created\">" + response.Slideshow[ x ].Created + "</div>"
 				  + "<table><tr><td><div class=\"slide-embed\">" + sp_rs.result[ 0 ] + "</iframe></div></td>"
 				  + "<td><div class=\"slide-description\">\"" + response.Slideshow[ x ].Description + "\"</div></td></tr></table>"				  
 				  + "</div>"
-		}
-		;  
-		   
-		html = html + "</div></div>"
+		}; 
+ 
+		html += "</div></div>"
 	}] { nullProcess }
 }

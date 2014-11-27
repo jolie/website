@@ -1,29 +1,27 @@
-
-
 .slide td {
-    vertical-align: top;
-    width:50%;
+	vertical-align: top;
+	width: 50%;
 }
 
 .slide-title {
-    font-size:1.2em;
-    font-weight:bold;
-    color: black;
-    padding-top:1em;
+	font-size: 1.2em;
+	font-weight: bold;
+	color: black;
+	padding-top: 1em;
 }
 
 .slide-created {
-    font-size:0.7em;
+	font-size: 0.7em;
 }
 
 .slide-embed {
-    width:100%;
-    
+	width: 100%;
+	
 }
 
 .slide-description {    
-    padding-top:2em;
-    font-size:0.9em;
-    font-style:italic;
-    width:100%;
+	padding-top: 2em;
+	font-size: 0.9em;
+	font-style: italic;
+	width: 100%;
 }

@@ -5,7 +5,7 @@ include "string_utils.iol"
 
 include "SlideShareInterface.iol"
 
-execution{ concurrent }
+execution { concurrent }
 
 type GenerateSHA1Request: void {
 	.secret: string
@@ -33,7 +33,7 @@ Interfaces: SlideShareSHA1GeneratorInterface
 
 embedded {
 Java:
-    "org.jolie.lang.slideshare.SlideShareSHA1Generator" in SlideShareSHA1Generator
+	"org.jolie.lang.slideshare.SlideShareSHA1Generator" in SlideShareSHA1Generator
 }
 
 inputPort SlideShare {
@@ -49,11 +49,11 @@ init {
 }
 
 main {
-      get_slideshows_by_user( request )( response ) {
+	get_slideshows_by_user( request )( response ) {
 	    getCurrentTimeMillis@Time()( ts );
-	    if ( (ts- global.slidesharets) > 3600000 ) {		    
+	    if ( (ts - global.slidesharets) > 3600000 ) {
 		    global.slidesharets = ts;
-		    ts = int( ts /1000 );
+		    ts = int( ts / 1000 );
 		    r.secret = SHAREDSECRET + ts;
 		    generateSHA1@SlideShareSHA1Generator( r )( result );
 		    
@@ -61,9 +61,9 @@ main {
 			    .api_key = APIKEY;
 			    .ts = string( ts );
 			    .hash = result.sha1;
-			    .username_for=request.username_for
+			    .username_for = request.username_for
 		    };
-		    scope( slidsh ) {
+		    scope( slidesh ) {
 			    install( default => nullProcess );
 			    get_slideshows_by_user@SlideShare( request )( global.response )
 		    }
