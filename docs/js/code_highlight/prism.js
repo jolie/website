@@ -591,9 +591,9 @@ Prism.languages.jolie = Prism.languages.extend('java', {
 	'number': /\b0x[\da-f]*\.?[\da-f\-]+\b|\b\d*\.?\d+[e]?[\d]*[dfl]?\b/gi,
 	'operator': /[-+]{1,2}|!|<=?|>=?|={1,3}|&{1,2}|\|\||\*|\//g,
 	'punctuation': /[{}[\]()\.:]/g,
-	'operation': /[a-z0-9_]+(?=\@)/gm,
+	'operation': /[a-z][A-Za-z0-9_]+(?=\@)/gm,
 	'service': {
-		pattern: /((?:(?:\@\s*)))[a-z0-9_]+/ig,
+		pattern: /((?:(?:\@\s*)))[A-Z][A-Za-z0-9_]+/ig,
 		lookbehind: true,
 	},
 	'symbol': /\||;|\@/g,
