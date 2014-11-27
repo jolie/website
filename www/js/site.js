@@ -49,14 +49,14 @@ function setCloseClick( element ) {
 	$( "#" + element + "button" ).html("[close]");	
 	$( "#" + element + "button" ).unbind("click");	
 	$( "#" + element + "button" ).click( function() {
-	      $( "#" + element ).css("box-shadow","0.6em 0.6em 0.6em #ddd");
-	      $( "#" + element ).css("border-radius","0 0 10em 0");
-	      $( "#" + element ).animate({height:"10em"},1200, function(){});
-              $( "html,body" ).animate( {
+		$( "#" + element ).css("box-shadow","0.6em 0.6em 0.6em #ddd");
+		$( "#" + element ).css("border-radius","0 0 10em 0");
+		$( "#" + element ).animate({height:"10em"},1200, function(){});
+		$( "html,body" ).animate( {
 		scrollTop:
 			$("#" + element).parent().offset().top		
 		}, 1000 );	
-	      setReadmoreClick( element );
+		setReadmoreClick( element );
 	});
 }
 

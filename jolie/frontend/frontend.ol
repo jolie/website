@@ -68,7 +68,7 @@ define buildEntryHtml
 		html += "<div class=\"BlogEntry\">"
 		+ "<p class=\"BlogEntryAuthor\">Posted by <a href=\"" + entry.links.blog + "\">" + entry.author + "</a></p>"
 		+ "<p class=\"BlogEntryTitle\"><a href=\"" + entry.links.entry + "\">" + entry.title + "</a></p>"
-		+ "<div id='readmore" + i + "' class=\"BlogEntryContent\">" + entry.content + "</div>"
+		+ "<div id=\"readmore" + i + "\" class=\"BlogEntryContent\">" + entry.content + "</div>"
 		+ "<div class=\"BlogEntryContentReadMore\"><a id=\"readmore" + i + "button\" onclick=\"readmore('readmore" + i + "')\">[...]</a></div>"
 		+ "</div>"
 	}
