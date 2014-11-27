@@ -1,5 +1,5 @@
 /* global $:false, window:false, document:false, alert:false, 
-SyntaxHighlighter:false */
+Prism:false */
 "use strict";
 
 // css components in HTML
@@ -20,14 +20,14 @@ var docs_syntax_folder = "syntax/";
 var files_menu = "/documentationMenu";
 
 // counter and logic for syntax highlighting
-var shc = 0;
-var syntH = {
-	get: function () { shc += 1; },
-	put: function () { shc -= 1; if( shc === 0 ){ syntH.run(); } },
-	run: function () { SyntaxHighlighter.highlight(); }
-};
-SyntaxHighlighter.defaults.toolbar = false;
-SyntaxHighlighter.defaults["auto-links"] = false;
+// var shc = 0;
+// var syntH = {
+// 	get: function () { shc += 1; },
+// 	put: function () { shc -= 1; if( shc === 0 ){ syntH.run(); } },
+// 	run: function () { SyntaxHighlighter.highlight(); }
+// };
+// SyntaxHighlighter.defaults.toolbar = false;
+// SyntaxHighlighter.defaults["auto-links"] = false;
 
 // LAYOUT
 
@@ -158,18 +158,17 @@ var loadCode = function ( href ) {
 	$( css_content ).find( ".code" ).each( function( i, el ) {
 		var src = $( el ).attr( "src" );
 		if ( typeof src !== typeof undefined && src !== false ){
-			syntH.get();
 			var file = $( el ).attr( "src" );
 			var path = root + parent_folder + docs_code_folder + file;
 			$.get( path , function( data ) {
-				$( el ).html( $( "<pre></pre>" )
-					.attr("class", "brush: " + getLangFromExt( file ) )
-					.text( data ) );
-				syntH.put();
+				$( el ).html( $( "<pre></pre>" ).append(
+						$( "<code></code>" ).text( data ) )
+					.attr("class", "line-numbers language-" + getLangFromExt( file ) ) );
+				Prism.highlightElement( $( el ).find( "pre code" )[0] );
 			}, "text");
 	} else {
 		$( el ).html( $( "<pre></pre>" )
-					.attr("class", "brush: " + $( el ).attr( "lang" ) )
+					.attr("class", "language-" + $( el ).attr( "lang" ) )
 					.text( $( el ).text() ) );
 	}
 });};
@@ -206,8 +205,8 @@ var updateBreadcrumb = function ( el, parent ) {
 
 var extLang = {
   "ext": {
-  	"xml": { "lang": "xml" },
-    "html": { "lang": "xml" },
+  	"xml": { "lang": "markup" },
+    "html": { "lang": "markup" },
     "json": { "lang": "jscript" },
     "js": {"lang": "jscript" },
     "ol": { "lang": "jolie" },
