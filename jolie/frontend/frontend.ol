@@ -143,21 +143,21 @@ main
 		request.username_for = "JolieLang";
 		get_slideshows_by_user@SlideShare( request )( response );
 		html = "<!--Themed--><h1 id=\"documentation\">Documentation</h1>"
-		      + "<p>You can find the complete documentation of the language and the Jolie Standard Library (JSL) here:"
+		      + "<p>You can find the complete documentation of the language and the Jolie Standard Library (JSL) here: "
 		      + "<a href=\"http://docs.jolie-lang.org/\">docs.jolie-lang.org</a></p>"
-		      + "<h1 id=\"tutorials\">Tutorials</h1>"
-		      + "<div class=\"slides\">";
+		      + "<h1 id=\"tutorials\">Tutorials</h1>";
 		for( x = 0, x < #response.Slideshow, x++ ) {
-		      sp_rq = response.Slideshow[ x ].Embed;
-		      sp_rq.regex = "</iframe>";
-		      split@StringUtils( sp_rq )( sp_rs );		      
-		      html += "<div class=\"slide\"><div class=\"slide-title\">" + response.Slideshow[ x ].Title + "</div>"
-				  + "<div class=\"slide-created\">" + response.Slideshow[ x ].Created + "</div>"
-				  + "<table><tr><td><div class=\"slide-embed\">" + sp_rs.result[ 0 ] + "</iframe></div></td>"
-				  + "<td><div class=\"slide-description\">\"" + response.Slideshow[ x ].Description + "\"</div></td></tr></table>"				  
-				  + "</div>"
-		}; 
- 
-		html += "</div></div>"
+			sp_rq = response.Slideshow[ x ].Embed;
+			sp_rq.regex = "</iframe>";
+			split@StringUtils( sp_rq )( sp_rs );		      
+			html += "<div class=\"col-xs-12 row slide\">"
+				+ "<p class=\"slide-title\">" + response.Slideshow[ x ].Title + "</p>"
+				+ "<p class=\"slide-created\">" + response.Slideshow[ x ].Created + "</p>"
+				+ "<div class=\"col-xs-12 row vertical-align\">"
+				+ "<div class=\"col-xs-6 slide-embed vertical-align\">" + sp_rs.result[ 0 ] + "</iframe></div>"
+				+ "<div class=\"col-xs-6 slide-description vertical-align\">\"" + response.Slideshow[ x ].Description + "\"</div>"				  
+				+ "</div>"
+				+ "</div>"
+		}
 	}] { nullProcess }
 }
