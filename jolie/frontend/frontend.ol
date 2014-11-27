@@ -80,7 +80,7 @@ init
 		.url = "http://jolie-lang.blogspot.com/";
 		.binding.location = "socket://jolie-lang.blogspot.com:80/feeds/posts/default";
 		.binding.protocol = "http"
-	};	
+	};
 	with( planetBlogs[0] ) {
 		.url = "http://fmontesi.blogspot.com/";
 		.binding.location = "socket://fmontesi.blogspot.com:80/feeds/posts/default/-/jolie";
