@@ -5,6 +5,12 @@
 @import url("landing-page.css");
 @import url("slideshare.css");
 
+body {
+	text-align: justify;	
+	font-family: 'OpenSansRegular', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+
 .download {
 	border-radius: 1em;
 	background-image: url(../imgs/download-icon.png);
@@ -23,13 +29,6 @@
 	background-image: url(../imgs/download-icon.png);
 	background-repeat: no-repeat;
 	background-size: contain;
-}
-
-body {
-	font-size: 2.5em;
-	text-align: justify;	
-	font-family: 'OpenSansRegular', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-
 }
 
 .page-content {
