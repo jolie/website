@@ -90,6 +90,7 @@ sponsoring, etc.).
 * Gianluigi Zanetti
 * Gianluigi Zavattaro
 * Alberto Zuccato
+* Valentino Baraldo
 
 # Sponsors
 
