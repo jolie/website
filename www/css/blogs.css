@@ -24,23 +24,37 @@
 }
 
 .BlogEntryContent {
-	font-size: 140%;
+	font-size: 120%;
 	height: 10em;
 	min-height: 10em;
 	overflow: hidden;
 	border-bottom: 0em solid #eee;	
 	padding-right: 1em;
+	
 }
 
 .BlogEntryContentReadMore {
 	text-align: right;
-	font-size: 140%;
+	font-size: 120%;
 	color: #888;	
 	margin-top: 0em;
+	background: -moz-linear-gradient(right,  rgb(59, 43, 25) 0%, white 100%);
+	background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,rgb(59, 43, 25)), color-stop(100%,white));	
+	background: -webkit-linear-gradient(right,  rgb(59, 43, 25) 0%,white 100%);
+	background: -o-linear-gradient(right,  rgb(59, 43, 25) 0%,white 100%);		
+	background: -ms-linear-gradient(right,  rgb(59, 43, 25) 0%,white 100%);
+	background: linear-gradient(to right, rgb(59, 43, 25) 0%,white 100%)
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='rgb(59, 43, 25)', endColorstr='white',GradientType=0 );
+	border-radius:0.5em;
+	padding-right:1em;
+	margin-right:1em;
+	margin-top: 1em;
+	padding-top: 0.25em;
+	padding-bottom: 0.25em;
 }
 
 .BlogEntryContentReadMore a {
-	color:#888;
+	color:white;
 }
 
 .BlogEntryContentReadMore a:hover {
