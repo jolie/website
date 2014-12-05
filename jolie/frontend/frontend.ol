@@ -102,6 +102,7 @@ main
 		
 		listRequest.directory = "../../docs/documentation/jsl/";
 		listRequest.regex = ".+\\.html";
+		listRequest.order.byname = true;
 		list@File( listRequest )( listResult );
 		if ( #listResult.result > 0 ) {
 			j = #menu.topics;
