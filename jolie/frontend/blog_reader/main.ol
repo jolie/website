@@ -30,7 +30,7 @@ include "blog_reader.iol"
 include "social/SocialInterface.iol"
 
 constants {
-	TwitterPostHistoryFile = "twitter_post_history_file.iol",
+	TwitterPostHistoryFile = "twitter_log.txt",
 	Attrs = "@Attributes",
 	MaxEntries = 50,
 	BlogRefreshTimeout = 60000 // 1 min
@@ -140,23 +140,57 @@ define addEntriesToResponse
 	}
 }
 
+define fireSocialMessages
+{
+	// post on twitter
+	for( c = 0, c < #cacheEntries, c++ ) {
+		if ( !is_defined( global.post_history.( cacheEntries[ c ].links.entry ) ) ) {
+			scope( post ) {
+				install( default => nullProcess );
+				social_post.status =  cacheEntries[ c ].title + " #jolielang " + cacheEntries[ c ].links.entry;
+				postOnTwitter@Social( social_post )();
+
+				undef( file );
+				file.filename = global.twitterPostHistoryFile;
+				file.append = 1;
+				if ( global.post_history_exists ) {
+					post_string = "\n"
+				} else {
+					post_string = "";
+					global.post_history_exists = true
+				};
+				file.content = post_string + cacheEntries[ c ].links.entry;					      
+				writeFile@File( file )();
+				global.post_history.( cacheEntries[ c ].links.entry ) = true
+			}
+		}
+	}
+}
+
 init
 {
 	setNextTimeout@Time( BlogRefreshTimeout );
-	exists@File( TwitterPostHistoryFile )( global.post_history_exists );
-	file.filename = TwitterPostHistoryFile;
+	getFileSeparator@File()( fs );
+	getServiceDirectory@File()( cd );
+	global.twitterPostHistoryFile =
+		file.filename =
+		cd + fs + TwitterPostHistoryFile;
+
+	exists@File( file.filename )( global.post_history_exists );
 	if ( global.post_history_exists ) {	      
-	      readFile@File( file )( post_history_txt );
-	      split_rs = post_history_txt;
-	      split_rs.regex = "\n";
-	      split@StringUtils( split_rs )( split_result );
-	      for( i = 0, i < #split_result.result, i++ ) {
-		    global.post_history.( split_result.result[ i ] ) = 1
-	      }
+		readFile@File( file )( post_history_txt );
+		split_rs = post_history_txt;
+		split_rs.regex = "\n";
+		split@StringUtils( split_rs )( split_result );
+		for( i = 0, i < #split_result.result, i++ ) {
+			global.post_history.( split_result.result[ i ] ) = true
+		};
+		undef( split_result );
+		undef( split_rs )
 	} else {
-	      file.content = "";
-	      writeFile@File( file )();	      
-	      undef( global.post_history )
+		file.content = "";
+		writeFile@File( file )();     
+		undef( global.post_history )
 	}
 }
 
@@ -185,30 +219,7 @@ main
 		synchronized( Cache ) {
 			global.cache.(Blog.location).entry << cacheEntries;
 			global.cache.(Blog.location).blogDescriptor << blogDescriptor;
-			
-			// post on twitter
-			for( c = 0, c < #cacheEntries, c++ ) {
-				if ( !is_defined( global.post_history.( cacheEntries[ c ].links.entry ) ) ) {
-					scope( post ) {
-					      install( default => nullProcess );
-					      social_post.status =  cacheEntries[ c ].title + " #jolielang " + cacheEntries[ c ].links.entry;
-					      postOnTwitter@Social( social_post )();
-					      
-					      undef( file );
-					      file.filename = TwitterPostHistoryFile;
-					      file.append = 1;
-					      if ( global.post_history_exists ) {
-							post_string = "\n"
-					      } else {
-							post_string = "";
-							global.post_history_exists = true
-					      };
-					      file.content = post_string + cacheEntries[ c ].links.entry;					      
-					      writeFile@File( file )();
-					      global.post_history.( cacheEntries[ c ].links.entry ) = 1
-					}
-				}
-			}
+			fireSocialMessages
 		}
 	} ] { nullProcess }
 

@@ -4,5 +4,5 @@ type PostOnTwitterRequest: void {
 
 interface SocialInterface {
 RequestResponse:
-      postOnTwitter( PostOnTwitterRequest )( void ) throws TwitterError
+	postOnTwitter( PostOnTwitterRequest )( void ) throws TwitterError
 }
