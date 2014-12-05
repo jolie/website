@@ -1,6 +1,6 @@
 include "console.iol"
 include "time.iol"
-include "config.iol"
+include "ini_utils.iol"
 include "string_utils.iol"
 
 include "SlideShareInterface.iol"
@@ -44,8 +44,10 @@ Interfaces: SlideShareInterface
 
 init {
       global.slidesharets = 0;
-      global.response = ""
-      
+      global.response = "";
+      parseIniFile@IniUtils( "config.ini" )( config );
+      APIKEY = config.SlideShare.APIKEY;
+      SHAREDSECRET = config.SlideShare.SHAREDSECRET
 }
 
 main {

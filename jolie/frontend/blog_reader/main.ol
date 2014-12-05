@@ -24,10 +24,13 @@ include "string_utils.iol"
 include "xml_utils.iol"
 include "runtime.iol"
 include "time.iol"
+include "file.iol"
 include "quicksort.iol"
 include "blog_reader.iol"
+include "social/SocialInterface.iol"
 
 constants {
+	TwitterPostHistoryFile = "twitter_post_history_file.iol",
 	Attrs = "@Attributes",
 	MaxEntries = 50,
 	BlogRefreshTimeout = 60000 // 1 min
@@ -63,9 +66,14 @@ outputPort Quicksort {
 Interfaces: QuicksortInterface
 }
 
+outputPort Social {
+Interfaces: SocialInterface
+}
+
 embedded {
 Jolie:
-	"quicksort.ol" in Quicksort
+	"quicksort.ol" in Quicksort,
+	"social/social.ol" in Social
 }
 
 init
@@ -134,7 +142,22 @@ define addEntriesToResponse
 
 init
 {
-	setNextTimeout@Time( BlogRefreshTimeout )
+	setNextTimeout@Time( BlogRefreshTimeout );
+	exists@File( TwitterPostHistoryFile )( global.post_history_exists );
+	file.filename = TwitterPostHistoryFile;
+	if ( global.post_history_exists ) {	      
+	      readFile@File( file )( post_history_txt );
+	      split_rs = post_history_txt;
+	      split_rs.regex = "\n";
+	      split@StringUtils( split_rs )( split_result );
+	      for( i = 0, i < #split_result.result, i++ ) {
+		    global.post_history.( split_result.result[ i ] ) = 1
+	      }
+	} else {
+	      file.content = "";
+	      writeFile@File( file )();	      
+	      undef( global.post_history )
+	}
 }
 
 main
@@ -161,7 +184,31 @@ main
 		};
 		synchronized( Cache ) {
 			global.cache.(Blog.location).entry << cacheEntries;
-			global.cache.(Blog.location).blogDescriptor << blogDescriptor
+			global.cache.(Blog.location).blogDescriptor << blogDescriptor;
+			
+			// post on twitter
+			for( c = 0, c < #cacheEntries, c++ ) {
+				if ( !is_defined( global.post_history.( cacheEntries[ c ].links.entry ) ) ) {
+					scope( post ) {
+					      install( default => nullProcess );
+					      social_post.status =  cacheEntries[ c ].title + " #jolielang " + cacheEntries[ c ].links.entry;
+					      postOnTwitter@Social( social_post )();
+					      
+					      undef( file );
+					      file.filename = TwitterPostHistoryFile;
+					      file.append = 1;
+					      if ( global.post_history_exists ) {
+							post_string = "\n"
+					      } else {
+							post_string = "";
+							global.post_history_exists = true
+					      };
+					      file.content = post_string + cacheEntries[ c ].links.entry;					      
+					      writeFile@File( file )();
+					      global.post_history.( cacheEntries[ c ].links.entry ) = 1
+					}
+				}
+			}
 		}
 	} ] { nullProcess }
 
