@@ -94,6 +94,7 @@ sponsoring, etc.).
 * Alessandro Perfetti
 * Monica Pitt
 * Davide Sangiorgi
+* Karoly Szanto
 * Federico Roffi
 * Sergio Magnani
 * Mauro Silvagni
