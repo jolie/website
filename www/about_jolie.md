@@ -19,21 +19,37 @@ project. Every developer with access to the Jolie codebase can also update the w
 
 # The Jolie Team
 
-Jolie is a collaborative effort by many people spread over the world. You can see some of its history
-[here](http://en.wikipedia.org/wiki/Jolie_%28programming_language%29).
-The design of the Jolie language was initially conceived and is
+Jolie is a collaborative effort by many people spread over the world.
+You can see some of its history [here](http://en.wikipedia.org/wiki/Jolie_%28programming_language%29).
+The following list includes the maintainers of the different tasks behind Jolie:
+
+* Language Vision, Design, and Evolution: [Claudio Guidi](http://claudioguidi.blogspot.com/) and [Fabrizio Montesi](http://www.fabriziomontesi.com/)
+* Language Development: [Fabrizio Montesi](http://www.fabriziomontesi.com/)
+* Open Source Project Administration and Releases: [Fabrizio Montesi](http://www.fabriziomontesi.com/)
+* Communication and Website: [Saverio Giallorenzo](http://www.cs.unibo.it/~sgiallor/), [Claudio Guidi](http://claudioguidi.blogspot.com/) and [Fabrizio Montesi](http://www.fabriziomontesi.com/)
+
+<!--The design of the Jolie language was initially conceived and is
 currently moderated by [Claudio Guidi](http://claudioguidi.blogspot.com/) and
 [Fabrizio Montesi](http://www.fabriziomontesi.com/).
 Releases and improvements are coordinated by the project maintainer,
-[Fabrizio Montesi](http://www.fabriziomontesi.com/), and mainly discussed
-in our [mailing list](community.html) and regular online meetings.
-The Jolie website is maintained by [Saverio Giallorenzo](http://www.cs.unibo.it/~sgiallor/).
+[Fabrizio Montesi](http://www.fabriziomontesi.com/),-->
+<!--  -->
+<!--Releases and improvements are mainly discussed
+in our
+-->
+If you are interested in joining us, please feel free to contact us through our [mailing list](community.html).
+We are always open to new collaborations and discussions!
+
+
+<!-- The Jolie website is maintained by [Saverio Giallorenzo](http://www.cs.unibo.it/~sgiallor/). -->
 
 We often use the term *The Jolie Team* to refer to the people who
 contributed to the development of Jolie by writing code (copyright holders).
 In the list below, we also give credit to people who
 contributed to the project through other means (research, useful discussions,
 sponsoring, etc.).
+
+## Credits
 
 * Michael Søby Andersen
 * Paolo Anedda
