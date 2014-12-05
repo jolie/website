@@ -1,6 +1,7 @@
 include "console.iol"
 include "string_utils.iol"
 include "ini_utils.iol"
+include "file.iol"
 include "SocialInterface.iol"
 
 execution{ concurrent }
@@ -48,11 +49,14 @@ Interfaces: SocialInterface
 }
 
 init {
-      parseIniFile@IniUtils( "config.ini" )( config );
-      consumerKey = config.Twitter.consumerKey;
-      consumerSecret = config.Twitter.consumerSecret;
-      tokenSecret = config.Twitter.tokenSecret;
-      accessToken = config.Twitter.accessToken
+	getServiceDirectory@File()( servDir );
+	getFileSeparator@File()( fs );
+	parseIniFile@IniUtils( servDir + fs + ".." + fs + ".." + fs + "config.ini" )( config );
+	undef( servDir ); undef( fs );
+	consumerKey = config.Twitter.consumerKey;
+	consumerSecret = config.Twitter.consumerSecret;
+	tokenSecret = config.Twitter.tokenSecret;
+	accessToken = config.Twitter.accessToken
 }
 
 main {
