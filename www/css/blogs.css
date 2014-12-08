@@ -33,7 +33,7 @@
 	
 }
 
-.BlogEntryContentReadMore {
+.BlogEntryContentClose {
 	text-align: right;
 	font-size: 120%;
 	color: #888;	
@@ -53,11 +53,11 @@
 	padding-bottom: 0.25em;
 }
 
-.BlogEntryContentReadMore a {
+.BlogEntryContentReadClose a {
 	color:white;
 }
 
-.BlogEntryContentReadMore a:hover {
+.BlogEntryContentReadClose a:hover {
 	color: #A80C1E;
 	text-decoration: none;
 	cursor: pointer;

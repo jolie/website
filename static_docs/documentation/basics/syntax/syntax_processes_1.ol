@@ -1,0 +1,1 @@
+execution { single | concurrent | sequential }

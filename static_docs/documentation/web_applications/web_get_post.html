@@ -1,0 +1,25 @@
+<h2 id="http-getpost-requests">HTTP GET/POST Requests</h2>
+<p>Let us focus on dealing with GET and POST request from web applications using the HTTP protocol directly (without <a href="web_applications/leonardo">Leonardo</a>).</p>
+<hr />
+<h2 id="receiving-get-requests">Receiving GET requests</h2>
+<p>To receive and handle a GET requests. Let us consider a Jolie program that supports the sum of two numbers, <code>x</code> and <code>y</code>, by means of an operation called <code>sum</code>.</p>
+<div class="code" src="web_get_post_1.ol"></div>
+
+<p>Jolie transparently supports the reception of GET requests ad the automatic parsing of HTTP querystrings. Hence, we can simply execute <code>jolie sum.ol</code> and point the browser to: <code>http://localhost:8000/sum?x=6&amp;y=2</code> to obtain the result of the sum computed by the code in our example.</p>
+<hr />
+<h2 id="sending-get-requests">Sending GET requests</h2>
+<p>The <code>sum</code> service can be invoked from another Jolie program using a HTTP GET request. We can do this with the following client code:</p>
+<div class="code" src="web_get_post_2.ol"></div>
+
+<p>We use the <code>method</code> parameter of HTTP protocol to set our request method to GET.</p>
+<hr />
+<h2 id="receiving-post-requests">Receiving POST requests</h2>
+<p>Handling POST requests is similar to handling GET ones. Let us reuse the code given before for the <code>sum</code> service submitting a POST request: Jolie HTTP protocol implementation automatically detects a POST call and convert it to a standard message. Since POST calls are usually sent by browsers through HTML forms, we provide one by a simple extension of our <code>sum</code> service:</p>
+<div class="code" src="web_get_post_3.ol"></div>
+
+<p>This time we use the <code>format = &quot;html&quot;</code> HTTP parameter to support the dispatch of HTML responses by operation <code>form</code> which returns an HTML page containing a form that targets the <code>sum</code> operation. After executing the code and pointing the browser to <code>http://localhost:8000/form</code>, we should see an HTML form that submits the values <code>x</code> and <code>y</code> to operation <code>sum</code> and gets back a result.</p>
+<hr />
+<h2 id="sending-post-requests">Sending POST requests</h2>
+<p>The difference between sending GET and POST requests stands in setting the <code>method</code> parameter. Let us modify the previous code used to shown how to send GET requests:</p>
+<div class="code" src="web_get_post_4.ol"></div>
+

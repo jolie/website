@@ -1,0 +1,76 @@
+<h2 id="jolie-data-structures">Jolie data structures</h2>
+<p>Jolie data structures are tree-like. It is easier to understand them by making a comparison between a data structure in Jolie and its equivalent in XML.</p>
+<h2 id="creating-a-data-structure">Creating a data structure</h2>
+<p>Let us create a root node, named <code>animals</code> which contains two children nodes: <code>pet</code> and <code>wild</code>. Each of them is an array with two elements, respectively equipped with another sub-element (its name).</p>
+<div class="code" src="data_structures_1.ol"></div>
+
+<p>Equivalent representations of the structure of <code>animals</code> in XML and JSON are, respectively:</p>
+
+<hr />
+
+<h2 id="navigating-data-structures">Navigating data structures</h2>
+<p>Data structures are navigated using the <code>.</code> operator, which is the same used for creating nested structures. The structures created by nesting variables are called <em>variable paths</em>. Some examples of valid variable paths follows:</p>
+<div class="code" src="data_structures_2.ol"></div>
+
+<p><code>.</code> operator requires a single value operand on its left. Thus if no index is specified, it is defaulted to 0. In our example the variable path at Line 5 is automatically translated to:</p>
+<div class="code" src="data_structures_3.ol"></div>
+
+<hr />
+<h2 id="dynamic-look-up">Dynamic look-up</h2>
+<p>Nested variables can be identified by means of a string expression evaluated at runtime.</p>
+<p>Dynamic look-up can be obtained by placing a string between round parentheses. Let us consider the <code>animals</code> structure mentioned above and write the following instruction:</p>
+<div class="code" src="data_structures_4.ol"></div>
+
+<p>The string <code>&quot;pet&quot;</code> is evaluated as an element's name, nested inside <code>animals</code> structure, while the rest of the variable path points to the variable <code>name</code> corresponding to <code>pet</code>'s first element. Thus the output will be <code>cat</code>.</p>
+<p>Also a concatenation of strings can be used as an argument of a dynamic look-up statement, like in the following example, which returns the same result as the previous one.</p>
+<div class="code" src="data_structures_5.ol"></div>
+
+<hr />
+<h2 id="foreach---traversing-items"><code>foreach</code> - traversing items</h2>
+<p>Data structures can be navigated by exploiting the <code>foreach</code> statement, whose syntax is:</p>
+<div class="syntax" src="syntax_data_structures_1.ol"></div>
+
+<p><code>foreach</code> operator looks for any child-node name inside <code>root</code> and puts it inside <code>nameVar</code>, executing the internal code block at each iteration.</p>
+<p>Combining <code>foreach</code> and dynamic look-up is very useful for navigating and handling nested structures:</p>
+<div class="code" src="data_structures_6.ol"></div>
+
+<p>In the example above <code>kind</code> ranges over all child-nodes of <code>animals</code> (<code>pet</code> and <code>wild</code>), while the <code>for</code> statement ranges over the elements of the current <code>animals.kind</code> node, printing both it's path in the structure and its content:</p>
+<div class="code" src="data_structures_6_out.ol"></div>
+
+<hr />
+<h2 id="with---a-shortcut-to-repetitive-variable-paths"><code>with</code> - a shortcut to repetitive variable paths</h2>
+<p><code>with</code> operator provides a shortcut for repetitive variable paths.</p>
+<p>In the following example the same structure used in previous examples (<code>animals</code>) is created, avoiding the need to write redundant code:</p>
+<div class="code" src="data_structures_7.ol"></div>
+
+<hr />
+<h2 id="undef---erasing-tree-structures"><code>undef</code> - erasing tree structures</h2>
+<p>A structure can be completely erased - undefined - using the statement <code>undef</code>:</p>
+<div class="code" src="data_structures_9.ol"></div>
+
+<hr />
+<h2 id="copying-an-entire-tree-structure"><code>&lt;&lt;</code> - copying an entire tree structure</h2>
+<p>The deep copy operator <code>&lt;&lt;</code> copies an entire tree structure into another.</p>
+<div class="code" src="data_structures_8.ol"></div>
+
+
+
+<p>In the example above the structure <code>animals</code> is completely copied in structure <code>sector_a</code>, which is a nested element of the structure <code>zoo</code>. Therefore, even if <code>animals</code> is undefined at Line 2, the structure <code>zoo</code> contains its copy inside <code>section_a</code>.</p>
+<p>For the sake of clarity a representation of the <code>zoo</code> structure is provided as it follows:</p>
+<div class="code" src="data_structures_8.xml"></div>
+
+<hr />
+<h2 id="structures-aliases"><code>-&gt;</code> - structures aliases</h2>
+<p>A structure element can be an alias, i.e. it can point to another variable path.</p>
+<p>Aliases are created with the <code>-&gt;</code> operator, like in the following example:</p>
+<div class="code" src="data_structures_10.ol"></div>
+
+<div class="attention"><p>
+Aliases are evaluated every time they are used.
+</p></div>
+
+<p>Thus we can exploit aliases to make our code more readable even when handling deeply nested structure like the one in the example below:</p>
+<div class="code" src="data_structures_11.ol"></div>
+
+<p>The alias <code>currentElement[ 0 ]</code> is used to refer to the <code>i</code>-th element of <code>d</code> nested inside <code>a.b.c</code>. At each iteration the alias is evaluated, using the current value of <code>i</code> variable as index. Therefore, the example's output is:</p>
+<div class="code" src="data_structures_11_out.ol"></div>

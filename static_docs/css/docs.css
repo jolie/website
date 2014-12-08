@@ -1,0 +1,65 @@
+.js_container {
+	overflow-y: scroll;
+}
+
+#js_header {
+	font-size: 1em;
+}
+
+#js_site_header{
+	margin-bottom: 5px;
+	margin-top: 5px;
+}
+
+#js_site_header .btn {
+	margin-bottom: 5px;
+}
+
+#jolie_logo {
+	max-height: 65px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+#js_menu ul {
+	padding-left: 5%;
+}
+
+#js_menu li {
+	padding-left: 5%;
+}
+
+.doc_image img {
+	width: 80%;
+	margin-left: 10%;
+	margin-bottom: 1em;
+	margin-top: 1em;
+}
+
+a.menu_selected {
+	font-weight: bolder;
+}
+
+a.toc_selected {
+	text-decoration: underline;
+}
+
+.download {
+	border-radius: 20px;
+	background-image: url(../imgs/download-icon.png);
+	background-repeat: no-repeat;
+	background-size: contain;
+	padding-top: 1em;
+	padding-bottom: 1em;
+	padding-left: 5em;
+	padding-right: 0.5em;
+	border: 2px solid #A80C1E;
+	display: inline-block;
+}
+
+.download:hover {
+	background: #D3B5B6;
+	background-image: url(../imgs/download-icon.png);
+	background-repeat: no-repeat;
+	background-size: contain;
+}
