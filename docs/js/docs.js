@@ -1,5 +1,4 @@
-/* global $:false, window:false, document:false, alert:false, 
-Prism:false */
+/* global $:false, jQuery:false, window:false, document:false, alert:false, Prism:false */
 "use strict";
 
 // css components in HTML
@@ -43,15 +42,10 @@ var resizeHeight = function () {
 var loadFunctions = function (){
 	resizeHeight();
 	$( window ).resize( resizeHeight );
-
 	loadMenu();
 };
 
 // DOCUMENTS LOGIC
-
-var loadPage = function(){
-	$( css_menu ).find( "a[href=\"getting_started/hello_world.html\"]" ).trigger( "click" );
-};
 
 var loadMenu = function() {
 	$.getJSON( files_menu, function(json, textStatus) {
@@ -59,8 +53,23 @@ var loadMenu = function() {
 			$( css_menu ).html( menu );
 			addIdToJSL();
 			// also loads the default page
-			loadPage();
+			window.onhashchange = checkUrl;
+			checkUrl();
 	});
+};
+
+var checkUrl = function () {
+	var url = window.location.toString();
+	if( url.indexOf("#!") > -1 ){
+		url = url.match(/#!documentation\/(.+)/)[1];
+		$( css_menu ).find( "a[href=\"" + url + "\"]" ).trigger( "click" );
+	} else {
+		$( css_menu ).find( "a[href=\"getting_started/hello_world.html\"]" ).trigger( "click" );
+	}
+};
+
+var pushUrl = function( url ){
+	history.pushState( null, null, "#!" + url );
 };
 
 var addIdToJSL = function () {
@@ -120,6 +129,7 @@ var loadMenuItem = function( event ){
 		loadSyntax( href );
 		addTOCToParent( el );
 		$( css_content ).scrollTop( 0 );
+		pushUrl( doc );
 	});
 	return false;
 };
@@ -140,6 +150,7 @@ var addTOCToParent = function ( el ) {
 			ul.append( $( "<li></li>" )
 				.append( $( "<a></a>")
 					.attr( "href", "#" + $( e ).attr( "id" ) )
+					.attr( "onclick", "return scroll(\"" + "#" + $( e ).attr( "id" ) + "\")" )
 					.text( $( e ).text() ).click( function( event ) {
 						$( css_menu ).find( ".toc_selected" ).each( function(i, e) {
 							$( e ).attr( "class", "" );
@@ -150,7 +161,20 @@ var addTOCToParent = function ( el ) {
 		});
 		el.parent().append( ul );
 	}
+};
 
+var scroll = function ( anchor ) {
+	$( css_content ).scrollTop( 0 );
+	var threshold = 20;
+	var diff = $( anchor ).offset().top - $( css_content ).offset().top;
+	if( diff > threshold ){
+		$( css_content ).scrollTop( diff );
+	}
+	$( anchor ).attr( "class", "highlight" );
+	setTimeout( function() {
+		$( anchor ).attr( "class", "");
+	},500);
+	return false;
 };
 
 var loadCode = function ( href ) {
