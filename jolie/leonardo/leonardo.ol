@@ -120,6 +120,11 @@ main
 		scope( s ) {
 			install( FileNotFound => println@Console( "File not found: " + file.filename )(); statusCode = 404 );
 
+			// for javascript seo requests
+			if( is_defined( request.data._escaped_fragment_ ) ){
+				request.operation = request.data._escaped_fragment_
+			};
+
 			s = request.operation;
 			s.regex = "\\?";
 			split@StringUtils( s )( s );
