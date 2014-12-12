@@ -1,3 +1,0 @@
-synchronized( id ){
-	//code
-} 

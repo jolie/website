@@ -1,5 +1,4 @@
 http://jolie-lang.blogspot.com/2013/02/sourceforge-downloads.html
-http://jolie-lang.blogspot.com/2013/01/jolie-10-released.html
 http://jolie-lang.blogspot.com/2013/01/the-new-jolie-website_28.html
 http://fmontesi.blogspot.com/2010/05/web-services-for-human-beings.html
 http://fmontesi.blogspot.com/2009/09/random-thoughts-getting-ready-for-jolie.html
@@ -17,3 +16,5 @@ http://fmontesi.blogspot.com/2008/07/starting-up-another-blog-in-cauldron.html
 http://claudioguidi.blogspot.com/2014/01/a-service-oriented-web-server.html
 http://claudioguidi.blogspot.com/2014/01/programming-service-oriented-recursion.html
 http://claudioguidi.blogspot.com/2014/08/the-service-threshold-helpful-means-for.html
+
+http://jolie-lang.blogspot.com/2013/01/jolie-10-released.html
