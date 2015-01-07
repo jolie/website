@@ -25,7 +25,7 @@ main
 				println@Console( "TypeMismatch: " + main.TypeMismatch )()
 		);
 	//valid_request;
-	error_request_1;
+	typeMismatch_request;
 	percent@PercService( request )( response );
 	println@Console( "\n"+"Percentage value: "+response.percent_value )()
 }
