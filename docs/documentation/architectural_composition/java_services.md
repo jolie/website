@@ -1,5 +1,13 @@
 ## JavaServices
 
+<div class="panel panel-warning">
+	<div class="panel-heading">
+ 	<h3 class="panel-title">Attention</h3>
+	</div>
+	<div class="panel-body">
+ 	This documentation page is a stub. Its contents can be partial and/or out of date.
+	</div>
+</div>
 What follows is a brief tutorial that comprises how to develop JavaService classes in an IDE and use them within Jolie programs.
 The tutorial also presents some features of Java integration in Jolie, i.e., manipulating Jolie values in Java, calling operations from a Java service, and the dynamic embedding of JavaServices.
 
@@ -44,7 +52,7 @@ JavaService that is `FirstJavaService`.
 In the following, we add some logic to the JavaService, i.e., printing out a
 message on the console. The Java code follows:
 
-# MISSING CODE HERE
+`MISSING CODE`
 
 Finally we can build the Java file into a `.jar` file.
 
@@ -59,12 +67,12 @@ services.
 In particular, this example has one public method called *write* which can be
 easily invoked by the following embedder:
 
-\> [Download code](./content/code/code_JavaServices_1.zip)
+[Download code](#code_JavaServices_1.zip)
 
 Note that the embedded construct takes as a type the keyword Java
 instead of Jolie because we are embedding a JavaService. As parameter
 the embedded construct takes the absolute class name obtained as
-`package\_name+class\_name`. As for a Jolie service, the embedder must
+`package/name+class/name`. As for a Jolie service, the embedder must
 declare the interface of the embedded service and the outputPort used
 for communicating with it. In this case the interface contains a OneWay
 operation called write whereas the outputPort is called
@@ -72,7 +80,7 @@ operation called write whereas the outputPort is called
 run by passing the JavaService jar file as a parameter by using the
 option `-l` as shown below:
 
-# MISSING CODE IN HERE
+`MISSING CODE`
 
 ## Manipulating Jolie values in Java
 
@@ -91,11 +99,11 @@ In each Jolie tree, a node is a vector. In order to access/get the
 vector elements of a node, you can use the method `getChildren( String
 subnodeName )` which returns the corresponding `ValueVector` of the
 subnode `subnondeName`. In the following example we get all the vector
-elements of the subnode `sub\_node1`.
+elements of the subnode `subnode1`.
 
 In order to access the element at index *i* it is possible to use the
 method `get( int index )`. In the following example we access the third
-element of the subnode `sub\_node1`.
+element of the subnode `subnode1`.
 
 It is worth noting that an element of a ValueVector is a Value and that
 the first element of a `ValueVector` is the element at the index 0.
@@ -112,7 +120,7 @@ the content:
 - `doubleValue()`.
 
 In the following example we suppose to print out the content of the second
-element of the subnode `sub\_node1` supposing it is a string.
+element of the subnode `subnode1` supposing it is a string.
 
 #### Setting the value of an element.
 Analogously, it is possible to use the method `setValue( ... )` for
@@ -127,7 +135,7 @@ which has an active role instead of always waiting to be invoked by the
 embedder. As an example, we extend the previous JavaService by introducing an
 invocation of a OneWay operation of the embedder called `writeBack`:
 
-# MISSING CODE HERE
+`MISSING CODE`
 
 The class `CommMessage` (package `Jolie.net`) represents a Jolie communication
 message which is sent to the embedder by means of the JavaService method
@@ -145,7 +153,7 @@ creating a request message and a response message. In this example, we have
 created a request message because the JavaService invokes a OneWay operation
 of the embedder. The embedder follows:
 
-# MISSING CODE HERE
+`MISSING CODE`
 
 The embedder must declare its own `inputPort` where it will receive messages
 from the embedded service. The embedder exhibits a OneWay operation called
@@ -153,7 +161,7 @@ from the embedded service. The embedder exhibits a OneWay operation called
 of the operation `write` and waits for a message on the operation
 `writeBack`.
 
-[Download code](./content/code/code_JavaServices_2.zip)
+[Download code](#code_JavaServices_2.zip)
 
 ## Annotations
 
@@ -174,34 +182,7 @@ RequestResponse invocation from the JavaService to the embedder and a
 RequestResponse invocation from the embedder to the JavaService. The
 Java code follows:
 
-  package Jolie.example; 
-  import Jolie.net.CommChannel; 
-  import Jolie.net.CommMessage; 
-  import Jolie.runtime.JavaService; 
-  import Jolie.runtime.Value; 
-  import Jolie.runtime.embedding.RequestResponse;
-  public class ThirdJavaService extends JavaService { 
-    public void start( Value msg ) { 
-        System.out.println( msg.getFirstChild( "message" ).strValue() ); 
-        Value v = Value.create();
-        v.getFirstChild( "message" ).setValue( "Hello world from the JavaService" );
-        try { 
-          CommMessage request = CommMessage.createRequest( "initialize","/",v );
-          CommMessage response = sendMessage( request ).
-            recvResponseFor( request );
-          System.out.println( response.value().strValue() ); 
-          } catch ( Exception e ) {
-            e.printStackTrace(); 
-          }} 
-
-          @RequestResponse public Value write( Value msg ){ 
-            System.out.println( msg.getFirstChild( "message" ).strValue()); 
-            Value v = Value.create(); 
-            v.getFirstChild( "message" )
-              .setValue( "Hello world from the write operation of the JavaService!"); 
-            return v; 
-          } 
-      }
+<div class="code" src="java_services_1.java"></div>
 
 In this example, the JavaService exhibits a OneWay operation `start` where it
 prints out the received message and then invokes the embedder by means of the
@@ -219,7 +200,7 @@ operation of the JavaService!"`.
 The exhibited RequestResponse operation returns a Value object which contains
 the response message. The code of the embedder follows:
 
-# MISSING CODE HERE
+`MISSING CODE`
 
 The JavaService interface declares both the OneWay operation `start` and the
 RequestResponse `write`. Moreover, the embedder exhibits a RequestResponse
@@ -231,36 +212,29 @@ we also provide the pre-built jar file of the JavaService, thus it is possible
 to execute the embedder by specifying the jar to be used in the command line
 as it follows:
 
-`Jolie embedder.ol -l Example3.jar`
+<kbd>Jolie embedder.ol -l Example3.jar</kbd>
 
-[Download code](./content/code/code_JavaServices_3.zip)
+[Download code](#code_JavaServices_3.zip)
 
 ### Managing fault responses
- In Jolie a RequestResponse message can return a fault message which
+In Jolie a RequestResponse message can return a fault message which
 must be managed into the JavaService. Now, let us suppose to modify the
 `embedder.ol` by throwing the fault `MyFault` as response into the body
 of the `initialize` operation as it follows:
 
-initialize( request )( response\_initialize ){ scope( myScope ) {
-install( MyFault =\> println@Console("Fault raised!")() );
-response\_initialize = "This is the initialization"; throw( MyFault ) }
-};
+<div class="code" src="java_services_1.ol"></div>
 
 Clearly, we have also to enhance the interface in order to declare that
 operation `initialize` can raise a fault as shown below:
 
-interface EmbedderInterface { RequestResponse: initialize throws MyFault
-}
+<div class="code" src="java_services_2.ol"></div>
 
 After enabling fault raising into `embedder.ol`, we simply modify the
 JavaService by checking if the response is a fault or not by exploiting
 method `isFault` of the class `CommMessage` as we do in the following
 Java code:
 
-CommMessage response = sendMessage( request ).recvResponseFor( request
-); if ( response.isFault() ) { System.out.println(
-response.fault().faultName() ); } else { System.out.println(
-response.value().strValue() ); }
+<div class="code" src="java_services_3.java"></div>
 
 ## JavaService dynamic embedding
 
@@ -273,14 +247,7 @@ the `runtime`. In the following example we present the Java code of a
 JavaService which simply returns the value of a counter which is
 increased each time it is invoked on its method `start`.
 
-  public class FourthJavaService extends JavaService { 
-    private int counter; 
-
-    public Value start( Value request ) { 
-      counter++; 
-      Value v = Value.create(); 
-      v.setValue( counter ); return v; 
-    }}
+<div class="code" src="java_services_2.java"></div>
 
 Now we dynamically embed this JavaService in the following service where for
 each session opened on operation `run` the JavaService is dynamically embedded
@@ -289,35 +256,35 @@ and called on the operation `start`.
 If we create a simple client which calls this service for ten times we
 will have the following result on the console:
 
-  Received counter 1 
-  Received counter 1 
-  Received counter 1 
-  Received counter 1 
-  Received counter 1 
-  Received counter 1 
-  Received counter 1
-  Received counter 1 
-  Received counter 1 
-  Received counter 1
+	Received counter 1 
+	Received counter 1 
+	Received counter 1 
+	Received counter 1 
+	Received counter 1 
+	Received counter 1 
+	Received counter 1
+	Received counter 1 
+	Received counter 1 
+	Received counter 1
 
 Such a result means that for each session enabled on the embedder, a new
 JavaService object is instantiated and executed. Indeed, we can try to execute
 the same client on a embedder service which statically embed the JavaService,
 the result will be:
 
-  Received counter 1 
-  Received counter 2 
-  Received counter 3 
-  Received counter 4 
-  Received counter 5 
-  Received counter 6 
-  Received counter 7
-  Received counter 8 
-  Received counter 9 
-  Received counter 10
+	Received counter 1 
+	Received counter 2 
+	Received counter 3 
+	Received counter 4 
+	Received counter 5 
+	Received counter 6 
+	Received counter 7
+	Received counter 8 
+	Received counter 9 
+	Received counter 10
 
 In this case the JavaService is shared among all the sessions and each
 new invocation will increase its inner counter. In the following you can
 download the code and try yourself.
 
-[Download code](./content/code/code_JavaServices_4.zip)
+[Download code](#code_JavaServices_4.zip)

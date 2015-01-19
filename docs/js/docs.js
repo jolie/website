@@ -142,7 +142,10 @@ var loadMenuItem = function( event ){
 var updateInternalLinks = function ( c ) {
 	$( c ).find( "a" ).each( function(i, a) {
 		var href = $( a ).attr( "href" );
-		if( href.charAt( 0 ) != "/" && href.indexOf( hashRoot ) > 0 && href.charAt( 0 ) != "#" ){
+		if( href.charAt( 0 ) != "/" 		&& 
+			href.indexOf( "http://" ) < 0 && 
+			href.indexOf( "documentation" ) < 0 && 
+			href.charAt( 0 ) != "#" ){
 			$( a ).attr( "href", hashRoot + href );
 		}
 	});
@@ -243,14 +246,14 @@ var updateBreadcrumb = function ( el, parent ) {
 
 var extLang = {
   "ext": {
-  	"xml": { "lang": "markup" },
+  	"xml": 	{ "lang": "markup" },
     "html": { "lang": "markup" },
     "json": { "lang": "jscript" },
-    "js": {"lang": "jscript" },
-    "ol": { "lang": "jolie" },
-    "iol": { "lang": "jolie" },
+    "js": 	{ "lang": "jscript" },
+    "ol": 	{ "lang": "jolie" },
+    "iol": 	{ "lang": "jolie" },
     "java": { "lang": "java" },
-    "txt": { "lang": "plain" }
+    "txt": 	{ "lang": "plain" }
   }
 };
 
