@@ -86,6 +86,10 @@
                 "label": "Embedding Java Services"
             },
             {
+                "url": "architectural_composition/java_services.html",
+                "label": "Tutorial on Java Services"
+            },
+            {
                 "url": "architectural_composition/embedding_javascript.html",
                 "label": "Embedding JavaScript Services"
             },{
