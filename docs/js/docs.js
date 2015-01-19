@@ -18,6 +18,10 @@ var docs_code_folder = "code/";
 var docs_syntax_folder = "syntax/";
 var files_menu = "/documentationMenu";
 
+var hash = "#!";
+var hashRoot = hash + "documentation/";
+
+
 // counter and logic for syntax highlighting
 // var shc = 0;
 // var syntH = {
@@ -60,7 +64,7 @@ var loadMenu = function() {
 
 var checkUrl = function () {
 	var url = window.location.toString();
-	if( url.indexOf("#!") > -1 ){
+	if( url.indexOf( hash ) > -1 ){
 		url = url.match(/#!documentation\/(.+)/)[1];
 		$( css_menu ).find( "a[href=\"" + url + "\"]" ).trigger( "click" );
 	} else {
@@ -69,7 +73,7 @@ var checkUrl = function () {
 };
 
 var pushUrl = function( url ){
-	history.pushState( null, null, "#!" + url );
+	history.pushState( null, null, hash + url );
 };
 
 var addIdToJSL = function () {
@@ -129,9 +133,19 @@ var loadMenuItem = function( event ){
 		loadSyntax( href );
 		addTOCToParent( el );
 		$( css_content ).scrollTop( 0 );
+		updateInternalLinks( $(css_content ) );
 		pushUrl( doc );
 	});
 	return false;
+};
+
+var updateInternalLinks = function ( c ) {
+	$( c ).find( "a" ).each( function(i, a) {
+		var href = $( a ).attr( "href" );
+		if( href.charAt( 0 ) != "/" && href.indexOf( hashRoot ) > 0 && href.charAt( 0 ) != "#" ){
+			$( a ).attr( "href", hashRoot + href );
+		}
+	});
 };
 
 var addTOCToParent = function ( el ) {

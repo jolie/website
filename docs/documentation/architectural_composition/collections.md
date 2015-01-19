@@ -1,6 +1,6 @@
 ## Collections
 
-[Courier Sessions](architectural_composition/couriers) can be used in combination with *collections* of output ports in order to forward them according to a specific rule.
+[Courier Sessions](architectural_composition/couriers.html) can be used in combination with *collections* of output ports in order to forward them according to a specific rule.
 
 A collection is a set of output ports that share the same interface.
 

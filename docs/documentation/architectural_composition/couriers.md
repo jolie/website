@@ -12,7 +12,7 @@ In order to execute a code block according to the service invoked, the aggregate
 
 <div class="syntax" src="syntax_couriers_1.ol"></div>
 
-The `interface extender` associates an identifier (`extender_id`) to a collection of operations, where `OneWayDefinition` and `RequestResponseDefinition` are respectively the one-way operations definition and request-response operations definition seen in [Communication Ports](basics/communication_ports) and Fault handing [Basics](fault_handling/basics) subsections.
+The `interface extender` associates an identifier (`extender_id`) to a collection of operations, where `OneWayDefinition` and `RequestResponseDefinition` are respectively the one-way operations definition and request-response operations definition seen in [Communication Ports](basics/communication_ports.html) and Fault handing [Basics](fault_handling/basics.html) subsections.
 
 <div class="syntax" src="syntax_couriers_2.ol"></div>
 
