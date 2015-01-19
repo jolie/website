@@ -1,8 +1,9 @@
 ## Leonardo: the Jolie web server
 
-Leonardo is a web server developed in pure Jolie.
+Leonardo is a web server developed in pure Jolie [@M14].
 
-It is very flexible and can scale from service simple static HTML content to supporting powerful dynamic web applications.
+It is very flexible and can scale from service simple static HTML content to supporting powerful dynamic web 
+applications.
 
 ---
 
@@ -118,3 +119,7 @@ Jolie supports Google Web Toolkit too by means of the `jolie-gwt.jar` library st
 The module comes with support classes for invoking operations published by the service of Leonardo which is serving the GWT application. In our case, we can easily call the `length` operation with the following code:
 
 <div class="code" src="leonardo_8.java"></div>
+
+---
+
+## References
