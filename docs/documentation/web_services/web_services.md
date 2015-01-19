@@ -6,7 +6,7 @@ Let us exemplify it by invoking the Global Weather Service, provided by [www.web
 
 ## Request the service interface from the WSDL
 
-To invoke a web service's operation, we need to create a compatible Jolie interface. To do that we exploit the tool [wsdl2jolie](web_services/wsdl2jolie), which is part of the Jolie trunk installation.
+To invoke a web service's operation, we need to create a compatible Jolie interface. To do that we exploit the tool [wsdl2jolie](web_services/wsdl2jolie.html), which is part of the Jolie trunk installation.
 
 We run the command:
 
@@ -32,7 +32,7 @@ Let us consider the following Jolie service which returns the address of a perso
 
 <div class="code" src="web_services_3.ol"></div>
 
-To expose the port `MyServiceSOAPPort` as a web service, we exploit the tool [jolie2wsdl](web_services/jolie2wsdl) that generates the corresponding WSDL document to be attached to the file:
+To expose the port `MyServiceSOAPPort` as a web service, we exploit the tool [jolie2wsdl](web_services/jolie2wsdl.html) that generates the corresponding WSDL document to be attached to the file:
 
 `jolie2wsdl -i /opt/jolie/include service.ol MyServiceSOAPPort MyWsdlDocument.wsdl`
 

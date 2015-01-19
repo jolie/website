@@ -34,7 +34,7 @@ The parallel operator `|` states that both left and right operands are executed 
 
 <div class="syntax" src="syntax_composing_statements_workflow_2.ol"></div>
 
-It is a good practice to explicitly group statements when mixing sequence and parallel operators. Statements can be grouped by enclosing them within an unlabelled [scope](fault_handling/basics) represented by a pair curly brackets `{}`, like in the following example:
+It is a good practice to explicitly group statements when mixing sequence and parallel operators. Statements can be grouped by enclosing them within an unlabelled [scope](fault_handling/basics.html) represented by a pair curly brackets `{}`, like in the following example:
 
 <div class="code" src="composing_statements_workflow_7.ol"></div>
 
@@ -51,7 +51,7 @@ In this example we concurrently retrieve information from both a forecast and a 
 
 <div class="download"><a href="documentation/basics/code/composing_statements_parallel.zip">Click here to download the comprehensive code of the example above.</a></div>
 
-Concurrent access to shared variables can be restricted through [synchronized](basics/processes#synchronisation) blocks.
+Concurrent access to shared variables can be restricted through [synchronized](basics/processes.html) blocks.
 
 ---
 

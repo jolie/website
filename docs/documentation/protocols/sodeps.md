@@ -6,4 +6,4 @@ Protocol name in Jolie port definition: `sodeps`.
 
 ## SODEPS Parameters
 
-Since SODEPS is the SODEP protocol wrapped in an SSL encrypted message, SODEPS parameters are the same defined for [SODEP](protocols/sodep) and [SSL](protocols/ssl).
+Since SODEPS is the SODEP protocol wrapped in an SSL encrypted message, SODEPS parameters are the same defined for [SODEP](protocols/sodep.html) and [SSL](protocols/ssl.html).

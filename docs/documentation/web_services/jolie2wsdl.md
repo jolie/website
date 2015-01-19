@@ -1,6 +1,6 @@
 ## Jolie2wsdl
 
-Jolie2wsdl is the counterpart of [wsdl2jolie](web_services/wsdl2jolie) tool. It allows the creation of a WSDL document starting from a Jolie Interface.
+Jolie2wsdl is the counterpart of [wsdl2jolie](web_services/wsdl2jolie.html) tool. It allows the creation of a WSDL document starting from a Jolie Interface.
 
 ## The syntax
 

@@ -9,7 +9,7 @@ In the <code>sequential</code> and <code>concurrent</code> cases, the behavioura
 </p></div>
 
 <p>A crucial aspect of behaviour instances is that each instance has its own private state, determining variable scoping. This lifts programmers from worrying about race conditions in most cases.</p>
-<p>For instance, let us recall the server program given at the end of <a href="basics/communication_ports">Communication Ports</a> section. We can simply add the deployment instruction <code>execution{ concurrent }</code> to the server's deployment to make it supporting multiple clients at the same time. Access to variables would be safe since each behaviour instance would have its private state.</p>
+<p>For instance, let us recall the server program given at the end of <a href="basics/communication_ports.html">Communication Ports</a> section. We can simply add the deployment instruction <code>execution{ concurrent }</code> to the server's deployment to make it supporting multiple clients at the same time. Access to variables would be safe since each behaviour instance would have its private state.</p>
 <div class="code" src="processes_1.ol"></div>
 
 <hr />

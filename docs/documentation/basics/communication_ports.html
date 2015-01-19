@@ -3,7 +3,7 @@
 <p>The basic deployment primitives are input ports and output ports, which support input and output communications with other services. Ports are based on <em>interfaces</em> and <em>data types</em>.The deployment part of a Jolie program is a list of <em>deployment instructions</em> among which we can have input and output ports, interfaces, and data type definitions.</p>
 <hr />
 <h2 id="ports">Ports</h2>
-<p>Let us recall the concepts of <em>input ports</em> and <em>output ports</em> seen in the <a href="getting_started/behavior_and_deployment">Behaviour and Deployment</a> section. There are two kinds of ports: <em>input ports</em>, which expose input operations to other services, and <em>output ports</em>, defining how to invoke the operations of other services.</p>
+<p>Let us recall the concepts of <em>input ports</em> and <em>output ports</em> seen in the <a href="getting_started/behavior_and_deployment.html">Behaviour and Deployment</a> section. There are two kinds of ports: <em>input ports</em>, which expose input operations to other services, and <em>output ports</em>, defining how to invoke the operations of other services.</p>
 <p><em>Location</em>, <em>protocol</em> and <em>interface</em> are the three elements in the definition of ports. Location and protocol define the concrete binding information between a Jolie program and other service, interfaces specify type information expected to be satisfied by the behaviour that uses the port.</p>
 <h3 id="locations">Locations</h3>
 <p>A location expresses the communication medium, along with its configuration parameters, a service uses for exposing its interface (input port) or invoking another service (output port).</p>
@@ -16,7 +16,7 @@
 <li><code>localsocket</code> (Unix local sockets);</li>
 </ul>
 <p>An example of a valid location is: <code>&quot;socket://www.mysite.com:80/&quot;</code>, where <code>socket://</code> is the location medium and the following part represents its parameters.</p>
-<p>For a thorough description of the locations supported by Jolie and their parameters see <a href="locations/introduction">Locations</a> section.</p>
+<p>For a thorough description of the locations supported by Jolie and their parameters see <a href="locations/introduction.html">Locations</a> section.</p>
 <h3 id="protocols">Protocols</h3>
 <p>A protocol defines how data to be sent or received should be, respectively, encoded or decoded, following an isomorphism.</p>
 <p>Protocols are referred by name. Examples of valid (supported) protocol names are:</p>
@@ -27,7 +27,7 @@
 <li><code>sodep</code> (a binary protocol specifically developed for Jolie);</li>
 <li><code>xmlrpc</code>.</li>
 </ul>
-<p>For a thorough description of the protocols supported by Jolie and their parameters see <a href="protocols/introduction">Protocols</a> section.</p>
+<p>For a thorough description of the protocols supported by Jolie and their parameters see <a href="protocols/introduction.html">Protocols</a> section.</p>
 <h3 id="the-syntax-of-input-and-output-ports">The syntax of input and output ports</h3>
 <p>The syntax for input and output ports is, respectively:</p>
 <div style="overflow:auto;">
@@ -66,7 +66,7 @@
 <p>The type declarations of both request and response messages are explained further in the data types subsection below.</p>
 <hr />
 <h2 id="data-types">Data types</h2>
-<p>In Jolie, the messages exchanged through operations are data trees (see section <a href="basics/handling_simple_data">Handling Simple Data</a>). A data type defines:</p>
+<p>In Jolie, the messages exchanged through operations are data trees (see section <a href="basics/handling_simple_data.html">Handling Simple Data</a>). A data type defines:</p>
 <ul>
 <li>the structure of a data tree;</li>
 <li>the type of the content of its node;</li>
@@ -140,7 +140,7 @@ Subnodes are always prefixed by the <code>.</code> symbol.
 <hr />
 <h2 id="type-mismatching">Type mismatching</h2>
 <p>In Jolie, whenever a message is sent or received through a port, its type is checked against what specified in the port's interface. An invoker sending a message with a wrong type receives a <code>TypeMismatch</code> fault.</p>
-<p>The <code>TypeMismatch</code> fault can be handled by exploiting the <a href="fault_handling/basics">fault handling</a>, as shown in the following example:</p>
+<p>The <code>TypeMismatch</code> fault can be handled by exploiting the <a href="fault_handling/basics.html">fault handling</a>, as shown in the following example:</p>
 <div class="code" src="communication_ports_8.ol"></div>
 
 <h3 id="type-mismatching-in-one-way-operations">Type mismatching in one-way operations</h3>

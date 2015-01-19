@@ -38,7 +38,7 @@ A variable type can be checked at runtime by means of the `instanceof` operator,
 
 <div class="syntax" src="syntax_handling_simple_data_1.ol"></div>
 
-`instanceOf` operator can be used to check variable typing with both native types and custom ones (see type subsection in [Communication Ports](basics/communication_ports) section). Example:
+`instanceOf` operator can be used to check variable typing with both native types and custom ones (see type subsection in [Communication Ports](basics/communication_ports.html) section). Example:
 
 <div class="code" src="handling_simple_data_2.ol"></div>
 
@@ -64,12 +64,12 @@ String formatting is preserved, so strings can contain tabs and new lines:
 
 A variable is undefined until a value is assigned to them.
 
-Checking if a variable is defined done by using the [is_defined](language_refences/is_defined) predicate, e.g.:
+Checking if a variable is defined done by using the is_defined) predicate, e.g.:
 
 <div class="code" src="handling_simple_data_8.ol"></div>
 
 Sometimes it is useful to undefine a variable, i.e. to remove its value and make it undefined again. 
-Undefining a variable is done by using the [undef](language_references/undef) statement, as showed in the example below.
+Undefining a variable is done by using the undef statement, as showed in the example below.
 
 <div class="code" src="handling_simple_data_9.ol"></div>
 

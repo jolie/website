@@ -42,7 +42,7 @@ Leonardo supports dynamic web application through the Jolie HTTP protocol. There
 
 In the following examples we show how to interface a web application with some Jolie code through Leonardo. Specifically, we expose an operation - `length` - which accepts a list of strings, computes their total length and, finally, returns the computed value. 
 
-We do this by editing the code inside Leonardo, while in real-world projects, it is recommended to separated the application logic and the web server one: this can be achieved with ease by creating a separate service and [aggregate](architectural_composition/aggregation) it from Leonardo's HTTP input port.
+We do this by editing the code inside Leonardo, while in real-world projects, it is recommended to separated the application logic and the web server one: this can be achieved with ease by creating a separate service and [aggregate](architectural_composition/aggregation.html) it from Leonardo's HTTP input port.
 
 ---
 

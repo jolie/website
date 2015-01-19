@@ -27,7 +27,7 @@ The server's behaviour starts with an input on operation `twice`, storing the re
 <div class="code" src="behaviour_and_deployment_client_behaviour.ol"></div>
 
 Complementary to the server's behaviour, the client's behaviour consists in invoking the operation `twice` exposed by the server, passing the number 5 as the invocation value. After sending the request to the server, the operation will wait for a response, storing it in the variable `response`. Finally, the result is printed on screen (Line 4).
-For a thorough explanation of the usage of operations, see section [Communication Ports](basics/communication_ports#using-communication-ports).
+For a thorough explanation of the usage of operations, see section [Communication Ports](basics/communication_ports.html).
 
 ## Deployment
 
@@ -39,7 +39,7 @@ A location, e.g. a TCP/IP address, expresses the communication medium that a ser
 
 A protocol defines how data to be sent or received should be encoded (output) or decoded (input).
 
-Finally, a port must specify the interface that is accessible through it. For a thorough explanation of interfaces, see section [Communication Ports](basics/communication_ports#interfaces). 
+Finally, a port must specify the interface that is accessible through it. For a thorough explanation of interfaces, see section [Communication Ports](basics/communication_ports.html). 
 
 In our example the `TwiceInterface` interface declares the operation `twice` as a request-response operation. A request-response operation receives a request and sends back a response. Both input and output messages of `twice` are typed as `int` (denoting integers):
 
