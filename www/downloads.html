@@ -81,8 +81,9 @@ svn co svn://svn.code.sf.net/p/jolie/code/trunk jolie-src
 cd jolie-src
 ant && sudo ant install
 </pre>
-<p>The ant script will automatically build and install Jolie for you. The default is to install in <code>/opt/jolie</code>, but the installation parameters can be controlled by editing <code>buildconfig/config.properties</code>.</p>
-<p>A Jolie launcher script will be put in <code>/usr/local/bin</code> (this parameter is configurable in <code>buildconfig/config.properties</code>, too). Remember to follow the on-screen instructions at the end of the installation procedure.</p>
+<p>The ant script will automatically build and install Jolie for you. The default is to install in <code>/usr/lib/jolie</code>, but the installation parameters can be controlled by editing <code>buildconfig/config.properties</code>.</p>
+<p>A Jolie launcher script will be put in <code>/usr/bin</code> (this parameter is configurable in <code>buildconfig/config.properties</code>, too).</p>
+<p>Remember to follow the on-screen instructions at the end of the installation procedure, about the environment variables.</p>
 <h3 id="on-windows"><a id="windows"></a>On Windows</h3>
 <p>Here are some useful links to get the required tools:</p>
 <ul>
@@ -97,7 +98,7 @@ install.launcher_dir=C:\\Program Files\\jolie
 install.dir=C:\\Program Files\\jolie
 </pre>
 <p>Edit your PATH environment variable so that it includes the <code>install.launcher_dir</code> directory. You can find some instructions on managing environment variables in Windows XP at this <a href="http://support.microsoft.com/kb/310519">link</a>.</p>
-<p>Execute the <code>ant dist-install</code> command from inside the directory where you downloaded the source code of Jolie. Follow the on-screen instructions at the end of the installation procedure.</p>
+<p>Execute the <code>ant dist-install</code> command from inside the directory where you downloaded the source code of Jolie. Follow the on-screen instructions at the end of the installation procedure about the environment variables.</p>
 <h3 id="troubleshooting-windows">Troubleshooting (Windows)</h3>
 <p>If the install path contains spaces you will experience a problem in launching the Jolie executable. This is due to a problem on the command <code>set joliepath</code> present in jolie.bat that can be found in the installation directoy that you specified previously.</p>
 <p>To solve this you must substitute the <code>\</code> characters before and after the path containing the space with <code>//</code> and include the same part of the path between <code>&quot;&quot;</code>.</p>

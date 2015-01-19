@@ -109,12 +109,13 @@ cd jolie-src
 ant && sudo ant install
 </pre>
 
-The ant script will automatically build and install Jolie for you. The default is to install in `/opt/jolie`, but the 
-installation parameters can be controlled by editing `buildconfig/config.properties`.
+The ant script will automatically build and install Jolie for you. The default is to install in `/usr/lib/jolie`, but 
+the installation parameters can be controlled by editing `buildconfig/config.properties`.
 
-A Jolie launcher script will be put in `/usr/local/bin` (this parameter is configurable in 
+A Jolie launcher script will be put in `/usr/bin` (this parameter is configurable in 
 `buildconfig/config.properties`, too).
-Remember to follow the on-screen instructions at the end of the installation procedure.
+
+Remember to follow the on-screen instructions at the end of the installation procedure, about the environment variables.
 
 ### <a id="windows"></a>On Windows
 
@@ -142,7 +143,7 @@ You can find some instructions on managing environment variables in Windows XP a
 [link](http://support.microsoft.com/kb/310519).
 
 Execute the `ant dist-install` command from inside the directory where you downloaded the source code of Jolie.
-Follow the on-screen instructions at the end of the installation procedure.
+Follow the on-screen instructions at the end of the installation procedure about the environment variables.
 
 ### Troubleshooting (Windows)
 
