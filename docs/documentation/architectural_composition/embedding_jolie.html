@@ -1,0 +1,9 @@
+<h2 id="embedding-a-jolie-service">Embedding a Jolie service</h2>
+<p>Let us consider the <em>twice</em> service example given in <a href="getting_started/behavior_and_deployment.html">Behaviour and Deployment</a> sub-section.</p>
+<p>First, we add the following input port to allow local communications:</p>
+<div class="code" src="embedding_jolie_1.ol"></div>
+
+<p>Afterwards, we can write a modified version of the client program which embeds the twice service and calls it using an output port bound by embedding. We assume that the embedded service is stored in <code>twice_service.ol</code>.</p>
+<div class="code" src="embedding_jolie_2.ol"></div>
+
+<p>When embedding a Jolie service, the path URL must point to a file containing a Jolie program (provided as source code or in binary form).</p>

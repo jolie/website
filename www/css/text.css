@@ -1,1 +1,37 @@
-body{font:13px/1.5 'Helvetica Neue',Arial,'Liberation Sans',FreeSans,sans-serif}pre,code{font-family:'DejaVu Sans Mono',Menlo,Consolas,monospace}hr{border:0 #ccc solid;border-top-width:1px;clear:both;height:0}h1{font-size:25px}h2{font-size:23px}h3{font-size:21px}h4{font-size:19px}h5{font-size:17px}h6{font-size:15px}ol{list-style:decimal}ul{list-style:disc}li{margin-left:30px}p,dl,hr,h1,h2,h3,h4,h5,h6,ol,ul,pre,table,address,fieldset,figure{margin-bottom:20px}
+h1 {
+	color: #A80C1E;
+	font-size: 200%;
+	letter-spacing: -0.05em;
+	line-height: 1em;
+	padding-bottom: 0.2em;
+	border-bottom: 0.05em solid gray;
+	margin-bottom: 0.5em;
+	padding-top:0.4em;
+}
+
+h2 {
+	font-size: xx-large;
+	line-height: 1em;
+}
+
+h3 {
+	font-size: 1em;
+	color: #666666;
+	font-style: italic;
+	line-height: 1em;
+}
+
+a {
+	color: #A80C1E;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #A80C1E;
+	text-decoration: underline;
+}
+
+pre, code {
+	font-size: large;
+}
+	

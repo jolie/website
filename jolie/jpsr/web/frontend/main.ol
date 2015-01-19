@@ -5,7 +5,6 @@ include "console.iol"
 include "string_utils.iol"
 include "smtp.iol"
 include "file.iol"
-include "message_digest.iol"
 
 execution { concurrent }
 
@@ -33,7 +32,7 @@ main
 		m.host = "smtpout.europe.secureserver.net";
 		m.from = "donotreply@jolie-lang.org";
 		m.authenticate.username = "donotreply@jolie-lang.org";
-		m.authenticate.password = "donotreply";
+		m.authenticate.password = "XXX";
 		m.to = request.username;
 		m.subject = "Jolie Public Service Repository: Confirm your e-mail";
 		m.content = "
@@ -49,21 +48,18 @@ main
 			f.filename = wwwDir + "/requestUserCreation_userExists.html";
 			println@Console( m.content )()
 		} else {
-			f.filename = wwwDir + "/requestUserCreation_ok.html";
-			sendMail@SMTP( m )()
+			f.filename = wwwDir + "/requestUserCreation_ok.html"//;
+			//sendMail@SMTP( m )()
 		};
 		readFile@File( f )( response )
 	} ] {
-		confirmEmail()( response ) {
+		confirmEmail( request )( response ) {
 			scope( s ) {
-				install( InvalidUsername => response = "Invalid Username" );
+				install( InvalidUsername => response = "NOT OK" );
 				c.username = request.username;
 				c.password = request.password;
 				createUser@AccountManager( c )();
-				install( AuthenticationFailed =>
-					response = "User created but could not create key." );
-				updateFreshKey@AccountManager( c )( key );
-				response = "User successfully created. Here is your API key: " + key
+				response = "OK"
 			}
 		}
 	}

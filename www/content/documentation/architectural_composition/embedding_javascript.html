@@ -1,9 +1,0 @@
-<h2 id="embedding-a-javascript-service">Embedding a JavaScript Service</h2>
-<p>Embedding a JavaScript Service enables to use both the JavaScript language and Java methods by importing their classes.</p>
-<p>Let us rewrite the <a href="architectural_composition/embedding_jolie"><em>twice</em> service example</a> as a JavaScript embedded service.</p>
-<div class="code" src="embedding_javascript_1.js"></div>
-
-<p>At Lines 1-2 we respectively import <code>java.lang.System</code> to use it for printing at console a message, and <code>java.lang.Integer</code> to send a proper response to the embedder. This is necessary because of JavaScript's single number type which, internally, represents any number as a 64-bit floating point number. At Line 6 the methods <code>getFirstChild</code> and <code>intValue</code>, belonging to <code>Value</code> class, are used to read the request's data. Finally at Line 8 we use the <code>parseInt</code> method of class <code>Integer</code> to return an <code>Integer</code> value to the invoker.</p>
-<div class="code" src="embedding_javascript_1.ol"></div>
-
-<p>Like embedding Jolie Services, also JavaScript Services require the specification of the local file where the JavaScript Service is defined (i.e., <code>TwiceService.js</code>, Line 18).</p>

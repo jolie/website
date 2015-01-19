@@ -1,148 +1,279 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<!--BEGIN LIBRARIES-->
-	<!-- CSS HERE -->
-	<link rel="stylesheet" type="text/css" href="css/reset.css"/>
-	<link rel="stylesheet" type="text/css" href="css/text.css"/>
-	<link rel="stylesheet" type="text/css" href="css/960_24_col.css"/>
-	<link rel="stylesheet" type="text/css" href="css/open-sans-fontfacekit/stylesheet.css" />
-	<link rel="stylesheet" type="text/css" href="css/source-code-pro-fontfacekit/stylesheet.css" />
-	<link rel="stylesheet" type="text/css" href="css/nanoscroller.css">
-	<link rel="stylesheet" type="text/css" href="css/jqtree.css">
-	<link rel="stylesheet" type="text/css" href="css/shCore.css"/>
-	<link rel="stylesheet" type="text/css" href="css/shThemeEclipse.css"/>
-	<!-- JS HERE -->
-	<script type="text/javascript" src="libs/jquery-1.8.2.min.js"></script>
-	<script type="text/javascript" src="libs/jquery.history.js"></script>
-	<script type="text/javascript" src="libs/jquery.nanoscroller.min.js"></script>
-	<script type="text/javascript" src="libs/tree.jquery.js" ></script>
-	<script type="text/javascript" src="libs/shCore.js"></script>
-	<script type="text/javascript" src="libs/shBrushJolie.js"></script>
-	<script type="text/javascript" src="libs/shBrushPlain.js"></script>
-	<script type="text/javascript" src="libs/shBrushJava.js"></script>
-	<script type="text/javascript" src="libs/shBrushXml.js"></script>
-	<script type="text/javascript" src="libs/shBrushJScript.js"></script>
-	<script type="text/javascript" src="libs/marked.js"></script>
-	<script type="text/javascript" src="libs/hyphenate.js"></script>
-	<script type="text/javascript">var _gaq = _gaq || [];_gaq.push(['_setAccount', 'UA-38067618-1']);_gaq.push(['_trackPageview']);(function() {var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script>
+<!--Themed-->
 
-	<!-- USED FOR PRINTING PURPOSES -->
-	<style type="text/css"></style>
-<!--END LIBRARIES-->
-<!--BEGIN CUSTOM FILES-->
-<link rel="stylesheet" type="text/css" href="css/index.css"/>
-<script type="text/javascript" src="libs/index.js"></script>
-<!--END CUSTOM FILES-->
-<title>Jolie Programming Language - Official Website</title>
-<meta
-	name="keywords"
-	content="jolie programming language java orchestration language interpreter engine service oriented SOA" />
-<meta 
-	name="description"
-	content="Website of Jolie, an interpreted service-oriented language for efficiently programming dynamic and maintainable SOAs"
-	/>
-</head>
-<html>
-<body>
-	<!--tag-->
-	<div id="header">
-		<div class="container_24">
-			<div class="grid_4"><a href="/"><div id="logo-up"></div></a></div>
-			<div id="header_container" class="container_18 push_4">
-				<div id="tagline" class="push_1 grid_16">
-					<div id="tC">
-					<p id="tag_title">The first general-purpose service-oriented programming language, used for programming dynamic, pervasive distributed applications.
-					&nbsp; &nbsp; <a style="font-style:italic; color:white" href="?top_menu=about_jolie">Learn more...</a></p>
-					</div></div>
-				<div id="top_menu" class="grid_14 push_4">
-					<div>
-						<a 
-						href="?top_menu=news"
-						onClick="top_menu('?top_menu=news');return false;" 
-						ref="news"
-						title="news"
-						class="left_menu_item"
-						src="news" id="active">
-						Home</a>
-						<a 
-						href="?top_menu=downloads"
-						onClick="top_menu('?top_menu=downloads');return false;" 
-						ref="downloads"
-						title="downloads" 
-						class="menu_item" 
-						src="downloads/downloads.html">
-						Downloads</a>
-						<a 
-						href="?top_menu=documentation"
-						onClick="top_menu('?top_menu=documentation');return false;" 
-						ref="documentation"
-						title="documentation" 
-						class="menu_item" 
-						src="documentation/documentation.html">
-						Documentation</a>
-						<a 
-						href="?top_menu=community"
-						onClick="top_menu('?top_menu=community');return false;" 
-						ref="community"
-						title="community"
-						class="menu_item" 
-						src="community/community.html">
-						Community</a>
-						<a 
-						href="?top_menu=publications"
-						onClick="top_menu('?top_menu=publications');return false;" 
-						ref="publications" 
-						class="menu_item"
-						title="publications" 
-						src="publications/publications.html">
-						Publications</a>
-						<a 
-						href="?top_menu=projects"
-						onClick="top_menu('?top_menu=projects');return false;" 
-						ref="projects"
-						title="projects"
-						class="menu_item" 
-						src="projects/projects.html">
-						Projects</a>
-						<a 
-						href="?top_menu=about_jolie"
-						onClick="top_menu('?top_menu=about_jolie');return false;" 
-						ref="about_jolie"
-						title="about_jolie" 
-						class="right_menu_item" 
-						src="about_jolie/about_jolie.html">
-						About Jolie</a>
-					</div>
-				</div>
-				<div id="rss_feed" class="grid_1 push_3"><a href="/getRss"><img title="RSS Feed" style="width:24px" src="imgs/rss.png"/></a></div>
-				<div id="social_widget" class="grid_3 push_4">
-					<!-- facebook like -->
-					<div id="fb-root"></div><script>(function(e,t,n){var r,i=e.getElementsByTagName(t)[0];if(e.getElementById(n))return;r=e.createElement(t);r.id=n;r.src="//connect.facebook.net/en_US/all.js#xfbml=1";i.parentNode.insertBefore(r,i)})(document,"script","facebook-jssdk")</script>
-					<div style="width:100px;margin-bottom:3px;" class="fb-like" data-send="false" data-width="200" data-layout="button_count" data-show-faces="false"></div>
-					<!-- twitter share -->
-					<a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
-					<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-					<!-- google plus share -->
-					<div class="g-plusone" data-size="tall" data-annotation="inline" data-width="150"></div>
-					<script type="text/javascript">window.___gcfg={lang:"en_US"};(function(){var e=document.createElement("script");e.type="text/javascript";e.async=true;e.src="https://apis.google.com/js/plusone.js";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)})()</script>
+<div id="section0" class="container full-width text-center landing-banner-transparent">
+	<div class="container">
+	<div class="col-xs-12">
+		<div class="row vertical-align">
+			<div class="col-xs-5 text-center">
+				<img class="img-responsive" src="imgs/microservice-logo.png"/>
+			</div>
+			<div class="col-xs-7">
+			<h1>The first language for Microservices</h1>
+			<a href="/downloads.html">Download</a> <a href="/documentation">Tutorials</a>
 			</div>
 		</div>
 	</div>
-</div>
-	<div id="subheader" class="container_24">
-		<div class="grid_4" id="logo-down"></div>
-		<div class="grid_20" id="TOC_menu"></div>
-	</div>
-<div id="menu_content" class="container_24"></div>
-<div id="footer">
-	<div class="container_24">
-		<div class="grid_22"><p><a rel="license" href="http://creativecommons.org/licenses/by/3.0/deed.en_US"></a><br />The content of this website is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/deed.en_US">Creative Commons Attribution 3.0 Unported License</a>, code samples are licensed under the GPL License. <br />This website is made with Jolie and is powered by <a href="http://sourceforge.net/projects/leonardo">Leonardo</a>. Please contact our <a href="mailto:webmaster@jolie-lang.org">webmaster</a> for questions or comments concerning this website.</p></div>
-		<div class="grid_2"><div id="social_links"></div></div>
 	</div>
 </div>
+
+<div id="section1" class="container full-width landing-banner-dark">
+<div class="container">
+<div class="col-xs-12">
+	<div class="next-container"><a class="next" onclick="scroll_to_section('section2')">Next</a></div>
+	<h2 id="native-microservice-programming">Native microservice programming</h2>
+	<p>Jolie crystallises the programming concepts of microservices as native language features:
+	<i>the basic building blocks of software are not objects or functions, but rather
+	services</i> that can always be relocated and replicated as needed.
+	Distribution and reusability are achieved by design.</p>
+	<p class="landing-motto">Jolie is a service-oriented language.</p>	
 </div>
 </div>
-</body>
-</html>
+</div>
+
+<div class="container full-width landing-banner-separator"></div>
+
+<div id="section2" class="container full-width landing-banner-light">
+<div class="container">
+<div class="col-xs-12">
+<div class="next-container"><a class="next" onclick="scroll_to_section('section3')">Next</a></div>
+<h2 id="built-for-the-networked-age-distributable-by-design">Built for the networked age: distributable by design</h2>
+<p>Jolie code is always contained in services, which you can always move from being local to remote and vice versa, without altering the logic of your programs. A monolithical application can scale to being distributed by design: if you decide to distribute a part of it, just take it and execute it in another machine.</p>
+<div class="col-xs-6 text-center">
+  
+<h3 id="program-your-microservice-system">Program your microservice system</h3>
+<img class="landing-img" src="imgs/basesystem.png">
+</div>
+
+<div class="col-xs-6 text-center">
+<h3 id="deploy-it-in-a-single-machine">Deploy it in a single machine</h3>
+<img class="landing-img" src="imgs/monolithicaldeployment.png">
+</div>
+
+<div class="col-xs-12" style="height: 1em;"></div>
+
+<div class="col-xs-6 text-center">
+<h3 id="deploy-it-in-two-different-machines">Deploy it in two different machines</h3>
+<img class="landing-img" src="imgs/doubledeployment.png">
+</div>
+
+<div class="col-xs-6 text-center">
+<h3 id="deploy-it-in-four-different-machines">Deploy it in four different machines</h3>
+<img class="landing-img" src="imgs/fourdeployment.png">
+</div>
+
+</div>
+</div>
+</div>
+<div class="clearfix"></div>
+
+<div class="container full-width landing-banner-separator"></div>
+
+<div id="section3" class="container full-width landing-banner-dark">
+<div class="container">
+<div class="col-xs-12">
+	<div class="next-container"><a class="next" onclick="scroll_to_section('section4')">Next</a></div>
+	<h2 id="protocol-agnostic">Protocol agnostic</h2>
+	<p>Jolie is protocol agnostic: your services can exchange data by using different protocols. Bridging two networks using different protocols is a matter of a few lines of code! And if you need a protocol that Jolie does not support yet, there is an API for easily developing new ones in Java.</p>
+	<div class="text-center">
+	<img src="imgs/protocolindependence.png">
+	</div>
+</div>
+</div>
+</div>
+
+<div class="container full-width landing-banner-separator"></div>
+
+<div id="section4" class="container full-width landing-banner-light">
+<div class="container">
+<div class="col-xs-12">
+
+<div class="next-container"><a class="next" onclick="scroll_to_section('section5')">Next</a></div>
+<h2>Everything you build can be used to build again</h2>
+<p>Jolie offers many ways for building complex software from simple services. Even the deployment architecture of a system can be programmed with native primitives, generalising common practices. Whatever you build, is again a service that you can expose; so, it can be reused to build again! Here are some examples of composition:</p>
+
+<div class="container col-xs-12">
+  <div class="row vertical-align">
+    <div class="col-xs-8">
+	<strong>Orchestration:</strong> an orchestrator is a service that offers functionalities obtained by coordinating other services with a workflow.
+	</div> 
+ <div class="col-xs-4">
+	<img class="img-responsive" src="imgs/orchestration.png">
+	</div> 
+  </div>
+</div>
+
+<div class="col-xs-12" style="height: 1em;"></div>
+
+<div class="container col-xs-12">
+  <div class="row vertical-align">
+    <div class="col-xs-8">
+<strong>Aggregation:</strong> a generalisation of proxies and load balancers, which you can use to compose and expose the APIs of separate services.
+</div>
+    <div class="col-xs-4">
+      
+<img class="img-responsive" src="imgs/aggregation.png">
+</div>
+  </div>
+</div>
+
+<div class="col-xs-12" style="height: 1em;"></div>
+
+<div class="container col-xs-12">
+  <div class="row vertical-align">
+    <div class="col-xs-8">
+<strong>Redirection:</strong> a generalisation of virtual servers, which hides the actual locations of services to clients by assigning logical names to services.
+</div>
+    <div class="col-xs-4">
+      
+<img class="img-responsive" src="imgs/redirection.png">
+</div>
+  </div>
+</div>
+
+<div class="col-xs-12" style="height: 1em;"></div>
+
+<div class="container col-xs-12">
+  <div class="row vertical-align">
+    <div class="col-xs-8">
+<strong>Embedding:</strong> a generalisation of application servers, which runs other services as inner components. It enables fast local communications and can even run code written in different languages than Jolie, such as Java and Javascript (with more coming)!
+</div>
+<div class="col-xs-4">
+      
+<img class="img-responsive" src="imgs/embedding.png">
+</div>
+  </div>
+</div>
+</div>
+</div>
+</div>
+<div class="clearfix"></div>
+
+<div class="container full-width landing-banner-separator"></div>
+
+<div id="section5" class="container full-width landing-banner-dark">
+<div class="container">
+<div class="col-xs-12">
+<div class="next-container"><a class="next" onclick="scroll_to_section('section6')">Next</a></div>
+<h2 id="structured-workflows">Structured workflows</h2>
+<p>Jolie comes with native primitives for structuring workflows, for example in sequences (one after the other) or parallels (go at the same time). This makes the code follow naturally from the requirements, avoiding error-prone bookkeeping variables for checking what happened so far in a computation. For example, the following code says that the operations <code>publish</code> and <code>edit</code> become available at the same time (<code>|</code>), but only after (<code>;</code>) operation <code>login</code> is invoked:</p>
+<pre>
+login( credentials )() { checkCredentials };
+{ publish( x ) | edit( y ) }
+</pre>
+
+<div class="col-xs-12" style="height: 1em;"></div>
+
+<h2 id="dynamic-error-handling-for-parallel-code">Dynamic error handling for parallel code</h2>
+<p>Programming reliable parallel code is challenging because faults may cause side-effects in parallel activities. Jolie comes with a solid semantics for parallel fault handling. Programmers can update the behaviour of fault handlers at runtime, following the execution of activities thanks to the <code>install</code> primitive.</p>
+<pre>
+<span class="keyword">include</span> <span class="string">"console.iol"</span>
+<span class="keyword">include</span> <span class="string">"time.iol"</span>
+
+<span class="keyword">main</span>
+{
+    <span  class="keyword">scope</span>( grandFather )
+    {
+        <span  class="keyword">install</span>( <span class="keyword">this</span> => println@Console( <span class="string">"recovering grandFather"</span> )() );
+        <span  class="keyword">scope</span>( father )
+        {
+            <span class="keyword">install</span>( <span class="keyword">this</span> => println@Console( <span class="string">"recovering father"</span> )() );
+            <span class="keyword">scope</span> ( son )
+            {
+                <span class="keyword">install</span>( <span class="keyword">this</span> => println@Console( <span class="string">"recovering son"</span> )() );
+                sleep@Time( 500 )();
+                println@Console( <span class="string">"Son's code block"</span> )()
+            }
+        }
+    }
+    |
+    <span class="keyword">throw</span>( a_fault )
+}
+</pre>
+
+</div>
+</div>
+</div>
+
+<div class="container full-width landing-banner-separator"></div>
+
+<div id="section6" class="container full-width landing-banner-light">
+<div class="container">
+<div class="col-xs-12">
+<div class="next-container"><a class="next" onclick="scroll_to_section('section7')">Next</a></div>
+<h2 id="revolutionise-the-way-you-develop-web-applications">Revolutionise the way you develop web applications</h2>
+<p><strong>Jolie requires interfaces to be clearly defined</strong>, thus web GUIs are completely independent from the microservice system they interact with. A Jolie service of a few lines of code, called Leonardo, acts as a web server which can interoperate with web applications written in different technologies. For example, we natively support JSON, XML, AJAX, GWT, and other technologies.</p>
+<div class="col-xs-offset-1 col-xs-10">
+<img class="img-responsive" src="imgs/interface.png">
+</div></div>
+</div></div>
+<div class="clearfix"></div>
+
+<div class="container full-width landing-banner-separator"></div>
+
+<div id="section7" class="container full-width landing-banner-dark">
+<div class="container">
+<div class="col-xs-12">
+	<div class="next-container"><a class="next" onclick="scroll_to_section('section8')">Next</a></div>
+	<h2 id="solid-foundations">Solid foundations</h2>
+<!-- 	<div class="container col-xs-12"> -->
+	<div class="row vertical-align">
+		<div class="col-xs-4">
+		<img class="img-responsive" src="imgs/solid_foundations.png">
+		</div>
+		<div class="col-xs-8">
+		Jolie comes with formal specifications of its semantics. It is used in Computer Science research and teaching at many universities around the world. See the <a href="?top_menu=academy" title="academy">Academy</a> page for more information about where you can study or work with Jolie.
+		</div>
+		<div class="clearfix"></div>
+<!-- 	</div> -->
+	</div>
+</div>
+</div>
+</div>
+
+<div class="container full-width landing-banner-separator"></div>
+
+<div id="section8" class="container full-width landing-banner-light">
+<div class="container">
+<div class="col-xs-12">
+<div class="next-container"><a class="next" onclick="scroll_to_section('section9')">Next</a></div>
+<h2 id="join-us">Join us!</h2>
+<!-- <div class="container col-xs-12"> -->
+  <div class="row vertical-align">
+<div class="col-xs-9">
+Jolie is an <a href="about_jolie.html">open source project</a>, with a growing community of contributors and users that you are welcome to <a href="community.html">join</a>. Check out our <a href="news.html">project news</a>, or have a look at our <a href="/planet">contributor blogs</a>.
+</div> 
+<div class="col-xs-3">
+<img class="img-responsive" src="imgs/news.png">
+</div>
+<div class="clearfix"></div>
+<!-- </div> -->
+</div>
+</div>
+</div>
+</div>
+
+<div class="container full-width landing-banner-separator"></div>
+
+<div id="section9" class="container full-width landing-banner-dark">
+<div class="container">
+<div class="col-xs-12">
+<h2 id="start-now-to-build-your-distributed-system">Start now to build your distributed system!</h2>
+<!-- <div class="container col-xs-12"> -->
+  <div class="row vertical-align">
+    <div class="col-xs-4">
+      
+<img class="img-responsive" src="imgs/lego.png">
+</div>
+    <div class="col-xs-8">
+<h3 id="you-do-not-need-frameworks-just-an-interpreter.">You do not need frameworks, just an interpreter.</h3>
+You do not need special frameworks for deploying services, nor an ESB for achieving
+integration: you just need to install the Jolie interpreter, write a few lines
+of code, and run them with a single command: <br><code>jolie my_service.ol</code></br>
+</div>
+  </div>
+<!-- </div> -->
+</div>
+</div>
+</div>
+<div class="clearfix"></div>
+<div class="container full-width landing-banner-separator"></div>

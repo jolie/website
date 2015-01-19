@@ -1,0 +1,14 @@
+#footer {
+	font-size: 0.8em;
+	padding-top: 3em;
+	padding-bottom: 3em;
+	text-align: center;
+	background: -moz-linear-gradient(top,  #443637 0%, #050000 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#443637), color-stop(100%,#050000));	
+	background: -webkit-linear-gradient(top,  #443637 0%,#050000 100%);
+	background: -o-linear-gradient(top,  #443637 0%,#050000 100%);		
+	background: -ms-linear-gradient(top,  #443637 0%,#050000 100%);
+	background: linear-gradient(to bottom, #443637 0%,#050000 100%)
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#443637', endColorstr='#050000',GradientType=0 );
+	color:white;
+}
