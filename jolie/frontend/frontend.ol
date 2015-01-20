@@ -88,7 +88,12 @@ init
 	};
 	with( planetBlogs[1] ) {
 		.url = "http://claudioguidi.blogspot.com/";
-		.binding.location = "socket://claudioguidi.blogspot.it:80/feeds/posts/default/-/jolie";
+		.binding.location = "socket://claudioguidi.blogspot.com:80/feeds/posts/default/-/jolie";
+		.binding.protocol = "http"
+	};
+	with( planetBlogs[2] ) {
+		.url = "http://jolie-practitioner.blogspot.com/";
+		.binding.location = "socket://jolie-practitioner.blogspot.com:80/feeds/posts/default/-/jolie";
 		.binding.protocol = "http"
 	}
 }
