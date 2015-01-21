@@ -148,10 +148,17 @@ main
 	[ documentation()( html ) { 
 		request.username_for = "JolieLang";
 		get_slideshows_by_user@SlideShare( request )( response );
-		html = "<!--Themed--><h1 id=\"documentation\">Documentation</h1>"
-		      + "<p>You can find the complete documentation of the language and the Jolie Standard Library (JSL) here: "
-		      + "<a href=\"http://docs.jolie-lang.org/\">docs.jolie-lang.org</a></p>"
-		      + "<h1 id=\"tutorials\">Tutorials</h1>";
+		
+		// gets static part of documentation page from www folder
+		f.filename = "../../www/documentation.html";
+		readFile@File( f )( html );
+		iofReq = html;
+		iofReq.word = "<!--dynamic part-->";
+		indexOf@StringUtils( iofReq )( html.end );
+		undef( iofReq );
+		html.begin = 0;
+		substring@StringUtils( html )( html );
+
 		for( x = 0, x < #response.Slideshow, x++ ) {
 			sp_rq = response.Slideshow[ x ].Embed;
 			sp_rq.regex = "</iframe>";
