@@ -133,20 +133,33 @@ var loadMenuItem = function( event ){
 		loadSyntax( href );
 		addTOCToParent( el );
 		$( css_content ).scrollTop( 0 );
-		updateInternalLinks( $(css_content ) );
+		updateInternalLinks( $( css_content ) );
+		updateAnchors( $( css_content ) );
 		pushUrl( doc );
 	});
 	return false;
 };
 
 var updateInternalLinks = function ( c ) {
-	$( c ).find( "a" ).each( function(i, a) {
+	$( c ).find( "a[href]" ).each( function(i, a) {
 		var href = $( a ).attr( "href" );
+		console.log( "UIL reading href: " + href );
 		if( href.charAt( 0 ) != "/" 		&& 
 			href.indexOf( "http://" ) < 0 && 
 			href.indexOf( "documentation" ) < 0 && 
 			href.charAt( 0 ) != "#" ){
 			$( a ).attr( "href", hashRoot + href );
+		}
+	});
+};
+
+var updateAnchors = function ( c ){
+	$( c ).find( "a[href]" ).each( function( i, a ) {
+		var href = $( a ).attr( "href" );
+		console.log( "reading href: " + href );
+		if( href.charAt( 0 ) === "#" && href.charAt( 1 ) != "!" ){
+			$( a ).attr( "onclick", 
+				"return scroll(\"a[name='" + href.substring(1,href.length) + "']\")" );
 		}
 	});
 };
@@ -180,17 +193,19 @@ var addTOCToParent = function ( el ) {
 	}
 };
 
-var scroll = function ( anchor ) {
-	$( css_content ).scrollTop( 0 );
-	var threshold = 20;
-	var diff = $( anchor ).offset().top - $( css_content ).offset().top;
-	if( diff > threshold ){
-		$( css_content ).scrollTop( diff );
+var scroll = function ( el ) {
+	if( typeof $( el ).offset() !== typeof undefined ){
+		$( css_content ).scrollTop( 0 );
+		var threshold = 20;
+		var diff = $( el ).offset().top - $( css_content ).offset().top;
+		if( diff > threshold ){
+			$( css_content ).scrollTop( diff );
+		}
+		$( el ).attr( "class", "highlight" );
+		setTimeout( function() {
+			$( el ).attr( "class", "");
+		},500);
 	}
-	$( anchor ).attr( "class", "highlight" );
-	setTimeout( function() {
-		$( anchor ).attr( "class", "");
-	},500);
 	return false;
 };
 
