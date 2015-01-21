@@ -68,7 +68,12 @@ var checkUrl = function () {
 		url = url.match(/#!documentation\/(.+)/)[1];
 		$( css_menu ).find( "a[href=\"" + url + "\"]" ).trigger( "click" );
 	} else {
-		$( css_menu ).find( "a[href=\"getting_started/hello_world.html\"]" ).trigger( "click" );
+		// $( css_menu ).find( "a[href=\"getting_started/hello_world.html\"]" ).trigger( "click" );
+		var e = {
+			target :$( css_menu ).find( "a[href=\"getting_started/hello_world.html\"]" )
+		};
+		var dontPushUrl = true;
+		loadMenuItem( e, dontPushUrl );
 	}
 };
 
@@ -112,7 +117,7 @@ var createItems = function ( el, children ){
 	$( el ).append( ul );
 };
 
-var loadMenuItem = function( event ){
+var loadMenuItem = function( event, noPush ){
 	$( css_menu ).find( ".menu_selected" ).each( function(i, e) {
 		$( e ).attr( "class", "" );
 	});
@@ -135,7 +140,9 @@ var loadMenuItem = function( event ){
 		$( css_content ).scrollTop( 0 );
 		updateInternalLinks( $( css_content ) );
 		updateAnchors( $( css_content ) );
-		pushUrl( doc );
+		if( !noPush ){
+			pushUrl( doc );
+		}
 	});
 	return false;
 };
@@ -143,7 +150,6 @@ var loadMenuItem = function( event ){
 var updateInternalLinks = function ( c ) {
 	$( c ).find( "a[href]" ).each( function(i, a) {
 		var href = $( a ).attr( "href" );
-		console.log( "UIL reading href: " + href );
 		if( href.charAt( 0 ) != "/" 		&& 
 			href.indexOf( "http://" ) < 0 && 
 			href.indexOf( "documentation" ) < 0 && 
@@ -156,10 +162,9 @@ var updateInternalLinks = function ( c ) {
 var updateAnchors = function ( c ){
 	$( c ).find( "a[href]" ).each( function( i, a ) {
 		var href = $( a ).attr( "href" );
-		console.log( "reading href: " + href );
 		if( href.charAt( 0 ) === "#" && href.charAt( 1 ) != "!" ){
 			$( a ).attr( "onclick", 
-				"return scroll(\"a[name='" + href.substring(1,href.length) + "']\")" );
+				"return scroll(\"*[id='" + href.substring(1,href.length) + "']\")" );
 		}
 	});
 };
