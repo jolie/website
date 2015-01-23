@@ -99,14 +99,25 @@ install.dir=C:\\Program Files\\jolie
 </pre>
 <p>Edit your PATH environment variable so that it includes the <code>install.launcher_dir</code> directory. You can find some instructions on managing environment variables in Windows XP at this <a href="http://support.microsoft.com/kb/310519">link</a>.</p>
 <p>Execute the <code>ant dist-install</code> command from inside the directory where you downloaded the source code of Jolie. Follow the on-screen instructions at the end of the installation procedure about the environment variables.</p>
-<h3 id="troubleshooting-windows">Troubleshooting (Windows)</h3>
-<p>If the install path contains spaces you will experience a problem in launching the Jolie executable. This is due to a problem on the command <code>set joliepath</code> present in jolie.bat that can be found in the installation directoy that you specified previously.</p>
-<p>To solve this you must substitute the <code>\</code> characters before and after the path containing the space with <code>//</code> and include the same part of the path between <code>&quot;&quot;</code>.</p>
-<p>For instance, if you chose to use the same directory as in this tutorial you can correct the <code>set</code> command with the following code.</p>
+<!--
+### Troubleshooting (Windows)
+
+If the install path contains spaces you may experience a problem in launching the Jolie executable.
+This is due to a problem on the command `set JOLIE_HOME` present in jolie.bat that can be found in
+the installation directoy that you specified previously.
+
+To solve this you must substitute the `\` characters before and after the path containing the space with
+`//` and include the same part of the path between `""`.
+
+For instance, if you chose to use the same directory as in this tutorial you can correct the `set`
+command with the following code.
+
 <pre>
 set joliepath=C://"Program Files"//jolie\
 </pre>
-<p>You can now execute Jolie scripts by issuing the <code>jolie</code> command in a console, for example: <code>jolie your_file.ol</code></p>
+
+You can now execute Jolie scripts by issuing the `jolie` command in a console, for example: `jolie your_file.ol`
+-->
 <h1 id="support-for-external-tools">Support for external tools</h1>
 <h2 id="kate">Kate</h2>
 <p>Homepage: <a href="http://kate-editor.org/" class="uri">http://kate-editor.org/</a></p>

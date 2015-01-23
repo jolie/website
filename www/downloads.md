@@ -145,10 +145,11 @@ You can find some instructions on managing environment variables in Windows XP a
 Execute the `ant dist-install` command from inside the directory where you downloaded the source code of Jolie.
 Follow the on-screen instructions at the end of the installation procedure about the environment variables.
 
+<!--
 ### Troubleshooting (Windows)
 
-If the install path contains spaces you will experience a problem in launching the Jolie executable.
-This is due to a problem on the command `set joliepath` present in jolie.bat that can be found in
+If the install path contains spaces you may experience a problem in launching the Jolie executable.
+This is due to a problem on the command `set JOLIE_HOME` present in jolie.bat that can be found in
 the installation directoy that you specified previously.
 
 To solve this you must substitute the `\` characters before and after the path containing the space with
@@ -162,7 +163,7 @@ set joliepath=C://"Program Files"//jolie\
 </pre>
 
 You can now execute Jolie scripts by issuing the `jolie` command in a console, for example: `jolie your_file.ol`
-
+-->
 
 
 # Support for external tools
