@@ -83,6 +83,7 @@ This network currently includes:
 Many of the reported publications are available at this [external link](http://www.fabriziomontesi.com/research.html)
 (for copyright reasons imposed by the publishers).
 A good starting point for reading up about Jolie is [this Book Chapter](http://fabriziomontesi.com/files/mgz14.pdf).
+	
 
 -	_Service-oriented Programming with Jolie_
 	<br/>
@@ -96,6 +97,12 @@ A good starting point for reading up about Jolie is [this Book Chapter](http://f
 	<br/>
 	Submitted for publication.
 	[PDF][m14:pdf]
+
+-	_Implementing Elastic Capacity in a Service Oriented PaaS_
+	<br/>
+	A. Zuccato, T. Vardanega,
+	<br/>
+	4th Int'l Workshop on Adaptive Services for Future Internet (WAS4FI 2014), 2 September 2014 (to appear)
 
 -	_Deadlock-freedom-by-design: Multiparty Asynchronous Global Programming_
 	<br/>
