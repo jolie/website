@@ -67,7 +67,7 @@ Download the Java-based installer of the latest stable release of Jolie:
 
 <div class="col-xs-12 text-center">
 <a class="download" href="/files/releases/jolie-1.1.jar" 
-onclick="_gaq.push(['_trackEvent','Download','JolieInstaller',this.href]);">
+onclick="var that=this;_gaq.push(['_trackEvent','Download','JolieInstaller',this.href]);setTimeout(function(){location.href=that.href;},200);return false;">
 Jolie Installer
 </a>
 </div>
