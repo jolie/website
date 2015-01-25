@@ -54,8 +54,7 @@ Download and Install
 <h3 id="step-1">Step 1</h3>
 <p>Download the Java-based installer of the latest stable release of Jolie:</p>
 <div class="col-xs-12 text-center">
-<a class="download" href="/files/releases/jolie-1.1.jar" 
-onclick="var that=this;_gaq.push(['_trackEvent','Download','JolieInstaller',this.href]);setTimeout(function(){location.href=that.href;},200);return false;"> Jolie Installer </a>
+<a class="download" href="/files/releases/jolie-1.1.jar" onClick="ga('send', 'event', { eventCategory: 'Download', eventAction: 'JolieInstaller', eventLabel: 'jolie-1.1.jar'});"> Jolie Installer </a>
 </div>
 <h3 id="step-2">Step 2</h3>
 <p>Open a shell terminal. From the directory in which you downloaded the installer, execute <code>java -jar jolie-1.1.jar</code> and follow the on-screen instructions.</p>
