@@ -50,7 +50,8 @@ Protocol: http {
 	.statusCode -> statusCode;
 	.redirect -> location;
 	.default = "default";
-	.host -> host
+	.host -> host;
+	.cacheControl.maxAge -> cacheMaxAge
 }
 Location: Location_Leonardo
 Interfaces: HTTPInterface
@@ -155,6 +156,10 @@ main
 				format = "html"
 			} else {
 				file.format = format = "binary"
+			};
+
+			if ( s.result[0] == "image" ) {
+				cacheMaxAge = 60 * 60 * 2 // 2 hours
 			};
 
 			readFile@File( file )( response );
