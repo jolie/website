@@ -51,7 +51,8 @@ Protocol: http {
 	.redirect -> location;
 	.default = "default";
 	.host -> host;
-	.cacheControl.maxAge -> cacheMaxAge
+	.cacheControl.maxAge -> cacheMaxAge;
+	.compressionTypes -> compressionTypes
 }
 Location: Location_Leonardo
 Interfaces: HTTPInterface
@@ -111,7 +112,8 @@ define applyTheme
 courier HTTPInput {
 	[ interface FrontendInterface( request )( response ) ] {
 		forward( request )( response );
-		applyTheme
+		applyTheme;
+		compressionTypes = "*"
 	}
 }
 
