@@ -149,7 +149,7 @@ main
 		request.username_for = "JolieLang";
 		scope( slideshare ) {
 			install( default => nullProcess );
-			get_slideshows_by_user@SlideShare( request )( response );
+			get_slideshows_by_user@SlideShare( request )( response )
 		};
 		
 		// gets static part of documentation page from www folder
