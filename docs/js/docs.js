@@ -79,14 +79,11 @@ var checkUrl = function () {
 		}
 		url = hashRoot + url;
 		e = {
-			target :$( css_menu ).find( "a[href=\"" + url + "\"]" )
+			target: $( css_menu ).find( "a[href=\"" + url + "\"]" )
 		};
-		// $( css_menu ).find( "a[href=\"" + url + "\"]" ).trigger( "click" );
-		// scroll( "#" + anchor );
 	} else {
-		// $( css_menu ).find( "a[href=\"getting_started/hello_world.html\"]" ).trigger( "click" );
 		e = {
-			target :$( css_menu ).find( "a[href=\"getting_started/hello_world.html\"]" )
+			target: $( css_menu ).find( "a[href=\"#!documentation/getting_started/hello_world.html\"]" )
 		};
 	}
 	loadMenuItem( e, false, anchor );
