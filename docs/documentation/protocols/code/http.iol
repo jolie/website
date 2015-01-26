@@ -36,9 +36,35 @@ type HttpConfiguration:void {
 	* Defines the content type of the HTTP message.
 	*
 	* Default: none
-	*/
-		
+	*/		
 	.charset?:string
+
+	/*
+	* Enable content compression in HTTP.
+	* On client side the "Accept-Encoding: gzip, deflate" header is set and on the
+	* server the compression is enabled using gzip or deflate as the client
+	* requested it. gzip is preferred over deflate since it is more common.
+	* If the negotiation was successful, the server returns the compressed data
+	* with a "Content-Encoding" header and an updated "Content-Length" field.
+	*
+	* Default: true
+	*/
+	.compression?:bool
+
+	/*
+	* Set the allowed mimetypes (content types) for compression.
+	* This flag operates only server side and is empty per default, which means
+	* that all content is compressed. The delimitation character should be
+	* different to the mimetype names, valid choices include blank, comma or
+	* semicolon.
+	* An empty "compressionTypes" parameter might not make sense for general-
+	* purpose servers, which serve compressed content like images or videos.
+	* Leonardo defines this value to be: "text/html text/css text/plain text/xml
+	* application/json"
+	*
+	* Default: none
+	*/
+	.compressionTypes?:string
 
 	/*
 	* Defines the format of the HTTP message.
