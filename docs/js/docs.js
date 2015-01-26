@@ -239,6 +239,7 @@ var scrollToElement = function ( el ) {
 		setTimeout( function() {
 			$( el ).attr( "class", "");
 		},500);
+		return false;
 	}
 };
 
