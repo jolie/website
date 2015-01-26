@@ -22,6 +22,10 @@ var hash = "#!";
 var hashRoot = hash + "documentation/";
 
 
+// deferred object for handling async load of code in pages
+var dfdCode = $.Deferred();
+var dfdSyxt = $.Deferred();
+
 // counter and logic for syntax highlighting
 // var shc = 0;
 // var syntH = {
@@ -64,21 +68,32 @@ var loadMenu = function() {
 
 var checkUrl = function () {
 	var url = window.location.toString();
-	if( url.indexOf( hash ) > -1 ){
+	var anchor = "";
+	var e = null;
+	if( url.indexOf( hashRoot ) > -1 ){
 		url = url.match(/#!documentation\/(.+)/)[1];
-		$( css_menu ).find( "a[href=\"" + url + "\"]" ).trigger( "click" );
+		var i = url.indexOf( "#" );
+		if( i > -1 ){
+			anchor = url.substring( i, url.length );
+			url = url.substring( 0, i );
+		}
+		url = hashRoot + url;
+		e = {
+			target :$( css_menu ).find( "a[href=\"" + url + "\"]" )
+		};
+		// $( css_menu ).find( "a[href=\"" + url + "\"]" ).trigger( "click" );
+		// scroll( "#" + anchor );
 	} else {
 		// $( css_menu ).find( "a[href=\"getting_started/hello_world.html\"]" ).trigger( "click" );
-		var e = {
+		e = {
 			target :$( css_menu ).find( "a[href=\"getting_started/hello_world.html\"]" )
 		};
-		var dontPushUrl = true;
-		loadMenuItem( e, dontPushUrl );
 	}
+	loadMenuItem( e, false, anchor );
 };
 
 var pushUrl = function( url ){
-	history.pushState( null, null, hash + url );
+	history.pushState( null, null, url );
 };
 
 var addIdToJSL = function () {
@@ -107,7 +122,7 @@ var createItems = function ( el, children ){
 	var ul = $( "<ul></ul>" );
 	$( children ).each( function( i, e ) {
 		var li = $( "<li></li>" );
-		var a = $( "<a></a>" ).attr( "href", e.url );
+		var a = $( "<a></a>" ).attr( "href", hashRoot + e.url );
 		// every link returns itself to loadMenuItem
 		a.attr( "onclick", "return loadMenuItem( event );" );
 		a.text( e.label );
@@ -117,7 +132,7 @@ var createItems = function ( el, children ){
 	$( el ).append( ul );
 };
 
-var loadMenuItem = function( event, noPush ){
+var loadMenuItem = function( event, noPush, anchor ){
 	$( css_menu ).find( ".menu_selected" ).each( function(i, e) {
 		$( e ).attr( "class", "" );
 	});
@@ -129,19 +144,28 @@ var loadMenuItem = function( event, noPush ){
 	}
 	updateBreadcrumb( el, par );
 	var href = el.attr( "href" );
+	// strip !#documentation if present
+	if( href.indexOf( hashRoot ) > -1 ){
+		href = href.substring( hashRoot.length, href.length );
+	}
 	var doc = root + href;
 	$.get( doc, function( data ) {
 		var html = $( "<div></div>" ).append( data );
 		$( html ).find( "style" ).remove();
 		$( css_content ).html( html );
+
+		$.when( dfdSyxt ).done( function (){
+			$( css_content ).scrollTop( 0 );
+			scrollToElement( anchor );
+		});
+		
 		loadCode( href );
 		loadSyntax( href );
 		addTOCToParent( el );
-		$( css_content ).scrollTop( 0 );
 		updateInternalLinks( $( css_content ) );
 		updateAnchors( $( css_content ) );
 		if( !noPush ){
-			pushUrl( doc );
+			pushUrl( hash + doc );
 		}
 	});
 	return false;
@@ -164,7 +188,7 @@ var updateAnchors = function ( c ){
 		var href = $( a ).attr( "href" );
 		if( href.charAt( 0 ) === "#" && href.charAt( 1 ) != "!" ){
 			$( a ).attr( "onclick", 
-				"return scroll(\"*[id='" + href.substring(1,href.length) + "']\")" );
+				"return scrollToElement(\"*[id='" + href.substring(1,href.length) + "']\")" );
 		}
 	});
 };
@@ -182,10 +206,12 @@ var addTOCToParent = function ( el ) {
 		});
 		var ul = $( "<ul></ul>" ).attr( "class", "TOC" );
 		$( css_content ).find( "h2" ).each( function( i, e ) {
+			var href = "/" + $( el ).attr( "href" ) + "#" + $( e ).attr( "id" );
 			ul.append( $( "<li></li>" )
 				.append( $( "<a></a>")
-					.attr( "href", "#" + $( e ).attr( "id" ) )
-					.attr( "onclick", "return scroll(\"" + "#" + $( e ).attr( "id" ) + "\")" )
+					.attr( "href", href )
+					.attr( "onclick", "return tocClick(\"" + "#" + $( e ).attr( "id" ) + 
+						"\",\"" + href + "\")" )
 					.text( $( e ).text() ).click( function( event ) {
 						$( css_menu ).find( ".toc_selected" ).each( function(i, e) {
 							$( e ).attr( "class", "" );
@@ -198,7 +224,13 @@ var addTOCToParent = function ( el ) {
 	}
 };
 
-var scroll = function ( el ) {
+var tocClick = function( el, href ) {
+	pushUrl( href );
+	scrollToElement( el );
+	return false;
+};
+
+var scrollToElement = function ( el ) {
 	if( typeof $( el ).offset() !== typeof undefined ){
 		$( css_content ).scrollTop( 0 );
 		var threshold = 20;
@@ -211,11 +243,12 @@ var scroll = function ( el ) {
 			$( el ).attr( "class", "");
 		},500);
 	}
-	return false;
 };
 
 var loadCode = function ( href ) {
 	var parent_folder = href.match(/(.+\/)/)[0];
+	var codeToLoad = $( css_content ).find( ".code" ).length;
+	if ( codeToLoad === 0 ){ dfdCode.resolve(); }
 	$( css_content ).find( ".code" ).each( function( i, el ) {
 		var src = $( el ).attr( "src" );
 		if ( typeof src !== typeof undefined && src !== false ){
@@ -226,16 +259,20 @@ var loadCode = function ( href ) {
 						$( "<code></code>" ).text( data ) )
 					.attr("class", "line-numbers language-" + getLangFromExt( file ) ) );
 				Prism.highlightElement( $( el ).find( "pre code" )[0] );
+				if ( --codeToLoad === 0 ){ dfdCode.resolve(); }
 			}, "text");
 	} else {
 		$( el ).html( $( "<pre></pre>" )
 					.attr("class", "language-" + $( el ).attr( "lang" ) )
 					.text( $( el ).text() ) );
+		if ( --codeToLoad === 0 ){ dfdCode.resolve(); }
 	}
 });};
 
 var loadSyntax = function ( href ) {
 	var parent_folder = href.match(/(.+\/)/)[0];
+	var sytxToLoad = $( css_content ).find( ".syntax" ).length;
+	if( sytxToLoad === 0 ){ dfdSyxt.resolve(); }
 	$( css_content ).find( ".syntax" ).each( function( i, el ) {
 		// syntH.get();
 		var file = $( el ).attr( "src" );
@@ -245,6 +282,7 @@ var loadSyntax = function ( href ) {
 				// .attr("class", "brush: " + getLangFromExt( file ) )
 				.text( data ) );
 			// syntH.put();
+			if( --sytxToLoad === 0 ){ dfdSyxt.resolve(); }
 		}, "text" );
 	});
 };
