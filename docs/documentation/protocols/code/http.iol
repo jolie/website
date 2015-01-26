@@ -24,6 +24,15 @@ type HttpConfiguration:void {
 	*/
 	.statusCode?:string
 
+	/*
+	 * Defines the cache-control header of the HTTP message.
+	 */
+	.cacheControl?:void {
+		/*
+		 * Maximum age for which the resource should be cached (in seconds)
+		 */
+		.maxAge?:int
+	}
 
 	/*
 	* Defines the content type of the HTTP message.
