@@ -169,7 +169,7 @@ main
 				endsWith@StringUtils( e )( shouldCache );
 				if ( !shouldCache ) {
 					e.suffix = ".css";
-					endsWith@StringUtils( e )( shouldAddIndex )
+					endsWith@StringUtils( e )( shouldCache )
 				}
 			};
 			
