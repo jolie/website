@@ -160,7 +160,20 @@ main
 				file.format = format = "binary"
 			};
 
+			shouldCache = false;
 			if ( s.result[0] == "image" ) {
+				shouldCache = true
+			} else {
+				e = file.filename;
+				e.suffix = ".js";
+				endsWith@StringUtils( e )( shouldCache );
+				if ( !shouldCache ) {
+					e.suffix = ".css";
+					endsWith@StringUtils( e )( shouldAddIndex )
+				}
+			};
+			
+			if ( shouldCache ) {
 				cacheMaxAge = 60 * 60 * 2 // 2 hours
 			};
 
