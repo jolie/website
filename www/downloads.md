@@ -66,8 +66,10 @@ This method requires Java 6 (also called Java 1.6) or later to be installed befo
 Download the Java-based installer of the latest stable release of Jolie:
 
 <div class="col-xs-12 text-center">
-<a class="download" href="/files/releases/jolie-1.1.jar" onClick="ga('send', 'event', { eventCategory: 'Download', eventAction: 'JolieInstaller', eventLabel: 'jolie-1.1.jar'});">
-Jolie Installer
+<a href="/files/releases/jolie-1.1.jar" onClick="ga('send', 'event', { eventCategory: 'Download', eventAction: 'JolieInstaller', eventLabel: 'jolie-1.1.jar'});">
+<button type="button" class="center-block btn btn-default btn-lg">
+<p class="download">Jolie Installer</p>
+</button>
 </a>
 </div>
 
@@ -75,9 +77,8 @@ Jolie Installer
 ### Step 2
 
 Open a shell terminal. From the directory in which you downloaded the installer,
-execute `java -jar jolie-1.1.jar` and follow the on-screen instructions.
-
-
+execute `java -jar jolie-1.1.jar` under windows or
+`sudo java -jar jolie-1.1.jar` under MacOs or Linux and follow the on-screen instructions.
 
 ## The hard way (compile from sources)
 
