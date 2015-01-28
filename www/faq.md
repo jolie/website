@@ -1,5 +1,10 @@
 ## Frequent Asked Questions
 
+Notes:
+
+- services cannot share data, ensuring loose coupling.
+- interactions must happen through communications.
+
 **Why a new language and not simply a new library/framework for, e.g., Java?**
 
 Jolie is interoperable with JVM-based languages (and more, e.g., Javascript, in the near future Python and others).
