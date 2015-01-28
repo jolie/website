@@ -37,7 +37,7 @@ Java:
 
 outputPort Twitter {
 Location: "socket://api.twitter.com:443/1.1/statuses/update."
-Protocol: https { .ssl.protocol = "TLSv1"; .format="x-www-form-urlencoded"; .method="POST";  .addHeader -> addHeader }
+Protocol: https { .ssl.protocol = "TLSv1"; .format="x-www-form-urlencoded"; .method="POST";  .addHeader -> addHeader; .compression = false }
 RequestResponse:
       json
 }
