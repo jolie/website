@@ -24,6 +24,9 @@ body {
 	padding-right: 0.5em;
 	border: 0.05em solid #ccc;
 	display: inline-block;
+        -webkit-box-shadow: 0px 2px 1px rgba(50, 50, 50, 0.75);
+        -moz-box-shadow: 0px 2px 1px rgba(50, 50, 50, 0.75);
+        box-shadow: 0px 2px 1px rgba(50, 50, 50, 0.75);
 }
 
 .download:hover {

@@ -67,9 +67,9 @@ Download the Java-based installer of the latest stable release of Jolie:
 
 <div class="col-xs-12 text-center">
 <a href="/files/releases/jolie-1.1.1.jar" onClick="ga('send', 'event', { eventCategory: 'Download', eventAction: 'JolieInstaller', eventLabel: 'jolie-1.1.1.jar'});">
-<button type="button" class="center-block btn btn-default btn-lg">
+<!-- <button type="button" class="center-block btn btn-default btn-lg"> -->
 <p class="download">Jolie Installer</p>
-</button>
+<!-- </button> -->
 </a>
 </div>
 
