@@ -66,7 +66,7 @@ This method requires Java 6 (also called Java 1.6) or later to be installed befo
 Download the Java-based installer of the latest stable release of Jolie:
 
 <div class="col-xs-12 text-center">
-<a href="/files/releases/jolie-1.1.jar" onClick="ga('send', 'event', { eventCategory: 'Download', eventAction: 'JolieInstaller', eventLabel: 'jolie-1.1.jar'});">
+<a href="/files/releases/jolie-1.1.1.jar" onClick="ga('send', 'event', { eventCategory: 'Download', eventAction: 'JolieInstaller', eventLabel: 'jolie-1.1.1.jar'});">
 <button type="button" class="center-block btn btn-default btn-lg">
 <p class="download">Jolie Installer</p>
 </button>
@@ -77,8 +77,12 @@ Download the Java-based installer of the latest stable release of Jolie:
 ### Step 2
 
 Open a shell terminal. From the directory in which you downloaded the installer,
-execute `java -jar jolie-1.1.jar` under windows or
-`sudo java -jar jolie-1.1.jar` under MacOs or Linux and follow the on-screen instructions.
+execute `java -jar jolie-1.1.1.jar` under windows or
+`java -jar jolie-1.1.1.jar` under MacOs or Linux and follow the on-screen instructions.
+
+The installer needs permission to write in the directories in which you intend to install Jolie.
+Therefore, for example, if you intend to install Jolie in a system directory you may need to launch the installer as root in Linux/MacOS (`sudo java -jar jolie-1.1.1.jar`),
+or [administrator in Windows](https://technet.microsoft.com/en-us/library/cc947813.aspx).
 
 ## The hard way (compile from sources)
 
@@ -134,13 +138,13 @@ by replacing the existing directories with your desired ones. Use `\\` instead o
 Here is an example:
 
 <pre>
-install.launcher_dir=C:\\Program Files\\jolie
-install.dir=C:\\Program Files\\jolie
+install.launcher_dir=C:\\Windows\\system32
+install.dir=C:\\Jolie
 </pre>
 
 Edit your PATH environment variable so that it includes the `install.launcher_dir` directory.
 You can find some instructions on managing environment variables in Windows XP at this
-[link](http://support.microsoft.com/kb/310519).
+[link](http://support.microsoft.com/kb/310519). Please note that using paths with spaces may cause problems in Windows and need special handling.
 
 Execute the `ant dist-install` command from inside the directory where you downloaded the source code of Jolie.
 Follow the on-screen instructions at the end of the installation procedure about the environment variables.

@@ -1,5 +1,4 @@
 <!--Themed-->
-
 <!--<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
 <ul class="nav nav-pills">
@@ -34,7 +33,7 @@ Download and Install
 </button>
   <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
 <!--   <li role="presentation"><a role="menuitem" tabindex="-1" href="#download-and-install">Top</a></li> -->
-  <!--<li role="presentation"><a role="menuitem" tabindex="-1" href="#the-easy-way">The easy way (binary installer)</a></li>
+<p><!--<li role="presentation"><a role="menuitem" tabindex="-1" href="#the-easy-way">The easy way (binary installer)</a></li>
   <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
   <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
   </ul>
@@ -45,30 +44,27 @@ Download and Install
 <li role="presentation"><a href="/news">News</a></li>
 </ul>
 </div>
-</div>-->
-
+</div>--></p>
 <h1 id="download-and-install"><a id="download-and-install"></a> Download and Install</h1>
 <p>Jolie requires Java to run, so make sure to have <a href="http://www.java.com/">Java</a> installed before proceeding.</p>
 <p>Regardless of the method you choose, after installation executing a Jolie script will be just a matter of invoking the Jolie interpreter:</p>
 <pre>jolie your_file.ol</pre>
-
-
 <h2 id="the-easy-way-binary-installer">The easy way (binary installer)</h2>
 <p>This method requires Java 6 (also called Java 1.6) or later to be installed before proceeding.</p>
 <h3 id="step-1">Step 1</h3>
 <p>Download the Java-based installer of the latest stable release of Jolie:</p>
 <div class="col-xs-12 text-center">
-<a href="/files/releases/jolie-1.1.jar" onClick="ga('send', 'event', { eventCategory: 'Download', eventAction: 'JolieInstaller', eventLabel: 'jolie-1.1.jar'});"> <button type="button" class="center-block btn btn-default btn-lg">
+<a href="/files/releases/jolie-1.1.1.jar" onClick="ga('send', 'event', { eventCategory: 'Download', eventAction: 'JolieInstaller', eventLabel: 'jolie-1.1.1.jar'});">
+<button type="button" class="center-block btn btn-default btn-lg">
 <p class="download">
 Jolie Installer
 </p>
 </button>
 </a>
 </div>
-
-
 <h3 id="step-2">Step 2</h3>
-<p>Open a shell terminal. From the directory in which you downloaded the installer, execute <code>java -jar jolie-1.1.jar</code> under windows or <code>sudo java -jar jolie-1.1.jar</code> under MacOs or Linux and follow the on-screen instructions.</p>
+<p>Open a shell terminal. From the directory in which you downloaded the installer, execute <code>java -jar jolie-1.1.1.jar</code> under windows or <code>java -jar jolie-1.1.1.jar</code> under MacOs or Linux and follow the on-screen instructions.</p>
+<p>The installer needs permission to write in the directories in which you intend to install Jolie. Therefore, for example, if you intend to install Jolie in a system directory you may need to launch the installer as root in Linux/MacOS (<code>sudo java -jar jolie-1.1.1.jar</code>), or <a href="https://technet.microsoft.com/en-us/library/cc947813.aspx">administrator in Windows</a>.</p>
 <h2 id="the-hard-way-compile-from-sources">The hard way (compile from sources)</h2>
 <p>This method will download the development version of Jolie (<code>trunk</code>). It requires the following software to be installed before proceeding:</p>
 <ul>
@@ -81,9 +77,9 @@ Jolie Installer
 Jump to the instructions for your Operating System: <a href="#nix"><img src="/imgs/os_linux.png" title="Linux" height="80px"/></a> <a href="#nix"><img src="/imgs/os_mac.png" title="Mac OS" height="80px"/></a> <a href="#windows"><img src="/imgs/os_win.png" title="Windows" height="80px"/></a>
 </p>
 </div>
+<div style="clear: both;">
 
-<div style="clear: both;"></div>
-
+</div>
 <h3 id="linux-and-mac-os"><a id="nix"></a>Linux and Mac OS</h3>
 <p>Open a shell and execute:</p>
 <pre name="code">
@@ -91,7 +87,6 @@ svn co svn://svn.code.sf.net/p/jolie/code/trunk jolie-src
 cd jolie-src
 ant && sudo ant install
 </pre>
-
 <p>The ant script will automatically build and install Jolie for you. The default is to install in <code>/usr/lib/jolie</code>, but the installation parameters can be controlled by editing <code>buildconfig/config.properties</code>.</p>
 <p>A Jolie launcher script will be put in <code>/usr/bin</code> (this parameter is configurable in <code>buildconfig/config.properties</code>, too).</p>
 <p>Remember to follow the on-screen instructions at the end of the installation procedure, about the environment variables.</p>
@@ -105,11 +100,10 @@ ant && sudo ant install
 <p>Download the source code with your svn client from <code>svn://svn.code.sf.net/p/jolie/code/trunk</code></p>
 <p>Open the <code>buildconfig/config.properties</code> file and change the parameters <code>install.launcher_dir</code> and <code>install.dir</code> by replacing the existing directories with your desired ones. Use <code>\\</code> instead of the single backslashes when writing paths. Here is an example:</p>
 <pre>
-install.launcher_dir=C:\\Program Files\\jolie
-install.dir=C:\\Program Files\\jolie
+install.launcher_dir=C:\\Windows\\system32
+install.dir=C:\\Jolie
 </pre>
-
-<p>Edit your PATH environment variable so that it includes the <code>install.launcher_dir</code> directory. You can find some instructions on managing environment variables in Windows XP at this <a href="http://support.microsoft.com/kb/310519">link</a>.</p>
+<p>Edit your PATH environment variable so that it includes the <code>install.launcher_dir</code> directory. You can find some instructions on managing environment variables in Windows XP at this <a href="http://support.microsoft.com/kb/310519">link</a>. Please note that using paths with spaces may cause problems in Windows and need special handling.</p>
 <p>Execute the <code>ant dist-install</code> command from inside the directory where you downloaded the source code of Jolie. Follow the on-screen instructions at the end of the installation procedure about the environment variables.</p>
 <!--
 ### Troubleshooting (Windows)
@@ -130,11 +124,9 @@ set joliepath=C://"Program Files"//jolie\
 
 You can now execute Jolie scripts by issuing the `jolie` command in a console, for example: `jolie your_file.ol`
 -->
-
-
 <h1 id="support-for-external-tools">Support for external tools</h1>
 <h2 id="kate">Kate</h2>
-<p>Homepage: <a href="http://kate-editor.org/">http://kate-editor.org/</a></p>
+<p>Homepage: <a href="http://kate-editor.org/" class="uri">http://kate-editor.org/</a></p>
 <p>A syntax highlighting description file for KatePart (which is used by most KDE applications and the Kate editor itself) is available.</p>
 <p>Download the <a href="http://www.jolie-lang.org/files/katepart/jolie.xml">latest version</a> and put it in your <code>$KDE_HOME/share/apps/katepart/syntax directory</code>.</p>
 <p>You can discover your <code>$KDE_HOME</code> directory by issuing the <code>kde4 config localprefix</code> command.</p>
