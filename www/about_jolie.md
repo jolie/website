@@ -53,6 +53,7 @@ sponsoring, etc.).
 
 * Michael Søby Andersen
 * Paolo Anedda
+* Valentino Baraldo
 * Matteo Bonazzi
 * Silvia Bonucci
 * Stefano Bragaglia
@@ -107,7 +108,7 @@ sponsoring, etc.).
 * Gianluigi Zanetti
 * Gianluigi Zavattaro
 * Alberto Zuccato
-* Valentino Baraldo
+* Matthias Dieter Wallnöfer
 
 # Sponsors
 
