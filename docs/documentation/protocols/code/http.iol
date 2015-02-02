@@ -62,14 +62,18 @@ type HttpConfiguration:void {
 
 	/*
 	* Set the allowed mimetypes (content types) for compression.
-	* This flag operates only server side and is empty per default, which means
-	* that no content is compressed. The delimitation character should be
-	* different to the mimetype names, valid choices include blank, comma or
-	* semicolon. "*" means that everything is compressed.
-	* Usually users decide which type of content should be compressed and which
-	* one not. Images and videos should be excluded. Leonardo sets this value
-	* per default to: "text/html text/css text/plain text/xml application/json".
-	* Other webservers (Apache Tomcat, Apache HTTP mod_deflate) do the same.
+	* This flag operates server-side only and is unset per default, which means
+	* that common plain-text formats get compressed (among them text/html
+	* text/css text/plain text/xml text/x-js application/json
+	* application/javascript). The delimitation character should be different to
+	* the mimetype names, valid choices include blank, comma or semicolon.
+	*
+	* "*" means compression for everything including binary formats, which is
+	* usually not the best choice. Many formats come pre-compressed, like
+	* archives, images or videos.
+	*
+	* Other webservers (Apache Tomcat, Apache HTTP mod_deflate) contain similar
+	* filter variables.
 	*
 	* Default: none
 	*/
