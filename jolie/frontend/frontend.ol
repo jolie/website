@@ -193,8 +193,8 @@ main
 		readBlogs@BlogReader( request )( blogsContent );
 		html += "<h2 id=\"tutorials-blogs\">Articles</h2><ul>";
 		for( i = 0, i < #blogsContent.entry, i++ ) {
-			html += "<li><a href=\"" + blogsContent.entry.links.entry + "\">"
-				+ blogsContent.entry.title
+			html += "<li><a href=\"" + blogsContent.entry[i].links.entry + "\">"
+				+ blogsContent.entry[i].title
 				+ "</a></li>"
 		};
 		html += "</ul>"
