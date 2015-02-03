@@ -162,7 +162,7 @@ define fireSocialMessages
 		if ( !is_defined( global.post_history.( cacheEntries[ c ].links.entry ) ) ) {
 			scope( post ) {
 				install( default => nullProcess );
-				social_post.status =  cacheEntries[ c ].title + " #jolielang " + cacheEntries[ c ].links.entry;
+				social_post.status =  cacheEntries[ c ].title + " #jolielang #microservices " + cacheEntries[ c ].links.entry;
 				postOnTwitter@Social( social_post )();
 
 				undef( file );
