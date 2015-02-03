@@ -29,4 +29,5 @@ type BlogEntry:void {
 		.entry:string
 		.blog:string
 	}
+	.tag*:string
 }

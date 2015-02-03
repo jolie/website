@@ -22,8 +22,8 @@ docs.jolie-lang.org
 
 # Tutorials
 
-The [JolieLang channel at slideshare.net](http://www.slideshare.net/JolieLang/) has
-some tutorial presentations on some aspects of Jolie and related tools:
+Here are some tutorials on Jolie and related tools, directly from the [blogs of our developers](#tutorials-blogs) and the
+[JolieLang channel at slideshare.net](http://www.slideshare.net/JolieLang/).
 
 <!--dynamic part-->
 

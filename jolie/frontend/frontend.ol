@@ -92,6 +92,11 @@ init
 		.binding.protocol = "http"
 	};
 	with( planetBlogs[2] ) {
+		.url = "http://thesave.github.io/";
+		.binding.location = "socket://thesave.github.io:80/feed.xml";
+		.binding.protocol = "http"
+	};
+	with( planetBlogs[3] ) {
 		.url = "http://jolie-practitioner.blogspot.com/";
 		.binding.location = "socket://jolie-practitioner.blogspot.com:80/feeds/posts/default/-/jolie";
 		.binding.protocol = "http"
@@ -162,18 +167,36 @@ main
 		html.begin = 0;
 		substring@StringUtils( html )( html );
 
+		html += "<h2 id=\"tutorials-presentations\">Presentations</h2>";
 		for( x = 0, x < #response.Slideshow, x++ ) {
 			sp_rq = response.Slideshow[ x ].Embed;
 			sp_rq.regex = "</iframe>";
-			split@StringUtils( sp_rq )( sp_rs );		      
-			html += "<div class=\"col-xs-12 row slide\">"
-				+ "<p class=\"slide-title\">" + response.Slideshow[ x ].Title + "</p>"
-				+ "<p class=\"slide-created\">" + response.Slideshow[ x ].Created + "</p>"
-				+ "<div class=\"col-xs-12 row vertical-align\">"
-				+ "<div class=\"col-xs-6 slide-embed vertical-align\">" + sp_rs.result[ 0 ] + "</iframe></div>"
-				+ "<div class=\"col-xs-6 slide-description vertical-align\">\"" + response.Slideshow[ x ].Description + "\"</div>"				  
-				+ "</div>"
-				+ "</div>"
-		}
+			split@StringUtils( sp_rq )( sp_rs );
+			if ( x % 2 == 0 ) {
+				html += "<div class=\"col-xs-12 row slide\">"
+			};
+// 			html += "<div class=\"col-xs-6\">"
+// 				+ "<p class=\"slide-title\">" + response.Slideshow[ x ].Title + "</p>"
+// 				+ "<p class=\"slide-created\">" + response.Slideshow[ x ].Created + "</p>"
+// 				+ "<div class=\"col-xs-12 row vertical-align\">"
+			html += "<div class=\"col-xs-6 slide-embed vertical-align\">" + sp_rs.result[ 0 ] + "</iframe></div>";
+// 				+ "<div class=\"col-xs-6 slide-description vertical-align\">\"" + response.Slideshow[ x ].Description + "\"</div>"				  
+// 				+ "</div>";
+			if ( x % 2 == 1 || x == #response.Slideshow - 1 ) {
+				html += "<div class=\"clearfix\"></div></div>"
+			}
+		};
+
+		undef( request );
+		request.blogs -> planetBlogs;
+		request.tag = "tutorials";
+		readBlogs@BlogReader( request )( blogsContent );
+		html += "<h2 id=\"tutorials-blogs\">Articles</h2><ul>";
+		for( i = 0, i < #blogsContent.entry, i++ ) {
+			html += "<li><a href=\"" + blogsContent.entry.links.entry + "\">"
+				+ blogsContent.entry.title
+				+ "</a></li>"
+		};
+		html += "</ul>"
 	}] { nullProcess }
 }

@@ -20,7 +20,7 @@ init
 main
 {
 	[ quicksort( req )( res ){
-		if( #req.entry == 1 ){
+		if( #req.entry <= 1 ){
 			res << req
 		} else {
 			pivot = (#req.entry)/2;

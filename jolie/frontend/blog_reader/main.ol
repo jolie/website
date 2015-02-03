@@ -127,7 +127,10 @@ define fetchEntries
 						.links.entry = atomEntry.link[i].(Attrs).href
 					}
 				};
-				.links.blog = blogDescriptor.url
+				.links.blog = blogDescriptor.url;
+				for( i = 0, i < #atomEntry.category, i++ ) {
+					.tag[i] = atomEntry.category[i].("@Attributes").term
+				}
 			}
 		}
 	}
@@ -136,7 +139,19 @@ define fetchEntries
 define addEntriesToResponse
 {
 	for( entryIdx = 0, entryIdx < #blogCache.entry, entryIdx++ ) {
-		response.entry[#response.entry] << blogCache.entry[entryIdx]
+		if ( is_defined( request.tag ) ) {
+			tagFound = false;
+			for( i = 0, i < #blogCache.entry[entryIdx].tag && !tagFound, i++ ) {
+				if ( request.tag == blogCache.entry[entryIdx].tag[i] ) {
+					tagFound = true
+				}
+			}
+		} else {
+			tagFound = true
+		};
+		if ( tagFound ) {
+			response.entry[#response.entry] << blogCache.entry[entryIdx]
+		}
 	}
 }
 
@@ -210,7 +225,8 @@ main
 	[ fillCache( blogDescriptor )() {
 		Blog -> blogDescriptor.binding;
 		if ( Blog.protocol == "http" ) {
-			Blog.protocol.osc.getAtom.alias = " "
+			Blog.protocol.osc.getAtom.alias = " ";
+			Blog.protocol.osc.getAtom.method = "get"
 		};
 		fetchEntries;
 		while( #cacheEntries > MaxEntries ) {

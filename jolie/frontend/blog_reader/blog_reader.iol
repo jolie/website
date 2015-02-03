@@ -29,6 +29,7 @@ type BlogDescriptor:void {
 
 type ReadBlogsRequest:void {
 	.blogs*:BlogDescriptor
+	.tag?:string
 }
 
 type ReadBlogsResponse:void {
