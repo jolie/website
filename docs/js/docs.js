@@ -86,7 +86,7 @@ var checkUrl = function () {
 			target: $( css_menu ).find( "a[href=\"#!documentation/getting_started/hello_world.html\"]" )
 		};
 	}
-	loadMenuItem( e, false, anchor );
+	loadMenuItem( e, true, anchor );
 };
 
 var pushUrl = function( url ){
