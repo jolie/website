@@ -45,9 +45,21 @@ We are always open to new collaborations and discussions!
 
 We often use the term *The Jolie Team* to refer to the people who
 contributed to the development of Jolie by writing code (copyright holders).
-In the list below, we also give credit to people who
+In the lists below, we also give credit to people who
 contributed to the project through other means (research, useful discussions,
 sponsoring, etc.).
+
+### Main Active Developers
+
+Saverio Giallorenzo, Claudio Guidi, Balint Maschio, Fabrizio Montesi, Matthias Dieter Wallnöfer
+
+### Main Active Academics
+
+
+
+### Main Sponsors
+
+[italianaSoftware](http://www.italianasoftware.com/), [University of Southern Denmark](http://www.sdu.dk/)
 
 ## Credits
 
