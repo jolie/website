@@ -51,19 +51,29 @@ sponsoring, etc.).
 
 ### Main Active Developers
 
-Saverio Giallorenzo, Claudio Guidi, Balint Maschio, Fabrizio Montesi, Matthias Dieter Wallnöfer
+* Saverio Giallorenzo
+* Claudio Guidi
+* Balint Maschio
+* Fabrizio Montesi
+* Matthias Dieter Walln&ouml;fer
 
 ### Main Active Academics
 
+* Maurizio Gabbrielli
+* Saverio Giallorenzo
+* Claudio Guidi
+* Ivan Lanese
+* Fabrizio Montesi
+* Gianluigi Zavattaro
 
+<!--### Main Industrial/Institutional Contributors
 
-### Main Sponsors
+* [italianaSoftware](http://www.italianasoftware.com/)
+* [University of Southern Denmark](http://www.sdu.dk/)-->
 
-[italianaSoftware](http://www.italianasoftware.com/), [University of Southern Denmark](http://www.sdu.dk/)
+### Occasional Developers / Academics / Collaborators / Thanks to
 
-## Credits
-
-* Michael Søby Andersen
+* Michael S&oslash;by Andersen
 * Paolo Anedda
 * Valentino Baraldo
 * Matteo Bonazzi
@@ -75,29 +85,21 @@ Saverio Giallorenzo, Claudio Guidi, Balint Maschio, Fabrizio Montesi, Matthias D
 * Claudia Carpineti
 * Diego Castronuovo
 * Fabio Ciotoli
-* Massimo Cremonini
 * Elvis Ciotti
 * Mila Dalla Preda
 * Nikolaj Falsted
 * Jacob Fischer
-* Maurizio Gabbrielli
-* Alessandro Gambetti
-* Saverio Giallorenzo
 * Roberto Gorrieri
-* Claudio Guidi
 * Claus Lindquist Henriksen
-* Niels Martin Søholm Jensen
+* Niels Martin S&oslash;holm Jensen
 * Roberto La Maestra
 * Jan Aagaard Meier
-* Ivan Lanese
 * Pier Paolo Lombardi
 * Roberto Lucchi
 * Davide Malagoli
-* Balint Maschio
 * Jacopo Mauro
 * Paola Mello
 * Marino Miculan
-* Fabrizio Montesi
 * Marco Montesi
 * Andrea Monzali
 * Michele Morgagni
@@ -118,9 +120,7 @@ Saverio Giallorenzo, Claudio Guidi, Balint Maschio, Fabrizio Montesi, Matthias D
 * Valentina Tronconi
 * Tullio Vardanega
 * Gianluigi Zanetti
-* Gianluigi Zavattaro
 * Alberto Zuccato
-* Matthias Dieter Wallnöfer
 
 # Sponsors
 
@@ -137,6 +137,7 @@ The server infrastructure for this website is kindly provided by the [University
 ## Past Sponsors
 
 * [EU Project SENSORIA](http://www.sensoria-ist.eu/)
+* [IT University of Copenhagen](http://www.itu.dk/)
 * [DISI Department - University of Bologna](http://www.informatica.unibo.it/it/Dipartimento)
 * [Department of Mathematics - University of Padova](http://www.math.unipd.it/it/)
  
