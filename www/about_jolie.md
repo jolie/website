@@ -57,7 +57,7 @@ sponsoring, etc.).
 * Fabrizio Montesi
 * Matthias Dieter Walln&ouml;fer
 
-### Main Active Academics
+### Main Active Researchers
 
 * Maurizio Gabbrielli
 * Saverio Giallorenzo
