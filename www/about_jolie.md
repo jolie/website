@@ -130,6 +130,7 @@ sponsoring, etc.).
 * [CRC: Choreographies for Reliable and efficient Communication software](http://www.chor-lang.org/)
 (financed by the [Danish Council for Independent Research](http://www.ufm.dk/))
 * [italianaSoftware](http://www.italianasoftware.com/)
+* [GPA Group](http://www.gpa-group.it/lang/EN/homepage)
 * [University of Southern Denmark, Department of Mathematics and Computer Science](http://www.sdu.dk/en/Om_SDU/Institutter_centre/Imada_matematik_og_datalogi)
 
 The server infrastructure for this website is kindly provided by the [University of Southern Denmark, Department of Mathematics and Computer Science](http://www.sdu.dk/en/Om_SDU/Institutter_centre/Imada_matematik_og_datalogi).
