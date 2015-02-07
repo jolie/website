@@ -17,6 +17,17 @@ type HttpConfiguration:void {
 	}
 
 	/*
+	 * Set additional headers on HTTP requests
+	 *
+	 * Default: none
+	 */
+	.addHeader?:void {
+		.header*:string {
+			.value:string
+		}
+	}
+
+	/*
 	* Defines the status code of the HTTP message.
 	*
 	* Default: 200
@@ -124,7 +135,7 @@ type HttpConfiguration:void {
 	*
 	* Default: none
 	*/
-	.redirection?:string
+	.redirect?:string
 
 	/*
 	 * Defines the character set to use for (de-)coding strings.
@@ -270,12 +281,27 @@ type HttpConfiguration:void {
 	* Default: "POST"
 	* Supported values: "GET", "POST"
 	*/
-	.method?:string
+	.method?:string {
+		/*
+		 * "queryFormat" on a GET request may be set to "json" to have the
+		 * parameters passed as JSON
+		 *
+		 * Default: none
+		 */
+		.queryFormat?:string
+	}
 
 	/*
-	* Set to the User-Agent header value 
-	* after receiving a request
+	* Overrides the HTTP User-Agent header value on incoming HTTP messages
 	*
 	* Default: none
 	*/
 	.userAgent?:string
+
+	/*
+	 * Overrides the HTTP host header on incoming HTTP messages
+	 *
+	 * Default: none
+	 */
+	.host?:string
+}
