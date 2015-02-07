@@ -28,6 +28,15 @@ type HttpConfiguration:void {
 	}
 
 	/*
+	 * Specifies the default HTTP handler method on a server
+	 * This is required for instance in Leonardo which sets it to default()()
+	 * (setting default = "default").
+	 *
+	 * Default: none
+	 */
+	.default?:string
+
+	/*
 	* Defines the status code of the HTTP message.
 	*
 	* Default: 200
