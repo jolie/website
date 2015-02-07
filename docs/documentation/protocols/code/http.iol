@@ -190,7 +190,7 @@ type HttpConfiguration:void {
 			*
 			* Default: none
 			*/
-			.multiparHeaders?:void {
+			.multipartHeaders?:void {
 				/*
 				* Defines the name of the part of 
 				* the multi-part request
