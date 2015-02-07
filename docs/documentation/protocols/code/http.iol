@@ -30,13 +30,16 @@ type HttpConfiguration:void {
 	/*
 	 * Specifies the default HTTP handler method(s) on a server
 	 * This is required for CRUD applications but also used in Leonardo which sets
-	 * it to default()() (setting default = "default").
+	 * it to default()() (.default = "default").
 	 *
 	 * Default: none
 	 */
 	.default?:string {
 		/*
-		 * Handler for specific HTTP request methods: eg. .default.put = "put"
+		 * Handler for specific HTTP request methods, eg.
+		 * .default.get = "get";
+		 * .default.put = "put";
+		 * .default.delete = "delete"
 		 *
 		 * Default: none
 		 */
@@ -194,14 +197,15 @@ type HttpConfiguration:void {
 	* Default: none
 	*/
 	.osc?:void {
+		/*
+		 * Jolie method name(s)
+		 * eg. .osc.fetchBib.alias = "rec/bib2/%!{dblpKey}.bib" for method
+		 *	 fetchBib()() which listens on "rec/bib2/%!{dblpKey}.bib"
+		 * eg. .osc.default.alias = "" for method default()() which listens on "/"
+		 *
+		 * Default: none
+		 */
 		.operationName*:void {
-			/*
-			* Defines the name of a parameter specific to 
-			* "operationName"
-			*
-			* Default: none
-			*/
-			.parameterName?: void
 			/*
 			* Defines a HTTP alias which represents 
 			* an alternative name to the location of
