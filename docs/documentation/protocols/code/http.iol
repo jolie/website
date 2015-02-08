@@ -1,19 +1,22 @@
 type HttpConfiguration:void {
 
 	/*
-	* Defines a set of "headersNames" corresponding to
-	* the values received in the header of a request.
-	*
-	* Default: none
-	*/
+	 * Fetch header values on HTTP requests
+	 *
+	 * Default: none
+	 */
 	.headers?:void {
 		/*
-		* Defines the name of a header an references
-		* its value
-		*
-		* Default: none
-		*/
-		.headerName*: string
+		 * <headerName> should be substituted with the actual header
+		 * names and aliased to variables.
+		 *
+		 * eg.
+		 * .headers.content_type -> contentType;
+		 * .headers.server -> server
+		 *
+		 * Default: none
+		 */
+		.<headerName>*: string
 	}
 
 	/*
@@ -22,6 +25,15 @@ type HttpConfiguration:void {
 	 * Default: none
 	 */
 	.addHeader?:void {
+		/*
+		 * "header" contains the actual headers with their values
+		 * ("value") as children.
+		 *
+		 * eg. for HTTP header "Authorization: key":
+		 * .addHeader.header.("Authorization").value = "key"
+		 *
+		 * Default: none
+		 */
 		.header*:string {
 			.value:string
 		}
@@ -43,7 +55,11 @@ type HttpConfiguration:void {
 		 *
 		 * Default: none
 		 */
-		.httpMethod*:string
+		.get?:string
+		.post?:string
+		.head?:string
+		.put?:string
+		.delete?:string
 	}
 
 	/*
