@@ -20,7 +20,7 @@ We use [Netbeans IDE](http://www.netbeans.org) to create our first JavaService.
 First of all, we need to create a new Java Application project with
 Netbeans:
 
-![](./images/JavaServices_netbeans1.jpeg)
+<!--![](./images/JavaServices_netbeans1.jpeg)-->
 
 **Figure JavaServices.1**: Netbeans project creation mask.
 
@@ -34,7 +34,7 @@ installation folder contains the Java abstract class `JavaService`
 Before writing down the code of the JavaService, we create the
 package which will contain it.
 
-![](./images/JavaServices_netbeans2.jpeg)
+<!--![](./images/JavaServices_netbeans2.jpeg)-->
 
 **Figure JavaServices.2**: Creation of the package `Jolie.example`.
 
@@ -43,7 +43,7 @@ package which will contain it.
 Then, we create the Java file and we name it with same name of the
 JavaService that is `FirstJavaService`.
 
-![](./images/JavaServices_netbeans3.jpeg)
+<!--![](./images/JavaServices_netbeans3.jpeg)-->
 
 **Figure JavaServices.3**: Creation of the Java file.
 
@@ -148,7 +148,7 @@ been initialized with the following parameters:
 -   `v` : a Value object that contains the data structure to send.
 
 In this case, the message to send contains a string: `"Hello world from the
-JavaService!"`. The class `CommMessage` provides different static methods for
+JavaService<!--!"`. The class `CommMessage` provides different static methods for-->
 creating a request message and a response message. In this example, we have
 created a request message because the JavaService invokes a OneWay operation
 of the embedder. The embedder follows:
@@ -195,7 +195,7 @@ receiving the response message by means of the methods `recvResponseFor` which
 returns the response message stored into the variable `response`. Moreover,
 the JavaService exhibits the RequestResponse operation `write` where it prints
 out the received message and returns the string `"Hello world from the write
-operation of the JavaService!"`. 
+operation of the JavaService<!--!"`. -->
 
 The exhibited RequestResponse operation returns a Value object which contains
 the response message. The code of the embedder follows:
