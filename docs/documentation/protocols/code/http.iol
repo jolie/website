@@ -204,7 +204,14 @@ type HttpConfiguration:void {
 	*
 	* Default: false
 	*/
-	.debug?:bool
+	.debug?:bool {
+		/*
+		 * When set to a value > 0 shows the message content
+		 *
+		 * Default: none
+		 */
+		.showContent?:int
+	}
 
 	/*
 	* Defines a set of operation-specific aliases,
