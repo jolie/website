@@ -206,11 +206,11 @@ type HttpConfiguration:void {
 	*/
 	.debug?:bool {
 		/*
-		 * When set to a value > 0 shows the message content
+		 * Shows the message content
 		 *
-		 * Default: none
+		 * Default: false
 		 */
-		.showContent?:int
+		.showContent?:bool
 	}
 
 	/*

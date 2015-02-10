@@ -17,21 +17,16 @@ type XmlRpcConfiguration:void {
 	}
 
 	/*
-	* Defines if connection shall be
-	* kept alive or not
-	*
-	* Default: 0
-	* Supported values: 1 or 0
-	* 1 closes it, 0 (or any other) keeps it alive
-	*/
-	.keepAlive?: int
+	 * Defines whether the underlying connection should be kept open.
+	 *
+	 * Default: false
+	 */
+	.keepAlive?: bool
 
 	/*
-	* Defines if debug messages shall be 
-	* activated
-	*
-	* Default: 0
-	* Supported values: 0 or 1
-	*/
-	.debug?: int
+	 * Defines whether debug messages should be activated
+	 *
+	 * Default: false
+	 */
+	.debug?: bool
 }

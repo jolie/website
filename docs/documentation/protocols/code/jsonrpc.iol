@@ -6,7 +6,7 @@ type JsonRpcConfiguration:void {
 	*/
 	.keepAlive?: bool
 	/*
-	* Defines whether debug messages should be activate
+	* Defines whether debug messages should be activated
 	*
 	* Default: false
 	*/
