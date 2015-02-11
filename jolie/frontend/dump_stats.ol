@@ -6,7 +6,7 @@ include "time.iol"
 execution { concurrent }
 
 constants {
-	DumpTimeout = 5 * 60 * 1000 // 10 minutes
+	DumpTimeout = 300000 // 10 minutes
 }
 
 inputPort MyInput {
