@@ -3,7 +3,7 @@ include "string_utils.iol"
 include "console.iol"
 include "time.iol"
 
-execution { sequential }
+execution { concurrent }
 
 constants {
 	DumpTimeout = 5 * 60 * 1000 // 10 minutes
