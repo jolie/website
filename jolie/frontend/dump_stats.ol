@@ -5,6 +5,10 @@ include "time.iol"
 
 execution { sequential }
 
+constants {
+	DumpTimeout = 5 * 60 * 1000 // 10 minutes
+}
+
 inputPort MyInput {
 Location: "local"
 OneWay: timeout( void )
@@ -12,7 +16,7 @@ OneWay: timeout( void )
 
 init
 {
-	setNextTimeout@Time( 10 * 60 * 1000 ) // 10 minutes
+	setNextTimeout@Time( DumpTimeout )
 }
 
 main
@@ -21,5 +25,5 @@ main
 	stats@Runtime()( stats );
 	valueToPrettyString@StringUtils( stats )( s );
 	println@Console( s )();
-	setNextTimeout@Time( 1000 )
+	setNextTimeout@Time( DumpTimeout )
 }
