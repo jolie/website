@@ -97,10 +97,10 @@ ant && sudo ant install
 <li><p>Apache Ant: <a href="http://ant.apache.org/">link</a>.</p></li>
 </ul>
 <p>Download the source code with your svn client from <code>svn://svn.code.sf.net/p/jolie/code/trunk</code></p>
-<p>Open the <code>buildconfig/config.properties</code> file and change the parameters <code>install.launcher_dir</code> and <code>install.dir</code> by replacing the existing directories with your desired ones. Use <code>\\</code> instead of the single backslashes when writing paths. Here is an example:</p>
+<p>Open the <code>buildconfig/config.properties</code> file and change the parameters <code>install.launcher_dir</code> and <code>install.dir</code> by replacing the existing directories with your desired ones. Use <code>\\</code> instead of the single backslashes when writing paths and for the termination of <code>install.dir</code>. Here is an example:</p>
 <pre>
 install.launcher_dir=C:\\Windows\\system32
-install.dir=C:\\Jolie
+install.dir=C:\\Jolie\\
 </pre>
 <p>Edit your PATH environment variable so that it includes the <code>install.launcher_dir</code> directory. You can find some instructions on managing environment variables in Windows XP at this <a href="http://support.microsoft.com/kb/310519">link</a>. Please note that using paths with spaces may cause problems in Windows and need special handling.</p>
 <p>Execute the <code>ant dist-install</code> command from inside the directory where you downloaded the source code of Jolie. Follow the on-screen instructions at the end of the installation procedure about the environment variables.</p>

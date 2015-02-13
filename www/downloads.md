@@ -134,12 +134,13 @@ Here are some useful links to get the required tools:
 Download the source code with your svn client from `svn://svn.code.sf.net/p/jolie/code/trunk`
 
 Open the `buildconfig/config.properties` file and change the parameters `install.launcher_dir` and `install.dir` 
-by replacing the existing directories with your desired ones. Use `\\` instead of the single backslashes when writing paths.
+by replacing the existing directories with your desired ones. Use `\\` instead of the single backslashes when writing
+paths and for the termination of `install.dir`.
 Here is an example:
 
 <pre>
 install.launcher_dir=C:\\Windows\\system32
-install.dir=C:\\Jolie
+install.dir=C:\\Jolie\\
 </pre>
 
 Edit your PATH environment variable so that it includes the `install.launcher_dir` directory.
