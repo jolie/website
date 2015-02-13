@@ -123,6 +123,10 @@ Remember to follow the on-screen instructions at the end of the installation pro
 
 ### <a id="windows"></a>On Windows
 
+Please make sure to work only on a single drive eg. `C:`, otherwise the Java
+classloader ends up in difficulties locating resources like include files
+(`console.iol` etc.)!
+
 Here are some useful links to get the required tools:
 
 * JDK (Java SE Development Kit): [link](http://java.sun.com/javase/downloads/index.jsp)
@@ -135,8 +139,7 @@ Download the source code with your svn client from `svn://svn.code.sf.net/p/joli
 
 Open the `buildconfig/config.properties` file and change the parameters `install.launcher_dir` and `install.dir` 
 by replacing the existing directories with your desired ones. Use `\\` instead of the single backslashes when writing
-paths and for the termination of `install.dir`.
-Here is an example:
+paths. Here is an example:
 
 <pre>
 install.launcher_dir=C:\\Windows\\system32

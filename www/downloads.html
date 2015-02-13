@@ -90,6 +90,7 @@ ant && sudo ant install
 <p>A Jolie launcher script will be put in <code>/usr/bin</code> (this parameter is configurable in <code>buildconfig/config.properties</code>, too).</p>
 <p>Remember to follow the on-screen instructions at the end of the installation procedure, about the environment variables.</p>
 <h3 id="on-windows"><a id="windows"></a>On Windows</h3>
+<p>Please make sure to work only on a single drive eg. <code>C:</code>, otherwise the Java classloader ends up in difficulties locating resources like include files (<code>console.iol</code> etc.)!
 <p>Here are some useful links to get the required tools:</p>
 <ul>
 <li><p>JDK (Java SE Development Kit): <a href="http://java.sun.com/javase/downloads/index.jsp">link</a></p></li>
@@ -97,13 +98,14 @@ ant && sudo ant install
 <li><p>Apache Ant: <a href="http://ant.apache.org/">link</a>.</p></li>
 </ul>
 <p>Download the source code with your svn client from <code>svn://svn.code.sf.net/p/jolie/code/trunk</code></p>
-<p>Open the <code>buildconfig/config.properties</code> file and change the parameters <code>install.launcher_dir</code> and <code>install.dir</code> by replacing the existing directories with your desired ones. Use <code>\\</code> instead of the single backslashes when writing paths and for the termination of <code>install.dir</code>. Here is an example:</p>
+<p>Open the <code>buildconfig/config.properties</code> file and change the parameters <code>install.launcher_dir</code> and <code>install.dir</code> by replacing the existing directories with your desired ones. Use <code>\\</code> instead of the single backslashes when writing paths. Here is an example:</p>
 <pre>
 install.launcher_dir=C:\\Windows\\system32
 install.dir=C:\\Jolie
 </pre>
 <p>If you change the directory for <code>install.launcher_dir</code>, make sure that it is included in your your PATH environment variable. You can find some instructions on managing environment variables in Windows XP at this <a href="http://support.microsoft.com/kb/310519">link</a>. Please note that using paths with spaces may cause problems in Windows and need special handling.</p>
 <p>Execute the <code>ant dist-install</code> command from inside the directory where you downloaded the source code of Jolie. Follow the on-screen instructions at the end of the installation procedure about the environment variables. In particular, you should make sure that the environment variable <code>JOLIE_HOME</code> is set to the directory you used for <code>install.dir</code>.</p>
+
 <!--
 ### Troubleshooting (Windows)
 
