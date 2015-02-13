@@ -9,14 +9,6 @@ type SodepConfiguration:void {
 	.charset?:string
 
 	/*
-	 * Compression algorithm to use.
-	 *
-	 * Default: void (no compression algorithm is used)
-	 * Supported values: "gzip"
-	 */
-	.compression?:string
-
-	/*
 	 * Defines whether the underlying connection should be kept open.
 	 *
 	 * Default: true
