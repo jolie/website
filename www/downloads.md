@@ -140,15 +140,16 @@ Here is an example:
 
 <pre>
 install.launcher_dir=C:\\Windows\\system32
-install.dir=C:\\Jolie\\
+install.dir=C:\\Jolie
 </pre>
 
-Edit your PATH environment variable so that it includes the `install.launcher_dir` directory.
+If you change the directory for `install.launcher_dir`, make sure that it is included in your your PATH environment variable.
 You can find some instructions on managing environment variables in Windows XP at this
 [link](http://support.microsoft.com/kb/310519). Please note that using paths with spaces may cause problems in Windows and need special handling.
 
 Execute the `ant dist-install` command from inside the directory where you downloaded the source code of Jolie.
 Follow the on-screen instructions at the end of the installation procedure about the environment variables.
+In particular, you should make sure that the environment variable `JOLIE_HOME` is set to the directory you used for `install.dir`.
 
 <!--
 ### Troubleshooting (Windows)

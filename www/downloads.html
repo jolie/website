@@ -100,10 +100,10 @@ ant && sudo ant install
 <p>Open the <code>buildconfig/config.properties</code> file and change the parameters <code>install.launcher_dir</code> and <code>install.dir</code> by replacing the existing directories with your desired ones. Use <code>\\</code> instead of the single backslashes when writing paths and for the termination of <code>install.dir</code>. Here is an example:</p>
 <pre>
 install.launcher_dir=C:\\Windows\\system32
-install.dir=C:\\Jolie\\
+install.dir=C:\\Jolie
 </pre>
-<p>Edit your PATH environment variable so that it includes the <code>install.launcher_dir</code> directory. You can find some instructions on managing environment variables in Windows XP at this <a href="http://support.microsoft.com/kb/310519">link</a>. Please note that using paths with spaces may cause problems in Windows and need special handling.</p>
-<p>Execute the <code>ant dist-install</code> command from inside the directory where you downloaded the source code of Jolie. Follow the on-screen instructions at the end of the installation procedure about the environment variables.</p>
+<p>If you change the directory for <code>install.launcher_dir</code>, make sure that it is included in your your PATH environment variable. You can find some instructions on managing environment variables in Windows XP at this <a href="http://support.microsoft.com/kb/310519">link</a>. Please note that using paths with spaces may cause problems in Windows and need special handling.</p>
+<p>Execute the <code>ant dist-install</code> command from inside the directory where you downloaded the source code of Jolie. Follow the on-screen instructions at the end of the installation procedure about the environment variables. In particular, you should make sure that the environment variable <code>JOLIE_HOME</code> is set to the directory you used for <code>install.dir</code>.</p>
 <!--
 ### Troubleshooting (Windows)
 
