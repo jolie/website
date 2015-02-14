@@ -144,10 +144,14 @@ type HttpConfiguration:void {
 	.requestCompression?:string
 
 	/*
-	* Defines the format of the HTTP message.
-	*
-	* Default: none
-	*/
+	 * Defines the HTTP response message format.
+	 * Possible values: xml, html, x-www-form-urlencoded, json,
+	 * text/x-gwt-rpc, multipart/form-data, binary, raw, rest.
+	 * In some cases the parameter is automatically overriden by the HTTP
+	 * request content type, eg. for "application/json" and "text/x-gwt-rpc".
+	 *
+	 * Default: xml
+	 */
 	.format?:string
 	
 	/*
