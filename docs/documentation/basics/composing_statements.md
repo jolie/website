@@ -20,11 +20,16 @@ A valid use of the sequence operator is as it follows:
 
 <div class="code" src="composing_statements_workflow_1.ol"></div>
 
-<div class="attention"><p>Keep in mind that, in Jolie, <code>;</code> is NOT the "end of statement" marker.</p></div>
-
-For the sake of clarity, let us consider an INVALID use of the sequence operator:
-
-<div class="code" src="composing_statements_workflow_2.ol"></div>
+<div class="panel panel-warning">
+ 	<div class="panel-heading">
+  	<h3 class="panel-title">Attention</h3>
+  </div>
+  <div class="panel-body">
+    <p>Keep in mind that, in Jolie, <code>;</code> is NOT the "end of statement" marker.</p>
+		For the sake of clarity, let us consider an INVALID use of the sequence operator:
+		<div class="code" src="composing_statements_workflow_2.ol"></div>
+	</div>
+</div>
 
 ---
 

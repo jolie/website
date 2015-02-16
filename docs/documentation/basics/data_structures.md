@@ -90,6 +90,38 @@ For the sake of clarity a representation of the `zoo` structure is provided as i
 
 <div class="code" src="data_structures_8.xml"></div>
 
+<div class="panel panel-warning">
+ 	<div class="panel-heading">
+  	<h3 class="panel-title">Attention</h3>
+  </div>
+  <div class="panel-body">
+    <p>At runtime <code>d << s</code> explores the source (tree <code>s</code>) node-wise and for all initialised sub-nodes in <code>s</code>, e.g., <code>s.path.to.subnode</code>, it assigns the value of <code>s.path.to.subnode</code> to the corresponding sub-node rooted in <code>d</code>. According to the example <code>d.path.to.subnode = s.path.to.subnode</code>.
+    This means that if <code>d</code> already had initialised sub-nodes, <code>d << s</code> will overwrite all the correspondent sub-nodes of <code>s</code> rooted in <code>d</code>, leaving all the others initialised node of <code>d</code> unaffected.
+    </p>
+		<div class="code" src="data_structures_8_1.ol"></div>
+		<p>The code above will change the structure of <code>d</code> from this:</p>
+		<pre>
+d
+|_ greeting = "hello"
+|_ first = "to the"
+	|_ first.second = "world"
+	|_ first.third = "!"
+			</pre>
+			<p>to this</p>
+				<pre>
+d
+|_ greeting = "hello"
+|_ first
+	|_ first = "to a"
+	|_ second = "brave"
+	|_ third = "new"
+	|_ fourth = "world"
+				</pre>
+				<p>Note that node <code>d.first</code> has been overwritten entirely by the subtree <code>s.first</code> which is defined as an empty node with four sub-nodes.</p>
+	</div>
+</div>
+
+
 ---
 
 

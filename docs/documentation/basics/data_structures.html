@@ -5,9 +5,9 @@
 <div class="code" src="data_structures_1.ol"></div>
 
 <p>Equivalent representations of the structure of <code>animals</code> in XML and JSON are, respectively:</p>
+<div style="overflow:auto"><div style="width:49%; float:left;"><div class="code" src="data_structures_1.xml"></div></div><div style="width:49%; float:left;"><div class="code" src="data_structures_1.json"></div></div></div>
 
 <hr />
-
 <h2 id="navigating-data-structures">Navigating data structures</h2>
 <p>Data structures are navigated using the <code>.</code> operator, which is the same used for creating nested structures. The structures created by nesting variables are called <em>variable paths</em>. Some examples of valid variable paths follows:</p>
 <div class="code" src="data_structures_2.ol"></div>
@@ -53,11 +53,49 @@
 <p>The deep copy operator <code>&lt;&lt;</code> copies an entire tree structure into another.</p>
 <div class="code" src="data_structures_8.ol"></div>
 
-
-
 <p>In the example above the structure <code>animals</code> is completely copied in structure <code>sector_a</code>, which is a nested element of the structure <code>zoo</code>. Therefore, even if <code>animals</code> is undefined at Line 2, the structure <code>zoo</code> contains its copy inside <code>section_a</code>.</p>
 <p>For the sake of clarity a representation of the <code>zoo</code> structure is provided as it follows:</p>
 <div class="code" src="data_structures_8.xml"></div>
+
+<div class="panel panel-warning">
+    <div class="panel-heading">
+    <h3 class="panel-title">
+Attention
+</h3>
+  </div>
+  <div class="panel-body">
+    <p>
+At runtime <code>d &lt;&lt; s</code> explores the source (tree <code>s</code>) node-wise and for all initialised sub-nodes in <code>s</code>, e.g., <code>s.path.to.subnode</code>, it assigns the value of <code>s.path.to.subnode</code> to the corresponding sub-node rooted in <code>d</code>. According to the example <code>d.path.to.subnode = s.path.to.subnode</code>. This means that if <code>d</code> already had initialised sub-nodes, <code>d &lt;&lt; s</code> will overwrite all the correspondent sub-nodes of <code>s</code> rooted in <code>d</code>, leaving all the others initialised node of <code>d</code> unaffected.
+</p>
+        <div class="code" src="data_structures_8_1.ol"></div>
+        <p>
+The code above will change the structure of <code>d</code> from this:
+</p>
+        <pre>
+d
+|_ greeting = "hello"
+|_ first = "to the"
+    |_ first.second = "world"
+    |_ first.third = "!"
+            </pre>
+            <p>
+to this
+</p>
+                <pre>
+d
+|_ greeting = "hello"
+|_ first
+    |_ first = "to a"
+    |_ second = "brave"
+    |_ third = "new"
+    |_ fourth = "world"
+                </pre>
+                <p>
+Note that node <code>d.first</code> has been overwritten entirely by the subtree <code>s.first</code> which is defined as an empty node with four sub-nodes.
+</p>
+    </div>
+</div>
+
 
 <hr />
 <h2 id="structures-aliases"><code>-&gt;</code> - structures aliases</h2>
@@ -74,3 +112,4 @@ Aliases are evaluated every time they are used.
 
 <p>The alias <code>currentElement[ 0 ]</code> is used to refer to the <code>i</code>-th element of <code>d</code> nested inside <code>a.b.c</code>. At each iteration the alias is evaluated, using the current value of <code>i</code> variable as index. Therefore, the example's output is:</p>
 <div class="code" src="data_structures_11_out.ol"></div>
+
