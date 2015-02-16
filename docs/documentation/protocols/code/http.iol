@@ -146,9 +146,10 @@ type HttpConfiguration:void {
 	/*
 	 * Defines the HTTP response message format.
 	 * Possible values: xml, html, x-www-form-urlencoded, json,
-	 * text/x-gwt-rpc, multipart/form-data, binary, raw, rest.
+	 * text/x-gwt-rpc, multipart/form-data, binary, raw.
 	 * In some cases the parameter is automatically overriden by the HTTP
-	 * request content type, eg. for "application/json" and "text/x-gwt-rpc".
+	 * request content type, eg. for "text/xml", "application/json" and
+	 * "text/x-gwt-rpc".
 	 *
 	 * Default: xml
 	 */
