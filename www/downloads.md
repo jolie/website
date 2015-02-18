@@ -66,7 +66,7 @@ This method requires Java 6 (also called Java 1.6) or later to be installed befo
 Download the Java-based installer of the latest stable release of Jolie:
 
 <div class="col-xs-12 text-center">
-<a href="/files/releases/jolie-1.1.1.jar" onClick="ga('send', 'event', { eventCategory: 'Download', eventAction: 'JolieInstaller', eventLabel: 'jolie-1.1.1.jar'});">
+<a href="/files/releases/jolie-1.1.2.jar" onClick="ga('send', 'event', { eventCategory: 'Download', eventAction: 'JolieInstaller', eventLabel: 'jolie-1.1.2.jar'});">
 <!-- <button type="button" class="center-block btn btn-default btn-lg"> -->
 <p class="download">Jolie Installer</p>
 <!-- </button> -->
@@ -77,11 +77,11 @@ Download the Java-based installer of the latest stable release of Jolie:
 ### Step 2
 
 Open a shell terminal. From the directory in which you downloaded the installer,
-execute `java -jar jolie-1.1.1.jar` under windows or
-`java -jar jolie-1.1.1.jar` under MacOs or Linux and follow the on-screen instructions.
+execute `java -jar jolie-1.1.2.jar` under windows or
+`java -jar jolie-1.1.2.jar` under MacOs or Linux and follow the on-screen instructions.
 
 The installer needs permission to write in the directories in which you intend to install Jolie.
-Therefore, for example, if you intend to install Jolie in a system directory you may need to launch the installer as root in Linux/MacOS (`sudo java -jar jolie-1.1.1.jar`),
+Therefore, for example, if you intend to install Jolie in a system directory you may need to launch the installer as root in Linux/MacOS (`sudo java -jar jolie-1.1.2.jar`),
 or [administrator in Windows](https://technet.microsoft.com/en-us/library/cc947813.aspx).
 
 ## The hard way (compile from sources)

@@ -54,7 +54,7 @@ Download and Install
 <h3 id="step-1">Step 1</h3>
 <p>Download the Java-based installer of the latest stable release of Jolie:</p>
 <div class="col-xs-12 text-center">
-<a href="/files/releases/jolie-1.1.1.jar" onClick="ga('send', 'event', { eventCategory: 'Download', eventAction: 'JolieInstaller', eventLabel: 'jolie-1.1.1.jar'});"> <!-- <button type="button" class="center-block btn btn-default btn-lg"> -->
+<a href="/files/releases/jolie-1.1.2.jar" onClick="ga('send', 'event', { eventCategory: 'Download', eventAction: 'JolieInstaller', eventLabel: 'jolie-1.1.2.jar'});"> <!-- <button type="button" class="center-block btn btn-default btn-lg"> -->
 <p class="download">
 Jolie Installer
 </p>
@@ -62,8 +62,8 @@ Jolie Installer
 </a>
 </div>
 <h3 id="step-2">Step 2</h3>
-<p>Open a shell terminal. From the directory in which you downloaded the installer, execute <code>java -jar jolie-1.1.1.jar</code> under windows or <code>java -jar jolie-1.1.1.jar</code> under MacOs or Linux and follow the on-screen instructions.</p>
-<p>The installer needs permission to write in the directories in which you intend to install Jolie. Therefore, for example, if you intend to install Jolie in a system directory you may need to launch the installer as root in Linux/MacOS (<code>sudo java -jar jolie-1.1.1.jar</code>), or <a href="https://technet.microsoft.com/en-us/library/cc947813.aspx">administrator in Windows</a>.</p>
+<p>Open a shell terminal. From the directory in which you downloaded the installer, execute <code>java -jar jolie-1.1.2.jar</code> under windows or <code>java -jar jolie-1.1.2.jar</code> under MacOs or Linux and follow the on-screen instructions.</p>
+<p>The installer needs permission to write in the directories in which you intend to install Jolie. Therefore, for example, if you intend to install Jolie in a system directory you may need to launch the installer as root in Linux/MacOS (<code>sudo java -jar jolie-1.1.2.jar</code>), or <a href="https://technet.microsoft.com/en-us/library/cc947813.aspx">administrator in Windows</a>.</p>
 <h2 id="the-hard-way-compile-from-sources">The hard way (compile from sources)</h2>
 <p>This method will download the development version of Jolie (<code>trunk</code>). It requires the following software to be installed before proceeding:</p>
 <ul>
@@ -90,7 +90,7 @@ ant && sudo ant install
 <p>A Jolie launcher script will be put in <code>/usr/bin</code> (this parameter is configurable in <code>buildconfig/config.properties</code>, too).</p>
 <p>Remember to follow the on-screen instructions at the end of the installation procedure, about the environment variables.</p>
 <h3 id="on-windows"><a id="windows"></a>On Windows</h3>
-<p>Please make sure to work only on a single drive eg. <code>C:</code>, otherwise the Java classloader ends up in difficulties locating resources like include files (<code>console.iol</code> etc.)!
+<p>Please make sure to work only on a single drive eg. <code>C:</code>, otherwise the Java classloader ends up in difficulties locating resources like include files (<code>console.iol</code> etc.)!</p>
 <p>Here are some useful links to get the required tools:</p>
 <ul>
 <li><p>JDK (Java SE Development Kit): <a href="http://java.sun.com/javase/downloads/index.jsp">link</a></p></li>
@@ -105,7 +105,6 @@ install.dir=C:\\Jolie
 </pre>
 <p>If you change the directory for <code>install.launcher_dir</code>, make sure that it is included in your your PATH environment variable. You can find some instructions on managing environment variables in Windows XP at this <a href="http://support.microsoft.com/kb/310519">link</a>. Please note that using paths with spaces may cause problems in Windows and need special handling.</p>
 <p>Execute the <code>ant dist-install</code> command from inside the directory where you downloaded the source code of Jolie. Follow the on-screen instructions at the end of the installation procedure about the environment variables. In particular, you should make sure that the environment variable <code>JOLIE_HOME</code> is set to the directory you used for <code>install.dir</code>.</p>
-
 <!--
 ### Troubleshooting (Windows)
 
