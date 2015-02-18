@@ -154,7 +154,15 @@ type HttpConfiguration:void {
 	 * Default: xml
 	 */
 	.format?:string
-	
+
+	/*
+	 * If set to "strict", applies a more strict JSON array to Jolie value
+	 * mapping schema when the JSON format is used.
+	 *
+	 * Default: none
+	 */
+	.json_encoding?:string
+
 	/*
 	* Defines the Content-Transfer-Encoding value of the HTTP message.
 	*
