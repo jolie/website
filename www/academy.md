@@ -44,6 +44,7 @@ Here are some people who offer BSc and MSc projects on Jolie:
 * [Marco Carbone (IT University of Copenhagen, Denmark)](http://www.itu.dk/~maca)
 * [Marino Miculan (University of Udine, Italy)](https://users.dimi.uniud.it/~marino.miculan/)
 * [Nicola Dragoni (Technical University of Denmark, Denmark)](http://people.compute.dtu.dk/ndra/WebNic/Home.html)
+* [Paolo Baldan (University of Padova, Italy)](http://www.math.unipd.it/~baldan/)
 * [Tullio Vardanega (University of Padova, Italy)](http://www.math.unipd.it/~tullio/)
 
 
