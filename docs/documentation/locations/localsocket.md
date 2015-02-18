@@ -1,8 +1,8 @@
 ## Localsocket
 
-Localsocket are Unix domain sockets, which are communication endpoints for exchanging data between processes executing within the same host operating system.
+Localsockets are Unix domain sockets, which are communication endpoints for exchanging data between processes executing within the same host operating system. The feature is limited to Unix-like OSs and not available on Windows.
 
-The localsocket's in Jolie port definition is `localsocket`.
+The Jolie localsocket's port definition is `localsocket`. The implementation makes use of libmatthew-java which contains also a native (JNI) part not delivered within Jolie. It may be installed from the system's package repository (on Red Hat-like `yum install libmatthew-java`) or compiled manually. For running a localsockets program, the `libunix-java.so` library needs to be included in the system's ld cache (ldconfig) or specified by the `LD_LIBRARY_PATH` environment variable. If the execution fails, please try something like this: `LD_LIBRARY_PATH=/usr/lib64/libmatthew-java jolie program.ol`.</p>
 
 ---
 
