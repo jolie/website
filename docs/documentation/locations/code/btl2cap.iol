@@ -30,7 +30,7 @@ type BTL2CAPParameters:void {
 	*
 	* Default: false
 	*/
-	.autorize?: bool
+	.authorize?: bool
 
 	/*
 	* Defines whether the bluetooth service 
