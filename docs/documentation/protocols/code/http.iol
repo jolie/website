@@ -196,6 +196,12 @@ type HttpConfiguration:void {
 
 	/*
 	 * Defines whether the underlying connection should be kept open.
+	 * Remote webservers could have been configured to automatically close
+	 * client connections after each request and without consideration of
+	 * eventual "Connection: close" HTTP headers. If a Jolie client performs
+	 * more than one request, the "keepAlive" parameter needs to be
+	 * changed to "false", otherwise the client fails with:
+	 * "jolie.net.ChannelClosingException: [http] Remote host closed connection."
 	 *
 	 * Default: true
 	 */
