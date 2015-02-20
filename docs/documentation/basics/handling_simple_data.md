@@ -6,8 +6,8 @@ Jolie supports seven basic data types:
 
 - `bool`: booleans;
 - `int`: integers;
-- `long`: long integers:
-- `double`: double-precision float;
+- `long`: long integers (with "L" or "l" suffix);
+- `double`: double-precision float (decimal literals);
 - `string`: strings;
 - `raw`: byte arrays;
 - `void`: the empty type.
