@@ -41,9 +41,3 @@ To exemplify how to dynamically set the parameters of a protocol, we refer to th
 As shown, except `keepAlive`, `debug.showContent`, and `default` parameters that are statically set, all other parameters are aliased to a variable whose value can be changed at runtime, during Leonardo's execution.
 
 Besides aliasing protocol's parameter, we can access and modify them using the standard Jolie construct for [dynamic port binding](basics/dynamic_binding.html).
-
----
-
-## Limitations
-
-There are some known limitations depending on the combination of the protocol and the communication media. For instance on localsockets transport, the content compression (parameter `compression`) needs to be disabled for all HTTP-based protocols (HTTP(s), JSON/RPC, XML/RPC, SOAP).
