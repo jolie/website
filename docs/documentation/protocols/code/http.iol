@@ -284,6 +284,23 @@ type HttpConfiguration:void {
 	}
 
 	/*
+	 * HTTP request paths are usually composed by the medium's URI path
+	 * as prefix and the resource name (or eventual aliases) as suffix.
+	 * This works perfectly on IP sockets (medium "socket"), but is not
+	 * desirable on other media like the UNIX domain sockets ("localsocket").
+	 *
+	 * Examples:
+	 * - location: "socket://localhost:8000/x/", resource "sum" -> "/x/sum"
+	 * - location: "localsocket://abs/s", resource "sum" -> "/ssum". "s"
+	 *   is just the file name of the UNIX domain socket and has no meaning
+	 *   in HTTP. With .dropURIPath = true the path component "s" is dropped
+	 *   and the result becomes "/sum".
+	 *
+	 * Default: false
+	 */
+	.dropURIPath?:bool
+
+	/*
 	* Defines a set of cookies used in the http communication
 	*
 	* Default: none
