@@ -68,6 +68,30 @@ In the following example the same structure used in previous examples (`animals`
 
 <div class="code" src="data_structures_7.ol"></div>
 
+<div class="panel panel-warning">
+ 	<div class="panel-heading">
+  	<h3 class="panel-title">Attention</h3>
+  </div>
+  <div class="panel-body">
+    <p>The paths starting with <code>.</code> within the scope of the <code>with</code> operator are just shortcuts.</p>
+    <p>Hence, when writing paths with dynamically evaluated values, e.g., array lengths, the path declared as argument of the <code>with</code> operator is evaluated for each subpath in the body of the <code>with</code>.</p>
+    <p>For instance, the code below</p>
+		<div class="code" src="data_structures_7_1.ol"></div>
+		<p>will unfold as the one below</p>
+		<div class="code" src="data_structures_7_2.ol"></div>
+		<p>At each line `#myArray` returns the size of `myArray`, which increases at each assignment, yielding the structure:</p>
+		<pre>
+myArray[ 0 ]
+            .first[ 0 ] = "1"
+myArray[ 1 ]
+            .second[ 0 ] = "2"
+myArray[ 2 ]
+            .third[ 0 ] = "3"
+		</pre>
+				<p></p>
+	</div>
+</div>
+
 ---
 
 ## `undef` - erasing tree structures
