@@ -36,7 +36,7 @@ RequestResponse:
 
 inputPort MyServiceSOAPPort {
 	Location: "socket://localhost:8001"
-	Protocol: soap {
+	Protocol: soap
 	Interfaces: MyServiceInterface
 }
 
