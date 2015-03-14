@@ -1,0 +1,21 @@
+<project>
+    <path id="classpath">
+      <fileset dir="lib" includes="*.jar"/>
+      <fileset dir="/usr/lib/jolie/" includes="jolie.jar"/>
+    </path>
+
+    <target name="clean">
+        <delete dir="build"/>
+    </target>
+
+    <target name="build">
+        <mkdir dir="build/classes"/>
+        <javac classpathref="classpath" srcdir="src" destdir="build/classes"/>
+    </target>
+
+    <target name="jar" depends="build" >
+        <jar destfile="org.pegdownService.jar" basedir="build/classes"></jar>
+        <antcall target="clean" />
+    </target>
+
+</project>
