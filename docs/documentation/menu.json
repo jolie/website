@@ -209,5 +209,14 @@
                 "label": "LocalSocket"
             }
         ]
+    },
+    {
+        "label": "Databases",
+        "children": [
+            {
+                "url": "databases/databases.html",
+                "label": "Databases"
+            }
+        ]
     }
 ] }
