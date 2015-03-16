@@ -1,12 +1,8 @@
 ## Databases in Jolie
 
-Jolie can be used with various relational/SQL databases, but per default only with one
-instance per program. The API is described here: http://docs.jolie-lang.org/#!documentation/jsl/Database.html.
-Please find attached the correct driver name and the JAR file to place under the `lib` directory (the program's
-one or the global one like `/usr/lib/jolie/lib/`).
+Jolie can be used with various relational/SQL databases, but per default only with one instance per program. The API is described here: http://docs.jolie-lang.org/#!documentation/jsl/Database.html. Please find attached the correct driver name and the JAR file to place under the `lib` directory (the program's one or the global one like `/usr/lib/jolie/lib/`).
 
-Attention: if your JAR driver is called differently, you will have to rename it
-or create an apposite link, otherwise Jolie is not able to load it.
+Attention: if your JAR driver is called differently, you will have to rename it or create an apposite link, otherwise Jolie is not able to load it.
 
 <table border>
     <tr>
@@ -51,7 +47,4 @@ or create an apposite link, otherwise Jolie is not able to load it.
     </tr>
 </table>
 
-We as Jolie team provide only support for the listed DB systems, which were
-tested and are known to work. If your DB system has not been covered, please contact
-us (mailto:jolie-devel@lists.sourceforge.net) and we provide you the necessary
-help to get it added.
+We as Jolie team provide only support for the listed DB systems, which were tested and are known to work. If your DB system has not been covered, please contact us (jolie-devel@lists.sourceforge.net) and we provide you the necessary help to get it added.
