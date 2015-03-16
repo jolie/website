@@ -1,4 +1,4 @@
 #!/bin/sh
 
-jolie ../../../../trunk/scripts/generateDocumentation.ol ../docs/documentation/jsl
+jolie ../../jolie/scripts/generateDocumentation.ol ../docs/documentation/jsl
 
