@@ -1,10 +1,6 @@
-<h2 id="localsocket">Localsocket</h2>
-<p>Localsockets are Unix domain sockets, which are communication endpoints for exchanging data between processes executing within the same host operating system. The feature is limited to Unix-like OSs and not available on Windows.</p>
-<p>The Jolie localsocket's port definition is <code>localsocket</code>. The implementation makes use of libmatthew-java which contains also a native (JNI) part not delivered within Jolie. It may be installed from the system's package repository (on Red Hat-like <code>yum install libmatthew-java</code>) or compiled manually. For running a localsockets program, the <code>libunix-java.so</code> library needs to be included in the system's ld cache (ldconfig) or specified by the <code>LD_LIBRARY_PATH</code> environment variable. This is a possible invocation: <code>LD_LIBRARY_PATH=/usr/lib64/libmatthew-java jolie program.ol</code>.</p>
-<hr />
-<h2 id="localsockets-locations">Localsockets locations</h2>
-<p>Localsockets locations can be regular or abstract. Abstract sockets are identical to the regular ones, except that their name does not exist in the file system. Hence, file permissions do not apply to them and when the file is not used any more, it is deleted, while the regular sockets persist.</p>
+<h2>Localsocket</h2><p>Localsockets are Unix domain sockets, which are communication endpoints for exchanging data between processes executing within the same host operating system. The feature is limited to Unix-like OSs and not available on Windows.</p><p>The Jolie localsocket's port definition is <code>localsocket</code>. The implementation makes use of libmatthew-java which contains also a native (JNI) part not delivered within Jolie. It may be installed from the system's package repository (on Red Hat-like <code>yum install libmatthew-java</code>) or compiled manually. For running a localsockets program, the <code>libunix-java.so</code> library needs to be included in the system's ld cache (ldconfig) or specified by the <code>LD_LIBRARY_PATH</code> environment variable. This is a possible invocation: <code>LD_LIBRARY_PATH=/usr/lib64/libmatthew-java jolie program.ol</code>.</p></p>
+<hr/><h2>Localsockets locations</h2><p>Localsockets locations can be regular or abstract. Abstract sockets are identical to the regular ones, except that their name does not exist in the file system. Hence, file permissions do not apply to them and when the file is not used any more, it is deleted, while the regular sockets persist.</p>
 <ul>
-<li>Abstract localsockets definition: <code>localsocket://abs/path/to/socket</code></li>
-<li>Regular localsockets definition: <code>localsocket:///path/to/socket</code></li>
+  <li>Abstract localsockets definition: <code>localsocket://abs/path/to/socket</code></li>
+  <li>Regular localsockets definition: <code>localsocket:///path/to/socket</code></li>
 </ul>

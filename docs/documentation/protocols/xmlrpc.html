@@ -1,20 +1,5 @@
-<h2 id="xml-rpc-protocol">XML-RPC Protocol</h2>
-<p>XML-RPC is a remote procedure call protocol encoded in XML (Extensible Markup Language).</p>
-<p>Protocol name in port definition: <code>xmlrpc</code>.</p>
-<hr />
----
-<h2 id="xml-rpc-transport">XML-RPC Transport</h2>
-<p>XML-RPC has the characteristic that all exchanged variables need to be listed
-in a child array <code>param</code> (this one becomes XML-RPC's <code>params</code> vector). Arrays
-need to be passed as child values called <code>array</code> eg. <code>val.array[0] = 1</code>,
-in which case all other eventual child values and the root of a particular value are ignored.</p>
-<p>Some other notes to value mapping: Jolie variables of type <code>long</code> are unsupported in
-XML-RPC and not considered further. Date values (<code>dateTime.iso8601</code>) cannot be generated
-within Jolie and are considered strings, <code>base64</code> values are mapped into </code>raw</code>.</p>
-<p>This is an example of a primitive XML-RPC server:</p>
+<h2>XML-RPC Protocol</h2><p>XML-RPC is a remote procedure call protocol encoded in XML (Extensible Markup Language).</p><p>Protocol name in port definition: <code>xmlrpc</code>.</p>
+<hr/><h2>XML-RPC Transport</h2><p>XML-RPC has the characteristic that all exchanged variables need to be listed in a child array <code>param</code> (this one becomes XML-RPC's <code>params</code> vector). Arrays need to be passed as child values called <code>array</code> eg. <code>val.array[0] = 1</code>, in which case all other eventual child values and the root of a particular value are ignored.</p><p>Some other notes to value mapping: Jolie variables of type <code>long</code> are unsupported in XML-RPC and not considered further. Date values (<code>dateTime.iso8601</code>) cannot be generated within Jolie and are considered strings, <code>base64</code> values are mapped into <code>raw</code>.</p><p>This is an example of a primitive XML-RPC server:</p>
 <div class="code" src="xmlrpcServer.ol"></div>
----
-<hr />
-<h2 id="xml-rpc-parameters">XML-RPC Parameters</h2>
+<hr/><h2>XML-RPC Parameters</h2>
 <div class="code" src="xmlrpc.iol"></div>
-

@@ -1,45 +1,16 @@
-<h2 id="embedding-a-java-service">Embedding a Java service</h2>
-<p>When embedding a Java service, the path URL must unambiguously identify a Java class, which must also be in the Java classpath of the Jolie interpreter. The class must extend the <code>JavaServices</code> abstract class, offered by the Jolie Java library for supporting the automatic conversion between Java values and their Jolie representations.</p>
-<p>Each method of the embedded class is seen as an operation from the embedder, which will instantiate an object using the class and bind it to the output port. Embedding Java services is particularly useful for interacting with existing Java code or to perform some task where computational performance is important.</p>
-<hr />
-<h2 id="the-printlnmyconsole-example">The <code>println@MyConsole</code> example</h2>
-<p>Many services of the Jolie standard library (like <code>Console</code>) are Java services.</p>
-<p>Each public method of the Java Service is an input operation invokable by the embedder. Depending on the output object, each method represents a one-way operation (if the output is void) or a request-response (for non-void outputs). This behaviour can be overridden by using the <code>@RequestResponse</code> annotation when declaring a void-returning operation.</p>
-<p>Let us write our own <code>MyConsole</code> Java service that offers a <code>println</code> request-response operation. <code>println</code> is a public method of <code>MyConsole</code> class that takes a string as request and prints it at console.</p>
-<div class="code" src="embedding_java_1.java"></div>
-
-<p>Once stored in the <code>example</code> folder, as defined by the package statement, our Java class must be compiled into a .jar library and added to the folder &quot;javaServices&quot; in Jolie's installation directory:</p>
+<h2>Embedding a Java service</h2><p>When embedding a Java service, the path URL must unambiguously identify a Java class, which must also be in the Java classpath of the Jolie interpreter. The class must extend the <code>JavaServices</code> abstract class, offered by the Jolie Java library for supporting the automatic conversion between Java values and their Jolie representations.</p><p>Each method of the embedded class is seen as an operation from the embedder, which will instantiate an object using the class and bind it to the output port. Embedding Java services is particularly useful for interacting with existing Java code or to perform some task where computational performance is important.</p>
+<hr/><h2>The <code>println@MyConsole</code> example</h2><p>Many services of the Jolie standard library (like <code>Console</code>) are Java services.</p><p>Each public method of the Java Service is an input operation invokable by the embedder. Depending on the output object, each method represents a one-way operation (if the output is void) or a request-response (for non-void outputs). This behaviour can be overridden by using the <code>@RequestResponse</code> annotation when declaring a void-returning operation.</p><p>Let us write our own <code>MyConsole</code> Java service that offers a <code>println</code> request-response operation. <code>println</code> is a public method of <code>MyConsole</code> class that takes a string as request and prints it at console.</p>
+<div class="code" src="embedding_java_1.java"></div><p>Once stored in the <code>example</code> folder, as defined by the package statement, our Java class must be compiled into a .jar library and added to the folder "javaServices" in Jolie's installation directory:</p>
 <ul>
-<li>run the Java compiler on our MyConsole.java file adding the <em>jolie.jar</em> library in the classpaths (<code>-cp</code>): <code>javac -cp /path/to/jolie.jar MyConsole.java</code>;</li>
-<li>compress the MyConsole.class file into a .jar library with the <code>jar</code> command: <code>jar cvf example.jar example/MyConsole.class</code></li>
-<li>move the example.jar file into javaServices folder in Jolie installation directory.</li>
-</ul>
-<p>Once our service is visible by Jolie's interpreter, we can embed it in a Jolie service:</p>
-<div class="code" src="embedding_java_1.ol"></div>
-
-<p>The embedder construct, at Line 10, declares the type keyword as <code>Java</code> and defines the path name of the Java Service as <code>package_name.class_name</code>.</p>
-<hr />
-<h2 id="using-a-request-response-operation-in-java-services">Using a request-response operation in Java services</h2>
-<p>To practice on request-response operations between embedded and embedder, let us rewrite the <em>twice</em> service used in the section <a href="architectural_composition/embedding_jolie.html">Embedding a Jolie Service</a>.</p>
-<p>We use the previously written Java Service <code>MyConsole</code> to print the result and show how to embed multiple classes.</p>
-<div class="code" src="embedding_java_2.java"></div>
-
-<p>Note that both input and output types of each method, although meant to be primitive types <code>int</code> and <code>double</code>, must be declared as their wrapping classes, respectively <code>Interger</code> and <code>Double</code>.</p>
-<p>Following, the Jolie service embeds both MyConsole and Twice classes:</p>
+  <li>run the Java compiler on our MyConsole.java file adding the <em>jolie.jar</em> library in the classpaths (<code>-cp</code>): <code>javac -cp /path/to/jolie.jar MyConsole.java</code>;</li>
+  <li>compress the MyConsole.class file into a .jar library with the <code>jar</code> command: <code>jar cvf example.jar example/MyConsole.class</code></li>
+  <li>move the example.jar file into javaServices folder in Jolie installation directory.</li>
+</ul><p>Once our service is visible by Jolie's interpreter, we can embed it in a Jolie service:</p>
+<div class="code" src="embedding_java_1.ol"></div><p>The embedder construct, at Line 10, declares the type keyword as <code>Java</code> and defines the path name of the Java Service as <code>package_name.class_name</code>.</p>
+<hr/><h2>Using a request-response operation in Java services</h2><p>To practice on request-response operations between embedded and embedder, let us rewrite the <em>twice</em> service used in the section <a href="architectural_composition/embedding_jolie.html">Embedding a Jolie Service</a>.</p><p>We use the previously written Java Service <code>MyConsole</code> to print the result and show how to embed multiple classes.</p>
+<div class="code" src="embedding_java_2.java"></div><p>Note that both input and output types of each method, although meant to be primitive types <code>int</code> and <code>double</code>, must be declared as their wrapping classes, respectively <code>Interger</code> and <code>Double</code>.</p><p>Following, the Jolie service embeds both MyConsole and Twice classes:</p>
 <div class="code" src="embedding_java_2.ol"></div>
-
-<hr />
-<h2 id="handling-structured-messages-and-embedders-operations-invocation">Handling structured messages and embedder's operations invocation</h2>
-<p>A Java Service can also call an operation of the embedder by means of the <code>sendMessage</code> method of Jolie standard library. In this example we use the <code>Value</code> and <code>ValueVector</code> objects to handle a custom-typed message from a request-response operation invoked on the embedder.</p>
-<div class="code" src="embedding_java_3.ol"></div>
-
-<p>The embedder acts as a bridge between two embedded Java Services, <code>MyJavaExample</code> which requests a <code>split</code> operation and, <code>Splitter</code> which implements it.</p>
-<div class="code" src="embedding_java_4.java"></div>
-
-<p>After <code>start()</code> is called by the embedder, our Java Service creates a <code>Value</code> object according to the <code>Split_req</code> type definition. At Line 20 it creates a request message, defining the invoked operation (<code>split</code>), the resource (<code>/</code>), and the message (<code>s_req</code>). Finally, at Line 21, it sends the request and waits for receiving a response.</p>
-<p>After receiving the response, the service prints at console the subnodes of the response exploiting the <code>ValueVector</code> object.</p>
-<p>The comprehensive code of this example can be downloaded here:</p>
-<div class="download">
-<a href="documentation/architectural_composition/code/embedding_java_code.zip">Embedding Java Code Example</a>
-</div>
-
+<hr/><h2>Handling structured messages and embedder's operations invocation</h2><p>A Java Service can also call an operation of the embedder by means of the <code>sendMessage</code> method of Jolie standard library. In this example we use the <code>Value</code> and <code>ValueVector</code> objects to handle a custom-typed message from a request-response operation invoked on the embedder.</p>
+<div class="code" src="embedding_java_3.ol"></div><p>The embedder acts as a bridge between two embedded Java Services, <code>MyJavaExample</code> which requests a <code>split</code> operation and, <code>Splitter</code> which implements it.</p>
+<div class="code" src="embedding_java_4.java"></div><p>After <code>start()</code> is called by the embedder, our Java Service creates a <code>Value</code> object according to the <code>Split_req</code> type definition. At Line 20 it creates a request message, defining the invoked operation (<code>split</code>), the resource (<code>/</code>), and the message (<code>s_req</code>). Finally, at Line 21, it sends the request and waits for receiving a response.</p><p>After receiving the response, the service prints at console the subnodes of the response exploiting the <code>ValueVector</code> object.</p><p>The comprehensive code of this example can be downloaded here:</p>
+<div class="download"><a href="documentation/architectural_composition/code/embedding_java_code.zip">Embedding Java Code Example</a></div>
