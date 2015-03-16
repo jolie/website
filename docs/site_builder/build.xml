@@ -1,11 +1,23 @@
 <project>
     <path id="classpath">
-      <fileset dir="lib" includes="*.jar"/>
+      <fileset dir="lib" 
+        includes="  asm-4.1.jar
+                    asm-analysis-4.1.jar
+                    asm-tree-4.1.jar
+                    asm-util-4.1.jar
+                    parboiled-core-1.1.6.jar
+                    parboiled-java-1.1.6.jar
+                    jodd-3.6.4.jar
+                    pegdown-1.4.2.jar"/>
       <fileset dir="/usr/lib/jolie/" includes="jolie.jar"/>
     </path>
 
     <target name="clean">
         <delete dir="build"/>
+    </target>
+
+    <target name="clean_jar">
+        <delete file="lib/org.pegdownService.jar"/>
     </target>
 
     <target name="build">
@@ -14,7 +26,8 @@
     </target>
 
     <target name="jar" depends="build" >
-        <jar destfile="org.pegdownService.jar" basedir="build/classes"></jar>
+        <antcall target="clean_jar" />
+        <jar destfile="lib/org.pegdownService.jar" basedir="build/classes"></jar>
         <antcall target="clean" />
     </target>
 

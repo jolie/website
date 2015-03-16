@@ -1,7 +1,0 @@
-<h2>Jolie Locations</h2><p>A location defines the medium on which a port sends and receive messages.</p><p>A location is always a URI in the form <code>medium[:parameters]</code>, where <code>medium</code> is the medium identifier and the optional <code>parameters</code> is a medium-specific string</p><p>Jolie natively supports four media:</p>
-<ul>
-  <li><code>socket</code> (TCP/IP sockets);</li>
-  <li><code>btl2cap</code> (Bluetooth L2CAP);</li>
-  <li><code>rmi</code> (Java RMI);</li>
-  <li><code>localsocket</code> (Unix local sockets).</li>
-</ul><p>In addition, when embedding a service, Jolie supports the <code>local</code> medium, which exploits system's memory to send and receive messages.</p><p>An example of a valid location is: <code>socket://www.mysite.com:80/</code>, where <code>socket</code> is the <code>medium</code> and the following part represents the <code>parameters</code>.</p><p>In this section we explain the medium-specific properties of the locations provided by Jolie.</p>
