@@ -91,7 +91,7 @@ It requires the following software to be installed before proceeding:
 
 * JDK (Java SE Development Kit), version 6 or later
 * Apache ant
-* A subversion client
+* Git
 
 <div style="float:left">
 <p>Jump to the instructions for your Operating System:
@@ -108,8 +108,8 @@ It requires the following software to be installed before proceeding:
 Open a shell and execute:
 
 <pre name="code">
-svn co svn://svn.code.sf.net/p/jolie/code/trunk jolie-src
-cd jolie-src
+git clone https://github.com/jolie/jolie.git
+cd jolie
 ant && sudo ant install
 </pre>
 
@@ -131,11 +131,11 @@ Here are some useful links to get the required tools:
 
 * JDK (Java SE Development Kit): [link](http://java.sun.com/javase/downloads/index.jsp)
 
-* Tortoise Subversion client: [link](http://tortoisesvn.tigris.org/)
+* Git client: [link](http://git-scm.com/)
 
 * Apache Ant: [link](http://ant.apache.org/).
 
-Download the source code with your svn client from `svn://svn.code.sf.net/p/jolie/code/trunk`
+Download the source code with Git from `https://github.com/jolie/jolie.git`
 
 Open the `buildconfig/config.properties` file and change the parameters `install.launcher_dir` and `install.dir` 
 by replacing the existing directories with your desired ones. Use `\\` instead of the single backslashes when writing
