@@ -14,7 +14,7 @@ public class pegdownService extends JavaService{
 	public String markdownToHtml( String text ){
 		Jerry doc = jerry( proc.markdownToHtml( text ) );
     for( Jerry node: doc.$( "h1,h2,h3,h4,h5" ) ){
-    	node.attr( "id", node.text() );
+	node.attr( "id", node.text().toLowerCase().replace(" ","-") );
     }
     return doc.html();
 	}
