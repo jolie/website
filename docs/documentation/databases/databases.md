@@ -1,8 +1,8 @@
 ## Databases in Jolie
 
-Jolie can be used with various relational/SQL databases, but per default only with one instance per program. The API is described here: http://docs.jolie-lang.org/#!documentation/jsl/Database.html. Please find attached the correct driver name and the JAR file to place under the `lib` directory (the program's one or the global one like `/usr/lib/jolie/lib/`).
+Jolie can be used with various relational/SQL databases, using the Database service from the standard library. The API is described here: http://docs.jolie-lang.org/#!documentation/jsl/Database.html. The Database service uses JDBC, so you need the correct driver JAR placed in the `lib` subdirectory (the one of the program or the global one, e.g., `/usr/lib/jolie/lib/` in Linux).
 
-Attention: if your JAR driver is called differently, you will have to rename it or create an apposite link, otherwise Jolie is not able to load it.
+Attention: if your JAR driver is called differently, you will have to rename it or create an apposite link, otherwise Jolie is not able to load it. The list of correct names for JAR drivers is given below.
 
 <table border>
     <tr>
@@ -47,4 +47,10 @@ Attention: if your JAR driver is called differently, you will have to rename it 
     </tr>
 </table>
 
-We as Jolie team provide only support for the listed DB systems, which were tested and are known to work. If your DB system has not been covered, please contact us (jolie-devel@lists.sourceforge.net) and we provide you the necessary help to get it added.
+The Database service officially supports only the listed DB systems, which were tested and are known to work. If your DB system has not been covered, please contact us (jolie-devel@lists.sourceforge.net) and we will help you to get it added.
+
+### Using multiple databases
+
+By default, the Database service included by `database.iol` works for connecting to a single database. If you need to use multiple databases from the same Jolie service, you can run additional instance by creating another output port and embedding the Database Java service again, as in the following:
+
+<div class="code" src="multiple_databases.ol"></div>
