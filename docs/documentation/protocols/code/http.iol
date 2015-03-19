@@ -226,6 +226,38 @@ type HttpConfiguration:void {
 	 */
 	.dropURIPath?:bool
 
+	/*
+	 * Defines the status code of the HTTP message.
+	 *
+	 * Default: 200
+	 * Supported Values: any HTTP status codes
+	 */
+	.statusCode?:string
+
+	/*
+	 * Defines the cache-control header of the HTTP message.
+	 */
+	.cacheControl?:void {
+		/*
+		 * Maximum age for which the resource should be cached (in seconds)
+		 */
+		.maxAge?:int
+	}
+
+	/*
+	 * Defines the Content-Transfer-Encoding value of the HTTP message.
+	 *
+	 * Default: none
+	 */
+	.contentTransferEncoding?:string
+	
+	/*
+	 * Defines the Content-Disposition value of the HTTP message.
+	 *
+	 * Default: none
+	 */
+	.contentDisposition?:string
+
 	/* Inbound */
 
 	/*
@@ -277,38 +309,6 @@ type HttpConfiguration:void {
 		 */
 		.<headerName>*: string
 	}
-
-	/*
-	 * Defines the status code of the HTTP message.
-	 *
-	 * Default: 200
-	 * Supported Values: any HTTP status codes
-	 */
-	.statusCode?:string
-
-	/*
-	 * Defines the cache-control header of the HTTP message.
-	 */
-	.cacheControl?:void {
-		/*
-		 * Maximum age for which the resource should be cached (in seconds)
-		 */
-		.maxAge?:int
-	}
-
-	/*
-	* Defines the Content-Transfer-Encoding value of the HTTP message.
-	*
-	* Default: none
-	*/
-	.contentTransferEncoding?:string
-	
-	/*
-	* Defines the Content-Disposition value of the HTTP message.
-	*
-	* Default: none
-	*/
-	.contentDisposition?:string
 
 	/*
 	* Defines the redirecting location subsequent to
