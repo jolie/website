@@ -97,11 +97,22 @@ type HttpConfiguration:void {
 	 * In some cases the parameter is automatically overriden by the HTTP
 	 * request content type, eg. for "text/xml", "application/json" and
 	 * "text/x-gwt-rpc".
+	 * On use of "raw" (Jolie performs no content conversion), please set the
+	 * correct content type using "contentType" (eg. "text/plain").
 	 *
 	 * Default: xml
 	 */
 	.format?:string
-	
+
+	/*
+	 * Defines the content type of the HTTP message.
+	 * Useful to set when the format is "raw" (no content conversion), for
+	 * instance "text/plain" if plain text should be delivered.
+	 *
+	 * Default: none
+	 */
+	.contentType?:string
+
 	/*
 	 * Defines the HTTP response (outbound) message character encoding 
 	 * Supported values: "US-ASCII", "ISO-8859-1", 
@@ -284,13 +295,6 @@ type HttpConfiguration:void {
 		 */
 		.maxAge?:int
 	}
-
-	/*
-	* Defines the content type of the HTTP message.
-	*
-	* Default: none
-	*/
-	.contentType?:string
 
 	/*
 	* Defines the Content-Transfer-Encoding value of the HTTP message.
