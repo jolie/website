@@ -61,7 +61,7 @@ Aggregates: Frontend
 
 inputPort AdminInput {
 Location: "socket://localhost:9000/"
-Protocol: http
+Protocol: sodep
 Interfaces: AdminInterface
 }
 
