@@ -61,7 +61,7 @@ Aggregates: Frontend
 
 inputPort AdminInput {
 Location: "socket://localhost:9000/"
-Protocol: sodep
+Protocol: http
 Interfaces: AdminInterface
 }
 
@@ -169,7 +169,11 @@ main
 				endsWith@StringUtils( e )( shouldCache );
 				if ( !shouldCache ) {
 					e.suffix = ".css";
-					endsWith@StringUtils( e )( shouldCache )
+					endsWith@StringUtils( e )( shouldCache );
+					if ( !shouldCache ) {
+                                                e.suffix = ".woff";
+                                                endsWith@StringUtils( e )( shouldCache )
+                                        }
 				}
 			};
 			

@@ -20,7 +20,7 @@
  ***************************************************************************/
 
 constants {
-	Location_Leonardo = "socket://localhost:8000/",
+	Location_Leonardo = "socket://localhost:8080/",
 	DebugHttp = false,
 	DebugHttpContent = false,
 	WWWDirectory = "../../www/"
