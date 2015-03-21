@@ -54,3 +54,25 @@ The Database service officially supports only the listed DB systems, which were 
 By default, the Database service included by `database.iol` works for connecting to a single database. If you need to use multiple databases from the same Jolie service, you can run additional instance by creating another output port and embedding the Database Java service again, as in the following:
 
 <div class="code" src="multiple_databases.ol"></div>
+
+--
+
+### First example: WeatherService
+
+This is a modification of the WeatherService client mentioned in section "Web Services/web_services" (http://docs.jolie-lang.org/#!documentation/web_services/web_services.html). It fetches meteorologic data of a particular location (constants `City` and `Country`) and stores it in HSQLDB. If the DB has not been set up yet, the code takes care of the initialisation. The idea is to run the program in batch (eg. by a cronjob) to collect data, which could be interesting in Internet of Things (IoT) scenarios.
+
+<div class="code" src="weatherServiceCallerSql.ol"></div>
+
+### Second example: TodoList
+
+The next example provides a very easy CRUD (create, retrieve, update, delete) webservice for a TODO list. The example is shown with HSQLDB but theoretically each DB could have been used. The HTTP's server output format is set to JSON, the input can be approached by both GET or POST requests.
+
+<div class="code" src="todoWebservice.ol"></div>
+
+Client requests using curl:
+- Create new record: `curl -v "http://localhost:8000/create?text=Shopping"`
+- Retrieve all records: `curl -v "http://localhost:8000/retrieveAll"`
+- Retrieve record - GET in x-www-form-urlencoded (webbrowser form): `curl -v "http://localhost:8000/retrieve?id=0"`
+- Retrieve record - GET request in JSON: `curl -v "http://localhost:8000/retrieve?=\{\"id\":0\}"`
+- Retrieve record - POST request in x-www-form-urlencoded (webbrowser form): `curl -v -d "id=0" -H "Content-Type: application/x-www-form-urlencoded" "http://localhost:8000/retrieve"`
+- Retrieve record - POST request in JSON: `curl -v -d "{\"id\":0}" -H "Content-Type: application/json" "http://localhost:8000/retrieve"`
