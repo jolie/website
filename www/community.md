@@ -10,8 +10,7 @@ discussing anything related to the language.
 
 ## Mailing List
 
-The main mailing list for discussing anything related to Jolie is `jolie-devel@lists.sourceforge.net`.
-You can register using this [page](https://lists.sourceforge.net/lists/listinfo/jolie-devel).
+The main mailing list for discussing anything related to Jolie is `jolie-devel@googlegroups.com`.
 
 
 ## Q&A on StackOverflow

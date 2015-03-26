@@ -61,5 +61,7 @@ String	 ::= int(string length) string(UTF-8 encoded)
 Fault	 ::= true String(fault name) Value(fault additional data) | false
 
 Value	 ::= ValueContent int(how many ValueChildren) ValueChildren*
-ValueContent	::= 0(byte) | 1(byte) String | 2(byte) int | 3(byte) double
+
+ValueContent	::= 0(byte) | 1(byte) String | 2(byte) int | 3(byte) double | 4(byte) byte array | 5(byte) bool | 6(byte) long
+
 ValueChildren	::= String(child name) int(how many Value) Value* | epsilon
