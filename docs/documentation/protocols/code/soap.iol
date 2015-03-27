@@ -107,6 +107,31 @@ type SoapConfiguration:void {
 	}
 
 	/*
+	 * Defines whether the message request path
+	 * must be interpreted as a redirection resource or not.
+	 *
+	 * Default: false
+	 */
+	.interpretResource?:bool
+
+	/*
+	 * The namespace name for outgoing messages.
+	 *
+	 * Default: void
+	 */
+	.namespace?:string
+
+	/*
+	 * Drops incoming root return values.
+	 * Certain (to the standard incompatible) SOAP implementations may return empty strings when a return value
+	 * of void is expected.
+	 * Please see the explanation at: https://github.com/jolie/jolie/issues/5
+	 *
+	 * Default: false
+	 */
+	.dropRootValue?:bool
+
+	/*
 	 * Defines whether the underlying connection should be kept open.
 	 *
 	 * Default: true
@@ -120,21 +145,6 @@ type SoapConfiguration:void {
 	* Default: false
 	*/
 	.debug?:bool
-
-	/*
-	* Defines whether the message request path
-	* must be interpreted as a redirection resource or not.
-	*
-	* Default: false
-	*/
-	.interpretResource?:bool
-
-	/*
-	* The namespace name for outgoing messages.
-	*
-	* Default: void
-	*/
-	.namespace?:string
 
 	/*
 	 * Enable the HTTP content compression
