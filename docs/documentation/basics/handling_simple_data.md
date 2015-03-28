@@ -6,7 +6,7 @@ Jolie supports seven basic data types:
 
 - `bool`: booleans;
 - `int`: integers;
-- `long`: long integers (with "L" or "l" suffix);
+- `long`: long integers (with `L` or `l` suffix);
 - `double`: double-precision float (decimal literals);
 - `string`: strings;
 - `raw`: byte arrays;
@@ -25,6 +25,8 @@ Jolie supports some basic arithmetic operators: add (`+`), subtract (`-`), multi
 An example of the aforementioned operators follows:
 
 <div class="code" src="handling_simple_data_4.ol"></div>
+
+Additional meanings: `+` is the string concatenator and matches the OR on `bool`s (`||`), `*` matches the AND on `bool`s (`&&`) and `undefined - var` matches the negation on `bool`s (`!`).
 
 ---
 
@@ -64,7 +66,7 @@ String formatting is preserved, so strings can contain tabs and new lines:
 
 A variable is undefined until a value is assigned to them.
 
-Checking if a variable is defined done by using the is_defined) predicate, e.g.:
+Checking if a variable is defined done by using the `is_defined` predicate, e.g.:
 
 <div class="code" src="handling_simple_data_8.ol"></div>
 
@@ -72,6 +74,14 @@ Sometimes it is useful to undefine a variable, i.e. to remove its value and make
 Undefining a variable is done by using the undef statement, as showed in the example below.
 
 <div class="code" src="handling_simple_data_9.ol"></div>
+
+The operators do behave like this:
+
+- `undefined + var = var`
+- `undefined - var = -var` (negation of numbers and booleans)
+- `undefined * var = var`
+- `undefined / var = 0`
+- `undefined % var = var`
 
 ---
 
