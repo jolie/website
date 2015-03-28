@@ -71,7 +71,7 @@ For checking the definition of a variable the `is_defined` predicate should be u
 <div class="code" src="handling_simple_data_8.ol"></div>
 
 Sometimes it is useful to undefine a variable, i.e. to remove its value and make it undefined again. 
-Undefining a variable is done by using the `undef` statement, as showed in the example below.
+Undefining a variable is done by using the `undef` statement, as shown in the example below.
 
 <div class="code" src="handling_simple_data_9.ol"></div>
 
