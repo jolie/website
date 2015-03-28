@@ -64,14 +64,14 @@ String formatting is preserved, so strings can contain tabs and new lines:
 
 ## Undefining variables
 
-A variable is undefined until a value is assigned to them.
+A variable is undefined until a value is assigned to it. In this state it is set to `undefined` which is equivalent to `null`, `NULL` or `nil` in other programming languages.
 
-Checking if a variable is defined done by using the `is_defined` predicate, e.g.:
+For checking the definition of a variable the `is_defined` predicate should be used, e.g.:
 
 <div class="code" src="handling_simple_data_8.ol"></div>
 
 Sometimes it is useful to undefine a variable, i.e. to remove its value and make it undefined again. 
-Undefining a variable is done by using the undef statement, as showed in the example below.
+Undefining a variable is done by using the `undef` statement, as showed in the example below.
 
 <div class="code" src="handling_simple_data_9.ol"></div>
 
