@@ -1,6 +1,6 @@
 ## Databases in Jolie
 
-Jolie can be used with various relational/SQL databases, using the Database service from the standard library. The API is described here: http://docs.jolie-lang.org/#!documentation/jsl/Database.html. The Database service uses JDBC, so you need the correct driver JAR placed in the `lib` subdirectory (the one of the program or the global one, e.g., `/usr/lib/jolie/lib/` in Linux).
+Jolie can be used with various relational/SQL databases, using the Database service from the standard library. The API is described [here](jsl/Database.html). The Database service uses JDBC, so you need the correct driver JAR placed in the `lib` subdirectory (the one of the program or the global one, e.g., `/usr/lib/jolie/lib/` in Linux).
 
 Attention: if your JAR driver is called differently, you will have to rename it or create an apposite link, otherwise Jolie is not able to load it. The list of correct names for JAR drivers is given below.
 
@@ -55,11 +55,11 @@ By default, the Database service included by `database.iol` works for connecting
 
 <div class="code" src="multiple_databases.ol"></div>
 
---
+---
 
 ### First example: WeatherService
 
-This is a modification of the WeatherService client mentioned in section "Web Services/web_services" (http://docs.jolie-lang.org/#!documentation/web_services/web_services.html). It fetches meteorologic data of a particular location (constants `City` and `Country`) and stores it in HSQLDB. If the DB has not been set up yet, the code takes care of the initialisation. The idea is to run the program in batch (eg. by a cronjob) to collect data, which could be interesting in Internet of Things (IoT) scenarios.
+This is a modification of the WeatherService client mentioned in section [Web Services/web_services] (web_services/web_services.html). It fetches meteorologic data of a particular location (constants `City` and `Country`) and stores it in HSQLDB. If the DB has not been set up yet, the code takes care of the initialisation. The idea is to run the program in batch (eg. by a cronjob) to collect data, which could be interesting in Internet of Things (IoT) scenarios.
 
 <div class="code" src="weatherServiceCallerSql.ol"></div>
 

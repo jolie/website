@@ -8,7 +8,7 @@ Protocol name in port definition: `soap`.
 
 ## SOAP Transport
 
-Our SOAP implementation does not support simple parameters and return values (signatures like `test( string )( int )`) to adhere to the WSDL specification. Please use compound types with root value `void` instead.
+To adhere to the WSDL specification, simple call signatures like `test( string )( int )` should be omitted. Input and output values should be passed by apposite compound structures with a `void` root value, as shown [here](web_services/web_services.html).
 
 ---
 
