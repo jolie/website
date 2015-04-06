@@ -57,8 +57,9 @@ type HttpConfiguration:void {
 	 * This flag operates server-side only and is unset per default, which means
 	 * that common plain-text formats get compressed (among them text/html
 	 * text/css text/plain text/xml text/x-js application/json
-	 * application/javascript). The delimitation character should be different to
-	 * the mimetype names, valid choices include blank, comma or semicolon.
+	 * application/javascript application/x-www-form-urlencoded text/x-gwt-rpc).
+	 * The delimitation character should be different to the mimetype names,
+	 * valid choices include blank, comma or semicolon.
 	 *
 	 * "*" means compression for everything including binary formats, which is
 	 * usually not the best choice. Many formats come pre-compressed, like
