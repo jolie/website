@@ -9,7 +9,7 @@ applications.
 
 ## Launching Leonardo and serving static content
 
-The latest version of Leonardo is available from its SourceForge page, at URL: [http://sourceforge.net/projects/leonardo](http://sourceforge.net/projects/leonardo).
+The latest version of Leonardo is available from its GitHub page, at URL: [https://github.com/jolie/leonardo](https://github.com/jolie/leonardo).
 
 After having downloaded and unpacked the archive, we can launch Leonardo from the `leonardo` directory with the command `jolie leonardo.ol`.
 
@@ -17,7 +17,7 @@ By default Leonardo looks for static content to serve in the `leonardo/www` subd
 
 <div class="code" src="leonardo_1.html"></div>
 
-then, pointing the browser at URL http://localhost:8000/index we can see the web page we created. In the same way other files (of any format) and subdirectories can be stored inside the `www` directory: Leonardo makes them available to web browsers as expected.
+Then, pointing the browser at URL http://localhost:8000/index we can see the web page we created. In the same way other files (of any format) and subdirectories can be stored inside the `www` directory: Leonardo makes them available to web browsers as expected.
 
 ---
 

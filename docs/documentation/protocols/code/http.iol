@@ -57,8 +57,9 @@ type HttpConfiguration:void {
 	 * This flag operates server-side only and is unset per default, which means
 	 * that common plain-text formats get compressed (among them text/html
 	 * text/css text/plain text/xml text/x-js application/json
-	 * application/javascript). The delimitation character should be different to
-	 * the mimetype names, valid choices include blank, comma or semicolon.
+	 * application/javascript application/x-www-form-urlencoded text/x-gwt-rpc).
+	 * The delimitation character should be different to the mimetype names,
+	 * valid choices include blank, comma or semicolon.
 	 *
 	 * "*" means compression for everything including binary formats, which is
 	 * usually not the best choice. Many formats come pre-compressed, like
@@ -93,12 +94,11 @@ type HttpConfiguration:void {
 	/*
 	 * Defines the HTTP response (outbound) message format.
 	 * Supported values: xml, html, x-www-form-urlencoded, json,
-	 * text/x-gwt-rpc, multipart/form-data, binary, raw.
-	 * In some cases the parameter is automatically overriden by the HTTP
-	 * request content type, eg. for "text/xml", "application/json" and
-	 * "text/x-gwt-rpc".
-	 * On use of "raw" (Jolie performs no content conversion), please set the
-	 * correct content type using "contentType" (eg. "text/plain").
+	 * text/x-gwt-rpc, multipart/form-data, binary (data transfer in raw
+	 * representation - no conversion), raw (data transfer in string representation
+	 * with character set enforcement).
+	 * It might be necessary to override the format with the correct content type,
+	 * especially for "binary" and "raw" as shown below.
 	 *
 	 * Default: xml
 	 */
@@ -106,8 +106,16 @@ type HttpConfiguration:void {
 
 	/*
 	 * Defines the content type of the HTTP message.
-	 * Useful to set when the format is "raw" (no content conversion), for
-	 * instance "text/plain" if plain text should be delivered.
+	 * These are the default content types for each kind of format, override if
+	 * necessary:
+	 * xml:                   text/xml
+	 * html:                  text/html
+	 * x-www-form-urlencoded: application/x-www-form-urlencoded
+	 * json:                  application/json
+	 * text/x-gwt-rpc:        text/x-gwt-rpc
+	 * multipart/form-data:   multipart/form-data
+	 * binary:                application/octet-stream
+	 * raw:                   text/plain
 	 *
 	 * Default: none
 	 */
