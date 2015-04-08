@@ -6,6 +6,6 @@ with ( a.b.c ){
 };
 currentElement[ 0 ] -> a.b.c.d[ i ];
 
-for ( i = 0, i < #ab.c.d, i++ ){
+for ( i = 0, i < #a.b.c.d, i++ ){
 	println@Console( currentElement )()
 }
