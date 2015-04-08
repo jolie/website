@@ -94,12 +94,11 @@ type HttpConfiguration:void {
 	/*
 	 * Defines the HTTP response (outbound) message format.
 	 * Supported values: xml, html, x-www-form-urlencoded, json,
-	 * text/x-gwt-rpc, multipart/form-data, binary, raw.
-	 * In some cases the parameter is automatically overriden by the HTTP
-	 * request content type, eg. for "text/xml", "application/json" and
-	 * "text/x-gwt-rpc".
-	 * On use of "raw" (Jolie performs no content conversion), please set the
-	 * correct content type using "contentType" (eg. "text/plain").
+	 * text/x-gwt-rpc, multipart/form-data, binary (data transfer in raw
+	 * representation - no conversion), raw (data transfer in string representation
+	 * with character set enforcement).
+	 * It might be necessary to override the format with the correct content type,
+	 * especially for "binary" and "raw" as shown below.
 	 *
 	 * Default: xml
 	 */
@@ -107,8 +106,16 @@ type HttpConfiguration:void {
 
 	/*
 	 * Defines the content type of the HTTP message.
-	 * Useful to set when the format is "raw" (no content conversion), for
-	 * instance "text/plain" if plain text should be delivered.
+	 * These are the default content types for each kind of format, override if
+	 * necessary:
+	 * xml:                   text/xml
+	 * html:                  text/html
+	 * x-www-form-urlencoded: application/x-www-form-urlencoded
+	 * json:                  application/json
+	 * text/x-gwt-rpc:        text/x-gwt-rpc
+	 * multipart/form-data:   multipart/form-data
+	 * binary:                application/octet-stream
+	 * raw:                   text/plain
 	 *
 	 * Default: none
 	 */
