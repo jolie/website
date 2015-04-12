@@ -15,6 +15,20 @@ type HttpConfiguration:void {
 	.keepAlive?:bool
 
 	/*
+	 * Defines the status code of the HTTP message.
+	 * The parameter gets set on inbound requests and is read out on outbound requests.
+	 * Attention: for inbound requests the assigned variable needs to be defined before
+	 * issuing the first request, otherwise it does not get set (eg. statusCode = 0)
+	 *
+	 * eg.
+	 * .statusCode -> statusCode
+	 *
+	 * Default: 200
+	 * Supported Values: any HTTP status codes
+	 */
+	.statusCode?:string
+
+	/*
 	 * Defines whether debug messages shall be 
 	 * activated
 	 *
@@ -235,14 +249,6 @@ type HttpConfiguration:void {
 	.dropURIPath?:bool
 
 	/*
-	 * Defines the status code of the HTTP message.
-	 *
-	 * Default: 200
-	 * Supported Values: any HTTP status codes
-	 */
-	.statusCode?:string
-
-	/*
 	 * Defines the cache-control header of the HTTP message.
 	 */
 	.cacheControl?:void {
@@ -391,12 +397,18 @@ type HttpConfiguration:void {
 	/*
 	 * Overrides the HTTP User-Agent header value on incoming HTTP messages
 	 *
+	 * eg.
+	 * .userAgent -> userAgent
+	 *
 	 * Default: none
 	 */
 	.userAgent?:string
 
 	/*
 	 * Overrides the HTTP host header on incoming HTTP messages
+	 *
+	 * eg.
+	 * .host -> host
 	 *
 	 * Default: none
 	 */
