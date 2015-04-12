@@ -140,8 +140,8 @@ type HttpConfiguration:void {
 		 * "header" contains the actual headers with their values
 		 * ("value") as children.
 		 *
-		 * eg. for HTTP header "Authorization: key":
-		 * .addHeader.header.("Authorization").value = "key"
+		 * eg. for HTTP header "Authorization: TOP_SECRET":
+		 * .addHeader.header[0] << "Authorization" { .value = "TOP_SECRET" }
 		 *
 		 * Default: none
 		 */
