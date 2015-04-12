@@ -300,18 +300,26 @@ type HttpConfiguration:void {
 	.json_encoding?:string
 
 	/*
-	 * Defines the headers of the HTTP message.
+	 * Defines the observed headers of a HTTP message.
 	 *
 	 * Default: none
 	 */
 	.headers?:void {
 		/*
 		 * <headerName> should be substituted with the actual header
-		 * names and aliased to variables.
+		 * names ("_" to decode "-", eg. "content_type" for "content-type")
+		 * and the value constitutes the request variable's attribute where
+		 * the content will be assigned to.
+		 * Important: these attributes have to be part of the service's
+		 * input port interface, unless "undefined" is used.
 		 *
-		 * eg.
-		 * .headers.content_type -> contentType;
-		 * .headers.server -> server
+		 * eg. in the deployment:
+		 * .headers.server = "server"
+		 * .headers.content_type = "contentType";
+		 *
+		 * in the behaviour, "req" is the inbound request variable:
+		 * println@Console( "Server: " + req.server )();
+		 * if ( req.contentType == "application/json" ) { ...
 		 *
 		 * Default: none
 		 */
