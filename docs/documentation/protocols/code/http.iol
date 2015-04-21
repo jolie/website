@@ -15,6 +15,20 @@ type HttpConfiguration:void {
 	.keepAlive?:bool
 
 	/*
+	 * Defines the status code of the HTTP message.
+	 * The parameter gets set on inbound requests and is read out on outbound requests.
+	 * Attention: for inbound requests the assigned variable needs to be defined before
+	 * issuing the first request, otherwise it does not get set (eg. statusCode = 0)
+	 *
+	 * eg.
+	 * .statusCode -> statusCode
+	 *
+	 * Default: 200
+	 * Supported Values: any HTTP status codes
+	 */
+	.statusCode?:string
+
+	/*
 	 * Defines whether debug messages shall be 
 	 * activated
 	 *
@@ -140,8 +154,8 @@ type HttpConfiguration:void {
 		 * "header" contains the actual headers with their values
 		 * ("value") as children.
 		 *
-		 * eg. for HTTP header "Authorization: key":
-		 * .addHeader.header.("Authorization").value = "key"
+		 * eg. for HTTP header "Authorization: TOP_SECRET":
+		 * .addHeader.header[0] << "Authorization" { .value = "TOP_SECRET" }
 		 *
 		 * Default: none
 		 */
@@ -235,14 +249,6 @@ type HttpConfiguration:void {
 	.dropURIPath?:bool
 
 	/*
-	 * Defines the status code of the HTTP message.
-	 *
-	 * Default: 200
-	 * Supported Values: any HTTP status codes
-	 */
-	.statusCode?:string
-
-	/*
 	 * Defines the cache-control header of the HTTP message.
 	 */
 	.cacheControl?:void {
@@ -300,18 +306,26 @@ type HttpConfiguration:void {
 	.json_encoding?:string
 
 	/*
-	 * Defines the headers of the HTTP message.
+	 * Defines the observed headers of a HTTP message.
 	 *
 	 * Default: none
 	 */
 	.headers?:void {
 		/*
 		 * <headerName> should be substituted with the actual header
-		 * names and aliased to variables.
+		 * names ("_" to decode "-", eg. "content_type" for "content-type")
+		 * and the value constitutes the request variable's attribute where
+		 * the content will be assigned to.
+		 * Important: these attributes have to be part of the service's
+		 * input port interface, unless "undefined" is used.
 		 *
-		 * eg.
-		 * .headers.content_type -> contentType;
-		 * .headers.server -> server
+		 * eg. in the deployment:
+		 * .headers.server = "server"
+		 * .headers.content_type = "contentType";
+		 *
+		 * in the behaviour, "req" is the inbound request variable:
+		 * println@Console( "Server: " + req.server )();
+		 * if ( req.contentType == "application/json" ) { ...
 		 *
 		 * Default: none
 		 */
@@ -383,12 +397,18 @@ type HttpConfiguration:void {
 	/*
 	 * Overrides the HTTP User-Agent header value on incoming HTTP messages
 	 *
+	 * eg.
+	 * .userAgent -> userAgent
+	 *
 	 * Default: none
 	 */
 	.userAgent?:string
 
 	/*
 	 * Overrides the HTTP host header on incoming HTTP messages
+	 *
+	 * eg.
+	 * .host -> host
 	 *
 	 * Default: none
 	 */
