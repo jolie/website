@@ -70,8 +70,9 @@ type HttpConfiguration:void {
 	 * Set the allowed mimetypes (content types) for compression.
 	 * This flag operates server-side only and is unset per default, which means
 	 * that common plain-text formats get compressed (among them text/html
-	 * text/css text/plain text/xml text/x-js application/json
-	 * application/javascript application/x-www-form-urlencoded text/x-gwt-rpc).
+	 * text/css text/plain text/xml text/x-js text/x-gwt-rpc application/json
+	 * application/javascript application/x-www-form-urlencoded application/xhtml+xml
+	 * application/xml).
 	 * The delimitation character should be different to the mimetype names,
 	 * valid choices include blank, comma or semicolon.
 	 *

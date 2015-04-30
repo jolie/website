@@ -1,2 +1,4 @@
-
 *.html
+jolie/jpsr/tmp/*
+jolie/jpsr/derby.log
+jolie/jpsr/account_manager/db/account_manager/db.lck

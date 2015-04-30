@@ -8,7 +8,7 @@ interface PrinterInterface {
 include "console.iol"
 include "Printer.iol"
 
-outputPort Printer {
+outputPort P {
 	Location: "socket://p:80"
 	Protocol: sodep
 	Interface: PrinterInterface
