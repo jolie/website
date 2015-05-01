@@ -4,7 +4,7 @@ type SSLConfiguration:void {
 		/*
 		* Defines the protocol used in encryption.
 		*
-		* Default: "SSLv3"
+		* Default: "TLSv1"
 		* Supported values: all Java encryption protocols:
 		* SSL, SSLv2, SSLv3, TLS, TLSv1, TLSv1.1, TLSv1.2
 		*/
