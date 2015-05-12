@@ -24,6 +24,7 @@ type GetSlideshowsByUserResponse: string {
 	      .InContest: string
 	      .URL: string
 	      .Download: string
+	      .ThumbnailXXLargeURL: string
       } 
 }
 
