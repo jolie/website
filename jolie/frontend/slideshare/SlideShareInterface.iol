@@ -25,6 +25,7 @@ type GetSlideshowsByUserResponse: string {
 	      .URL: string
 	      .Download: string
 	      .ThumbnailXXLargeURL: string
+	      .ThumbnailXLargeURL: string
       } 
 }
 
