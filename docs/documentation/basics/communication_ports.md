@@ -221,20 +221,43 @@ Message type declaration can be used for both request and response messages in a
 
 `TypeMismatch` fault in request-response operations leads to four different scenarios, summed in the table below:
 
-+---------------+-----------------------------------+---------------------------+
-|				| 	Fault raised 					| 	Fault raised			|
-|				| 	in **REQUEST** message			| 	in **RESPONSE** messages|
-+---------------+-----------------------------------+---------------------------+
-|				| - The message is not sent;		| - a `TypeMismatch`		|
-| **SENDER**	| - a `TypeMismatch` exception 		| 	exception is raised.	|
-| Side			|	is raised.						| 							|
-+---------------+-----------------------------------+---------------------------+
-|		 		| - The message is discarded;		| - a `TypeMismatch`		|
-|				| - a warning message is sent  		| 	exception is raised.	|
-| **RECEIVER**	|	at console;						| - a `TypeMismatch` fault	|
-| Side			| - a `TypeMismatch` fault message	| 	message is sent to		|
-|				| 	is sent to sender.				| 	sender.					|
-+---------------+-----------------------------------+---------------------------+
+<table class="table table-bordered table-striped">
+	<tr>
+		<th></th>
+		<th>Fault raised in REQUEST messages</th>
+		<th>Fault raised in RESPONSE messages</th>
+	</tr>
+	<tr>
+		<td><strong>SENDER side</strong></td>
+		<td>
+			<ul>
+				<li>The message is not sent;</li>
+				<li>a <code>TypeMismatch</code> exception is raised.</li>
+			</ul>
+		</td>
+		<td>
+			<ul>
+				<li>a <code>TypeMismatch</code> exception is raised.</li>
+			</ul>
+		</td>
+	</tr>
+	<tr>
+		<td><strong>RECEIVER side</strong></td>
+		<td>
+			<ul>
+				<li>The message is discarded;</li>
+				<li>a warning message is sent to console;</li>
+				<li>a <code>TypeMismatch</code> fault message is sent to the sender</li>
+			</ul>
+		</td>
+		<td>
+			<ul>
+				<li>a <code>TypeMismatch</code> exception is raised.</li>
+				<li>a <code>TypeMismatch</code> fault is sent to the sender.</li>
+			</ul>
+		</td>
+	</tr>
+</table>
 
 ---
 
