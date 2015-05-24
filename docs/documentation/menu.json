@@ -82,6 +82,10 @@
                 "label": "Embedding Jolie Services"
             },
             {
+                "url": "architectural_composition/internal_services.html",
+                "label": "Internal Services"
+            },
+            {
                 "url": "architectural_composition/embedding_java.html",
                 "label": "Embedding Java Services"
             },

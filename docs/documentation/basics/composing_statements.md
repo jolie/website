@@ -20,9 +20,9 @@ A valid use of the sequence operator is as it follows:
 
 <div class="code" src="composing_statements_workflow_1.ol"></div>
 
-<div class="panel panel-warning">
+<div class="panel panel-primary">
  	<div class="panel-heading">
-  	<h3 class="panel-title">Attention</h3>
+  	<p class="panel-title">Attention</p>
   </div>
   <div class="panel-body">
     <p>Keep in mind that, in Jolie, <code>;</code> is NOT the "end of statement" marker.</p>

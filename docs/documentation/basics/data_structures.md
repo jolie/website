@@ -68,9 +68,9 @@ In the following example the same structure used in previous examples (`animals`
 
 <div class="code" src="data_structures_7.ol"></div>
 
-<div class="panel panel-warning">
+<div class="panel panel-primary">
  	<div class="panel-heading">
-  	<h3 class="panel-title">Attention</h3>
+  	<p class="panel-title">Attention</p>
   </div>
   <div class="panel-body">
     <p>The paths starting with <code>.</code> within the scope of the <code>with</code> operator are just shortcuts.</p>
@@ -114,9 +114,9 @@ For the sake of clarity a representation of the `zoo` structure is provided as i
 
 <div class="code" src="data_structures_8.xml"></div>
 
-<div class="panel panel-warning">
+<div class="panel panel-primary">
  	<div class="panel-heading">
-  	<h3 class="panel-title">Attention</h3>
+  	<p class="panel-title">Attention</p>
   </div>
   <div class="panel-body">
     <p>At runtime <code>d << s</code> explores the source (tree <code>s</code>) node-wise and for all initialised sub-nodes in <code>s</code>, e.g., <code>s.path.to.subnode</code>, it assigns the value of <code>s.path.to.subnode</code> to the corresponding sub-node rooted in <code>d</code>. According to the example <code>d.path.to.subnode = s.path.to.subnode</code>.

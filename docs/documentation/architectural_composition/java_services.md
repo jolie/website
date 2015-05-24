@@ -1,8 +1,8 @@
 ## JavaServices
 
-<div class="panel panel-warning">
+<div class="panel panel-primary">
 	<div class="panel-heading">
- 	<h3 class="panel-title">Attention</h3>
+ 	<p class="panel-title">Attention</p>
 	</div>
 	<div class="panel-body">
  	This documentation page is a stub. Its contents can be partial and/or out of date.
