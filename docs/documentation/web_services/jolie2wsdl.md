@@ -15,7 +15,7 @@ where:
 - `-i include_file_path` must be set if the jolie service includes `.iol` files belonging to Jolie standard library (e.g., `console.iol`). For example this path, in a Linux environment, is `/opt/jolie/include`;
 - `--namespace target_name_space` name of WSDL namespace used by jolie types
 - `--portName name_of_the_port` name of the port that is exposing the inferface callable via SOAP
-- `--portNane name_of_the_port` address of the listening port 
+- `--portAddr [address_string]` address of the listening port 
 - `--o output_filename` is the file name  where the generated WSDL document is stored (`MyWsdl.wsdl` is the default value).
 - `filename.ol` is the jolie service file whose input port must be transformed into a soap one
 
