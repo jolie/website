@@ -5,52 +5,46 @@
   	<p class="panel-title">Attention</hp>
   </div>
   <div class="panel-body">
-    <p>Internal services are a <strong>due to release</strong>. They will be available since the next release of Jolie.
+    <p>Internal services are <strong>due to release</strong>. They will be available since the next release of Jolie.
     </p>
 	</div>
 </div>
 
-Jolie gives a limited support to procedural programming. With the [define](#!documentation/basics/define.html) keyword it is possible to define callable blocks of code, but it is not possible to pass local variables. This is an intentional choice as using procedures too much can hinder switching to a distributed implementation based on communications later on.
+Internal Services are embedded Jolie services defined directly within the embedder program, rather than in a separate file. They offer a convenient way of reusing code as in procedural programming, without breaking the principle that such code should be easily exported to an external microservice. In particular, an internal service can always be easily moved to a separate file to make it a standalone service, without requiring code changes in the behaviours of the other services that were interacting with it. This is in contrast with the [define](#!documentation/basics/define.html) keyword, which is intended only for short configuration macros or recursive workflows.
 
-In essence, a procedure acts as a request-response invocation. The main workflow calls it and then waits until the latter returns its result. Based on this design, one service can implement recursive algorithms by calling itself on one of its operations. 
-
-This design pattern does not follow a (micro)service paradigm as algorithms should be implemented in a separate service. However, it is also true that creating separate services can be cumbersome sometimes, e.g., during prototyping. 
-
-Internal services address this problem. With internal services, on one hand the programmer does not have to code a fully-fledged Jolie service on separate files, embed them, and set all references to ports and interfaces. On the other hand they inhibit the use of bad design patterns e.g., self-calls.
-
-Moreover, later on it is very easy to extract the code of an internal service and make it a standalone Jolie service.
+Beside the ease of refactoring (e.g., moving the service from internal to standalone), internal services offer another main advantage: fast prototyping. The programmer does not have to code a fully-fledged Jolie service in a separate file, embed it, and set the appropriate communication ports. Internal services are no more than syntactic sugar, but this automation saves a lot of boilerplate coding to the developer.
 
 The syntax for internal services is
 
 <div class="syntax" src="syntax_internal_services_1.ol"></div>
 
-The internal service construct specifies:
+The `service` construct specifies:
 
-- a name `SrvName` for the service. The name will act as OutputPort for the owner of the internal service to call it;
+- a name `SrvName` for the service. The name will act as an output port for the owner of the internal service to call it;
 - the `Interfaces` of the service (it is possible to declare interfaces fetched in included files, just as regular services).
 - an optional `init`ialisation procedure, as for regular services;
 - a `main` procedure, as for regular services;
 
-The internal service has access to all the output ports defined in the owner. This is limited to the information statically defined therein, not the dynamic binding set by the owner.
+The internal service has access to all the output ports defined in the owner. This is limited to the information statically defined therein, not the dynamic bindings set by the caller processes.
 
 <div class="panel panel-primary">
  	<div class="panel-heading">
   	<p class="panel-title">Attention</hp>
   </div>
   <div class="panel-body">
-    <p>The internal service has set <code>execution { concurrent }</code> by default. </p>
+    <p>Every internal service has <code>execution { concurrent }</code> set by default. </p>
     <p>
-    	This is convenient, although it contrasts with the usual execution for normal Jolie services, which is set to <a href="!documentation/basics/composing_statements.html#statement-execution-operators">single</a> by default. No way of changing the execution modality is provided for internal services.
+    	This is convenient, although it contrasts with the usual execution for normal Jolie services, which is set to <a href="!documentation/basics/composing_statements.html#statement-execution-operators">single</a> by default.
     </p>
 	</div>
 </div>
 
-Finally, internal services are just syntactic sugar for embedded Jolie service, i.e., what happens at runtime is that the owner of the internal services loads them as embedded services which will behave as such, with the consequent access through Runtime and all the usual features.
+Semantically, internal services are just syntactic sugar for embedded Jolie service, i.e., what happens at runtime is that the owner of the internal services loads them as embedded services, with the consequent access through the `Runtime` standard service and all the usual features.
 
 ## Tree as a Service
 
-In Unix and Unix-like systems, `tree` is a recursive directory listing program that produces a depth-indented listing of files.
+Let us see an example of Internal Services in action with a simplified implementation of the `tree` command in Jolie. In Unix and Unix-like systems, `tree` is a recursive directory listing program that produces a depth-indented listing of files.
 
-With internal services it is quick and easy to implement a simplified version of `tree` in Jolie.
+With internal services its is very quick and easy to draft a prototype implementation of tree
 
 <div class="code" src="internal_services_1.ol"></div>
