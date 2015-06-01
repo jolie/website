@@ -1,5 +1,15 @@
 ## Internal Services
 
+<div class="panel panel-primary">
+ 	<div class="panel-heading">
+  	<p class="panel-title">Attention</hp>
+  </div>
+  <div class="panel-body">
+    <p>Internal services are a <strong>due to release</strong>. They will be available since the next release of Jolie.
+    </p>
+	</div>
+</div>
+
 Jolie gives a limited support to procedural programming. With the [define](#!documentation/basics/define.html) keyword it is possible to define callable blocks of code, but it is not possible to pass local variables. This is an intentional choice as using procedures too much can hinder switching to a distributed implementation based on communications later on.
 
 In essence, a procedure acts as a request-response invocation. The main workflow calls it and then waits until the latter returns its result. Based on this design, one service can implement recursive algorithms by calling itself on one of its operations. 
@@ -36,3 +46,11 @@ The internal service has access to all the output ports defined in the owner. Th
 </div>
 
 Finally, internal services are just syntactic sugar for embedded Jolie service, i.e., what happens at runtime is that the owner of the internal services loads them as embedded services which will behave as such, with the consequent access through Runtime and all the usual features.
+
+## Tree as a Service
+
+In Unix and Unix-like systems, `tree` is a recursive directory listing program that produces a depth-indented listing of files.
+
+With internal services it is quick and easy to implement a simplified version of `tree` in Jolie.
+
+<div class="code" src="internal_services_1.ol"></div>
