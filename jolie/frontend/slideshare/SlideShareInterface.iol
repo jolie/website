@@ -27,6 +27,7 @@ type GetSlideshowsByUserResponse: string {
 		.ThumbnailXXLargeURL: string
 		.ThumbnailXLargeURL: string
 		.SlideshowEmbedUrl: string
+		.SecretKey: string
       } 
 }
 
