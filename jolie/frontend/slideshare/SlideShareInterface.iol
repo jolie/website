@@ -1,31 +1,32 @@
 type GetSlideshowsByUserRequest: void {
-      .username_for: string
+	.username_for: string
 }
 
 type GetSlideshowsByUserResponse: string {
-      .Name: string
-      .Count: string
-      .Slideshow*: string {
-	      .Updated: string
-	      .Description: string
-	      .Format: string
-	      .Embed: string
-	      .Title: string
-	      .Status: string
-	      .Created: string
-	      .SlideshowType: string
-	      .ThumbnailURL: string
-	      .Username: string
-	      .ThumbnailSize: string
-	      .ID: string
-	      .ThumbnailSmallURL: string
-	      .DownloadUrl: string
-	      .Language: string
-	      .InContest: string
-	      .URL: string
-	      .Download: string
-	      .ThumbnailXXLargeURL: string
-	      .ThumbnailXLargeURL: string
+	.Name: string
+	.Count: string
+	.Slideshow*: string {
+		.Updated: string
+		.Description: string
+		.Format: string
+		.Embed: string
+		.Title: string
+		.Status: string
+		.Created: string
+		.SlideshowType: string
+		.ThumbnailURL: string
+		.Username: string
+		.ThumbnailSize: string
+		.ID: string
+		.ThumbnailSmallURL: string
+		.DownloadUrl: string
+		.Language: string
+		.InContest: string
+		.URL: string
+		.Download: string
+		.ThumbnailXXLargeURL: string
+		.ThumbnailXLargeURL: string
+		.SlideshowEmbedUrl: string
       } 
 }
 
