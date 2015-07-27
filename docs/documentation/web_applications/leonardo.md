@@ -112,6 +112,7 @@ The code is contained in library `jolie-jquery.js` stored inside the `lib` direc
 
 ---
 
+
 ## Google Web Toolkit (GWT)
 
 Jolie supports Google Web Toolkit too by means of the `jolie-gwt.jar` library stored inside the `lib` subdirectory of the standard trunk Jolie installation. Inside the library there is a standard GWT module, called JolieGWT, which must be imported into the GWT module we are using.
@@ -121,5 +122,34 @@ The module comes with support classes for invoking operations published by the s
 <div class="code" src="leonardo_8.java"></div>
 
 ---
+## Using Cookie
 
+Jolie HTTP protocol is able to handle cookies both when processing outbound and inbound HTTP messages. Jolie allows to define specific architectural cookies handling at port level without the need of writing further processing code. 
+
+### Inbound Cookies Handling
+
+In a classic client/server application where `Leornardo.ol` is acting as WebServer the programmer is able to define specific binding between inbound cookie and Jolie’s operations message branch name. To do so is sufficient to define in the input Port configuration parameters `.osc.operationName.cookies.cookieName = "branchName"`.
+A working example has been provided to exemplify the handling inbound cookies
+
+<div class="download"><a href="documentation/web_applications/code/cookie_server_code.zip">Leonardo and inbound cookie handling</a></div>
+
+
+In this specific example you will find the code for both the client side (HTML/JQuery) and server side (Jolie) able to handle two separated cookies.
+In order to understand the example specific attention should be paid to the following files:
+
+* /doc/TestingInstruction.txt
+* /doc/ExampleAbstract.txt
+* /www/js/CookiesHandler.js
+* /leornardo.ol
+
+
+
+
+
+
+
+
+
+
+      
 ## References
