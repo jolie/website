@@ -124,11 +124,11 @@ The module comes with support classes for invoking operations published by the s
 ---
 ## Using Cookie
 
-Jolie HTTP protocol is able to handle cookies both when processing outbound and inbound HTTP messages. Jolie allows to define specific architectural cookies handling at port level without the need of writing further processing code. 
+Jolie HTTP protocol is able to handle cookies both when processing outbound and inbound HTTP messages. Jolie allows to define specific cookies handling at port level without the need of writing further processing code. 
 
 ### Inbound Cookies Handling
 
-In a classic client/server application where `Leornardo.ol` is acting as WebServer the programmer is able to define specific binding between inbound cookie and Jolie’s operations message branch name. To do so is sufficient to define in the input Port configuration parameters `.osc.operationName.cookies.cookieName = "branchName"`.
+In a classic client/server application where `Leornardo.ol` is acting as WebServer the programmer is able to define specific binding between inbound cookie and Jolie’s operations message subNodeName. To do so is sufficient to define in the input Port configuration parameters `.osc.operationName.cookies.cookieName = "subNodeName"`.
 A working example has been provided to exemplify the handling inbound cookies
 
 <div class="download"><a href="documentation/web_applications/code/cookie_server_code.zip">Leonardo and inbound cookie handling</a></div>
@@ -141,6 +141,8 @@ In order to understand the example specific attention should be paid to the foll
 * /doc/ExampleAbstract.txt
 * /www/js/CookiesHandler.js
 * /leornardo.ol
+
+It is not necessary to define precisely the cookie binding for each operation exposed by the HTTP input port, one can use the global cookies configuration expressed in the following form  `.cookies.cookieName = "subNodeName"`, Particular attention must be paid on the presence  subNodeName in the type of all operation exposed by the port otherwise  an  TypeMismatch will occur.
 
 
 
