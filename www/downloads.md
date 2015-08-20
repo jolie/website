@@ -11,7 +11,7 @@
 </nav>
 
 <div class="dropdown">
-  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" 
+  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown"
 aria-expanded="true">
   Dropdown
   <span class="caret"></span>
@@ -27,7 +27,7 @@ aria-expanded="true">
 <div class="span12 page-nav-menu vertical-align nav-bar-static-top">
 <div class="span3"><strong>In this page:</strong></div>
 <div class="span9 dropdown">
-<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" 
+<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown"
 aria-expanded="true">
 Download and Install
 <span class="caret"></span>
@@ -113,10 +113,10 @@ cd jolie
 ant && sudo ant install
 </pre>
 
-The ant script will automatically build and install Jolie for you. The default is to install in `/usr/lib/jolie`, but 
+The ant script will automatically build and install Jolie for you. The default is to install in `/usr/lib/jolie`, but
 the installation parameters can be controlled by editing `buildconfig/config.properties`.
 
-A Jolie launcher script will be put in `/usr/bin` (this parameter is configurable in 
+A Jolie launcher script will be put in `/usr/bin` (this parameter is configurable in
 `buildconfig/config.properties`, too).
 
 Remember to follow the on-screen instructions at the end of the installation procedure, about the environment variables.
@@ -137,7 +137,7 @@ Here are some useful links to get the required tools:
 
 Download the source code with Git from `https://github.com/jolie/jolie.git`
 
-Open the `buildconfig/config.properties` file and change the parameters `install.launcher_dir` and `install.dir` 
+Open the `buildconfig/config.properties` file and change the parameters `install.launcher_dir` and `install.dir`
 by replacing the existing directories with your desired ones. Use `\\` instead of the single backslashes when writing
 paths. Here is an example:
 
@@ -176,6 +176,15 @@ You can now execute Jolie scripts by issuing the `jolie` command in a console, f
 
 
 # Support for external tools
+
+## Atom
+
+Jolie support for the [Atom editor](http://www.atom.io/) can be installed with the official Atom Package Manager (apm):
+
+<pre name="code">
+apm install language-jolie
+apm install linter-jolie
+</pre>
 
 ## Kate
 
