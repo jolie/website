@@ -4,7 +4,7 @@
 
 The Jolie project is open source. The core technology (interpreter and standard library)
 is released under the [GNU Library General Public License](https://www.gnu.org/licenses/lgpl.html)
-(v2 or later). Sometimes, support tools and external integration libraries are released instead 
+(v2 or later). Sometimes, support tools and external integration libraries are released instead
 under the [Apache License](http://www.apache.org/licenses/LICENSE-2.0.html), to allow for the integration
 of Jolie in enterprise proprietary software.
 
@@ -13,7 +13,7 @@ However, all modifications and improvements to the implementation of the Jolie i
 libraries must be publicly shared.
 If you are in doubt about your usage of Jolie, please [contact us](community.html).
 
-This website is written in Jolie and it is itself open source: it is included in the SVN repository of the Jolie 
+This website is written in Jolie and it is itself open source: it is included in the SVN repository of the Jolie
 project. Every developer with access to the Jolie codebase can also update the website (directory
 `web`).
 
@@ -98,6 +98,7 @@ sponsoring, etc.).
 * Roberto Lucchi
 * Davide Malagoli
 * Jacopo Mauro
+* Manuel Mazzara
 * Paola Mello
 * Marino Miculan
 * Marco Montesi
@@ -112,6 +113,7 @@ sponsoring, etc.).
 * Karoly Szanto
 * Federico Roffi
 * Sergio Magnani
+* Larisa Safina
 * Mauro Silvagni
 * Bergar Simonsen
 * Maurizio Sintuzzi
@@ -141,4 +143,3 @@ The server infrastructure for this website is kindly provided by the [University
 * [IT University of Copenhagen](http://www.itu.dk/)
 * [DISI Department - University of Bologna](http://www.informatica.unibo.it/it/Dipartimento)
 * [Department of Mathematics - University of Padova](http://www.math.unipd.it/it/)
- 
