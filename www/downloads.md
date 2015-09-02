@@ -72,7 +72,9 @@ Download the Java-based installer of the latest stable release of Jolie:
 <!-- </button> -->
 </a>
 </div>
-
+<div class="col-xs-12 text-right">
+or download one of the <a href="https://github.com/jolie/website/tree/master/www/files/releases">previous releases</a>.
+</div>
 
 ### Step 2
 
