@@ -21,10 +21,10 @@ Please tag your questions with the keyword `jolie`.
 
 ---
 
-# Academy
+# Academia
 
 Jolie is actively used in many research and teaching topics at different academic institutions. See
-the [academy page](academy.html) for more information.
+the [academia page](academia.html) for more information.
 
 ---
 
