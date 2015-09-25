@@ -51,7 +51,7 @@ Jolie:
 	"blog_reader/main.ol" in BlogReader,
 	"slideshare/slideshare.ol" in SlideShare,
 	"dump_stats.ol"
-	
+
 }
 
 define buildEntryHtml
@@ -77,7 +77,7 @@ define buildEntryHtml
 
 init
 {
-	with( newsBlog ) { 
+	with( newsBlog ) {
 		.url = "http://jolie-lang.blogspot.com/";
 		.binding.location = "socket://jolie-lang.blogspot.com:80/feeds/posts/default";
 		.binding.protocol = "http"
@@ -110,7 +110,7 @@ main
 		f.filename = "../../docs/documentation/menu.json";
 		f.format = "json";
 		readFile@File( f )( menu );
-		
+
 		listRequest.directory = "../../docs/documentation/jsl/";
 		listRequest.regex = ".+\\.html";
 		listRequest.order.byname = true;
@@ -138,26 +138,26 @@ main
 		// getRss@NewsService()( response )
 		nullProcess
 	} ] { nullProcess }
-	
+
 	[ news()( html ) {
 		request.blogs -> newsBlog;
 		readBlogs@BlogReader( request )( blogsContent );
 		buildEntryHtml
 	} ] { nullProcess }
-	
+
 	[ planet()( html ) {
 		request.blogs -> planetBlogs;
 		readBlogs@BlogReader( request )( blogsContent );
 		buildEntryHtml
 	} ] { nullProcess }
-	
-	[ documentation()( html ) { 
+
+	[ documentation()( html ) {
 		request.username_for = "JolieLang";
 		scope( slideshare ) {
 			install( default => nullProcess );
 			get_slideshows_by_user@SlideShare( request )( response )
 		};
-		
+
 		// gets static part of documentation page from www folder
 		f.filename = "../../www/documentation.html";
 		readFile@File( f )( html );
@@ -181,7 +181,7 @@ main
 // 				+ "<p class=\"slide-created\">" + response.Slideshow[ x ].Created + "</p>"
 // 				+ "<div class=\"col-xs-12 row vertical-align\">"
 			html += "<div class=\"col-xs-6 slide-embed vertical-align\">" + sp_rs.result[ 0 ] + "</iframe></div>";
-// 				+ "<div class=\"col-xs-6 slide-description vertical-align\">\"" + response.Slideshow[ x ].Description + "\"</div>"				  
+// 				+ "<div class=\"col-xs-6 slide-description vertical-align\">\"" + response.Slideshow[ x ].Description + "\"</div>"
 // 				+ "</div>";
 			if ( x % 2 == 1 || x == #response.Slideshow - 1 ) {
 				html += "<div class=\"clearfix\"></div></div>"

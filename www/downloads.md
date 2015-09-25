@@ -184,9 +184,10 @@ You can now execute Jolie scripts by issuing the `jolie` command in a console, f
 Jolie support for the [Atom editor](http://www.atom.io/) can be installed with the official Atom Package Manager (apm):
 
 <pre name="code">
-apm install language-jolie
 apm install linter-jolie
 </pre>
+
+Contributions to the [language-jolie](https://github.com/fmontesi/language-jolie) and [linter-jolie](https://github.com/fmontesi/linter-jolie) packages are welcome.
 
 ## Kate
 
