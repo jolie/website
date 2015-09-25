@@ -51,7 +51,6 @@ Protocol: http {
 	.redirect -> location;
 	.default = "default";
 	.host -> host;
-	.compression = false;
 	.cacheControl.maxAge -> cacheMaxAge;
 	.compressionTypes -> compressionTypes
 }
@@ -62,7 +61,7 @@ Aggregates: Frontend
 
 inputPort AdminInput {
 Location: "socket://localhost:9000/"
-Protocol: http
+Protocol: sodep
 Interfaces: AdminInterface
 }
 
