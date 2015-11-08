@@ -97,7 +97,7 @@ A key point for understanding and programming services in Jolie is that,
 
 <div class="attention"><p>in JOLIE every variable is a dynamic array.</p></div>
 
-Jolie handles dynamic array creation and packing. This makes dealing with complex data easier, although Jolie hides this mechanism when the programmer doesn't need it. Whenever an array index is not specified, the implicit index for that variable is set by default to 0 (zero), like shown in the example below.
+Jolie handles dynamic array creation and packing. This makes dealing with complex data easier, although Jolie hides this mechanism when the programmer does not need it. Whenever an array index is not specified, the implicit index for that variable is set by default to 0 (zero), like shown in the example below.
 
 <div class="code" src="handling_simple_data_11.ol"></div>
 
@@ -106,3 +106,19 @@ Jolie handles dynamic array creation and packing. This makes dealing with comple
 Since its dynamic-array orientation, one handy feature provided by Jolie is the array size operator `#`, which can be used as shown in the examples below.
 
 <div class="code" src="handling_simple_data_12.ol"></div>
+
+### Nested arrays
+
+Jolie\'s type system does not permit directly nested arrays as known in other programming languages. This limitation may be compensated by the introduction of children nodes (explained in [Data Structures](basics/data_structures.html)).
+
+Example: The two-dimensional array `a` may not be defined nor accessed by `a[i][j]`, but `a[i].b[j]` is possible.
+
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <p class="panel-title">Notice</p>
+  </div>
+  <div class="panel-body">
+    <p>Certain input formats as JSON allow directly nested arrays though, e.g. <code>[[1,2],[3,4]]</code>. For this reason Jolie\'s JSON parser automatically inserts a <code>_</code>-named children node for each array. If the JSON data was saved in the variable <code>matrix</code>, a single value may be obtained by <code>matrix._[i]._[j]</code>.</p>
+    <p>The underscore trick works in both directions: by expressing nested arrays in this way, all <code>_</code>-named members again disappear on conversion (back) into JSON.</p>
+  </div>
+</div>

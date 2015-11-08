@@ -61,11 +61,11 @@ The two declarations are very similar: they share the same of location, protocol
 
 We can now give the complete programs for client and server by putting together their respective deployment and behaviour parts.
 
-## Server's code
+## Server\'s code
 
 <div class="code" src="behaviour_and_deployment_server.ol"></div>
 
-## Client's code
+## Client\'s code
 
 <div class="code" src="behaviour_and_deployment_client.ol"></div>
 
