@@ -27,11 +27,11 @@ inputPort AggregatorInput {
 	Location: Location_Aggregator
 	Protocol: sodep
 	Interfaces: AggregatorInterface
-	Aggregates: Fax with extender_id
+	Aggregates: Fax with AuthInterfaceExtender
 }
  
 courier AggregatorInput {
-	interface FaxInterface( request ) {
+	[interface FaxInterface( request )] {
         if ( key == "1111" ){
         	forward ( request )
         }
