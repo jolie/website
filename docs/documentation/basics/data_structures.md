@@ -81,9 +81,9 @@ In the following example the same structure used in previous examples (`animals`
     <div class="code" src="data_structures_7_2.ol"></div>
     <p>At each line `#myArray` returns the size of `myArray`, which increases at each assignment, yielding the structure:</p>
     <pre>
-myArray[ 0 ].first[ 0 ] = "1"
-myArray[ 1 ].second[ 0 ] = "2"
-myArray[ 2 ].third[ 0 ] = "3"
+myArray[ 0 ].first[ 0 ] = "1"
+myArray[ 1 ].second[ 0 ] = "2"
+myArray[ 2 ].third[ 0 ] = "3"
     </pre>
   </div>
 </div>

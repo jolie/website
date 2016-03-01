@@ -5,7 +5,7 @@ include "console.iol"
 inputPort Guess {
 	Protocol: sodep
 	Location: "socket://localhost:2000"
-	Interfaces: Guess
+	Interfaces: GuessInterface
 }
 
 init {
@@ -14,26 +14,25 @@ init {
 
 main
 {
-	install( fault_main =>
+	install( FaultMain =>
 		println@Console( "A wrong number has been sent!" )()
 	);
 	scope( num_scope )
 	{
-		install( fault_number =>
+		install( NumberException =>
 			println@Console( "Wrong number sent!" )();
-			throw( fault_main )
+			throw( FaultMain )
 		);
 		guess( number )( response ){
 			if ( number == secret ) {
 				println@Console( "Number guessed!" )();
 				response = "You won!"
-			}
-			else {
-				with( fault_error ){
+			} else {
+				with( exceptionMessage ){
 					.number = number;
-					.fault_error = "Wrong number, better luck next time!"
-				}
-				throw( fault_number, fault_error )
+					.exceptionMessage = "Wrong number, better luck next time!"
+				};
+				throw( NumberException, exceptionMessage )
 			}
 		}
 	}

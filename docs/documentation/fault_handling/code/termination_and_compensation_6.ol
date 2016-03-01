@@ -12,11 +12,11 @@ main
 		while( true ){
 			install( this =>
 				cH;
-				println@Console( "recovering step" + ^i)()
+				println@Console( "recovering step" + ^i )()
 			);
 			i++
 		}
 	}
 	|
-	throw( a_fault )
+	throw( FaultName )
 }

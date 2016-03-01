@@ -1,7 +1,4 @@
 scope( s )
 {
-	throw( f ) |
-	install( f =>
-		println@Console( "Fault caught!" )()
-	)
+	throw( f ) | install( f => println@Console( "Fault caught!" )()	)
 }

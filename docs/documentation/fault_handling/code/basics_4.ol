@@ -10,8 +10,8 @@ outputPort Guess {
 
 main
 {
-	install( fault_number=>
-		println@Console( main.fault_number.fault_error )()
+	install( NumberException=>
+		println@Console( main.NumberException.exceptionMessage )()
 	);
 	guess@Guess( 12 )( response );
 	println@Console( response )()

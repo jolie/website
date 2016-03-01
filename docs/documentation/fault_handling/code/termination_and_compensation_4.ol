@@ -7,7 +7,7 @@ main
 	{
 		println@Console( "step 1" )();
 		sleep@Time( 1 )();
-		install( this => 
+		install( this =>
 			println@Console( "recovery step 1" )() 
 		);
 		println@Console( "step 2" )();
@@ -31,5 +31,5 @@ main
 	}
 	|
 	sleep@Time( 3 )();
-	throw( a_fault )
+	throw( FaultName )
 }
