@@ -31,6 +31,11 @@ Attention: if your JAR driver is called differently, you will have to rename it 
 	<td><code>jdbc-sqlite.jar</code></td>
     </tr>
     <tr>
+	<td>SQLServer</td>
+	<td><code>sqlserver</code></td>
+	<td><code>sqljdbc4.jar</code></td>
+    </tr>
+    <tr>
 	<td>HSQLDB</td>
 	<td><code>hsqldb_hsql</code>, <code>hsqldb_hsqls</code>, <code>hsqldb_http</code> or <code>hsqldb_https</code></td>
 	<td><code>hsqldb.jar</code></td>
