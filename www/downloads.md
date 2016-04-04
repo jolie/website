@@ -66,7 +66,7 @@ This method requires Java 6 (also called Java 1.6) or later to be installed befo
 Download the Java-based installer of the latest stable release of Jolie:
 
 <div class="col-xs-12 text-center">
-<a href="/files/releases/jolie-1.4.1.jar" onClick="ga('send', 'event', { eventCategory: 'Download', eventAction: 'JolieInstaller', eventLabel: 'jolie-1.4.1.jar'});">
+<a href="/files/releases/jolie-1.5.0.jar" onClick="ga('send', 'event', { eventCategory: 'Download', eventAction: 'JolieInstaller', eventLabel: 'jolie-1.5.0.jar'});">
 <!-- <button type="button" class="center-block btn btn-default btn-lg"> -->
 <p class="download">Jolie Installer</p>
 <!-- </button> -->
@@ -79,7 +79,7 @@ or download one of the <a href="https://github.com/jolie/website/tree/master/www
 ### Step 2
 
 Open a shell terminal. From the directory in which you downloaded the
-installer, execute `java -jar jolie-1.4.1.jar` and follow the on-screen
+installer, execute `java -jar jolie-1.5.0.jar` and follow the on-screen
 instructions.
 
 <p>The installer may need permission to write in the directories in which
@@ -93,7 +93,7 @@ launch the Jolie installer with elevated privileges:
   administrator privileges</a> and launch the installer;</li>
 
 <li><strong>on Linux/MacOS</strong>, by launching the installer as root with command
-<code>sudo java -jar jolie-1.4.1.jar</code>.
+<code>sudo java -jar jolie-1.5.0.jar</code>.
 
 </ul>
 
@@ -153,7 +153,7 @@ appending at its end the line <code>source .bash_profile</code>.
 </div>
 
 <!-- The installer needs permission to write in the directories in which you intend to install Jolie.
-Therefore, for example, if you intend to install Jolie in a system directory you may need to launch the installer as root in Linux/MacOS (`sudo java -jar jolie-1.4.1.jar`),
+Therefore, for example, if you intend to install Jolie in a system directory you may need to launch the installer as root in Linux/MacOS (`sudo java -jar jolie-1.5.0.jar`),
 or [administrator in Windows](https://technet.microsoft.com/en-us/library/cc947813.aspx). -->
 
 ## The hard way (compile from sources)
