@@ -1,52 +1,5 @@
 <!--Themed-->
 
-<!--<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-  <div class="container">
-<ul class="nav nav-pills">
-<li role="presentation"><a href="#download-and-install">Download and Install</a></li>
-<li role="presentation"><a href="/downloads.html">Download & Install</a></li>
-<li role="presentation"><a href="/news">News</a></li>
-</ul>
-  </div>
-</nav>
-
-<div class="dropdown">
-  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown"
-aria-expanded="true">
-  Dropdown
-  <span class="caret"></span>
-  </button>
-  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
-  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
-  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
-  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
-  </ul>
-</div>
-
-<div class="span12 page-nav-menu vertical-align nav-bar-static-top">
-<div class="span3"><strong>In this page:</strong></div>
-<div class="span9 dropdown">
-<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown"
-aria-expanded="true">
-Download and Install
-<span class="caret"></span>
-</button>
-  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-<!--   <li role="presentation"><a role="menuitem" tabindex="-1" href="#download-and-install">Top</a></li> -->
-  <!--<li role="presentation"><a role="menuitem" tabindex="-1" href="#the-easy-way">The easy way (binary installer)</a></li>
-  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
-  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
-  </ul>
-
-<ul class="nav nav-pills">
-<li role="presentation"><a href="#download-and-install">Download and Install</a></li>
-<li role="presentation"><a href="/downloads.html">Download & Install</a></li>
-<li role="presentation"><a href="/news">News</a></li>
-</ul>
-</div>
-</div>-->
-
 # <a id="download-and-install"></a> Download and Install
 
 Jolie requires Java to run, so make sure to have [Java](http://www.java.com/) installed before proceeding.
@@ -254,7 +207,7 @@ You can now execute Jolie scripts by issuing the `jolie` command in a console, f
 Jolie support for the [Atom editor](http://www.atom.io/) can be installed with the official Atom Package Manager (apm):
 
 <pre name="code">
-apm install linter-jolie
+apm install atom-jolie
 </pre>
 
 Contributions to the [language-jolie](https://github.com/fmontesi/language-jolie) and [linter-jolie](https://github.com/fmontesi/linter-jolie) packages are welcome.
