@@ -24,5 +24,5 @@ main
 		}
 	}
 	|
-	throw( a_fault )
+	throw( FaultName )
 }

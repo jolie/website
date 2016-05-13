@@ -1,52 +1,5 @@
 <!--Themed-->
 
-<!--<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-  <div class="container">
-<ul class="nav nav-pills">
-<li role="presentation"><a href="#download-and-install">Download and Install</a></li>
-<li role="presentation"><a href="/downloads.html">Download & Install</a></li>
-<li role="presentation"><a href="/news">News</a></li>
-</ul>
-  </div>
-</nav>
-
-<div class="dropdown">
-  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown"
-aria-expanded="true">
-  Dropdown
-  <span class="caret"></span>
-  </button>
-  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
-  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
-  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
-  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
-  </ul>
-</div>
-
-<div class="span12 page-nav-menu vertical-align nav-bar-static-top">
-<div class="span3"><strong>In this page:</strong></div>
-<div class="span9 dropdown">
-<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown"
-aria-expanded="true">
-Download and Install
-<span class="caret"></span>
-</button>
-  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-<!--   <li role="presentation"><a role="menuitem" tabindex="-1" href="#download-and-install">Top</a></li> -->
-  <!--<li role="presentation"><a role="menuitem" tabindex="-1" href="#the-easy-way">The easy way (binary installer)</a></li>
-  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
-  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
-  </ul>
-
-<ul class="nav nav-pills">
-<li role="presentation"><a href="#download-and-install">Download and Install</a></li>
-<li role="presentation"><a href="/downloads.html">Download & Install</a></li>
-<li role="presentation"><a href="/news">News</a></li>
-</ul>
-</div>
-</div>-->
-
 # <a id="download-and-install"></a> Download and Install
 
 Jolie requires Java to run, so make sure to have [Java](http://www.java.com/) installed before proceeding.
@@ -66,7 +19,7 @@ This method requires Java 6 (also called Java 1.6) or later to be installed befo
 Download the Java-based installer of the latest stable release of Jolie:
 
 <div class="col-xs-12 text-center">
-<a href="/files/releases/jolie-1.4.1.jar" onClick="ga('send', 'event', { eventCategory: 'Download', eventAction: 'JolieInstaller', eventLabel: 'jolie-1.4.1.jar'});">
+<a href="/files/releases/jolie-1.5.0.jar" onClick="ga('send', 'event', { eventCategory: 'Download', eventAction: 'JolieInstaller', eventLabel: 'jolie-1.5.0.jar'});">
 <!-- <button type="button" class="center-block btn btn-default btn-lg"> -->
 <p class="download">Jolie Installer</p>
 <!-- </button> -->
@@ -78,13 +31,83 @@ or download one of the <a href="https://github.com/jolie/website/tree/master/www
 
 ### Step 2
 
-Open a shell terminal. From the directory in which you downloaded the installer,
-execute `java -jar jolie-1.4.1.jar` under windows or
-`java -jar jolie-1.4.1.jar` under MacOs or Linux and follow the on-screen instructions.
+Open a shell terminal. From the directory in which you downloaded the
+installer, execute `java -jar jolie-1.5.0.jar` and follow the on-screen
+instructions.
 
-The installer needs permission to write in the directories in which you intend to install Jolie.
-Therefore, for example, if you intend to install Jolie in a system directory you may need to launch the installer as root in Linux/MacOS (`sudo java -jar jolie-1.4.1.jar`),
-or [administrator in Windows](https://technet.microsoft.com/en-us/library/cc947813.aspx).
+<p>The installer may need permission to write in the directories in which
+you intend to install Jolie. Depending on your Operative System you can
+launch the Jolie installer with elevated privileges:
+
+<ul>
+
+<li><strong>on Windows</strong>, by start a command prompt with <a
+  href="https://technet.microsoft.com/en-us/library/cc947813.aspx">
+  administrator privileges</a> and launch the installer;</li>
+
+<li><strong>on Linux/MacOS</strong>, by launching the installer as root with command
+<code>sudo java -jar jolie-1.5.0.jar</code>.
+
+</ul>
+
+<div class="panel panel-default">
+<div class="panel-heading"><strong>Installation Troubleshooting</strong></div>
+<div class="panel-body">
+<div class="accordion" id="accordion2">
+<div class="accordion-group">
+<div class="accordion-heading">
+<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+<strong>I get "command not found" after I installed Jolie under MacOs X El Capitan (10.10.11).</strong>
+</a>
+<hr>
+</div>
+<div id="collapseOne" class="accordion-body collapse">
+<div class="accordion-inner">
+
+In MacOs X El Capitan (10.10.11) it is not possible to install Jolie
+using the default values provided by the installer. When prompted by
+the installer, insert e.g., <code>/usr/local/lib/jolie</code> as
+the directory of installation of Jolie and <code>/usr/local/bin</code>
+as the directory of the launchers.
+<hr>
+</div>
+</div>
+</div>
+<div class="accordion-group">
+<div class="accordion-heading">
+<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+<strong>I get "Error: Could not find or load main class jolie.Jolie" after I
+installed Jolie under Linux/MacOs X.
+</strong>
+</a>
+</div>
+<div id="collapseTwo" class="accordion-body collapse">
+<div class="accordion-inner">
+
+The launchers deployed by the installer use the environment variable
+<code>JOLIE_HOME</code> to set the classpath and launch Jolie.
+As reported by the installer at the end of the installation,
+it is possible to set <code>JOLIE_HOME</code> with the command
+<code>echo 'export JOLIE_HOME="/usr/lib/jolie"' >> ~/.bash_profile</code>
+
+However, some versions of Linux/MacOs X do not <a
+href="http://ss64.com/bash/source.html">source</a> the
+<code>.bash_profile</code> file. If, when trying to run Jolie you get
+the message <code>"Error: Could not find or load main class jolie.Jolie"</code>, it
+could be the case your shell is not sourcing file <code>.bash_profile</code>. To
+fix it, edit your <code>.bashrc</code> in you home directory by
+appending at its end the line <code>source .bash_profile</code>.
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- The installer needs permission to write in the directories in which you intend to install Jolie.
+Therefore, for example, if you intend to install Jolie in a system directory you may need to launch the installer as root in Linux/MacOS (`sudo java -jar jolie-1.5.0.jar`),
+or [administrator in Windows](https://technet.microsoft.com/en-us/library/cc947813.aspx). -->
 
 ## The hard way (compile from sources)
 
@@ -184,7 +207,7 @@ You can now execute Jolie scripts by issuing the `jolie` command in a console, f
 Jolie support for the [Atom editor](http://www.atom.io/) can be installed with the official Atom Package Manager (apm):
 
 <pre name="code">
-apm install linter-jolie
+apm install atom-jolie
 </pre>
 
 Contributions to the [language-jolie](https://github.com/fmontesi/language-jolie) and [linter-jolie](https://github.com/fmontesi/linter-jolie) packages are welcome.

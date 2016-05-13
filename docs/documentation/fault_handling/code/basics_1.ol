@@ -6,15 +6,16 @@ main
 {	
 	install( fault_main => 
 		println@Console( "A wrong number has been inserted!" )()
-		);
+	);
 	
 	secret = 3;
 	
 	scope( num_scope ) 
 	{	
-		install( fault_number => 
-			println@Console( "Wrong!" )();
-			throw( fault_main )
+		install( 
+			fault_number => 
+				println@Console( "Wrong!" )();
+				throw( fault_main )
 		);
 		
 		showInputDialog@SwingUI( "Insert a number" )( number );

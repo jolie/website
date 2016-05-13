@@ -17,5 +17,5 @@ main
 			println@Console( "recovering step 2" )()
 		)
 	};
-	throw( a_fault )
+	throw( FaultName )
 }

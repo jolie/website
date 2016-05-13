@@ -10,5 +10,5 @@ main
 		println@Console( "I am scope_name" )()
 	}
 	|
-	throw( a_fault )
+	throw( FaultName )
 }

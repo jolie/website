@@ -1,10 +1,10 @@
 // interface.iol
 
-type Fault_number_type: void{
+type NumberExceptionType: void{
 	.number: int
-	.fault_error: string
+	.exceptionMessage: string
 }
 
-interface Guess {
-	RequestResponse: guess throws fault_number( Fault_number_type )
+interface GuessInterface {
+	RequestResponse: guess throws NumberException( NumberExceptionType )
 }

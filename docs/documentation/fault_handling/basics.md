@@ -18,7 +18,7 @@ Scope and throw syntax follows.
 
 ## Fault handlers
 
-The `install` statement provides the installation of dynamic fault handlers. `install` joins a fault to a process and its handler is executed when the scope catches the fault.
+The `install` statement provides the installation of dynamic fault handlers, where `install` joins a fault to a process and its handler is executed when the scope catches the fault.
 
 <div class="syntax" src="syntax_basics_2.ol"></div>
 
@@ -48,11 +48,12 @@ Let us modify the previous example in order to introduce a request-response oper
 
 <div class="code" src="basics_2.ol"></div>
 
-The interface defines the operation `guess` able to throw a `fault_number`, whose message type is `Fault_number_type`.
+The interface defines the operation `guess` able to throw a `NumberException`, whose message type is `NumberExceptionType`.
 
 <div class="code" src="basics_3.ol"></div>
 
-The server implements the throw statement in the else branch of operation `guess` behaviour. If the number sent by the client is different than the `secret` one, the request-response operation will send a `fault_number` fault to the client along the fault data.
+The server implements the throw statement in the else branch of operation `guess` behaviour. If the number sent by the client is different than the `secret` one, the request-response operation will send a `NumberException`
+fault to the client along the fault data.
 
 The syntax for joining data into a fault is a simple extension of the `throw` syntax given previously.
 
@@ -63,3 +64,16 @@ Let us write a client that handles the raise of the fault and prints the data se
 <div class="code" src="basics_4.ol"></div>
  
 As shown at Line 15, in order to correctly reference fault data within a fault handler, it is necessary to specify the scope path where the fault is contained.
+
+## Accessing a fault caught in a scope
+
+It is possible to check if scopes caught faults and also to access the contents of faults.
+
+With syntax `scope_name.default` we access the name of the fault caught by the scope.
+
+Used in combination with [dynamic lookup](#!documentation/basics/data_structures.html#dynamic-look-up), with syntax `scope_name( scope_name.default ).faultMessage`, we can access the message sent with the fault, for instance `msg` in the example below.
+
+<div class="code" src="basics_6.ol"></div>
+
+
+

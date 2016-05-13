@@ -19,5 +19,5 @@ main
 	}
 	|
 	sleep@Time( 3 )();
-	throw( a_fault )
+	throw( FaultName )
 }
