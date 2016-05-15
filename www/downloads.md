@@ -19,7 +19,7 @@ This method requires Java 6 (also called Java 1.6) or later to be installed befo
 Download the Java-based installer of the latest stable release of Jolie:
 
 <div class="col-xs-12 text-center">
-<a href="/files/releases/jolie-1.5.0.jar" onClick="ga('send', 'event', { eventCategory: 'Download', eventAction: 'JolieInstaller', eventLabel: 'jolie-1.5.0.jar'});">
+<a href="/files/releases/jolie-1.5.0.jar">
 <!-- <button type="button" class="center-block btn btn-default btn-lg"> -->
 <p class="download">Jolie Installer</p>
 <!-- </button> -->
