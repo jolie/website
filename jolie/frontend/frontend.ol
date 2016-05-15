@@ -83,10 +83,10 @@ init
 		.binding.protocol = "http"
 	};
 	with( planetBlogs[0] ) {
-		// .url = "http://fmontesi.github.io/";
-		// .binding.location = "socket://fmontesi.github.io:80/feed-jolie.xml";
-		.url = "http://fmontesi.blogspot.com/";
-		.binding.location = "socket://fmontesi.blogspot.com:80/feeds/posts/default/-/jolie";
+		.url = "http://fmontesi.github.io/";
+		.binding.location = "socket://fmontesi.github.io:80/feed-jolie.xml";
+		// .url = "http://fmontesi.blogspot.com/";
+		// .binding.location = "socket://fmontesi.blogspot.com:80/feeds/posts/default/-/jolie";
 		.binding.protocol = "http"
 	};
 	with( planetBlogs[1] ) {

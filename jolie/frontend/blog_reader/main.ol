@@ -100,7 +100,7 @@ define getPrettyMonth
 define fetchEntries
 {
 	scope( fetch ){
-		install( IOException => 
+		install( IOException =>
 			// nullProcess
 			println@Console( "IOException fetching " + Blog.location )()
 		);
@@ -122,14 +122,18 @@ define fetchEntries
 				.date = month + " " + aDate.group[3] + ", " + aDate.group[1];
 				for( i = 0, i < #atomEntry.link, i++ ) {
 					/* if ( atomEntry.link[i].(Attrs).rel == "alternate" ) {
-						
+
 					} else */ if ( atomEntry.link[i].(Attrs).rel == "alternate" ) {
 						.links.entry = atomEntry.link[i].(Attrs).href
 					}
 				};
 				.links.blog = blogDescriptor.url;
 				for( i = 0, i < #atomEntry.category, i++ ) {
-					.tag[i] = atomEntry.category[i].("@Attributes").term
+					if ( is_defined( atomEntry.category[i].("@Attributes").term ) ) {
+						.tag[i] = atomEntry.category[i].("@Attributes").term
+					} else if ( is_defined( atomEntry.category[i].("@Attributes").tag ) ) {
+						.tag[i] = atomEntry.category[i].("@Attributes").tag
+					}
 				}
 			}
 		}
@@ -174,7 +178,7 @@ define fireSocialMessages
 					post_string = "";
 					global.post_history_exists = true
 				};
-				file.content = post_string + cacheEntries[ c ].links.entry;					      
+				file.content = post_string + cacheEntries[ c ].links.entry;
 				writeFile@File( file )();
 				global.post_history.( cacheEntries[ c ].links.entry ) = true
 			}
@@ -192,7 +196,7 @@ init
 		cd + fs + TwitterPostHistoryFile;
 
 	exists@File( file.filename )( global.post_history_exists );
-	if ( global.post_history_exists ) {	      
+	if ( global.post_history_exists ) {
 		readFile@File( file )( post_history_txt );
 		split_rs = post_history_txt;
 		split_rs.regex = "\n";
@@ -204,7 +208,7 @@ init
 		undef( split_rs )
 	} else {
 		file.content = "";
-		writeFile@File( file )();     
+		writeFile@File( file )();
 		undef( global.post_history )
 	}
 }
@@ -246,4 +250,3 @@ main
 		setNextTimeout@Time( BlogRefreshTimeout )
 	}
 }
-
