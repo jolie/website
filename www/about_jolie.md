@@ -75,6 +75,7 @@ sponsoring, etc.).
 
 * Michael S&oslash;by Andersen
 * Paolo Anedda
+* Alexey Bandura
 * Valentino Baraldo
 * Matteo Bonazzi
 * Silvia Bonucci
