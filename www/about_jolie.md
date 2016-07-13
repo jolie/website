@@ -97,6 +97,7 @@ sponsoring, etc.).
 * Jan Aagaard Meier
 * Pier Paolo Lombardi
 * Roberto Lucchi
+* Sergio Magnani
 * Davide Malagoli
 * Jacopo Mauro
 * Manuel Mazzara
@@ -110,17 +111,15 @@ sponsoring, etc.).
 * Stefano Palazzi
 * Alessandro Perfetti
 * Monica Pitt
-* Larisa Safina
-* Davide Sangiorgi
-* Karoly Szanto
 * Federico Roffi
-* Sergio Magnani
 * Larisa Safina
 * Mauro Silvagni
 * Bergar Simonsen
+* Davide Sangiorgi
 * Maurizio Sintuzzi
 * Alessandro Sperduti
 * Alessandro Suzzi
+* Karoly Szanto
 * Valentina Tronconi
 * Tullio Vardanega
 * Gianluigi Zanetti
