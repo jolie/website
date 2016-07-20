@@ -157,6 +157,14 @@ Let us focus on the cardinality. To be valid, the node `myType` must declare:
 
 Referring to the previous example, `x` requires the definition of both nodes `value` and `comment`, while `y` requires only the definition the node `comment`, since none or an infinite number of nodes `myType.y.value` can be defined. The subnode `z` can be present or not, and can contain any kind of subnode (`{ ? }`).
 
+### Type Choice
+
+Type Choice makes possible to assign a type for a variable choosing from several types. It is a type *T* which consists of two types *T left* and *T right*, which can be of any types themselves (native, linked, choice):
+
+<div class="syntax" src="syntax_type_choice_1.ol"></div>
+
+We use the pipe symbol "|" to represent the choice operator: *T = T left | T right*
+
 ---
 
 ## Creating a communication port
