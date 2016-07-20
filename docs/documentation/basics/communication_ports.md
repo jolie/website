@@ -159,11 +159,14 @@ Referring to the previous example, `x` requires the definition of both nodes `va
 
 ### Type Choice
 
-Type Choice makes possible to assign a type for a variable choosing from several types. It is a type *T* which consists of two types *T left* and *T right*, which can be of any types themselves (native, linked, choice):
+Jolie also supports *type choice*, i.e., that operations can accept values of different, but fixed, data-types. 
+
+For example, the syntax `type T: bool | string` means that a value of data-type `T` can be either a boolean or a string.
+
+In general, the type choice is a type `type T: T_left | T_right` consisting of two types `T_left` and `T_right` where the pipe symbol `|` represents the choice operator. At runtime, when a value is received on an operation, it will only have one of the types of the type choice. `T_left` and `T_right` can be native, custom, or type choices as well.
 
 <div class="syntax" src="syntax_type_choice_1.ol"></div>
 
-We use the pipe symbol "|" to represent the choice operator: *T = T left | T right*
 
 ---
 
