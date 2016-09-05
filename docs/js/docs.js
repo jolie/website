@@ -173,6 +173,7 @@ var updateInternalLinks = function ( c ) {
 		var href = $( a ).attr( "href" );
 		if( href.charAt( 0 ) != "/" 		&& 
 			href.indexOf( "http://" ) < 0 && 
+			href.indexOf( "https://" ) < 0 && 
 			href.indexOf( "documentation" ) < 0 && 
 			href.charAt( 0 ) != "#" ){
 			$( a ).attr( "href", hashRoot + href );
