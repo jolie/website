@@ -60,7 +60,7 @@ for enabling the router. It is worth noting that the microservice published as a
 
 Options:
 - enable_swagger [ default = true ]
-This operation enables the creation of the related json swagger file which can be easily imported into Swagger (http://swagger.io/). Thanks to it, it is possible to invoke the rest apis from swagger.
+This operation enables the creation of the related json swagger file which can be easily imported into [Swagger](http://swagger.io/). Thanks to it, it is possible to invoke the rest apis from swagger.
 
 - easy_interface [ default = false ]
 This modality allows for skipping the usage of the router. It is useful when the microservice already provides a http port where its operations are available. In such a case, the microservice is already able to receive json messages and reply with json messages. In these cases, only the swagger json file is created where all the operations are automatically converted into POST calls. No annotations and templates are required in these cases.
@@ -69,7 +69,7 @@ WARNING: the http protocol of the microservice must define the follwing paramete
 
 ## Running the example
 Pre-requisite:
-Prepare a web application for running a local instance of a Swagger UI (http://swagger.io/swagger-ui/). If you want to use jolie, you could download Leonardo web server (https://github.com/jolie/leonardo) and put the content of the SwaggerUI inside the folder www.
+Prepare a web application for running a local instance of a [Swagger UI](http://swagger.io/swagger-ui/). If you want to use jolie, you could download [Leonardo web server](https://github.com/jolie/leonardo) and put the content of the SwaggerUI inside the folder www.
 Then launch `jolie leonardo.ol` in a separate shell and get the index.html page from your browser.
 
 The example:
