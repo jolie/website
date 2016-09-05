@@ -119,8 +119,17 @@
         ]
     },
     {
+        "label": "REST Services",
+        "children": [
+            {
+                "url": "rest_services/rest_services.html",
+                "label": "rest_services"
+            }
+        ]
+    },
+    {
         "label": "Web Services",
-        "children": [        
+        "children": [
             {
                 "url": "web_services/web_services.html",
                 "label": "web_services"
@@ -187,7 +196,7 @@
                 "label": "SSL"
             }
         ]
-    },{        
+    },{
         "label": "Locations",
         "children": [
             {
