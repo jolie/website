@@ -40,9 +40,18 @@ A variable type can be checked at runtime by means of the `instanceof` operator,
 
 <div class="syntax" src="syntax_handling_simple_data_1.ol"></div>
 
-`instanceof` operator can be used to check variable typing with both native types and custom ones (see type subsection in [Communication Ports](basics/communication_ports.html) section). Example:
+`instanceof` operator can be used to check variable typing with native, custom and choice types (see type subsection in [Communication Ports](basics/communication_ports.html) section). Example:
 
 <div class="code" src="handling_simple_data_2.ol"></div>
+
+Variables of two different types can have the same choice type:
+
+<div class="code" src="handling_simple_data_2_1.ol"></div>
+
+`instanceof` operator can show which choice in the type was used:
+
+<div class="code" src="handling_simple_data_2_2.ol"></div>
+
 
 ---
 
