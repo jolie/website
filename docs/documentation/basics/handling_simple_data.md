@@ -40,7 +40,11 @@ A variable type can be checked at runtime by means of the `instanceof` operator,
 
 <div class="syntax" src="syntax_handling_simple_data_1.ol"></div>
 
-`instanceof` operator can be used to check variable typing with native, custom and choice types (see type subsection in [Communication Ports](basics/communication_ports.html) section). Example:
+`instanceof` operator can be used to check variable typing with 
+[basic](http://localhost:8080/#!documentation/basics/communication_ports.html#basic-data-types),
+[custom](http://localhost:8080/#!documentation/basics/communication_ports.html#custom-typed-subtree-data-types-with-cardinality),
+and 
+[choice](http://localhost:8080/#!documentation/basics/communication_ports.html#type-choice) data types. Example:
 
 <div class="code" src="handling_simple_data_2.ol"></div>
 

@@ -163,9 +163,9 @@ Jolie also supports *type choice*, i.e., that operations can accept values of di
 
 For example, the syntax `type T: bool | string` means that a value of data-type `T` can be either a boolean or a string.
 
-In general, the type choice is a type `type T: T_left | T_right` consisting of two types `T_left` and `T_right` where the pipe symbol `|` represents the choice operator. At runtime, when a value is received on an operation, it will only have one of the types of the type choice. `T_left` and `T_right` can be native, custom, or type choices as well.
+In general, the type choice is a type `type T: T_left | T_right` consisting of two types `T_left` and `T_right` where the pipe symbol `|` represents the choice operator. At runtime, when a value is received on an operation, it will only have one of the types of the type choice. `T_left` and `T_right` can be basic, custom or type choices as well.
 
-<div class="syntax" src="syntax_type_choice_1.ol"></div>
+<div class="code" src="type_choice_1.ol"></div>
 
 
 ---
