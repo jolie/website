@@ -18,7 +18,28 @@ We can observe that in the second scenario aggregation *merges* the interfaces o
 
 Remarkably, aggregation handles the request-response pattern seamlessly: when forwarding a request-response invocation to an aggregated service, the aggregator will automatically take care of relaying the response to the original invoker.
 
-## The forwarder, an Aggregation example
+As an example, here we consider the case of two services, Printer and Fax, which are aggregated together in a service called Aggregator. The code of Printer and Fax services are reported below:
+
+<div class="code" src="aggregation_orchestration_printer_and_fax.ol"></div>
+
+In the aggregator we define an outputPort for each aggregated service (Printer and Fax). The aggregation is actually defined in the inputPort Aggregator where we use the keyword `Aggregated` for specifying the list of the aggregated ports. Thanks to this definition, all the messages for operations `print`, `del` and `fax` received by the port Aggregator, will be forwarded to services Printer and Fax respectively.
+
+<div class="code" src="aggregation_orchestration_aggregator.ol"></div>
+
+It is worth noting that the aggregator also implements another operation called `faxAndPrint` which orchestrates the operations of services Fax and Printer. The operation faxAndPrint offers the possibility to call both the services Fax and Printer atomically where the print operation can be rolled back. Summarizing, at the inputPort `Aggregator`, the aggregator service offers the following operations:
+- print : supplied by service Printer
+- del   : supplied by service Printer
+- fax	  : supplied by service Fax
+- faxAndPrint : supplied by the aggregator
+
+
+##jolie2surface
+In the previous example the client defined an outputPort where it listed all the available interfaces at the inputPort of the aggregator: `PrinterInterface`, `FaxInterface` and `AggregatorInterface`. There could be cases where we do not want to distribute all the interfaces separately, but we just want to provide one single interface which sums up all the operations available at a given port.
+
+In order to achieve such a result, jolie is released with a useful tool called `jolie2surface` which provides the surface available at the inputPort of a microservice. See the related section [jolie2surface](other_tools/jolie2surface.html) for details.
+
+
+## The forwarder, bridging different communication protocols
 
 Aggregation can be used for system integration, e.g., bridging services that use different communication technologies or protocols. The deployment snippet below creates a service that forwards incoming SODEP calls on TCP port 8000 to the output port `MyOP`, converting the received message to SOAP.
 

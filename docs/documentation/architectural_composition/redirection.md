@@ -2,7 +2,7 @@
 
 Redirection allows the creation of a *master service* acting as a single communication endpoint to multiple service, called resources. The master service receives all the messages meant for the system that it handles. This is obtained by binding an input port of the master service to multiple output ports, each one identifying a service by means of a *resource name*.
 
-Invokers send messages to the master service specifying also the intended resource name. 
+Invokers send messages to the master service specifying also the intended resource name.
 
 The main advantages of such an approach are:
 
@@ -30,8 +30,10 @@ Once set, calling a master service for one of its resources is done by declaring
 
 <div class="code" src="redirection_2.ol"></div>
 
-## Dynamic Redirection
-
-Redirection can be changed dynamically by simply modifying the outputPort location via dynamic port binding.
+As an example, let us consider the following redirector which redirects messages to two resources: Sum and Sub.
 
 <div class="code" src="redirection_3.ol"></div>
+
+The following client calls the operation sum of the service Sum by invoking the redirector and specifying the resource name in the location:
+
+<div class="code" src="redirection_4.ol"></div>
