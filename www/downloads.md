@@ -1,14 +1,41 @@
 <!--Themed-->
 
 # <a id="download-and-install"></a> Download and Install
+Here you can find two possible ways for installing Jolie in your machine and use it for developing your microservices. You can just pull down the jolie docker container, or install the Jolie binaries directly in your machine.
 
+## Using a prepared docker container
+This solution requires [Docker](http://www.docker.com) previously installed in your machine.
+Open a shell and pull the Jolie image using the following command:
+
+<pre>docker pull jolielang/jolie1.6.0beta1</pre>
+
+Once the jolie docker image is available on your machine just create a container from it by adding a local volume where storing the jolie files.  
+
+<pre>docker run -it -v /your-host-folder-path:/your-container-path --name CONTAINERNAME jolielang/jolie1.6.0beta1</pre>
+
+Now just edit your files in folder `/your-host-folder-path` and find them in your container folder `/your-host-folder-path`. In order to run a jolie microservice just type the following command in the container shell:
+
+<pre>jolie your_file.ol</pre>
+
+As a final remark, we remind that it is possible to open several shells in your container just launching the following command:
+
+<pre>docker exec -it CONTAINERNAME bash</pre>
+
+### Using the docker container with Jolie examples
+if you are interested in running some of the examples discussed in the documentation, you can directly pull the following docker image:
+<pre>docker pull jolielang/jolie-examples</pre>
+
+In the folder `/examples` of the container a complete list of examples is reported. The list of examples may be consulted at this link: [https://github.com/jolie/examples](https://github.com/jolie/examples)
+
+
+
+## Installing Jolie directly in your machine
 Jolie requires Java to run, so make sure to have [Java](http://www.java.com/) installed before proceeding.
 
 Regardless of the method you choose, after installation executing a Jolie script will be just a matter of invoking the Jolie
 interpreter:
 
 <pre>jolie your_file.ol</pre>
-
 
 ## The easy way (binary installer)
 
