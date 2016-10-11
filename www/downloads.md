@@ -1,84 +1,25 @@
 <!--Themed-->
 
-You can choose two ways to get started with Jolie.
+<div>
 
-<div class="container">
-<div class="col-xs-6">
-<div class="panel panel-success">
-<div class="panel-heading">
-<h3 class="panel-title"><a href="#quick-start-with-pre-built-image">Start with Docker</a></h3>
-</div>
-<div style="padding-bottom: 2.3em;padding-top: 2.3em;" class="panel-body">
-<p>Skip the install phase and start hacking right away.</p>
-<p>Downloading a ready-to-go [docker image](#quick-start-with-pre-built-image) with everything set up.</p>
-</div>
-</div>
-</div>
-<div class="col-xs-6">
-<div class="panel panel-info">
-<div class="panel-heading">
-<h3 class="panel-title"><a href="#install-jolie-directly-in-your-machine">Direct Installation</a></h3>
-</div>
-<div class="panel-body">
-Install Jolie in your OS the [easy way](#the-easy-way) with the automatic installer.
+<!-- Navigation tabs -->
+<ul class="nav nav-tabs" role="tablist">
+<li role="presentation" class="active"><a href="#installer" aria-controls="installer" role="tab" data-toggle="tab">Installer</a></li>
+<li role="presentation"><a href="#compile" aria-controls="compile" role="tab" data-toggle="tab">Compile from Sources</a></li>
+<li role="presentation"><a href="#docker" aria-controls="docker" role="tab" data-toggle="tab">Docker</a></li>
+<li role="presentation"><a href="#editors" aria-controls="editors" role="tab" data-toggle="tab">Editors & Plug-ins</a></li>
+</ul>
 
-<button type="button" class="btn btn-default center-block">
-<a href="/files/releases/jolie-1.5.0.jar">Jolie 1.5</a>
-</button>
+<!-- Tab panels -->
+<div class="tab-content">
+<div role="tabpanel" class="tab-pane active" id="installer">
 
-Or compile it the [hard way](#the-hard-way) from sources.
-</div>
-</div>
-</div>
-</div>
+## Jolie Binaries Installer
 
-Ready to go but looking for editors integrated with Jolie?
-[We've got your back](#integrated-development-environments)!
+Jolie requires Java to run.
 
----
-
-## Quick start with pre-built image
-This solution requires [Docker](http://www.docker.com) previously installed in
-your machine.
-
-Open a shell and pull the most recent Jolie image with the command <kbd>docker
-pull jolielang/jolie1.6.0beta1</kbd>.
-
-Once the image is available on your machine, create
-a container from it by adding a local volume where storing the Jolie files:
-<kbd>docker run -it -v /your-host-folder-path:/your-container-path --name
-CONTAINERNAME jolielang/jolie1.6.0beta1</kbd>. 
-
-Now you can edit your files in folder
-`/your-host-folder-path` and find them in your container folder
-`/your-host-folder-path`. 
-
-Finally, to run a Jolie microservice type <kbd>jolie your_file.ol</kbd> in the
-launched shell.
-
-Containers are also useful to test systems of microservices running within the
-same container. To run a new microservice on the same container type
-<kbd>docker exec -it CONTAINERNAME bash</kbd> to launch a new shell, following
-the previous commands to execute the desired service.
-
-### Running examples in Jolie documentation with Docker
-The [Jolie documentation](http://docs.jolie-lang.org/) contains many running examples. With the Jolie Docker image you can run any of these examples without having Jolie directly installed in you OS.
-
-The easiest way to run them is to directly pull the docker image `jolielang/jolie-examples` with command <kbd>docker pull jolielang/jolie-examples</kbd>.
-
-The folder `/examples` of the container includes all the complete examples reported in the documentation (see the related [repository](https://github.com/jolie/examples)). 
-
----
-
-## Install Jolie directly in your machine
-Jolie requires Java to run, so make sure to have [Java](http://www.java.com/) installed before proceeding.
-
-Regardless of the method you choose, after Jolie is installed you can launch
-Jolie services with command <kbd>jolie your_file.ol</kbd>.
-
-### The easy way
-
-This method requires Java 6 (also called Java 1.6) or later to be installed before proceeding.
+Make sure to have [Java](http://www.java.com/) 6 (also called Java 1.6) or
+later installed before proceeding.
 
 #### Get the Jolie installer
 
@@ -109,7 +50,7 @@ with elevated privileges:
   administrator privileges</a> and launch the installer;</li>
 
 <li><strong>on Linux/MacOS</strong>, by launching the installer as root with command
-<kbd>sudo java -jar jolie-1.5.0.jar</kbd>.
+<kbd>sudo java -jar jolie-1.5.0.jar</kbd>.</li>
 
 </ul>
 
@@ -167,8 +108,10 @@ its end the line <code>source .bash_profile</code>.
 </div>
 </div>
 </div>
+</div>
+<div role="tabpanel" class="tab-pane" id="compile">
 
-### The hard way
+## Compilation from Source files
 
 With these instructions you can download the development version of Jolie
 (`trunk`). It requires the following software to be installed before
@@ -180,7 +123,7 @@ Here are some useful links to get the required tools:
 * [Git](http://git-scm.com/);
 * [Apache Ant](http://ant.apache.org/).
 
-Jump to the instructions for your Operating System:
+<!-- Jump to the instructions for your Operating System:
 
 <div class="text-center">
 <a href="#nix"><img style="margin-left: 10px; max-width: 80px;" src="/imgs/os_linux.png" title="Linux" /></a>
@@ -188,7 +131,7 @@ Jump to the instructions for your Operating System:
 title="Mac OS"/></a>
 <a href="#windows"><img src="/imgs/os_win.png" style="margin-left: 10px;max-width: 80px;" 
  title="Windows"/></a>    
-</div>
+</div> -->
 
 #### <a id="nix"></a>Linux and Mac OS
 
@@ -208,7 +151,7 @@ configurable in `buildconfig/config.properties`, too).
 
 Remember to follow the on-screen instructions at the end of the installation procedure about the environment variables.
 
-#### <a id="windows"></a>On Windows
+#### <a id="windows"></a>Windows
 
 Compiling Jolie under Windows requires to work only within the same drive e.g..
 `C:`. This is due to limitations of the Java class-loader in locating resources
@@ -241,7 +184,43 @@ instructions at the end of the installation procedure regarding environment
 variables. In particular, you should make sure that the environment variable
 `JOLIE_HOME` is set to the directory you used for `install.dir`.
 
----
+</div>
+<div role="tabpanel" class="tab-pane" id="docker">
+
+## Quick start with pre-built image
+This solution requires [Docker](http://www.docker.com) previously installed in
+your machine.
+
+Open a shell and pull the most recent Jolie image with the command <kbd>docker
+pull jolielang/jolie1.6.0beta1</kbd>.
+
+Once the image is available on your machine, create
+a container from it by adding a local volume where storing the Jolie files:
+<kbd>docker run -it -v /your-host-folder-path:/your-container-path --name
+CONTAINERNAME jolielang/jolie1.6.0beta1</kbd>. 
+
+Now you can edit your files in folder
+`/your-host-folder-path` and find them in your container folder
+`/your-host-folder-path`. 
+
+Finally, to run a Jolie microservice type <kbd>jolie your_file.ol</kbd> in the
+launched shell.
+
+Containers are also useful to test systems of microservices running within the
+same container. To run a new microservice on the same container type
+<kbd>docker exec -it CONTAINERNAME bash</kbd> to launch a new shell, following
+the previous commands to execute the desired service.
+
+### Running examples in Jolie documentation with Docker
+The [Jolie documentation](http://docs.jolie-lang.org/) contains many running examples. With the Jolie Docker image you can run any of these examples without having Jolie directly installed in you OS.
+
+The easiest way to run them is to directly pull the docker image `jolielang/jolie-examples` with command <kbd>docker pull jolielang/jolie-examples</kbd>.
+
+The folder `/examples` of the container includes all the complete examples reported in the documentation (see the related [repository](https://github.com/jolie/examples)). 
+
+</div>
+<div role="tabpanel" class="tab-pane" id="editors">
+  
 
 ## Integrated Development Environments
 
@@ -273,3 +252,8 @@ highlighting and service launch and
 for on-the-fly error reporting.
 
 Both plug-ins can be installed directly within Sublime Text with [Package Control](https://packagecontrol.io/installation).
+
+</div>
+</div>
+
+</div>

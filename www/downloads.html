@@ -1,59 +1,28 @@
 <!--Themed-->
-<p>You can choose two ways to get started with Jolie.</p>
-<div class="container">
-<div class="col-xs-6">
-<div class="panel panel-success">
-<div class="panel-heading">
-<h3 class="panel-title">
-<a href="#quick-start-with-pre-built-image">Start with Docker</a>
-</h3>
-</div>
-<div class="panel-body" style="padding-bottom: 2.3em;padding-top: 2.3em;">
-<p>
-Skip the install phase and start hacking right away.
-</p>
-<p>
-Downloading a ready-to-go <a href="#quick-start-with-pre-built-image">docker image</a> with everything set up.
-</p>
-</div>
-</div>
-</div>
-<div class="col-xs-6">
-<div class="panel panel-info">
-<div class="panel-heading">
-<h3 class="panel-title">
-<a href="#install-jolie-directly-in-your-machine">Direct Installation</a>
-</h3>
-</div>
-<div class="panel-body">
-<p>Install Jolie in your OS the <a href="#the-easy-way">easy way</a> with the automatic installer.</p>
-<button type="button" class="btn btn-default center-block">
-<a href="/files/releases/jolie-1.5.0.jar">Jolie 1.5</a>
-</button>
-<p>Or compile it the <a href="#the-hard-way">hard way</a> from sources.</p>
-</div>
-</div>
-</div>
-</div>
-<p>Ready to go but looking for editors integrated with Jolie? <a href="#integrated-development-environments">We've got your back</a>!</p>
-<hr />
-<h2 id="quick-start-with-pre-built-image">Quick start with pre-built image</h2>
-<p>This solution requires <a href="http://www.docker.com">Docker</a> previously installed in your machine.</p>
-<p>Open a shell and pull the most recent Jolie image with the command <kbd>docker pull jolielang/jolie1.6.0beta1</kbd>.</p>
-<p>Once the image is available on your machine, create a container from it by adding a local volume where storing the Jolie files: <kbd>docker run -it -v /your-host-folder-path:/your-container-path --name CONTAINERNAME jolielang/jolie1.6.0beta1</kbd>.</p>
-<p>Now you can edit your files in folder <code>/your-host-folder-path</code> and find them in your container folder <code>/your-host-folder-path</code>.</p>
-<p>Finally, to run a Jolie microservice type <kbd>jolie your_file.ol</kbd> in the launched shell.</p>
-<p>Containers are also useful to test systems of microservices running within the same container. To run a new microservice on the same container type <kbd>docker exec -it CONTAINERNAME bash</kbd> to launch a new shell, following the previous commands to execute the desired service.</p>
-<h3 id="running-examples-in-jolie-documentation-with-docker">Running examples in Jolie documentation with Docker</h3>
-<p>The <a href="http://docs.jolie-lang.org/">Jolie documentation</a> contains many running examples. With the Jolie Docker image you can run any of these examples without having Jolie directly installed in you OS.</p>
-<p>The easiest way to run them is to directly pull the docker image <code>jolielang/jolie-examples</code> with command <kbd>docker pull jolielang/jolie-examples</kbd>.</p>
-<p>The folder <code>/examples</code> of the container includes all the complete examples reported in the documentation (see the related <a href="https://github.com/jolie/examples">repository</a>).</p>
-<hr />
-<h2 id="install-jolie-directly-in-your-machine">Install Jolie directly in your machine</h2>
-<p>Jolie requires Java to run, so make sure to have <a href="http://www.java.com/">Java</a> installed before proceeding.</p>
-<p>Regardless of the method you choose, after Jolie is installed you can launch Jolie services with command <kbd>jolie your_file.ol</kbd>.</p>
-<h3 id="the-easy-way">The easy way</h3>
-<p>This method requires Java 6 (also called Java 1.6) or later to be installed before proceeding.</p>
+<div>
+
+<!-- Navigation tabs -->
+<ul class="nav nav-tabs" role="tablist">
+<li role="presentation" class="active">
+<a href="#installer" aria-controls="installer" role="tab" data-toggle="tab">Installer</a>
+</li>
+<li role="presentation">
+<a href="#compile" aria-controls="compile" role="tab" data-toggle="tab">Compile from Sources</a>
+</li>
+<li role="presentation">
+<a href="#docker" aria-controls="docker" role="tab" data-toggle="tab">Docker</a>
+</li>
+<li role="presentation">
+<a href="#editors" aria-controls="editors" role="tab" data-toggle="tab">Editors &amp; Plug-ins</a>
+</li>
+</ul>
+<!-- Tab panels -->
+<div class="tab-content">
+<div role="tabpanel" class="tab-pane active" id="installer">
+
+<h2 id="jolie-binaries-installer">Jolie Binaries Installer</h2>
+<p>Jolie requires Java to run.</p>
+<p>Make sure to have <a href="http://www.java.com/">Java</a> 6 (also called Java 1.6) or later installed before proceeding.</p>
 <h4 id="get-the-jolie-installer">Get the Jolie installer</h4>
 <p>Download the Java-based installer of the latest stable release of Jolie:</p>
 <div class="col-xs-12 text-center">
@@ -73,7 +42,8 @@ Jolie Installer
   href="https://technet.microsoft.com/en-us/library/cc947813.aspx"> administrator privileges</a> and launch the installer;
 </li>
 <li>
-<p><strong>on Linux/MacOS</strong>, by launching the installer as root with command <kbd>sudo java -jar jolie-1.5.0.jar</kbd>.</p>
+<strong>on Linux/MacOS</strong>, by launching the installer as root with command <kbd>sudo java -jar jolie-1.5.0.jar</kbd>.
+</li>
 </ul>
 <div class="panel panel-default">
 <div class="panel-heading">
@@ -109,7 +79,9 @@ href="http://ss64.com/bash/source.html">source</a> the <code>.bash_profile</code
 </div>
 </div>
 </div>
-<h3 id="the-hard-way">The hard way</h3>
+</div>
+<div id="compile" class="tab-pane" role="tabpanel">
+<h2 id="compilation-from-source-files">Compilation from Source files</h2>
 <p>With these instructions you can download the development version of Jolie (<code>trunk</code>). It requires the following software to be installed before proceeding:</p>
 <p>Here are some useful links to get the required tools:</p>
 <ul>
@@ -117,12 +89,15 @@ href="http://ss64.com/bash/source.html">source</a> the <code>.bash_profile</code
 <li><a href="http://git-scm.com/">Git</a>;</li>
 <li><a href="http://ant.apache.org/">Apache Ant</a>.</li>
 </ul>
-<p>Jump to the instructions for your Operating System:</p>
+<!-- Jump to the instructions for your Operating System:
+
 <div class="text-center">
-<p><a href="#nix"><img style="margin-left: 10px; max-width: 80px;" src="/imgs/os_linux.png" title="Linux" /></a> <a href="#nix"><img src="/imgs/os_mac.png" style="margin-left: 10px;max-width: 80px;" 
-title="Mac OS"/></a> <a href="#windows"><img src="/imgs/os_win.png" style="margin-left: 10px;max-width: 80px;" 
- title="Windows"/></a></p>
-</div>
+<a href="#nix"><img style="margin-left: 10px; max-width: 80px;" src="/imgs/os_linux.png" title="Linux" /></a>
+<a href="#nix"><img src="/imgs/os_mac.png" style="margin-left: 10px;max-width: 80px;" 
+title="Mac OS"/></a>
+<a href="#windows"><img src="/imgs/os_win.png" style="margin-left: 10px;max-width: 80px;" 
+ title="Windows"/></a>    
+</div> -->
 <h4 id="linux-and-mac-os"><a id="nix"></a>Linux and Mac OS</h4>
 <p>Open a shell and execute:</p>
 <p><kbd>git clone https://github.com/jolie/jolie.git</kbd></p>
@@ -131,7 +106,7 @@ title="Mac OS"/></a> <a href="#windows"><img src="/imgs/os_win.png" style="margi
 <p>The ant script will automatically build and install Jolie for you. The default is to install in <code>/usr/lib/jolie</code>, but the installation parameters can be controlled by editing <code>buildconfig/config.properties</code>.</p>
 <p>The Jolie launchers are installed inside folder <code>/usr/bin</code> (this parameter is configurable in <code>buildconfig/config.properties</code>, too).</p>
 <p>Remember to follow the on-screen instructions at the end of the installation procedure about the environment variables.</p>
-<h4 id="on-windows"><a id="windows"></a>On Windows</h4>
+<h4 id="windows"><a id="windows"></a>Windows</h4>
 <p>Compiling Jolie under Windows requires to work only within the same drive e.g.. <code>C:</code>. This is due to limitations of the Java class-loader in locating resources within different drives.</p>
 <p>Open a command line and execute</p>
 <p><kbd>git clone https://github.com/jolie/jolie.git</kbd></p>
@@ -141,7 +116,21 @@ title="Mac OS"/></a> <a href="#windows"><img src="/imgs/os_win.png" style="margi
 install.dir=C:\\Jolie</code></pre>
 <p>In case you change the directory for <code>install.launcher_dir</code>, make sure that it is included in your your PATH environment variable. You can find some instructions on managing environment variables in Windows XP at this <a href="http://support.microsoft.com/kb/310519">link</a>. Please note that using paths with spaces may cause problems in Windows and need special handling.</p>
 <p>Finally, execute <kbd>ant dist-install</kbd>, following the on-screen instructions at the end of the installation procedure regarding environment variables. In particular, you should make sure that the environment variable <code>JOLIE_HOME</code> is set to the directory you used for <code>install.dir</code>.</p>
-<hr />
+</div>
+<div id="docker" class="tab-pane" role="tabpanel">
+<h2 id="quick-start-with-pre-built-image">Quick start with pre-built image</h2>
+<p>This solution requires <a href="http://www.docker.com">Docker</a> previously installed in your machine.</p>
+<p>Open a shell and pull the most recent Jolie image with the command <kbd>docker pull jolielang/jolie1.6.0beta1</kbd>.</p>
+<p>Once the image is available on your machine, create a container from it by adding a local volume where storing the Jolie files: <kbd>docker run -it -v /your-host-folder-path:/your-container-path --name CONTAINERNAME jolielang/jolie1.6.0beta1</kbd>.</p>
+<p>Now you can edit your files in folder <code>/your-host-folder-path</code> and find them in your container folder <code>/your-host-folder-path</code>.</p>
+<p>Finally, to run a Jolie microservice type <kbd>jolie your_file.ol</kbd> in the launched shell.</p>
+<p>Containers are also useful to test systems of microservices running within the same container. To run a new microservice on the same container type <kbd>docker exec -it CONTAINERNAME bash</kbd> to launch a new shell, following the previous commands to execute the desired service.</p>
+<h3 id="running-examples-in-jolie-documentation-with-docker">Running examples in Jolie documentation with Docker</h3>
+<p>The <a href="http://docs.jolie-lang.org/">Jolie documentation</a> contains many running examples. With the Jolie Docker image you can run any of these examples without having Jolie directly installed in you OS.</p>
+<p>The easiest way to run them is to directly pull the docker image <code>jolielang/jolie-examples</code> with command <kbd>docker pull jolielang/jolie-examples</kbd>.</p>
+<p>The folder <code>/examples</code> of the container includes all the complete examples reported in the documentation (see the related <a href="https://github.com/jolie/examples">repository</a>).</p>
+</div>
+<div id="editors" class="tab-pane" role="tabpanel">
 <h2 id="integrated-development-environments">Integrated Development Environments</h2>
 <p>The listed editors have one or more plug-ins to aid Jolie programmers with syntax highlighting, on-the-fly error notification, and direct in-editor service launch shortcuts.</p>
 <h3 id="atom">Atom</h3>
@@ -154,3 +143,6 @@ install.dir=C:\\Jolie</code></pre>
 <h3 id="sublime-text">Sublime Text</h3>
 <p>Jolie support for <a href="http://www.sublimetext.com/">Sublime Text 2 and 3</a> comprises the <a href="https://packagecontrol.io/packages/jolie">Jolie</a> plug-in for syntax highlighting and service launch and <a href="https://packagecontrol.io/packages/SublimeLinter-jolint">SublimeLinter-jolint</a> for on-the-fly error reporting.</p>
 <p>Both plug-ins can be installed directly within Sublime Text with <a href="https://packagecontrol.io/installation">Package Control</a>.</p>
+</div>
+</div>
+</div>
