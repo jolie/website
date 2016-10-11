@@ -1,47 +1,86 @@
 <!--Themed-->
 
-# <a id="download-and-install"></a> Download and Install
-Here you can find two possible ways for installing Jolie in your machine and use it for developing your microservices. You can just pull down the jolie docker container, or install the Jolie binaries directly in your machine.
+You can choose two ways to get started with Jolie.
 
-## Using a prepared docker container
-This solution requires [Docker](http://www.docker.com) previously installed in your machine.
-Open a shell and pull the Jolie image using the following command:
+<div class="container">
+<div class="col-xs-6">
+<div class="panel panel-success">
+<div class="panel-heading">
+<h3 class="panel-title"><a href="#quick-start-with-pre-built-image">Start with Docker</a></h3>
+</div>
+<div style="padding-bottom: 2.3em;padding-top: 2.3em;" class="panel-body">
+<p>Skip the install phase and start hacking right away.</p>
+<p>Downloading a ready-to-go [docker image](#quick-start-with-pre-built-image) with everything set up.</p>
+</div>
+</div>
+</div>
+<div class="col-xs-6">
+<div class="panel panel-info">
+<div class="panel-heading">
+<h3 class="panel-title"><a href="#install-jolie-directly-in-your-machine">Direct Installation</a></h3>
+</div>
+<div class="panel-body">
+Install Jolie in your OS the [easy way](#the-easy-way) with the automatic installer.
 
-<pre>docker pull jolielang/jolie1.6.0beta1</pre>
+<button type="button" class="btn btn-default center-block">
+<a href="/files/releases/jolie-1.5.0.jar">Jolie 1.5</a>
+</button>
 
-Once the jolie docker image is available on your machine just create a container from it by adding a local volume where storing the jolie files.  
+Or compile it the [hard way](#the-hard-way) from sources.
+</div>
+</div>
+</div>
+</div>
 
-<pre>docker run -it -v /your-host-folder-path:/your-container-path --name CONTAINERNAME jolielang/jolie1.6.0beta1</pre>
+Ready to go but looking for editors integrated with Jolie?
+[We've got your back](#integrated-development-environments)!
 
-Now just edit your files in folder `/your-host-folder-path` and find them in your container folder `/your-host-folder-path`. In order to run a jolie microservice just type the following command in the container shell:
+---
 
-<pre>jolie your_file.ol</pre>
+## Quick start with pre-built image
+This solution requires [Docker](http://www.docker.com) previously installed in
+your machine.
 
-As a final remark, we remind that it is possible to open several shells in your container just launching the following command:
+Open a shell and pull the most recent Jolie image with the command <kbd>docker
+pull jolielang/jolie1.6.0beta1</kbd>.
 
-<pre>docker exec -it CONTAINERNAME bash</pre>
+Once the image is available on your machine, create
+a container from it by adding a local volume where storing the Jolie files:
+<kbd>docker run -it -v /your-host-folder-path:/your-container-path --name
+CONTAINERNAME jolielang/jolie1.6.0beta1</kbd>. 
 
-### Using the docker container with Jolie examples
-if you are interested in running some of the examples discussed in the documentation, you can directly pull the following docker image:
-<pre>docker pull jolielang/jolie-examples</pre>
+Now you can edit your files in folder
+`/your-host-folder-path` and find them in your container folder
+`/your-host-folder-path`. 
 
-In the folder `/examples` of the container a complete list of examples is reported. The list of examples may be consulted at this link: [https://github.com/jolie/examples](https://github.com/jolie/examples)
+Finally, to run a Jolie microservice type <kbd>jolie your_file.ol</kbd> in the
+launched shell.
 
+Containers are also useful to test systems of microservices running within the
+same container. To run a new microservice on the same container type
+<kbd>docker exec -it CONTAINERNAME bash</kbd> to launch a new shell, following
+the previous commands to execute the desired service.
 
+### Running examples in Jolie documentation with Docker
+The [Jolie documentation](http://docs.jolie-lang.org/) contains many running examples. With the Jolie Docker image you can run any of these examples without having Jolie directly installed in you OS.
 
-## Installing Jolie directly in your machine
+The easiest way to run them is to directly pull the docker image `jolielang/jolie-examples` with command <kbd>docker pull jolielang/jolie-examples</kbd>.
+
+The folder `/examples` of the container includes all the complete examples reported in the documentation (see the related [repository](https://github.com/jolie/examples)). 
+
+---
+
+## Install Jolie directly in your machine
 Jolie requires Java to run, so make sure to have [Java](http://www.java.com/) installed before proceeding.
 
-Regardless of the method you choose, after installation executing a Jolie script will be just a matter of invoking the Jolie
-interpreter:
+Regardless of the method you choose, after Jolie is installed you can launch
+Jolie services with command <kbd>jolie your_file.ol</kbd>.
 
-<pre>jolie your_file.ol</pre>
-
-## The easy way (binary installer)
+### The easy way
 
 This method requires Java 6 (also called Java 1.6) or later to be installed before proceeding.
 
-### Step 1
+#### Get the Jolie installer
 
 Download the Java-based installer of the latest stable release of Jolie:
 
@@ -52,19 +91,16 @@ Download the Java-based installer of the latest stable release of Jolie:
 <!-- </button> -->
 </a>
 </div>
-<div class="col-xs-12 text-right">
-or download one of the <a href="https://github.com/jolie/website/tree/master/www/files/releases">previous releases</a>.
-</div>
 
-### Step 2
+Here you can find the <a href="https://github.com/jolie/website/tree/master/www/files/releases">previous stable releases</a> of Jolie.
 
-Open a shell terminal. From the directory in which you downloaded the
-installer, execute `java -jar jolie-1.5.0.jar` and follow the on-screen
-instructions.
+#### Run the Jolie installer
 
-<p>The installer may need permission to write in the directories in which
-you intend to install Jolie. Depending on your Operative System you can
-launch the Jolie installer with elevated privileges:
+Open a shell terminal, access the directory in which you downloaded the
+installer, and execute <kbd>java -jar jolie-1.5.0.jar</kbd>. The installer may
+need permissions to write in the directories in which you intend to install
+Jolie. Depending on your Operative System you can launch the Jolie installer
+with elevated privileges:
 
 <ul>
 
@@ -73,7 +109,7 @@ launch the Jolie installer with elevated privileges:
   administrator privileges</a> and launch the installer;</li>
 
 <li><strong>on Linux/MacOS</strong>, by launching the installer as root with command
-<code>sudo java -jar jolie-1.5.0.jar</code>.
+<kbd>sudo java -jar jolie-1.5.0.jar</kbd>.
 
 </ul>
 
@@ -119,11 +155,11 @@ it is possible to set <code>JOLIE_HOME</code> with the command
 
 However, some versions of Linux/MacOs X do not <a
 href="http://ss64.com/bash/source.html">source</a> the
-<code>.bash_profile</code> file. If, when trying to run Jolie you get
-the message <code>"Error: Could not find or load main class jolie.Jolie"</code>, it
-could be the case your shell is not sourcing file <code>.bash_profile</code>. To
-fix it, edit your <code>.bashrc</code> in you home directory by
-appending at its end the line <code>source .bash_profile</code>.
+<code>.bash_profile</code> file. If, when trying to run Jolie you get the
+message <code>"Error: Could not find or load main class jolie.Jolie"</code>, it
+could be the case your shell is not sourcing file <code>.bash_profile</code>.
+To fix it, edit your <code>.bashrc</code> in you home directory by appending at
+its end the line <code>source .bash_profile</code>.
 
 </div>
 </div>
@@ -132,125 +168,108 @@ appending at its end the line <code>source .bash_profile</code>.
 </div>
 </div>
 
-<!-- The installer needs permission to write in the directories in which you intend to install Jolie.
-Therefore, for example, if you intend to install Jolie in a system directory you may need to launch the installer as root in Linux/MacOS (`sudo java -jar jolie-1.5.0.jar`),
-or [administrator in Windows](https://technet.microsoft.com/en-us/library/cc947813.aspx). -->
+### The hard way
 
-## The hard way (compile from sources)
+With these instructions you can download the development version of Jolie
+(`trunk`). It requires the following software to be installed before
+proceeding:
 
-This method will download the development version of Jolie (`trunk`).
-It requires the following software to be installed before proceeding:
+Here are some useful links to get the required tools:
 
-* JDK (Java SE Development Kit), version 6 or later
-* Apache ant
-* Git
+* [JDK (Java SE Development Kit)](http://java.sun.com/javase/downloads/index.jsp);
+* [Git](http://git-scm.com/);
+* [Apache Ant](http://ant.apache.org/).
 
-<div style="float:left">
-<p>Jump to the instructions for your Operating System:
-<a href="#nix"><img src="/imgs/os_linux.png" title="Linux" height="80px"/></a>
-<a href="#nix"><img src="/imgs/os_mac.png" title="Mac OS" height="80px"/></a>
-<a href="#windows"><img src="/imgs/os_win.png" title="Windows" height="80px"/></a>
-</p>
+Jump to the instructions for your Operating System:
+
+<div class="text-center">
+<a href="#nix"><img style="margin-left: 10px; max-width: 80px;" src="/imgs/os_linux.png" title="Linux" /></a>
+<a href="#nix"><img src="/imgs/os_mac.png" style="margin-left: 10px;max-width: 80px;" 
+title="Mac OS"/></a>
+<a href="#windows"><img src="/imgs/os_win.png" style="margin-left: 10px;max-width: 80px;" 
+ title="Windows"/></a>    
 </div>
 
-<div style="clear: both;"></div>
-
-### <a id="nix"></a>Linux and Mac OS
+#### <a id="nix"></a>Linux and Mac OS
 
 Open a shell and execute:
 
-<pre name="code">
-git clone https://github.com/jolie/jolie.git
-cd jolie
-ant && sudo ant install
-</pre>
+<kbd>git clone https://github.com/jolie/jolie.git</kbd>
+
+<kbd>cd jolie</kbd>
+
+<kbd>ant && sudo ant install</kbd>
 
 The ant script will automatically build and install Jolie for you. The default is to install in `/usr/lib/jolie`, but
 the installation parameters can be controlled by editing `buildconfig/config.properties`.
 
-A Jolie launcher script will be put in `/usr/bin` (this parameter is configurable in
-`buildconfig/config.properties`, too).
+The Jolie launchers are installed inside folder `/usr/bin` (this parameter is
+configurable in `buildconfig/config.properties`, too).
 
-Remember to follow the on-screen instructions at the end of the installation procedure, about the environment variables.
+Remember to follow the on-screen instructions at the end of the installation procedure about the environment variables.
 
-### <a id="windows"></a>On Windows
+#### <a id="windows"></a>On Windows
 
-Please make sure to work only on a single drive eg. `C:`, otherwise the Java
-classloader ends up in difficulties locating resources like include files
-(`console.iol` etc.)!
+Compiling Jolie under Windows requires to work only within the same drive e.g..
+`C:`. This is due to limitations of the Java class-loader in locating resources
+within different drives.
 
-Here are some useful links to get the required tools:
+Open a command line and execute
 
-* JDK (Java SE Development Kit): [link](http://java.sun.com/javase/downloads/index.jsp)
+<kbd>git clone https://github.com/jolie/jolie.git</kbd>
 
-* Git client: [link](http://git-scm.com/)
+<kbd>cd jolie</kbd>
 
-* Apache Ant: [link](http://ant.apache.org/).
-
-Download the source code with Git from `https://github.com/jolie/jolie.git`
-
-Open the `buildconfig/config.properties` file and change the parameters `install.launcher_dir` and `install.dir`
-by replacing the existing directories with your desired ones. Use `\\` instead of the single backslashes when writing
+Open the `buildconfig/config.properties` file and change the parameters
+`install.launcher_dir` and `install.dir` by replacing the existing directories
+with your desired ones. Use `\\` instead of the single backslashes when writing
 paths. Here is an example:
 
-<pre>
+```
 install.launcher_dir=C:\\Windows\\system32
 install.dir=C:\\Jolie
-</pre>
+```
 
-If you change the directory for `install.launcher_dir`, make sure that it is included in your your PATH environment variable.
-You can find some instructions on managing environment variables in Windows XP at this
-[link](http://support.microsoft.com/kb/310519). Please note that using paths with spaces may cause problems in Windows and need special handling.
+In case you change the directory for `install.launcher_dir`, make sure that it
+is included in your your PATH environment variable. You can find some
+instructions on managing environment variables in Windows XP at this
+[link](http://support.microsoft.com/kb/310519). Please note that using paths
+with spaces may cause problems in Windows and need special handling.
 
-Execute the `ant dist-install` command from inside the directory where you downloaded the source code of Jolie.
-Follow the on-screen instructions at the end of the installation procedure about the environment variables.
-In particular, you should make sure that the environment variable `JOLIE_HOME` is set to the directory you used for `install.dir`.
+Finally, execute <kbd>ant dist-install</kbd>, following the on-screen
+instructions at the end of the installation procedure regarding environment
+variables. In particular, you should make sure that the environment variable
+`JOLIE_HOME` is set to the directory you used for `install.dir`.
 
-<!--
-### Troubleshooting (Windows)
+---
 
-If the install path contains spaces you may experience a problem in launching the Jolie executable.
-This is due to a problem on the command `set JOLIE_HOME` present in jolie.bat that can be found in
-the installation directoy that you specified previously.
+## Integrated Development Environments
 
-To solve this you must substitute the `\` characters before and after the path containing the space with
-`//` and include the same part of the path between `""`.
+The listed editors have one or more plug-ins to aid Jolie programmers with syntax highlighting, on-the-fly error notification, and direct in-editor service launch shortcuts.
 
-For instance, if you chose to use the same directory as in this tutorial you can correct the `set`
-command with the following code.
+### Atom
 
-<pre>
-set joliepath=C://"Program Files"//jolie\
-</pre>
+Jolie support for the [Atom editor](http://www.atom.io/) can be installed with
+the official Atom Package Manager (apm):
 
-You can now execute Jolie scripts by issuing the `jolie` command in a console, for example: `jolie your_file.ol`
--->
+<kbd> apm install atom-jolie </kbd>
 
+Contributions to the
+[language-jolie](https://github.com/fmontesi/language-jolie) and
+[linter-jolie](https://github.com/fmontesi/linter-jolie) packages are welcome.
 
-# Support for external tools
+### Kate
 
-## Atom
+Jolie support for the [Kate editor](http://kate-editor.org/) comes as a file for KatePart (used by most KDE applications and the Kate editor itself). To install it is Kate, download the [latest version](http://www.jolie-lang.org/files/katepart/jolie.xml) of the file and store it within folder `$KDE_HOME/share/apps/katepart/syntax directory`.
 
-Jolie support for the [Atom editor](http://www.atom.io/) can be installed with the official Atom Package Manager (apm):
+You can discover your `$KDE_HOME` directory by issuing the <kbd>kde4 config localprefix</kbd> command.
 
-<pre name="code">
-apm install atom-jolie
-</pre>
+### Sublime Text
 
-Contributions to the [language-jolie](https://github.com/fmontesi/language-jolie) and [linter-jolie](https://github.com/fmontesi/linter-jolie) packages are welcome.
+Jolie support for [Sublime Text 2 and 3](http://www.sublimetext.com/) comprises
+the [Jolie](https://packagecontrol.io/packages/jolie) plug-in for syntax
+highlighting and service launch and
+[SublimeLinter-jolint](https://packagecontrol.io/packages/SublimeLinter-jolint)
+for on-the-fly error reporting.
 
-## Kate
-
-Homepage: [http://kate-editor.org/](http://kate-editor.org/)
-
-A syntax highlighting description file for KatePart (which is used by most KDE applications and the Kate editor itself) is available.
-
-Download the [latest version](http://www.jolie-lang.org/files/katepart/jolie.xml) and put it in your `$KDE_HOME/share/apps/katepart/syntax directory`.
-
-You can discover your `$KDE_HOME` directory by issuing the `kde4 config localprefix` command.
-
-## Sublime Text
-
-A bundle for [Sublime Text 2](http://www.sublimetext.com/) with syntax highlighting, code completion, and sublime-build(s) for Jolie.
-
-Refer to this [github repository](https://github.com/thesave/sublime-Jolie) for downloading and installing the latest version.
+Both plug-ins can be installed directly within Sublime Text with [Package Control](https://packagecontrol.io/installation).

@@ -1,26 +1,26 @@
 h1 {
 	color: #A80C1E;
-	font-size: 200%;
-	letter-spacing: -0.05em;
-	line-height: 1em;
+	/*font-size: 200%;*/
+	/*letter-spacing: -0.05em;*/
+	/*line-height: 1em;*/
 	padding-bottom: 0.2em;
 	border-bottom: 0.05em solid gray;
 	margin-bottom: 0.5em;
 	padding-top:0.4em;
 }
 
-h2 {
+/*h2 {
 	font-size: xx-large;
 	line-height: 1em;
-}
+*/}
 
-h3 {
+/*h3 {
 	font-size: 1em;
 	color: #666666;
 	font-style: italic;
 	line-height: 1em;
 }
-
+*/
 a {
 	color: #A80C1E;
 	text-decoration: none;
@@ -31,7 +31,7 @@ a:hover {
 	text-decoration: underline;
 }
 
-pre, code {
+/*pre, code {
 	font-size: 1.2em;
-}
+}*/
 	
