@@ -2,8 +2,9 @@ include "SumInterface.iol"
 include "console.iol"
 
 outputPort Sum {
-  /* the client calls the sum service which is located at the redirector socket://localhost:2002
-  teh resource is identified by the suffix /!/Sum */
+  /* the client calls the Sum service by contacting redirector
+  at address "socket://localhost:2002" and specifying the correspondent
+  resource name with "/!/Sum" */
   Location: "socket://localhost:2002/!/Sum"
   Protocol: sodep
   Interfaces: SumInterface

@@ -91,5 +91,5 @@ Handlers need to use and manipulate variable data often and a handler may need t
 
 The install primitive contained in the `while` loop updates the scope recovery handler at each iteration. In the process the value of the variable `i` is frozen within the handler.
 
-## Installation handler in a solicit-response
-SolicitResponse activities are synchronous calls which are blocked until the reception of the response. What happen when they are programmed in a scope which can be terminated? What is going to happen if the termination is raised when a SolicitResponse is waiting for a response? As an example consider the following case:
+<!-- ## Installation handler in a solicit-response
+SolicitResponse activities are synchronous calls which are blocked until the reception of the response. What happen when they are programmed in a scope which can be terminated? What is going to happen if the termination is raised when a SolicitResponse is waiting for a response? As an example consider the following case: -->

@@ -1,5 +1,4 @@
-/* Printer */
-
+/* Printer --------------------------------------- */
 type JobID: void {
 	.jobId: string
 }
@@ -38,7 +37,7 @@ main
 	}
 }
 
-/* Fax */
+/* Fax --------------------------------------- */
 type FaxRequest:void {
 	.destination:string
 	.content:string

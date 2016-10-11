@@ -22,22 +22,38 @@ As an example, here we consider the case of two services, Printer and Fax, which
 
 <div class="code" src="aggregation_orchestration_printer_and_fax.ol"></div>
 
-In the aggregator we define an outputPort for each aggregated service (Printer and Fax). The aggregation is actually defined in the inputPort Aggregator where we use the keyword `Aggregated` for specifying the list of the aggregated ports. Thanks to this definition, all the messages for operations `print`, `del` and `fax` received by the port Aggregator, will be forwarded to services Printer and Fax respectively.
+In the aggregator we define an outputPort for each aggregated service (Printer
+and Fax). The aggregation is actually defined in the inputPort Aggregator where
+we use the keyword `Aggregated` for specifying the list of the aggregated
+ports. At runtime, all the messages for operations `print`, `del`, and `fax`
+received by the port Aggregator, will be forwarded to services Printer and Fax
+respectively.
 
 <div class="code" src="aggregation_orchestration_aggregator.ol"></div>
 
-It is worth noting that the aggregator also implements another operation called `faxAndPrint` which orchestrates the operations of services Fax and Printer. The operation faxAndPrint offers the possibility to call both the services Fax and Printer atomically where the print operation can be rolled back. Summarizing, at the inputPort `Aggregator`, the aggregator service offers the following operations:
-- print : supplied by service Printer
-- del   : supplied by service Printer
-- fax	  : supplied by service Fax
-- faxAndPrint : supplied by the aggregator
-
+Note also that aggregator implements another operation called `faxAndPrint`,
+which orchestrates the operations of services Fax and Printer. Operation
+`faxAndPrint` offers the possibility to call both the services Fax and Printer
+atomically where the print operation can be rolled back. Summarising, at the
+inputPort `Aggregator`, the aggregator service offers the following operations:
+- `print` : supplied by service Printer
+- `del`   : supplied by service Printer
+- `fax`	  : supplied by service Fax
+- `faxAndPrint` : supplied by the aggregator
 
 ##jolie2surface
-In the previous example the client defined an outputPort where it listed all the available interfaces at the inputPort of the aggregator: `PrinterInterface`, `FaxInterface` and `AggregatorInterface`. There could be cases where we do not want to distribute all the interfaces separately, but we just want to provide one single interface which sums up all the operations available at a given port.
+In the previous example, to be able to interact with all operations of the
+aggregator, a client must define an outputPort supporting all the available
+interfaces of aggregator: `PrinterInterface`, `FaxInterface` and
+`AggregatorInterface`. There could be case where we do not want to distribute
+all the interfaces separately, but we just want to provide one single interface
+which sums up all the operations available at a given port.
 
-In order to achieve such a result, jolie is released with a useful tool called `jolie2surface` which provides the surface available at the inputPort of a microservice. See the related section [jolie2surface](other_tools/jolie2surface.html) for details.
-
+The standard installation of Jolie comes with `jolie2surface`, a tool that,
+given a Jolie service and the name of an inputPort, it automatically
+synthesises a comprehensive interface of all supported operations. See the
+related section [jolie2surface](other_tools/jolie2surface.html) for more
+details.
 
 ## The forwarder, bridging different communication protocols
 

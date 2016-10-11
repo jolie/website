@@ -1,7 +1,5 @@
-// sum.ol
-include "OperationInterface.iol"
-
-inputPort Op {
+// sum.ol --------------------------
+inputPort Sum {
   Location:"local"
   Interfaces: OperationInterface
 }
@@ -11,25 +9,31 @@ main {
     response = request.x + request.y
   }
 }
+// ---------------------------------
 
-//sub.ol
-[...]
+// sub.ol --------------------------
+// inputPort Sub ... 
 main {
   run( request )( response ) {
     response = request.x - request.y
   }
 }
+// ---------------------------------
 
-//mul.ol
+// mul.ol --------------------------
+// inputPort Mul ... 
 main {
   run( request )( response ) {
     response = request.x * request.y
   }
 }
+// ----------------------------------
 
-//div.ol
+// div.ol --------------------------
+// inputPort Div ... 
 main {
   run( request )( response ) {
     response = request.x / request.y
   }
 }
+// ----------------------------------
