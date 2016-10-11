@@ -37,7 +37,7 @@
             },
             {
                 "url": "basics/communication_ports.html",
-                "label": "Communication Ports"
+                "label": "Ports, Interfaces and Types"
             },
             {
                 "url": "basics/processes.html",
@@ -141,6 +141,15 @@
             {
                 "url": "web_services/jolie2wsdl.html",
                 "label": "jolie2wsdl"
+            }
+        ]
+    },
+    {
+        "label": "Other tools",
+        "children": [
+            {
+                "url": "other_tools/jolie2surface.html",
+                "label": "jolie2surface"
             }
         ]
     },
