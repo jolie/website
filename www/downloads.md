@@ -27,9 +27,7 @@ Download the Java-based installer of the latest stable release of Jolie:
 
 <div class="col-xs-12 text-center">
 <a href="/files/releases/jolie-1.5.0.jar">
-<!-- <button type="button" class="center-block btn btn-default btn-lg"> -->
 <p class="download">Jolie Installer</p>
-<!-- </button> -->
 </a>
 </div>
 
@@ -40,7 +38,7 @@ Here you can find the <a href="https://github.com/jolie/website/tree/master/www/
 Open a shell terminal, access the directory in which you downloaded the
 installer, and execute <kbd>java -jar jolie-1.5.0.jar</kbd>. The installer may
 need permissions to write in the directories in which you intend to install
-Jolie. Depending on your Operative System you can launch the Jolie installer
+Jolie. Depending on your Operating System you can launch the Jolie installer
 with elevated privileges:
 
 <ul>
@@ -113,11 +111,9 @@ its end the line <code>source .bash_profile</code>.
 
 ## Compilation from Source files
 
-With these instructions you can download the development version of Jolie
+Following these instructions you can download the development version of Jolie
 (`trunk`). It requires the following software to be installed before
 proceeding:
-
-Here are some useful links to get the required tools:
 
 * [JDK (Java SE Development Kit)](http://java.sun.com/javase/downloads/index.jsp);
 * [Git](http://git-scm.com/);
@@ -143,13 +139,15 @@ Open a shell and execute:
 
 <kbd>ant && sudo ant install</kbd>
 
-The ant script will automatically build and install Jolie for you. The default is to install in `/usr/lib/jolie`, but
-the installation parameters can be controlled by editing `buildconfig/config.properties`.
+The ant script will automatically build and install Jolie for you. The default
+installation path for the Jolie binaries is `/usr/lib/jolie`, but the
+installation parameters can be controlled by editing
+`buildconfig/config.properties`.
 
-The Jolie launchers are installed inside folder `/usr/bin` (this parameter is
-configurable in `buildconfig/config.properties`, too).
+The Jolie launchers are installed inside folder `/usr/bin`, but also this
+parameter is configurable in `buildconfig/config.properties`.
 
-Remember to follow the on-screen instructions at the end of the installation procedure about the environment variables.
+Remember to follow the on-screen instructions at the end of the installation procedure about the environment variables. This final step is similar to setting the `java_home` variable for Java, as explained [here](https://www.java.com/en/download/help/path.xml).
 
 #### <a id="windows"></a>Windows
 
@@ -174,10 +172,10 @@ install.dir=C:\\Jolie
 ```
 
 In case you change the directory for `install.launcher_dir`, make sure that it
-is included in your your PATH environment variable. You can find some
-instructions on managing environment variables in Windows XP at this
-[link](http://support.microsoft.com/kb/310519). Please note that using paths
-with spaces may cause problems in Windows and need special handling.
+is included in your your PATH environment variable (similarly to what explained
+[here](https://www.java.com/en/download/help/path.xml) for Java). Please note
+that using paths with spaces may cause problems in Windows and need special
+handling.
 
 Finally, execute <kbd>ant dist-install</kbd>, following the on-screen
 instructions at the end of the installation procedure regarding environment
@@ -239,7 +237,7 @@ Contributions to the
 
 ### Kate
 
-Jolie support for the [Kate editor](http://kate-editor.org/) comes as a file for KatePart (used by most KDE applications and the Kate editor itself). To install it is Kate, download the [latest version](http://www.jolie-lang.org/files/katepart/jolie.xml) of the file and store it within folder `$KDE_HOME/share/apps/katepart/syntax directory`.
+Jolie support for the [Kate editor](http://kate-editor.org/) comes as a file for KatePart (used by most KDE applications and the Kate editor itself). To install it in Kate, download the [latest version](http://www.jolie-lang.org/files/katepart/jolie.xml) of the file and store it within folder `$KDE_HOME/share/apps/katepart/syntax directory`.
 
 You can discover your `$KDE_HOME` directory by issuing the <kbd>kde4 config localprefix</kbd> command.
 
