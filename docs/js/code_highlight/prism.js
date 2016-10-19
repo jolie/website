@@ -585,19 +585,61 @@ Prism.languages.java = Prism.languages.extend('clike', {
 		lookbehind: true
 	}
 });;
-Prism.languages.jolie = Prism.languages.extend('java', {
-	'keyword': /(<-|=>)|\b(is_defined|undef|include|main|outputPort|inputPort|Location|Protocol|RequestResponse|throw|OneWay|interface|any|long|type|void|sequential|raw|scope|forward|install|execution|single|concurrent|Interfaces|cset|csets|double|global|linkIn|linkOut|string|bool|int|synchronized|courier|extender|throws|this|new|Interfaces|nullprocess|Redirects|embedded|extender|Aggregates|spawn|constants|with|foreach|instanceof|<-|over|define)\b/g,
-	'builtin': /\b(string|int|long|Byte|bool|double|float|char|any)\b/g,
-	'number': /\b0x[\da-f]*\.?[\da-f\-]+\b|\b\d*\.?\d+[e]?[\d]*[dfl]?\b/gi,
-	'operator': /[-+]{1,2}|!|<=?|>=?|={1,3}|&{1,2}|\|\||\*|\//g,
-	'punctuation': /[{}[\]()\.:]/g,
-	'operation': /[a-z][A-Za-z0-9_]+(?=\@)/gm,
-	'service': {
-		pattern: /((?:(?:\@\s*)))[A-Z][A-Za-z0-9_]+/ig,
-		lookbehind: true,
+Prism.languages.jolie = Prism.languages.extend('clike', {
+	'keyword': /\b(?:include|define|is_defined|undef|main|init|outputPort|inputPort|Location|Protocol|Interfaces|RequestResponse|OneWay|type|interface|extender|throws|cset|csets|forward|Aggregates|Redirects|embedded|courier|extender|execution|sequential|concurrent|single|scope|install|throw|comp|cH|default|global|linkIn|linkOut|synchronized|this|new|for|if|else|while|in|Jolie|Java|Javascript|nullProcess|spawn|constants|with|provide|until|exit|foreach|instanceof|over|service)\b/g,
+	'builtin': /\b(?:undefined|string|int|void|long|Byte|bool|double|float|char|any)\b/,
+	'number': /\b\d*\.?\d+(?:e[+-]?\d+)?l?\b/i,
+	'operator': /->|<<|[!+-<>=*]?=|[:<>!?*\/%^]|&&|\|\||--?|\+\+?/g,
+	'symbol': /[|;@]/,
+	'punctuation': /[,.]/,
+	'string': {
+		pattern: /(["'])(\\(?:\r\n|[\s\S])|(?!\1)[^\\\r\n])*\1/,
+		greedy: true
 	},
-	'symbol': /\||;|\@/g,
-	'string': /(""")[\W\w]*?\1|("|\/)[\W\w]*?\2|('.')/g
+});
+
+delete Prism.languages.jolie['class-name'];
+delete Prism.languages.jolie['function'];
+
+Prism.languages.insertBefore( 'jolie', 'keyword', {
+	'function':
+	{
+		pattern: /((?:\b(?:outputPort|inputPort|in|service|courier)\b|@)\s*)\w+/,
+		lookbehind: true
+	},
+	'aggregates': {
+		pattern: /(\bAggregates\s*:\s*)(?:\w+(?:\s+with\s+\w+)?\s*,\s*)*\w+(?:\s+with\s+\w+)?/,
+		lookbehind: true,
+		inside: {
+			'withExtension': {
+				pattern: /\bwith\s+\w+/,
+				inside: {
+					'keyword' : /\bwith\b/
+				}
+			},
+			'function': {
+				pattern: /\w+/
+			},
+			'punctuation': {
+				pattern: /,/
+			}
+		}
+	},
+	'redirects': {
+		pattern: /(\bRedirects\s*:\s*)(?:\w+\s*=>\s*\w+\s*,\s*)*(?:\w+\s*=>\s*\w+)/,
+		lookbehind: true,
+		inside: {
+			'punctuation': {
+				pattern: /,/
+			},
+			'function': {
+				pattern: /\w+/g
+			},
+			'symbol': {
+				pattern: /=>/g
+			}
+		}
+	}
 });
 delete Prism.languages.jolie['class-name','function'];;
 Prism.languages.scala = Prism.languages.extend('java', {
