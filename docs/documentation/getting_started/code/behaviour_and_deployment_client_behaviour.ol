@@ -1,5 +1,5 @@
 main 
 {
-	twice@TwiceService( 5 )( response );
-	println@Console( response )
+  twice@TwiceService( 5 )( response );
+  println@Console( response )()
 }
