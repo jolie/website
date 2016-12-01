@@ -2,7 +2,7 @@
 
 # Vision
 
-What is your road towards microservices? A presentation on the vision for
+The road towards microservices. A presentation on the vision for
 the future of this revolution.
 
 <div class="text-center">
