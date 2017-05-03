@@ -7,14 +7,11 @@ This page does not contain material directly related to RESTful implementations,
 
 ---
 
-## HTML Querystrings
-
-
+## Handling Headers
 
 ---
 
-## HTML Forms
-
+## URL/Resource Aliases
 
 ---
 
