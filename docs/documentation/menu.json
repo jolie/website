@@ -159,10 +159,12 @@
             {
                 "url": "web_applications/leonardo.html",
                 "label": "Leonardo: the Jolie Web Server"
-            },
-            {
+            },{
                 "url": "web_applications/web_get_post.html",
                 "label": "HTTP GET/POST Requests"
+            },{
+                "url": "web_applications/web_application_patterns.html",
+                "label": "Web Application Patterns"
             }
         ]
     },

@@ -1,15 +1,14 @@
 ## Leonardo: the Jolie web server
 
-Leonardo is a web server developed in pure Jolie [@M14].
+Leonardo is a web server developed in pure Jolie [M14].
 
-It is very flexible and can scale from service simple static HTML content to supporting powerful dynamic web 
-applications.
+It is very flexible and can scale from service simple static HTML content to supporting powerful dynamic web applications.
 
 ---
 
-## Launching Leonardo and serving static content
+### Launching Leonardo and serving static content
 
-The latest version of Leonardo is available from its GitHub page, at URL: [https://github.com/jolie/leonardo](https://github.com/jolie/leonardo).
+The latest version of Leonardo is available from its GitHub page, at URL: https://github.com/jolie/leonardo.
 
 After having downloaded and unpacked the archive, we can launch Leonardo from the `leonardo` directory with the command `jolie leonardo.ol`.
 
@@ -19,9 +18,7 @@ By default Leonardo looks for static content to serve in the `leonardo/www` subd
 
 Then, pointing the browser at URL http://localhost:8000/index we can see the web page we created. In the same way other files (of any format) and subdirectories can be stored inside the `www` directory: Leonardo makes them available to web browsers as expected.
 
----
-
-## Configuration
+### Configuration
 
 Leonardo comes with a `config.iol` file, where are stored some constants for basic configuration. The content of the default `config.iol` file is shown below:
 
@@ -31,9 +28,7 @@ As aforementioned, `RootContentDirectory` points to the `www` folder, which is t
 
 `jolie leonardo.ol /path/to/my/content/directory`
 
----
-
-## Serving dynamic content
+### Serving dynamic content
 
 Leonardo supports dynamic web application through the Jolie HTTP protocol. There are many ways this can be achieved, hereby we overview some of these:
 
@@ -112,7 +107,6 @@ The code is contained in library `jolie-jquery.js` stored inside the `lib` direc
 
 ---
 
-
 ## Google Web Toolkit (GWT)
 
 Jolie supports Google Web Toolkit too by means of the `jolie-gwt.jar` library stored inside the `lib` subdirectory of the standard trunk Jolie installation. Inside the library there is a standard GWT module, called JolieGWT, which must be imported into the GWT module we are using.
@@ -122,36 +116,19 @@ The module comes with support classes for invoking operations published by the s
 <div class="code" src="leonardo_8.java"></div>
 
 ---
-## Using Cookie
 
-Jolie HTTP protocol is able to handle cookies both when processing outbound and inbound HTTP messages. Jolie allows to define specific cookies handling at port level without the need of writing further processing code. 
+<div class="panel panel-success">
+  <div class="panel-heading">
+    <p class="panel-title">Information</p>
+  </div>
+  <div class="panel-body">
+    <p>Sections
+    <strong id="using_cookie">Using Cookies</strong>  and 
+    <strong id="inbound_cookies_handling" >Inbound Cookies Handling</strong>
+    have been moved to page <a href="#!documentation/web_applications/web_application_patterns.html#using_cookie">Web Application Patterns</a>.</p>
+  </div>
+</div>
 
-### Inbound Cookies Handling
-
-In a classic client/server application where `Leornardo.ol` is acting as WebServer the programmer is able to define specific binding between inbound cookie and Jolie’s operations message subNodeName. To do so is sufficient to define in the input Port configuration parameters `.osc.operationName.cookies.cookieName = "subNodeName"`.
-A working example has been provided to exemplify the handling inbound cookies
-
-<div class="download"><a href="documentation/web_applications/code/cookie_server_code.zip">Leonardo and inbound cookie handling</a></div>
-
-
-In this specific example you will find the code for both the client side (HTML/JQuery) and server side (Jolie) able to handle two separated cookies.
-In order to understand the example specific attention should be paid to the following files:
-
-* /doc/TestingInstruction.txt
-* /doc/ExampleAbstract.txt
-* /www/js/CookiesHandler.js
-* /leornardo.ol
-
-It is not necessary to define precisely the cookie binding for each operation exposed by the HTTP input port, one can use the global cookies configuration expressed in the following form  `.cookies.cookieName = "subNodeName"`, Particular attention must be paid on the presence  subNodeName in the type of all operation exposed by the port otherwise  an  TypeMismatch will occur.
-
-
-
-
-
-
-
-
-
-
-      
 ## References
+
+[M14]: https://arxiv.org/abs/1410.3712 "Montesi, Fabrizio. "Process-aware web programming with Jolie." Science of Computer Programming 130 (2016): 69-96."
