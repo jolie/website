@@ -44,19 +44,35 @@ Also a concatenation of strings can be used as an argument of a dynamic look-up 
 
 ## `foreach` - traversing items 
 
-Data structures can be navigated by exploiting the `foreach` statement, whose syntax is:
+Jolie provides the `foreach` statement to iterate over all the children of a root variable:
 
 <div class="syntax" src="syntax_data_structures_1.ol"></div>
 
-`foreach` operator looks for any child-node name inside `root` and puts it inside `nameVar`, executing the internal code block at each iteration. 
+At runtime, `foreach` executes the internal code block for each subnode of `root`. The considered subnode of each iteration is referenced by the variable `nameVar`.
 
 Combining `foreach` and dynamic look-up is very useful for navigating and handling nested structures:
 
 <div class="code" src="data_structures_6.ol"></div>
 
-In the example above `kind` ranges over all child-nodes of `animals` (`pet` and `wild`), while the `for` statement ranges over the elements of the current `animals.kind` node, printing both it's path in the structure and its content:
+In the example above `kind` ranges over all sub-nodes of `animals` (`pet` and `wild`), while the `for` statement ranges over the elements of the current `animals.kind` node, printing both its path in the structure and its content:
 
 <div class="code" src="data_structures_6_out.ol"></div>
+
+---
+
+## `for` elements `in` array
+
+Whilst `foreach` simplifies iterating over the subnodes of a variable, the `for`-`in` statement eases iterating over arrays (i.e., the sequence of elements within the same node):
+
+<div class="syntax" src="syntax_data_structures_2.ol"></div>
+
+At runtime, `for`-`in` executes the internal code block for each item within variable `array`. The variable `element` references the item considered in each iteration.
+
+The return to consider the example above where we integrated `foreach` and dynamic look-up, replacing the `for` statement with `for`-`in`:
+
+<div class="code" src="data_structures_12.ol"></div>
+
+Above, the dynamic look-up is used within the `for`-`in` statement to select the kind (`pet` and `wild`). The variable `animal` iterates over the animals in each `kind`.
 
 ---
 

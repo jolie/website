@@ -1,6 +1,6 @@
 main 
 {
-	twice( number )( response )	{
-		response = number * 2
-	}
+  twice( number )( response )	{
+    response = number * 2
+  }
 }

@@ -2,5 +2,5 @@ include "console.iol"
 
 main 
 {
-	println@Console( "Hello, world!" )()
+  println@Console( "Hello, world!" )()
 }

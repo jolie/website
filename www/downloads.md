@@ -18,15 +18,16 @@
 
 Jolie requires Java to run.
 
-Make sure to have [Java](http://www.java.com/) 6 (also called Java 1.6) or
+Make sure to have [Java](http://www.java.com/) 8 or
 later installed before proceeding.
+(If you have to use a previous version of Java, Jolie version 1.5.0 or previous requires only Java 6. See our <a href="https://github.com/jolie/website/tree/master/www/files/releases">previous releases</a>.)
 
 #### Get the Jolie installer
 
 Download the Java-based installer of the latest stable release of Jolie:
 
 <div class="col-xs-12 text-center">
-<a href="/files/releases/jolie-1.5.0.jar">
+<a href="/files/releases/jolie-1.6.1.jar">
 <p class="download">Jolie Installer</p>
 </a>
 </div>
@@ -36,7 +37,7 @@ Here you can find the <a href="https://github.com/jolie/website/tree/master/www/
 #### Run the Jolie installer
 
 Open a shell terminal, access the directory in which you downloaded the
-installer, and execute <kbd>java -jar jolie-1.5.0.jar</kbd>. The installer may
+installer, and execute <kbd>java -jar jolie-1.6.1.jar</kbd>. The installer may
 need permissions to write in the directories in which you intend to install
 Jolie. Depending on your Operating System you can launch the Jolie installer
 with elevated privileges:
@@ -48,7 +49,7 @@ with elevated privileges:
   administrator privileges</a> and launch the installer;</li>
 
 <li><strong>on Linux/MacOS</strong>, by launching the installer as root with command
-<kbd>sudo java -jar jolie-1.5.0.jar</kbd>.</li>
+<kbd>sudo java -jar jolie-1.6.1.jar</kbd>.</li>
 
 </ul>
 
@@ -123,9 +124,9 @@ proceeding:
 
 <div class="text-center">
 <a href="#nix"><img style="margin-left: 10px; max-width: 80px;" src="/imgs/os_linux.png" title="Linux" /></a>
-<a href="#nix"><img src="/imgs/os_mac.png" style="margin-left: 10px;max-width: 80px;" 
+<a href="#nix"><img src="/imgs/os_mac.png" style="margin-left: 10px;max-width: 80px;"
 title="Mac OS"/></a>
-<a href="#windows"><img src="/imgs/os_win.png" style="margin-left: 10px;max-width: 80px;" 
+<a href="#windows"><img src="/imgs/os_win.png" style="margin-left: 10px;max-width: 80px;"
  title="Windows"/></a>    
 </div> -->
 
@@ -195,11 +196,11 @@ pull jolielang/jolie1.6.0beta1</kbd>.
 Once the image is available on your machine, create
 a container from it by adding a local volume where storing the Jolie files:
 <kbd>docker run -it -v /your-host-folder-path:/your-container-path --name
-CONTAINERNAME jolielang/jolie1.6.0beta1</kbd>. 
+CONTAINERNAME jolielang/jolie1.6.0beta1</kbd>.
 
 Now you can edit your files in folder
 `/your-host-folder-path` and find them in your container folder
-`/your-host-folder-path`. 
+`/your-host-folder-path`.
 
 Finally, to run a Jolie microservice type <kbd>jolie your_file.ol</kbd> in the
 launched shell.
@@ -214,11 +215,11 @@ The [Jolie documentation](http://docs.jolie-lang.org/) contains many running exa
 
 The easiest way to run them is to directly pull the docker image `jolielang/jolie-examples` with command <kbd>docker pull jolielang/jolie-examples</kbd>.
 
-The folder `/examples` of the container includes all the complete examples reported in the documentation (see the related [repository](https://github.com/jolie/examples)). 
+The folder `/examples` of the container includes all the complete examples reported in the documentation (see the related [repository](https://github.com/jolie/examples)).
 
 </div>
 <div role="tabpanel" class="tab-pane" id="editors">
-  
+
 
 ## Integrated Development Environments
 

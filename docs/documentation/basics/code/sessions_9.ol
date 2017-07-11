@@ -4,14 +4,14 @@ inputPort Exam { ... }
 
 cset {
 	studentId: 	Exam.studentId
-				Question.studentId
-				Answer.studentId
-				Score.studentId,
+              Question.studentId
+              Answer.studentId
+              Score.studentId,
 
 	examId: Exam.examId
-			Question.examId
-			Answer.examId
-			Score.examId
+          Question.examId
+          Answer.examId
+          Score.examId
 }
 
 main
@@ -39,5 +39,5 @@ main
 		[ wrong( score ) ] {
 			wrong@Student()
 		}
-	}
+}
 }
