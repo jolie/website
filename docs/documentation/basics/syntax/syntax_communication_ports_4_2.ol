@@ -7,5 +7,5 @@ type T: basic_type {
 OR
 
 type T: basic_type {
-	undefined
+	?
 }

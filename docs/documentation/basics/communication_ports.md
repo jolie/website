@@ -118,7 +118,7 @@ An example of such kind of data types is:
 
 ### Subtree data types
 
-A type *T* can (optionally) have a list of named subnode types or the `undefined` keyword, which makes the type accepting any subtree (undefined is a shorcut for `any: { ? }`).
+A type *T* can (optionally) have a list of named subnode types or the `undefined` keyword, which makes the type accepting any subtree (`undefined` is a shortcut for `any: { ? }`).
 
 <div class="syntax" src="syntax_communication_ports_4_2.ol"></div>
 
