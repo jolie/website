@@ -26,7 +26,7 @@
 <h4 id="get-the-jolie-installer">Get the Jolie installer</h4>
 <p>Download the Java-based installer of the latest stable release of Jolie:</p>
 <div class="col-xs-12 text-center">
-<a href="/files/releases/jolie-1.6.1.jar">
+<a href="/files/releases/jolie-1.6.2.jar">
 <p class="download">
 Jolie Installer
 </p>
@@ -34,14 +34,14 @@ Jolie Installer
 </div>
 <p>Here you can find the <a href="https://github.com/jolie/website/tree/master/www/files/releases">previous stable releases</a> of Jolie.</p>
 <h4 id="run-the-jolie-installer">Run the Jolie installer</h4>
-<p>Open a shell terminal, access the directory in which you downloaded the installer, and execute <kbd>java -jar jolie-1.6.1.jar</kbd>. The installer may need permissions to write in the directories in which you intend to install Jolie. Depending on your Operating System you can launch the Jolie installer with elevated privileges:</p>
+<p>Open a shell terminal, access the directory in which you downloaded the installer, and execute <kbd>java -jar jolie-1.6.2.jar</kbd>. The installer may need permissions to write in the directories in which you intend to install Jolie. Depending on your Operating System you can launch the Jolie installer with elevated privileges:</p>
 <ul>
 <li>
 <strong>on Windows</strong>, by start a command prompt with <a
   href="https://technet.microsoft.com/en-us/library/cc947813.aspx"> administrator privileges</a> and launch the installer;
 </li>
 <li>
-<strong>on Linux/MacOS</strong>, by launching the installer as root with command <kbd>sudo java -jar jolie-1.6.1.jar</kbd>.
+<strong>on Linux/MacOS</strong>, by launching the installer as root with command <kbd>sudo java -jar jolie-1.6.2.jar</kbd>.
 </li>
 </ul>
 <div class="panel panel-default">
@@ -94,7 +94,7 @@ href="http://ss64.com/bash/source.html">source</a> the <code>.bash_profile</code
 <a href="#nix"><img src="/imgs/os_mac.png" style="margin-left: 10px;max-width: 80px;"
 title="Mac OS"/></a>
 <a href="#windows"><img src="/imgs/os_win.png" style="margin-left: 10px;max-width: 80px;"
- title="Windows"/></a>
+ title="Windows"/></a>    
 </div> -->
 <h4 id="linux-and-mac-os"><a id="nix"></a>Linux and Mac OS</h4>
 <p>Open a shell and execute:</p>
@@ -118,8 +118,8 @@ install.dir=C:\\Jolie</code></pre>
 <div id="docker" class="tab-pane" role="tabpanel">
 <h2 id="quick-start-with-pre-built-image">Quick start with pre-built image</h2>
 <p>This solution requires <a href="http://www.docker.com">Docker</a> previously installed in your machine.</p>
-<p>Open a shell and pull the most recent Jolie image with the command <kbd>docker pull jolielang/jolie</kbd>.</p>
-<p>Once the image is available on your machine, create a container from it by adding a local volume where storing the Jolie files: <kbd>docker run -it -v /your-host-folder-path:/your-container-path --name CONTAINERNAME jolielang/jolie</kbd>.</p>
+<p>Open a shell and pull the most recent Jolie image with the command <kbd>docker pull jolielang/jolie1.6.0beta1</kbd>.</p>
+<p>Once the image is available on your machine, create a container from it by adding a local volume where storing the Jolie files: <kbd>docker run -it -v /your-host-folder-path:/your-container-path --name CONTAINERNAME jolielang/jolie1.6.0beta1</kbd>.</p>
 <p>Now you can edit your files in folder <code>/your-host-folder-path</code> and find them in your container folder <code>/your-host-folder-path</code>.</p>
 <p>Finally, to run a Jolie microservice type <kbd>jolie your_file.ol</kbd> in the launched shell.</p>
 <p>Containers are also useful to test systems of microservices running within the same container. To run a new microservice on the same container type <kbd>docker exec -it CONTAINERNAME bash</kbd> to launch a new shell, following the previous commands to execute the desired service.</p>
