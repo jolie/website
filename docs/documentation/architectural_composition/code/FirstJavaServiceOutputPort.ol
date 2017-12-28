@@ -1,0 +1,3 @@
+outputPort FirstJavaServiceOutputPort {
+  Interfaces: FirstJavaServiceInterface
+}

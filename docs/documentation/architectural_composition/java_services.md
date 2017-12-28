@@ -1,78 +1,113 @@
 ## JavaServices
 
-<div class="panel panel-primary">
-	<div class="panel-heading">
- 	<p class="panel-title">Attention</p>
-	</div>
-	<div class="panel-body">
- 	This documentation page is a stub. Its contents can be partial and/or out of date.
-	</div>
-</div>
-What follows is a brief tutorial that comprises how to develop JavaService classes in an IDE and use them within Jolie programs.
+This tutorial explains how to develop JavaService classes which can be easily embedded into a Jolie service. For the sake of clarity, here we consider to use [Netbeans IDE](http://www.netbeans.org) as a project management tool, but the following instructions can be easily adapted to any kind of Java IDE.
+
 The tutorial also presents some features of Java integration in Jolie, i.e., manipulating Jolie values in Java, calling operations from a Java service, and the dynamic embedding of JavaServices.
 
+### Creation of a JavaService project
+- If you are using Maven, just click on "New Project" icon and then select **Maven** -> **Java Application** as reported in the following picture.
+
+<div class="doc_image">
+	<img style="width:500px;" src="documentation/architectural_composition/img/createproject.png" />
+</div>
+
+- If you are creating a new project from scratch click on "New Project" icon and then select **Java** -> **Java Class Library**
+
+<div class="doc_image">
+	<img style="width:500px;" src="documentation/architectural_composition/img/createproject_java.png" />
+</div>
+
+
+Then, follows the instructions and give a name to the project (ex: `FirstJavaService`) and define the working directory.
+
+
+### Dependencies
+Before continuing with the development of a JavaService keep in mind that there is a dependency you need to add to your project in order to properly compile the JavaService code: the jar `jolie.jar` which comes with your jolie installation. Follow these instructions in order to prepare the file in order to be imported into your project:
+
+- Locate the jolie.jar file into your system: jolie is usually installed into `/usr/lib/jolie` folder for linux like operative systems and in `C:\\Jolie` for Windows operative systems. In the installation folder of Jolie you can find the file jolie.jar. If you are not able to locate the jolie.jar file or you require some other jolie versions, [here](https://github.com/jolie/website/tree/master/www/files/releases) you can find the complete list of all the available releases of Jolie. Download the release you need.
+
+- If you use Maven you could register the dependency in your local repo by using the following command
+`mvn install:install-file -Dfile=<path-to-jolie.jar>/jolie.jar -DgroupId=jolie -DartifactId=jolie -Dversion=<version> -Dpackaging=jar`
+**NOTE** we are going to register the dependency jolie.jar into [Maven Central](https://search.maven.org), when done such a step can be skipped.
+
+
+### Importing the Jolie dependency into your JavaService project
+If you use Maven it is very easy to import the Jolie dependency into your project, just add the following dependency into your pom.xml file:
+<div class="code" src="maven_jolie_dependency.txt"></div>
+
+If you manually manage your project just add the jolie.jar as an external dependency. In Netbeans you have to:
+
+- Expand your project
+- Right mouse button on *Libraries*
+- Select *Add JAR/Folder*
+- Select the jolie.jar file from the path selector
+
+<div class="doc_image">
+	<img style="width:200px;" src="documentation/architectural_composition/img/addjar.png" />
+</div>
+
 ### The first JavaService
+Before writing the actual code of the JavaService it is important to create the
+package which will contain it. Let us name it `org.jolie.example`. Then, let us create the new java file called `FirstJavaService.java`.
 
-We use [Netbeans IDE](http://www.netbeans.org) to create our first JavaService.
+<div class="doc_image">
+	<img style="width:200px;" src="documentation/architectural_composition/img/package.png" />
+</div>
 
-#### Creating a new project
 
-First of all, we need to create a new Java Application project with
-Netbeans:
+#### Writing the JavaService code
+Here we present the code of our first JavaService which simply print out on the console a message received from an invoker and then reply with the message `I am your father`.
 
-<!--![](./images/JavaServices_netbeans1.jpeg)-->
+<div class="code" src="FirstJavaService.java"></div>
 
-**Figure JavaServices.1**: Netbeans project creation mask.
+In the code there are some important aspects to be considered:
 
-Then, we name the project, e.g., `FirstJavaService`, and we add to its
-*Libraries* the Jolie project present in Jolie installation folder. The Jolie
-installation folder contains the Java abstract class `JavaService`
-(`Jolie.runtime.JavaService`). We will implement it to create our JavaService.
+- We need to import two classes from the jolie dependency: `jolie.runtime.JavaService` and `jolie.runtime.Value`
+- the class `FirstJavaService` must be extended as a JavaService: `... extends JavaService`
+- the request parameter and the response one are objects `Value`
+- it is possible to navigate the tree of a `Value` by using specific methods like `getFirstChild` (see below)
+- the request message has a subnode `message` which contains a string
+- the response message will contain the reply message in the subnode `reply`
+- the core logic of the JavaService is just the line `System.out.println("message")` which prints out the content of the variable message on the console
 
-#### Creating a new package
+#### Building the JavaService
+Now we can build the JavaService, in particular we need to create a resulting `jar` file to be imported into the corresponding Jolie project. In order to do this, just click with the mouse right button on the project and select **Clean and Build**.
 
-Before writing down the code of the JavaService, we create the
-package which will contain it.
+If you are managing the project with Maven you will find the resulting jar in folder *target*, whereas if you are manually managing the project you can find it in the folder *dist*.
 
-<!--![](./images/JavaServices_netbeans2.jpeg)-->
-
-**Figure JavaServices.2**: Creation of the package `Jolie.example`.
-
-#### Creating the Java file
-
-Then, we create the Java file and we name it with same name of the
-JavaService that is `FirstJavaService`.
-
-<!--![](./images/JavaServices_netbeans3.jpeg)-->
-
-**Figure JavaServices.3**: Creation of the Java file.
-
-#### Writing the Java code and building it
-
-In the following, we add some logic to the JavaService, i.e., printing out a
-message on the console. The Java code follows:
-
-`MISSING CODE`
-
-Finally we can build the Java file into a `.jar` file.
 
 #### Executing the JavaService
+Now we are ready for embedding the JavaService into a Jolie service. It is very simple, just follows these steps:
 
-To execute the JavaService we have to embed it into a Jolie service which
-invokes it as a common embedded service as described in
-[Embedding](architectural_composition/embedding.html). The Jolie embedder service
-can call all the public methods of the JavaService like operations of Jolie
-services.
+- Create a folder where placing your jolie files, ex: `JolieJavaServiceExample`
+- Create a subfolder named `lib` (`JolieJavaServiceExample/lib`)
+- Copy the jar file of your JavaService into the folder `lib` (jolie automatically import all the libraries contained in the subfolder `lib`)
+- Create a jolie interface file where defining all the available operations of your JavaService and name it `FirstJavaServiceInterface.iol`. It is worth noting that all the public methods defined in the class FirstJavaService can be promoted as operations at the level of a Jolie service. In our example the interface is called `FirstJavaServiceInterface` and it declares one operation called `HelloWorld` (the name of the operation must be the same name of the corresponding operation in the JavaService). The request and response message types define two messages where the former has a subnode named `message` and the latter is named `reply`.
+<div class="code" src="FirstJavaServiceInterface.iol"></div>
+- In the code of your jolie service, create an outputPort for your JavaService specifically addressed for operating with it. You can name the outputPort as you prefer (there are no restrictions), in this example we use the name `FirstJavaService`. Remember to join the JavaService interface in the outputPort declaration as we did in this example:
+<div class="code" src="FirstJavaServiceOutputPort.ol"></div>
+- Embed the JavaService by joining it with its ourputPort
+<div class="code" src="FirstJavaServiceEmbedding.ol"></div>
+- Complete your jolie code.
 
-In particular, this example has one public method called *write* which can be
-easily invoked by the following embedder:
+Here we report a complete example of a jolie code which calls the JavaService and prints out its response on the console. Save it in a file named `main.ol`. Note that the embedded construct takes as a type the keyword Java instead of Jolie because we are embedding a JavaService. As parameter the embedded construct takes the absolute class name obtained as *`package/name+class/name`*.
+<div class="code" src="FirstJavaServiceExample.ol"></div>
+At this point your jolie working directory should look like the following one:
+
+- *your jolie working directory*
+	- **lib**
+		- FirstJavaService.jar
+	- FirstJavaServiceInterface.iol
+	- main.ol
+
+You can run the jolie script by using the simple command `jolie main.ol`.
+
+
+/////////////////////////////////
 
 [Download code](#code_JavaServices_1.zip)
 
-Note that the embedded construct takes as a type the keyword Java
-instead of Jolie because we are embedding a JavaService. As parameter
-the embedded construct takes the absolute class name obtained as
-`package/name+class/name`. As for a Jolie service, the embedder must
+ As for a Jolie service, the embedder must
 declare the interface of the embedded service and the outputPort used
 for communicating with it. In this case the interface contains a OneWay
 operation called write whereas the outputPort is called
@@ -186,7 +221,7 @@ Java code follows:
 
 In this example, the JavaService exhibits a OneWay operation `start` where it
 prints out the received message and then invokes the embedder by means of the
-RequestResponse operation `initialize`. 
+RequestResponse operation `initialize`.
 
 The RequestResponse invocation is performed by means of the method
 `sendMessage` where the string `"Hello world from the JavaService"` is the
@@ -256,15 +291,15 @@ and called on the operation `start`.
 If we create a simple client which calls this service for ten times we
 will have the following result on the console:
 
-	Received counter 1 
-	Received counter 1 
-	Received counter 1 
-	Received counter 1 
-	Received counter 1 
-	Received counter 1 
 	Received counter 1
-	Received counter 1 
-	Received counter 1 
+	Received counter 1
+	Received counter 1
+	Received counter 1
+	Received counter 1
+	Received counter 1
+	Received counter 1
+	Received counter 1
+	Received counter 1
 	Received counter 1
 
 Such a result means that for each session enabled on the embedder, a new
@@ -272,15 +307,15 @@ JavaService object is instantiated and executed. Indeed, we can try to execute
 the same client on a embedder service which statically embed the JavaService,
 the result will be:
 
-	Received counter 1 
-	Received counter 2 
-	Received counter 3 
-	Received counter 4 
-	Received counter 5 
-	Received counter 6 
+	Received counter 1
+	Received counter 2
+	Received counter 3
+	Received counter 4
+	Received counter 5
+	Received counter 6
 	Received counter 7
-	Received counter 8 
-	Received counter 9 
+	Received counter 8
+	Received counter 9
 	Received counter 10
 
 In this case the JavaService is shared among all the sessions and each
