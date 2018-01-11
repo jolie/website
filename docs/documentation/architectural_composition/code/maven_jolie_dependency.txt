@@ -1,0 +1,5 @@
+<dependency>
+	<groupId>jolie</groupId>
+	<artifactId>jolie</artifactId>
+	<version>1.6.2</version>
+</dependency>
