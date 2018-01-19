@@ -1,63 +1,22 @@
-body {
-	/*font-size: 230%;
-	font-size: 1.2vw;*/
-	text-align: justify;	
-	font-family: 'OpenSansRegular', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+body{
+	cursor: default;
 }
 
-
-.download {
-	border-radius: 1em;
-	background-image: url(../imgs/download-icon.png);
-	background-repeat: no-repeat;
-	background-size: contain;
-	padding-top: 1em;
-	padding-bottom: 1em;
-	padding-left: 5em;
-	padding-right: 0.5em;
-	border: 0.05em solid #ccc;
-	display: inline-block;
-        -webkit-box-shadow: 0px 2px 1px rgba(50, 50, 50, 0.75);
-        -moz-box-shadow: 0px 2px 1px rgba(50, 50, 50, 0.75);
-        box-shadow: 0px 2px 1px rgba(50, 50, 50, 0.75);
+.clear{
+	clear: both;
 }
 
-.download:hover {
-	background: #D3B5B6;
-	background-image: url(../imgs/download-icon.png);
-	background-repeat: no-repeat;
-	background-size: contain;
+.float-left{
+	float: left;
 }
 
-.page-content {
-	padding-top: 1em;
-	padding-bottom: 1em;
+.badge-warning,
+.btn-outline-warning:active,
+.btn-outline-warning:hover{
+	color: white!important;
 }
 
-.vertical-align {
-	display: flex;
-	align-items: center;
-}
-
-.page-nav-menu a {
-/* 	color: white; */
-	text-decoration: none;
-}
-
-.page-nav-menu li {
-	margin: 0.2em;
-}
-
-.page-nav-menu a:hover {
-	background-color: #7d2c2b;
-	color: white;
-	border-radius: 1em;
-	text-decoration: none;
-}
-
-.page-nav-menu li .active {
-	background-color: white;
-	color: black;
-	border-radius: 1em;
-	text-decoration: none;
+.badge-secondary {
+    background-color: #a4a4a5!important;
 }

@@ -1,0 +1,99 @@
+
+/* General */
+
+.background{
+	background-color: rgba(255, 165, 0, 0.73);
+	color: white;
+	text-shadow: 1px 1px #7d7d7d;
+	border-bottom: 1px solid orange;
+}
+
+.section{
+	padding: 40px 30px 50px 30px;
+}
+
+.background-intermed{
+	background-color: #e2e0e026;
+}
+
+#gateway,
+#paths-and-news{
+	border-bottom: 1px solid #ccc;
+}
+
+/* Landing section */
+
+.jolie-logo{
+	margin-top: 47px;
+	float: left;
+}
+
+.jolie-title{
+	text-align: center;
+	font-size: 120px;
+}
+
+.jolie-subtitle{
+	text-align: center;
+	font-size: 30px;
+	margin-top: -20px;
+}
+
+.call-to-action {
+	margin-top: 9%;
+}
+
+.actions {
+	margin-top: 5%;
+}
+
+.call {
+	font-size: 32px;
+}
+
+.call-sub{
+	font-size: 20px;
+	margin-top: -15px;
+}
+
+.actions .vision{
+	margin-left: 3%;
+}
+
+/* Gateway section */
+
+.card{
+	height: 360px;
+}
+
+.card-img-top{
+	height: 180px;
+	background-color: #ccc;
+}
+
+.card .btn{
+	width: 90%;
+	bottom: 18px;
+	position: absolute;
+	left: 5.5%;
+}
+
+.cards-intro{
+	width: 100%;
+	text-align: center;
+	padding: 15px;
+	margin-top: -25px;
+}
+
+/* Techical Paths & News */
+
+#academy .align-items-start,
+#paths-and-news .align-items-start{
+	height: 105px!important;
+}
+
+.news-pinned{
+	width: 21px;
+	margin-top: -8px;
+	margin-right: 7px;
+}

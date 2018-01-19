@@ -1,8 +1,0 @@
-<!--Themed-->
-
-<div id="$idprefix$TOC">
-<!-- <h2 id="$idprefix$toctitle">$if(toctitle)$$toctitle$$else$Table of Contents$endif$</h2> -->
-$toc$
-</div>
-
-$body$
