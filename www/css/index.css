@@ -1,10 +1,14 @@
 
 /* General */
 
-.background{
+h1{
+	margin-bottom: 30px;
+}
+
+#landing{
 	background-color: rgba(255, 165, 0, 0.73);
 	color: white;
-	text-shadow: 1px 1px #7d7d7d;
+	text-shadow: 1px 1px 4px #5f5f5f8c;
 	border-bottom: 1px solid orange;
 }
 
@@ -16,7 +20,8 @@
 	background-color: #e2e0e026;
 }
 
-#gateway,
+#technical-tutorials,
+#stories,
 #paths-and-news{
 	border-bottom: 1px solid #ccc;
 }
@@ -26,6 +31,10 @@
 .jolie-logo{
 	margin-top: 47px;
 	float: left;
+}
+
+.logo{
+	margin-top: 25px;
 }
 
 .jolie-title{
@@ -43,20 +52,27 @@
 	margin-top: 9%;
 }
 
-.actions {
-	margin-top: 5%;
-}
-
 .call {
-	font-size: 32px;
+	font-size: 45px;
 }
 
 .call-sub{
 	font-size: 20px;
-	margin-top: -15px;
 }
 
-.actions .vision{
+.actions{
+	margin-bottom: 40px;
+}
+
+.btn.what{
+	margin-left: 5px;
+	margin-top: -1px;
+}
+
+.btn.what,
+.btn.download{
+	margin-top: 20px;
+	width: 220px;
 	margin-left: 3%;
 }
 
@@ -79,10 +95,76 @@
 }
 
 .cards-intro{
-	width: 100%;
+	width: 96.5%;
 	text-align: center;
 	padding: 15px;
 	margin-top: -25px;
+	font-size: 120%;
+}
+
+.img-businessman{
+	width: 58%;
+}
+
+.card-img-top-businessman{
+	background-color: #78f15a73;
+}
+
+.img-it-manager{
+	width: 84%;
+	margin-top: -29px;
+}
+
+.card-img-top-it-manager{
+	background-color: #abe3f873;
+}
+
+.img-developer{
+	width: 62%;
+}
+
+.card-img-top-developer{
+	background-color: #f2f55682;
+}
+
+/* Microservices */
+
+#microservices{
+	background-color: rgba(0, 126, 255, 0.73);
+	color: white;
+	text-shadow: 1px 1px 4px #5f5f5f8c;
+	border-top: 1px solid rgb(0, 126, 255);
+	border-bottom: 1px solid rgb(0, 126, 255);
+}
+
+.microservices-more {
+	float: right;
+	margin: 30px 20px 0px 0px;
+}
+
+.microservices-title{
+	font-size: 55px;
+}
+
+.microservices-title-sub{
+	font-size: 25px;
+}
+
+.btn-outline-light:active,
+.btn-outline-light:hover{
+	text-shadow: none!important;
+	color: #1987f7;
+}
+
+/* Carousel */
+
+#myCarousel{
+	margin: 0 auto;
+	text-shadow: 1px 1px 4px #5f5f5f8c;
+}
+
+#myCarousel .carousel-item {
+	height: 300px;
 }
 
 /* Techical Paths & News */

@@ -3,12 +3,23 @@ body{
 	cursor: default;
 }
 
+.navbar{
+	background-color: #eaebec!important;
+}
+
 .clear{
 	clear: both;
 }
 
 .float-left{
 	float: left;
+}
+
+/* Badge */
+
+.badge{
+	text-shadow: 1px 1px 1px #5f5f5f6b;
+	font-weight: normal!important;
 }
 
 .badge-warning,
@@ -18,5 +29,43 @@ body{
 }
 
 .badge-secondary {
-    background-color: #a4a4a5!important;
+	background-color: #a4a4a5!important;
+}
+
+/* Buttons */
+
+.btn-secondary {
+	color: #fff;
+	background-color: #6c757db5;
+	border-color: #6c757d66;
+}
+
+.btn-secondary:active,
+.btn-secondary:hover {
+	color: #fff!important;
+	background-color: #6c757dde!important;
+	border-color: #6c757d96!important;
+}
+
+.btn-warning {
+	color: white!important;
+	background-color: #ffc107!important;
+	border-color: #f3b702!important;
+}
+
+.btn-warning:active,
+.btn-warning:hover {
+	color: white!important;
+	background-color: #e0a800!important;
+	border-color: #d39e00!important;
+}
+
+.btn-text-shadow{
+	text-shadow: 1px 1px 4px #5f5f5f8c;
+}
+
+/* Colors */
+
+.gray{
+	color: gray;
 }

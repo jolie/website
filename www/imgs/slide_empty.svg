@@ -1,0 +1,20 @@
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+ <defs>
+  <style type="text/css">#holder_16165b024d6 text { fill:#555;font-weight:normal;font-family:Helvetica, monospace;font-size:40pt }</style>
+ </defs>
+ <g>
+  <title>background</title>
+  <rect x="-1" y="-1" width="802" height="402" id="canvas_background" fill="none"/>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <g id="holder_16165b024d6">
+   <rect width="800" height="400" fill="#777" id="svg_1"/>
+   <g id="svg_2">
+    <text x="285.921875" y="217.7" id="svg_3">First slide</text>
+   </g>
+  </g>
+  <rect fill="#777" stroke-width="1.5" x="100.5" y="123.5" width="590" height="183" id="svg_4"/>
+  <rect id="svg_5" height="452" width="905" y="-23.5" x="-51.5" opacity="0.5" stroke-width="1.5" stroke="#000" fill="#cccccc"/>
+ </g>
+</svg>
