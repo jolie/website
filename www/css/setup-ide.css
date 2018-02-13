@@ -3,7 +3,7 @@
 	height: 1px;
 	background-color: #ccc;
 	width: 70%;
-	margin: 50px auto;
+	margin: 50px auto 10px auto;
 }
 
 #setup-ide .run-jolie{

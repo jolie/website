@@ -1,0 +1,62 @@
+
+#unitary-plurivocal .card-head{
+	height: 200px;
+	padding: 20px;
+}
+
+#unitary-plurivocal .card-head .card-title{
+	margin-bottom: 20px
+}
+
+#unitary-plurivocal .card.unitary .card-head{
+	background-color: #ececec;
+}
+
+#unitary-plurivocal .card.unitary{
+	border: 1px solid #e2e0e0;
+}
+
+#unitary-plurivocal .card.plurivocal .card-head{
+	background-color: #78baffcc;
+}
+
+#unitary-plurivocal .card.plurivocal{
+	border: 1px solid #78baffcc;
+}
+
+#unitary-plurivocal .card.unitary-and-plurivocal .card-head{
+	background-color: #ffa500cc;
+}
+
+#unitary-plurivocal .card.unitary-and-plurivocal{
+	border: 1px solid #ffa500cc;
+}
+
+#unitary-plurivocal .card .card-img-top img{
+	width: 60%;
+	display: block;
+}
+
+#unitary-plurivocal .card.unitary .card-img-top img{
+	margin: 20px auto 10px auto;
+	width: 60%;
+}
+
+#unitary-plurivocal .card.plurivocal .card-img-top img{
+	width: 100%;
+	margin: 7px auto 0px auto;
+}
+
+#unitary-plurivocal .card.unitary-and-plurivocal .card-img-top img{
+	width: 79%;
+	margin: 7px auto 0px auto;
+}
+
+#unitary-plurivocal .card-body{
+	height: 245px;
+}
+
+#unitary-plurivocal .back{
+	width: 93.5%;
+	margin: 50px 0px 0px 15px;
+}

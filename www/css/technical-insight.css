@@ -1,0 +1,92 @@
+
+a.nav-link{
+	display: none!important;
+}
+
+.navbar {
+	padding: 10px 3%;
+}
+
+.container{
+	max-width: 100%;
+}
+
+#technical-insight{
+	margin-top: 50px;
+}
+
+#technical-insight .main-picture{
+	margin: 20px auto;
+	display: block;
+}
+
+#technical-insight .description{
+	color: #03bbf9;
+	font-weight: 600;
+}
+
+#technical-insight .goal{
+	color: orange;
+	font-weight: 600;
+}
+
+#technical-insight .text{
+	border-right: 1px solid orange;
+	padding-right: 10px;
+	padding-bottom: 10px;
+	border-bottom: 1px solid orange;
+	border-bottom-right-radius: 5px;
+}
+
+#technical-insight .show-tips{
+	margin-bottom: 20px;
+}
+
+#technical-insight .client,
+#technical-insight .server{
+	width: 47%;
+	float: left;
+	margin: 0px 10px;
+	position: relative;
+	display: block;
+}
+
+
+#technical-insight .download{
+	margin: 20px 0px;
+	width: 96%;
+	margin-left: 11px;
+}
+
+#technical-insight .code-input{
+	padding: 20px 10px;
+	background-color: #2d2d2d;
+	margin-top: 30px;
+	color: white;
+	border-radius: 3px;
+	text-shadow: 1px 1px 1px #423e3e;
+	height: 200px;
+}
+
+#technical-insight .block a{
+	margin: 40px auto 30px auto;
+	display: table;
+}
+
+#technical-insight .output-pre{
+	color: gray;
+}
+
+#technical-insight .code-output{
+	padding: 20px 10px;
+	background-color: #000000eb;
+	margin-top: 10px;
+	color: white;
+	border-radius: 3px;
+	height: 200px;
+}
+
+#technical-insight .go-next{
+	margin: 20px 21px 0px 0px;
+	float: right;
+}
