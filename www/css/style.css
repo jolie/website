@@ -41,12 +41,19 @@ h1{
 .btn-secondary {
 	color: #fff;
 	background-color: #6c757db5;
-	border-color: #6c757d66;
+	border-color: #82858866;
 }
 
 .btn-success {
 	background-color: #28bd4a;
 	border-color: #27b948;
+}
+
+
+.btn-success:active,
+.btn-success:hover {
+	background-color: #0ba22d;
+	border-color: #1da03b;
 }
 
 .btn-secondary:active,

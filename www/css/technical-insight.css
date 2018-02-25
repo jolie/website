@@ -3,6 +3,10 @@ a.nav-link{
 	display: none!important;
 }
 
+.navbar-brand {
+	margin-left: 9%;
+}
+
 .navbar {
 	padding: 10px 3%;
 }
@@ -13,6 +17,11 @@ a.nav-link{
 
 #technical-insight{
 	margin-top: 50px;
+}
+
+#technical-insight .client h5,
+#technical-insight .server h5{
+	margin-bottom: 30px;
 }
 
 #technical-insight .main-picture{
@@ -32,7 +41,7 @@ a.nav-link{
 
 #technical-insight .text{
 	border-right: 1px solid orange;
-	padding-right: 10px;
+	padding-right: 25px;
 	padding-bottom: 10px;
 	border-bottom: 1px solid orange;
 	border-bottom-right-radius: 5px;
@@ -58,16 +67,6 @@ a.nav-link{
 	margin-left: 11px;
 }
 
-#technical-insight .code-input{
-	padding: 20px 10px;
-	background-color: #2d2d2d;
-	margin-top: 30px;
-	color: white;
-	border-radius: 3px;
-	text-shadow: 1px 1px 1px #423e3e;
-	height: 200px;
-}
-
 #technical-insight .block a{
 	margin: 40px auto 30px auto;
 	display: table;
@@ -77,7 +76,7 @@ a.nav-link{
 	color: gray;
 }
 
-#technical-insight .code-output{
+#technical-insight .code{
 	padding: 20px 10px;
 	background-color: #000000eb;
 	margin-top: 10px;
@@ -87,6 +86,318 @@ a.nav-link{
 }
 
 #technical-insight .go-next{
-	margin: 20px 21px 0px 0px;
+	margin: 15px 21px 0px 0px;
 	float: right;
+}
+
+/* Side Navbar */
+
+#technical-insight a.button-collapse{
+	position: absolute;
+	margin: -7px 0px 0px -60px;
+}
+
+#technical-insight a.button-collapse img{
+	width: 70%;
+}
+
+.side-nav h5{
+	padding-left: 20px;
+}
+
+.side-nav li.highlighted{
+	background-color: #ffa500e8;
+}
+
+.side-nav li.highlighted a{
+	color: white;
+	text-shadow: 1px 1px 1px #797979a8;
+}
+
+.side-nav {
+	-webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+}
+
+.side-nav .collapsible,
+.side-nav.fixed .collapsible {
+	border: none;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+
+.side-nav .collapsible li,
+.side-nav.fixed .collapsible li {
+	padding: 0;
+}
+
+.side-nav .collapsible-header,
+.side-nav.fixed .collapsible-header {
+	background-color: transparent;
+	border: none;
+	line-height: inherit;
+	height: inherit;
+	padding: 0 16px;
+}
+
+.side-nav .collapsible-header:hover,
+.side-nav.fixed .collapsible-header:hover {
+	background-color: rgba(0, 0, 0, 0.05);
+}
+
+.side-nav .collapsible-header i,
+.side-nav.fixed .collapsible-header i {
+	line-height: inherit;
+}
+
+.side-nav .collapsible-body,
+.side-nav.fixed .collapsible-body {
+	border: 0;
+	background-color: #fff;
+}
+
+.side-nav .collapsible-body li a,
+.side-nav.fixed .collapsible-body li a {
+	padding: 0 23.5px 0 31px;
+}
+
+.side-nav {
+	position: fixed;
+	width: 300px;
+	left: 0;
+	top: 0;
+	margin: 0;
+	-webkit-transform: translateX(-100%);
+	transform: translateX(-100%);
+	height: 100%;
+	height: calc(100% + 60px);
+	height: -moz-calc(100%);
+	padding-bottom: 60px;
+	background-color: #fff;
+	z-index: 999;
+	overflow-y: auto;
+	will-change: transform;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+	-webkit-transform: translateX(-105%);
+	transform: translateX(-105%);
+}
+
+.side-nav.right-aligned {
+	right: 0;
+	-webkit-transform: translateX(105%);
+	transform: translateX(105%);
+	left: auto;
+	-webkit-transform: translateX(100%);
+	transform: translateX(100%);
+}
+
+.side-nav .collapsible {
+	margin: 0;
+}
+
+.side-nav li {
+	float: none;
+	line-height: 48px;
+	list-style: none;
+	border-top-left-radius: 4px;
+	border-bottom-left-radius: 4px;
+	transition: 0.2s;
+}
+
+.side-nav li.active {
+	background-color: rgba(0, 0, 0, 0.05);
+}
+
+.side-nav li > a {
+	color: rgba(0, 0, 0, 0.87);
+	display: block;
+	font-size: 15px;
+	height: 38px;
+	line-height: 38px;
+	padding: 0 32px;
+	text-decoration: none;
+}
+
+.side-nav li > a:hover {
+	background-color: rgba(0, 0, 0, 0.05);
+	border-top-left-radius: 4px;
+	border-bottom-left-radius: 4px;
+}
+
+.side-nav li > a.btn, .side-nav li > a.btn-large, .side-nav li > a.btn-large, .side-nav li > a.btn-flat, .side-nav li > a.btn-floating {
+	margin: 10px 15px;
+}
+
+.side-nav li > a.btn, .side-nav li > a.btn-large, .side-nav li > a.btn-large, .side-nav li > a.btn-floating {
+	color: #fff;
+}
+
+.side-nav li > a.btn-flat {
+	color: #343434;
+}
+
+.side-nav li > a.btn:hover, .side-nav li > a.btn-large:hover, .side-nav li > a.btn-large:hover {
+	background-color: #2bbbad;
+}
+
+.side-nav li > a.btn-floating:hover {
+	background-color: #26a69a;
+}
+
+.side-nav li > a > i,
+.side-nav li > a > [class^="mdi-"], .side-nav li > a li > a > [class*="mdi-"],
+.side-nav li > a > i.material-icons {
+	float: left;
+	height: 48px;
+	line-height: 48px;
+	margin: 0 32px 0 0;
+	width: 24px;
+	color: rgba(0, 0, 0, 0.54);
+}
+
+.side-nav .divider {
+	margin: 8px 0 0 0;
+}
+
+.side-nav .subheader {
+	cursor: initial;
+	pointer-events: none;
+	color: rgba(0, 0, 0, 0.54);
+	font-size: 14px;
+	font-weight: 500;
+	line-height: 48px;
+}
+
+.side-nav .subheader:hover {
+	background-color: transparent;
+}
+
+.side-nav .user-view,
+.side-nav .userView {
+	position: relative;
+	padding: 32px 32px 0;
+	margin-bottom: 8px;
+}
+
+.side-nav .user-view > a,
+.side-nav .userView > a {
+	height: auto;
+	padding: 0;
+}
+
+.side-nav .user-view > a:hover,
+.side-nav .userView > a:hover {
+	background-color: transparent;
+}
+
+.side-nav .user-view .background,
+.side-nav .userView .background {
+	overflow: hidden;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: -1;
+}
+
+.side-nav .user-view .circle, .side-nav .user-view .name, .side-nav .user-view .email,
+.side-nav .userView .circle,
+.side-nav .userView .name,
+.side-nav .userView .email {
+	display: block;
+}
+
+.side-nav .user-view .circle,
+.side-nav .userView .circle {
+	height: 64px;
+	width: 64px;
+}
+
+.side-nav .user-view .name,
+.side-nav .user-view .email,
+.side-nav .userView .name,
+.side-nav .userView .email {
+	font-size: 14px;
+	line-height: 24px;
+}
+
+.side-nav .user-view .name,
+.side-nav .userView .name {
+	margin-top: 16px;
+	font-weight: 500;
+}
+
+.side-nav .user-view .email,
+.side-nav .userView .email {
+	padding-bottom: 16px;
+	font-weight: 400;
+}
+
+.drag-target {
+	height: 100%;
+	width: 10px;
+	position: fixed;
+	top: 0;
+	z-index: 998;
+}
+
+.side-nav.fixed {
+	left: 0;
+	-webkit-transform: translateX(0);
+	transform: translateX(0);
+	position: fixed;
+}
+
+.side-nav.fixed.right-aligned {
+	right: 0;
+	left: auto;
+}
+
+@media only screen and (max-width: 992px) {
+	.side-nav.fixed {
+		-webkit-transform: translateX(-105%);
+		transform: translateX(-105%);
+	}
+	.side-nav.fixed.right-aligned {
+		-webkit-transform: translateX(105%);
+		transform: translateX(105%);
+	}
+	.side-nav a {
+		padding: 0 16px;
+	}
+	.side-nav .user-view,
+	.side-nav .userView {
+		padding: 16px 16px 0;
+	}
+}
+
+.side-nav .collapsible-body > ul:not(.collapsible) > li.active,
+.side-nav.fixed .collapsible-body > ul:not(.collapsible) > li.active {
+	background-color: #ee6e73;
+}
+
+.side-nav .collapsible-body > ul:not(.collapsible) > li.active a,
+.side-nav.fixed .collapsible-body > ul:not(.collapsible) > li.active a {
+	color: #fff;
+}
+
+.side-nav .collapsible-body {
+	padding: 0;
+}
+
+#sidenav-overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 120vh;
+	background-color: rgba(0, 0, 0, 0.5);
+	z-index: 997;
+	will-change: opacity;
+}
+
+.side-nav span.badge {
+	margin-top: calc(24px - 11px);
 }
