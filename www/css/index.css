@@ -139,7 +139,18 @@ h1{
 
 .microservices-more {
 	float: right;
-	margin: 30px 20px 0px 0px;
+	margin: 25px 20px 0px 0px;
+}
+
+.microservices-title-focus {
+	display: block;
+	background-color: orange;
+	padding: 4px 15px;
+	font-size: 28px;
+	margin-bottom: 15px;
+	width: fit-content;
+	border: 1px solid orange;
+	border-radius: 4px;
 }
 
 .microservices-title{
@@ -160,7 +171,7 @@ h1{
 
 #myCarousel{
 	margin: 0 auto;
-	text-shadow: 1px 1px 4px #5f5f5f8c;
+	text-shadow: 1px 1px 3px #403b3b;
 }
 
 #myCarousel .carousel-item {

@@ -136,10 +136,10 @@
 						</h4>
 						<img src="imgs/server_client.png" class="main-picture">
 						<p>
-							<span class="description">Description: </span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+							<span class="description">Description </span>A Jolie program defines a service and is a composition of two parts, called behaviour and deployment. A behaviour defines the implementation of the functionalities offered by a service; behavioural primitives include communication and computation constructs. However, these do not deal with how communications are supported: they abstractly refer to communication ports, which are assumed to be correctly defined in the deployment part.
 						</p>
 						<p>
-							<span class="goal">Goal: </span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+							<span class="goal">Goal </span>A simple Server - Client application: the client sends a number (5) to the server. The server return the number received multiplied by two, which will be printed by the client.
 						</p>
 						<a href="#!" class="btn btn-primary btn-sm show-tips">Show Tips</a>
 					</div>
@@ -151,18 +151,19 @@
 						</h5>
 						<div class="block">
 							<p class="code">
-								main
-								{
-									twice( number )( result ) {
-									result = number * 2
-								}
+								main<br>
+								{<br>
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;twice( number )( response )    {<br>
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;response = number * 2;<br>
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;println@Console( number )<br>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
 							}
 						</p>
 						<span class="output-pre">
 							Output:
 						</span>
 						<p class="code">
-							Hello, World!
+							5
 						</p>
 					</div>
 				</div>
@@ -172,25 +173,24 @@
 					</h5>
 					<div class="block">
 						<p class="code">
-							main
-							{
-								twice( number )( result ) {
-								result = number * 2
+							main <br>
+							{<br>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;twice@TwiceService( 5 )( response );<br>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;println@Console( response )<br>
 							}
-						}
-					</p>
-					<span class="output-pre">
-						Output:
-					</span>
-					<p class="code">
-						Hello, World!
-					</p>
+						</p>
+						<span class="output-pre">
+							Output:
+						</span>
+						<p class="code">
+							10
+						</p>
+					</div>
 				</div>
+				<a href="#!" class="btn btn-success download">Download & Run</a>
+				<a href="#!" class="btn btn-warning go-next">Go to Next Insight</a>
 			</div>
-			<a href="#!" class="btn btn-success download">Download & Run</a>
-			<a href="#!" class="btn btn-warning go-next">Go to Next Insight</a>
 		</div>
 	</div>
-</div>
 </div>
 </div>
