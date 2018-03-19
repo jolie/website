@@ -41,6 +41,7 @@ Here are some people who offer BSc and MSc projects on Jolie:
 * [Fabrizio Montesi (University of Southern Denmark, Denmark)](http://www.fabriziomontesi.com/)
 * [Manuel Mazzara (Innopolis University, Russia)](http://university.innopolis.ru/en/node/544)
 * [Maurizio Gabbrielli (University of Bologna, Italy)](http://www.cs.unibo.it/~gabbri/)
+* [Ivan Lanese (University of Bologna, Italy)](http://www.cs.unibo.it/~lanese/)
 * [Marco Carbone (IT University of Copenhagen, Denmark)](http://www.itu.dk/~maca)
 * [Marino Miculan (University of Udine, Italy)](https://users.dimi.uniud.it/~marino.miculan/)
 * [Nicola Dragoni (Technical University of Denmark, Denmark)](http://people.compute.dtu.dk/ndra/WebNic/Home.html)
@@ -52,11 +53,11 @@ Here are some people who offer BSc and MSc projects on Jolie:
 
 ## Current Projects
 
-* [CRC: Choreographies for Reliable and efficient Communication software](http://www.chor-lang.org/)
-* [EU Cost Action BETTY: Behavioural Types for Reliable Large-Scale Software Systems](http://www.cost.eu/domains_actions/ict/Actions/IC1201)
 
 ## Past Projects
 
+* [CRC: Choreographies for Reliable and efficient Communication software](http://www.chor-lang.org/)
+* [EU Cost Action BETTY: Behavioural Types for Reliable Large-Scale Software Systems](http://www.cost.eu/domains_actions/ict/Actions/IC1201)
 * [EU Project SENSORIA](http://www.sensoria-ist.eu/)
 
 
