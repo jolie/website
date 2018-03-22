@@ -1,0 +1,196 @@
+<!--Themed-->
+<link rel="stylesheet" type="text/css" href="css/technical-insight.css">  
+<link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.min.css">
+<div id="technical-insight">
+	<div class="section container full-width">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4">
+					<div id="slide-out" class="side-nav">
+						<br>
+						<h5>
+							1 - BASIC
+						</h5>
+						<ul>
+							<li class="highlighted">
+								<a href="#!">
+									Server - Client
+								</a>
+							</li>
+							<li>
+								<a href="#!">
+									Server always ON
+								</a>
+							</li>
+							<li>
+								<a href="#!">
+									Sequence operations ";"
+								</a>
+							</li>
+							<li>
+								<a href="#!">
+									Parallel operations "|"
+								</a>
+							</li>
+							<li>
+								<a href="#!">
+									From SODEP to HTTP
+								</a>
+							</li>
+							<li>
+								<a href="#!">
+									Calls from Browser
+								</a>
+							</li>
+						</ul>
+						<h5>
+							2 - INTERMEDIATE (Step 1)
+						</h5>
+						<ul>
+							<li>
+								<a href="#!">
+									Interfaces
+								</a>
+							</li>
+							<li>
+								<a href="#!">
+									Types
+								</a>
+							</li>
+							<li>
+								<a href="#!">
+									Ports
+								</a>
+							</li>
+						</ul>
+						<h5>
+							3 - INTERMEDIATE (Step 2)
+						</h5>
+						<ul>
+							<li>
+								<a href="#!">
+									Choice
+								</a>
+							</li>
+							<li>
+								<a href="#!">
+									Procedures
+								</a>
+							</li>
+							<li>
+								<a href="#!">
+									Error handling
+								</a>
+							</li>
+						</ul>
+						<h5>
+							4 - ADVANCED
+						</h5>
+						<ul>
+							<li>
+								<a href="#!">
+									Embedding Jolie
+								</a>
+							</li>
+							<li>
+								<a href="#!">
+									Embedding Java
+								</a>
+							</li>
+							<li>
+								<a href="#!">
+									Embedding Javascript
+								</a>
+							</li>
+						</ul>
+						<h5>
+							5 - EXPERT
+						</h5>
+						<ul>
+							<li>
+								<a href="#!">
+									Aggregation
+								</a>
+							</li>
+							<li>
+								<a href="#!">
+									Redirections
+								</a>
+							</li>
+						</ul>
+						<h5>
+							6 - MASTER
+						</h5>
+						<ul>
+							<li>
+								<a href="#!">
+									Sessions
+								</a>
+							</li>
+						</ul>
+					</div>
+					<a href="#!" data-activates="slide-out" class="button-collapse"><img src="imgs/menu.png"></a>
+					<div class="text">
+						<h4 class="text-center">
+							BASIC - "Server and Client"
+						</h4>
+						<img src="imgs/server_client.png" class="main-picture">
+						<p>
+							<span class="description">Description </span>A Jolie program defines a service and is a composition of two parts, called behaviour and deployment. A behaviour defines the implementation of the functionalities offered by a service; behavioural primitives include communication and computation constructs. However, these do not deal with how communications are supported: they abstractly refer to communication ports, which are assumed to be correctly defined in the deployment part.
+						</p>
+						<p>
+							<span class="goal">Goal </span>A simple Server - Client application: the client sends a number (5) to the server. The server return the number received multiplied by two, which will be printed by the client.
+						</p>
+						<a href="#!" class="btn btn-primary btn-sm show-tips">Show Tips</a>
+					</div>
+				</div>
+				<div class="col-md-8">
+					<div class="server">
+						<h5 class="text-center">
+							Server
+						</h5>
+						<div class="block">
+							<p class="code">
+								main<br>
+								{<br>
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;twice( number )( response )    {<br>
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;response = number * 2;<br>
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;println@Console( number )<br>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+							}
+						</p>
+						<span class="output-pre">
+							Output:
+						</span>
+						<p class="code">
+							5
+						</p>
+					</div>
+				</div>
+				<div class="client">
+					<h5 class="text-center">
+						Client
+					</h5>
+					<div class="block">
+						<p class="code">
+							main <br>
+							{<br>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;twice@TwiceService( 5 )( response );<br>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;println@Console( response )<br>
+							}
+						</p>
+						<span class="output-pre">
+							Output:
+						</span>
+						<p class="code">
+							10
+						</p>
+					</div>
+				</div>
+				<a href="#!" class="btn btn-success download">Download & Run</a>
+				<a href="#!" class="btn btn-warning go-next">Go to Next Insight</a>
+			</div>
+		</div>
+	</div>
+</div>
+</div>

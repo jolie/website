@@ -1,0 +1,11 @@
+
+#setup-ide .divider{
+	height: 1px;
+	background-color: #ccc;
+	width: 70%;
+	margin: 50px auto 10px auto;
+}
+
+#setup-ide .run-jolie{
+	margin: 50px auto 20px auto;
+}

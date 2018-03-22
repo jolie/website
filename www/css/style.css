@@ -1,63 +1,87 @@
-body {
-	/*font-size: 230%;
-	font-size: 1.2vw;*/
-	text-align: justify;	
-	font-family: 'OpenSansRegular', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+body{
+	cursor: default;
+}
+
+.navbar{
+	background-color: #eaebec!important;
+}
+
+.clear{
+	clear: both;
+}
+
+.float-left{
+	float: left;
+}
+
+h1{
+	margin: 30px 0px 50px 0px;
+}
+
+/* Badge */
+
+.badge{
+	text-shadow: 1px 1px 1px #5f5f5f6b;
+	font-weight: normal!important;
+}
+
+.badge-warning,
+.btn-outline-warning:active,
+.btn-outline-warning:hover{
+	color: white!important;
+}
+
+.badge-secondary {
+	background-color: #a4a4a5!important;
+}
+
+/* Buttons */
+
+.btn-secondary {
+	color: #fff;
+	background-color: #6c757db5;
+	border-color: #82858866;
+}
+
+.btn-success {
+	background-color: #28bd4a;
+	border-color: #27b948;
 }
 
 
-.download {
-	border-radius: 1em;
-	background-image: url(../imgs/download-icon.png);
-	background-repeat: no-repeat;
-	background-size: contain;
-	padding-top: 1em;
-	padding-bottom: 1em;
-	padding-left: 5em;
-	padding-right: 0.5em;
-	border: 0.05em solid #ccc;
-	display: inline-block;
-        -webkit-box-shadow: 0px 2px 1px rgba(50, 50, 50, 0.75);
-        -moz-box-shadow: 0px 2px 1px rgba(50, 50, 50, 0.75);
-        box-shadow: 0px 2px 1px rgba(50, 50, 50, 0.75);
+.btn-success:active,
+.btn-success:hover {
+	background-color: #0ba22d;
+	border-color: #1da03b;
 }
 
-.download:hover {
-	background: #D3B5B6;
-	background-image: url(../imgs/download-icon.png);
-	background-repeat: no-repeat;
-	background-size: contain;
+.btn-secondary:active,
+.btn-secondary:hover {
+	color: #fff!important;
+	background-color: #6c757dde!important;
+	border-color: #6c757d96!important;
 }
 
-.page-content {
-	padding-top: 1em;
-	padding-bottom: 1em;
+.btn-warning {
+	color: white!important;
+	background-color: #ffc107!important;
+	border-color: #f3b702ad!important;
 }
 
-.vertical-align {
-	display: flex;
-	align-items: center;
+.btn-warning:active,
+.btn-warning:hover {
+	color: white!important;
+	background-color: #e0a800!important;
+	border-color: #d39e00!important;
 }
 
-.page-nav-menu a {
-/* 	color: white; */
-	text-decoration: none;
+.btn-text-shadow{
+	text-shadow: 1px 1px 4px #5f5f5f8c;
 }
 
-.page-nav-menu li {
-	margin: 0.2em;
-}
+/* Colors */
 
-.page-nav-menu a:hover {
-	background-color: #7d2c2b;
-	color: white;
-	border-radius: 1em;
-	text-decoration: none;
-}
-
-.page-nav-menu li .active {
-	background-color: white;
-	color: black;
-	border-radius: 1em;
-	text-decoration: none;
+.gray{
+	color: gray;
 }

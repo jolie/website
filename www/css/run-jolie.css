@@ -1,0 +1,21 @@
+
+#run-jolie .title-sub{
+	color: gray;
+	margin-bottom: 30px;
+}
+
+#run-jolie .download-hello-world{
+	margin: 30px auto 40px auto;
+	display: table;
+}
+
+#run-jolie .divider{
+	height: 1px;
+	background-color: #ccc;
+	width: 70%;
+	margin: 40px auto;
+}
+
+#run-jolie .go-to-guide{
+	margin-top: 20px;
+}
