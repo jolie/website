@@ -26,7 +26,7 @@
 <h4 id="get-the-jolie-installer">Get the Jolie installer</h4>
 <p>Download the Java-based installer of the latest stable release of Jolie:</p>
 <div class="col-xs-12 text-center">
-<a href="/files/releases/jolie-1.6.2.jar">
+<a href="/files/releases/jolie-1.6.3.jar">
 <p class="download">
 Jolie Installer
 </p>
@@ -34,14 +34,14 @@ Jolie Installer
 </div>
 <p>Here you can find the <a href="https://github.com/jolie/website/tree/master/www/files/releases">previous stable releases</a> of Jolie.</p>
 <h4 id="run-the-jolie-installer">Run the Jolie installer</h4>
-<p>Open a shell terminal, access the directory in which you downloaded the installer, and execute <kbd>java -jar jolie-1.6.2.jar</kbd>. The installer may need permissions to write in the directories in which you intend to install Jolie. Depending on your Operating System you can launch the Jolie installer with elevated privileges:</p>
+<p>Open a shell terminal, access the directory in which you downloaded the installer, and execute <kbd>java -jar jolie-1.6.3.jar</kbd>. The installer may need permissions to write in the directories in which you intend to install Jolie. Depending on your Operating System you can launch the Jolie installer with elevated privileges:</p>
 <ul>
 <li>
 <strong>on Windows</strong>, by start a command prompt with <a
   href="https://technet.microsoft.com/en-us/library/cc947813.aspx"> administrator privileges</a> and launch the installer;
 </li>
 <li>
-<strong>on Linux/MacOS</strong>, by launching the installer as root with command <kbd>sudo java -jar jolie-1.6.2.jar</kbd>.
+<strong>on Linux/MacOS</strong>, by launching the installer as root with command <kbd>sudo java -jar jolie-1.6.3.jar</kbd>.
 </li>
 </ul>
 <div class="panel panel-default">
@@ -52,7 +52,7 @@ Jolie Installer
 <div class="accordion" id="accordion2">
 <div class="accordion-group">
 <div class="accordion-heading">
-<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne"> <strong>I get &quot;command not found&quot; after I installed Jolie under MacOs X El Capitan (10.10.11).</strong> </a>
+<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne"> <strong>I get “command not found” after I installed Jolie under MacOs X El Capitan (10.10.11).</strong> </a>
 <hr>
 </div>
 <div id="collapseOne" class="accordion-body collapse">
@@ -65,13 +65,13 @@ In MacOs X El Capitan (10.10.11) it is not possible to install Jolie using the d
 </div>
 <div class="accordion-group">
 <div class="accordion-heading">
-<p><a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo"> <strong>I get &quot;Error: Could not find or load main class jolie.Jolie&quot; after I installed Jolie under Linux/MacOs X. </strong> </a></p>
+<p><a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo"> <strong>I get “Error: Could not find or load main class jolie.Jolie” after I installed Jolie under Linux/MacOs X. </strong> </a></p>
 </div>
 <div id="collapseTwo" class="accordion-body collapse">
 <div class="accordion-inner">
-<p>The launchers deployed by the installer use the environment variable <code>JOLIE_HOME</code> to set the classpath and launch Jolie. As reported by the installer at the end of the installation, it is possible to set <code>JOLIE_HOME</code> with the command <code>echo 'export JOLIE_HOME=&quot;/usr/lib/jolie&quot;' &gt;&gt; ~/.bash_profile</code></p>
+<p>The launchers deployed by the installer use the environment variable <code>JOLIE_HOME</code> to set the classpath and launch Jolie. As reported by the installer at the end of the installation, it is possible to set <code>JOLIE_HOME</code> with the command <code>echo ‘export JOLIE_HOME=“/usr/lib/jolie”’ &gt;&gt; ~/.bash_profile</code></p>
 <p>However, some versions of Linux/MacOs X do not <a
-href="http://ss64.com/bash/source.html">source</a> the <code>.bash_profile</code> file. If, when trying to run Jolie you get the message <code>&quot;Error: Could not find or load main class jolie.Jolie&quot;</code>, it could be the case your shell is not sourcing file <code>.bash_profile</code>. To fix it, edit your <code>.bashrc</code> in you home directory by appending at its end the line <code>source .bash_profile</code>.</p>
+href="http://ss64.com/bash/source.html">source</a> the <code>.bash_profile</code> file. If, when trying to run Jolie you get the message <code>“Error: Could not find or load main class jolie.Jolie”</code>, it could be the case your shell is not sourcing file <code>.bash_profile</code>. To fix it, edit your <code>.bashrc</code> in you home directory by appending at its end the line <code>source .bash_profile</code>.</p>
 </div>
 </div>
 </div>
@@ -79,7 +79,7 @@ href="http://ss64.com/bash/source.html">source</a> the <code>.bash_profile</code
 </div>
 </div>
 </div>
-<div id="compile" class="tab-pane" role="tabpanel">
+<div id="compile" class="tab-pane" data-role="tabpanel">
 <h2 id="compilation-from-source-files">Compilation from Source files</h2>
 <p>Following these instructions you can download the development version of Jolie (<code>trunk</code>). It requires the following software to be installed before proceeding:</p>
 <ul>
@@ -115,11 +115,11 @@ install.dir=C:\\Jolie</code></pre>
 <p>In case you change the directory for <code>install.launcher_dir</code>, make sure that it is included in your your PATH environment variable (similarly to what explained <a href="https://www.java.com/en/download/help/path.xml">here</a> for Java). Please note that using paths with spaces may cause problems in Windows and need special handling.</p>
 <p>Finally, execute <kbd>ant dist-install</kbd>, following the on-screen instructions at the end of the installation procedure regarding environment variables. In particular, you should make sure that the environment variable <code>JOLIE_HOME</code> is set to the directory you used for <code>install.dir</code>.</p>
 </div>
-<div id="docker" class="tab-pane" role="tabpanel">
+<div id="docker" class="tab-pane" data-role="tabpanel">
 <h2 id="quick-start-with-pre-built-image">Quick start with pre-built image</h2>
 <p>This solution requires <a href="http://www.docker.com">Docker</a> previously installed in your machine.</p>
 <p>Open a shell and pull the most recent Jolie image with the command <kbd>docker pull jolielang/jolie1.6.0beta1</kbd>.</p>
-<p>Once the image is available on your machine, create a container from it by adding a local volume where storing the Jolie files: <kbd>docker run -it -v /your-host-folder-path:/your-container-path --name CONTAINERNAME jolielang/jolie1.6.0beta1</kbd>.</p>
+<p>Once the image is available on your machine, create a container from it by adding a local volume where storing the Jolie files: <kbd>docker run -it -v /your-host-folder-path:/your-container-path –name CONTAINERNAME jolielang/jolie1.6.0beta1</kbd>.</p>
 <p>Now you can edit your files in folder <code>/your-host-folder-path</code> and find them in your container folder <code>/your-host-folder-path</code>.</p>
 <p>Finally, to run a Jolie microservice type <kbd>jolie your_file.ol</kbd> in the launched shell.</p>
 <p>Containers are also useful to test systems of microservices running within the same container. To run a new microservice on the same container type <kbd>docker exec -it CONTAINERNAME bash</kbd> to launch a new shell, following the previous commands to execute the desired service.</p>
@@ -128,7 +128,7 @@ install.dir=C:\\Jolie</code></pre>
 <p>The easiest way to run them is to directly pull the docker image <code>jolielang/jolie-examples</code> with command <kbd>docker pull jolielang/jolie-examples</kbd>.</p>
 <p>The folder <code>/examples</code> of the container includes all the complete examples reported in the documentation (see the related <a href="https://github.com/jolie/examples">repository</a>).</p>
 </div>
-<div id="editors" class="tab-pane" role="tabpanel">
+<div id="editors" class="tab-pane" data-role="tabpanel">
 <h2 id="integrated-development-environments">Integrated Development Environments</h2>
 <p>The listed editors have one or more plug-ins to aid Jolie programmers with syntax highlighting, on-the-fly error notification, and direct in-editor service launch shortcuts.</p>
 <h3 id="atom">Atom</h3>
