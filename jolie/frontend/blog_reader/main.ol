@@ -193,7 +193,7 @@ init
 	getServiceDirectory@File()( cd );
 	global.twitterPostHistoryFile =
 		file.filename =
-		cd + fs + TwitterPostHistoryFile;
+		"/config/" + TwitterPostHistoryFile;
 
 	exists@File( file.filename )( global.post_history_exists );
 	if ( global.post_history_exists ) {

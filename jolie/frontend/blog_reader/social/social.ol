@@ -7,8 +7,8 @@ include "SocialInterface.iol"
 execution{ concurrent }
 
 type GetSignature4StatusRequest: void {
-	.consumerKey: string 
-	.consumerSecret: string 
+	.consumerKey: string
+	.consumerSecret: string
 	.tokenSecret: string
 	.accessToken: string
 	.status: string
@@ -49,10 +49,7 @@ Interfaces: SocialInterface
 }
 
 init {
-	getServiceDirectory@File()( servDir );
-	getFileSeparator@File()( fs );
-	parseIniFile@IniUtils( servDir + fs + ".." + fs + ".." + fs + "config.ini" )( config );
-	undef( servDir ); undef( fs );
+	parseIniFile@IniUtils( "/config.ini" )( config );
 	consumerKey = config.Twitter.consumerKey;
 	consumerSecret = config.Twitter.consumerSecret;
 	tokenSecret = config.Twitter.tokenSecret;
@@ -80,10 +77,10 @@ main {
 		    getSignature4Status@TwitterUtils( r )( sig );
 		    addHeader.header = "Authorization";
 		    addHeader.header.value = "OAuth oauth_consumer_key=\"" + consumerKey
-				      + "\", oauth_nonce=\"" + sig.nonce 
-				      + "\", oauth_signature=\"" + sig 
-				      + "\", oauth_signature_method=\"HMAC-SHA1\", oauth_timestamp=\"" + sig.ts 
-				      + "\", oauth_token=\"" + accessToken 
+				      + "\", oauth_nonce=\"" + sig.nonce
+				      + "\", oauth_signature=\"" + sig
+				      + "\", oauth_signature_method=\"HMAC-SHA1\", oauth_timestamp=\"" + sig.ts
+				      + "\", oauth_token=\"" + accessToken
 				      + "\", oauth_version=\"1.0\"";
 		    twitter_req.status = r.status;
 		    //valueToPrettyString@StringUtils( sig )( s );println@Console( s )();

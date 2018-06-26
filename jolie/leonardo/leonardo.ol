@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2013-2014 by Fabrizio Montesi <famontesi@gmail.com>     *
+ *   Copyright (C) 2013-2018 by Fabrizio Montesi <famontesi@gmail.com>     *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU Library General Public License as       *
@@ -31,6 +31,16 @@ include "admin.iol"
 
 execution { concurrent }
 
+interface GoogleAnalyticsIface {
+RequestResponse: collect
+}
+
+outputPort GoogleAnalytics {
+Location: "socket://www.google-analytics.com:80/"
+Protocol: http { .format = "x-www-form-urlencoded" }
+Interfaces: GoogleAnalyticsIface
+}
+
 interface HTTPInterface {
 RequestResponse:
 	default(DefaultOperationHttpRequest)(undefined)
@@ -40,10 +50,10 @@ outputPort Frontend {
 Interfaces: FrontendInterface
 }
 
-inputPort HTTPInput { 
+inputPort HTTPInput {
 Protocol: http {
 	// .keepAlive = false; // Do not keep connections open
-	.debug = DebugHttp; 
+	.debug = DebugHttp;
 	.debug.showContent = DebugHttpContent;
 	.format -> format;
 	.contentType -> mime;
@@ -131,7 +141,7 @@ main
 			s = request.operation;
 			s.regex = "\\?";
 			split@StringUtils( s )( s );
-			
+
 			// Default page: index.html
 			shouldAddIndex = false;
 			if ( s.result[0] == "" ) {
@@ -147,7 +157,7 @@ main
 
 			checkForMaliciousPath;
 			checkForHost;
-			
+
 			file.filename = documentRootDirectory + s.result[0];
 
 			getMimeType@File( file.filename )( mime );
@@ -171,12 +181,12 @@ main
 					e.suffix = ".css";
 					endsWith@StringUtils( e )( shouldCache );
 					if ( !shouldCache ) {
-                                                e.suffix = ".woff";
-                                                endsWith@StringUtils( e )( shouldCache )
-                                        }
+						e.suffix = ".woff";
+						endsWith@StringUtils( e )( shouldCache )
+					}
 				}
 			};
-			
+
 			if ( shouldCache ) {
 				cacheMaxAge = 60 * 60 * 2 // 2 hours
 			};
@@ -187,8 +197,23 @@ main
 				applyTheme
 			}
 		}
-	} ] { nullProcess }
-	
+	} ] {
+		endsWith@StringUtils( file.filename { .suffix = ".jar" } )( isJar );
+		if ( isJar ) {
+			ea = "JolieInstaller";
+			ec = "Download";
+			split@StringUtils( file.filename { .regex = "/" } )( result );
+			collect@GoogleAnalytics( {
+				.v = 1,
+				.tid = "UA-38067618-1",
+				.cid = 555,
+				.t = "event",
+				.ec = ec,
+				.ea = ea,
+				.el = result.result[ #result.result - 1 ]
+				} )()
+			}
+	}
+
 	[ shutdown()() { nullProcess } ] { exit }
 }
-

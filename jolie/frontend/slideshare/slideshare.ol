@@ -46,12 +46,9 @@ Interfaces: SlideShareInterface
 init {
       global.slidesharets = 0;
       global.response = "";
-	getServiceDirectory@File()( servDir );
-	getFileSeparator@File()( fs );
-	parseIniFile@IniUtils( servDir + fs + ".." + fs + "config.ini" )( config );
-	undef( servDir ); undef( fs );
-      APIKEY = config.SlideShare.APIKEY;
-      SHAREDSECRET = config.SlideShare.SHAREDSECRET
+	parseIniFile@IniUtils( "/config/config.ini" )( config );
+	APIKEY = config.SlideShare.APIKEY;
+	SHAREDSECRET = config.SlideShare.SHAREDSECRET
 }
 
 main {
@@ -62,7 +59,7 @@ main {
 		    ts = int( ts / 1000 );
 		    r.secret = SHAREDSECRET + ts;
 		    generateSHA1@SlideShareSHA1Generator( r )( result );
-		    
+
 		    with( request ) {
 			    .api_key = APIKEY;
 			    .ts = string( ts );
@@ -76,5 +73,5 @@ main {
 	    };
 	    response -> global.response
       }
-      
+
 }

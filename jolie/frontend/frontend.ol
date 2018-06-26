@@ -51,7 +51,6 @@ Jolie:
 	"blog_reader/main.ol" in BlogReader,
 	"slideshare/slideshare.ol" in SlideShare,
 	"dump_stats.ol"
-
 }
 
 define buildEntryHtml
