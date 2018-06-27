@@ -161,26 +161,28 @@ define addEntriesToResponse
 
 define fireSocialMessages
 {
-	// post on twitter
-	for( c = 0, c < #cacheEntries, c++ ) {
-		if ( !is_defined( global.post_history.( cacheEntries[ c ].links.entry ) ) ) {
-			scope( post ) {
-				install( default => nullProcess );
-				social_post.status =  cacheEntries[ c ].title + " #jolielang #microservices " + cacheEntries[ c ].links.entry;
-				postOnTwitter@Social( social_post )();
+	if ( is_defined( global.post_history ) ) {
+		// post on twitter
+		for( c = 0, c < #cacheEntries, c++ ) {
+			if ( !is_defined( global.post_history.( cacheEntries[ c ].links.entry ) ) ) {
+				scope( post ) {
+					install( default => nullProcess );
+					social_post.status =  cacheEntries[ c ].title + " #jolielang #microservices " + cacheEntries[ c ].links.entry;
+					postOnTwitter@Social( social_post )();
 
-				undef( file );
-				file.filename = global.twitterPostHistoryFile;
-				file.append = 1;
-				if ( global.post_history_exists ) {
-					post_string = "\n"
-				} else {
-					post_string = "";
-					global.post_history_exists = true
-				};
-				file.content = post_string + cacheEntries[ c ].links.entry;
-				writeFile@File( file )();
-				global.post_history.( cacheEntries[ c ].links.entry ) = true
+					undef( file );
+					file.filename = global.twitterPostHistoryFile;
+					file.append = 1;
+					if ( global.post_history_exists ) {
+						post_string = "\n"
+					} else {
+						post_string = "";
+						global.post_history_exists = true
+					};
+					file.content = post_string + cacheEntries[ c ].links.entry;
+					writeFile@File( file )();
+					global.post_history.( cacheEntries[ c ].links.entry ) = true
+				}
 			}
 		}
 	}
@@ -205,10 +207,10 @@ init
 			global.post_history.( split_result.result[ i ] ) = true
 		};
 		undef( split_result );
-		undef( split_rs )
+		undef( split_rs );
+		println@Console( "Twitter posts log file found" )()
 	} else {
-		file.content = "";
-		writeFile@File( file )();
+		println@Console( "Twitter posts deactivated (twitter log file not found)" )();
 		undef( global.post_history )
 	}
 }

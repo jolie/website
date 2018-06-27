@@ -53,7 +53,11 @@ init {
 	consumerKey = config.Twitter.consumerKey;
 	consumerSecret = config.Twitter.consumerSecret;
 	tokenSecret = config.Twitter.tokenSecret;
-	accessToken = config.Twitter.accessToken
+	accessToken = config.Twitter.accessToken;
+	twitterFeature = is_defined( config.Twitter );
+	if ( !twitterFeature ) {
+		println@Console( "Twitter post feature deactivated (configuration missing)" )()
+	}
 }
 
 main {
@@ -62,8 +66,10 @@ main {
 		    install( default => valueToPrettyString@StringUtils( post.( post.default ) )( s );
 					println@Console( post.default + ":" + s )();
 					throw( TwitterError )
-		    )
-		    ;
+		    );
+				if ( !twitterFeature ) {
+					throw( TwitterError, "Twitter post feature is deactivated" )
+				};
 		    with( r ) {
 			      .consumerKey = consumerKey;
 			      .consumerSecret = consumerSecret;
