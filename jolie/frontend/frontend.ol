@@ -160,7 +160,7 @@ main
 		};
 
 		// gets static part of documentation page from www folder
-		f.filename = "../../www/documentation.html";
+		f.filename = "/var/lib/leonardo/www/documentation.html";
 		readFile@File( f )( html );
 		iofReq = html;
 		iofReq.word = "<!--dynamic part-->";
