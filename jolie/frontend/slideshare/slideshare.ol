@@ -67,7 +67,9 @@ main {
 			    .username_for = request.username_for
 		    };
 		    scope( slidesh ) {
-			    install( default => nullProcess );
+			    install( default =>
+						valueToPrettyString@StringUtils( slidesh.( slidesh.default ) )( s );
+						println@Console( post.default + ":" + s )() );
 			    get_slideshows_by_user@SlideShare( request )( global.response )
 		    }
 	    };
