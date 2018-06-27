@@ -49,7 +49,7 @@ Interfaces: SocialInterface
 }
 
 init {
-	parseIniFile@IniUtils( "/config.ini" )( config );
+	parseIniFile@IniUtils( "/config/config.ini" )( config );
 	consumerKey = config.Twitter.consumerKey;
 	consumerSecret = config.Twitter.consumerSecret;
 	tokenSecret = config.Twitter.tokenSecret;
