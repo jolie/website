@@ -3,8 +3,8 @@ FROM alpine as Build
 RUN apk update && \
 		apk add git && \
 		mkdir -p /var/lib/leonardo/www
-RUN git clone https://github.com/jolie/website.git /var/lib/leonardo/www
-RUN rm -rf /var/lib/leonardo/www/docker
+RUN git clone --depth=1 https://github.com/jolie/website.git /var/lib/leonardo/www
+RUN rm -rf /var/lib/leonardo/www/docker /var/lib/leonardo/www/.git
 
 # Start from scratch, copy the installer, install, remove the installer.
 FROM jolielang/jolie
