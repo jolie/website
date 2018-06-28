@@ -23,7 +23,7 @@ RequestResponse:
 
 outputPort SlideShare {
 Location: "socket://www.slideshare.net:443/api/2/"
-Protocol: https { .ssl.protocol = "TLSv1"; .method="get"; .compression = false }
+Protocol: https { .ssl.protocol = "TLSv1.2"; .method="get"; .compression = false }
 RequestResponse:
 	get_slideshows_by_user
 }
