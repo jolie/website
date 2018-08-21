@@ -187,20 +187,20 @@ variables. In particular, you should make sure that the environment variable
 <div role="tabpanel" class="tab-pane" id="docker">
 
 ## Quick start with pre-built image
-This solution requires [Docker](http://www.docker.com) previously installed in
+This solution requires [Docker](http://www.docker.com) installed in
 your machine.
 
 Open a shell and pull the most recent Jolie image with the command <kbd>docker
-pull jolielang/jolie1.6.0beta1</kbd>.
+pull jolielang/jolie</kbd>.
 
 Once the image is available on your machine, create
 a container from it by adding a local volume where storing the Jolie files:
 <kbd>docker run -it -v /your-host-folder-path:/your-container-path --name
-CONTAINERNAME jolielang/jolie1.6.0beta1</kbd>.
+CONTAINERNAME jolielang/jolie</kbd>.
 
 Now you can edit your files in folder
 `/your-host-folder-path` and find them in your container folder
-`/your-host-folder-path`.
+`/your-container-path`.
 
 Finally, to run a Jolie microservice type <kbd>jolie your_file.ol</kbd> in the
 launched shell.

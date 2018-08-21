@@ -117,10 +117,10 @@ install.dir=C:\\Jolie</code></pre>
 </div>
 <div id="docker" class="tab-pane" data-role="tabpanel">
 <h2 id="quick-start-with-pre-built-image">Quick start with pre-built image</h2>
-<p>This solution requires <a href="http://www.docker.com">Docker</a> previously installed in your machine.</p>
-<p>Open a shell and pull the most recent Jolie image with the command <kbd>docker pull jolielang/jolie1.6.0beta1</kbd>.</p>
-<p>Once the image is available on your machine, create a container from it by adding a local volume where storing the Jolie files: <kbd>docker run -it -v /your-host-folder-path:/your-container-path –name CONTAINERNAME jolielang/jolie1.6.0beta1</kbd>.</p>
-<p>Now you can edit your files in folder <code>/your-host-folder-path</code> and find them in your container folder <code>/your-host-folder-path</code>.</p>
+<p>This solution requires <a href="http://www.docker.com">Docker</a> installed in your machine.</p>
+<p>Open a shell and pull the most recent Jolie image with the command <kbd>docker pull jolielang/jolie</kbd>.</p>
+<p>Once the image is available on your machine, create a container from it by adding a local volume where storing the Jolie files: <kbd>docker run -it -v /your-host-folder-path:/your-container-path –name CONTAINERNAME jolielang/jolie</kbd>.</p>
+<p>Now you can edit your files in folder <code>/your-host-folder-path</code> and find them in your container folder <code>/your-container-path</code>.</p>
 <p>Finally, to run a Jolie microservice type <kbd>jolie your_file.ol</kbd> in the launched shell.</p>
 <p>Containers are also useful to test systems of microservices running within the same container. To run a new microservice on the same container type <kbd>docker exec -it CONTAINERNAME bash</kbd> to launch a new shell, following the previous commands to execute the desired service.</p>
 <h3 id="running-examples-in-jolie-documentation-with-docker">Running examples in Jolie documentation with Docker</h3>
