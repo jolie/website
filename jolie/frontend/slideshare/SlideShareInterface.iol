@@ -2,7 +2,7 @@ type GetSlideshowsByUserRequest: void {
 	.username_for: string
 }
 
-type GetSlideshowsByUserResponse: string {
+type GetSlideshowsByUserResponse: void {
 	.Name: string
 	.Count: string
 	.Slideshow*: string {
@@ -28,7 +28,7 @@ type GetSlideshowsByUserResponse: string {
 		.ThumbnailXLargeURL: string
 		.SlideshowEmbedUrl: string
 		.SecretKey: string
-      } 
+      }
 }
 
 
