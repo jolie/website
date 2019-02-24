@@ -46,7 +46,12 @@ with elevated privileges:
 
 <li><strong>on Windows</strong>, by start a command prompt with <a
   href="https://technet.microsoft.com/en-us/library/cc947813.aspx">
-  administrator privileges</a> and launch the installer;</li>
+  administrator privileges</a> and launch the installer. Remember that these two environment variables
+  must be set in order to run Jolie correctly:
+  <br>
+  - PATH: add the the PATH variable the installation path of the bins<br>
+  - JOLIE_HOME: add this variable to your environment and set it to the installation folder of the jolie libs<br><br>
+  </li>
 
 <li><strong>on Linux/MacOS</strong>, by launching the installer as root with command
 <kbd>sudo java -jar jolie-1.7.1.jar</kbd>.</li>
