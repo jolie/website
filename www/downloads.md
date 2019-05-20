@@ -27,7 +27,7 @@ later installed before proceeding.
 Download the Java-based installer of the latest stable release of Jolie:
 
 <div class="col-xs-12 text-center">
-<a href="/files/releases/jolie-1.7.1.jar">
+<a href="/files/releases/jolie-1.8.0.jar">
 <p class="download">Jolie Installer</p>
 </a>
 </div>
@@ -37,7 +37,7 @@ Here you can find the <a href="https://github.com/jolie/website/tree/master/www/
 #### Run the Jolie installer
 
 Open a shell terminal, access the directory in which you downloaded the
-installer, and execute <kbd>java -jar jolie-1.7.1.jar</kbd>. The installer may
+installer, and execute <kbd>java -jar jolie-1.8.0.jar</kbd>. The installer may
 need permissions to write in the directories in which you intend to install
 Jolie. Depending on your Operating System you can launch the Jolie installer
 with elevated privileges:
@@ -49,7 +49,7 @@ with elevated privileges:
   administrator privileges</a> and launch the installer;</li>
 
 <li><strong>on Linux/MacOS</strong>, by launching the installer as root with command
-<kbd>sudo java -jar jolie-1.7.1.jar</kbd>.</li>
+<kbd>sudo java -jar jolie-1.8.0.jar</kbd>.</li>
 
 </ul>
 
