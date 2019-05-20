@@ -1,0 +1,11 @@
+FROM jolielang/jolie
+WORKDIR /
+RUN mkdir -p /var/lib/leonardo
+COPY www /var/lib/leonardo/www
+COPY jolie /server
+
+WORKDIR /server/leonardo
+
+VOLUME /config
+
+CMD ["jolie","leonardo.ol"]
