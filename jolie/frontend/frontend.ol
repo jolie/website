@@ -77,16 +77,16 @@ define buildEntryHtml
 init
 {
 	with( newsBlog ) {
-		.url = "http://jolie-lang.blogspot.com/";
-		.binding.location = "socket://jolie-lang.blogspot.com:80/feeds/posts/default";
-		.binding.protocol = "http"
+		.url = "https://jolie.github.io/news";
+		.binding.location = "socket://jolie.github.io:443/news/feed-jolie.xml";
+		.binding.protocol = "https";
+		.binding.protocol.ssl.protocol = "TLSv1.2"
 	};
 	with( planetBlogs[0] ) {
-		.url = "http://fmontesi.github.io/";
-		.binding.location = "socket://fmontesi.github.io:80/feed-jolie.xml";
-		// .url = "http://fmontesi.blogspot.com/";
-		// .binding.location = "socket://fmontesi.blogspot.com:80/feeds/posts/default/-/jolie";
-		.binding.protocol = "http"
+		.url = "https://fmontesi.github.io/";
+		.binding.location = "socket://fmontesi.github.io:443/feed-jolie.xml";
+		.binding.protocol = "https";
+		.binding.protocol.ssl.protocol = "TLSv1.2"
 	};
 	with( planetBlogs[1] ) {
 		.url = "http://claudioguidi.blogspot.com/";
@@ -94,9 +94,10 @@ init
 		.binding.protocol = "http"
 	};
 	with( planetBlogs[2] ) {
-		.url = "http://thesave.github.io/";
-		.binding.location = "socket://thesave.github.io:80/feed.xml";
-		.binding.protocol = "http"
+		.url = "https://thesave.github.io/";
+		.binding.location = "socket://thesave.github.io:443/feed.xml";
+		.binding.protocol = "https";
+		.binding.protocol.ssl.protocol = "TLSv1.2"
 	};
 	with( planetBlogs[3] ) {
 		.url = "http://jolie-practitioner.blogspot.com/";

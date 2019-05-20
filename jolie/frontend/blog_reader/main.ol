@@ -230,8 +230,8 @@ main
 
 	[ fillCache( blogDescriptor )() {
 		Blog -> blogDescriptor.binding;
-		if ( Blog.protocol == "http" ) {
-			Blog.protocol.osc.getAtom.alias = " ";
+		if ( Blog.protocol == "http" || Blog.protocol == "https" ) {
+			Blog.protocol.osc.getAtom.alias = "";
 			Blog.protocol.osc.getAtom.method = "get"
 		};
 		fetchEntries;
