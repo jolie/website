@@ -237,12 +237,6 @@ A good starting point for reading up about Jolie is [this Book Chapter](http://f
 	<br/>
 	In Proceedings of SLE 2014.
 
-- _Implementing Elastic Capacity in a Service-Oriented PaaS_
-	<br/>
-	Alberto Zuccato, and Tullio Vardanega
-	<br/>
-	In Proceedings of ECSOCC 2014.
-
 -	_Service-oriented Programming with Jolie_
 	<br/>
 	Fabrizio Montesi, Claudio Guidi, Gianluigi Zavattaro.
