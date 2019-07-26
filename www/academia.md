@@ -86,19 +86,168 @@ Many of the reported publications are available at this [external link](http://w
 (for copyright reasons imposed by the publishers).
 A good starting point for reading up about Jolie is [this Book Chapter](http://fabriziomontesi.com/files/mgz14.pdf).
 	
+- _Ephemeral Data Handling in Microservices_ 
+	<br/>
+	Saverio Giallorenzo, Fabrizio Montesi, Larisa Safina, and Stefano Pio Zingaro
+	<br/>
+	In Proceedings of IEEE SCC 2019.
+
+- _A Language-based Approach for Interoperability of IoT Platforms_
+	<br/>
+	Maurizio Gabbrielli, Saverio Giallorenzo, Ivan Lanese, and Stefano Pio Zingaro, 2018. 
+	<br/>
+	In Proceedings of HICSS 2018.
+
+- _ChIP: A Choreographic Integration Process_
+	<br/>
+	Saverio Giallorenzo, Ivan Lanese, and Daniel Russo
+	<br/>
+	In Proceedings of CoopIS 2018.
+
+- _Applied Choreographies_
+	<br/>
+	Saverio Giallorenzo, Fabrizio Montesi, Maurizo Gabbrielli
+	<br/>
+	In Proceedings of FORTE 2018.
+
+- _From the decorator pattern to circuit breakers in microservices_
+	<br/>
+	Fabrizio Montesi, and Janine Weber
+	<br/>
+	In Proceedings of SAC 2018
+
+- _Smart Mobility for All: A Global Federated Market for Mobility-as-a-Service Operators_
+	<br/>
+	Franco Callegati, Maurizio Gabbrielli, Saverio Giallorenzo, Andrea Melis, & Marco Prandini
+	<br/>
+	In Proceedings of IEEE ITSC 2017
+
+- _Programming Adaptive Microservice Applications: An AIOCJ Tutorial_
+	<br/>
+	Saverio Giallorenzo, Ivan Lanese, Jacopo Mauro, and Maurizio Gabbrielli
+	<br/> 
+ 	In Behavioural Types: from Theory to Tools.
+
+- _Microservices: a language-based approach_ 
+	<br/>
+	Claudio Guidi, Ivan Lanese, Manuel Mazzara, and Fabrizio Montesi
+	<br/>
+	In Present and Ulterior Software Engineering (pp. 217-225). Springer, Cham.
+
+- _Microservice-based iot for smart buildings_
+	<br/>
+	Khanda, Kevin, Dilshat Salikhov, Kamill Gusmanov, Manuel Mazzara, and Nikolaos Mavridis
+	<br/>
+	In Proceedings of IEEE WAINA 2017.
+
+- _Microservices: How to make your application scale_
+	<br/>
+	Nicola Dragoni, Ivan Lanese, Stephan Thordal Larsen, Manuel Mazzara, Ruslan Mustafin, and Larisa Safina
+	<br/>
+	International Andrei Ershov Memorial Conference on Perspectives of System Informatics, pp. 95-104. Springer, Cham, 2017.
+
+- _Packaging microservices_
+	<br/>
+	Fabrizio Montesi and Dan Sebastian Thrane
+	<br/>
+	In Proceedings of DAIS 2017.
+
+- _Dynamic Choreographies: Theory And Implementation_
+	<br/>
+	Mila Dalla Preda, Maurizio Gabbrielli, Saverio Giallorenzo, Ivan Lanese, and Jacopo Mauro
+	<br/>
+	In Logical Methods in Computer Science 13 (2017).
+
+- _Joining Jolie to Docker_
+	<br/>
+	Alberto Giaretta, Nicola Dragoni, and Manuel Mazzara
+	<br/>
+	In Proceedings of International Conference in Software Engineering for Defence Applications 2016.
+
+- _Self-reconfiguring microservices_
+	<br/>
+	Maurizio Gabbrielli, Saverio Giallorenzo, Claudio Guidi, Jacopo Mauro, and Fabrizio Montesi
+	<br/>
+	In Theory and Practice of Formal Methods, pp. 194-210. Springer, Cham, 2016.
+
+- _Process-aware web programming with Jolie_
+	<br/>
+	Fabrizio Montesi 
+	<br/>
+	In Science of Computer Programming, 130, 69-96.
+	Preprint [PDF][m14:pdf]
+
+- _Jolie community on the rise_
+	<br/>
+	Alexey Bandura, Nikita Kurilenko, Manuel Mazzara, Victor Rivera, Larisa Safina, and Alexander Tchitchigin
+	<br/>
+	In Proceedings of SOCA 2016
+
+- _Data-driven workflows for microservices: Genericity in Jolie_
+	<br/>
+	Larisa Safina, Manuel Mazzara, Fabrizio Montesi, and Victor Rivera
+	<br/>
+	In Proceedings of IEEE AINA 2016.
+
+- _Real-World Choreographies_
+	<br/>
+	Saverio Giallorenzo
+	<br/>
+	Doctoral dissertation (2016).
+
+- _Microservices science and engineering_
+	<br/>
+	Manuel Mazzara, Kevin Khanda, Ruslan Mustafin, Victor Rivera, Larisa Safina, and Alberto Sillitti
+	<br/>
+	In Proceedings of International Conference in Software Engineering for Defence Applications  2016
+
+- _The evolution of Jolie_
+	<br/>
+	Ivan Lanese, Fabrizio Montesi, and Gianluigi Zavattaro
+	<br/>
+	In Software, Services, and Systems, pp. 506-521. Springer, Cham, 2015.
+
+- _Developing correct, distributed, adaptive software_
+	<br/>
+	Mila Dalla Preda, Maurizio Gabbrielli, Saverio Giallorenzo, Ivan Lanese, and Jacopo Mauro
+	<br/> 
+	In Science of Computer Programming 97 (2015): 41-46.
+
+ - _Constraints Meet Concurrency_
+ 	<br/>
+ 	Jacopo Mauro
+ 	<br/>
+ 	Atlantis Press, Paris, 2014. 7-15.
+
+- _Service-Oriented Architectures: from Design to Production exploiting Workflow Patterns_
+	<br/>
+	Saverio Giallorenzo, Maurizio Gabbrielli, and Fabrizio Montesi
+	<br/>
+ 	In ADCAIJ: Advances in Distributed Computing and Artificial Intelligence Journal 3.2 (2014): 26-52.
+
+- _Service-oriented architectures: From design to production exploiting workflow patterns_
+	<br/>
+	Maurizio Gabbrielli, Saverio Giallorenzo, and Fabrizio Montesi
+	<br/>
+	In Proceedings of DCAI 2014.
+
+- _AIOCJ: A choreographic framework for safe adaptive distributed applications_
+	<br/>
+	Mila Dalla Preda, Saverio Giallorenzo, Ivan Lanese, Jacopo Mauro, and Maurizio Gabbrielli
+	<br/>
+	In Proceedings of SLE 2014.
+
+- _Implementing Elastic Capacity in a Service-Oriented PaaS_
+	<br/>
+	Alberto Zuccato, and Tullio Vardanega
+	<br/>
+	In Proceedings of ECSOCC 2014.
 
 -	_Service-oriented Programming with Jolie_
 	<br/>
 	Fabrizio Montesi, Claudio Guidi, Gianluigi Zavattaro.
 	<br/>
 	In Web Services Foundations, 2014.
-
--	_Process-aware Web Programming with Jolie (Extended Version)_
-	<br/>
-	Fabrizio Montesi
-	<br/>
-	Submitted for publication.
-	[PDF][m14:pdf]
 
 -	_Implementing Elastic Capacity in a Service Oriented PaaS_
 	<br/>
@@ -155,6 +304,12 @@ A good starting point for reading up about Jolie is [this Book Chapter](http://f
 	Mila Dalla Preda, Maurizio Gabbrielli, Ivan Lanese, Jacopo Mauro, Gianluigi Zavattaro.
 	<br/>
 	In Proceedings of ICSOC 2011.
+
+- _Reasoning about service oriented recursion_
+	<br/> 
+	Claudio Guidi, and Alessandro Sperduti.
+	<br/>
+  In proceedings of IEEE International Conference on Service-Oriented Computing and Applications (SOCA). IEEE, 2011.
 
 -	_An Efficient Management of Correlation Sets with Broadcast_
 	<br/>
