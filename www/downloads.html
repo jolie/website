@@ -26,7 +26,7 @@
 <h4 id="get-the-jolie-installer">Get the Jolie installer</h4>
 <p>Download the Java-based installer of the latest stable release of Jolie:</p>
 <div class="col-xs-12 text-center">
-<a href="/files/releases/jolie-1.8.0.jar">
+<a href="/files/releases/jolie-1.8.1.jar">
 <p class="download">
 Jolie Installer
 </p>
@@ -34,14 +34,14 @@ Jolie Installer
 </div>
 <p>Here you can find the <a href="https://github.com/jolie/website/tree/master/www/files/releases">previous stable releases</a> of Jolie.</p>
 <h4 id="run-the-jolie-installer">Run the Jolie installer</h4>
-<p>Open a shell terminal, access the directory in which you downloaded the installer, and execute <kbd>java -jar jolie-1.8.0.jar</kbd>. The installer may need permissions to write in the directories in which you intend to install Jolie. Depending on your Operating System you can launch the Jolie installer with elevated privileges:</p>
+<p>Open a shell terminal, access the directory in which you downloaded the installer, and execute <kbd>java -jar jolie-1.8.1.jar</kbd>. The installer may need permissions to write in the directories in which you intend to install Jolie. Depending on your Operating System you can launch the Jolie installer with elevated privileges:</p>
 <ul>
 <li>
 <strong>on Windows</strong>, by start a command prompt with <a
-  href="https://technet.microsoft.com/en-us/library/cc947813.aspx"> administrator privileges</a> and launch the installer;
+  href="https://technet.microsoft.com/en-us/library/cc947813.aspx"> administrator privileges</a> and launch the installer (In the section "Installation Troubleshooting" there is the complete installation guide);
 </li>
 <li>
-<strong>on Linux/MacOS</strong>, by launching the installer as root with command <kbd>sudo java -jar jolie-1.8.0.jar</kbd>.
+<strong>on Linux/MacOS</strong>, by launching the installer as root with command <kbd>sudo java -jar jolie-1.8.1.jar</kbd>.
 </li>
 </ul>
 <div class="panel panel-default">
@@ -72,6 +72,28 @@ In MacOs X El Capitan (10.10.11) it is not possible to install Jolie using the d
 <p>The launchers deployed by the installer use the environment variable <code>JOLIE_HOME</code> to set the classpath and launch Jolie. As reported by the installer at the end of the installation, it is possible to set <code>JOLIE_HOME</code> with the command <code>echo ‘export JOLIE_HOME=“/usr/lib/jolie”’ &gt;&gt; ~/.bash_profile</code></p>
 <p>However, some versions of Linux/MacOs X do not <a
 href="http://ss64.com/bash/source.html">source</a> the <code>.bash_profile</code> file. If, when trying to run Jolie you get the message <code>“Error: Could not find or load main class jolie.Jolie”</code>, it could be the case your shell is not sourcing file <code>.bash_profile</code>. To fix it, edit your <code>.bashrc</code> in you home directory by appending at its end the line <code>source .bash_profile</code>.</p>
+</div>
+</div>
+</div>
+<div class="accordion-group">
+<div class="accordion-heading">
+<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne"> <strong>Complete guide for installing on Windows.</strong> </a>
+<hr>
+</div>
+<div id="collapseOne" class="accordion-body collapse">
+<div class="accordion-inner">
+<p>1) Write <code>C:\Jolie</code> and do Enter.</p>
+<p>2) Write <code>C:\Jolie</code> and do Enter.</p>
+<p>3) Open <code>Control Panel<code>.</p>
+<p>4) Go to <code>System and Security</code>.</p>
+<p>5) Go to <code>System</code>.</p>
+<p>6) <code>Advanced system settings</code>.</p>
+<p>7) <code>Environment Variables</code>.</p>
+<p>8) <code>System variables</code>.</p>
+<p>9) Search <code>Path</code>.</p>
+<p>10) <code>Edit</code>.</p>
+<p>11) In <code>Variabile Value </code> add <code>C:\Jolie</code>.</p>
+<hr>
 </div>
 </div>
 </div>
@@ -131,6 +153,9 @@ install.dir=C:\\Jolie</code></pre>
 <div id="editors" class="tab-pane" role="tabpanel">
 <h2 id="integrated-development-environments">Integrated Development Environments</h2>
 <p>The listed editors have one or more plug-ins to aid Jolie programmers with syntax highlighting, on-the-fly error notification, and direct in-editor service launch shortcuts.</p>
+<h3 id="visual-studio-code">Visual Studio Code</h3>
+<p>The most mature editor support for Jolie is currently offered by the Jolie extension for <a href="https://code.visualstudio.com">Visual Studio Code</a>, called <code>vscode-jolie</code>. You can install it directly from within Visual Studio Code or by visiting <a href="https://marketplace.visualstudio.com/items?itemName=jolie.vscode-jolie">https://marketplace.visualstudio.com/items?itemName=jolie.vscode-jolie</a>.</p>
+<p>Contributions to the extension are very welcome. See <a href="https://github.com/jolie/vscode-jolie">https://github.com/jolie/vscode-jolie</a> for its code repository.</p>
 <h3 id="atom">Atom</h3>
 <p>Jolie support for the <a href="http://www.atom.io/">Atom editor</a> can be installed with the official Atom Package Manager (apm):</p>
 <p><kbd> apm install atom-jolie </kbd></p>
