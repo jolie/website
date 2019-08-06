@@ -26,7 +26,7 @@
 <h4 id="get-the-jolie-installer">Get the Jolie installer</h4>
 <p>Download the Java-based installer of the latest stable release of Jolie:</p>
 <div class="col-xs-12 text-center">
-<a href="/files/releases/jolie-1.8.1.jar">
+<a href="/files/releases/jolie-1.8.2.jar">
 <p class="download">
 Jolie Installer
 </p>
@@ -34,14 +34,14 @@ Jolie Installer
 </div>
 <p>Here you can find the <a href="https://github.com/jolie/website/tree/master/www/files/releases">previous stable releases</a> of Jolie.</p>
 <h4 id="run-the-jolie-installer">Run the Jolie installer</h4>
-<p>Open a shell terminal, access the directory in which you downloaded the installer, and execute <kbd>java -jar jolie-1.8.1.jar</kbd>. The installer may need permissions to write in the directories in which you intend to install Jolie. Depending on your Operating System you can launch the Jolie installer with elevated privileges:</p>
+<p>Open a shell terminal, access the directory in which you downloaded the installer, and execute <kbd>java -jar jolie-1.8.2.jar</kbd>. The installer may need permissions to write in the directories in which you intend to install Jolie. Depending on your Operating System you can launch the Jolie installer with elevated privileges:</p>
 <ul>
 <li>
 <strong>on Windows</strong>, by start a command prompt with <a
   href="https://technet.microsoft.com/en-us/library/cc947813.aspx"> administrator privileges</a> and launch the installer;
 </li>
 <li>
-<strong>on Linux/MacOS</strong>, by launching the installer as root with command <kbd>sudo java -jar jolie-1.8.1.jar</kbd>.
+<strong>on Linux/MacOS</strong>, by launching the installer as root with command <kbd>sudo java -jar jolie-1.8.2.jar</kbd>.
 </li>
 </ul>
 <div class="panel panel-default">
@@ -79,7 +79,7 @@ href="http://ss64.com/bash/source.html">source</a> the <code>.bash_profile</code
 </div>
 </div>
 </div>
-<div id="compile" class="tab-pane" role="tabpanel">
+<div id="compile" class="tab-pane" data-role="tabpanel">
 <h2 id="compilation-from-source-files">Compilation from Source files</h2>
 <p>Following these instructions you can download the development version of Jolie (<code>trunk</code>). It requires the following software to be installed before proceeding:</p>
 <ul>
@@ -115,7 +115,7 @@ install.dir=C:\\Jolie</code></pre>
 <p>In case you change the directory for <code>install.launcher_dir</code>, make sure that it is included in your your PATH environment variable (similarly to what explained <a href="https://www.java.com/en/download/help/path.xml">here</a> for Java). Please note that using paths with spaces may cause problems in Windows and need special handling.</p>
 <p>Finally, execute <kbd>ant dist-install</kbd>, following the on-screen instructions at the end of the installation procedure regarding environment variables. In particular, you should make sure that the environment variable <code>JOLIE_HOME</code> is set to the directory you used for <code>install.dir</code>.</p>
 </div>
-<div id="docker" class="tab-pane" role="tabpanel">
+<div id="docker" class="tab-pane" data-role="tabpanel">
 <h2 id="quick-start-with-pre-built-image">Quick start with pre-built image</h2>
 <p>This solution requires <a href="http://www.docker.com">Docker</a> installed in your machine.</p>
 <p>Open a shell and pull the most recent Jolie image with the command <kbd>docker pull jolielang/jolie</kbd>.</p>
@@ -128,12 +128,12 @@ install.dir=C:\\Jolie</code></pre>
 <p>The easiest way to run them is to directly pull the docker image <code>jolielang/jolie-examples</code> with command <kbd>docker pull jolielang/jolie-examples</kbd>.</p>
 <p>The folder <code>/examples</code> of the container includes all the complete examples reported in the documentation (see the related <a href="https://github.com/jolie/examples">repository</a>).</p>
 </div>
-<div id="editors" class="tab-pane" role="tabpanel">
+<div id="editors" class="tab-pane" data-role="tabpanel">
 <h2 id="integrated-development-environments">Integrated Development Environments</h2>
 <p>The listed editors have one or more plug-ins to aid Jolie programmers with syntax highlighting, on-the-fly error notification, and direct in-editor service launch shortcuts.</p>
 <h3 id="visual-studio-code">Visual Studio Code</h3>
-<p>The most mature editor support for Jolie is currently offered by the Jolie extension for <a href="https://code.visualstudio.com">Visual Studio Code</a>, called <code>vscode-jolie</code>. You can install it directly from within Visual Studio Code or by visiting <a href="https://marketplace.visualstudio.com/items?itemName=jolie.vscode-jolie">https://marketplace.visualstudio.com/items?itemName=jolie.vscode-jolie</a>.</p>
-<p>Contributions to the extension are very welcome. See <a href="https://github.com/jolie/vscode-jolie">https://github.com/jolie/vscode-jolie</a> for its code repository.</p>
+<p>The most mature editor support for Jolie is currently offered by the Jolie extension for <a href="https://code.visualstudio.com">Visual Studio Code</a>, called <code>vscode-jolie</code>. You can install it directly from within Visual Studio Code or by visiting <a href="https://marketplace.visualstudio.com/items?itemName=jolie.vscode-jolie" class="uri">https://marketplace.visualstudio.com/items?itemName=jolie.vscode-jolie</a>.</p>
+<p>Contributions to the extension are very welcome. See <a href="https://github.com/jolie/vscode-jolie" class="uri">https://github.com/jolie/vscode-jolie</a> for its code repository.</p>
 <h3 id="atom">Atom</h3>
 <p>Jolie support for the <a href="http://www.atom.io/">Atom editor</a> can be installed with the official Atom Package Manager (apm):</p>
 <p><kbd> apm install atom-jolie </kbd></p>
