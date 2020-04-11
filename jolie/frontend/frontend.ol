@@ -136,8 +136,14 @@ main
 	} ] { nullProcess }
 
 	[ getRss()( response ) {
-		// getRss@NewsService()( response )
-		nullProcess
+		for( blog in newsBlog ) {
+			request.blogs[#request.blogs] << blog
+		}
+		for( blog in planetBlogs ) {
+			request.blogs[#request.blogs] << blog
+		}
+		// TODO
+		readBlogs@BlogReader( request )( response )		
 	} ] { nullProcess }
 
 	[ news()( html ) {
