@@ -1,5 +1,5 @@
-/***************************************************************************
- *   Copyright (C) 2014 by Fabrizio Montesi <famontesi@gmail.com>          *
+/*
+ *   Copyright (C) 2014-2020 by Fabrizio Montesi <famontesi@gmail.com>          *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU Library General Public License as       *
@@ -17,7 +17,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  *                                                                         *
  *   For details about the authors of this software, see the AUTHORS file. *
- ***************************************************************************/
+ */
 
 include "console.iol"
 include "string_utils.iol"
@@ -27,10 +27,8 @@ include "time.iol"
 include "file.iol"
 include "quicksort.iol"
 include "blog_reader.iol"
-include "social/SocialInterface.iol"
 
 constants {
-	TwitterPostHistoryFile = "twitter_log.txt",
 	Attrs = "@Attributes",
 	MaxEntries = 50,
 	BlogRefreshTimeout = 60000 // 1 min
@@ -66,14 +64,9 @@ outputPort Quicksort {
 Interfaces: QuicksortInterface
 }
 
-outputPort Social {
-Interfaces: SocialInterface
-}
-
 embedded {
 Jolie:
-	"quicksort.ol" in Quicksort,
-	"social/social.ol" in Social
+	"quicksort.ol" in Quicksort
 }
 
 init
@@ -159,60 +152,9 @@ define addEntriesToResponse
 	}
 }
 
-define fireSocialMessages
-{
-	if ( is_defined( global.post_history ) ) {
-		// post on twitter
-		for( c = 0, c < #cacheEntries, c++ ) {
-			if ( !is_defined( global.post_history.( cacheEntries[ c ].links.entry ) ) ) {
-				scope( post ) {
-					install( default => nullProcess );
-					social_post.status =  cacheEntries[ c ].title + " #jolielang #microservices " + cacheEntries[ c ].links.entry;
-					postOnTwitter@Social( social_post )();
-
-					undef( file );
-					file.filename = global.twitterPostHistoryFile;
-					file.append = 1;
-					if ( global.post_history_exists ) {
-						post_string = "\n"
-					} else {
-						post_string = "";
-						global.post_history_exists = true
-					};
-					file.content = post_string + cacheEntries[ c ].links.entry;
-					writeFile@File( file )();
-					global.post_history.( cacheEntries[ c ].links.entry ) = true
-				}
-			}
-		}
-	}
-}
-
 init
 {
-	setNextTimeout@Time( BlogRefreshTimeout );
-	getFileSeparator@File()( fs );
-	getServiceDirectory@File()( cd );
-	global.twitterPostHistoryFile =
-		file.filename =
-		"/config/" + TwitterPostHistoryFile;
-
-	exists@File( file.filename )( global.post_history_exists );
-	if ( global.post_history_exists ) {
-		readFile@File( file )( post_history_txt );
-		split_rs = post_history_txt;
-		split_rs.regex = "\n";
-		split@StringUtils( split_rs )( split_result );
-		for( i = 0, i < #split_result.result, i++ ) {
-			global.post_history.( split_result.result[ i ] ) = true
-		};
-		undef( split_result );
-		undef( split_rs );
-		println@Console( "Twitter posts log file found" )()
-	} else {
-		println@Console( "Twitter posts deactivated (twitter log file not found)" )();
-		undef( global.post_history )
-	}
+	setNextTimeout@Time( BlogRefreshTimeout )
 }
 
 main
@@ -240,8 +182,7 @@ main
 		};
 		synchronized( Cache ) {
 			global.cache.(Blog.location).entry << cacheEntries;
-			global.cache.(Blog.location).blogDescriptor << blogDescriptor;
-			fireSocialMessages
+			global.cache.(Blog.location).blogDescriptor << blogDescriptor
 		}
 	} ] { nullProcess }
 

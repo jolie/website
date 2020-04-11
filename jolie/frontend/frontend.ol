@@ -1,6 +1,6 @@
-/***************************************************************************
+/*
  *   Copyright (C) 2013 by Saverio Giallorenzo                             *
- *   Copyright (C) 2014 by Fabrizio Montesi <famontesi@gmail.com>          *
+ *   Copyright (C) 2014-2020 by Fabrizio Montesi <famontesi@gmail.com>          *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU Library General Public License as       *
@@ -18,7 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  *                                                                         *
  *   For details about the authors of this software, see the AUTHORS file. *
- ***************************************************************************/
+ */
 
 include "frontend.iol"
 include "file.iol"
@@ -27,10 +27,9 @@ include "console.iol"
 include "blog_reader/blog_reader.iol"
 include "slideshare/SlideShareInterface.iol"
 include "json_utils.iol"
+include "../leonardo/config.iol"
 
 execution { concurrent }
-
-
 
 outputPort SlideShare {
 Interfaces: SlideShareInterface
@@ -161,7 +160,7 @@ main
 		};
 
 		// gets static part of documentation page from www folder
-		f.filename = "/var/lib/leonardo/www/documentation.html";
+		f.filename = WWWDirectory + "documentation.html";
 		readFile@File( f )( html );
 		iofReq = html;
 		iofReq.word = "<!--dynamic part-->";
