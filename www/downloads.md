@@ -5,6 +5,7 @@
 <!-- Navigation tabs -->
 <ul class="nav nav-tabs" role="tablist">
 <li role="presentation" class="active"><a href="#installer" aria-controls="installer" role="tab" data-toggle="tab">Installer</a></li>
+<li role="presentation"><a href="#package-managers" aria-controls="package-managers" role="tab" data-toggle="tab">Package Managers</a></li>
 <li role="presentation"><a href="#compile" aria-controls="compile" role="tab" data-toggle="tab">Compile from Sources</a></li>
 <li role="presentation"><a href="#docker" aria-controls="docker" role="tab" data-toggle="tab">Docker</a></li>
 <li role="presentation"><a href="#editors" aria-controls="editors" role="tab" data-toggle="tab">Editors & Plug-ins</a></li>
@@ -107,6 +108,25 @@ its end the line <code>source .bash_profile</code>.
 </div>
 </div>
 </div>
+</div>
+
+<div role="tabpanel" class="tab-pane" id="package-managers">
+
+## System Package Managers
+
+You can install Jolie also through system package managers.
+
+### Homebrew (macOS, Linux, Windows 10 WSL)
+
+<a href="http://brew.sh/">Homebrew</a> is a commonly used package manager on
+macOS and it is also available for <a
+href="https://docs.brew.sh/Homebrew-on-Linux">Linux and Windows 10 WSL systems</a>.
+
+To install Jolie using Homebrew just type <kbd>brew install jolie</kbd> in your terminal.
+
+In case you do not have Homebrew installed in your system, please follow the instructions for <a href="https://brew.sh/">MacOS</a> and 
+<a href="https://docs.brew.sh/Homebrew-on-Linux">Linux/Windows 10 WSL</a>.
+
 </div>
 <div role="tabpanel" class="tab-pane" id="compile">
 
