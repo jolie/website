@@ -54,6 +54,13 @@ with elevated privileges:
 
 </ul>
 
+Please, check that the two environment variables below are correctly set to run Jolie:
+
+- `PATH`: must include the installation path of the Jolie launchers;
+- `JOLIE_HOME`: must point to the installation folder of the Jolie binaries;
+
+To know how to set your system variables, you can refer to the [Java install guideline](https://www.java.com/en/download/help/path.xml).
+
 <div class="panel panel-default">
 <div class="panel-heading"><strong>Installation Troubleshooting</strong></div>
 <div class="panel-body">
