@@ -238,7 +238,11 @@ The most mature editor support for Jolie is currently offered by the Jolie exten
 Contributions to the extension are very welcome. See 
 [https://github.com/jolie/vscode-jolie](https://github.com/jolie/vscode-jolie) for its code repository.
 
-### Atom
+### Unmaintained Editors
+
+Jolie is supported also by the following editors, although the maintainers of the respective plugins are not maintaining them anymore.
+
+#### Atom
 
 Jolie support for the [Atom editor](http://www.atom.io/) can be installed with
 the official Atom Package Manager (apm):
@@ -249,13 +253,13 @@ Contributions to the
 [language-jolie](https://github.com/fmontesi/language-jolie) and
 [linter-jolie](https://github.com/fmontesi/linter-jolie) packages are welcome.
 
-### Kate
+#### Kate
 
 Jolie support for the [Kate editor](http://kate-editor.org/) comes as a file for KatePart (used by most KDE applications and the Kate editor itself). To install it in Kate, download the [latest version](http://www.jolie-lang.org/files/katepart/jolie.xml) of the file and store it within folder `$KDE_HOME/share/apps/katepart/syntax directory`.
 
 You can discover your `$KDE_HOME` directory by issuing the <kbd>kde4 config localprefix</kbd> command.
 
-### Sublime Text
+#### Sublime Text
 
 Jolie support for [Sublime Text 2 and 3](http://www.sublimetext.com/) comprises
 the [Jolie](https://packagecontrol.io/packages/jolie) plug-in for syntax
