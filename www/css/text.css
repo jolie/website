@@ -30,6 +30,14 @@ h3 {
 	font-family: Roboto, Arial, Helvetica, sans-serif;
 }
 
+h4 {
+	color: #400;
+	padding-bottom: 0.2em;
+	padding-top:0.4em;
+	font-size: 1.0em;
+	font-family: Roboto, Arial, Helvetica, sans-serif;
+} 
+
 a {
 	color: #440000;
 	text-decoration: none;
