@@ -1,10 +1,12 @@
 .BlogDateGroup {
-	border-bottom: 1px solid gray;
-	margin-top: 2em;
-	margin-bottom: 1em;
+	margin-top:2em;
 	margin-right:auto;
 	margin-left:auto;
-	font-size:1.5em;
+	font-size:1.3em;
+	font-family: Roboto, Arial, sans-serif;
+	font-style: italic;
+	text-align: right;
+	margin-bottom: 0px;
 }
 
 .BlogEntry {
@@ -12,25 +14,39 @@
 	font-size: large;
 	margin-right:auto;
 	margin-left:auto;
+	font-family: Roboto, Arial, sans-serif;
 }
 
 .BlogEntryAuthor {
-	font-size: large;
+	font-size:1em;
+	font-family: Roboto, Arial, sans-serif;
+	text-align: right;
+	margin-bottom: -3em;
+	font-weight: bold;
 }
 
 .BlogEntryTitle {
-	font-size: xx-large;
+	font-size: xxx-large;
 	padding-right: 1em;
+	font-family: Roboto, Arial, sans-serif;
+	font-weight: bold;
+	border-bottom: 1px solid gray;
+	margin-top: 1em;
 }
 
 .BlogEntryContent {
-	font-size: 120%;
+	font-size: 0.8em;
 	height: 10em;
 	min-height: 10em;
 	overflow: hidden;
 	border-bottom: 0em solid #eee;	
 	padding-right: 1em;
-	
+	font-family: Roboto, Arial, sans-serif;
+}
+
+.BlogEntryContent h2 {
+	font-size: 2em;
+	border-bottom: none
 }
 
 .BlogEntryContentClose {
@@ -51,6 +67,7 @@
 	margin-top: 1em;
 	padding-top: 0.25em;
 	padding-bottom: 0.25em;
+	font-family: Roboto, Arial, sans-serif;
 }
 
 .BlogEntryContentReadClose a {

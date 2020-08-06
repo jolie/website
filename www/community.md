@@ -12,6 +12,8 @@ discussing anything related to the language.
 
 The main mailing list for discussing anything related to Jolie is `jolie-devel@googlegroups.com`.
 
+## Slack
+Send a request to `jolie-devel@googlegroups.com` in order to be subscribed at the Jolie Slack Channel.
 
 ## Q&A on StackOverflow
 

@@ -1,17 +1,104 @@
+
 h1 {
-	color: #A80C1E;
+	color: #444;
 	padding-bottom: 0.2em;
 	border-bottom: 0.05em solid gray;
 	margin-bottom: 0.5em;
 	padding-top:0.4em;
+	font-size: 2.2em;
+	font-weight: bold;
+	font-family: Roboto, Arial, Helvetica, sans-serif;
+}
+
+h2 {
+	color: #400;
+	margin-top: 1em;
+	padding-bottom: 0.2em;
+	padding-top:0.4em;
+	font-size: 1.8em;
+	font-weight: bold;
+	font-family: Roboto, Arial, Helvetica, sans-serif;
+}
+
+h3 {
+	color: #400;
+	margin-top: 1em;
+	padding-bottom: 0.2em;
+	padding-top:0.4em;
+	font-size: 1.6em;
+	font-weight: bold;
+	font-family: Roboto, Arial, Helvetica, sans-serif;
 }
 
 a {
-	color: #A80C1E;
+	color: #440000;
 	text-decoration: none;
+	font-family: Roboto, Arial, Helvetica, sans-serif;
 }
 
 a:hover {
 	text-decoration: underline;
 }
 	
+p {
+	font-family: Roboto, Arial, Helvetica, sans-serif;
+	font-size: 1.6em;
+}
+
+.jolie-button {
+	margin-right: 0.5em;
+    padding: 1em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    /* border-radius: 1em; */
+    background-color: #FE9A2E;
+    opacity: 0.9;
+    color: black;
+    border: 1px solid #440000;
+    float: left;
+    width: 31%;
+    text-align: left;
+}
+
+.jolie-button:hover {
+	background-color: #400;
+	color: white;
+	text-decoration: none;
+}
+
+.nav-downloads {
+	font-size: 1.3em;
+}
+
+.nav-downloads li.active {
+	color: #555;
+    font-weight: bold;
+    cursor: default;
+    background-color: #f9a447;
+    border: 1px solid #444;
+}
+
+.nav-downloads li.active a {
+    background-color: transparent;
+    border: none;
+}
+
+.nav-downloads li.active a:hover {
+    background-color: transparent;
+    border: none;
+}
+
+.nav-downloads li.active a:focus{
+    background-color: transparent;
+    border: none;
+}
+
+
+
+.nav-downloads li.active:hover {
+	color: #555;
+    font-weight: bold;
+    cursor: default;
+    background-color: #f9a447;
+    border: 1px solid #444;
+}

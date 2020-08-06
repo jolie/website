@@ -1,15 +1,15 @@
 .landing-img {
-	max-width: 100%;
+	max-width: 50%;
 }
 
 .landing-motto {
-	font-size: 1.35em;
+	font-size: 1.8em !important;
 	font-style: italic;
-	font-weight: bold;
 	text-align: right;
 	padding-top: 1em;
 	padding-bottom: 1em;
-	color: white;
+	color: #440000;
+	font-family: Staatliches, Roboto, Arial, Helvetica, sans-serif;
 }
 
 .landing-page h1 {
@@ -27,6 +27,7 @@
 	color: #444;
 	font-size: 250%;
 	text-align: left;
+	border-bottom: none;
 }
 
 
@@ -56,13 +57,18 @@
 	padding: 2em;
 	color: #555;
 	border-bottom: 0.05em solid #C4C4C4;
-	font-size: 1.2em;
+	font-size: 1.4em;
 }
+
+.landing-banner-light p {
+	font-size: 1.1em;
+} 
 
 .landing-banner-light h2 {
 	color: #444 !important;
 	font-weight:bold;
 	width: 90%;
+	font-size: 2em;
 
 }
 
@@ -78,7 +84,7 @@
 	padding-top: 0.8em;
 	padding-bottom: 0.8em;
 	font-size: 0.7em;
-	border: 0.1em solid #A80C1E;
+	border: 0.1em solid #440000;
 	border-radius: 4em;
 	background: white;
 	/*-webkit-transition: background-color 1s;
@@ -90,23 +96,8 @@
 .next:hover {
 	cursor: pointer;
 	text-decoration: none;
-	background-color: #A80C1E;
+	background-color: #440000;
 	color: white;
-}
-
-#section0 a {
-	margin-right: 0.5em;
-    padding: 1em;
-    padding-top: 0.5em;
-    padding-bottom: 0.5em;
-    /* border-radius: 1em; */
-    background-color: #FE9A2E;
-    opacity: 0.9;
-    color: black;
-    border: 1px solid #440000;
-    float: left;
-    width: 31%;
-    text-align: left;
 }
 
 #section0 a:hover {
