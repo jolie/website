@@ -58,14 +58,15 @@ p {
     padding: 1em;
     padding-top: 0.5em;
     padding-bottom: 0.5em;
-    /* border-radius: 1em; */
     background-color: #FE9A2E;
     opacity: 0.9;
     color: black;
     border: 1px solid #440000;
-    float: left;
-    width: 31%;
+    width: 140px;
     text-align: left;
+    font-size: 0.9em;
+    float: left;
+    margin-top: 0.5em;
 }
 
 .jolie-button:hover {
