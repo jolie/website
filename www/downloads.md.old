@@ -133,12 +133,12 @@ In case you do not have Homebrew installed in your system, please follow the ins
 ## Compilation from Source files
 
 Following these instructions you can download the development version of Jolie
-(`trunk`). It requires the following software to be installed before
+from the official repository. It requires the following software to be installed before
 proceeding:
 
 * [JDK (Java SE Development Kit)](http://java.sun.com/javase/downloads/index.jsp);
 * [Git](http://git-scm.com/);
-* [Apache Ant](http://ant.apache.org/).
+* [Maven](https://maven.apache.org/).
 
 <!-- Jump to the instructions for your Operating System:
 
@@ -150,27 +150,25 @@ title="Mac OS"/></a>
  title="Windows"/></a>    
 </div> -->
 
-#### <a id="nix"></a>Linux and Mac OS
+## <a id="nix"></a>Linux and Mac OS
 
-Open a shell and execute:
+### Clone the repository
 
 <kbd>git clone https://github.com/jolie/jolie.git</kbd>
 
 <kbd>cd jolie</kbd>
 
-<kbd>ant && sudo ant install</kbd>
+<kbd>mvn install</kbd>
 
-The ant script will automatically build and install Jolie for you. The default
-installation path for the Jolie binaries is `/usr/lib/jolie`, but the
-installation parameters can be controlled by editing
-`buildconfig/config.properties`.
+This prepares a Jolie installation inside of directory `dist`.
 
-The Jolie launchers are installed inside folder `/usr/bin`, but also this
-parameter is configurable in `buildconfig/config.properties`.
+### Set up Jolie for the local user
 
-Remember to follow the on-screen instructions at the end of the installation procedure about the environment variables. This final step is similar to setting the `java_home` variable for Java, as explained [here](https://www.java.com/en/download/help/path.xml).
+Now one can use the script `scripts/dev-setup.sh ~/bin` to set up a working 
+installation of Jolie for the local user (assuming `~/bin` is in the `$PATH` variable). 
+This will create launch scripts in `~/bin` and put all Jolie libraries in `~/bin/jolie-dist`.
 
-#### <a id="windows"></a>Windows
+## <a id="windows"></a>Windows
 
 Compiling Jolie under Windows requires to work only within the same drive e.g..
 `C:`. This is due to limitations of the Java class-loader in locating resources
@@ -182,26 +180,7 @@ Open a command line and execute
 
 <kbd>cd jolie</kbd>
 
-Open the `buildconfig/config.properties` file and change the parameters
-`install.launcher_dir` and `install.dir` by replacing the existing directories
-with your desired ones. Use `\\` instead of the single backslashes when writing
-paths. Here is an example:
-
-```
-install.launcher_dir=C:\\Windows\\system32
-install.dir=C:\\Jolie
-```
-
-In case you change the directory for `install.launcher_dir`, make sure that it
-is included in your your PATH environment variable (similarly to what explained
-[here](https://www.java.com/en/download/help/path.xml) for Java). Please note
-that using paths with spaces may cause problems in Windows and need special
-handling.
-
-Finally, execute <kbd>ant dist-install</kbd>, following the on-screen
-instructions at the end of the installation procedure regarding environment
-variables. In particular, you should make sure that the environment variable
-`JOLIE_HOME` is set to the directory you used for `install.dir`.
+<kbd>mvn install</kbd>
 
 </div>
 <div role="tabpanel" class="tab-pane" id="docker">
