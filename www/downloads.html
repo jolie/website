@@ -53,22 +53,49 @@
           install Jolie. Depending on your Operating System you can launch the Jolie installer with elevated privileges:
         </p>
 
-        <ul style="font-size: 1.6em;">
-          <li>
-            <strong>on Windows</strong>, by start a command prompt with <a
-              href="https://technet.microsoft.com/en-us/library/cc947813.aspx"> administrator privileges</a> and launch
-            the
-            installer;
-          </li>
-          <li>
-            <strong>on Linux/MacOS</strong>, by launching the installer as root with command <kbd>sudo java -jar
-              jolie-1.9.0.jar</kbd>.
-          </li>
-        </ul>
-        <p>Remember to follow the on-screen instructions at the end of the installation procedure about the environment
-          variables. This final step is similar to setting the <code>java_home</code> variable for Java, as explained <a
-            href="https://www.java.com/en/download/help/path.xml">here</a>.</p>
-      </div>
+<h2 id="jolie-binaries-installer">Jolie Binaries Installer</h2>
+<p>Jolie requires Java to run.</p>
+<p>Make sure to have <a href="http://www.java.com/">Java</a> 8 or later installed before proceeding. (If you have to use a previous version of Java, Jolie version 1.5.0 or previous requires only Java 6. See our <a href="https://github.com/jolie/website/tree/master/www/files/releases">previous releases</a>.)</p>
+<h4 id="get-the-jolie-installer">Get the Jolie installer</h4>
+<p>Download the Java-based installer of the latest stable release of Jolie:</p>
+<div class="col-xs-12 text-center">
+<a href="https://github.com/jolie/jolie/releases/download/v1.9.0/jolie-1.9.0.jar">
+<p class="download">
+Jolie Installer
+</p>
+<p></a></p>
+</div>
+<p>Here you can find the <a href="https://github.com/jolie/website/tree/master/www/files/releases">previous stable releases</a> of Jolie.</p>
+<h4 id="run-the-jolie-installer">Run the Jolie installer</h4>
+<p>Open a shell terminal, access the directory in which you downloaded the installer, and execute <kbd>java -jar jolie-1.9.0.jar</kbd>. The installer may need permissions to write in the directories in which you intend to install Jolie. Depending on your Operating System you can launch the Jolie installer with elevated privileges:</p>
+<ul>
+<li>
+<strong>on Windows</strong>, by start a command prompt with <a
+  href="https://technet.microsoft.com/en-us/library/cc947813.aspx"> administrator privileges</a> and launch the installer;
+</li>
+<li>
+<strong>on Linux/MacOS</strong>, by launching the installer as root with command <kbd>sudo java -jar jolie-1.9.0.jar</kbd>.
+</li>
+</ul>
+<p>Please, check that the two environment variables below are correctly set to run Jolie:</p>
+<ul>
+<li><code>PATH</code>: must include the installation path of the Jolie launchers;</li>
+<li><code>JOLIE_HOME</code>: must point to the installation folder of the Jolie binaries;</li>
+</ul>
+<p>To know how to set your system variables, you can refer to the <a href="https://www.java.com/en/download/help/path.xml">Java install guideline</a>.</p>
+<div class="panel panel-default">
+<div class="panel-heading">
+<strong>Installation Troubleshooting</strong>
+</div>
+<div class="panel-body">
+<div class="accordion" id="accordion2">
+<div class="accordion-group">
+<div class="accordion-heading">
+<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne"> <strong>I get “command not found” after I installed Jolie under MacOs X El Capitan (10.10.11).</strong> </a>
+<hr>
+</div>
+<div id="collapseOne" class="accordion-body collapse">
+<div class="accordion-inner">
 
 In MacOs X El Capitan (10.10.11) it is not possible to install Jolie using the default values provided by the installer. When prompted by the installer, insert e.g., <code>/usr/local/lib/jolie</code> as the directory of installation of Jolie and <code>/usr/local/bin</code> as the directory of the launchers.
 <hr>
