@@ -2,16 +2,17 @@
 
 The rise of computer networks is pushing for an evolution of computing, where the software and IT functionalities accessed by consumers are implemented as systems of inter-connected components that collaborate with each other. These components, called <strong>services</strong>, are deployed on infrastructures like the cloud, which enable developers to abstract considerably from the details of hardware support (like which computer is running which component).
 
-<div class="col-xs-12 text-center">
-<img src="imgs/coordmachine.png">
-</div>
+From the point of view of developers and consumers, modern IT infrastructure is starting to look like a sea of services (depicted below).
 
-From the point of view of developers and consumers, IT infrastructures are starting to look like "seas of services".
+<p class="text-center"><img src="imgs/coordmachine.png"></p>
 
-details of which computer is running which software component, and the network that supports the integration of services and a that  abstract from the gritty details of which computer is running each component Developers can deploy these components in a "
+<p class="vision-quote">&laquo;Modern IT infrastructure is starting to look like a sea of services&raquo;</p>
 
-is changing the way that we make software.
-Technologies like computer networks, cloud computing, and containerisation have been progressively pushing for an evolution of computing, where 
+Services coordinate and use each other by means of exchanging messages over the network, requiring developers to think about aspects such as, but not limited to, data models, APIs, marshalling, and workflows.
+
+Services deployed on the cloud can be reached from or reach out to clients and other services by means of communications.
+<!-- So coordination services coordinate with each other by message passing. -->
+
 
 # Further reading
 

@@ -111,3 +111,13 @@ p {
     background-color: #f9a447;
     border: 1px solid #444;
 }
+
+.vision-quote {
+	font-size: 1.8em !important;
+	font-style: italic;
+	text-align: center;
+	padding-top: 1em;
+	padding-bottom: 1em;
+	color: #440000;
+	font-family: Staatliches, Roboto, Arial, Helvetica, sans-serif;
+}
