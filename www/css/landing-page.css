@@ -120,6 +120,11 @@
 	color: red;
 }
 
+.comment {
+	color: darkgray;
+	font-style: italic;
+}
+
 pre {
 	box-shadow: 5px 5px 10px #999;
 }

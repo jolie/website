@@ -18,21 +18,21 @@
 				</div>
 				<div class="col-xs-7">
 					<pre>
-<span class="keyword">type</span> HelloRequest: <span class="keyword">void</span> {
-	name: <span class="keyword">string</span>
+<span class="keyword">type</span> HelloRequest {
+	name:<span class="keyword">string</span>
 }
 
 <span class="keyword">interface</span> HelloInterface {
-	<span class="keyword">RequestResponse:</span>
+<span class="keyword">requestResponse:</span>
 	hello( HelloRequest )( <span class="keyword">string</span> )
 }
 
-<span class="keyword">execution</span>{ <span class="keyword">concurrent</span> }
+<span class="keyword">execution</span> { <span class="keyword">concurrent</span> }
 
 <span class="keyword">inputPort</span> HelloService {
-	<span class="keyword">Location:</span> <span class="string">"socket://localost:9000"</span>
-	<span class="keyword">Protocol:</span> http { format = <span class="string">"json"</span> }
-	<span class="keyword">Interfaces:</span> HelloInterface
+	<span class="keyword">location:</span> <span class="string">"socket://localost:9000"</span>
+	<span class="keyword">protocol:</span> http { format = <span class="string">"json"</span> }
+	<span class="keyword">interfaces:</span> HelloInterface
 }
 
 <span class="keyword">main</span>
@@ -43,7 +43,6 @@
 }
 </pre>
 				</div>
-
 			</div>
 		</div>
 	</div>
@@ -56,15 +55,16 @@
 			<h2 id="native-microservice-programming">Thinking in services</h2>
 		</div>
 		<div class="col-xs-10">
-			<p>Jolie crystallises the programming concepts of service oriented computing as native language features:
-				the basic building blocks of software are not objects or functions, but rather
-				<b>services</b> that can always be relocated and replicated as needed. A composition of services is a
+			<p>Jolie crystallises the programming concepts of service-oriented computing as linguistic constructs.
+				The basic building blocks of software are not objects or functions, but rather
+				<strong>services</strong> that can be relocated and replicated as needed. A composition of services is a
 				service.
-				Distribution and reusability are achieved by design.</p>
+				<!-- Distribution and reusability are achieved by design. -->
+			</p>
 		</div>
-		<div class="col-xs-12">
-			<p class="landing-motto">&laquo;In Jolie everything is a service&raquo;</p>
-		</div>
+		<!-- <div class="col-xs-12">
+			<p class="landing-motto">&laquo;The basic  is a service&raquo;</p>
+		</div> -->
 	</div>
 </div>
 
@@ -72,52 +72,49 @@
 	<div class="container">
 		<div class="col-xs-12">
 			<div class="next-container"><a class="next" onclick="scroll_to_section('section2')">Next</a></div>
-			<h2 id="native-microservice-programming">Tailored for microservice and API programming</h2>
+			<h2 id="native-microservice-programming">Tailored for microservices and APIs</h2>
 		</div>
 		<div class="col-xs-5">
-			<p>Jolie is a <b>contract-first</b> programming language. It provides a specific set of primitives just for
-				defining service APIs.
-				Inspired by wsdl contract structure, in Jolie it is possible to design both synchronous and asynchronous
-				communication.
-				Data types are defined in the same context of interface declaration, and DTOs are transparently managed
-				by the interpreter without
-				being coded. <b>Refined types</b> allows for fine grained data specification.
+			<p>Jolie is a <b>contract-first</b> programming language, which puts API design at the forefront.
+				It supports both synchronous and asynchronous
+				communication. Data models are defined by types that support <strong>refinement</strong> (in red on the right), and DTO (Data Transfer Objects) transformations are transparently managed
+				by the interpreter.
 			</p>
 		</div>
 		<div class="col-xs-7">
 			<pre>
-<span class="keyword">type</span> GetProfileRequestType: <span class="keyword">void</span> {
-	id: <span class="keyword">int</span>
+<span class="keyword">type</span> GetProfileRequestType {
+	id:<span class="keyword">int</span>
 }
-<span class="keyword">type</span> GetProfileResponseType: <span class="keyword">void</span> {
-	name: <span class="keyword">string</span>
-	surname: <span class="keyword">string</span>
-	email: <span class="keyword">string( <span class="string">regex(".*@.*\\..*")</span> )</span>
-	accounts[0,*]: void {
-		nickname: <span class="keyword">string</span>
-		service_url: <span class="keyword">string</span>
-		enabled: <span class="keyword">bool</span>
+<span class="keyword">type</span> GetProfileResponseType {
+	name:<span class="keyword">string</span>
+	surname:<span class="keyword">string</span>
+	email:<span class="keyword">string( <span class="string">regex(".*@.*\\..*")</span> )</span>
+	accounts[0,*] {
+		nickname:<span class="keyword">string</span>
+		service_url:<span class="keyword">string</span>
+		enabled:<span class="keyword">bool</span>
 	}
-	ranking: <span class="keyword">int( <span class="string">ranges( [1,5] )</span> )</span>
+	ranking:<span class="keyword">int( <span class="string">ranges( [1,5] )</span> )</span>
 }
 
-<span class="keyword">type</span> SendMessageRequestType: <span class="keyword">void</span> {
-	id: <span class="keyword">int</span>
-	message: <span class="keyword">string( <span class="string">length( [0,250] )</span> )</span>
+<span class="keyword">type</span> SendMessageRequestType {
+	id:<span class="keyword">int</span>
+	message:<span class="keyword">string( <span class="string">length( [0,250] )</span> )</span>
 }
 
 <span class="keyword">interface</span> ProfileInterface {
-	<span class="keyword">RequestResponse:</span>
+<span class="keyword">requestResponse:</span> <span class="comment">// Synchronous RPC</span>
 	getProfile( GetProfileRequestType )( GetProfileResponseType )
 
-	<span class="keyword">OneWay:</span>
+<span class="keyword">oneWay:</span> <span class="comment">// Asynchronous</span>
 	sendMessage( SendMessageRequestType )
 }
 			</pre>
 		</div>
-		<div class="col-xs-12">
+		<!-- <div class="col-xs-12">
 			<p class="landing-motto">&laquo;Contract first programming by design&raquo;</p>
-		</div>
+		</div> -->
 	</div>
 </div>
 
@@ -152,10 +149,9 @@
 				<h4 id="deploy-it-in-four-different-machines">Deploy it in four different machines</h4>
 				<img class="landing-img" src="imgs/fourdeployment.png">
 			</div>
-			<div class="col-xs-12">
+			<!-- <div class="col-xs-12">
 				<p class="landing-motto">&laquo;Distributable by design&raquo;</p>
-			</div>
-
+			</div> -->
 		</div>
 	</div>
 </div>
@@ -170,59 +166,59 @@
 		</div>
 		<div class="col-xs-5">
 			<p>Jolie is protocol agnostic: your services can exchange data by using different protocols. Bridging two
-				networks using different protocols is a matter of a few lines of code! And if you need a protocol that
-				Jolie does not support yet, there is an API for easily developing new ones in Java.</p>
+				networks using different protocols is a matter of a few lines of code. If you need a protocol that
+				Jolie does not support yet, there is an API for developing new ones in Java.</p>
 			<div class="text-center">
 				<img src="imgs/protocolindependence.png">
 			</div>
 		</div>
 		<div class="col-xs-7">
 			<pre>
-<span class="keyword">type</span> HelloRequest: <span class="keyword">void</span> {
-	name: <span class="keyword">string</span>
+<span class="keyword">type</span> HelloRequest {
+	name:<span class="keyword">string</span>
 }
 
 <span class="keyword">interface</span> HelloInterface {
-	<span class="keyword">RequestResponse:</span>
+<span class="keyword">requestResponse:</span>
 	hello( HelloRequest )( <span class="keyword">string</span> )
 }
 
-<span class="keyword">execution</span>{ <span class="keyword">concurrent</span> }
+<span class="keyword">execution</span> { <span class="keyword">concurrent</span> }
 
 <span class="keyword">inputPort</span> HelloServiceHTTP {
-	<span class="keyword">Location:</span> <span class="string">"socket://localost:9000"</span>
-	<span class="keyword">Protocol:</span> http { format = <span class="string">"json"</span> }
-	<span class="keyword">Interfaces:</span> HelloInterface
+	<span class="keyword">location:</span> <span class="string">"socket://localost:9000"</span>
+	<span class="keyword">protocol:</span> http { format = <span class="string">"json"</span> }
+	<span class="keyword">interfaces:</span> HelloInterface
 }
 
 <span class="keyword">inputPort</span> HelloServiceSOAP {
-	<span class="keyword">Location:</span> <span class="string">"socket://localost:9001"</span>
-	<span class="keyword">Protocol:</span> soap { 
-		wsdl = <span class="string">".myWsdl.wsdl"</span> 
-		wsdl.port = "MyServiceSOAPPort"
+	<span class="keyword">location:</span> <span class="string">"socket://localost:9001"</span>
+	<span class="keyword">protocol:</span> soap { 
+		wsdl = <span class="string">"myWsdl.wsdl"</span> 
+		wsdl.port = <span class="string">"MyServiceSOAPPort"</span>
 	}
-	<span class="keyword">Interfaces:</span> HelloInterface
+	<span class="keyword">interfaces:</span> HelloInterface
 }
 
 <span class="keyword">inputPort</span> HelloServiceSODEP {
-	<span class="keyword">Location:</span> <span class="string">"socket://localost:9002"</span>
-	<span class="keyword">Protocol:</span>sodep 
-	<span class="keyword">Interfaces:</span> HelloInterface
+	<span class="keyword">location:</span> <span class="string">"socket://localost:9002"</span>
+	<span class="keyword">protocol:</span> sodep 
+	<span class="keyword">interfaces:</span> HelloInterface
 }
 
 <span class="keyword">main</span>
 {
+	<span class="comment">// This can now be reached through HTTP/JSON, SOAP, or SODEP (binary)</span>
 	hello( request )( response ) { 
 		response = <span class="string">"Hello "</span> + request.name
 	}
 }
 </pre>
 		</div>
-		<div class="col-xs-12">
+		<!-- <div class="col-xs-12">
 			<p class="landing-motto">&laquo;One business logic, many endpoints&raquo;</p>
-		</div>
+		</div> -->
 	</div>
-
 </div>
 
 <div id="section4" class="container full-width landing-banner-light">
@@ -274,9 +270,9 @@ login( credentials )() { checkCredentials };
 </pre>
 
 		</div>
-		<div class="col-xs-12">
+		<!-- <div class="col-xs-12">
 			<p class="landing-motto">&laquo;Workflow programming by design&raquo;</p>
-		</div>
+		</div> -->
 	</div>
 </div>
 
@@ -350,9 +346,9 @@ login( credentials )() { checkCredentials };
 
 			</div>
 		</div>
-		<div class="col-xs-12">
+		<!-- <div class="col-xs-12">
 			<p class="landing-motto">&laquo;A composition of services is a service&raquo;</p>
-		</div>
+		</div> -->
 	</div>
 </div>
 <div class="clearfix"></div>
@@ -375,9 +371,9 @@ login( credentials )() { checkCredentials };
 				<img class="img-responsive" src="imgs/interface.png">
 			</div>
 		</div>
-		<div class="col-xs-12">
+		<!-- <div class="col-xs-12">
 			<p class="landing-motto">&laquo;No need for external web servers&raquo;</p>
-		</div>
+		</div> -->
 	</div>
 </div>
 <div class="clearfix"></div>
@@ -403,9 +399,9 @@ login( credentials )() { checkCredentials };
 				<!-- 	</div> -->
 			</div>
 		</div>
-		<div class="col-xs-12">
+		<!-- <div class="col-xs-12">
 			<p class="landing-motto">&laquo;Mathematics behind&raquo;</p>
-		</div>
+		</div> -->
 	</div>
 </div>
 
@@ -429,9 +425,9 @@ login( credentials )() { checkCredentials };
 				<!-- </div> -->
 			</div>
 		</div>
-		<div class="col-xs-12">
+		<!-- <div class="col-xs-12">
 			<p class="landing-motto">&laquo;Be part of a revolution!&raquo;</p>
-		</div>
+		</div> -->
 	</div>
 </div>
 
