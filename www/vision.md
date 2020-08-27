@@ -1,44 +1,21 @@
 <!--Themed-->
 
-The rise of computer networks is pushing for an evolution of computing, where the software and IT functionalities accessed by consumers are implemented as systems of inter-connected components that collaborate with each other. These components, called <strong>services</strong>, are deployed on infrastructures like the cloud, which enable developers to abstract considerably from the details of hardware support (like which computer is running which component).
+The rise of computer networks is a driving force behind an evolution of computing based on communication, where the software and IT functionalities accessed by consumers are implemented as systems of inter-connected components that collaborate with each other. These components, called <strong>services</strong>, are deployed on infrastructures like the cloud, which enable developers to abstract considerably from the details of hardware support (like which computer is running which component).
 
-From the point of view of developers and consumers, modern IT infrastructure is starting to look like a sea of services (depicted below).
+From the point of view of developers and consumers, modern IT systems form what looks like a sea of services (depicted below).
 
 <p class="text-center"><img src="imgs/coordmachine.png"></p>
 
-<p class="vision-quote">&laquo;Modern IT infrastructure is starting to look like a sea of services&raquo;</p>
+<p class="vision-quote">&laquo;Modern IT systems form what looks like a sea of services&raquo;</p>
 
-Services coordinate and use each other by means of exchanging messages over the network, requiring developers to think about aspects such as, but not limited to, data models, APIs, marshalling, and workflows.
+Services coordinate and use each other by means of exchanging messages over the network, requiring developers to think about aspects such as, but not limited to, data models, APIs, marshalling, coordination protocols, and workflows.
+Most mainstream programming languages have been designed to facilitate the programming of local computation, that is, computation that happens in the same computer. To be productive in the development of new services or the composition of existing ones, developers typically rely on additional libraries and frameworks, which offer their own additional abstractions. While this might look like an innocuous choice, one must be almost as careful in choosing a framework as with choosing a programming language: the abstractions offered by the framework will form the foundations of the design of the developed software. On the other hand, adding abstractions means increasing the load of knowledge that needs to be managed by the team, which must now be knowledgeable both about the used language (which moves slowly) and the used libraries and frameworks (which might move very fast, and sometimes one might also be tempted to change them).
 
-Services deployed on the cloud can be reached from or reach out to clients and other services by means of communications.
-<!-- So coordination services coordinate with each other by message passing. -->
+<p class="vision-quote">&laquo;In service programming, mapping design to code is challenging&raquo;</p>
 
+Our vision is to design a programming language with a different trade-off: instead of optimising for computation, the aim of Jolie is to offer native abstractions for the creation and composition of services.
 
-# Further reading
+<p class="vision-quote">&laquo;The aim of Jolie is to offer native abstractions for the creation and composition of services&raquo;</p>
 
-
-Here we list two main articles from [DZone](https://dzone.com/) where we illustrate our idea for the future of software development in the cloud.
-
-# From a computation machine to a coordination machine
-_Containerization and cloud computing are leading us to a new way we are conceiving computational resources_ 
-
-Historically, computer machines were developed for automatizing computation. Starting from abacus to modern computers, the main idea behind computer machines was to increase the power of human brain computation with an external device. Computation machines were theoretically modeled by Alan Turing using his Turing machine and their basic architecture was proposed by Von Neumann.
-
-[_Read more..._](https://dzone.com/articles/the-new-computer-machine)
-
-<div class="col-xs-12 text-center">
-<img src="imgs/coordmachine.png">
-</div>
-
-# The red pill of (micro)services
-_Why we need new programming languages for dealing with the new coordination machine?_ 
-
-The reason is very simple and intuitive: usual programming languages like C, Java, Python, etc, were developed for facilitating computation programming, not coordination programming. In these languages indeed, communication and coordination are always achieved by exploiting specific libraries or external frameworks, they are not crystallized within the linguistic structure of the programming language. 
-
-[_Read more..._](https://dzone.com/articles/the-red-pill-of-microservices)
-
-<div class="col-xs-12 text-center">
-<img src="imgs/morpheus.png">
-</div>
-
-
+By shifting the focus on services from libraries and frameworks to the programming language, we can change significantly how programmers manage their knowledge regarding service programming.
+The key idea is that the important abstractions for service programming should be crystallised in the programming language, translating to an easier learning curve for new service developers and less knowledge to be managed.
