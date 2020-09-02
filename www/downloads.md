@@ -38,7 +38,7 @@ Download the Java-based installer of the latest release of Jolie:
 </a>
 </div>
 
-Here you can find the <a href="https://github.com/jolie/website/tree/master/www/files/releases">previous stable releases</a> of Jolie.
+Here you can find the <a href="https://github.com/jolie/jolie/releases">previous releases</a> of Jolie.
 
 ### Run the Jolie installer
 
