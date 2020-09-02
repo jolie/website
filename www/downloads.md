@@ -23,19 +23,24 @@ Make sure to have [Java](http://www.java.com/) 8 or
 later installed before proceeding.
 (If you have to use a previous version of Java, Jolie version 1.5.0 or previous requires only Java 6. See our <a href="https://github.com/jolie/website/tree/master/www/files/releases">previous releases</a>.)
 
-#### Get the Jolie installer
+### Get the Jolie installer
 
-Download the Java-based installer of the latest stable release of Jolie:
+Download the Java-based installer of the latest release of Jolie:
 
-<div class="col-xs-12 text-center">
+<div class="col-xs-6 text-center">
 <a href="https://github.com/jolie/jolie/releases/download/v1.9.1/jolie-1.9.1.jar">
-<p class="download">Jolie Installer</p>
+<p class="download">Jolie Installer (Stable: 1.9.1)</p>
+</a>
+</div>
+<div class="col-xs-6 text-center">
+<a href="https://github.com/jolie/jolie/releases/download/v1.10beta1/jolie-1.10beta1.jar">
+<p class="download">Jolie Installer (Preview: 1.10beta1)</p>
 </a>
 </div>
 
 Here you can find the <a href="https://github.com/jolie/website/tree/master/www/files/releases">previous stable releases</a> of Jolie.
 
-#### Run the Jolie installer
+### Run the Jolie installer
 
 Open a shell terminal, access the directory in which you downloaded the
 installer, and execute <kbd>java -jar jolie-1.9.1.jar</kbd>. The installer may

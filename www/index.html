@@ -27,21 +27,23 @@
 	hello( HelloRequest )( <span class="keyword">string</span> )
 }
 
-<span class="keyword">execution</span> { <span class="keyword">concurrent</span> }
+<span class="keyword">service</span> HelloService {
+	<span class="keyword">execution</span> { <span class="keyword">concurrent</span> }
 
-<span class="keyword">inputPort</span> HelloService {
-	<span class="keyword">location:</span> <span class="string">"socket://localost:9000"</span>
-	<span class="keyword">protocol:</span> http { format = <span class="string">"json"</span> }
-	<span class="keyword">interfaces:</span> HelloInterface
-}
+	<span class="keyword">inputPort</span> HelloService {
+		<span class="keyword">location:</span> <span class="string">"socket://localost:9000"</span>
+		<span class="keyword">protocol:</span> http { format = <span class="string">"json"</span> }
+		<span class="keyword">interfaces:</span> HelloInterface
+	}
 
-<span class="keyword">main</span>
-{
-	hello( request )( response ) { 
-		response = <span class="string">"Hello "</span> + request.name
+	<span class="keyword">main</span> {
+		hello( request )( response ) { 
+			response = <span class="string">"Hello "</span> + request.name
+		}
 	}
 }
 </pre>
+<i><small>* Service keyword and refinement types available from the upcoming 1.10 release.</small></i>
 				</div>
 			</div>
 		</div>
@@ -183,34 +185,35 @@
 	hello( HelloRequest )( <span class="keyword">string</span> )
 }
 
-<span class="keyword">execution</span> { <span class="keyword">concurrent</span> }
+<span class="keyword">service</span> HelloService {
+	<span class="keyword">execution</span> { <span class="keyword">concurrent</span> }
 
-<span class="keyword">inputPort</span> HelloServiceHTTP {
-	<span class="keyword">location:</span> <span class="string">"socket://localost:9000"</span>
-	<span class="keyword">protocol:</span> http { format = <span class="string">"json"</span> }
-	<span class="keyword">interfaces:</span> HelloInterface
-}
-
-<span class="keyword">inputPort</span> HelloServiceSOAP {
-	<span class="keyword">location:</span> <span class="string">"socket://localost:9001"</span>
-	<span class="keyword">protocol:</span> soap { 
-		wsdl = <span class="string">"myWsdl.wsdl"</span> 
-		wsdl.port = <span class="string">"MyServiceSOAPPort"</span>
+	<span class="keyword">inputPort</span> HelloServiceHTTP {
+		<span class="keyword">location:</span> <span class="string">"socket://localost:9000"</span>
+		<span class="keyword">protocol:</span> http { format = <span class="string">"json"</span> }
+		<span class="keyword">interfaces:</span> HelloInterface
 	}
-	<span class="keyword">interfaces:</span> HelloInterface
-}
 
-<span class="keyword">inputPort</span> HelloServiceSODEP {
-	<span class="keyword">location:</span> <span class="string">"socket://localost:9002"</span>
-	<span class="keyword">protocol:</span> sodep 
-	<span class="keyword">interfaces:</span> HelloInterface
-}
+	<span class="keyword">inputPort</span> HelloServiceSOAP {
+		<span class="keyword">location:</span> <span class="string">"socket://localost:9001"</span>
+		<span class="keyword">protocol:</span> soap { 
+			wsdl = <span class="string">"myWsdl.wsdl"</span> 
+			wsdl.port = <span class="string">"MyServiceSOAPPort"</span>
+		}
+		<span class="keyword">interfaces:</span> HelloInterface
+	}
 
-<span class="keyword">main</span>
-{
-	<span class="comment">// This can now be reached through HTTP/JSON, SOAP, or SODEP (binary)</span>
-	hello( request )( response ) { 
-		response = <span class="string">"Hello "</span> + request.name
+	<span class="keyword">inputPort</span> HelloServiceSODEP {
+		<span class="keyword">location:</span> <span class="string">"socket://localost:9002"</span>
+		<span class="keyword">protocol:</span> sodep 
+		<span class="keyword">interfaces:</span> HelloInterface
+	}
+
+	<span class="keyword">main</span> {
+		<span class="comment">// This can now be reached through HTTP/JSON, SOAP, or SODEP (binary)</span>
+		hello( request )( response ) { 
+			response = <span class="string">"Hello "</span> + request.name
+		}
 	}
 }
 </pre>
