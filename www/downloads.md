@@ -33,8 +33,8 @@ Download the Java-based installer of the latest release of Jolie:
 </a>
 </div>
 <div class="col-xs-6 text-center">
-<a href="https://github.com/jolie/jolie/releases/download/v1.10-beta2/jolie-1.10-beta2.jar">
-<p class="download">Jolie Installer (Preview: 1.10-beta2)</p>
+<a href="https://github.com/jolie/jolie/releases/download/v1.10.0-beta3/jolie-1.10.0-beta3.jar">
+<p class="download">Jolie Installer (Preview: 1.10.0-beta3)</p>
 </a>
 </div>
 
