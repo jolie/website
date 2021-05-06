@@ -27,16 +27,16 @@ later installed before proceeding.
 
 Download the Java-based installer of the latest release of Jolie:
 
-<div class="col-xs-6 text-center">
-<a href="https://github.com/jolie/jolie/releases/download/v1.9.1/jolie-1.9.1.jar">
-<p class="download">Jolie Installer (Stable: 1.9.1)</p>
+<div class="col-xs-12 text-center">
+<a href="https://github.com/jolie/jolie/releases/download/v1.10.0/jolie-1.10.0.jar">
+<p class="download">Jolie Installer (Stable: 1.10.0)</p>
 </a>
 </div>
-<div class="col-xs-6 text-center">
+<!-- <div class="col-xs-6 text-center">
 <a href="https://github.com/jolie/jolie/releases/download/v1.10.0-beta3/jolie-1.10.0-beta3.jar">
 <p class="download">Jolie Installer (Preview: 1.10.0-beta3)</p>
 </a>
-</div>
+</div> -->
 
 Here you can find the <a href="https://github.com/jolie/jolie/releases">previous releases</a> of Jolie.
 
