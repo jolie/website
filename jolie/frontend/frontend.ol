@@ -24,7 +24,7 @@ include "frontend.iol"
 include "file.iol"
 include "string_utils.iol"
 include "console.iol"
-include "blog_reader/blog_reader.iol"
+// include "blog_reader/blog_reader.iol"
 include "slideshare/SlideShareInterface.iol"
 include "json_utils.iol"
 include "../leonardo/config.iol"
@@ -35,9 +35,9 @@ outputPort SlideShare {
 Interfaces: SlideShareInterface
 }
 
-outputPort BlogReader {
-Interfaces: BlogReaderInterface
-}
+// outputPort BlogReader {
+// Interfaces: BlogReaderInterface
+// }
 
 inputPort FrontendInput {
 Location: "local"
@@ -47,63 +47,63 @@ Aggregates: SlideShare
 
 embedded {
 Jolie:
-	"blog_reader/main.ol" in BlogReader,
+	// "blog_reader/main.ol" in BlogReader,
 	"slideshare/slideshare.ol" in SlideShare,
 	"dump_stats.ol"
 }
 
-define buildEntryHtml
-{
-	html = "<!--Themed-->";
-	entry -> blogsContent.entry[i];
-	lastTimestamp = 0;
-	for( i = 0, i < #blogsContent.entry, i++ ) {
-		if ( entry.timestamp != lastTimestamp ) {
-			html += "<p class=\"BlogDateGroup\">" + entry.date + "</p>";
-			lastTimestamp = entry.timestamp
-		} else if ( i > 0 ) {
-			html += "<div class=\"BlogEntrySeparator\"></div>"
-		};
-		html += "<div class=\"BlogEntry\">"
-		+ "<p class=\"BlogEntryAuthor\">Posted by <a href=\"" + entry.links.blog + "\">" + entry.author + "</a></p>"
-		+ "<p class=\"BlogEntryTitle\"><a href=\"" + entry.links.entry + "\">" + entry.title + "</a></p>"
-		+ "<div id=\"readmore" + i + "\" class=\"BlogEntryContent\">" + entry.content + "</div>"
-		+ "<div class=\"BlogEntryContentReadMore\"><a id=\"readmore" + i + "button\" onclick=\"readmore('readmore" + i + "')\">[...]</a></div>"
-		+ "</div>"
-	}
-}
+// define buildEntryHtml
+// {
+// 	html = "<!--Themed-->";
+// 	entry -> blogsContent.entry[i];
+// 	lastTimestamp = 0;
+// 	for( i = 0, i < #blogsContent.entry, i++ ) {
+// 		if ( entry.timestamp != lastTimestamp ) {
+// 			html += "<p class=\"BlogDateGroup\">" + entry.date + "</p>";
+// 			lastTimestamp = entry.timestamp
+// 		} else if ( i > 0 ) {
+// 			html += "<div class=\"BlogEntrySeparator\"></div>"
+// 		};
+// 		html += "<div class=\"BlogEntry\">"
+// 		+ "<p class=\"BlogEntryAuthor\">Posted by <a href=\"" + entry.links.blog + "\">" + entry.author + "</a></p>"
+// 		+ "<p class=\"BlogEntryTitle\"><a href=\"" + entry.links.entry + "\">" + entry.title + "</a></p>"
+// 		+ "<div id=\"readmore" + i + "\" class=\"BlogEntryContent\">" + entry.content + "</div>"
+// 		+ "<div class=\"BlogEntryContentReadMore\"><a id=\"readmore" + i + "button\" onclick=\"readmore('readmore" + i + "')\">[...]</a></div>"
+// 		+ "</div>"
+// 	}
+// }
 
-init
-{
-	with( newsBlog ) {
-		.url = "https://jolie.github.io/news";
-		.binding.location = "socket://jolie.github.io:443/news/feed-jolie.xml";
-		.binding.protocol = "https";
-		.binding.protocol.ssl.protocol = "TLSv1.2"
-	};
-	with( planetBlogs[0] ) {
-		.url = "https://fmontesi.github.io/";
-		.binding.location = "socket://fmontesi.github.io:443/feed-jolie.xml";
-		.binding.protocol = "https";
-		.binding.protocol.ssl.protocol = "TLSv1.2"
-	};
-	with( planetBlogs[1] ) {
-		.url = "http://claudioguidi.blogspot.com/";
-		.binding.location = "socket://claudioguidi.blogspot.com:80/feeds/posts/default/-/jolie";
-		.binding.protocol = "http"
-	};
-	with( planetBlogs[2] ) {
-		.url = "https://thesave.github.io/";
-		.binding.location = "socket://thesave.github.io:443/feed.xml";
-		.binding.protocol = "https";
-		.binding.protocol.ssl.protocol = "TLSv1.2"
-	};
-	with( planetBlogs[3] ) {
-		.url = "http://jolie-practitioner.blogspot.com/";
-		.binding.location = "socket://jolie-practitioner.blogspot.com:80/feeds/posts/default/-/jolie";
-		.binding.protocol = "http"
-	}
-}
+// init
+// {
+// 	with( newsBlog ) {
+// 		.url = "https://jolie.github.io/news";
+// 		.binding.location = "socket://jolie.github.io:443/news/feed-jolie.xml";
+// 		.binding.protocol = "https";
+// 		.binding.protocol.ssl.protocol = "TLSv1.2"
+// 	};
+// 	with( planetBlogs[0] ) {
+// 		.url = "https://fmontesi.github.io/";
+// 		.binding.location = "socket://fmontesi.github.io:443/feed-jolie.xml";
+// 		.binding.protocol = "https";
+// 		.binding.protocol.ssl.protocol = "TLSv1.2"
+// 	};
+// 	with( planetBlogs[1] ) {
+// 		.url = "http://claudioguidi.blogspot.com/";
+// 		.binding.location = "socket://claudioguidi.blogspot.com:80/feeds/posts/default/-/jolie";
+// 		.binding.protocol = "http"
+// 	};
+// 	with( planetBlogs[2] ) {
+// 		.url = "https://thesave.github.io/";
+// 		.binding.location = "socket://thesave.github.io:443/feed.xml";
+// 		.binding.protocol = "https";
+// 		.binding.protocol.ssl.protocol = "TLSv1.2"
+// 	};
+// 	with( planetBlogs[3] ) {
+// 		.url = "http://jolie-practitioner.blogspot.com/";
+// 		.binding.location = "socket://jolie-practitioner.blogspot.com:80/feeds/posts/default/-/jolie";
+// 		.binding.protocol = "http"
+// 	}
+// }
 
 main
 {
@@ -135,28 +135,28 @@ main
 		getJsonString@JsonUtils( menu )( menu )
 	} ] { nullProcess }
 
-	[ getRss()( response ) {
-		for( blog in newsBlog ) {
-			request.blogs[#request.blogs] << blog
-		}
-		for( blog in planetBlogs ) {
-			request.blogs[#request.blogs] << blog
-		}
-		// TODO
-		readBlogs@BlogReader( request )( response )		
-	} ] { nullProcess }
+	// [ getRss()( response ) {
+	// 	for( blog in newsBlog ) {
+	// 		request.blogs[#request.blogs] << blog
+	// 	}
+	// 	for( blog in planetBlogs ) {
+	// 		request.blogs[#request.blogs] << blog
+	// 	}
+	// 	// TODO
+	// 	readBlogs@BlogReader( request )( response )		
+	// } ] { nullProcess }
 
-	[ news()( html ) {
-		request.blogs -> newsBlog;
-		readBlogs@BlogReader( request )( blogsContent );
-		buildEntryHtml
-	} ] { nullProcess }
+	// [ news()( html ) {
+	// 	request.blogs -> newsBlog;
+	// 	readBlogs@BlogReader( request )( blogsContent );
+	// 	buildEntryHtml
+	// } ] { nullProcess }
 
-	[ planet()( html ) {
-		request.blogs -> planetBlogs;
-		readBlogs@BlogReader( request )( blogsContent );
-		buildEntryHtml
-	} ] { nullProcess }
+	// [ planet()( html ) {
+	// 	request.blogs -> planetBlogs;
+	// 	readBlogs@BlogReader( request )( blogsContent );
+	// 	buildEntryHtml
+	// } ] { nullProcess }
 
 	[ documentation()( html ) {
 		request.username_for = "JolieLang";
@@ -193,18 +193,18 @@ main
 			if ( x % 2 == 1 || x == #response.Slideshow - 1 ) {
 				html += "<div class=\"clearfix\"></div></div>"
 			}
-		};
+		}
 
-		undef( request );
-		request.blogs -> planetBlogs;
-		request.tag = "tutorials";
-		readBlogs@BlogReader( request )( blogsContent );
-		html += "<h2 id=\"tutorials-blogs\">Articles</h2><ul>";
-		for( i = 0, i < #blogsContent.entry, i++ ) {
-			html += "<li><a href=\"" + blogsContent.entry[i].links.entry + "\">"
-				+ blogsContent.entry[i].title
-				+ "</a></li>"
-		};
-		html += "</ul>"
+		// undef( request );
+		// request.blogs -> planetBlogs;
+		// request.tag = "tutorials";
+		// readBlogs@BlogReader( request )( blogsContent );
+		// html += "<h2 id=\"tutorials-blogs\">Articles</h2><ul>";
+		// for( i = 0, i < #blogsContent.entry, i++ ) {
+		// 	html += "<li><a href=\"" + blogsContent.entry[i].links.entry + "\">"
+		// 		+ blogsContent.entry[i].title
+		// 		+ "</a></li>"
+		// };
+		// html += "</ul>"
 	}] { nullProcess }
 }

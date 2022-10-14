@@ -125,11 +125,11 @@ courier HTTPInput {
 		applyTheme;
 		compressionTypes = "*"
 	}
-	[ getRss( request )( response ) ] {
-		forward( request )( response )
-		format = "xml"
-		compressionTypes = "*"
-	}
+	// [ getRss( request )( response ) ] {
+	// 	forward( request )( response )
+	// 	format = "xml"
+	// 	compressionTypes = "*"
+	// }
 }
 
 main
