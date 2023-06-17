@@ -8,6 +8,9 @@ RUN rm -rf /var/lib/leonardo/www/docker /var/lib/leonardo/www/.git
 
 # Start from scratch, copy the installer, install, remove the installer.
 FROM jolielang/jolie
+
+USER root
+
 WORKDIR /
 RUN mkdir -p /var/lib/leonardo/www
 COPY --from=Build /var/lib/leonardo/www/www /var/lib/leonardo/www

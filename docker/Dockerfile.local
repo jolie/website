@@ -1,4 +1,6 @@
 FROM jolielang/jolie
+USER root
+
 WORKDIR /
 RUN mkdir -p /var/lib/leonardo
 COPY www /var/lib/leonardo/www
