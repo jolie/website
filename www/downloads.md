@@ -28,15 +28,10 @@ later installed before proceeding.
 Download the Java-based installer of the latest release of Jolie:
 
 <div class="col-xs-12 text-center">
-<a href="https://github.com/jolie/jolie/releases/download/v1.10.5/jolie-1.10.5.jar">
-<p class="download">Jolie Installer (Stable: 1.10.5)</p>
+<a href="https://github.com/jolie/jolie/releases/download/v1.11.0/jolie-1.11.0.jar">
+<p class="download">Jolie Installer (Stable: 1.11.0)</p>
 </a>
 </div>
-<!-- <div class="col-xs-6 text-center">
-<a href="https://github.com/jolie/jolie/releases/download/v1.10.5-beta3/jolie-1.10.5-beta3.jar">
-<p class="download">Jolie Installer (Preview: 1.10.5-beta3)</p>
-</a>
-</div> -->
 
 Here you can find the <a href="https://github.com/jolie/jolie/releases">previous releases</a> of Jolie.
 
