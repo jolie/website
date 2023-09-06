@@ -38,7 +38,7 @@ Here you can find the <a href="https://github.com/jolie/jolie/releases">previous
 ### Run the Jolie installer
 
 Open a shell terminal, access the directory in which you downloaded the
-installer, and execute <kbd>java -jar jolie-1.10.5.jar</kbd>. The installer may
+installer, and execute <kbd>java -jar jolie-1.11.0.jar</kbd>. The installer may
 need permissions to write in the directories in which you intend to install
 Jolie. Depending on your Operating System you can launch the Jolie installer
 with elevated privileges:
@@ -50,7 +50,7 @@ with elevated privileges:
   administrator privileges</a> and launch the installer;</li>
 
 <li><strong>on Linux/MacOS</strong>, by launching the installer as root with command
-<kbd>sudo java -jar jolie-1.10.5.jar</kbd>.</li>
+<kbd>sudo java -jar jolie-1.11.0.jar</kbd>.</li>
 
 </ul>
 
