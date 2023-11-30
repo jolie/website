@@ -321,6 +321,7 @@ audio/x-voc voc
 audio/x-wav wav
 audio/x-xi xi
 audio/x-xm xm
+font/woff2 woff2
 image/bmp bmp
 image/cgm cgm
 image/dpx
@@ -439,7 +440,7 @@ text/x-haskell hs
 text/x-idl idl
 text/x-install
 text/x-java java
-text/x-js js
+#text/x-js js
 text/x-ksysv-log
 text/x-literate-haskell lhs
 text/x-log log
