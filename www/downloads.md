@@ -70,7 +70,6 @@ To know how to set your system variables, you can refer to the [Java install gui
 <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
 <strong>I get "command not found" after I installed Jolie under MacOs X El Capitan (10.10.11).</strong>
 </a>
-<hr>
 </div>
 <div id="collapseOne" class="accordion-body collapse">
 <div class="accordion-inner">
@@ -80,6 +79,7 @@ using the default values provided by the installer. When prompted by
 the installer, insert e.g., <code>/usr/local/lib/jolie</code> as
 the directory of installation of Jolie and <code>/usr/local/bin</code>
 as the directory of the launchers.
+
 <hr>
 </div>
 </div>
