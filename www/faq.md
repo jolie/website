@@ -23,8 +23,8 @@ In Jolie, the central abstraction is that all programs are microservices by cons
 
 An example of why this is useful is that programmers cannot break loose coupling: two Jolie microservices cannot _share_ data, they can only _exchange_ data by communicating. Data can be shared only among processes in the same microservice. This prevents having hidden shared data structures that can break thread-safety and reusability.
 
-Another example comes from our [interfaces](http://docs.jolie-lang.org/#!documentation/basics/communication_ports.html#interfaces). It is designed to ensure that all Jolie messages can be handled by all the different protocols that we support -- e.g., HTTP (GWT, some REST-based things, XML, JSON, ...), SODEP (a binary protocol) -- and communication mediums -- e.g., local sockets, TCP/IP sockets, bluetooth, local memory.
-Then, our composition primitives (e.g., [aggregation](http://docs.jolie-lang.org/#!documentation/architectural_composition/aggregation.html)) can be used to build complex systems without having to worry about the underlying communication details of the included microservices.
+Another example comes from our [interfaces](https://docs.jolie-lang.org/v1.12.x/language-tools-and-standard-library/basics/interfaces/index.html). It is designed to ensure that all Jolie messages can be handled by all the different protocols that we support -- e.g., HTTP (REST with XML, JSON, ...), SOAP, SODEP (a binary protocol) -- and communication mediums -- e.g., local sockets, TCP/IP sockets, bluetooth, local memory.
+Then, our composition primitives (e.g., [aggregation](https://docs.jolie-lang.org/v1.12.x/language-tools-and-standard-library/architectural-composition/aggregation/index.html)) can be used to build complex systems without having to worry about the underlying communication details of the included microservices.
 
 We also paid attention at not re-inventing the wheel when not necessary. Since Jolie offers a Java API and can be run from inside of a Java program, you can also see Jolie as a Java library that you can use with the syntax of the Jolie language.
 
