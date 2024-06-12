@@ -37,18 +37,18 @@ releases</a>.)</p>
 <h3 id="get-the-jolie-installer">Get the Jolie installer</h3>
 <p>Download the Java-based installer of the latest release of Jolie:</p>
 <div class="col-xs-12 text-center">
-<a href="https://github.com/jolie/jolie/releases/download/v1.11.0/jolie-1.11.0.jar">
+<a href="https://github.com/jolie/jolie/releases/download/v1.12.0/jolie-1.12.0.jar">
 <p class="download">
-Jolie Installer (Stable: 1.11.0)
+Jolie Installer (Stable: 1.12.0)
 </p>
-<p></a></p>
+</a>
 </div>
 <p>Here you can find the
 <a href="https://github.com/jolie/jolie/releases">previous releases</a>
 of Jolie.</p>
 <h3 id="run-the-jolie-installer">Run the Jolie installer</h3>
 <p>Open a shell terminal, access the directory in which you downloaded
-the installer, and execute <kbd>java -jar jolie-1.11.0.jar</kbd>. The
+the installer, and execute <kbd>java -jar jolie-1.12.0.jar</kbd>. The
 installer may need permissions to write in the directories in which you
 intend to install Jolie. Depending on your Operating System you can
 launch the Jolie installer with elevated privileges:</p>
@@ -60,7 +60,7 @@ administrator privileges</a> and launch the installer;
 </li>
 <li>
 <strong>on Linux/MacOS</strong>, by launching the installer as root with
-command <kbd>sudo java -jar jolie-1.11.0.jar</kbd>.
+command <kbd>sudo java -jar jolie-1.12.0.jar</kbd>.
 </li>
 </ul>
 <p>Please, check that the two environment variables below are correctly
@@ -85,11 +85,9 @@ guideline</a>.</p>
 <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
 <strong>I get “command not found” after I installed Jolie under MacOs X
 El Capitan (10.10.11).</strong> </a>
-<hr>
 </div>
 <div id="collapseOne" class="accordion-body collapse">
 <div class="accordion-inner">
-
 In MacOs X El Capitan (10.10.11) it is not possible to install Jolie
 using the default values provided by the installer. When prompted by the
 installer, insert e.g., <code>/usr/local/lib/jolie</code> as the
@@ -101,13 +99,13 @@ the directory of the launchers.
 </div>
 <div class="accordion-group">
 <div class="accordion-heading">
-<p><a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
 <strong>I get “Error: Could not find or load main class jolie.Jolie”
-after I installed Jolie under Linux/MacOs X. </strong> </a></p>
+after I installed Jolie under Linux/MacOs X. </strong> </a>
 </div>
 <div id="collapseTwo" class="accordion-body collapse">
 <div class="accordion-inner">
-<p>The launchers deployed by the installer use the environment variable
+The launchers deployed by the installer use the environment variable
 <code>JOLIE_HOME</code> to set the classpath and launch Jolie. As
 reported by the installer at the end of the installation, it is possible
 to set <code>JOLIE_HOME</code> with the command <code>echo ‘export
@@ -119,7 +117,7 @@ the message <code>“Error: Could not find or load main class
 jolie.Jolie”</code>, it could be the case your shell is not sourcing
 file <code>.bash_profile</code>. To fix it, edit your
 <code>.bashrc</code> in you home directory by appending at its end the
-line <code>source .bash_profile</code>.</p>
+line <code>source .bash_profile</code>.
 </div>
 </div>
 </div>
@@ -127,6 +125,7 @@ line <code>source .bash_profile</code>.</p>
 </div>
 </div>
 </div>
+
 <div id="package-managers" class="tab-pane" role="tabpanel">
 <h2 id="system-package-managers">System Package Managers</h2>
 <p>You can install Jolie also through system package managers.</p>
