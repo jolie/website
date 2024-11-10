@@ -268,27 +268,33 @@ login( credentials )() { checkCredentials };
 				behaviour of fault handlers at runtime, following the execution of activities thanks to the
 				<code>install</code> primitive.</p>
 			<pre>
-<span class="keyword">include</span> <span class="string">"console.iol"</span>
-<span class="keyword">include</span> <span class="string">"time.iol"</span>
+<span class="keyword">from</span> console <span class="keyword">import</span> Console
+<span class="keyword">from</span> time <span class="keyword">import</span> Time
 
-<span class="keyword">main</span>
+<span class="keyword">service</span> ErrorHandling
 {
-    <span  class="keyword">scope</span>( grandFather )
+    <span class="keyword">embed</span> Console <span class="keyword">as</span> Console
+    <span class="keyword">embed</span> Time <span class="keyword">as</span> Time
+
+    <span class="keyword">main</span>
     {
-        <span  class="keyword">install</span>( <span class="keyword">this</span> => println@Console( <span class="string">"recovering grandFather"</span> )() );
-        <span  class="keyword">scope</span>( father )
+        <span class="keyword">scope</span>( grandFather )
         {
-            <span class="keyword">install</span>( <span class="keyword">this</span> => println@Console( <span class="string">"recovering father"</span> )() );
-            <span class="keyword">scope</span> ( son )
+            <span class="keyword">install</span>( <span class="keyword">this</span> => println@Console( <span class="string">"recovering grandFather"</span> )() );
+            <span class="keyword">scope</span>( father )
             {
-                <span class="keyword">install</span>( <span class="keyword">this</span> => println@Console( <span class="string">"recovering son"</span> )() );
-                sleep@Time( 500 )();
-                println@Console( <span class="string">"Son's code block"</span> )()
+                <span class="keyword">install</span>( <span class="keyword">this</span> => println@Console( <span class="string">"recovering father"</span> )() );
+                <span class="keyword">scope</span> ( son )
+                {
+                    <span class="keyword">install</span>( <span class="keyword">this</span> => println@Console( <span class="string">"recovering son"</span> )() );
+                    sleep@Time( 500 )();
+                    println@Console( <span class="string">"Son's code block"</span> )()
+                }
             }
         }
+        |
+        <span class="keyword">throw</span>( a_fault )
     }
-    |
-    <span class="keyword">throw</span>( a_fault )
 }
 </pre>
 
