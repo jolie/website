@@ -209,13 +209,13 @@
 	<span class="keyword">execution</span> { <span class="keyword">concurrent</span> }
 
 	<span class="keyword">inputPort</span> HelloServiceHTTP {
-		<span class="keyword">location:</span> <span class="string">"socket://localost:9000"</span>
+		<span class="keyword">location:</span> <span class="string">"socket://localhost:9000"</span>
 		<span class="keyword">protocol:</span> http { format = <span class="string">"json"</span> }
 		<span class="keyword">interfaces:</span> HelloInterface
 	}
 
 	<span class="keyword">inputPort</span> HelloServiceSOAP {
-		<span class="keyword">location:</span> <span class="string">"socket://localost:9001"</span>
+		<span class="keyword">location:</span> <span class="string">"socket://localhost:9001"</span>
 		<span class="keyword">protocol:</span> soap { 
 			wsdl = <span class="string">"myWsdl.wsdl"</span> 
 			wsdl.port = <span class="string">"MyServiceSOAPPort"</span>
@@ -224,7 +224,7 @@
 	}
 
 	<span class="keyword">inputPort</span> HelloServiceSODEP {
-		<span class="keyword">location:</span> <span class="string">"socket://localost:9002"</span>
+		<span class="keyword">location:</span> <span class="string">"socket://localhost:9002"</span>
 		<span class="keyword">protocol:</span> sodep 
 		<span class="keyword">interfaces:</span> HelloInterface
 	}
